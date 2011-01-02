@@ -3,7 +3,7 @@ PR ="r65"
 
 FILESPATHPKG =. "u-boot-git:"
 
-SRC_URI = "git://www.denx.de/git/u-boot.git;protocol=git \
+SRC_URI_beagleboard = "git://www.denx.de/git/u-boot.git;protocol=git \
                        file://0001-OMAP3-enable-i2c-bus-switching-for-Beagle-and-Overo.patch \
                        file://0002-OMAP3-add-board-revision-detection-for-Overo.patch \
                        file://0003-OMAP3-update-Beagle-revision-detection-to-recognize-.patch \
@@ -53,10 +53,17 @@ SRC_URI = "git://www.denx.de/git/u-boot.git;protocol=git \
                        file://0044-Beagleboard-Adjust-boot.patch \
                        file://0045-BeagleBoard-Enable-pullups-on-i2c2.patch \
                        file://0046-BeagleBoard-Add-camera-to-default-bootargs.patch \
-		       file://0001-BeagleBoard-move-ramdisk-parameters.patch \
+                       file://0001-BeagleBoard-move-ramdisk-parameters.patch \
                        file://fw_env.config \
 "
-SRCREV = "ca6e1c136ddb720c3bb2cc043b99f7f06bc46c55"
-PV = "2010.03+${PR}+gitr${SRCREV}"
+SRCREV_beagleboard = "ca6e1c136ddb720c3bb2cc043b99f7f06bc46c55"
+PV_beagleboard = "2010.03+${PR}+gitr${SRCREV}"
+
+# ~ TI PSP v2009.11_OMAPPSP_03.00.01.06 (+ couple of commits)
+SRC_URI_omap3evm = "git://arago-project.org/git/projects/u-boot-omap3.git;protocol=git \
+    file://0001-omap3evm-Change-default-console-serial-port-from.patch \
+"
+SRCREV_omap3evm = "c0a8fb217fdca7888d89f9a3dee74a4cec865620"
+PV_omap3evm = "2009.11+${PR}+gitr${SRCREV}"
 
 S = "${WORKDIR}/git"
