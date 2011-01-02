@@ -66,4 +66,11 @@ SRC_URI_omap3evm = "git://arago-project.org/git/projects/u-boot-omap3.git;protoc
 SRCREV_omap3evm = "c0a8fb217fdca7888d89f9a3dee74a4cec865620"
 PV_omap3evm = "2009.11+${PR}+gitr${SRCREV}"
 
+# hawkboard - master branch (hawk still .07beta)
+SRC_URI_hawkboard          = "git://arago-project.org/git/people/sekhar/u-boot-omapl1.git;protocol=git;branch=master"
+SRC_URI_hawkboard         += "file://dont-inline-weak-symbols.patch"
+SRCREV_hawkboard           = "0d291f2f255e6d66a78b3dc2445362a96ae39a57"
+PV_hawkboard               = "2009.08+gitr${SRCREV}"
+
+
 S = "${WORKDIR}/git"
