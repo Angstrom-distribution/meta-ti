@@ -1,4 +1,4 @@
-From 1beed5ee3301a9756c8cd2672d487c568c562e81 Mon Sep 17 00:00:00 2001
+From b86550d1c9423b9609cc7260fe723881879989af Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 23 Nov 2010 11:40:20 +0100
 Subject: [PATCH 09/29] ARM: OMAP: add omap_rev_* macros

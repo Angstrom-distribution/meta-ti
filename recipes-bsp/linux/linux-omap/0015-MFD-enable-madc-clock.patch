@@ -1,4 +1,4 @@
-From 0bedf8e81896a69ba77e9066ad9545412fd53cf8 Mon Sep 17 00:00:00 2001
+From 0e659f27fa00c4a6263e2b2ff96e09759f09b053 Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <steve@sakoman.com>
 Date: Sat, 23 Jan 2010 06:26:54 -0800
 Subject: [PATCH 15/29] MFD: enable madc clock

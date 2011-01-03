@@ -1,4 +1,4 @@
-From 71b7d633e566195b065e09e97164bec046ca7b6d Mon Sep 17 00:00:00 2001
+From c818eb868fd5621ad373e508fbb71b69739a56c1 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 7 Oct 2010 09:25:45 +0200
 Subject: [PATCH 01/29] ARM: OMAP: Power on EHCI, serial, camera and DVI on beagleboard-xM

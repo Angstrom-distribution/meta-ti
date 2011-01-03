@@ -1,4 +1,4 @@
-From ea45cc880d407e9747dafa0efe5ab17ffb5e42d5 Mon Sep 17 00:00:00 2001
+From a68c5e1548041d308fa46f834ff00e3a1ccd0acf Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <steve@sakoman.com>
 Date: Thu, 17 Dec 2009 14:19:34 -0800
 Subject: [PATCH 16/29] MFD: add twl4030 madc driver

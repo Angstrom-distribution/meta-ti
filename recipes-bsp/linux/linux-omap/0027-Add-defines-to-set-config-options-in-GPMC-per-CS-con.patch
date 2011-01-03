@@ -1,4 +1,4 @@
-From 98d0c3ce9209fe34699ec99aa90efab39fe05c36 Mon Sep 17 00:00:00 2001
+From a406a8cdaf0bcd826ad28a035b4269088f318887 Mon Sep 17 00:00:00 2001
 From: Philip Balister <balister@nomad.(none)>
 Date: Wed, 17 Feb 2010 14:51:39 -0800
 Subject: [PATCH 27/29] Add defines to set config options in GPMC per CS control registers.

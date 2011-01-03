@@ -1,4 +1,4 @@
-From ade216c2689a2dae645ca95fa443ee8eacfafb67 Mon Sep 17 00:00:00 2001
+From db329c64c7c6abf08929860512964fc00d13f075 Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <steve@sakoman.com>
 Date: Thu, 4 Feb 2010 12:26:22 -0800
 Subject: [PATCH 23/29] RTC: add support for backup battery recharge

@@ -1,4 +1,4 @@
-From 60e119550f5a782c512c19d86a08313ae2ffa876 Mon Sep 17 00:00:00 2001
+From 3adfccd800f37f6d4eac565366b86cafe96b487a Mon Sep 17 00:00:00 2001
 From: Robert Nelson <robertcnelson@gmail.com>
 Date: Tue, 9 Nov 2010 08:34:55 -0600
 Subject: [PATCH 02/29] omap: Beagle: detect new xM revision B

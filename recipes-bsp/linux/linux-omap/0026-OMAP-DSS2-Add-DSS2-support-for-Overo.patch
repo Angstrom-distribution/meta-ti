@@ -1,4 +1,4 @@
-From 66db8210263893e9ffd4478c36a3a1a89bdaff37 Mon Sep 17 00:00:00 2001
+From 21da1a248b7a19136bb53a32061989473bc79551 Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <steve@sakoman.com>
 Date: Fri, 18 Dec 2009 06:39:24 -0800
 Subject: [PATCH 26/29] OMAP: DSS2: Add DSS2 support for Overo

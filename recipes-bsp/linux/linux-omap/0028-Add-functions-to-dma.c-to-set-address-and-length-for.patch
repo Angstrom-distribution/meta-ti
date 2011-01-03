@@ -1,4 +1,4 @@
-From 5469329878e4bdb38fe39fc95676d9b752b1528f Mon Sep 17 00:00:00 2001
+From c0b0f03265656641342b4915e476a3d5ec9dd17c Mon Sep 17 00:00:00 2001
 From: Philip Balister <philip@opensdr.com>
 Date: Thu, 22 Apr 2010 19:41:58 -0700
 Subject: [PATCH 28/29] Add functions to dma.c to set address and length for src and dest.

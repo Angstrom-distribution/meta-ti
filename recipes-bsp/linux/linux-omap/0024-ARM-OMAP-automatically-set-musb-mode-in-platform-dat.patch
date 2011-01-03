@@ -1,4 +1,4 @@
-From 6a2f14bdd390695f5d88fb8ea18df8f80bddfc9d Mon Sep 17 00:00:00 2001
+From 12fd29b006ffd5b8b14837088db8949a53d04f04 Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <steve@sakoman.com>
 Date: Wed, 24 Feb 2010 10:37:22 -0800
 Subject: [PATCH 24/29] ARM: OMAP: automatically set musb mode in platform data based on CONFIG options

@@ -1,4 +1,4 @@
-From 43b87f69e82217aff2a966559bdf28dcfedc2c8e Mon Sep 17 00:00:00 2001
+From 84148dd7b2824a008561b4aabe483d16cf093951 Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <sakoman@gmail.com>
 Date: Tue, 15 Dec 2009 15:17:44 -0800
 Subject: [PATCH 12/29] drivers: net: smsc911x: return ENODEV if device is not found
