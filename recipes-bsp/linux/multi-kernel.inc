@@ -78,6 +78,8 @@ do_compileconfigs () {
 # For reference, copy .config to deploy image
 do_deploy_append () {
 
+	install -d ${DEPLOY_DIR_IMAGE}
+
     # Drop the regular defconfig along side the others for consistency
     cd ${S}
     cp .config ${DEPLOY_DIR_IMAGE}/config-${PV}-${PR}-${MACHINE}.config
