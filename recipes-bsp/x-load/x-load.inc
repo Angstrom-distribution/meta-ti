@@ -3,9 +3,9 @@ SECTION = "bootloaders"
 PRIORITY = "optional"
 LICENSE = "GPLv2+"
 
-DEPENDS = "signgp-native"
+LIC_FILES_CHKSUM = "file://common/cmd_load.c;beginline=4;endline=22;md5=14420d7cc8dfb427d17ad407ddf8dc89"
 
-PARALLEL_MAKE=""
+PARALLEL_MAKE = ""
 
 EXTRA_OEMAKE = "CROSS_COMPILE=${TARGET_PREFIX}"
 
@@ -26,12 +26,10 @@ do_compile () {
 	unset CPPFLAGS
 	oe_runmake distclean
 	oe_runmake ${XLOAD_MACHINE}
-	oe_runmake
+	oe_runmake ift
 }
 
 do_install () {
-	signGP ${S}/x-load.bin ${XLOAD_LOAD_ADDRESS}
-
 	install -d ${D}/boot
 	install ${S}/x-load.bin.ift ${D}/boot/${MLO_IMAGE}
 	ln -sf ${MLO_IMAGE} ${D}/boot/${MLO_SYMLINK_NOMACHINE} 
