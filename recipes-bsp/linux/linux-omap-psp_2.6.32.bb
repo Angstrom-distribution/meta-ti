@@ -3,7 +3,7 @@ require multi-kernel.inc
 DESCRIPTION = "Linux kernel for OMAP processors"
 KERNEL_IMAGETYPE = "uImage"
 
-COMPATIBLE_MACHINE = "beagleboard|omap3evm|am3517-evm|dm37x-evm|am37x-evm|omap3-touchbook|overo"
+COMPATIBLE_MACHINE = "am3517-crane|beagleboard|omap3evm|am3517-evm|dm37x-evm|am37x-evm|omap3-touchbook|overo"
 
 # This is on the master branch
 SRCREV = "5fc29e7b2a76a64a739f857858ef0b98294aa155"
@@ -12,7 +12,8 @@ SRCREV = "5fc29e7b2a76a64a739f857858ef0b98294aa155"
 MACHINE_KERNEL_PR_append = "+gitr${SRCREV}"
 
 SRC_URI = "git://arago-project.org/git/projects/linux-omap3.git;protocol=http;branch=master \
-           file://0001-Revert-omap3-beagle-Fix-compile-time-errors.patch \
+           file://0001-Added-Crane-Board-support.patch \
+	   file://0001-Revert-omap3-beagle-Fix-compile-time-errors.patch \
            file://0002-board-omap3touchbook-make-it-build-against-TI-linux-.patch \
            file://0003-ARM-OMAP-add-support-for-TCT-Zippy-to-Beagle-board-f.patch \
            file://0004-ARM-OMAP-Make-beagle-u-boot-partition-writable.patch \
@@ -133,6 +134,7 @@ SRC_URI = "git://arago-project.org/git/projects/linux-omap3.git;protocol=http;br
            file://cam/0074-Move-sensor-rest-to-after-applying-power.patch \
            file://cam/0075-omap3beagle-Add-camera-bootarg.patch \
            file://0001-BeagleBoard-Adjust-USER-button-pin-for-xM.patch \
+           file://0001-PSP-3.0.1.6-kernel-source-patched-with-OCF-Linux.patch \
            file://porches.patch \
            file://defconfig"
 
