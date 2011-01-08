@@ -1,0 +1,47 @@
+From c26fbaf25d06dcec26e1c2b6669345bd08c8be5f Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Sat, 8 Jan 2011 19:16:16 +0100
+Subject: [PATCH 06/10] headphone.patch
+
+---
+ board/omap3/beagle/beagle.c |    4 ++--
+ board/omap3/beagle/beagle.h |    4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/board/omap3/beagle/beagle.c b/board/omap3/beagle/beagle.c
+index 7eb70ee..39073db 100644
+--- a/board/omap3/beagle/beagle.c
++++ b/board/omap3/beagle/beagle.c
+@@ -104,12 +104,12 @@ int misc_init_r(void)
+ 	power_init_r();
+ 
+ 	/* Configure GPIOs to output */
+-	writel(~(GPIO23 | GPIO10 | GPIO8 | GPIO2 | GPIO1), &gpio6_base->oe);
++	writel(~(GPIO16 | GPIO23 | GPIO10 | GPIO8 | GPIO2 | GPIO1), &gpio6_base->oe);
+ 	writel(~(GPIO31 | GPIO30 | GPIO29 | GPIO28 | GPIO22 | GPIO21 |
+ 		GPIO15 | GPIO14 | GPIO13 | GPIO12), &gpio5_base->oe);
+ 
+ 	/* Set GPIOs */
+-	writel(GPIO23 | GPIO10 | GPIO8 | GPIO2 | GPIO1,
++	writel(GPIO16 | GPIO23 | GPIO10 | GPIO8 | GPIO2 | GPIO1,
+ 		&gpio6_base->setdataout);
+ 	writel(GPIO31 | GPIO30 | GPIO29 | GPIO28 | GPIO22 | GPIO21 |
+ 		GPIO15 | GPIO14 | GPIO13 | GPIO12, &gpio5_base->setdataout);
+diff --git a/board/omap3/beagle/beagle.h b/board/omap3/beagle/beagle.h
+index 876dd4f..e77ab43 100644
+--- a/board/omap3/beagle/beagle.h
++++ b/board/omap3/beagle/beagle.h
+@@ -115,8 +115,8 @@ const omap3_sysinfo sysinfo = {
+  MUX_VAL(CP(GPMC_NCS1),		(IDIS | PTU | EN  | M0)) /*GPMC_nCS1*/\
+  MUX_VAL(CP(GPMC_NCS2),		(IDIS | PTU | EN  | M0)) /*GPMC_nCS2*/\
+  MUX_VAL(CP(GPMC_NCS3),		(IDIS | PTU | EN  | M0)) /*GPMC_nCS3*/\
+- MUX_VAL(CP(GPMC_NCS4),		(IDIS | PTU | EN  | M0)) /*GPMC_nCS4*/\
+- MUX_VAL(CP(GPMC_NCS5),		(IDIS | PTD | DIS | M0)) /*GPMC_nCS5*/\
++ MUX_VAL(CP(GPMC_NCS4),		(IDIS | PTU | DIS | M3)) /*GPMC_nCS4 -- GPT9_PWM*/\
++ MUX_VAL(CP(GPMC_NCS5),		(IEN  | PTD | DIS | M4)) /*GPMC_nCS5 -- PHONES_DETECT GPIO_56*/\
+  MUX_VAL(CP(GPMC_NCS6),		(IEN  | PTD | DIS | M1)) /*SYS_nDMA_REQ2*/\
+  MUX_VAL(CP(GPMC_NCS7),		(IEN  | PTU | EN  | M1)) /*SYS_nDMA_REQ3*/\
+  MUX_VAL(CP(GPMC_NBE1),		(IEN  | PTD | DIS | M0)) /*GPMC_nBE1*/\
+-- 
+1.6.6.1
+

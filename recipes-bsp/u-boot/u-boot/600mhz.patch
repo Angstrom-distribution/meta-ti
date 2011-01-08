@@ -1,0 +1,25 @@
+From 7189f933a151c3f2f4778aaaefa1a3b037368bed Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Sat, 8 Jan 2011 19:13:31 +0100
+Subject: [PATCH 02/10] 600mhz.patch
+
+---
+ include/asm-arm/arch-omap3/clocks_omap3.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/asm-arm/arch-omap3/clocks_omap3.h b/include/asm-arm/arch-omap3/clocks_omap3.h
+index 661407b..e148d68 100644
+--- a/include/asm-arm/arch-omap3/clocks_omap3.h
++++ b/include/asm-arm/arch-omap3/clocks_omap3.h
+@@ -71,7 +71,7 @@
+ #define MPU_FSEL_13_ES1		0x03
+ #define MPU_M2_13_ES1		0x01
+ 
+-#define MPU_M_13_ES2		0x1F4
++#define MPU_M_13_ES2		0x258
+ #define MPU_N_13_ES2		0x0C
+ #define MPU_FSEL_13_ES2		0x03
+ #define MPU_M2_13_ES2		0x01
+-- 
+1.6.6.1
+

@@ -1,0 +1,73 @@
+From af839210aa4c643506c6c27270a7f823c6bd0d58 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Sat, 8 Jan 2011 19:12:59 +0100
+Subject: [PATCH 01/10] dss2.patch
+
+---
+ include/configs/omap3_beagle.h |   15 +++++++++++----
+ include/configs/omap3_overo.h  |   15 +++++++++++----
+ 2 files changed, 22 insertions(+), 8 deletions(-)
+
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index a3d9cf6..f7899b9 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -156,14 +156,21 @@
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"loadaddr=0x82000000\0" \
+ 	"console=ttyS2,115200n8\0" \
+-	"videomode=1024x768@60,vxres=1024,vyres=768\0" \
+-	"videospec=omapfb:vram:2M,vram:4M\0" \
++	"vram=12M\0" \
++	"dvimode=1024x768MR-16@60\0" \
++	"defaultdisplay=dvi\0" \
+ 	"mmcargs=setenv bootargs console=${console} " \
+-		"video=${videospec},mode:${videomode} " \
++		"vram=${vram} " \
++		"omapfb.mode=dvi:${dvimode} " \
++		"omapfb.debug=y " \
++		"omapdss.def_disp=${defaultdisplay} " \
+ 		"root=/dev/mmcblk0p2 rw " \
+ 		"rootfstype=ext3 rootwait\0" \
+ 	"nandargs=setenv bootargs console=${console} " \
+-		"video=${videospec},mode:${videomode} " \
++		"vram=${vram} " \
++		"omapfb.mode=dvi:${dvimode} " \
++		"omapfb.debug=y " \
++		"omapdss.def_disp=${defaultdisplay} " \
+ 		"root=/dev/mtdblock4 rw " \
+ 		"rootfstype=jffs2\0" \
+ 	"loadbootscript=fatload mmc 0 ${loadaddr} boot.scr\0" \
+diff --git a/include/configs/omap3_overo.h b/include/configs/omap3_overo.h
+index fed6ff5..6162d6c 100644
+--- a/include/configs/omap3_overo.h
++++ b/include/configs/omap3_overo.h
+@@ -147,14 +147,21 @@
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"loadaddr=0x82000000\0" \
+ 	"console=ttyS2,115200n8\0" \
+-	"videomode=1024x768@60,vxres=1024,vyres=768\0" \
+-	"videospec=omapfb:vram:2M,vram:4M\0" \
++	"vram=12M\0" \
++	"dvimode=1024x768MR-16@60\0" \
++	"defaultdisplay=dvi\0" \
+ 	"mmcargs=setenv bootargs console=${console} " \
+-		"video=${videospec},mode:${videomode} " \
++		"vram=${vram} " \
++		"omapfb.mode=dvi:${dvimode} " \
++		"omapfb.debug=y " \
++		"omapdss.def_disp=${defaultdisplay} " \
+ 		"root=/dev/mmcblk0p2 rw " \
+ 		"rootfstype=ext3 rootwait\0" \
+ 	"nandargs=setenv bootargs console=${console} " \
+-		"video=${videospec},mode:${videomode} " \
++		"vram=${vram} " \
++		"omapfb.mode=dvi:${dvimode} " \
++		"omapfb.debug=y " \
++		"omapdss.def_disp=${defaultdisplay} " \
+ 		"root=/dev/mtdblock4 rw " \
+ 		"rootfstype=jffs2\0" \
+ 	"loadbootscript=fatload mmc 0 ${loadaddr} boot.scr\0" \
+-- 
+1.6.6.1
+

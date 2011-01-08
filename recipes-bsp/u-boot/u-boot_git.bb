@@ -73,6 +73,24 @@ SRC_URI_am37x-evm = "git://arago-project.org/git/projects/u-boot-omap3.git;proto
 SRCREV_am37x-evm = "c0a8fb217fdca7888d89f9a3dee74a4cec865620"
 PV_am37x-evm = "2009.11+${PR}+gitr${SRCREV}"
 
+SRC_URI_omap3-touchbook = "git://gitorious.org/u-boot-omap3/mainline.git;branch=omap3-dev;protocol=git \
+                 file://fw_env.config \
+                 file://dss2.patch \
+                 file://600mhz.patch \
+                 file://new-pinmux.patch \
+                 file://spi3.patch \
+                 file://spi4.patch \
+                 file://headphone.patch \
+                 file://power.patch \
+                 file://ai-logo.patch \
+                 file://mmcinit.patch \
+                 file://touchbook-config.patch \
+                 file://dont-inline-weak-symbols.patch \
+"
+SRCREV_omap3-touchbook = "d363f9cb0918a1b6b92e2e20d01543d0c4f53274"
+PV_omap3-touchbook = "2009.05+${PR}+gitr${SRCREV}"
+
+
 # hawkboard - master branch (hawk still .07beta)
 SRC_URI_hawkboard          = "git://arago-project.org/git/people/sekhar/u-boot-omapl1.git;protocol=git;branch=master"
 SRC_URI_hawkboard         += "file://dont-inline-weak-symbols.patch"

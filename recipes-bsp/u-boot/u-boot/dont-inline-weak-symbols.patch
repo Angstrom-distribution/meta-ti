@@ -1,45 +1,39 @@
-Patch initially created by Ron Lee and archived in OE patchwork at
-http://patchwork.openembedded.org/patch/1534/.
-
-GCC 4.4 complains about this now.
-
-Signed-off-by: Ron Lee <ron@debian.org>
----
- lib_arm/board.c |   18 +++++++++---------
- 1 files changed, 9 insertions(+), 9 deletions(-)
-
+diff --git a/lib_arm/board.c b/lib_arm/board.c
+index 5d05d9b..0e7fa9a 100644
 --- a/lib_arm/board.c
 +++ b/lib_arm/board.c
-@@ -124,23 +124,23 @@
+@@ -122,20 +122,20 @@ void *sbrk (ptrdiff_t increment)
+  ************************************************************************
   * May be supplied by boards if desired
   */
- void inline __coloured_LED_init (void) {}
+-void inline __coloured_LED_init (void) {}
 -void inline coloured_LED_init (void) __attribute__((weak, alias("__coloured_LED_init")));
-+void coloured_LED_init (void) __attribute__((weak, alias("__coloured_LED_init")));
- void inline __red_LED_on (void) {}
+-void inline __red_LED_on (void) {}
 -void inline red_LED_on (void) __attribute__((weak, alias("__red_LED_on")));
-+void red_LED_on (void) __attribute__((weak, alias("__red_LED_on")));
- void inline __red_LED_off(void) {}
+-void inline __red_LED_off(void) {}
 -void inline red_LED_off(void)	     __attribute__((weak, alias("__red_LED_off")));
-+void red_LED_off(void)	     __attribute__((weak, alias("__red_LED_off")));
- void inline __green_LED_on(void) {}
+-void inline __green_LED_on(void) {}
 -void inline green_LED_on(void) __attribute__((weak, alias("__green_LED_on")));
-+void green_LED_on(void) __attribute__((weak, alias("__green_LED_on")));
- void inline __green_LED_off(void) {}
+-void inline __green_LED_off(void) {}
 -void inline green_LED_off(void)__attribute__((weak, alias("__green_LED_off")));
-+void green_LED_off(void)__attribute__((weak, alias("__green_LED_off")));
- void inline __yellow_LED_on(void) {}
+-void inline __yellow_LED_on(void) {}
 -void inline yellow_LED_on(void)__attribute__((weak, alias("__yellow_LED_on")));
-+void yellow_LED_on(void)__attribute__((weak, alias("__yellow_LED_on")));
- void inline __yellow_LED_off(void) {}
+-void inline __yellow_LED_off(void) {}
 -void inline yellow_LED_off(void)__attribute__((weak, alias("__yellow_LED_off")));
++void __coloured_LED_init (void) {}
++void coloured_LED_init (void) __attribute__((weak, alias("__coloured_LED_init")));
++void __red_LED_on (void) {}
++void red_LED_on (void) __attribute__((weak, alias("__red_LED_on")));
++void __red_LED_off(void) {}
++void red_LED_off(void)	     __attribute__((weak, alias("__red_LED_off")));
++void __green_LED_on(void) {}
++void green_LED_on(void) __attribute__((weak, alias("__green_LED_on")));
++void __green_LED_off(void) {}
++void green_LED_off(void)__attribute__((weak, alias("__green_LED_off")));
++void __yellow_LED_on(void) {}
++void yellow_LED_on(void)__attribute__((weak, alias("__yellow_LED_on")));
++void __yellow_LED_off(void) {}
 +void yellow_LED_off(void)__attribute__((weak, alias("__yellow_LED_off")));
- void inline __blue_LED_on(void) {}
--void inline blue_LED_on(void)__attribute__((weak, alias("__blue_LED_on")));
-+void blue_LED_on(void)__attribute__((weak, alias("__blue_LED_on")));
- void inline __blue_LED_off(void) {}
--void inline blue_LED_off(void)__attribute__((weak, alias("__blue_LED_off")));
-+void blue_LED_off(void)__attribute__((weak, alias("__blue_LED_off")));
  
  /************************************************************************
   * Init Utilities							*

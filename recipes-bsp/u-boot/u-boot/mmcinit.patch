@@ -1,0 +1,34 @@
+From 412e0ab7334defa38c8d3732fb0076f4957843f0 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Sat, 8 Jan 2011 19:17:07 +0100
+Subject: [PATCH 09/10] mmcinit.patch
+
+---
+ common/cmd_mmc.c |   11 +++++++++++
+ 1 files changed, 11 insertions(+), 0 deletions(-)
+
+diff --git a/common/cmd_mmc.c b/common/cmd_mmc.c
+index 039fe59..c1958ba 100644
+--- a/common/cmd_mmc.c
++++ b/common/cmd_mmc.c
+@@ -91,6 +91,17 @@ U_BOOT_CMD(
+ 	"init [dev] - init MMC sub system\n"
+ 	"mmc device [dev] - show or set current device\n"
+ );
++int do_mmcinit (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[])
++{
++	char *argv2[] = {"mmc", "init"};
++	return do_mmc (cmdtp, flag, 2, argv2);
++}
++
++U_BOOT_CMD(
++	mmcinit,	1,	0,	do_mmcinit,
++	"mmcinit - init mmc card\n",
++	NULL
++);
+ #else /* !CONFIG_GENERIC_MMC */
+ 
+ static void print_mmcinfo(struct mmc *mmc)
+-- 
+1.6.6.1
+

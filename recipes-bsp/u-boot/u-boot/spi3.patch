@@ -1,0 +1,43 @@
+From 17d40dae02b56f1f4c4f3766e20b7b4c69596049 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Sat, 8 Jan 2011 19:15:52 +0100
+Subject: [PATCH 04/10] spi3.patch
+
+---
+ board/omap3/beagle/beagle.h |   20 ++++++++++----------
+ 1 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/board/omap3/beagle/beagle.h b/board/omap3/beagle/beagle.h
+index 2ba6a12..743e32c 100644
+--- a/board/omap3/beagle/beagle.h
++++ b/board/omap3/beagle/beagle.h
+@@ -201,16 +201,16 @@ const omap3_sysinfo sysinfo = {
+  MUX_VAL(CP(MMC1_DAT6),		(IEN  | PTU | EN  | M0)) /*MMC1_DAT6*/\
+  MUX_VAL(CP(MMC1_DAT7),		(IEN  | PTU | EN  | M0)) /*MMC1_DAT7*/\
+  /*Wireless LAN */\
+- MUX_VAL(CP(MMC2_CLK),		(IEN  | PTU | EN  | M0)) /*MMC2_CLK*/\
+- MUX_VAL(CP(MMC2_CMD),		(IEN  | PTU | EN  | M0)) /*MMC2_CMD*/\
+- MUX_VAL(CP(MMC2_DAT0),		(IEN  | PTU | EN  | M0)) /*MMC2_DAT0*/\
+- MUX_VAL(CP(MMC2_DAT1),		(IEN  | PTU | EN  | M0)) /*MMC2_DAT1*/\
+- MUX_VAL(CP(MMC2_DAT2),		(IEN  | PTU | EN  | M0)) /*MMC2_DAT2*/\
+- MUX_VAL(CP(MMC2_DAT3),		(IEN  | PTU | EN  | M0)) /*MMC2_DAT3*/\
+- MUX_VAL(CP(MMC2_DAT4),		(IEN  | PTU | EN  | M1)) /*MMC2_DIR_DAT0*/\
+- MUX_VAL(CP(MMC2_DAT5),		(IEN  | PTU | EN  | M1)) /*MMC2_DIR_DAT1*/\
+- MUX_VAL(CP(MMC2_DAT6),		(IEN  | PTU | EN  | M1)) /*MMC2_DIR_CMD*/\
+- MUX_VAL(CP(MMC2_DAT7),		(IEN  | PTU | EN  | M1)) /*MMC2_CLKIN*/\
++ MUX_VAL(CP(MMC2_CLK),		(IEN  | PTU | DIS  | M1)) /*MCSPI3_CLK*/\
++ MUX_VAL(CP(MMC2_CMD),		(IEN  | PTU | DIS  | M1)) /*MCSPI3_SIMO*/\
++ MUX_VAL(CP(MMC2_DAT0),		(IEN  | PTU | EN  | M1)) /*MCSPI3_SOMI*/\
++ MUX_VAL(CP(MMC2_DAT1),		(IEN  | PTU | EN  | M4)) /*GPIO_133*/\
++ MUX_VAL(CP(MMC2_DAT2),		(IEN  | PTU | EN  | M1)) /*MCSPI3_CS1*/\
++ MUX_VAL(CP(MMC2_DAT3),		(IEN  | PTU | EN  | M1)) /*MCSPI3_CS0*/\
++ MUX_VAL(CP(MMC2_DAT4),		(IEN  | PTU | EN  | M4)) /*GPIO_136*/\
++ MUX_VAL(CP(MMC2_DAT5),		(IEN  | PTU | EN  | M4)) /*GPIO_137*/\
++ MUX_VAL(CP(MMC2_DAT6),		(IEN  | PTU | EN  | M4)) /*GPIO_138*/\
++ MUX_VAL(CP(MMC2_DAT7),		(IEN  | PTU | EN  | M4)) /*GPIO_139*/\
+  /*Bluetooth*/\
+  MUX_VAL(CP(MCBSP3_DX),		(IEN  | PTD | DIS | M1)) /*UART2_CTS*/\
+  MUX_VAL(CP(MCBSP3_DR),		(IDIS | PTD | DIS | M1)) /*UART2_RTS*/\
+-- 
+1.6.6.1
+

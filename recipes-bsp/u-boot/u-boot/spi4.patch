@@ -1,0 +1,36 @@
+From b2b7765ad59b5422df9337ee6c6f838a381b86c0 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Sat, 8 Jan 2011 19:15:59 +0100
+Subject: [PATCH 05/10] spi4.patch
+
+---
+ board/omap3/beagle/beagle.h |   12 ++++++------
+ 1 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/board/omap3/beagle/beagle.h b/board/omap3/beagle/beagle.h
+index 743e32c..876dd4f 100644
+--- a/board/omap3/beagle/beagle.h
++++ b/board/omap3/beagle/beagle.h
+@@ -229,13 +229,13 @@ const omap3_sysinfo sysinfo = {
+  MUX_VAL(CP(MCBSP4_DR),		(IEN | PTU | EN  | M4)) /*GPIO_153*/\
+  MUX_VAL(CP(MCBSP4_DX),		(IEN | PTU | EN  | M4)) /*GPIO_154*/\
+  MUX_VAL(CP(MCBSP4_FSX),	(IEN | PTU | EN  | M4)) /*GPIO_155*/\
+- MUX_VAL(CP(MCBSP1_CLKR),	(IDIS | PTD | DIS | M4)) /*GPIO_156*/\
+- MUX_VAL(CP(MCBSP1_FSR),	(IDIS | PTU | EN  | M4)) /*GPIO_157*/\
+- MUX_VAL(CP(MCBSP1_DX),		(IDIS | PTD | DIS | M4)) /*GPIO_158*/\
+- MUX_VAL(CP(MCBSP1_DR),		(IDIS | PTD | DIS | M4)) /*GPIO_159*/\
++ MUX_VAL(CP(MCBSP1_CLKR),	(IEN | PTU | DIS | M1)) /*MCSPI4_CLK*/\
++ MUX_VAL(CP(MCBSP1_FSR),	(IEN | PTU | EN  | M4)) /*GPIO_157*/\
++ MUX_VAL(CP(MCBSP1_DX),		(IEN | PTU | DIS | M1)) /*MCSPI4_SIMO*/\
++ MUX_VAL(CP(MCBSP1_DR),		(IEN | PTU | EN | M1)) /*MCSPI4_SOMI*/\
+  MUX_VAL(CP(MCBSP_CLKS),	(IEN  | PTU | DIS | M0)) /*McBSP_CLKS*/\
+- MUX_VAL(CP(MCBSP1_FSX),	(IDIS | PTD | DIS | M4)) /*GPIO_161*/\
+- MUX_VAL(CP(MCBSP1_CLKX),	(IDIS | PTD | DIS | M4)) /*GPIO_162*/\
++ MUX_VAL(CP(MCBSP1_FSX),	(IEN | PTU | EN | M1)) /*MCSPI4_CS0*/\
++ MUX_VAL(CP(MCBSP1_CLKX),	(IEN | PTU | EN | M4)) /*GPIO_162*/\
+  /*Serial Interface*/\
+  MUX_VAL(CP(UART3_CTS_RCTX),	(IEN  | PTD | EN  | M0)) /*UART3_CTS_RCTX*/\
+  MUX_VAL(CP(UART3_RTS_SD),	(IDIS | PTD | DIS | M0)) /*UART3_RTS_SD */\
+-- 
+1.6.6.1
+
