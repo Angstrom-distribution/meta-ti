@@ -82,3 +82,13 @@ SRC_URI_append_hawkboard          = " \
 do_configure_prepend_dm355-leopard() {
 	sed -i s:2138:1381:g ${S}/arch/arm/tools/mach-types
 }
+
+# Perf in 2.6.33rc has broken perl handling, so disable it
+do_compile_perf() {
+    :
+}
+
+do_install_perf() {
+    :
+}
+
