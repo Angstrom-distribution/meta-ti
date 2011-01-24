@@ -10,6 +10,8 @@ PV = "2.6.37"
 MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
 SRCREV_pn-${PN} = "fa3b4e23ec20cfc944db7cc2b30b0d82c20e4472"
 
+FILESPATHPKG_prepend = "linux-omap-2.6.37:"
+
 SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/tmlind/linux-omap-2.6.git;protocol=git \
 	   file://defconfig"
 
@@ -129,7 +131,25 @@ SRC_URI_append = " \
                   file://dvfs/0018-omap3-4-opp-make-omapx_opp_init-non-static.patch \
                   file://dvfs/0019-OMAP3-beagle-xm-enable-upto-1GHz-OPP.patch \
                   file://dvfs/0020-omap3-Add-basic-support-for-720MHz-part.patch \
-                 "
+                  \
+                  file://new/0001-OMAP-Enable-Magic-SysRq-on-serial-console-ttyOx.patch \
+                  \
+                  file://wl1271/0001-wl12xx-Read-MAC-address-from-NVS-file-on-HW-startup.patch \
+                  file://wl1271/0002-wl1271-11n-Support-Add-Definitions.patch \
+                  file://wl1271/0003-wl1271-11n-Support-ACX-Commands.patch \
+                  file://wl1271/0004-wl1271-11n-Support-functionality-and-configuration-a.patch \
+                  file://wl1271/0005-wl1271-set-wl-vif-only-if-add_interface-succeeded.patch \
+                  file://wl1271/0006-wl12xx-Unset-bssid-filter-ssid-and-bssid-from-firmwa.patch \
+                  file://wl1271/0007-drivers-media-radio-wl128x-FM-Driver-common-header-f.patch \
+                  file://wl1271/0008-drivers-media-radio-wl128x-FM-Driver-V4L2-sources.patch \
+                  file://wl1271/0009-drivers-media-radio-wl128x-FM-Driver-Common-sources.patch \
+                  file://wl1271/0010-drivers-media-radio-wl128x-FM-driver-RX-sources.patch \
+                  file://wl1271/0011-drivers-media-radio-wl128x-FM-driver-TX-sources.patch \
+                  file://wl1271/0012-drivers-media-radio-wl128x-Kconfig-Makefile-for-wl12.patch \
+                  file://wl1271/0013-drivers-media-radio-Update-Kconfig-and-Makefile-for-.patch \
+                  file://wl1271/0014-drivers-misc-ti-st-change-protocol-parse-logic.patch \
+                  file://wl1271/0015-Bluetooth-btwilink-driver.patch \
+                  "
 
 SRC_URI_append_usrp-e1xx = "\
                   file://usrp/0001-Add-defines-to-set-config-options-in-GPMC-per-CS-con.patch \
