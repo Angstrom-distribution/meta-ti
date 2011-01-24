@@ -168,6 +168,15 @@ do_quiltfixup() {
 
 S = "${WORKDIR}/git"
 
+# Perf in 2.6.32 has broken perl handling, so disable it
+do_compile_perf() {
+	:
+}
+
+do_install_perf() {
+	:
+}
+
 do_install_append() {
 	install -d ${D}/boot
 	install -m 0644 Documentation/arm/OMAP/DSS ${D}/boot/
