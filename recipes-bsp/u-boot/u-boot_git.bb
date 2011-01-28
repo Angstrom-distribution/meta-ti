@@ -56,21 +56,21 @@ SRC_URI_beagleboard = "git://www.denx.de/git/u-boot.git;protocol=git \
                        file://0001-BeagleBoard-move-ramdisk-parameters.patch \
                        file://fw_env.config \
 "
-SRCREV_beagleboard = "ca6e1c136ddb720c3bb2cc043b99f7f06bc46c55"
-PV_beagleboard = "2010.03+${PR}+gitr${SRCREV}"
+SRCREV_pn-${PN}_beagleboard = "ca6e1c136ddb720c3bb2cc043b99f7f06bc46c55"
+PV_pn-${PN}_beagleboard = "2010.03+${PR}+gitr${SRCREV}"
 
 # ~ TI PSP v2009.11_OMAPPSP_03.00.01.06 (+ couple of commits)
 SRC_URI_omap3evm = "git://arago-project.org/git/projects/u-boot-omap3.git;protocol=git \
     file://0001-omap3evm-Change-default-console-serial-port-from.patch \
 "
-SRCREV_omap3evm = "c0a8fb217fdca7888d89f9a3dee74a4cec865620"
+SRCREV_${PN}_omap3evm = "c0a8fb217fdca7888d89f9a3dee74a4cec865620"
 PV_omap3evm = "2009.11+${PR}+gitr${SRCREV}"
 
 # ~ TI PSP v2009.11_OMAPPSP_03.00.01.06 (+ couple of commits)
 SRC_URI_am37x-evm = "git://arago-project.org/git/projects/u-boot-omap3.git;protocol=git \
     file://0001-omap3evm-Change-default-console-serial-port-from.patch \
 "
-SRCREV_am37x-evm = "c0a8fb217fdca7888d89f9a3dee74a4cec865620"
+SRCREV_pn-${PN}_pn-${PN}_am37x-evm = "c0a8fb217fdca7888d89f9a3dee74a4cec865620"
 PV_am37x-evm = "2009.11+${PR}+gitr${SRCREV}"
 
 SRC_URI_omap3-touchbook = "git://gitorious.org/u-boot-omap3/mainline.git;branch=omap3-dev;protocol=git \
@@ -87,14 +87,14 @@ SRC_URI_omap3-touchbook = "git://gitorious.org/u-boot-omap3/mainline.git;branch=
                  file://touchbook-config.patch \
                  file://dont-inline-weak-symbols.patch \
 "
-SRCREV_omap3-touchbook = "d363f9cb0918a1b6b92e2e20d01543d0c4f53274"
+SRCREV_pn-${PN}_omap3-touchbook = "d363f9cb0918a1b6b92e2e20d01543d0c4f53274"
 PV_omap3-touchbook = "2009.05+${PR}+gitr${SRCREV}"
 
 
 # hawkboard - master branch (hawk still .07beta)
 SRC_URI_hawkboard          = "git://arago-project.org/git/people/sekhar/u-boot-omapl1.git;protocol=git;branch=master"
-SRC_URI_hawkboard         += "file://dont-inline-weak-symbols.patch"
-SRCREV_hawkboard           = "0d291f2f255e6d66a78b3dc2445362a96ae39a57"
+SRC_URI_hawkboard         += "file://dont-inline-weak-symbols2.patch"
+SRCREV_pn-${PN}_hawkboard           = "0d291f2f255e6d66a78b3dc2445362a96ae39a57"
 PV_hawkboard               = "2009.08+gitr${SRCREV}"
 
 
