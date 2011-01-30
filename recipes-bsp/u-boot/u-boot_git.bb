@@ -70,7 +70,7 @@ PV_omap3evm = "2009.11+${PR}+gitr${SRCREV}"
 SRC_URI_am37x-evm = "git://arago-project.org/git/projects/u-boot-omap3.git;protocol=git \
     file://0001-omap3evm-Change-default-console-serial-port-from.patch \
 "
-SRCREV_pn-${PN}_pn-${PN}_am37x-evm = "c0a8fb217fdca7888d89f9a3dee74a4cec865620"
+SRCREV_pn-${PN}_am37x-evm = "c0a8fb217fdca7888d89f9a3dee74a4cec865620"
 PV_am37x-evm = "2009.11+${PR}+gitr${SRCREV}"
 
 SRC_URI_omap3-touchbook = "git://gitorious.org/u-boot-omap3/mainline.git;branch=omap3-dev;protocol=git \
