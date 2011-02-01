@@ -23,11 +23,20 @@ EXTRA_OEMAKE = "${PARALLEL_MAKE} "
 
 do_compileconfigs () {
 
+  # fixup for fetcher change
+  if [ -e ${WORKDIR}/configs/configs ] ; then
+      if [ -e ${WORKDIR}/configs/configs/.empty ] ; then
+          mv ${WORKDIR}/configs/configs/.empty ${WORKDIR}/configs/
+      fi
+      mv ${WORKDIR}/configs/configs/* ${WORKDIR}/configs/
+      rm -rf ${WORKDIR}/configs/configs
+  fi
+
   # Compile and Install additional kernel configs if found
   if [ -e ${WORKDIR}/configs/.empty ] ; then
        echo "No configs found in configs/ directory, skipping to regular build"
   else
-       echo "Multiple configs found, building those first"
+      echo "Multiple configs found, building those first"
 
       # Context Save the regular 'defconfig'
       cp ${WORKDIR}/defconfig ${WORKDIR}/defconfig.save
