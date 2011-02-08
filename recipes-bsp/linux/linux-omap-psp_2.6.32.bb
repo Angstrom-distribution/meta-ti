@@ -11,7 +11,7 @@ SRCREV = "5fc29e7b2a76a64a739f857858ef0b98294aa155"
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
 MACHINE_KERNEL_PR_append = "+gitr${SRCREV}"
 
-SRC_URI = "git://arago-project.org/git/projects/linux-omap3.git;protocol=http;branch=master \
+SRC_URI = "git://arago-project.org/git/projects/linux-omap3.git;protocol=git;branch=master \
            file://0001-Added-Crane-Board-support.patch \
 	   file://0001-Revert-omap3-beagle-Fix-compile-time-errors.patch \
            file://0002-board-omap3touchbook-make-it-build-against-TI-linux-.patch \
