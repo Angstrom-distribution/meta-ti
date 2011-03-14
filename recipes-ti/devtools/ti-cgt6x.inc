@@ -1,0 +1,26 @@
+DESCRIPTION = "TI DSP Code Generation Tools"
+HOMEPAGE = "https://www-a.ti.com/downloads/sds_support/TICodegenerationTools/download.htm"
+SECTION = "devel"
+LICENSE = "TI"
+
+LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=712a8c64bb70c5ea5fa193faef3bed6f"
+
+require ../includes/ti-paths.inc
+require ../includes/ti-staging.inc
+require ../includes/ti-eula-unpack.inc
+
+PR = "r4"
+
+S = "${WORKDIR}/cgt6x_${PV}"
+
+SRC_URI = "http://install.source.dir.local/ti_cgt_c6000_${PVwithdots}_setup_linux_x86.bin;name=cgt6xbin"
+
+BINFILE="ti_cgt_c6000_${PVwithdots}_setup_linux_x86.bin"
+TI_BIN_UNPK_CMDS="Y:qY:workdir: : "
+TI_BIN_UNPK_WDEXT="/cgt6x_${PV}"
+
+do_install() {
+    install -d ${D}${CODEGEN_INSTALL_DIR_RECIPE}
+    cp -pPrf ${S}/* ${D}${CODEGEN_INSTALL_DIR_RECIPE}
+}
+
