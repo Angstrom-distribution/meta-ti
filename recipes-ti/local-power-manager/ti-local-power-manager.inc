@@ -26,11 +26,11 @@ DEPENDS += "virtual/kernel"
 
 LPMDSPPOWERSOC_omap3  = "omap3530"
 LPMDSPPOWERSOC_dm6446 = "dm6446"
-LPMDSPPOWERSOC       ?= "<UNDEFINED_LPMDSPPOWERSOC>"
+LPMDSPPOWERSOC       ?= "UNDEFINED_LPMDSPPOWERSOC"
 
 XDC_PLATFORM_dm6446   = "ti.platforms.evmDM6446"
 XDC_PLATFORM_omap3    = "ti.platforms.evm3530"
-XDC_PLATFORM         ?= "<UNDEFINED_XDC_PLATFORM>"
+XDC_PLATFORM         ?= "UNDEFINED_XDC_PLATFORM"
 
 do_configure () {
 
@@ -100,7 +100,7 @@ do_install () {
 
     # Install the Utilities
     install -d ${D}/${installdir}/ti-lpm-utils
-    install -m 0755 ${S}/packages/ti/bios/power/utils/bin/$(echo ${XDC_PLATFORM} | sed s:\\.:_:g)/linux/release/* ${D}/${installdir}/ti-lpm-utils
+    install -m 0755 ${S}/packages/ti/bios/power/utils/bin/$(echo ${XDC_PLATFORM} | tr . _)/linux/release/* ${D}/${installdir}/ti-lpm-utils
 
     # Install/Stage the Source Tree 
     install -d ${D}${LPM_INSTALL_DIR_RECIPE}
