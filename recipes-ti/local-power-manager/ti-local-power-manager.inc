@@ -3,6 +3,8 @@ HOMEPAGE = "http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/l
 SECTION = "devel"
 LICENSE = "GPLv2"
 
+LIC_FILES_CHKSUM = "file://gpl_2.0.txt;md5=ebb5c50ab7cab4baeffba14977030c07"
+
 # TODO : Hardcoded path to evm3530 - need to fix when adding omap24xx/dm6446 (other lpm targets)
 
 require ../includes/ti-paths.inc
@@ -43,7 +45,7 @@ do_configure () {
 var Build = xdc.useModule('xdc.bld.BuildEnvironment');
 
 var GCArmv5T = xdc.useModule('gnu.targets.arm.GCArmv5T');
-GCArmv5T.LONGNAME = "bin/${TARGET_PREFIX}gcc";
+GCArmv5T.LONGNAME = "${TARGET_PREFIX}gcc";
 GCArmv5T.rootDir = "${TOOLCHAIN_PATH}";
 GCArmv5T.ccOpts.prefix += " -Wall -fno-strict-aliasing ";
 GCArmv5T.lnkOpts.suffix = GCArmv5T.lnkOpts.suffix.replace("-lstdc++", "");
