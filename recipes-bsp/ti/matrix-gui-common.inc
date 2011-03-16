@@ -6,11 +6,12 @@ LIC_FILES_CHKSUM = "file://main.cpp;beginline=1;endline=37;md5=a802a01a3a58f2ebb
 SECTION = "multimedia"
 PRIORITY = "optional"
 
-INC_PR = "r6"
+INC_PR = "r7"
 
 COMPATIBLE_MACHINE = "(dm365|omapl138|omap3|ti816x)"
 
-PLATFORM_dm365 = "dm365"
+PLATFORM_dm365-evm = "dm365"
+PLATFORM_dm368-evm = "dm368"
 PLATFORM_omapl138 = "omapl138"
 PLATFORM_omap3evm = "omap3530"
 PLATFORM_dm37x-evm = "dm3730"
@@ -36,7 +37,7 @@ do_install() {
     install -m 0644 ${S}/${PLATFORM}/html/* ${D}/${datadir}/matrix/html
     install -d ${D}/${datadir}/matrix/images
     install -m 0644 ${S}/images/*.png ${D}/${datadir}/matrix/images/
-
+    install -m 0644 ${S}/images/*.svg ${D}/${datadir}/matrix/images/
 }
 
 FILES_${PN} += "${datadir}/matrix/*"
