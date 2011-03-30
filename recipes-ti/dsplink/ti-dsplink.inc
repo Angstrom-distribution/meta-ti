@@ -11,6 +11,8 @@ LIC_FILES_CHKSUM = "file://dsplink/doc/gpl_2.0.pdf;md5=70996be607b61df78ce46093f
 # TODO :: Unset required since LDFLAGS gets picked up and used incorrectly - investigate
 # TODO :: Do we need to pass so many variables to each make step?
 
+inherit module
+
 require ../includes/ti-paths.inc
 require ../includes/ti-staging.inc
 
@@ -106,6 +108,7 @@ do_compile() {
       all
 
     # Build the gpp kernel space (debug and release)
+    do_make_scripts
     cd ${DSPLINK}/gpp/src && make \
       OBJDUMP="${TARGET_PREFIX}objdump" \
       CROSS_COMPILE="${TARGET_PREFIX}" \
