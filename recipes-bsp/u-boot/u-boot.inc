@@ -59,12 +59,10 @@ INSANE_SKIP_${PN}-fw-utils = True
 do_deploy () {
 	install -d ${DEPLOY_DIR_IMAGE}
 	install ${S}/${UBOOT_BINARY} ${DEPLOY_DIR_IMAGE}/${UBOOT_IMAGE}
-	package_stagefile_shell ${DEPLOY_DIR_IMAGE}/${UBOOT_IMAGE}
 
 	cd ${DEPLOY_DIR_IMAGE}
 	rm -f ${UBOOT_SYMLINK}
 	ln -sf ${UBOOT_IMAGE} ${UBOOT_SYMLINK}
-	package_stagefile_shell ${DEPLOY_DIR_IMAGE}/${UBOOT_SYMLINK}
 }
 do_deploy[dirs] = "${S}"
 addtask deploy before do_package_stage after do_compile
