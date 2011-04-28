@@ -185,7 +185,17 @@ do_install_perf() {
 	:
 }
 
+do_install_prepend() {
+	mkdir headerstash -p
+	cp include/linux/bounds.h headerstash/
+	cp include/asm-arm/asm-offsets.h headerstash/
+}
+
 do_install_append() {
+	cp headerstash/bounds.h $kerneldir/include/linux/
+	cp headerstash/asm-offsets.h $kerneldir/include/asm-arm/asm-offsets.h
+	rm -rf headerstash/
+
 	install -d ${D}/boot
 	install -m 0644 Documentation/arm/OMAP/DSS ${D}/boot/
 }
