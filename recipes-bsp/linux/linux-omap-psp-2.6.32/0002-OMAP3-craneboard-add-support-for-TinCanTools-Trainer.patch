@@ -1,23 +1,21 @@
-From bf88487c59994b71cc57687915de0dc207a74b6b Mon Sep 17 00:00:00 2001
+From ba5fd3ed4031a826309ab26045d27dbef88de418 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
-Date: Mon, 3 May 2010 21:38:34 +0200
-Subject: [PATCH 08/45] ARM: OMAP: beagleboard: pre-export GPIOs to userspace when using a Tincantools trainerboard
+Date: Wed, 19 Jan 2011 16:36:09 +0100
+Subject: [PATCH 2/2] OMAP3: craneboard: add support for TinCanTools Trainer expansion board
 
-This really needs a for loop, patches welcome
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
- arch/arm/mach-omap2/board-omap3beagle.c |   33 ++++++++++++++++++++++++++++++-
- 1 files changed, 32 insertions(+), 1 deletions(-)
+ arch/arm/mach-omap2/board-am3517crane.c |   31 +++++++++++++++++++++++++++++++
+ 1 files changed, 31 insertions(+), 0 deletions(-)
 
-diff --git a/arch/arm/mach-omap2/board-omap3beagle.c b/arch/arm/mach-omap2/board-omap3beagle.c
-index ac96551..c9af202 100644
---- a/arch/arm/mach-omap2/board-omap3beagle.c
-+++ b/arch/arm/mach-omap2/board-omap3beagle.c
-@@ -701,7 +701,38 @@ static void __init omap3_beagle_init(void)
- 		mmc[1].gpio_wp = 141;
- 		mmc[1].gpio_cd = 162;
- 	}
--	
-+
+diff --git a/arch/arm/mach-omap2/board-am3517crane.c b/arch/arm/mach-omap2/board-am3517crane.c
+index 300a79d..cbe2174 100644
+--- a/arch/arm/mach-omap2/board-am3517crane.c
++++ b/arch/arm/mach-omap2/board-am3517crane.c
+@@ -747,6 +747,37 @@ static void __init am3517_crane_init(void)
+ 	am3517crane_flash_init();
+ 	usb_musb_init();
+ 
 +	if(!strcmp(expansionboard_name, "trainer"))
 +	{
 +		printk(KERN_INFO "Beagle expansionboard: exporting GPIOs 130-141,162 to userspace\n");
@@ -47,11 +45,11 @@ index ac96551..c9af202 100644
 +		gpio_export(141, 1);
 +		gpio_request(162, "sysfs");
 +		gpio_export(162, 1);
-+	}
++	}	
 +
- 	usb_musb_init();
- 	usb_ehci_init(&ehci_pdata);
- 	omap3beagle_flash_init();
+ 	/* Configure GPIO for EHCI port */
+ 	omap_mux_init_gpio(35, OMAP_PIN_OUTPUT);
+ 	gpio_request(35, "usb_ehci_enable");
 -- 
 1.6.6.1
 
