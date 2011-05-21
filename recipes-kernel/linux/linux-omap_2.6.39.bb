@@ -43,8 +43,41 @@ SRC_URI_append = " \
            file://sakoman/0027-OMAP-Overo-Add-support-for-spidev.patch \
            file://sakoman/0028-unionfs-Add-support-for-unionfs-2.5.9.patch \
            \
-           file://beagle/0001-OMAP3-beagle-add-support-for-beagleboard-xM-revision.patch \
-           file://beagle/0002-OMAP3-beagle-add-support-for-expansionboards.patch \
+           file://beagle/0029-OMAP3-beagle-add-support-for-beagleboard-xM-revision.patch \
+           file://beagle/0030-OMAP3-beagle-add-support-for-expansionboards.patch \
+           file://beagle/0031-OMAP3-beagle-add-MADC-support.patch \
+           \
+           file://pm/linux-omap-2.6.39-ti-pm/0032-OMAP3-voltage-remove-spurious-pr_notice-for-debugfs.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0033-OMAP4-PM-remove-redundant-ifdef-CONFIG_PM.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0034-OMAP3-smartreflex-fix-sr_late_init-error-path-in-pro.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0035-OMAP3-smartreflex-request-the-memory-region.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0036-OMAP3-smartreflex-fix-ioremap-leak-on-probe-error.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0037-OMAP3-smartreflex-delete-instance-from-sr_list-on-pr.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0038-OMAP3-smartreflex-delete-debugfs-entries-on-probe-er.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0039-OMAP3-cpuidle-remove-useless-SDP-specific-timings.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0040-OMAP3-SR-make-notify-independent-of-class.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0041-OMAP3-SR-disable-interrupt-by-default.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0042-OMAP3-SR-enable-disable-SR-only-on-need.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0043-OMAP3-SR-fix-cosmetic-indentation.patch \
+           \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq/0044-OMAP-CPUfreq-ensure-driver-initializes-after-cpufreq.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq/0045-OMAP-CPUfreq-ensure-policy-is-fully-initialized.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq/0046-OMAP3-PM-CPUFreq-driver-for-OMAP3.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq/0047-OMAP-PM-CPUFREQ-Fix-conditional-compilation.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq/0048-cpufreq-fixup-after-new-OPP-layer-merged.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq/0049-OMAP-cpufreq-Split-OMAP1-and-OMAP2PLUS-CPUfreq-drive.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq/0050-OMAP2PLUS-cpufreq-Add-SMP-support-to-cater-OMAP4430.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq/0051-OMAP2PLUS-cpufreq-Fix-typo-when-attempting-to-set-mp.patch \
+           \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq-hotplug/0052-cpufreq-helpers-for-walking-the-frequency-table.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq-hotplug/0053-cpufreq-introduce-hotplug-governor.patch \
+           \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq-fixes/0054-OMAP2-cpufreq-free-up-table-on-exit.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq-fixes/0055-OMAP2-cpufreq-handle-invalid-cpufreq-table.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq-fixes/0056-OMAP2-cpufreq-minor-comment-cleanup.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq-fixes/0057-OMAP2-cpufreq-use-clk_init_cpufreq_table-if-OPPs-not.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq-fixes/0058-OMAP2-cpufreq-use-cpufreq_frequency_table_target.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq-fixes/0059-OMAP2-cpufreq-fix-freq_table-leak.patch \
            "
 
 SRC_URI_append_beagleboard = " file://logo_linux_clut224.ppm \
