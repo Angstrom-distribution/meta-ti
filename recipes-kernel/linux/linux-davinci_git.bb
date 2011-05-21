@@ -9,7 +9,6 @@ DEFAULT_PREFERENCE = "1"
 DEFAULT_PREFERENCE_dm365 = "-1"
 
 BRANCH = "master"
-SRC_URI = "file://defconfig "
 
 S = "${WORKDIR}/git"
 
