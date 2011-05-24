@@ -7,7 +7,7 @@ COMPATIBLE_MACHINE = "(beagleboard)"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
 SRCREV_pn-${PN} = "v2.6.39"
-MACHINE_KERNEL_PR_append = "b"
+MACHINE_KERNEL_PR_append = "c"
 
 FILESPATHPKG_prepend = "linux-omap-2.6.39:"
 
@@ -81,6 +81,13 @@ SRC_URI_append = " \
            file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq-fixes/0004-OMAP2-cpufreq-use-clk_init_cpufreq_table-if-OPPs-not.patch \
            file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq-fixes/0005-OMAP2-cpufreq-use-cpufreq_frequency_table_target.patch \
            file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq-fixes/0006-OMAP2-cpufreq-fix-freq_table-leak.patch \
+           \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpuidle/0001-OMAP2-clockdomain-Add-an-api-to-read-idle-mode.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpuidle/0002-OMAP2-clockdomain-Add-SoC-support-for-clkdm_is_idle.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpuidle/0003-OMAP2-PM-Initialise-sleep_switch-to-a-non-valid-valu.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpuidle/0004-OMAP2-PM-idle-clkdms-only-if-already-in-idle.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpuidle/0005-OMAP2-hwmod-Follow-the-recomended-PRCM-sequence.patch \
+           file://pm/linux-omap-2.6.39-ti-pm-wip-cpuidle/0006-OMAP-Serial-Check-wk_st-only-if-present.patch \
            "
 
 SRC_URI_append_beagleboard = " file://logo_linux_clut224.ppm \
