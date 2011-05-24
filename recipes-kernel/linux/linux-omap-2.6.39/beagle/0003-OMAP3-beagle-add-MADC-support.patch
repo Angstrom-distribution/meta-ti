@@ -1,0 +1,36 @@
+From cfa62e807901f04bfd0e9f38a283ac974ff3d888 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Sat, 21 May 2011 16:18:30 +0200
+Subject: [PATCH 3/3] OMAP3: beagle: add MADC support
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ arch/arm/mach-omap2/board-omap3beagle.c |    5 +++++
+ 1 files changed, 5 insertions(+), 0 deletions(-)
+
+diff --git a/arch/arm/mach-omap2/board-omap3beagle.c b/arch/arm/mach-omap2/board-omap3beagle.c
+index 70ed6f3..aa7849a 100644
+--- a/arch/arm/mach-omap2/board-omap3beagle.c
++++ b/arch/arm/mach-omap2/board-omap3beagle.c
+@@ -632,6 +632,10 @@ static struct twl4030_codec_data beagle_codec_data = {
+ 	.audio = &beagle_audio_data,
+ };
+ 
++static struct twl4030_madc_platform_data beagle_madc_data = {
++	.irq_line	= 1,
++};
++
+ static struct twl4030_platform_data beagle_twldata = {
+ 	.irq_base	= TWL4030_IRQ_BASE,
+ 	.irq_end	= TWL4030_IRQ_END,
+@@ -640,6 +644,7 @@ static struct twl4030_platform_data beagle_twldata = {
+ 	.usb		= &beagle_usb_data,
+ 	.gpio		= &beagle_gpio_data,
+ 	.codec		= &beagle_codec_data,
++	.madc		= &beagle_madc_data,
+ 	.vmmc1		= &beagle_vmmc1,
+ 	.vsim		= &beagle_vsim,
+ 	.vdac		= &beagle_vdac,
+-- 
+1.6.6.1
+
