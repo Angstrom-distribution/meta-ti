@@ -7,7 +7,7 @@ COMPATIBLE_MACHINE = "(beagleboard)"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
 SRCREV_pn-${PN} = "v2.6.39"
-MACHINE_KERNEL_PR_append = "a"
+MACHINE_KERNEL_PR_append = "b"
 
 FILESPATHPKG_prepend = "linux-omap-2.6.39:"
 
@@ -49,6 +49,19 @@ SRC_URI_append = " \
            file://beagle/0001-OMAP3-beagle-add-support-for-beagleboard-xM-revision.patch \
            file://beagle/0002-OMAP3-beagle-add-support-for-expansionboards.patch \
            file://beagle/0003-OMAP3-beagle-add-MADC-support.patch \
+           \
+           file://pm/linux-omap-2.6.39-ti-pm/0001-OMAP3-voltage-remove-spurious-pr_notice-for-debugfs.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0002-OMAP4-PM-remove-redundant-ifdef-CONFIG_PM.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0003-OMAP3-smartreflex-fix-sr_late_init-error-path-in-pro.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0004-OMAP3-smartreflex-request-the-memory-region.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0005-OMAP3-smartreflex-fix-ioremap-leak-on-probe-error.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0006-OMAP3-smartreflex-delete-instance-from-sr_list-on-pr.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0007-OMAP3-smartreflex-delete-debugfs-entries-on-probe-er.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0008-OMAP3-cpuidle-remove-useless-SDP-specific-timings.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0009-OMAP3-SR-make-notify-independent-of-class.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0010-OMAP3-SR-disable-interrupt-by-default.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0011-OMAP3-SR-enable-disable-SR-only-on-need.patch \
+           file://pm/linux-omap-2.6.39-ti-pm/0012-OMAP3-SR-fix-cosmetic-indentation.patch \
            \
            file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq/0001-OMAP-CPUfreq-ensure-driver-initializes-after-cpufreq.patch \
            file://pm/linux-omap-2.6.39-ti-pm-wip-cpufreq/0002-OMAP-CPUfreq-ensure-policy-is-fully-initialized.patch \
