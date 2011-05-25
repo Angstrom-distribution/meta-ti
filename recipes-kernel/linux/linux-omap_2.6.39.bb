@@ -7,7 +7,7 @@ COMPATIBLE_MACHINE = "(beagleboard)"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
 SRCREV_pn-${PN} = "v2.6.39"
-MACHINE_KERNEL_PR_append = "c"
+MACHINE_KERNEL_PR_append = "d"
 
 FILESPATHPKG_prepend = "linux-omap-2.6.39:"
 
@@ -49,6 +49,10 @@ SRC_URI_append = " \
            file://beagle/0001-OMAP3-beagle-add-support-for-beagleboard-xM-revision.patch \
            file://beagle/0002-OMAP3-beagle-add-support-for-expansionboards.patch \
            file://beagle/0003-OMAP3-beagle-add-MADC-support.patch \
+           file://beagle/0004-OMAP3-beagle-add-regulators-for-camera-interface.patch \
+           file://beagle/0005-OMAP3-beagle-HACK-add-in-1GHz-OPP.patch \
+           \
+           file://camera/0001-Add-mt9p031-sensor-support.patch \
            \
            file://pm/linux-omap-2.6.39-ti-pm/0001-OMAP3-voltage-remove-spurious-pr_notice-for-debugfs.patch \
            file://pm/linux-omap-2.6.39-ti-pm/0002-OMAP4-PM-remove-redundant-ifdef-CONFIG_PM.patch \

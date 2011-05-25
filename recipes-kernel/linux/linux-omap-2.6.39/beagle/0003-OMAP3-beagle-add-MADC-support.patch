@@ -1,7 +1,7 @@
-From cfa62e807901f04bfd0e9f38a283ac974ff3d888 Mon Sep 17 00:00:00 2001
+From b6deb9a9c3a0c8b9afc981cbca20ff73fa7a8d8c Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Sat, 21 May 2011 16:18:30 +0200
-Subject: [PATCH 3/3] OMAP3: beagle: add MADC support
+Subject: [PATCH 3/5] OMAP3: beagle: add MADC support
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
@@ -9,10 +9,10 @@ Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
  1 files changed, 5 insertions(+), 0 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-omap3beagle.c b/arch/arm/mach-omap2/board-omap3beagle.c
-index 70ed6f3..aa7849a 100644
+index db285e1..da4ba50 100644
 --- a/arch/arm/mach-omap2/board-omap3beagle.c
 +++ b/arch/arm/mach-omap2/board-omap3beagle.c
-@@ -632,6 +632,10 @@ static struct twl4030_codec_data beagle_codec_data = {
+@@ -634,6 +634,10 @@ static struct twl4030_codec_data beagle_codec_data = {
  	.audio = &beagle_audio_data,
  };
  
@@ -23,7 +23,7 @@ index 70ed6f3..aa7849a 100644
  static struct twl4030_platform_data beagle_twldata = {
  	.irq_base	= TWL4030_IRQ_BASE,
  	.irq_end	= TWL4030_IRQ_END,
-@@ -640,6 +644,7 @@ static struct twl4030_platform_data beagle_twldata = {
+@@ -642,6 +646,7 @@ static struct twl4030_platform_data beagle_twldata = {
  	.usb		= &beagle_usb_data,
  	.gpio		= &beagle_gpio_data,
  	.codec		= &beagle_codec_data,
