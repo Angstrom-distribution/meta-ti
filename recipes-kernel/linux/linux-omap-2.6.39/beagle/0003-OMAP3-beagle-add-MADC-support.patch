@@ -1,4 +1,4 @@
-From 140a5cddce807e20e32a5ddcf7c00a758ff5016d Mon Sep 17 00:00:00 2001
+From 196adb33154f7e16dfefbd9aa9af0149fb7ff856 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Sat, 21 May 2011 16:18:30 +0200
 Subject: [PATCH 3/5] OMAP3: beagle: add MADC support
