@@ -10,6 +10,8 @@ DEFAULT_PREFERENCE_dm365 = "-1"
 
 BRANCH = "master"
 
+SRC_URI_append = " file://defconfig "
+
 S = "${WORKDIR}/git"
 
 # DaVinci DM3xx/DM6xxx
@@ -64,14 +66,16 @@ BRANCH_omapl138         = ${ARAGO_L1_BR}
 SRC_URI_append_omapl137 = ${ARAGO_L1_URI}
 SRC_URI_append_omapl138 = ${ARAGO_L1_URI}
 
-SRC_URI_append_omapl138 = "file://logo_linux_clut224.ppm \
+SRC_URI_append_omapl138 = " file://logo_linux_clut224.ppm \
                                      file://0001-ahci-ti-Fix-currently-harmless-typo-in-SATA-PHY.patch \
                                      file://0002-ahci-ti-Update-SATA-PHY-configuration-RXCDR.patch \
                                      file://0001-board-da850-evm-Disable-NAND-SUBPAGE.patch \
                                      file://0001-uio_pruss1-Core-driver-addition.patch \
                                      file://0002-uio_pruss2-Platform-changes.patch \
                                      file://0003-uio_pruss3-Workarounds-put-into-core-code.patch \
-                                     "
+                                     file://0001-cgroupfs-create-sys-fs-cgroup-to-mount-cgroupfs-on.patch \
+                                     file://0001-ARM-6329-1-wire-up-sys_accept4-on-ARM.patch \
+                                    "
 
 SRC_URI_append_hawkboard          = " \
                                      file://patch-2.6.33rc4-psp-to-hawkboard.patch \
