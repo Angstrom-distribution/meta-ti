@@ -197,6 +197,8 @@ SRC_URI_append = " \
                   file://0001-xM-audio-fix-from-Ashok.patch \
                   file://0001-omap3-allow-1GHz-mpurates.patch \
                   file://0001-BeagleBoard-Adjust-USER-button-pin-for-xM.patch \
+                  file://0001-board-omap3beagle-whitespace-cleanup.patch \
+                  file://0002-board-omap3beagle-allow-for-building-without-wl1271.patch \
                   "
 
 SRC_URI_append_usrp-e1xx = "\
