@@ -56,13 +56,11 @@ FILES_${PN}-fw-utils = "${sysconfdir} ${base_sbindir}"
 # u-boot doesn't use LDFLAGS for fw files, needs to get fixed, but until then:
 INSANE_SKIP_${PN}-fw-utils = True
 
+inherit deploy
+
 do_deploy () {
 	install -d ${DEPLOY_DIR_IMAGE}
 	install ${S}/${UBOOT_BINARY} ${DEPLOY_DIR_IMAGE}/${UBOOT_IMAGE}
 
 	cd ${DEPLOY_DIR_IMAGE}
 	rm -f ${UBOOT_SYMLINK}
-	ln -sf ${UBOOT_IMAGE} ${UBOOT_SYMLINK}
-}
-do_deploy[dirs] = "${S}"
-addtask deploy before do_package_stage after do_compile
