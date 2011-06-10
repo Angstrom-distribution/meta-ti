@@ -37,6 +37,8 @@ do_install () {
 
 FILES_${PN} = "/boot"
 
+inherit deploy
+
 do_deploy () {
 	install -d ${DEPLOY_DIR_IMAGE}
 	install ${S}/x-load.bin.ift ${DEPLOY_DIR_IMAGE}/${XLOAD_IMAGE}
@@ -51,5 +53,3 @@ do_deploy () {
 	rm -f ${MLO_SYMLINK}
 	ln -sf ${MLO_IMAGE} ${MLO_SYMLINK}
 }
-do_deploy[dirs] = "${S}"
-addtask deploy before do_build after do_install
