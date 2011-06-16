@@ -1,6 +1,9 @@
 require u-boot.inc
 PR ="r66"
 
+DEFAULT_PREFERENCE_ti814x = "-1"
+DEFAULT_PREFERENCE_ti816x = "-1"
+
 FILESPATHPKG =. "u-boot-git:"
 
 SRC_URI_beagleboard = "git://www.denx.de/git/u-boot.git;protocol=git \
