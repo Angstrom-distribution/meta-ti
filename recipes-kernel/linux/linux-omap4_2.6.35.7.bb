@@ -1,8 +1,5 @@
 COMPATIBLE_MACHINE = "omap4430-panda"
 
-# Backport for L27.x, needs loads of testing
-DEFAULT_PREFERENCE = "-1"
-
 require linux.inc
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap4 see conf/machine/include/omap4.inc
