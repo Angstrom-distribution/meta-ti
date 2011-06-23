@@ -1,0 +1,31 @@
+From c510bdc2684b5a755c4526071f1f3ca726ac1d1d Mon Sep 17 00:00:00 2001
+From: Jason Kridner <jkridner@beagleboard.org>
+Date: Tue, 19 Apr 2011 10:55:26 -0500
+Subject: [PATCH 25/30] BeagleBoard: fix LED 0/1 in driver
+
+Fixed USR0/USR1 to be LED 0/1 respectively
+
+Signed-off-by: Jason Kridner <jkridner@beagleboard.org>
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ board/ti/beagle/led.c |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/board/ti/beagle/led.c b/board/ti/beagle/led.c
+index 08f95a0..d3de51f 100644
+--- a/board/ti/beagle/led.c
++++ b/board/ti/beagle/led.c
+@@ -27,8 +27,8 @@
+ static unsigned int saved_state[2] = {STATUS_LED_OFF, STATUS_LED_OFF};
+ 
+ /* GPIO pins for the LEDs */
+-#define BEAGLE_LED_USR0	149
+-#define BEAGLE_LED_USR1	150
++#define BEAGLE_LED_USR0	150
++#define BEAGLE_LED_USR1	149
+ 
+ #ifdef STATUS_LED_GREEN
+ void green_LED_off (void)
+-- 
+1.6.6.1
+

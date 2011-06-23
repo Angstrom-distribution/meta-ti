@@ -1,0 +1,36 @@
+From 48393aa0119882009df057c974f0dec6051eff79 Mon Sep 17 00:00:00 2001
+From: Jason Kridner <jkridner@beagleboard.org>
+Date: Wed, 20 Apr 2011 18:13:49 -0500
+Subject: [PATCH 27/30] led: correct off/on locations in structure
+
+Although the initialization should probably be done with names, the
+existing implementation has these structures filled in the opposite
+order.
+
+Signed-off-by: Jason Kridner <jkridner@beagleboard.org>
+--
+v2 changes:
+* Corrected comment as well.
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ common/cmd_led.c |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/common/cmd_led.c b/common/cmd_led.c
+index 8b46848..d14dd5a 100644
+--- a/common/cmd_led.c
++++ b/common/cmd_led.c
+@@ -34,8 +34,8 @@
+ struct led_tbl_s {
+ 	char		*string;	/* String for use in the command */
+ 	led_id_t	mask;		/* Mask used for calling __led_set() */
+-	void		(*on)(void);	/* Optional fucntion for turning LED on */
+-	void		(*off)(void);	/* Optional fucntion for turning LED on */
++	void		(*off)(void);	/* Optional function for turning LED off */
++	void		(*on)(void);	/* Optional function for turning LED on */
+ };
+ 
+ typedef struct led_tbl_s led_tbl_t;
+-- 
+1.6.6.1
+

@@ -1,0 +1,26 @@
+From ea8ed1da87f4612bdcbc611e6d4ccb9b7ea4d2ff Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Fri, 17 Jun 2011 10:03:06 +0200
+Subject: [PATCH 16/30] beagleboard: decrease bootdelay to 2 seconds
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/omap3_beagle.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index 894a071..5c32265 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -202,7 +202,7 @@
+ 							/* partition */
+ 
+ /* Environment information */
+-#define CONFIG_BOOTDELAY		10
++#define CONFIG_BOOTDELAY		2
+ 
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"loadaddr=0x82000000\0" \
+-- 
+1.6.6.1
+

@@ -1,0 +1,26 @@
+From 04a20a72599d016785d751381fb1ea5112fb0de8 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Fri, 17 Jun 2011 09:32:17 +0200
+Subject: [PATCH 12/30] beagleboard: switch to ttyO2 as console
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/omap3_beagle.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index 2daf06d..9a161cf 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -206,7 +206,7 @@
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"loadaddr=0x82000000\0" \
+ 	"usbtty=cdc_acm\0" \
+-	"console=ttyS2,115200n8\0" \
++	"console=ttyO2,115200n8\0" \
+ 	"mpurate=auto\0" \
+ 	"buddy=none "\
+ 	"vram=12M\0" \
+-- 
+1.6.6.1
+

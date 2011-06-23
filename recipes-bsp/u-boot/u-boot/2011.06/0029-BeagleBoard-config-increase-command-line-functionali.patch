@@ -1,0 +1,42 @@
+From c75471405166cba2327680cc4e4d204f05007c54 Mon Sep 17 00:00:00 2001
+From: Jason Kridner <jkridner@beagleboard.org>
+Date: Tue, 19 Apr 2011 11:50:55 -0500
+Subject: [PATCH 29/30] BeagleBoard: config: increase command-line functionality
+
+Enable the expression evaluator.
+
+Signed-off-by: Jason Kridner <jkridner@beagleboard.org>
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/omap3_beagle.h |    5 +++--
+ 1 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index 3bbc235..55973fb 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -158,6 +158,7 @@
+ #define CONFIG_CMD_NFS      /* NFS support          */
+ #define CONFIG_CMD_PING
+ #define CONFIG_CMD_DHCP
++#define CONFIG_CMD_SETEXPR	/* Evaluate expressions		*/
+ 
+ #undef CONFIG_CMD_FLASH		/* flinfo, erase, protect	*/
+ #undef CONFIG_CMD_FPGA		/* FPGA configuration Support	*/
+@@ -284,11 +285,11 @@
+ #define CONFIG_SYS_HUSH_PARSER		/* use "hush" command parser */
+ #define CONFIG_SYS_PROMPT_HUSH_PS2	"> "
+ #define CONFIG_SYS_PROMPT		"OMAP3 beagleboard.org # "
+-#define CONFIG_SYS_CBSIZE		256	/* Console I/O Buffer Size */
++#define CONFIG_SYS_CBSIZE		512	/* Console I/O Buffer Size */
+ /* Print Buffer Size */
+ #define CONFIG_SYS_PBSIZE		(CONFIG_SYS_CBSIZE + \
+ 					sizeof(CONFIG_SYS_PROMPT) + 16)
+-#define CONFIG_SYS_MAXARGS		16	/* max number of command args */
++#define CONFIG_SYS_MAXARGS		32	/* max number of command args */
+ /* Boot Argument Buffer Size */
+ #define CONFIG_SYS_BARGSIZE		(CONFIG_SYS_CBSIZE)
+ 
+-- 
+1.6.6.1
+

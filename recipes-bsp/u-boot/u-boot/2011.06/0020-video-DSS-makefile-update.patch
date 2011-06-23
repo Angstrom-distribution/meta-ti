@@ -1,0 +1,30 @@
+From ce6813c7f4006331dd661cd25178bb258d1e9469 Mon Sep 17 00:00:00 2001
+From: Jason Kridner <jkridner@beagleboard.org>
+Date: Tue, 19 Apr 2011 14:00:34 -0500
+Subject: [PATCH 20/30] video: DSS makefile update
+
+Adding the OMAP3 DSS video driver to the Makefile.  The patch applied to
+u-boot-ti didn't include this for some reason.
+
+Signed-off-by: Jason Kridner <jkridner@beagleboard.org>
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ drivers/video/Makefile |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/drivers/video/Makefile b/drivers/video/Makefile
+index 086dc05..226684a 100644
+--- a/drivers/video/Makefile
++++ b/drivers/video/Makefile
+@@ -41,6 +41,8 @@ COBJS-$(CONFIG_SED156X) += sed156x.o
+ COBJS-$(CONFIG_VIDEO_SM501) += sm501.o
+ COBJS-$(CONFIG_VIDEO_SMI_LYNXEM) += smiLynxEM.o videomodes.o
+ COBJS-$(CONFIG_VIDEO_VCXK) += bus_vcxk.o
++COBJS-$(CONFIG_VIDEO_OMAP3) += omap3_dss.o
++COBJS-y += videomodes.o
+ 
+ COBJS	:= $(COBJS-y)
+ SRCS	:= $(COBJS:.o=.c)
+-- 
+1.6.6.1
+

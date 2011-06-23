@@ -1,0 +1,34 @@
+From b8f56a9f7ab18641dd0f4529333b00918d34c95d Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Fri, 17 Jun 2011 09:47:08 +0200
+Subject: [PATCH 14/30] beagleboard: enable asix driver and dhcp
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/omap3_beagle.h |    3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index dbb77fb..49e9dd3 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -131,6 +131,7 @@
+ #define CONFIG_SYS_USB_EHCI_MAX_ROOT_PORTS 3
+ #define CONFIG_USB_HOST_ETHER
+ #define CONFIG_USB_ETHER_SMSC95XX
++#define CONFIG_USB_ETHER_ASIX
+ 
+ #define CONFIG_NET_MULTI
+ 
+@@ -156,7 +157,7 @@
+ #define CONFIG_CMD_NET      /* bootp, tftpboot, rarpboot    */
+ #define CONFIG_CMD_NFS      /* NFS support          */
+ #define CONFIG_CMD_PING
+-
++#define CONFIG_CMD_DHCP
+ 
+ #undef CONFIG_CMD_FLASH		/* flinfo, erase, protect	*/
+ #undef CONFIG_CMD_FPGA		/* FPGA configuration Support	*/
+-- 
+1.6.6.1
+

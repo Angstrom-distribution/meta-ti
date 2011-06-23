@@ -1,0 +1,29 @@
+From 6aac1cb7f47d7126be80df2e06042d37f1affce2 Mon Sep 17 00:00:00 2001
+From: Jason Kridner <jkridner@beagleboard.org>
+Date: Wed, 20 Apr 2011 18:11:38 -0500
+Subject: [PATCH 26/30] led: added cmd_led to Makefile
+
+Addition of cmd_led into the Makefile wasn't included in the patch
+applied to u-boot-ti.
+
+Signed-off-by: Jason Kridner <jkridner@beagleboard.org>
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ common/Makefile |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/common/Makefile b/common/Makefile
+index 224b7cc..7445ccc 100644
+--- a/common/Makefile
++++ b/common/Makefile
+@@ -107,6 +107,7 @@ COBJS-$(CONFIG_CMD_ITEST) += cmd_itest.o
+ COBJS-$(CONFIG_CMD_JFFS2) += cmd_jffs2.o
+ COBJS-$(CONFIG_CMD_CRAMFS) += cmd_cramfs.o
+ COBJS-$(CONFIG_CMD_LDRINFO) += cmd_ldrinfo.o
++COBJS-$(CONFIG_CMD_LED) += cmd_led.o
+ COBJS-$(CONFIG_CMD_LICENSE) += cmd_license.o
+ COBJS-y += cmd_load.o
+ COBJS-$(CONFIG_LOGBUFFER) += cmd_log.o
+-- 
+1.6.6.1
+

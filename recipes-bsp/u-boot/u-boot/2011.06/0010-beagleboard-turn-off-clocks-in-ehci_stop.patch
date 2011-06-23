@@ -1,0 +1,32 @@
+From 9ae080a8b4f2a580c2bf3fb790fb141e1e618ef7 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Fri, 17 Jun 2011 09:26:17 +0200
+Subject: [PATCH 10/30] beagleboard: turn off clocks in ehci_stop
+
+This fixes display problems in linux
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ board/ti/beagle/beagle.c |    6 ++++++
+ 1 files changed, 6 insertions(+), 0 deletions(-)
+
+diff --git a/board/ti/beagle/beagle.c b/board/ti/beagle/beagle.c
+index a6ce5a8..a290f89 100644
+--- a/board/ti/beagle/beagle.c
++++ b/board/ti/beagle/beagle.c
+@@ -363,6 +363,12 @@ int ehci_hcd_stop(void)
+ 	pr_debug("Resetting OMAP3 EHCI\n");
+ 	omap_set_gpio_dataout(GPIO_PHY_RESET, 0);
+ 	writel(OMAP_UHH_SYSCONFIG_SOFTRESET, OMAP3_UHH_BASE + OMAP_UHH_SYSCONFIG);
++	/* disable USB clocks */
++	struct prcm *prcm_base = (struct prcm *)PRCM_BASE;
++	sr32(&prcm_base->iclken_usbhost, 0, 1, 0);
++	sr32(&prcm_base->fclken_usbhost, 0, 2, 0);
++	sr32(&prcm_base->iclken3_core, 2, 1, 0);
++	sr32(&prcm_base->fclken3_core, 2, 1, 0);
+ 	return 0;
+ }
+ 
+-- 
+1.6.6.1
+

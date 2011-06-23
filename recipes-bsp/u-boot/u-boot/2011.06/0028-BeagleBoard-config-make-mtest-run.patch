@@ -1,0 +1,36 @@
+From 747f8f93a4e1d461340ddc04d3843d58565bab30 Mon Sep 17 00:00:00 2001
+From: Jason Kridner <jkridner@beagleboard.org>
+Date: Tue, 19 Apr 2011 11:58:54 -0500
+Subject: [PATCH 28/30] BeagleBoard: config: make mtest run
+
+Utilize the alternate mtest and define a valid region.
+
+Signed-off-by: Jason Kridner <jkridner@beagleboard.org>
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/omap3_beagle.h |    9 +++++----
+ 1 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index 6c842ad..3bbc235 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -292,10 +292,11 @@
+ /* Boot Argument Buffer Size */
+ #define CONFIG_SYS_BARGSIZE		(CONFIG_SYS_CBSIZE)
+ 
+-#define CONFIG_SYS_MEMTEST_START	(OMAP34XX_SDRC_CS0)	/* memtest */
+-								/* works on */
+-#define CONFIG_SYS_MEMTEST_END		(OMAP34XX_SDRC_CS0 + \
+-					0x01F00000) /* 31MB */
++#define CONFIG_SYS_ALT_MEMTEST		1
++#define CONFIG_SYS_MEMTEST_START	(0x82000000)		/* memtest */
++								/* defaults */
++#define CONFIG_SYS_MEMTEST_END		(0x87FFFFFF) 		/* 128MB */
++#define CONFIG_SYS_MEMTEST_SCRATCH	(0x81000000)	/* dummy address */
+ 
+ #define CONFIG_SYS_LOAD_ADDR		(OMAP34XX_SDRC_CS0)	/* default */
+ 							/* load address */
+-- 
+1.6.6.1
+

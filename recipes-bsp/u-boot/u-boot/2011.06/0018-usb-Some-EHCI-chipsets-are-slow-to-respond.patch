@@ -1,0 +1,29 @@
+From 7378bf55a895a957a5ea31c5fac5b53a844778d2 Mon Sep 17 00:00:00 2001
+From: Jason Cooper <u-boot@lakedaemon.net>
+Date: Tue, 14 Jun 2011 05:58:12 +0000
+Subject: [PATCH 18/30] usb: Some EHCI chipsets are slow to respond.
+
+This fixes 'EHCI timed out on TD...' on the dreamplug board.
+
+Signed-off-by: Jason Cooper <u-boot@lakedaemon.net>
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/usb.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/usb.h b/include/usb.h
+index 53603a5..168e2b2 100644
+--- a/include/usb.h
++++ b/include/usb.h
+@@ -46,7 +46,7 @@
+  * This is the timeout to allow for submitting an urb in ms. We allow more
+  * time for a BULK device to react - some are slow.
+  */
+-#define USB_TIMEOUT_MS(pipe) (usb_pipebulk(pipe) ? 5000 : 100)
++#define USB_TIMEOUT_MS(pipe) (usb_pipebulk(pipe) ? 5000 : 500)
+ 
+ /* device request (setup) */
+ struct devrequest {
+-- 
+1.6.6.1
+

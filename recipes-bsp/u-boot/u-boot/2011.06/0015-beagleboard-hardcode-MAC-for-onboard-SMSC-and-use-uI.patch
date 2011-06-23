@@ -1,0 +1,26 @@
+From 2a713d6b62248a18ee798d08bbc7850accfc2e83 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Fri, 17 Jun 2011 10:02:21 +0200
+Subject: [PATCH 15/30] beagleboard: hardcode MAC for onboard SMSC and use uImage.beagle fot tftp
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/omap3_beagle.h |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index 49e9dd3..894a071 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -207,6 +207,8 @@
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"loadaddr=0x82000000\0" \
+ 	"usbtty=cdc_acm\0" \
++	"usbethaddr=de:ad:be:ef\0" \
++	"bootfile=uImage.beagle\0" \
+ 	"console=ttyO2,115200n8\0" \
+ 	"mpurate=auto\0" \
+ 	"buddy=none "\
+-- 
+1.6.6.1
+

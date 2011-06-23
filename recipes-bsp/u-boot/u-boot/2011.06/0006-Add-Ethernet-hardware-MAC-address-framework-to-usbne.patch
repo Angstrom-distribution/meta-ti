@@ -1,0 +1,245 @@
+From f8ff7b1760739c33b1b0aa5a88d903e6e8945f1c Mon Sep 17 00:00:00 2001
+From: Simon Glass <sjg@chromium.org>
+Date: Mon, 13 Jun 2011 13:13:10 +0000
+Subject: [PATCH 06/30] Add Ethernet hardware MAC address framework to usbnet
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Built-in Ethernet adapters support setting the mac address by means of a
+ethaddr environment variable for each interface (ethaddr, eth1addr, eth2addr).
+
+This adds similar support to the USB network side, using the names
+usbethaddr, usbeth1addr, etc. They are kept separate since we don't want
+a USB device taking the MAC address of a built-in device or vice versa.
+
+Changes for v2:
+- eth_set_hwaddr -> eth_write_hwaddr
+- tided up other users of eth_getenv_enetaddr_by_index()
+
+Changes for v5:
+- Changed NULL to "eth" in eth_getenv_enetaddr_by_index() API
+
+Signed-off-by: Simon Glass <sjg@chromium.org>
+Tested-by: Eric Bénard <eric@eukrea.com>
+---
+ board/davinci/common/misc.c |    2 +-
+ drivers/net/designware.c    |    2 +-
+ drivers/usb/eth/usb_ether.c |    9 +++++-
+ include/net.h               |   25 ++++++++++++++++-
+ net/eth.c                   |   64 ++++++++++++++++++++++++++-----------------
+ 5 files changed, 72 insertions(+), 30 deletions(-)
+
+diff --git a/board/davinci/common/misc.c b/board/davinci/common/misc.c
+index 2bfdf23..53d6aa1 100644
+--- a/board/davinci/common/misc.c
++++ b/board/davinci/common/misc.c
+@@ -101,7 +101,7 @@ void davinci_sync_env_enetaddr(uint8_t *rom_enetaddr)
+ {
+ 	uint8_t env_enetaddr[6];
+ 
+-	eth_getenv_enetaddr_by_index(0, env_enetaddr);
++	eth_getenv_enetaddr_by_index("eth", 0, env_enetaddr);
+ 	if (!memcmp(env_enetaddr, "\0\0\0\0\0\0", 6)) {
+ 		/* There is no MAC address in the environment, so we initialize
+ 		 * it from the value in the EEPROM. */
+diff --git a/drivers/net/designware.c b/drivers/net/designware.c
+index 3f5eeb7..02ba393 100644
+--- a/drivers/net/designware.c
++++ b/drivers/net/designware.c
+@@ -500,7 +500,7 @@ int designware_initialize(u32 id, ulong base_addr, u32 phy_addr)
+ 	dev->iobase = (int)base_addr;
+ 	dev->priv = priv;
+ 
+-	eth_getenv_enetaddr_by_index(id, &dev->enetaddr[0]);
++	eth_getenv_enetaddr_by_index("eth", id, &dev->enetaddr[0]);
+ 
+ 	priv->dev = dev;
+ 	priv->mac_regs_p = (struct eth_mac_regs *)base_addr;
+diff --git a/drivers/usb/eth/usb_ether.c b/drivers/usb/eth/usb_ether.c
+index 7b55da3..6565ea5 100644
+--- a/drivers/usb/eth/usb_ether.c
++++ b/drivers/usb/eth/usb_ether.c
+@@ -80,6 +80,7 @@ int is_eth_dev_on_usb_host(void)
+  */
+ static void probe_valid_drivers(struct usb_device *dev)
+ {
++	struct eth_device *eth;
+ 	int j;
+ 
+ 	for (j = 0; prob_dev[j].probe && prob_dev[j].get_info; j++) {
+@@ -88,9 +89,10 @@ static void probe_valid_drivers(struct usb_device *dev)
+ 		/*
+ 		 * ok, it is a supported eth device. Get info and fill it in
+ 		 */
++		eth = &usb_eth[usb_max_eth_dev].eth_dev;
+ 		if (prob_dev[j].get_info(dev,
+ 			&usb_eth[usb_max_eth_dev],
+-			&usb_eth[usb_max_eth_dev].eth_dev)) {
++			eth)) {
+ 			/* found proper driver */
+ 			/* register with networking stack */
+ 			usb_max_eth_dev++;
+@@ -100,7 +102,10 @@ static void probe_valid_drivers(struct usb_device *dev)
+ 			 * call since eth_current_changed (internally called)
+ 			 * relies on it
+ 			 */
+-			eth_register(&usb_eth[usb_max_eth_dev - 1].eth_dev);
++			eth_register(eth);
++			if (eth_write_hwaddr(eth, "usbeth",
++					usb_max_eth_dev - 1))
++				puts("Warning: failed to set MAC address\n");
+ 			break;
+ 			}
+ 		}
+diff --git a/include/net.h b/include/net.h
+index 018a744..ce54825 100644
+--- a/include/net.h
++++ b/include/net.h
+@@ -128,7 +128,18 @@ extern int eth_get_dev_index (void);		/* get the device index */
+ extern void eth_parse_enetaddr(const char *addr, uchar *enetaddr);
+ extern int eth_getenv_enetaddr(char *name, uchar *enetaddr);
+ extern int eth_setenv_enetaddr(char *name, const uchar *enetaddr);
+-extern int eth_getenv_enetaddr_by_index(int index, uchar *enetaddr);
++
++/*
++ * Get the hardware address for an ethernet interface .
++ * Args:
++ *	base_name - base name for device (normally "eth")
++ *	index - device index number (0 for first)
++ *	enetaddr - returns 6 byte hardware address
++ * Returns:
++ *	Return true if the address is valid.
++ */
++extern int eth_getenv_enetaddr_by_index(const char *base_name, int index,
++					uchar *enetaddr);
+ 
+ extern int usb_eth_initialize(bd_t *bi);
+ extern int eth_init(bd_t *bis);			/* Initialize the device */
+@@ -141,6 +152,18 @@ extern int eth_rx(void);			/* Check for received packets */
+ extern void eth_halt(void);			/* stop SCC */
+ extern char *eth_get_name(void);		/* get name of current device */
+ 
++/*
++ * Set the hardware address for an ethernet interface based on 'eth%daddr'
++ * environment variable (or just 'ethaddr' if eth_number is 0).
++ * Args:
++ *	base_name - base name for device (normally "eth")
++ *	eth_number - value of %d (0 for first device of this type)
++ * Returns:
++ *	0 is success, non-zero is error status from driver.
++ */
++int eth_write_hwaddr(struct eth_device *dev, const char *base_name,
++		     int eth_number);
++
+ #ifdef CONFIG_MCAST_TFTP
+ int eth_mcast_join( IPaddr_t mcast_addr, u8 join);
+ u32 ether_crc (size_t len, unsigned char const *p);
+diff --git a/net/eth.c b/net/eth.c
+index 6523834..b3ea565 100644
+--- a/net/eth.c
++++ b/net/eth.c
+@@ -54,10 +54,11 @@ int eth_setenv_enetaddr(char *name, const uchar *enetaddr)
+ 	return setenv(name, buf);
+ }
+ 
+-int eth_getenv_enetaddr_by_index(int index, uchar *enetaddr)
++int eth_getenv_enetaddr_by_index(const char *base_name, int index,
++				 uchar *enetaddr)
+ {
+ 	char enetvar[32];
+-	sprintf(enetvar, index ? "eth%daddr" : "ethaddr", index);
++	sprintf(enetvar, index ? "%s%daddr" : "%saddr", base_name, index);
+ 	return eth_getenv_enetaddr(enetvar, enetaddr);
+ }
+ 
+@@ -188,6 +189,38 @@ static void eth_current_changed(void)
+ #endif
+ }
+ 
++int eth_write_hwaddr(struct eth_device *dev, const char *base_name,
++		   int eth_number)
++{
++	unsigned char env_enetaddr[6];
++	int ret = 0;
++
++	if (!eth_getenv_enetaddr_by_index(base_name, eth_number, env_enetaddr))
++		return -1;
++
++	if (memcmp(env_enetaddr, "\0\0\0\0\0\0", 6)) {
++		if (memcmp(dev->enetaddr, "\0\0\0\0\0\0", 6) &&
++			memcmp(dev->enetaddr, env_enetaddr, 6)) {
++			printf("\nWarning: %s MAC addresses don't match:\n",
++				dev->name);
++			printf("Address in SROM is         %pM\n",
++				dev->enetaddr);
++			printf("Address in environment is  %pM\n",
++				env_enetaddr);
++		}
++
++		memcpy(dev->enetaddr, env_enetaddr, 6);
++	}
++
++	if (dev->write_hwaddr &&
++		!eth_mac_skip(eth_number) &&
++		is_valid_ether_addr(dev->enetaddr)) {
++		ret = dev->write_hwaddr(dev);
++	}
++
++	return ret;
++}
++
+ int eth_register(struct eth_device *dev)
+ {
+ 	struct eth_device *d;
+@@ -208,7 +241,6 @@ int eth_register(struct eth_device *dev)
+ 
+ int eth_initialize(bd_t *bis)
+ {
+-	unsigned char env_enetaddr[6];
+ 	int eth_number = 0;
+ 
+ 	eth_devices = NULL;
+@@ -264,27 +296,8 @@ int eth_initialize(bd_t *bis)
+ 			if (strchr(dev->name, ' '))
+ 				puts("\nWarning: eth device name has a space!\n");
+ 
+-			eth_getenv_enetaddr_by_index(eth_number, env_enetaddr);
+-
+-			if (memcmp(env_enetaddr, "\0\0\0\0\0\0", 6)) {
+-				if (memcmp(dev->enetaddr, "\0\0\0\0\0\0", 6) &&
+-				    memcmp(dev->enetaddr, env_enetaddr, 6))
+-				{
+-					printf ("\nWarning: %s MAC addresses don't match:\n",
+-						dev->name);
+-					printf ("Address in SROM is         %pM\n",
+-						dev->enetaddr);
+-					printf ("Address in environment is  %pM\n",
+-						env_enetaddr);
+-				}
+-
+-				memcpy(dev->enetaddr, env_enetaddr, 6);
+-			}
+-			if (dev->write_hwaddr &&
+-				!eth_mac_skip(eth_number) &&
+-				is_valid_ether_addr(dev->enetaddr)) {
+-				dev->write_hwaddr(dev);
+-			}
++			if (eth_write_hwaddr(dev, NULL, eth_number))
++				puts("Warning: failed to set MAC address\n");
+ 
+ 			eth_number++;
+ 			dev = dev->next;
+@@ -359,7 +372,8 @@ int eth_init(bd_t *bis)
+ 	do {
+ 		uchar env_enetaddr[6];
+ 
+-		if (eth_getenv_enetaddr_by_index(eth_number, env_enetaddr))
++		if (eth_getenv_enetaddr_by_index("eth", eth_number,
++						 env_enetaddr))
+ 			memcpy(dev->enetaddr, env_enetaddr, 6);
+ 
+ 		++eth_number;
+-- 
+1.6.6.1
+

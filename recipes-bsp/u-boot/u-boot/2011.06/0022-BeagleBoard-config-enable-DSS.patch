@@ -1,0 +1,25 @@
+From 79b347db36d583b0fde360baa780877b3a7ae754 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Tue, 21 Jun 2011 22:18:01 +0200
+Subject: [PATCH 22/30] BeagleBoard: config: enable DSS
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/omap3_beagle.h |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index 5c32265..6c842ad 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -172,6 +172,7 @@
+ #define CONFIG_SYS_I2C_BUS_SELECT	1
+ #define CONFIG_I2C_MULTI_BUS		1
+ #define CONFIG_DRIVER_OMAP34XX_I2C	1
++#define CONFIG_VIDEO_OMAP3	/* DSS Support			*/
+ 
+ /*
+  * TWL4030
+-- 
+1.6.6.1
+

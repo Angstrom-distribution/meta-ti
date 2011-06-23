@@ -1,0 +1,51 @@
+From 0e384ea7bc94d8626c0280f7c0151f99fbc83008 Mon Sep 17 00:00:00 2001
+From: Jason Kridner <jkridner@beagleboard.org>
+Date: Tue, 19 Apr 2011 12:09:18 -0500
+Subject: [PATCH 30/30] BeagleBoard: config: add optargs/buddy/camera
+
+buddy and camera are used to configure peripherals in the kernel at boot
+time that cannot easily be detected by the kernel.
+
+Signed-off-by: Jason Kridner <jkridner@beagleboard.org>
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/omap3_beagle.h |    6 ++++++
+ 1 files changed, 6 insertions(+), 0 deletions(-)
+
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index 55973fb..024cb9a 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -214,6 +214,8 @@
+ 	"console=ttyO2,115200n8\0" \
+ 	"mpurate=auto\0" \
+ 	"buddy=none "\
++	"optargs=\0" \
++	"camera=none\0" \
+ 	"vram=12M\0" \
+ 	"dvimode=1024x768MR-16@60\0" \
+ 	"defaultdisplay=dvi\0" \
+@@ -223,16 +225,20 @@
+ 	"nandroot=/dev/mtdblock4 rw\0" \
+ 	"nandrootfstype=jffs2\0" \
+ 	"mmcargs=setenv bootargs console=${console} " \
++		"${optargs} " \
+ 		"mpurate=${mpurate} " \
+ 		"buddy=${buddy} "\
++		"camera=${camera} "\
+ 		"vram=${vram} " \
+ 		"omapfb.mode=dvi:${dvimode} " \
+ 		"omapdss.def_disp=${defaultdisplay} " \
+ 		"root=${mmcroot} " \
+ 		"rootfstype=${mmcrootfstype}\0" \
+ 	"nandargs=setenv bootargs console=${console} " \
++		"${optargs} " \
+ 		"mpurate=${mpurate} " \
+ 		"buddy=${buddy} "\
++		"camera=${camera} "\
+ 		"vram=${vram} " \
+ 		"omapfb.mode=dvi:${dvimode} " \
+ 		"omapdss.def_disp=${defaultdisplay} " \
+-- 
+1.6.6.1
+

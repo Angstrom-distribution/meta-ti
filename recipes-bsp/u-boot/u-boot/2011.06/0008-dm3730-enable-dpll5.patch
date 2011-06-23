@@ -1,0 +1,31 @@
+From a13358a747c33ecda28a976ed9450b9351827c2a Mon Sep 17 00:00:00 2001
+From: Eric Benard <eric@eukrea.com>
+Date: Fri, 10 Jun 2011 12:21:52 +0000
+Subject: [PATCH 08/30] dm3730: enable dpll5
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+which is used to provide 120MHz to USB EHCI
+This allows EHCI to work on BeagleBoard XM
+
+Signed-off-by: Eric Bénard <eric@eukrea.com>
+---
+ arch/arm/cpu/armv7/omap3/clock.c |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/arch/arm/cpu/armv7/omap3/clock.c b/arch/arm/cpu/armv7/omap3/clock.c
+index 3d38d08..6a9edcf 100644
+--- a/arch/arm/cpu/armv7/omap3/clock.c
++++ b/arch/arm/cpu/armv7/omap3/clock.c
+@@ -579,6 +579,7 @@ void prcm_init(void)
+ 
+ 		dpll3_init_36xx(0, clk_index);
+ 		dpll4_init_36xx(0, clk_index);
++		dpll5_init_34xx(0, clk_index);
+ 		iva_init_36xx(0, clk_index);
+ 		mpu_init_36xx(0, clk_index);
+ 
+-- 
+1.6.6.1
+
