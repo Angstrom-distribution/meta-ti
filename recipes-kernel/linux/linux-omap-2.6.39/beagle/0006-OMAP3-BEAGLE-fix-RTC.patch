@@ -1,7 +1,7 @@
-From 5eb1ce0f0a5c6e4e31225967ef61812191c01de4 Mon Sep 17 00:00:00 2001
+From dd2c7ba245ec1b17e3d323a6c4a1cad9697dbbbe Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Wed, 15 Jun 2011 16:25:50 +0200
-Subject: [PATCH 6/6] OMAP3: BEAGLE: fix RTC
+Subject: [PATCH 6/7] OMAP3: BEAGLE: fix RTC
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

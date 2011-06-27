@@ -1,7 +1,7 @@
-From a42c46c4a1ea9576bc773640f498880fa4683772 Mon Sep 17 00:00:00 2001
+From 9d7f46abab88c74e674461a2f4e9ab35b524a6ef Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Wed, 25 May 2011 08:56:06 +0200
-Subject: [PATCH 4/5] OMAP3: beagle: add regulators for camera interface
+Subject: [PATCH 4/7] OMAP3: beagle: add regulators for camera interface
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
