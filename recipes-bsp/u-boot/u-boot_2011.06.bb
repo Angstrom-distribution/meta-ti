@@ -36,9 +36,9 @@ SRC_URI = "git://www.denx.de/git/u-boot.git;protocol=git \
            file://2011.06/0030-BeagleBoard-config-add-optargs-buddy-camera.patch \
            file://fw_env.config \
           "
-
-SRCREV = "9623c158f6a5150a21c25026bfba79e7ff7912f5"
-PV = "2011.03+2011.06rc2+${PR}+gitr${SRCREV}"
+# v2011.06 tag -> b1af6f532e0d348b153d5c148369229d24af361a
+SRCREV = "b1af6f532e0d348b153d5c148369229d24af361a"
+PV = "2011.06"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=1707d6db1d42237583f50183a5651ecb"
 
