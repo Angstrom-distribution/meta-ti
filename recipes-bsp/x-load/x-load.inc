@@ -39,6 +39,8 @@ FILES_${PN} = "/boot"
 
 inherit deploy
 
+addtask deploy before do_package after do_compile
+
 do_deploy () {
 	install -d ${DEPLOY_DIR_IMAGE}
 	install ${S}/x-load.bin.ift ${DEPLOY_DIR_IMAGE}/${XLOAD_IMAGE}
