@@ -58,9 +58,12 @@ INSANE_SKIP_${PN}-fw-utils = True
 
 inherit deploy
 
+addtask deploy before do_package after do_compile
+
 do_deploy () {
 	install -d ${DEPLOY_DIR_IMAGE}
 	install ${S}/${UBOOT_BINARY} ${DEPLOY_DIR_IMAGE}/${UBOOT_IMAGE}
 
 	cd ${DEPLOY_DIR_IMAGE}
 	rm -f ${UBOOT_SYMLINK}
+}
