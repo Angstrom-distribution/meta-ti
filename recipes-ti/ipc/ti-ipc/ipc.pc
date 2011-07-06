@@ -1,0 +1,8 @@
+prefix=/../../ipc_@VERSION@
+includedir=${prefix}/ti/ipc
+
+Name: TI IPC
+Description: TI ARM-DSP IPC (Inter Processor Communication) 
+Version: @VERSION@
+Requires: 
+Cflags: -I${includedir}
