@@ -6,10 +6,12 @@ KERNEL_IMAGETYPE = "uImage"
 COMPATIBLE_MACHINE = "am387x-evm|am389x-evm|c6a814x-evm|c6a816x-evm|dm814x-evm"
 
 # This is on the ti81xx-master branch
-SRCREV = "d686b2da5d2e7337c9759f910c3a665c27b0ec31"
+SRCREV = "5f796a09b932def4b02032521b412d9c64c8669a"
+
+# requires .28 hdvpss: d686b2da5d2e7337c9759f910c3a665c27b0ec31
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "C+gitr${SRCREV}"
 
 SRC_URI += "git://arago-project.org/git/projects/linux-omap3.git;protocol=git;branch=ti81xx-master \
            file://defconfig"
