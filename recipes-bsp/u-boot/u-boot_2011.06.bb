@@ -34,11 +34,17 @@ SRC_URI = "git://www.denx.de/git/u-boot.git;protocol=git \
            file://2011.06/0028-BeagleBoard-config-make-mtest-run.patch \
            file://2011.06/0029-BeagleBoard-config-increase-command-line-functionali.patch \
            file://2011.06/0030-BeagleBoard-config-add-optargs-buddy-camera.patch \
+           file://2011.06/0031-omap4-add-support-for-gpios.patch \
+           file://2011.06/0032-omap4-add-support-for-EHCI.patch \
+           file://2011.06/0033-omap4_panda-add-support-for-EHCI.patch \
+           file://2011.06/0034-omap4_panda-adding-support-for-smsc-and-tftp-boot.patch \
+           file://2011.06/0035-omap4_panda-use-uImage.panda-for-tftp.patch \
            file://fw_env.config \
           "
 # v2011.06 tag -> b1af6f532e0d348b153d5c148369229d24af361a
 SRCREV = "b1af6f532e0d348b153d5c148369229d24af361a"
 PV = "2011.06"
+PR = "r1"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=1707d6db1d42237583f50183a5651ecb"
 

@@ -41,8 +41,8 @@ do_install () {
 	    install -d ${D}${base_sbindir}
 		install -d ${D}${sysconfdir}
 		install -m 644 ${WORKDIR}/fw_env.config ${D}${sysconfdir}/fw_env.config
-		install -m 755 ${S}/tools/env/fw_printenv ${D}${base_sbindir}/fw_printenv
-		install -m 755 ${S}/tools/env/fw_printenv ${D}${base_sbindir}/fw_setenv
+#		install -m 755 ${S}/tools/env/fw_printenv ${D}${base_sbindir}/fw_printenv
+#		install -m 755 ${S}/tools/env/fw_printenv ${D}${base_sbindir}/fw_setenv
 	fi
 
 }
@@ -53,8 +53,6 @@ INSANE_SKIP_${PN} = True
 
 PACKAGES += "${PN}-fw-utils"
 FILES_${PN}-fw-utils = "${sysconfdir} ${base_sbindir}"
-# u-boot doesn't use LDFLAGS for fw files, needs to get fixed, but until then:
-INSANE_SKIP_${PN}-fw-utils = True
 
 inherit deploy
 
