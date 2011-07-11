@@ -1,0 +1,193 @@
+Delivered-To: koen@dominion.thruhere.net
+Received: by 10.236.61.2 with SMTP id v2cs463572yhc;
+        Mon, 11 Jul 2011 00:39:44 -0700 (PDT)
+Received: by 10.236.79.69 with SMTP id h45mr4010171yhe.342.1310369983896;
+        Mon, 11 Jul 2011 00:39:43 -0700 (PDT)
+Return-Path: <x-loader+bncCKvc3d-lHRC70erwBBoEmZF8Og@googlegroups.com>
+Received: from mail-gx0-f189.google.com (mail-gx0-f189.google.com [209.85.161.189])
+        by mx.google.com with ESMTPS id u61si41782290yhm.15.2011.07.11.00.39.43
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 11 Jul 2011 00:39:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of x-loader+bncCKvc3d-lHRC70erwBBoEmZF8Og@googlegroups.com designates 209.85.161.189 as permitted sender) client-ip=209.85.161.189;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of x-loader+bncCKvc3d-lHRC70erwBBoEmZF8Og@googlegroups.com designates 209.85.161.189 as permitted sender) smtp.mail=x-loader+bncCKvc3d-lHRC70erwBBoEmZF8Og@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk3 with SMTP id 3sf9821900gxk.6
+        for <koen@dominion.thruhere.net>; Mon, 11 Jul 2011 00:39:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=mime-version:x-beenthere:received-spf:from:to:cc:subject:date
+         :message-id:x-mailer:in-reply-to:references:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=knz/OIehyS1eNPnUO3PKelxTOdkGPG+fRW2FJ4AriF0=;
+        b=cjz/o/2YFMmEgHKdtY7SmdxjqN+uxnJluh9MGSOmA+kVKkPYzbv4SXQQEcjFMBrXXw
+         pCUO8G8BylJJLTBTeRDAcji73YDd65OKsc6UoAyrSUtxtj4sgKXBVwaLu0eS+1Efsyl3
+         +5g8sPqNFFG3tcvYD30FjtHZwLFyCTAtU2g18=
+Received: by 10.101.142.10 with SMTP id u10mr495069ann.24.1310369979330;
+        Mon, 11 Jul 2011 00:39:39 -0700 (PDT)
+MIME-Version: 1.0
+X-BeenThere: x-loader@googlegroups.com
+Received: by 10.101.164.36 with SMTP id r36ls170737ano.5.gmail; Mon, 11 Jul
+ 2011 00:39:38 -0700 (PDT)
+Received: by 10.101.126.20 with SMTP id d20mr158105ann.0.1310369978730;
+        Mon, 11 Jul 2011 00:39:38 -0700 (PDT)
+Received: by 10.101.126.20 with SMTP id d20mr158104ann.0.1310369978718;
+        Mon, 11 Jul 2011 00:39:38 -0700 (PDT)
+Received: from mail-yx0-f181.google.com (mail-yx0-f181.google.com [209.85.213.181])
+        by gmr-mx.google.com with ESMTPS id i19si12624205anq.3.2011.07.11.00.39.37
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 11 Jul 2011 00:39:37 -0700 (PDT)
+Received-SPF: neutral (google.com: 209.85.213.181 is neither permitted nor denied by best guess record for domain of ricardo.salveti@linaro.org) client-ip=209.85.213.181;
+Received: by mail-yx0-f181.google.com with SMTP id 13so1644271yxi.12
+        for <x-loader@googlegroups.com>; Mon, 11 Jul 2011 00:39:37 -0700 (PDT)
+Received: by 10.150.53.14 with SMTP id b14mr3957102yba.181.1310369977490;
+        Mon, 11 Jul 2011 00:39:37 -0700 (PDT)
+Received: from localhost.localdomain ([201.82.65.93])
+        by mx.google.com with ESMTPS id s21sm510693ybm.15.2011.07.11.00.39.34
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 11 Jul 2011 00:39:35 -0700 (PDT)
+From: Ricardo Salveti de Araujo <ricardo.salveti@linaro.org>
+To: x-loader@googlegroups.com
+Cc: patches@linaro.org,
+	Ricardo Salveti de Araujo <ricardo.salveti@linaro.org>
+Subject: [x-loader] [PATCH v2] omap4: pandaboard: ehci fref_clkout per board revision
+Date: Mon, 11 Jul 2011 04:39:17 -0300
+Message-Id: <1310369957-28444-1-git-send-email-ricardo.salveti@linaro.org>
+X-Mailer: git-send-email 1.7.4.1
+In-Reply-To: <1305973002-28352-1-git-send-email-ricardo.salveti@linaro.org>
+References: <1305973002-28352-1-git-send-email-ricardo.salveti@linaro.org>
+X-Original-Sender: ricardo.salveti@linaro.org
+X-Original-Authentication-Results: gmr-mx.google.com; spf=neutral (google.com:
+ 209.85.213.181 is neither permitted nor denied by best guess record for
+ domain of ricardo.salveti@linaro.org) smtp.mail=ricardo.salveti@linaro.org
+Reply-To: x-loader@googlegroups.com
+Precedence: list
+Mailing-list: list x-loader@googlegroups.com; contact x-loader+owners@googlegroups.com
+List-ID: <x-loader.googlegroups.com>
+X-Google-Group-Id: 243713986749
+List-Post: <http://groups.google.com/group/x-loader/post?hl=en_US>, <mailto:x-loader@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:x-loader+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/x-loader?hl=en_US>
+Sender: x-loader@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/x-loader/subscribe?hl=en_US>, <mailto:x-loader+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/x-loader/subscribe?hl=en_US>,
+ <mailto:x-loader+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Add support for correctly configuring the fref_clkout depending on the
+board revision of the pandaboard. This patch is necessary to make u-boot
+work with the smsc usb+ethernet driver.
+
+Tested USB+Eth with TFTP and PXE using linaro u-boot:
+http://git.linaro.org/gitweb?p=boot/u-boot-linaro-stable.git;a=summary
+
+Based on patch from David Anders <x0132446@ti.com> from
+omap4_panda_L24.9 branch at gitorious.org/pandaboard x-loader tree.
+
+Changes since v1:
+ * Moving the code from s_init instead of adding a new block
+
+Signed-off-by: Ricardo Salveti de Araujo <ricardo.salveti@linaro.org>
+---
+ board/omap4430panda/omap4430panda.c |   58 +++++++++++++++-------------------
+ 1 files changed, 26 insertions(+), 32 deletions(-)
+
+diff --git a/board/omap4430panda/omap4430panda.c b/board/omap4430panda/omap4430panda.c
+index 9b4e457..bcee6fe 100644
+--- a/board/omap4430panda/omap4430panda.c
++++ b/board/omap4430panda/omap4430panda.c
+@@ -531,6 +531,7 @@ static void ddr_init(void)
+  *****************************************/
+ int board_init(void)
+ {
++	unsigned int rev = omap_revision();
+ 	unsigned int v;
+ 
+ 	/*
+@@ -546,10 +547,32 @@ int board_init(void)
+ 	v = __raw_readl(OMAP44XX_GPIO_BASE2 + __GPIO_DATAOUT);
+ 	__raw_writel((v & ~(1 << 30)), OMAP44XX_GPIO_BASE2 + __GPIO_DATAOUT);
+ 
+-	/* kill USB PLL */
++	if (rev == OMAP4430_ES1_0)
++		return 0;
+ 
+-	v = __raw_readl(CM_CLKMODE_DPLL_USB);
+-	__raw_writel((v & ~7) | 1, CM_CLKMODE_DPLL_USB);
++	if (__raw_readl(OMAP44XX_GPIO_BASE6 + __GPIO_DATAIN) & (1 << 22)) {
++		/* enable software ioreq */
++		sr32(OMAP44XX_SCRM_AUXCLK3, 8, 1, 0x1);
++		/* set for sys_clk (38.4MHz) */
++		sr32(OMAP44XX_SCRM_AUXCLK3, 1, 2, 0x0);
++		/* set divisor to 2 */
++		sr32(OMAP44XX_SCRM_AUXCLK3, 16, 4, 0x1);
++		/* set the clock source to active */
++		sr32(OMAP44XX_SCRM_ALTCLKSRC, 0, 1, 0x1);
++		/* enable clocks */
++		sr32(OMAP44XX_SCRM_ALTCLKSRC, 2, 2, 0x3);
++	} else {
++		/* enable software ioreq */
++		sr32(OMAP44XX_SCRM_AUXCLK1, 8, 1, 0x1);
++		/* set for PER_DPLL */
++		sr32(OMAP44XX_SCRM_AUXCLK1, 1, 2, 0x2);
++		/* set divisor to 16 */
++		sr32(OMAP44XX_SCRM_AUXCLK1, 16, 4, 0xf);
++		/* set the clock source to active */
++		sr32(OMAP44XX_SCRM_ALTCLKSRC, 0, 1, 0x1);
++		/* enable clocks */
++		sr32(OMAP44XX_SCRM_ALTCLKSRC, 2, 2, 0x3);
++	}
+ 
+ 	return 0;
+ }
+@@ -683,8 +706,6 @@ static int scale_vcores(void)
+ 
+ void s_init(void)
+ {
+-	unsigned int rev = omap_revision();
+-
+ 	/*
+ 	 * this is required to survive the muxconf in the case the ROM
+ 	 * started up USB OTG
+@@ -707,33 +728,6 @@ void s_init(void)
+ 	/* setup_auxcr(get_device_type(), external_boot); */
+ 
+ 	ddr_init();
+-
+-	if (rev == OMAP4430_ES1_0)
+-		return;
+-
+-	if (__raw_readl(OMAP44XX_GPIO_BASE6 + __GPIO_DATAIN) & (1 << 22)) {
+-		/* enable software ioreq */
+-		sr32(OMAP44XX_SCRM_AUXCLK3, 8, 1, 0x1);
+-		/* set for sys_clk (38.4MHz) */
+-		sr32(OMAP44XX_SCRM_AUXCLK3, 1, 2, 0x0);
+-		/* set divisor to 2 */
+-		sr32(OMAP44XX_SCRM_AUXCLK3, 16, 4, 0x1);
+-		/* set the clock source to active */
+-		sr32(OMAP44XX_SCRM_ALTCLKSRC, 0, 1, 0x1);
+-		/* enable clocks */
+-		sr32(OMAP44XX_SCRM_ALTCLKSRC, 2, 2, 0x3);
+-	} else {
+-		/* enable software ioreq */
+-		sr32(OMAP44XX_SCRM_AUXCLK1, 8, 1, 0x1);
+-		/* set for PER_DPLL */
+-		sr32(OMAP44XX_SCRM_AUXCLK1, 1, 2, 0x2);
+-		/* set divisor to 16 */
+-		sr32(OMAP44XX_SCRM_AUXCLK1, 16, 4, 0xf);
+-		/* set the clock source to active */
+-		sr32(OMAP44XX_SCRM_ALTCLKSRC, 0, 1, 0x1);
+-		/* enable clocks */
+-		sr32(OMAP44XX_SCRM_ALTCLKSRC, 2, 2, 0x3);
+-	}
+ }
+ 
+ /*******************************************************
+-- 
+1.7.4.1
+
+-- 
+--
+To unsubscribe from this group, email: x-loader+unsubscribe@googlegroups.com
+For more options: http://groups.google.com/group/x-loader?hl=en?hl=en
+Home Page: http://gitorious.org/x-loader
