@@ -1,5 +1,5 @@
 require u-boot.inc
-PR ="r66"
+PR ="r67"
 
 DEFAULT_PREFERENCE_ti814x = "-1"
 DEFAULT_PREFERENCE_ti816x = "-1"
