@@ -12,7 +12,6 @@ SRCREV = "5fc29e7b2a76a64a739f857858ef0b98294aa155"
 MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
 
 SRC_URI += "git://arago-project.org/git/projects/linux-omap3.git;protocol=git;branch=master \
-           file://0001-Added-Crane-Board-support.patch \
            file://0001-Revert-omap3-beagle-Fix-compile-time-errors.patch \
            file://0002-board-omap3touchbook-make-it-build-against-TI-linux-.patch \
            file://0003-ARM-OMAP-add-support-for-TCT-Zippy-to-Beagle-board-f.patch \
@@ -137,8 +136,6 @@ SRC_URI += "git://arago-project.org/git/projects/linux-omap3.git;protocol=git;br
            file://0001-BeagleBoard-Adjust-USER-button-pin-for-xM.patch \
            file://0001-PSP-3.0.1.6-kernel-source-patched-with-OCF-Linux.patch \
            file://porches.patch \
-           file://0001-OMAP3-craneboard-print-expansionboard-name-detected-.patch \
-           file://0002-OMAP3-craneboard-add-support-for-TinCanTools-Trainer.patch \
            file://0001-cgroupfs-create-sys-fs-cgroup-to-mount-cgroupfs-on.patch \
            file://defconfig"
 
@@ -172,6 +169,12 @@ SRC_URI_append_omap3-touchbook = " \
                                   file://0015-Forward-port-TWL4030-BCI-driver-from-2.6.29-to-2.6.3.patch \
                                   file://0016-ARM-OMAP-omap3-touchbook-update-boardfile.patch \
 #                                 file://0017-ARM-OMAP-add-800MHz-OPP-and-remove-125MHz-one.patch \
+"
+
+SRC_URI_append_am3517-crane = " \
+                               file://0001-Added-Crane-Board-support.patch \
+                               file://0001-OMAP3-craneboard-print-expansionboard-name-detected-.patch \
+                               file://0002-OMAP3-craneboard-add-support-for-TinCanTools-Trainer.patch \
 "
 
 addtask quiltfixup before do_patch after do_unpack
