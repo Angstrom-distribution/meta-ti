@@ -7,7 +7,7 @@ COMPATIBLE_MACHINE = "(beagleboard)"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
 SRCREV_pn-${PN} = "v2.6.39"
-MACHINE_KERNEL_PR_append = "m"
+MACHINE_KERNEL_PR_append = "n"
 
 FILESPATHPKG_prepend = "linux-omap-2.6.39:"
 
@@ -113,6 +113,8 @@ SRC_URI_append = " \
            file://mfd/0013-MFD-TWL4030-optimizing-resource-configuration.patch \
            \
            file://musb/0001-usb-musb-Enable-DMA-mode1-RX-for-USB-Mass-Storage.patch \
+           \
+           file://net/0001-NFS-Revert-NFSROOT-default-mount-options.patch \
            "
 
 SRC_URI_append_beagleboard = " file://logo_linux_clut224.ppm \
