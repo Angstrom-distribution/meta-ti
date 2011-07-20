@@ -38,6 +38,11 @@ SRCREV_${PN}_omap3evm = "c0a8fb217fdca7888d89f9a3dee74a4cec865620"
 PV_omap3evm = "2009.11+${PR}+gitr${SRCREV}"
 
 # ~ TI PSP v2009.11_OMAPPSP_03.00.01.06 (+ couple of commits)
+SRC_URI_pn-${PN}_am3517-evm = "git://arago-project.org/git/projects/u-boot-omap3.git;protocol=git"
+SRCREV_pn-${PN}_am3517-evm = "c0a8fb217fdca7888d89f9a3dee74a4cec865620"
+PV_pn-${PN}_am3517-evm = "2009.11+${PR}+gitr${SRCREV}"
+
+# ~ TI PSP v2009.11_OMAPPSP_03.00.01.06 (+ couple of commits)
 SRC_URI_am37x-evm = "git://arago-project.org/git/projects/u-boot-omap3.git;protocol=git \
     file://0001-omap3evm-Change-default-console-serial-port-from.patch \
 "
