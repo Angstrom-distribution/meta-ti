@@ -1,0 +1,79 @@
+From e38ec7b32ebb15b1e703743ea14ca7a29675a3ba Mon Sep 17 00:00:00 2001
+From: Kevin Hilman <khilman@ti.com>
+Date: Thu, 26 May 2011 14:48:19 -0700
+Subject: [PATCH 4/7] OMAP3: PM debug: remove sleep_while_idle feature
+
+Remove the OMAP-specific PM debug 'sleep_while_idle' feature which is
+currently available as an OMAP-specific debugfs entry.
+
+This duplicates existing ARM-generic functionality available as a
+boot-time option using the boot cmdline option 'hohlt'.
+
+If runtime configuration of this is needed, then adding a debugfs
+entry for the ARM-generic hlt/nohlt interface should be added.
+
+Tested-by: Santosh Shilimkar <santosh.shilimkar@ti.com>
+Acked-by: Santosh Shilimkar <santosh.shilimkar@ti.com>
+Acked-by: Jean Pihet <j-pihet@ti.com>
+Signed-off-by: Kevin Hilman <khilman@ti.com>
+---
+ arch/arm/mach-omap2/pm-debug.c |    3 ---
+ arch/arm/mach-omap2/pm.h       |    2 --
+ arch/arm/mach-omap2/pm34xx.c   |    2 --
+ 3 files changed, 0 insertions(+), 7 deletions(-)
+
+diff --git a/arch/arm/mach-omap2/pm-debug.c b/arch/arm/mach-omap2/pm-debug.c
+index e01da45..d9f0821 100644
+--- a/arch/arm/mach-omap2/pm-debug.c
++++ b/arch/arm/mach-omap2/pm-debug.c
+@@ -40,7 +40,6 @@
+ 
+ int omap2_pm_debug;
+ u32 enable_off_mode;
+-u32 sleep_while_idle;
+ u32 wakeup_timer_seconds;
+ u32 wakeup_timer_milliseconds;
+ 
+@@ -639,8 +638,6 @@ static int pm_dbg_init(void)
+ 
+ 	(void) debugfs_create_file("enable_off_mode", S_IRUGO | S_IWUSR, d,
+ 				   &enable_off_mode, &pm_dbg_option_fops);
+-	(void) debugfs_create_file("sleep_while_idle", S_IRUGO | S_IWUSR, d,
+-				   &sleep_while_idle, &pm_dbg_option_fops);
+ 	(void) debugfs_create_file("wakeup_timer_seconds", S_IRUGO | S_IWUSR, d,
+ 				   &wakeup_timer_seconds, &pm_dbg_option_fops);
+ 	(void) debugfs_create_file("wakeup_timer_milliseconds",
+diff --git a/arch/arm/mach-omap2/pm.h b/arch/arm/mach-omap2/pm.h
+index 45bcfce..674eedc 100644
+--- a/arch/arm/mach-omap2/pm.h
++++ b/arch/arm/mach-omap2/pm.h
+@@ -69,13 +69,11 @@ extern void omap2_pm_dump(int mode, int resume, unsigned int us);
+ extern void omap2_pm_wakeup_on_timer(u32 seconds, u32 milliseconds);
+ extern int omap2_pm_debug;
+ extern u32 enable_off_mode;
+-extern u32 sleep_while_idle;
+ #else
+ #define omap2_pm_dump(mode, resume, us)		do {} while (0);
+ #define omap2_pm_wakeup_on_timer(seconds, milliseconds)	do {} while (0);
+ #define omap2_pm_debug				0
+ #define enable_off_mode 0
+-#define sleep_while_idle 0
+ #endif
+ 
+ #if defined(CONFIG_PM_DEBUG) && defined(CONFIG_DEBUG_FS)
+diff --git a/arch/arm/mach-omap2/pm34xx.c b/arch/arm/mach-omap2/pm34xx.c
+index c155c9d..cb34244 100644
+--- a/arch/arm/mach-omap2/pm34xx.c
++++ b/arch/arm/mach-omap2/pm34xx.c
+@@ -497,8 +497,6 @@ console_still_active:
+ 
+ int omap3_can_sleep(void)
+ {
+-	if (!sleep_while_idle)
+-		return 0;
+ 	if (!omap_uart_can_sleep())
+ 		return 0;
+ 	return 1;
+-- 
+1.6.6.1
+
