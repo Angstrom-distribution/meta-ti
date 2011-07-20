@@ -39,7 +39,7 @@ FILES_${PN} = "/boot"
 
 inherit deploy
 
-addtask deploy before do_package after do_compile
+addtask deploy before do_package after do_install
 
 do_deploy () {
 	install -d ${DEPLOY_DIR_IMAGE}
