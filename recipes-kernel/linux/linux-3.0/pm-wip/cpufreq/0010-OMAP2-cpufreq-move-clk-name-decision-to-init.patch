@@ -1,4 +1,4 @@
-From 4d3e024c2f7f0334874bbb2a168b62e91cb2517a Mon Sep 17 00:00:00 2001
+From a81a661b40c6ca792f1cc8de46d529603b93215d Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Wed, 25 May 2011 16:38:46 -0700
 Subject: [PATCH 10/19] OMAP2+: cpufreq: move clk name decision to init

@@ -1,7 +1,7 @@
-From 033514238d4b2b59b1507f39372dbabe7365c102 Mon Sep 17 00:00:00 2001
+From fa563f291feaed45803ae17db71514928a17a6a6 Mon Sep 17 00:00:00 2001
 From: Fernandes, Joel A <joelagnel@ti.com>
 Date: Tue, 7 Jun 2011 15:54:45 -0500
-Subject: [PATCH] OMAP3: beagle: add support for beagleboard xM revision C
+Subject: [PATCH 1/3] OMAP3: beagle: add support for beagleboard xM revision C
 
 OMAP3: beagle: add support for beagleboard xM revision C
 
@@ -17,10 +17,10 @@ Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
  1 files changed, 51 insertions(+), 27 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-omap3beagle.c b/arch/arm/mach-omap2/board-omap3beagle.c
-index 7f21d24..4b113b2 100644
+index 34f8411..32f5f89 100644
 --- a/arch/arm/mach-omap2/board-omap3beagle.c
 +++ b/arch/arm/mach-omap2/board-omap3beagle.c
-@@ -61,7 +61,8 @@
+@@ -60,7 +60,8 @@
   *	AXBX	= GPIO173, GPIO172, GPIO171: 1 1 1
   *	C1_3	= GPIO173, GPIO172, GPIO171: 1 1 0
   *	C4	= GPIO173, GPIO172, GPIO171: 1 0 1
@@ -30,7 +30,7 @@ index 7f21d24..4b113b2 100644
   */
  enum {
  	OMAP3BEAGLE_BOARD_UNKN = 0,
-@@ -69,14 +70,26 @@ enum {
+@@ -68,14 +69,26 @@ enum {
  	OMAP3BEAGLE_BOARD_C1_3,
  	OMAP3BEAGLE_BOARD_C4,
  	OMAP3BEAGLE_BOARD_XM,
@@ -61,7 +61,7 @@ index 7f21d24..4b113b2 100644
  
  static struct gpio omap3_beagle_rev_gpios[] __initdata = {
  	{ 171, GPIOF_IN, "rev_id_0"    },
-@@ -111,18 +124,32 @@ static void __init omap3_beagle_init_rev(void)
+@@ -110,18 +123,32 @@ static void __init omap3_beagle_init_rev(void)
  	case 7:
  		printk(KERN_INFO "OMAP3 Beagle Rev: Ax/Bx\n");
  		omap3_beagle_version = OMAP3BEAGLE_BOARD_AXBX;
@@ -95,7 +95,7 @@ index 7f21d24..4b113b2 100644
  		break;
  	default:
  		printk(KERN_INFO "OMAP3 Beagle Rev: unknown %hd\n", beagle_rev);
-@@ -234,7 +261,7 @@ static struct omap2_hsmmc_info mmc[] = {
+@@ -225,7 +252,7 @@ static struct omap2_hsmmc_info mmc[] = {
  	{
  		.mmc		= 1,
  		.caps		= MMC_CAP_4_BIT_DATA | MMC_CAP_8_BIT_DATA,
@@ -104,7 +104,7 @@ index 7f21d24..4b113b2 100644
  	},
  	{}	/* Terminator */
  };
-@@ -252,17 +279,11 @@ static struct gpio_led gpio_leds[];
+@@ -243,17 +270,11 @@ static struct gpio_led gpio_leds[];
  static int beagle_twl_gpio_setup(struct device *dev,
  		unsigned gpio, unsigned ngpio)
  {
@@ -127,7 +127,7 @@ index 7f21d24..4b113b2 100644
  	/* gpio + 0 is "mmc0_cd" (input/IRQ) */
  	mmc[0].gpio_cd = gpio + 0;
  	omap2_hsmmc_init(mmc);
-@@ -276,9 +297,8 @@ static int beagle_twl_gpio_setup(struct device *dev,
+@@ -263,9 +284,8 @@ static int beagle_twl_gpio_setup(struct device *dev,
  	 * high / others active low)
  	 * DVI reset GPIO is different between beagle revisions
  	 */
@@ -139,7 +139,7 @@ index 7f21d24..4b113b2 100644
  		/*
  		 * gpio + 1 on Xm controls the TFP410's enable line (active low)
  		 * gpio + 2 control varies depending on the board rev as below:
-@@ -296,8 +316,6 @@ static int beagle_twl_gpio_setup(struct device *dev,
+@@ -283,8 +303,6 @@ static int beagle_twl_gpio_setup(struct device *dev,
  			pr_err("%s: unable to configure DVI_LDO_EN\n",
  				__func__);
  	} else {
@@ -148,7 +148,7 @@ index 7f21d24..4b113b2 100644
  		/*
  		 * REVISIT: need ehci-omap hooks for external VBUS
  		 * power switch and overcurrent detect
-@@ -305,8 +323,10 @@ static int beagle_twl_gpio_setup(struct device *dev,
+@@ -292,8 +310,10 @@ static int beagle_twl_gpio_setup(struct device *dev,
  		if (gpio_request_one(gpio + 1, GPIOF_IN, "EHCI_nOC"))
  			pr_err("%s: unable to configure EHCI_nOC\n", __func__);
  	}
@@ -160,7 +160,7 @@ index 7f21d24..4b113b2 100644
  
  	/* TWL4030_GPIO_MAX + 1 == ledB, PMU_STAT (out, active low LED) */
  	gpio_leds[2].gpio = gpio + TWL4030_GPIO_MAX + 1;
-@@ -458,7 +478,8 @@ static struct platform_device leds_gpio = {
+@@ -404,7 +424,8 @@ static struct platform_device leds_gpio = {
  static struct gpio_keys_button gpio_buttons[] = {
  	{
  		.code			= BTN_EXTRA,
@@ -170,7 +170,7 @@ index 7f21d24..4b113b2 100644
  		.desc			= "user",
  		.wakeup			= 1,
  	},
-@@ -525,8 +546,8 @@ static void __init beagle_opp_init(void)
+@@ -468,8 +489,8 @@ static void __init beagle_opp_init(void)
  		return;
  	}
  
@@ -181,7 +181,7 @@ index 7f21d24..4b113b2 100644
  		struct omap_hwmod *mh = omap_hwmod_lookup("mpu");
  		struct omap_hwmod *dh = omap_hwmod_lookup("iva");
  		struct device *dev;
-@@ -566,6 +587,9 @@ static void __init omap3_beagle_init(void)
+@@ -509,6 +530,9 @@ static void __init omap3_beagle_init(void)
  	omap3_mux_init(board_mux, OMAP_PACKAGE_CBB);
  	omap3_beagle_init_rev();
  	omap3_beagle_i2c_init();

@@ -1,4 +1,4 @@
-From afa9b062a33a9d9d2d9077cc519e1375b8338e39 Mon Sep 17 00:00:00 2001
+From f37fcaec1c8e778ea7c697b8e7d3e771460b2c71 Mon Sep 17 00:00:00 2001
 From: Rajendra Nayak <rnayak@ti.com>
 Date: Mon, 10 Nov 2008 17:00:25 +0530
 Subject: [PATCH 04/19] OMAP3 PM: CPUFreq driver for OMAP3
@@ -122,10 +122,10 @@ Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
  3 files changed, 46 insertions(+), 4 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/clock.h b/arch/arm/mach-omap2/clock.h
-index e10ff2b..0a07e50 100644
+index 48ac568..8bad1c6 100644
 --- a/arch/arm/mach-omap2/clock.h
 +++ b/arch/arm/mach-omap2/clock.h
-@@ -141,7 +141,9 @@ extern const struct clksel_rate gpt_sys_rates[];
+@@ -144,7 +144,9 @@ extern const struct clksel_rate gpt_sys_rates[];
  extern const struct clksel_rate gfx_l3_rates[];
  extern const struct clksel_rate dsp_ick_rates[];
  
@@ -136,7 +136,7 @@ index e10ff2b..0a07e50 100644
  extern void omap2_clk_init_cpufreq_table(struct cpufreq_frequency_table **table);
  extern void omap2_clk_exit_cpufreq_table(struct cpufreq_frequency_table **table);
  #else
-@@ -149,6 +151,16 @@ extern void omap2_clk_exit_cpufreq_table(struct cpufreq_frequency_table **table)
+@@ -152,6 +154,16 @@ extern void omap2_clk_exit_cpufreq_table(struct cpufreq_frequency_table **table)
  #define omap2_clk_exit_cpufreq_table	0
  #endif
  

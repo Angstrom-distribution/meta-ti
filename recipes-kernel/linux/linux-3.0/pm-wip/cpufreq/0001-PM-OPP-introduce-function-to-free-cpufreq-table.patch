@@ -1,4 +1,4 @@
-From e029940bc6c0ff4ad3c8e2b4f31d0a3de78eff32 Mon Sep 17 00:00:00 2001
+From e234cd2e8844589e2836aa67b3adefa0fd332081 Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Wed, 25 May 2011 00:43:26 -0700
 Subject: [PATCH 01/19] PM: OPP: introduce function to free cpufreq table
