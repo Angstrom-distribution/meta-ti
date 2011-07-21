@@ -228,6 +228,10 @@ do_configure_append() {
 	fi
 }
 
+# bitbake.conf only prepends PARALLEL make in tasks called do_compile, which isn't the case for compile_modules
+# So explicitly enable it for that in here
+EXTRA_OEMAKE = "${PARALLEL_MAKE} "
+
 do_install_append() {
 	oe_runmake headers_install INSTALL_HDR_PATH=${D}${exec_prefix}/src/linux-${KERNEL_VERSION} ARCH=$ARCH
 }
