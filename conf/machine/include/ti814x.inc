@@ -1,4 +1,3 @@
-TARGET_ARCH = "arm"
 SOC_FAMILY = "ti814x"
 
 require conf/machine/include/tune-cortexa8.inc
