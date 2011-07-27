@@ -9,7 +9,7 @@ COMPATIBLE_MACHINE = "(beagleboard)"
 SRCREV_pn-${PN} = "02f8c6aee8df3cdc935e9bdd4f2d020306035dbe"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "f"
+MACHINE_KERNEL_PR_append = "g"
 
 FILESPATHPKG_prepend = "linux-3.0:"
 
@@ -197,6 +197,8 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git;pro
             file://beagle/0005-omap3-Add-basic-support-for-720MHz-part.patch \
             file://madc/0001-Enabling-Hwmon-driver-for-twl4030-madc.patch \
             file://madc/0002-mfd-twl-core-enable-madc-clock.patch \
+            \
+            file://sakoman/0001-mmc-don-t-display-single-block-read-console-messages.patch \
             file://defconfig"
 
 SRC_URI_append_beagleboard = " file://logo_linux_clut224.ppm \
