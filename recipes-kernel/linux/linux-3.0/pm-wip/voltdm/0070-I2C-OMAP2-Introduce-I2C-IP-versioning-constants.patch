@@ -1,4 +1,4 @@
-From 24c2c380b4b9c37d5f544374eb6b8695d3714ed6 Mon Sep 17 00:00:00 2001
+From 8525961f0a3e206bd838438c195611f4370de8e3 Mon Sep 17 00:00:00 2001
 From: Andy Green <andy@warmcat.com>
 Date: Sun, 10 Jul 2011 05:27:14 -0600
 Subject: [PATCH 070/149] I2C: OMAP2+: Introduce I2C IP versioning constants

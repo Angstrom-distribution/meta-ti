@@ -1,4 +1,4 @@
-From a713416ce6fee5ffd2f5e00d539d86d9be9d8cdc Mon Sep 17 00:00:00 2001
+From 96e0a92d559362cf3f71b45b9da0b5cd74422625 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Fri, 1 Jul 2011 22:54:06 +0200
 Subject: [PATCH 035/149] OMAP: hwmod: Add warnings if enable failed

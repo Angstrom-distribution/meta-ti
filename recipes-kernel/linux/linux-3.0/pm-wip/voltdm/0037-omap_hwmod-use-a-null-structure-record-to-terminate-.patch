@@ -1,4 +1,4 @@
-From a0e59db8c28f84434d699fbbf70f56f37db3df00 Mon Sep 17 00:00:00 2001
+From b97f10be49ef8f9b74eeb91c3f067f92cf4b558e Mon Sep 17 00:00:00 2001
 From: Paul Walmsley <paul@pwsan.com>
 Date: Sat, 9 Jul 2011 19:14:05 -0600
 Subject: [PATCH 037/149] omap_hwmod: use a null structure record to terminate omap_hwmod_addr_space arrays

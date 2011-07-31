@@ -1,4 +1,4 @@
-From 08d7033937362297e45a4c5a691fc7e251fe9995 Mon Sep 17 00:00:00 2001
+From 3784b044ab6f00f88ea8a572cc27f5d0b7edff3d Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:56:33 -0600
 Subject: [PATCH 087/149] OMAP4: hwmod: Introduce the module control in hwmod control

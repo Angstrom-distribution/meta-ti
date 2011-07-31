@@ -1,4 +1,4 @@
-From 39ad303f0ef9e85f85f4e06a356d878d965d1b82 Mon Sep 17 00:00:00 2001
+From 218cb96eb2e582862b032ac0d86bd57dfbfcda51 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 21 Mar 2011 14:08:55 -0700
 Subject: [PATCH 109/149] OMAP2+: voltage: split voltage controller (VC) code into dedicated layer

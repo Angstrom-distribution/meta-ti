@@ -1,4 +1,4 @@
-From b230bde61ea3cf8e1a55b031d08d173417337a64 Mon Sep 17 00:00:00 2001
+From eeb3550de27dd9d333d18284d215dfe5939da4ee Mon Sep 17 00:00:00 2001
 From: Vikram Pandita <vikram.pandita@ti.com>
 Date: Tue, 31 May 2011 09:24:58 +0100
 Subject: [PATCH] ARM: L2: Add and export outer_clean_all

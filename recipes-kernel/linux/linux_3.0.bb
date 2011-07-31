@@ -9,7 +9,7 @@ COMPATIBLE_MACHINE = "(beagleboard)"
 SRCREV_pn-${PN} = "02f8c6aee8df3cdc935e9bdd4f2d020306035dbe"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "h"
+MACHINE_KERNEL_PR_append = "i"
 
 FILESPATHPKG_prepend = "linux-3.0:"
 
@@ -199,6 +199,18 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git;pro
             file://madc/0002-mfd-twl-core-enable-madc-clock.patch \
             \
             file://sakoman/0001-mmc-don-t-display-single-block-read-console-messages.patch \
+            file://sakoman/0002-omap-Change-omap_device-activate-dectivate-latency-m.patch \
+            file://sakoman/0003-OMAP-DSS2-add-bootarg-for-selecting-svideo-or-compos.patch \
+            file://sakoman/0004-mtd-nand-Eliminate-noisey-uncorrectable-error-messag.patch \
+            file://sakoman/0005-video-add-timings-for-hd720.patch \
+            file://sakoman/0006-drivers-net-smsc911x-return-ENODEV-if-device-is-not-.patch \
+            file://sakoman/0007-drivers-input-touchscreen-ads7846-return-ENODEV-if-d.patch \
+            file://sakoman/0008-Revert-omap2_mcspi-Flush-posted-writes.patch \
+            file://sakoman/0009-rtc-twl-Switch-to-using-threaded-irq.patch \
+            file://sakoman/0010-rtc-twl-add-support-for-backup-battery-recharge.patch \
+            file://sakoman/0011-soc-codecs-Enable-audio-capture-by-default-for-twl40.patch \
+            file://sakoman/0012-soc-codecs-twl4030-Turn-on-mic-bias-by-default.patch \
+            file://sakoman/0013-omap-mmc-twl4030-move-clock-input-selection-prior-to.patch \
             \
             file://sgx/0001-ARM-L2-Add-and-export-outer_clean_all.patch \
             file://defconfig"

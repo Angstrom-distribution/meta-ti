@@ -1,4 +1,4 @@
-From 6f1abf1ed445fa081f832cc4e112888b86f69054 Mon Sep 17 00:00:00 2001
+From d7075558e34d6e8e5ec7d70bc96f6f53937a4e21 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:56:32 -0600
 Subject: [PATCH 086/149] OMAP4: cm: Add two new APIs for modulemode control

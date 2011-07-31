@@ -1,4 +1,4 @@
-From c3c0bfa5bf8ccbea4189cb76b842c51b8e3756c7 Mon Sep 17 00:00:00 2001
+From 3de00ad9ef865b38f82cea7772787bfdd2565345 Mon Sep 17 00:00:00 2001
 From: Tony Lindgren <tony@atomide.com>
 Date: Tue, 29 Mar 2011 15:54:49 -0700
 Subject: [PATCH 013/149] omap2+: Reserve clocksource and timesource and initialize dmtimer later

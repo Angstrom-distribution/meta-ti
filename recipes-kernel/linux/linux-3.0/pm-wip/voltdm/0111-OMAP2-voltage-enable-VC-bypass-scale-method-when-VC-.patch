@@ -1,4 +1,4 @@
-From 62a89781df3eef1d865b6da4c0714e19dad59535 Mon Sep 17 00:00:00 2001
+From 5412c87865c8728af2d837e72050e3ff69e64d72 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 18 Jul 2011 15:48:22 -0700
 Subject: [PATCH 111/149] OMAP2+: voltage: enable VC bypass scale method when VC is initialized

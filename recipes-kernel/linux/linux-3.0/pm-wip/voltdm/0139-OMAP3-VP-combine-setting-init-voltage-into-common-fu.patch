@@ -1,4 +1,4 @@
-From e5dfd3df7ec0e820767b65dd730c85b4c86dac10 Mon Sep 17 00:00:00 2001
+From 8f2193adda3fefefd764447c04a47796a18296e2 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Fri, 15 Jul 2011 17:05:48 -0700
 Subject: [PATCH 139/149] OMAP3+: VP: combine setting init voltage into common function

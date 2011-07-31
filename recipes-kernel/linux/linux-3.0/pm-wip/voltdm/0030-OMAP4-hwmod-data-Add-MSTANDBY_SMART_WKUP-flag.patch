@@ -1,4 +1,4 @@
-From b487cae55998f8e6baa7047eeb89a193cd218a8c Mon Sep 17 00:00:00 2001
+From b5d847cdad3becebab52746aaf033626cb9af234 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Fri, 1 Jul 2011 22:54:01 +0200
 Subject: [PATCH 030/149] OMAP4: hwmod data: Add MSTANDBY_SMART_WKUP flag

@@ -1,4 +1,4 @@
-From 5d6b95653e3acd8d5f1d45b3668c29331a74c19e Mon Sep 17 00:00:00 2001
+From b90e654272ab99324847e472161d629eddf61484 Mon Sep 17 00:00:00 2001
 From: Paul Walmsley <paul@pwsan.com>
 Date: Sat, 9 Jul 2011 19:14:07 -0600
 Subject: [PATCH 042/149] omap_hwmod: share identical omap_hwmod_dma_info arrays

@@ -1,4 +1,4 @@
-From 69aca61879a4572e40cedce49c08464a2a8fe0b0 Mon Sep 17 00:00:00 2001
+From 2443429fd9a5615023a4263d97e884c7166c7c31 Mon Sep 17 00:00:00 2001
 From: Paul Walmsley <paul@pwsan.com>
 Date: Sat, 9 Jul 2011 19:14:06 -0600
 Subject: [PATCH 038/149] omap_hwmod: share identical omap_hwmod_addr_space arrays

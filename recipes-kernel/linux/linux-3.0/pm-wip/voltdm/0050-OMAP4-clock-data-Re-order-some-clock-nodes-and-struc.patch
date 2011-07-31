@@ -1,4 +1,4 @@
-From 64e6adf28c555e90d22260217e56f393b504262f Mon Sep 17 00:00:00 2001
+From 15e3bb360c6dbb3cccb643d92a84bcf43b4b28a6 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:14:45 -0600
 Subject: [PATCH 050/149] OMAP4: clock data: Re-order some clock nodes and structure fields

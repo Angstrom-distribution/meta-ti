@@ -1,4 +1,4 @@
-From 7ea06e2b39c9e51734c6c8b542a823c3698ad1b5 Mon Sep 17 00:00:00 2001
+From f7d580963d37c7648502f85f38e24f659634295b Mon Sep 17 00:00:00 2001
 From: Santosh Shilimkar <santosh.shilimkar@ti.com>
 Date: Sat, 9 Jul 2011 20:42:59 -0600
 Subject: [PATCH 066/149] OMAP4: powerdomain data: Remove unsupported MPU powerdomain state

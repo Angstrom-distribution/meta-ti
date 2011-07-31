@@ -1,4 +1,4 @@
-From 8e61cb467b9c0f30cf24f244f176d497d4ce3e2a Mon Sep 17 00:00:00 2001
+From 323a01160ebc56a1946b3f02af7ebc610a96a0ce Mon Sep 17 00:00:00 2001
 From: Peter Ujfalusi <peter.ujfalusi@ti.com>
 Date: Tue, 7 Jun 2011 11:38:24 +0300
 Subject: [PATCH 025/149] OMAP3: Move common regulator configuration to twl-common

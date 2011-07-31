@@ -1,4 +1,4 @@
-From 94ad621cdde526c292bbaf55f6969835b3286e81 Mon Sep 17 00:00:00 2001
+From b959de4ae826ed1bc5c1e974d127d9dc0ce79f52 Mon Sep 17 00:00:00 2001
 From: Paul Walmsley <paul@pwsan.com>
 Date: Sat, 9 Jul 2011 19:14:07 -0600
 Subject: [PATCH 040/149] omap_hwmod: share identical omap_hwmod_mpu_irqs arrays

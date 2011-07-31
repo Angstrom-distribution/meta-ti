@@ -1,4 +1,4 @@
-From b3e109513b7cfc01b0e8b1acb6d586f0d273303a Mon Sep 17 00:00:00 2001
+From a6f4eafa970b1b651d9844aef3f1a180ad2cc1e8 Mon Sep 17 00:00:00 2001
 From: Jarkko Nikula <jhnikula@gmail.com>
 Date: Tue, 14 Jun 2011 11:23:52 +0000
 Subject: [PATCH 020/149] omap: mcbsp: Drop in-driver transfer support

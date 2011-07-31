@@ -1,4 +1,4 @@
-From c3b3634ca116bd50797a834a128bd70a79e83202 Mon Sep 17 00:00:00 2001
+From dad304f864d6a16b0deb80879ee1080b98912b31 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:56:31 -0600
 Subject: [PATCH 081/149] OMAP4: hwmod: Replace RSTCTRL absolute address with offset macros

@@ -1,4 +1,4 @@
-From f3ab67725a755e84f957e131386461ea3bb5bbea Mon Sep 17 00:00:00 2001
+From e5fd4cbb88f4880001bed9085a08e8f59713e3fb Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Tue, 22 Mar 2011 16:14:57 -0700
 Subject: [PATCH 110/149] OMAP2+: voltage: move VC into struct voltagedomain, misc. renames

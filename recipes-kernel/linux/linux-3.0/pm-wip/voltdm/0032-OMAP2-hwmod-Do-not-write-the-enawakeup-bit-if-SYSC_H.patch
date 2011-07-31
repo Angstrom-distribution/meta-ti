@@ -1,4 +1,4 @@
-From aa6d37a4dfb78110b79632cd7829750f2dd6b274 Mon Sep 17 00:00:00 2001
+From fa59fe1bf22510d007c266e6fd410c8ff6f3569a Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Fri, 1 Jul 2011 22:54:03 +0200
 Subject: [PATCH 032/149] OMAP2+: hwmod: Do not write the enawakeup bit if SYSC_HAS_ENAWAKEUP is not set

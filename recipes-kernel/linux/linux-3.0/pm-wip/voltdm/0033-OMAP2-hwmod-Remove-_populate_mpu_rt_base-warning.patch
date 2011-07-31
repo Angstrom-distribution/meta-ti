@@ -1,4 +1,4 @@
-From 045a9fc0357b8409ab4f9e549f20123c3ac7b353 Mon Sep 17 00:00:00 2001
+From a4cfdac13d68304b157f164510c097943f1aac0b Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Fri, 1 Jul 2011 22:54:04 +0200
 Subject: [PATCH 033/149] OMAP2+: hwmod: Remove _populate_mpu_rt_base warning

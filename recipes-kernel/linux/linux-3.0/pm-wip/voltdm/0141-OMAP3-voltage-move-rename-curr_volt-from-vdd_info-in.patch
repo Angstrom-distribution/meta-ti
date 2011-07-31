@@ -1,4 +1,4 @@
-From 5e460dc12ee76039228f86aa9e23d8603fd909f1 Mon Sep 17 00:00:00 2001
+From 801030018e4f8f83b0080f9d962773592629d950 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Tue, 5 Apr 2011 16:55:22 -0700
 Subject: [PATCH 141/149] OMAP3+: voltage: move/rename curr_volt from vdd_info into struct voltagedomain

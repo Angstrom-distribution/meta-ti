@@ -1,4 +1,4 @@
-From 6c2e1f27c319dfd7655b820752f5b347c331dc06 Mon Sep 17 00:00:00 2001
+From 21ba44beb6ee9290ec9f8009749a51f64b2de1e2 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Fri, 1 Jul 2011 22:54:00 +0200
 Subject: [PATCH 029/149] OMAP2+: hwmod: Fix smart-standby + wakeup support

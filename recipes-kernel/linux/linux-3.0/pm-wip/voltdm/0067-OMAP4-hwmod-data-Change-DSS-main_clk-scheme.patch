@@ -1,4 +1,4 @@
-From 51ebacf719349b5ec6f1743a27a865c36777145f Mon Sep 17 00:00:00 2001
+From 9cec544a8a33d4544169f9e4fc1ff0bb78c98891 Mon Sep 17 00:00:00 2001
 From: Tomi Valkeinen <tomi.valkeinen@ti.com>
 Date: Sat, 9 Jul 2011 20:39:45 -0600
 Subject: [PATCH 067/149] OMAP4: hwmod data: Change DSS main_clk scheme

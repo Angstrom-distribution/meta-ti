@@ -1,4 +1,4 @@
-From f0b12908ee88cda0e51a3b416387cc6d7605b809 Mon Sep 17 00:00:00 2001
+From e0ca5ad3b0cf537e1eee093b5407cc905583a39f Mon Sep 17 00:00:00 2001
 From: Jean Pihet <jean.pihet@newoldbits.com>
 Date: Sat, 9 Jul 2011 19:15:41 -0600
 Subject: [PATCH 059/149] OMAP PM: remove OMAP_PM_NONE config option

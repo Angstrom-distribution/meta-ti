@@ -1,4 +1,4 @@
-From 5d8a37a58e5ad0bd385f023453277d9aebd4768a Mon Sep 17 00:00:00 2001
+From 6dd90f49e6ca3780f78c55d41793a73e260813a9 Mon Sep 17 00:00:00 2001
 From: Mike Turquette <mturquette@ti.com>
 Date: Thu, 21 Jul 2011 12:36:37 +0200
 Subject: [PATCH 8/8] OMAP3+: Voltage: add ABB to voltage scaling

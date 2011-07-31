@@ -1,4 +1,4 @@
-From ce0ebe8b4f82a3205f9576400840d9fc0ae719d9 Mon Sep 17 00:00:00 2001
+From 6cf33470647dc663d1f36eeb78539a98bf4d5bc6 Mon Sep 17 00:00:00 2001
 From: Rajendra Nayak <rnayak@ti.com>
 Date: Sun, 10 Jul 2011 05:56:14 -0600
 Subject: [PATCH 076/149] OMAP4: clock data: Add missing divider selection for auxclks

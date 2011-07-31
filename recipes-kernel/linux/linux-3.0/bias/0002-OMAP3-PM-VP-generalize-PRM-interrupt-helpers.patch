@@ -1,4 +1,4 @@
-From 8e6411258660b08ee55b4148cca37f841d9c9568 Mon Sep 17 00:00:00 2001
+From 7b1ea8a8f4744e3a99135c4aa39a0373f3bca828 Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Wed, 29 Jun 2011 17:25:54 -0700
 Subject: [PATCH 2/8] OMAP3+: PM: VP: generalize PRM interrupt helpers

@@ -1,4 +1,4 @@
-From 5390da5519736e33eaf3d64b65fec8771b412b69 Mon Sep 17 00:00:00 2001
+From 62ed313c554cffd54189fde81359975406533fef Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 4 Apr 2011 15:25:07 -0700
 Subject: [PATCH 128/149] OMAP3+: VP: cleanup: move VP instance into voltdm, misc. renames

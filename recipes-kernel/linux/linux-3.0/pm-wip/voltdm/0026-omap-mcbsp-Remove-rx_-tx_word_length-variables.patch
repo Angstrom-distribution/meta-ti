@@ -1,4 +1,4 @@
-From 1274a75667a90dd8deeeee99911e4528ffd57b21 Mon Sep 17 00:00:00 2001
+From 9fee244eba0813fb74a9c6531819cc67ef17572e Mon Sep 17 00:00:00 2001
 From: Jarkko Nikula <jhnikula@gmail.com>
 Date: Fri, 1 Jul 2011 08:52:26 +0000
 Subject: [PATCH 026/149] omap: mcbsp: Remove rx_/tx_word_length variables

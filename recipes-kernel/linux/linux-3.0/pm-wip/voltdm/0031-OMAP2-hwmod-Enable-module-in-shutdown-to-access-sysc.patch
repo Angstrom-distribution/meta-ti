@@ -1,4 +1,4 @@
-From 4795bf332f1d577bc6e37cf54d36de26b5ea09dc Mon Sep 17 00:00:00 2001
+From f95f6a2e9d59b64168b9bb1dc529a75a83422988 Mon Sep 17 00:00:00 2001
 From: Miguel Vadillo <vadillo@ti.com>
 Date: Fri, 1 Jul 2011 22:54:02 +0200
 Subject: [PATCH 031/149] OMAP2+: hwmod: Enable module in shutdown to access sysconfig

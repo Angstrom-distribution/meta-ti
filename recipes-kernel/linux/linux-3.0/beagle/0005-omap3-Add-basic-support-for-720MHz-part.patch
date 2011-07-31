@@ -1,4 +1,4 @@
-From ec1da82b1bd9446e75e6d176bbe4b75f03d4da18 Mon Sep 17 00:00:00 2001
+From e26d2b3d2351809e08eaa17ed87653b2d1290f3e Mon Sep 17 00:00:00 2001
 From: Sanjeev Premi <premi@ti.com>
 Date: Tue, 18 Jan 2011 13:19:55 +0530
 Subject: [PATCH 5/5] omap3: Add basic support for 720MHz part

@@ -1,4 +1,4 @@
-From ff7ef48e169e0bba98135d834f5c7cdf9cb65965 Mon Sep 17 00:00:00 2001
+From 2c19f8f9455d2a55f36194ca5a03ed607d3a69b2 Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Wed, 18 May 2011 00:17:31 -0500
 Subject: [PATCH 146/149] OMAP4: PM: TWL6030: fix uv to voltage for >0x39

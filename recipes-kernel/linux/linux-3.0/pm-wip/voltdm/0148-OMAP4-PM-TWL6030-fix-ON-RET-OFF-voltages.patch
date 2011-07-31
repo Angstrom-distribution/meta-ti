@@ -1,4 +1,4 @@
-From c2e24e859ee7b9942a9075db480462f7b3d080ed Mon Sep 17 00:00:00 2001
+From 26d00f0edd8834b9c246f7aef1833937b30e5f9a Mon Sep 17 00:00:00 2001
 From: Patrick Titiano <p-titiano@ti.com>
 Date: Wed, 18 May 2011 00:17:33 -0500
 Subject: [PATCH 148/149] OMAP4: PM: TWL6030: fix ON/RET/OFF voltages

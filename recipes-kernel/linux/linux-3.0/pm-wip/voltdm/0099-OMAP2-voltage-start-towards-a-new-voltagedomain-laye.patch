@@ -1,4 +1,4 @@
-From 1de34a7da5240cb0ab762a7fbb9d9f0f6ab35253 Mon Sep 17 00:00:00 2001
+From 0729d239fa3b23ba35782e8aee216d7e35f9f659 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 16 Mar 2011 14:25:45 -0700
 Subject: [PATCH 099/149] OMAP2+: voltage: start towards a new voltagedomain layer

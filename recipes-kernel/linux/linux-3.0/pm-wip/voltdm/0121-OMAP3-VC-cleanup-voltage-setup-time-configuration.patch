@@ -1,4 +1,4 @@
-From 087e1e0d1abd8b6145c1097e039687d97bc49677 Mon Sep 17 00:00:00 2001
+From c28c5142ceefc612e51e9daed3beb89a05c79001 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Tue, 29 Mar 2011 14:36:04 -0700
 Subject: [PATCH 121/149] OMAP3+: VC: cleanup voltage setup time configuration

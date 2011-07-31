@@ -1,4 +1,4 @@
-From 1b324ddbae1ae703264e7cd81a5636f4d789f977 Mon Sep 17 00:00:00 2001
+From 2c6ab87064d6c3f3e97a37674c5dbf52df70bbc3 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 30 Mar 2011 16:36:30 -0700
 Subject: [PATCH 125/149] OMAP3+: VC: make I2C config programmable with PMIC-specific settings

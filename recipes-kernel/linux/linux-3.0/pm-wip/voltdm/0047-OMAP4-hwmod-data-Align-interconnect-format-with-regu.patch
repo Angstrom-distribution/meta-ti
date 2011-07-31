@@ -1,4 +1,4 @@
-From ade0c25089e78eb5df97faf56924d9e65ec4a096 Mon Sep 17 00:00:00 2001
+From 3782f8cd9c2ac61028185ca2a12f7af62e302e60 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:14:28 -0600
 Subject: [PATCH 047/149] OMAP4: hwmod data: Align interconnect format with regular modules

@@ -1,4 +1,4 @@
-From a2518625f75160c7f7af57623178b38c3846c946 Mon Sep 17 00:00:00 2001
+From fe9ad414f92fa16bfad79ade4d8d8380694b61de Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:56:54 -0600
 Subject: [PATCH 089/149] OMAP2+: clockdomain: Add 2 APIs to control clockdomain from hwmod framework

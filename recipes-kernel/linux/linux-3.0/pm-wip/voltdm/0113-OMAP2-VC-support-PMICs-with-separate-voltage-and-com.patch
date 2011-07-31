@@ -1,4 +1,4 @@
-From 5b8106df22b9fab4597d531500ce4bef75e14682 Mon Sep 17 00:00:00 2001
+From abe4941a2fff147e9b5290c5197b31f6e3122678 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Tue, 22 Mar 2011 14:12:37 -0700
 Subject: [PATCH 113/149] OMAP2+: VC: support PMICs with separate voltage and command registers

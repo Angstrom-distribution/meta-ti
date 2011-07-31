@@ -1,4 +1,4 @@
-From 9eb6982ba830b50a9d3759609633341aff91a6ec Mon Sep 17 00:00:00 2001
+From 29610914d9299d990550cbb3c9cdf7ee818f3acc Mon Sep 17 00:00:00 2001
 From: Tony Lindgren <tony@atomide.com>
 Date: Tue, 29 Mar 2011 15:54:48 -0700
 Subject: [PATCH 004/149] omap: Set separate timer init functions to avoid cpu_is_omap tests

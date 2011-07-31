@@ -1,4 +1,4 @@
-From 7810a0932b5e0d4fdf6c34cff735e227f5af8392 Mon Sep 17 00:00:00 2001
+From a93f80802bf31769fcc60399e40686bb2fcfc6f4 Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Mon, 14 Feb 2011 12:41:10 +0530
 Subject: [PATCH 010/149] OMAP3+: SR: disable interrupt by default

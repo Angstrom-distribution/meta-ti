@@ -1,4 +1,4 @@
-From 3051846afad9af89e30726b8e5c5c42cb71e9a30 Mon Sep 17 00:00:00 2001
+From 8d5b21768eb6919724b59bbe7a36ccf65a0bd89f Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 21 Mar 2011 14:29:13 -0700
 Subject: [PATCH 112/149] OMAP2+: voltage: split out voltage processor (VP) code into new layer

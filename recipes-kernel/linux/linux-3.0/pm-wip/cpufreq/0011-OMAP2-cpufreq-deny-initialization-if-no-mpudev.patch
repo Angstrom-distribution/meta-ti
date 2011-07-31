@@ -1,4 +1,4 @@
-From 7f50ad4eb8465fd74115f67bbf3c5a1bc884d902 Mon Sep 17 00:00:00 2001
+From df724e2ccf33e1c99c1715eb4b2b2aea99d6e75a Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Wed, 25 May 2011 16:38:47 -0700
 Subject: [PATCH 11/19] OMAP2+: cpufreq: deny initialization if no mpudev

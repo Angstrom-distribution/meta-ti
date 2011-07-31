@@ -1,4 +1,4 @@
-From 6f3800731e92de02088fb0203dc9afa47c188f5e Mon Sep 17 00:00:00 2001
+From af67259864ed80f7a3d1da0ca07f0f4149807b80 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 30 Mar 2011 11:01:10 -0700
 Subject: [PATCH 124/149] OMAP3+: voltage domain: move PMIC struct from vdd_info into struct voltagedomain

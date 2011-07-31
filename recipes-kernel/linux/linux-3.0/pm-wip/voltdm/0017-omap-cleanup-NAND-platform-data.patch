@@ -1,4 +1,4 @@
-From 1fb8bf12fc634685ecf9225c6d22823dbab5464b Mon Sep 17 00:00:00 2001
+From 6d36531ee4e28fc2a28e4961006ed53a673c9a18 Mon Sep 17 00:00:00 2001
 From: Grazvydas Ignotas <notasas@gmail.com>
 Date: Fri, 3 Jun 2011 19:56:33 +0000
 Subject: [PATCH 017/149] omap: cleanup NAND platform data

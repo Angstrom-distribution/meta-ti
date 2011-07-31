@@ -1,4 +1,4 @@
-From f8ad469a2588e82d357fccb2c75462ee42e98e22 Mon Sep 17 00:00:00 2001
+From 0e24581a7d2c06b5416b6f86817910c74a894e3c Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 23 Mar 2011 07:22:23 -0700
 Subject: [PATCH 103/149] OMAP2+: powerdomain: add voltagedomain to struct powerdomain

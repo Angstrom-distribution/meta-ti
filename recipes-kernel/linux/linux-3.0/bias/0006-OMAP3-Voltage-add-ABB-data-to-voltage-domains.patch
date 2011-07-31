@@ -1,4 +1,4 @@
-From 25458f46e77c4e816d313126a789d69f98f73af4 Mon Sep 17 00:00:00 2001
+From a98ba42c4b039046d7816ccc5394d72557780b30 Mon Sep 17 00:00:00 2001
 From: Mike Turquette <mturquette@ti.com>
 Date: Thu, 21 Jul 2011 12:31:50 +0200
 Subject: [PATCH 6/8] OMAP3+: Voltage: add ABB data to voltage domains

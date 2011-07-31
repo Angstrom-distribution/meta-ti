@@ -1,4 +1,4 @@
-From e37c3d49a7642a25996d86d97d4e6f36e4c7ed8a Mon Sep 17 00:00:00 2001
+From 494286a1785de2342d92c78ba26803cdcfccecfb Mon Sep 17 00:00:00 2001
 From: Tony Lindgren <tony@atomide.com>
 Date: Tue, 29 Mar 2011 15:54:48 -0700
 Subject: [PATCH 006/149] omap: Make a subset of dmtimer functions into inline functions

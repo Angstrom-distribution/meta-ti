@@ -1,4 +1,4 @@
-From 4f1bf495d3eb576dd032b53cfc863017d6ea1fa2 Mon Sep 17 00:00:00 2001
+From 00c75d433f7a4ec2ef4dcba4842d6ecb8e8ef4f4 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:56:32 -0600
 Subject: [PATCH 084/149] OMAP4: hwmod data: Add PRM context register offset

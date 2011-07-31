@@ -1,4 +1,4 @@
-From c727fd3a2d5ff8bff64537bf270791615cdf6847 Mon Sep 17 00:00:00 2001
+From 5d684cea6f6924f79063846acbd841339ab2f9c6 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 4 Apr 2011 16:02:28 -0700
 Subject: [PATCH 130/149] OMAP3+: VP: struct omap_vp_common: replace shift with __ffs(mask)

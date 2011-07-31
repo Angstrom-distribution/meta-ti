@@ -1,4 +1,4 @@
-From 8324148fb1a7879854e2afdf20f911ac9ea57210 Mon Sep 17 00:00:00 2001
+From 91cab6ff048c28bdc3f3979bff1bcabeeecc718f Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:14:45 -0600
 Subject: [PATCH 048/149] OMAP4: clock data: Add sddiv to USB DPLL

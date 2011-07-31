@@ -1,4 +1,4 @@
-From b25da32f52df4e31a535e28397f73b37711b6cfa Mon Sep 17 00:00:00 2001
+From 225305128342b94d8dd4e47b386443e5a0775cee Mon Sep 17 00:00:00 2001
 From: Santosh Shilimkar <santosh.shilimkar@ti.com>
 Date: Fri, 3 Jun 2011 17:46:57 +0530
 Subject: [PATCH 16/19] OMAP2+: CPUfreq: Remove superfluous check in target() for online CPU's.

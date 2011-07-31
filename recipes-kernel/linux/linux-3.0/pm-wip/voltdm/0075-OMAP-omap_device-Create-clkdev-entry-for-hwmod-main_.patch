@@ -1,4 +1,4 @@
-From f79980592a72321ba8a5b73e4c5907d369c70b4b Mon Sep 17 00:00:00 2001
+From 7b617d929870fec5da37f92672bba9299e08c8f9 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:54:12 -0600
 Subject: [PATCH 075/149] OMAP: omap_device: Create clkdev entry for hwmod main_clk

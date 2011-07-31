@@ -1,4 +1,4 @@
-From 5e902c551f87c28b3847dbefbab2a2ff05630656 Mon Sep 17 00:00:00 2001
+From ee6616f8b812c21b6b3c6d6f453195d151ef1fed Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 28 Mar 2011 10:40:15 -0700
 Subject: [PATCH 117/149] OMAP3+: voltage: convert to PRM register access functions

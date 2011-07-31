@@ -1,4 +1,4 @@
-From e5d1984e1ae7e5171465645241697a2b950dcc95 Mon Sep 17 00:00:00 2001
+From 0925e4f75cfe6022a45553a73cd52cc26a7bfa4e Mon Sep 17 00:00:00 2001
 From: Vaibhav Bedia <vaibhav.bedia@ti.com>
 Date: Sun, 10 Jul 2011 05:56:53 -0600
 Subject: [PATCH 088/149] OMAP: clockdomain: Remove redundant call to pwrdm_wait_transition()

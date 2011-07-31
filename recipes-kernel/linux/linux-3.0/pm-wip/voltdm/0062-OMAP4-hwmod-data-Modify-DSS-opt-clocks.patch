@@ -1,4 +1,4 @@
-From 884e583d87b2acda00edb3bfb96f2d7516bd58f6 Mon Sep 17 00:00:00 2001
+From 3f7d54ec8aefef07df7866b45757ede979f5fc4a Mon Sep 17 00:00:00 2001
 From: Tomi Valkeinen <tomi.valkeinen@ti.com>
 Date: Sat, 9 Jul 2011 20:39:44 -0600
 Subject: [PATCH 062/149] OMAP4: hwmod data: Modify DSS opt clocks

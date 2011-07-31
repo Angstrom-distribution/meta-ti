@@ -1,4 +1,4 @@
-From fbcfff727913c1cb9b608194f420d84b05b31b8f Mon Sep 17 00:00:00 2001
+From d15b099fca25b5d6afc12657f7564d14776a06fb Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 4 Apr 2011 17:58:21 -0700
 Subject: [PATCH 134/149] OMAP3+: VP: remove omap_vp_runtime_data

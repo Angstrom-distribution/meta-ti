@@ -1,4 +1,4 @@
-From 3db184c28323c3e35caca12cfc44ff6006d90987 Mon Sep 17 00:00:00 2001
+From ae9ac7f44c77cfbe8d04197497a03e9a1ddcf624 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Tue, 29 Mar 2011 14:24:47 -0700
 Subject: [PATCH 120/149] OMAP3+: VC bypass: use fields from VC struct instead of PMIC info

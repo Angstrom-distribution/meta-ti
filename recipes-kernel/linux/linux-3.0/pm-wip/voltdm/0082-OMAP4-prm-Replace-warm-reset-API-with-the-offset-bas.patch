@@ -1,4 +1,4 @@
-From 44affcd067be1368401315e1eed6530cac5dd50a Mon Sep 17 00:00:00 2001
+From 76ecea7634bce3d421816c2cd7faf452c0497b78 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:56:31 -0600
 Subject: [PATCH 082/149] OMAP4: prm: Replace warm reset API with the offset based version

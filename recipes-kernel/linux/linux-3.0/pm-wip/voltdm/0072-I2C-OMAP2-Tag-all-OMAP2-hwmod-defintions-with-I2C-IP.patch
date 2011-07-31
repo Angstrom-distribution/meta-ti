@@ -1,4 +1,4 @@
-From 02a2751e0c1c30b6a5ebbb32a9e5d2c95e534d23 Mon Sep 17 00:00:00 2001
+From 319606ffd38a876228dafd338a8322708970a671 Mon Sep 17 00:00:00 2001
 From: Andy Green <andy@warmcat.com>
 Date: Sun, 10 Jul 2011 05:27:15 -0600
 Subject: [PATCH 072/149] I2C: OMAP2+: Tag all OMAP2+ hwmod defintions with I2C IP revision

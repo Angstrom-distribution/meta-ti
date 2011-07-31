@@ -1,4 +1,4 @@
-From 3b3f823cf6049824ad754dc92260212134f01e94 Mon Sep 17 00:00:00 2001
+From eabad861d0c838afff9f54da90f15f19dff627f2 Mon Sep 17 00:00:00 2001
 From: Todd Poynor <toddpoynor@google.com>
 Date: Tue, 7 Jun 2011 13:57:52 -0700
 Subject: [PATCH 18/19] OMAP2+: cpufreq: Enable all CPUs in shared policy mask

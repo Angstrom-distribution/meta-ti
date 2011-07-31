@@ -1,4 +1,4 @@
-From 2d8b759e4227eb14bcb64fc007ea839a65d6fce6 Mon Sep 17 00:00:00 2001
+From 1a5b085edb4c191b68f3446f8d75bed40121bab0 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Thu, 14 Jul 2011 11:10:27 -0700
 Subject: [PATCH 132/149] OMAP3+: VP: move timing calculation/config into VP init

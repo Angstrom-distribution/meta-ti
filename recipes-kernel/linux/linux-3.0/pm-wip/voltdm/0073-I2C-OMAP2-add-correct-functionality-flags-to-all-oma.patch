@@ -1,4 +1,4 @@
-From 3d1de2860ea9b5f0cd052c0b4b3a5bc0b3a71c40 Mon Sep 17 00:00:00 2001
+From 455b1ae48350e5ebd6ad48f8ddbb1b4177213f96 Mon Sep 17 00:00:00 2001
 From: Andy Green <andy@warmcat.com>
 Date: Sun, 10 Jul 2011 05:27:16 -0600
 Subject: [PATCH 073/149] I2C: OMAP2+: add correct functionality flags to all omap2plus i2c dev_attr

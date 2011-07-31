@@ -1,4 +1,4 @@
-From a97cfd4b3ba13e6c165ac67e97476b9b3c3f0df7 Mon Sep 17 00:00:00 2001
+From 30c71b45dc811876e3bb2c01398f1836b97a8ebd Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Thu, 26 May 2011 19:39:19 -0700
 Subject: [PATCH 14/19] OMAP2+: cpufreq: put clk if cpu_init failed

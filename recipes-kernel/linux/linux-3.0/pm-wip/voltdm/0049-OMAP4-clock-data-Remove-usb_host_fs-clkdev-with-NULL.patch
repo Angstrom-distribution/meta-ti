@@ -1,4 +1,4 @@
-From e5deffffe7722ea30862908bc7bcfe933ee98dbf Mon Sep 17 00:00:00 2001
+From 171c44082bd504c7b6281bb4dae3f86c2d8e6c8f Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:14:45 -0600
 Subject: [PATCH 049/149] OMAP4: clock data: Remove usb_host_fs clkdev with NULL dev

@@ -1,4 +1,4 @@
-From ba46491cf72d4ef519dbdb43c16936e5641e8c17 Mon Sep 17 00:00:00 2001
+From 91b87f3f52c535074cd89724128a674cd540c3c7 Mon Sep 17 00:00:00 2001
 From: Paul Walmsley <paul@pwsan.com>
 Date: Sat, 9 Jul 2011 19:14:08 -0600
 Subject: [PATCH 043/149] omap_hwmod: share identical omap_hwmod_class, omap_hwmod_class_sysconfig arrays

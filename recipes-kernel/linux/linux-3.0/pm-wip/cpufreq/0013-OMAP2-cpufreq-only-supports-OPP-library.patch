@@ -1,4 +1,4 @@
-From 515c4e841924e69dba0a0af5d5ed0ead23d768e6 Mon Sep 17 00:00:00 2001
+From 87d147a5701647ae34ba58ae71807ee14930bfe9 Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Thu, 26 May 2011 19:39:18 -0700
 Subject: [PATCH 13/19] OMAP2+: cpufreq: only supports OPP library

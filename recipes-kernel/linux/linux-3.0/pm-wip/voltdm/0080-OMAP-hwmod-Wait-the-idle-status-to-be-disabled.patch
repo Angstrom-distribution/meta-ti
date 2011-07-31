@@ -1,4 +1,4 @@
-From 32e2bca3815da5f1394f5e532acf3d9fd44362f6 Mon Sep 17 00:00:00 2001
+From c847909c6cdb2b6fcb1f7679a8881ef489f63d7b Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:56:30 -0600
 Subject: [PATCH 080/149] OMAP: hwmod: Wait the idle status to be disabled

@@ -1,4 +1,4 @@
-From 911f0274537657d1697f1bce1ba9594281d4fbf6 Mon Sep 17 00:00:00 2001
+From 7897f73aca9434563c35d898db5c91803456df8e Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:15:04 -0600
 Subject: [PATCH 052/149] OMAP4: prcm: Fix errors in few defines name

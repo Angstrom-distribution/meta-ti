@@ -1,4 +1,4 @@
-From 66f119ca57948dd32bd7695cbbdb00e27843fccf Mon Sep 17 00:00:00 2001
+From 771dd184643c6765240fbecbd008f56f98182ca8 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 18 Jul 2011 15:31:43 -0700
 Subject: [PATCH 137/149] OMAP3+: VP: update_errorgain(): return error if VP

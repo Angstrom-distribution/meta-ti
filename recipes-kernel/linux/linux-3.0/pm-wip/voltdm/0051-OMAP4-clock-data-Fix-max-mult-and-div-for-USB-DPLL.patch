@@ -1,4 +1,4 @@
-From 6bf20dc93c089368a608a08926b8ac386102815f Mon Sep 17 00:00:00 2001
+From 3c17cc3747a1c4448c399119f6bcc752550ae692 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:14:46 -0600
 Subject: [PATCH 051/149] OMAP4: clock data: Fix max mult and div for USB DPLL

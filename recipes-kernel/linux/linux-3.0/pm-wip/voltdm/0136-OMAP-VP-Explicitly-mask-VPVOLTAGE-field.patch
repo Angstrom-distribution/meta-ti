@@ -1,4 +1,4 @@
-From 47267ed5c167cb77aa518cfef0d4e9d5664e62b0 Mon Sep 17 00:00:00 2001
+From b31aa6667c6980618f270c566005459bfeed186f Mon Sep 17 00:00:00 2001
 From: Todd Poynor <toddpoynor@google.com>
 Date: Fri, 27 May 2011 19:15:59 -0700
 Subject: [PATCH 136/149] OMAP: VP: Explicitly mask VPVOLTAGE field

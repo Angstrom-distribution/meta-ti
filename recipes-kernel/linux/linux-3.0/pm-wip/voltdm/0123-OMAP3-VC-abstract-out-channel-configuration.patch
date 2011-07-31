@@ -1,4 +1,4 @@
-From 9573101a96ff70b5fbd4c5c8827b562e562c85dd Mon Sep 17 00:00:00 2001
+From d8ab337e3a662741387234d6fd855e50f3b86bed Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Tue, 29 Mar 2011 15:57:16 -0700
 Subject: [PATCH 123/149] OMAP3+: VC: abstract out channel configuration

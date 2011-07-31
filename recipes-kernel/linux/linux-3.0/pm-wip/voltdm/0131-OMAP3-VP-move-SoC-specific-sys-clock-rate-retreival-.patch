@@ -1,4 +1,4 @@
-From 91f25e4b8af672077efbd1de8139ef724fdb1ffe Mon Sep 17 00:00:00 2001
+From 870178cbc2c4c4ad5d7d7aa74637de0b40c4818e Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 4 Apr 2011 17:22:28 -0700
 Subject: [PATCH 131/149] OMAP3+: VP: move SoC-specific sys clock rate retreival late init

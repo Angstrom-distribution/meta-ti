@@ -1,4 +1,4 @@
-From d63deeadf77ca6351c3ffc6058bf55f22f670dbc Mon Sep 17 00:00:00 2001
+From 0fdc80569c8137add9ed1e94e1d01dbff18ee0ba Mon Sep 17 00:00:00 2001
 From: Rajendra Nayak <rnayak@ti.com>
 Date: Sun, 10 Jul 2011 05:56:55 -0600
 Subject: [PATCH 092/149] OMAP2+: clockdomain: Add per clkdm lock to prevent concurrent state programming

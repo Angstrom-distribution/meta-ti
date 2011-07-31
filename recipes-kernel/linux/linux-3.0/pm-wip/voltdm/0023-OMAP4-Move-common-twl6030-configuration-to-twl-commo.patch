@@ -1,4 +1,4 @@
-From 96fff3aa7a203c74768bfd35dde000653f706d2c Mon Sep 17 00:00:00 2001
+From 006eb9f5a77cdab304d2b6542a81087c25731131 Mon Sep 17 00:00:00 2001
 From: Peter Ujfalusi <peter.ujfalusi@ti.com>
 Date: Tue, 7 Jun 2011 10:26:46 +0300
 Subject: [PATCH 023/149] OMAP4: Move common twl6030 configuration to twl-common

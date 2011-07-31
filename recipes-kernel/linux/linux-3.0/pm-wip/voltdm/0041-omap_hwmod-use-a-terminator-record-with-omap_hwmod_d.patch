@@ -1,4 +1,4 @@
-From f36679901eb8aa0201796d70e261da9a0aff25e1 Mon Sep 17 00:00:00 2001
+From 4efd5d908d82dc481d7b9258c6838de76b115a0c Mon Sep 17 00:00:00 2001
 From: Paul Walmsley <paul@pwsan.com>
 Date: Sat, 9 Jul 2011 19:14:07 -0600
 Subject: [PATCH 041/149] omap_hwmod: use a terminator record with omap_hwmod_dma_info arrays

@@ -1,4 +1,4 @@
-From dbbe5cde8c8c9b055ba8bd22d329149b2a0a09e2 Mon Sep 17 00:00:00 2001
+From a156b012b025316425224a98253410a7813acbeb Mon Sep 17 00:00:00 2001
 From: Mike Turquette <mturquette@ti.com>
 Date: Wed, 29 Jun 2011 17:25:57 -0700
 Subject: [PATCH 5/8] OMAP3+: OPP: add ABB data to voltage tables

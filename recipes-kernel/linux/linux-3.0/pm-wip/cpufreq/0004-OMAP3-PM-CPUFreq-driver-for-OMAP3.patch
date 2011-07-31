@@ -1,4 +1,4 @@
-From f37fcaec1c8e778ea7c697b8e7d3e771460b2c71 Mon Sep 17 00:00:00 2001
+From 5e6bd977fa36e33450f318ab18363f5736ee7104 Mon Sep 17 00:00:00 2001
 From: Rajendra Nayak <rnayak@ti.com>
 Date: Mon, 10 Nov 2008 17:00:25 +0530
 Subject: [PATCH 04/19] OMAP3 PM: CPUFreq driver for OMAP3

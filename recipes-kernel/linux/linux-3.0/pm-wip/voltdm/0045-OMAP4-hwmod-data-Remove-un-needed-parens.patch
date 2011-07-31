@@ -1,4 +1,4 @@
-From 526bd55990b58164ec3f96c5cc6c365418112e35 Mon Sep 17 00:00:00 2001
+From ef56febccdcdd977761c1861bb5bc8ea73fc2144 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:14:28 -0600
 Subject: [PATCH 045/149] OMAP4: hwmod data: Remove un-needed parens

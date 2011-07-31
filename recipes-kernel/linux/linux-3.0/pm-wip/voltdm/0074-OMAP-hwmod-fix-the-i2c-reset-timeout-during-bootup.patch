@@ -1,4 +1,4 @@
-From c53cc7d7eb7c4cc2d64f8f19dedb01639cb36b17 Mon Sep 17 00:00:00 2001
+From 9b9ab04a01df56dc13524d07c0c312502d61fff5 Mon Sep 17 00:00:00 2001
 From: Avinash.H.M <avinashhm@ti.com>
 Date: Sun, 10 Jul 2011 05:27:16 -0600
 Subject: [PATCH 074/149] OMAP: hwmod: fix the i2c-reset timeout during bootup

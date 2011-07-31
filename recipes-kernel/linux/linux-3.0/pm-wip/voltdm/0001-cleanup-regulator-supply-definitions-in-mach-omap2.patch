@@ -1,4 +1,4 @@
-From cb5d2a594f46d4020101d562978cf12fcdbabf28 Mon Sep 17 00:00:00 2001
+From 4a37882243e9b5e400a0c60f490af3053cbf9854 Mon Sep 17 00:00:00 2001
 From: Oleg Drokin <green@linuxhacker.ru>
 Date: Mon, 6 Jun 2011 18:57:07 +0000
 Subject: [PATCH 001/149] cleanup regulator supply definitions in mach-omap2

@@ -1,4 +1,4 @@
-From 492d2ffec3453c8fc887c73963d8e77ef9677189 Mon Sep 17 00:00:00 2001
+From 7d62258b201ef3a618d4ae6ca5a00452884f3206 Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Mon, 14 Feb 2011 12:16:36 +0530
 Subject: [PATCH 009/149] OMAP3+: SR: make notify independent of class

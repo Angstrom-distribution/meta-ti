@@ -1,4 +1,4 @@
-From 587c1fd832e3827f63ad03c18506c6024b148caa Mon Sep 17 00:00:00 2001
+From b119af452ab4953d9cf66c87bc6d305f356e5efe Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Tue, 5 Apr 2011 16:27:21 -0700
 Subject: [PATCH 140/149] OMAP3+: voltage: rename scale and reset functions using voltdm_ prefix

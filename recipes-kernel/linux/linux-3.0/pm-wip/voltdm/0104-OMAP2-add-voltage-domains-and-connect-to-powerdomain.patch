@@ -1,4 +1,4 @@
-From c878d9950cd3d7524a9fe90ab69826f42d07843b Mon Sep 17 00:00:00 2001
+From 4ccdcc61898b9dd91648881cf5676061e4849948 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 23 Mar 2011 16:09:41 -0700
 Subject: [PATCH 104/149] OMAP2: add voltage domains and connect to powerdomains

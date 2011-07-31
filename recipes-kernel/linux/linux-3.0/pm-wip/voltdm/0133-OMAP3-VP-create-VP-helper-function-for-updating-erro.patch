@@ -1,4 +1,4 @@
-From 9e164a895c4fe22bc673c07ff159bcc183baed6b Mon Sep 17 00:00:00 2001
+From 55240989f6c71ec461adae95cbc125f213d8a451 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Tue, 5 Apr 2011 15:15:31 -0700
 Subject: [PATCH 133/149] OMAP3+: VP: create VP helper function for updating error gain

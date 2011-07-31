@@ -1,4 +1,4 @@
-From c5e08ab208309b2897d8749def97850a821dae68 Mon Sep 17 00:00:00 2001
+From 479d33d068089e29df1f200f77118c229589817c Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 28 Mar 2011 10:52:04 -0700
 Subject: [PATCH 114/149] OMAP2+: add PRM VP functions for checking/clearing VP TX done status

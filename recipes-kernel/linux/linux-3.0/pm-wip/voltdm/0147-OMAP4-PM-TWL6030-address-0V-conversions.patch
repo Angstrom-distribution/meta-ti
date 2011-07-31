@@ -1,4 +1,4 @@
-From c36cd6579c43481193cc5b833622f01618f7408c Mon Sep 17 00:00:00 2001
+From 877819a1f84817daf1507ce66f664c5037d767ff Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Wed, 18 May 2011 00:17:32 -0500
 Subject: [PATCH 147/149] OMAP4: PM: TWL6030: address 0V conversions

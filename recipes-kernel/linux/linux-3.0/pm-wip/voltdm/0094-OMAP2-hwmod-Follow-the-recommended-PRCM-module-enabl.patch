@@ -1,4 +1,4 @@
-From 8608f43bc499d2c92dd9e2ae15ae316b44229145 Mon Sep 17 00:00:00 2001
+From 622d705d021b18644e8d377926eee7bfb029de3d Mon Sep 17 00:00:00 2001
 From: Rajendra Nayak <rnayak@ti.com>
 Date: Sun, 10 Jul 2011 05:57:07 -0600
 Subject: [PATCH 094/149] OMAP2+: hwmod: Follow the recommended PRCM module enable sequence

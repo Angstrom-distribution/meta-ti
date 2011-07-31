@@ -1,4 +1,4 @@
-From 6479ce1adbb20504cba420d8f0f5af4c9ee91e73 Mon Sep 17 00:00:00 2001
+From 67806dda270671c0583a45578f52c27f75020227 Mon Sep 17 00:00:00 2001
 From: Paul Walmsley <paul@pwsan.com>
 Date: Sun, 10 Jul 2011 05:57:06 -0600
 Subject: [PATCH 093/149] OMAP2+: clock: allow per-SoC clock init code to prevent clockdomain calls from clock code

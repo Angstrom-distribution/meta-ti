@@ -1,4 +1,4 @@
-From 4b977d1c5801e50b9277ed377bcebb7d920f8cc0 Mon Sep 17 00:00:00 2001
+From 9fd3f32ae51d3ea33c6e142fde601e067a069b8f Mon Sep 17 00:00:00 2001
 From: Paul Walmsley <paul@pwsan.com>
 Date: Sat, 9 Jul 2011 19:14:06 -0600
 Subject: [PATCH 039/149] omap_hwmod: use a terminator record with omap_hwmod_mpu_irqs arrays

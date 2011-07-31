@@ -1,4 +1,4 @@
-From 77203d7fdc186db617c03d3ef28981b77af3b077 Mon Sep 17 00:00:00 2001
+From 789327ebe3fa2f92d4ab2b9d74a64a2043718f25 Mon Sep 17 00:00:00 2001
 From: Tony Lindgren <tony@atomide.com>
 Date: Tue, 29 Mar 2011 15:54:48 -0700
 Subject: [PATCH 005/149] omap: Move dmtimer defines to dmtimer.h

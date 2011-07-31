@@ -1,4 +1,4 @@
-From b0f944b9fde42db8d1712cdafe4f7720adab19a6 Mon Sep 17 00:00:00 2001
+From 90fa40cfe6aac11dd532f0293a323e3f839b5c18 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 18 Jul 2011 16:24:17 -0700
 Subject: [PATCH 144/149] OMAP3+: voltage: update nominal voltage in voltdm_scale() not VC post-scale

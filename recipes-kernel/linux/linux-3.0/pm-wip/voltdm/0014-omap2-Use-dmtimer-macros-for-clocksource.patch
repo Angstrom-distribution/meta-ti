@@ -1,4 +1,4 @@
-From 939c8d3b49f31a6e88d36a9915e1393d26533ba8 Mon Sep 17 00:00:00 2001
+From 6a0f7a5ab7384a9f32e36ee0c07b713c4b5b1caa Mon Sep 17 00:00:00 2001
 From: Tony Lindgren <tony@atomide.com>
 Date: Tue, 29 Mar 2011 15:54:49 -0700
 Subject: [PATCH 014/149] omap2+: Use dmtimer macros for clocksource

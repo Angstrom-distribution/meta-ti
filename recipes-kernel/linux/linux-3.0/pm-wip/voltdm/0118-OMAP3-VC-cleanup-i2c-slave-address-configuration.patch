@@ -1,4 +1,4 @@
-From 5397d0a64d9fb1a584775e00a56850954c472915 Mon Sep 17 00:00:00 2001
+From 5ce8e390121faa0474a68920e6b95624748c91bb Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Tue, 29 Mar 2011 14:02:36 -0700
 Subject: [PATCH 118/149] OMAP3+: VC: cleanup i2c slave address configuration

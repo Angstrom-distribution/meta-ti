@@ -1,4 +1,4 @@
-From 834f307ec9057bbdfb5136714f7a1e7ba629d556 Mon Sep 17 00:00:00 2001
+From 509be4bfb77ddfea388738a5f974c0d39fb348a7 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:14:28 -0600
 Subject: [PATCH 046/149] OMAP4: hwmod data: Fix bad alignement

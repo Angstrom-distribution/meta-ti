@@ -1,4 +1,4 @@
-From 4e3c37e5871f6ef060ad32c23d5c0300641cb6ac Mon Sep 17 00:00:00 2001
+From 980d73cf2fa9598ac74ecf2e44687dc3e3ef7f12 Mon Sep 17 00:00:00 2001
 From: Jarkko Nikula <jhnikula@gmail.com>
 Date: Tue, 14 Jun 2011 11:23:51 +0000
 Subject: [PATCH 019/149] omap: mcbsp: Drop SPI mode support

@@ -1,4 +1,4 @@
-From ead4460a58caf68513708f027f962e7dc16060a6 Mon Sep 17 00:00:00 2001
+From 64ec35c01d7cdada40434a306c73fab45b94a941 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:15:05 -0600
 Subject: [PATCH 055/149] OMAP4: cm: Remove RESTORE macros to avoid access from SW

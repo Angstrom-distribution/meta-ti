@@ -1,4 +1,4 @@
-From 2fd56de083cbb8ebd7750ac29d462bc38bb6b368 Mon Sep 17 00:00:00 2001
+From 3b35601fafb78e90f1e1b060425de92c96f89505 Mon Sep 17 00:00:00 2001
 From: Andy Green <andy@warmcat.com>
 Date: Sun, 10 Jul 2011 05:27:14 -0600
 Subject: [PATCH 068/149] I2C: OMAP2+: Set hwmod flags to only allow 16-bit accesses to i2c

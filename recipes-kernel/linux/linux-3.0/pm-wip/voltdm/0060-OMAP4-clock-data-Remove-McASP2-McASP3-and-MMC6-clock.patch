@@ -1,4 +1,4 @@
-From a5224876877da3dce7971e82d89a58d58f4917fb Mon Sep 17 00:00:00 2001
+From 5d0ea421320ef81a419365b2fea6b56bf2d41d5e Mon Sep 17 00:00:00 2001
 From: Jon Hunter <jon-hunter@ti.com>
 Date: Sat, 9 Jul 2011 19:14:47 -0600
 Subject: [PATCH 060/149] OMAP4: clock data: Remove McASP2, McASP3 and MMC6 clocks

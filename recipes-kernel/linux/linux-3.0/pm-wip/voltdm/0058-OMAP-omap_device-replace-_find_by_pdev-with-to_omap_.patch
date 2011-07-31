@@ -1,4 +1,4 @@
-From 2033d2c00170e64c9d634cafaf8bd1cf1a5f3ee1 Mon Sep 17 00:00:00 2001
+From 1aab342a5ed4267b9f8565143573eb12efd9f225 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Sat, 9 Jul 2011 19:15:20 -0600
 Subject: [PATCH 058/149] OMAP: omap_device: replace _find_by_pdev() with to_omap_device()

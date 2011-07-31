@@ -1,4 +1,4 @@
-From b91ae2bfe2177464968d9d976008738fff308468 Mon Sep 17 00:00:00 2001
+From 711cbeb575a01ed5869ce3dc011080577c85ea93 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Thu, 14 Jul 2011 11:12:32 -0700
 Subject: [PATCH 135/149] OMAP3+: VP: move voltage scale function pointer into struct voltagedomain

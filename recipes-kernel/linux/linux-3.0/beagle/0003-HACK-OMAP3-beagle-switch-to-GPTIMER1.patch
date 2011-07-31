@@ -1,7 +1,7 @@
-From 20aef531f5693b91f38220e49efff5c258b2e70d Mon Sep 17 00:00:00 2001
+From 6fb29924ac9163320ff5b1c2ef532b8f86d34e40 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 21 Jul 2011 12:59:20 +0200
-Subject: [PATCH 3/3] HACK: OMAP3: beagle: switch to GPTIMER1
+Subject: [PATCH 3/5] HACK: OMAP3: beagle: switch to GPTIMER1
 
 Breaks with B3 and older due to clock noise
 

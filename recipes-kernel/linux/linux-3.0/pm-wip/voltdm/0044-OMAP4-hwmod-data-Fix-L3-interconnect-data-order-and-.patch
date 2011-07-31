@@ -1,4 +1,4 @@
-From 96fade0623664f946eceba792415d3dc78e3ec52 Mon Sep 17 00:00:00 2001
+From f79d33a16e690602eab898dbe7372dea4cc5fe6b Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:14:27 -0600
 Subject: [PATCH 044/149] OMAP4: hwmod data: Fix L3 interconnect data order and alignement

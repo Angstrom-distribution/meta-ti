@@ -1,4 +1,4 @@
-From 15c991d632814077f7dbc6ec0d6ca19433a95986 Mon Sep 17 00:00:00 2001
+From 3c16a851b0bcd1450ceba86fafef41b123181b03 Mon Sep 17 00:00:00 2001
 From: Tony Lindgren <tony@atomide.com>
 Date: Tue, 17 May 2011 03:51:26 -0700
 Subject: [PATCH 003/149] omap: Use separate init_irq functions to avoid cpu_is_omap tests early

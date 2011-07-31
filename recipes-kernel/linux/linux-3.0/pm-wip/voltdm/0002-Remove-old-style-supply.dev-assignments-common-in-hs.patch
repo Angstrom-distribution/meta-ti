@@ -1,4 +1,4 @@
-From e2f6d2c10498469246ca0f4dbdc1909f6b919262 Mon Sep 17 00:00:00 2001
+From 82dc3adeddf254e803dedcf6f1d46ea15a25636f Mon Sep 17 00:00:00 2001
 From: Oleg Drokin <green@linuxhacker.ru>
 Date: Mon, 6 Jun 2011 18:57:08 +0000
 Subject: [PATCH 002/149] Remove old-style supply.dev assignments common in hsmmc init
