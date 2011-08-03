@@ -3,10 +3,10 @@ require x-load.inc
 #FILESPATHPKG_prepend = "x-load-git:x-load-git/${MACHINE}"
 
 PV = "1.5.1"
-PR ="r0"
+PR ="r1"
 PE = "1"
 
-SRCREV_pn-${PN} = "fca7cd29b6821df3e7d8c4369522f2a3d01a5d7b"
+SRCREV_pn-${PN} = "c4289f1bee035dea41536c5ba5e1bc36c7d493c4"
 SRC_URI = "git://gitorious.org/x-loader/x-loader.git;branch=master;protocol=git \
 "
 
