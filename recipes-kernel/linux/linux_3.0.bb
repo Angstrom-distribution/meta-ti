@@ -5,15 +5,15 @@ KERNEL_IMAGETYPE = "uImage"
 
 COMPATIBLE_MACHINE = "(beagleboard)"
 
-# v3.0 tag
-SRCREV_pn-${PN} = "02f8c6aee8df3cdc935e9bdd4f2d020306035dbe"
+# v3.0.1 tag
+SRCREV_pn-${PN} = "94ed5b4788a7cdbe68bc7cb8516972cbebdc8274"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "i"
+MACHINE_KERNEL_PR_append = "j"
 
 FILESPATHPKG_prepend = "linux-3.0:"
 
-SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git;protocol=git \
+SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-3.0.y.git;protocol=git \
             file://pm-wip/voltdm/0001-cleanup-regulator-supply-definitions-in-mach-omap2.patch \
             file://pm-wip/voltdm/0002-Remove-old-style-supply.dev-assignments-common-in-hs.patch \
             file://pm-wip/voltdm/0003-omap-Use-separate-init_irq-functions-to-avoid-cpu_is.patch \
