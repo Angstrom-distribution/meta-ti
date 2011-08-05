@@ -6,10 +6,10 @@ KERNEL_IMAGETYPE = "uImage"
 DEFAULT_PREFERENCE = "-99"
 
 PV = "3.0+3.1rc"
-SRCREV_pn-${PN} = "95b6886526bb510b8370b625a49bc0ab3b8ff10f"
+SRCREV_pn-${PN} = "140d0b2108faebc77c6523296e211e509cb9f5f9"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "h"
+MACHINE_KERNEL_PR_append = "a"
 
 SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git;protocol=git \
             file://beagle/0001-UNFINISHED-OMAP3-beagle-add-support-for-expansionboa.patch \
@@ -18,6 +18,7 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git;pro
             file://madc/0001-Enabling-Hwmon-driver-for-twl4030-madc.patch \
             file://madc/0002-mfd-twl-core-enable-madc-clock.patch \
             file://sgx/0001-ARM-L2-Add-and-export-outer_clean_all.patch \
+            file://fixes/vout.patch \
             file://defconfig"
 
 SRC_URI_append_beagleboard = " file://logo_linux_clut224.ppm \
