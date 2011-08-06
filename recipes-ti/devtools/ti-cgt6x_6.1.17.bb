@@ -1,5 +1,7 @@
 require ti-cgt6x.inc
 
+LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=712a8c64bb70c5ea5fa193faef3bed6f"
+
 PE = "1"
 PV = "6_1_17"
 PVwithdots = "6.1.17"
