@@ -1,0 +1,21 @@
+diff -ur a/packages/gnu/targets/ITarget.xs b/packages/gnu/targets/ITarget.xs
+--- a/packages/gnu/targets/ITarget.xs	2011-08-06 13:24:44.000000000 +0200
++++ b/packages/gnu/targets/ITarget.xs	2011-08-06 13:23:37.000000000 +0200
+@@ -251,7 +251,7 @@
+ 
+     function askLd(target)
+     {
+-        var ldCmd = target.rootDir + "/" + target.GCCTARG + "/bin/ld";
++        var ldCmd = target.rootDir + "/" + target.GCCTARG + "-ld";
+         /* If the ld executable cannot be found, and the prefix is not used,
+          * it's probably a misspelled directory path.
+          */
+@@ -486,7 +486,7 @@
+     tool2cmd["link"] = cmd;
+ 
+     /* define the ar command template */
+-    cmd  = prefix + target.ar.cmd
++    cmd  = prefix + target.GCCTARG + "-ar"
+         + " $(AROPTS_P) " + target.ar.opts
+         + " $@ $(AROPTS_S) $(aropts) $(files)";
+     tool2cmd["ar"] = cmd;
