@@ -3,7 +3,7 @@ HOMEPAGE = "https://www-a.ti.com/downloads/sds_support/TICodegenerationTools/dow
 SECTION = "devel"
 LICENSE = "TI"
 
-LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=712a8c64bb70c5ea5fa193faef3bed6f"
+LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=62f46f1125a152a2e213b414db7ac600"
 
 require ../includes/ti-paths.inc
 require ../includes/ti-staging.inc

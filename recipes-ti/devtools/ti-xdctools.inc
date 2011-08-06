@@ -3,7 +3,7 @@ HOMEPAGE = "http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/r
 SECTION = "devel"
 LICENSE = "BSD, GPLv2"
 
-LIC_FILES_CHKSUM = "file://docs/license/xdc/shelf/package.html;md5=fd6d0bfcac476bd22c1f1525a91c9807"
+LIC_FILES_CHKSUM = "file://docs/license/xdc/shelf/package.html;md5=eace8fa313a140ef178ecfa0f53cc655"
 
 PR = "r2"
 
