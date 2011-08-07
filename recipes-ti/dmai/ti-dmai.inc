@@ -12,8 +12,8 @@ PROVIDES += "ti-dmai-apps"
 
 PE = "1"
 
-SRCREV               ?= "<UNDEFINED_SRCREV>"
-DMAIBRANCH           ?= "<UNDEFINED_DMAIBRANCH>"
+SRCREV               ?= "UNDEFINED_SRCREV"
+DMAIBRANCH           ?= "UNDEFINED_DMAIBRANCH"
 
 S = "${WORKDIR}/${DMAIBRANCH}/davinci_multimedia_application_interface/dmai_${PV}"
 
