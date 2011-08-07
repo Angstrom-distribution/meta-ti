@@ -1,0 +1,47 @@
+diff -ur a/packages/ti/sdo/server/cs/codec.cfg b/packages/ti/sdo/server/cs/codec.cfg
+--- a/packages/ti/sdo/server/cs/codec.cfg	2011-08-07 20:08:57.000000000 +0200
++++ b/packages/ti/sdo/server/cs/codec.cfg	2011-08-07 20:08:10.000000000 +0200
+@@ -7,7 +7,7 @@
+  *  which we'll use to initialize config params and add the codecs to
+  *  the Server.algs array.
+  */
+-    var C6ACCEL = xdc.useModule('ti.c6accel.ce.C6ACCEL');
++/*    var C6ACCEL = xdc.useModule('ti.c6accel.ce.C6ACCEL');
+ 
+         C6ACCEL.serverFxns = "UNIVERSAL_SKEL";
+         C6ACCEL.stubFxns = "UNIVERSAL_STUBS";
+@@ -17,7 +17,7 @@
+         C6ACCEL.alg.codeSection = codeSection;
+         C6ACCEL.alg.udataSection = udataSection;
+         C6ACCEL.alg.dataSection = dataSection;
+-
++*/
+     var AACHEDEC = xdc.useModule('ti.sdo.codecs.aachedec.ce.AACHEDEC');
+ 
+         AACHEDEC.serverFxns = "AUDDEC1_SKEL";
+@@ -151,11 +151,11 @@
+  * algorithms (e.g. stack sizes, priorities, etc.).
+  */
+ Server.algs = [ 
+-    {name: "c6accel", mod: C6ACCEL , threadAttrs: {
++/*    {name: "c6accel", mod: C6ACCEL , threadAttrs: {
+         stackMemId: 0, priority: Server.MINPRI + 3},
+         groupId : 2,
+     },
+-
++*/
+     {name: "aachedec", mod: AACHEDEC , threadAttrs: {
+         stackMemId: 0, priority: Server.MINPRI + 3},
+         groupId : 2,
+diff -ur a/packages/ti/sdo/server/cs/package.xs b/packages/ti/sdo/server/cs/package.xs
+--- a/packages/ti/sdo/server/cs/package.xs	2011-08-07 20:09:31.000000000 +0200
++++ b/packages/ti/sdo/server/cs/package.xs	2011-08-07 20:08:21.000000000 +0200
+@@ -7,7 +7,7 @@
+     // Each codec is validated with the following call:
+     //    validate_one_codec(<package name>, <module name>);
+ 
+-         validate_one_codec( "ti.c6accel", "C6ACCEL" );
++//         validate_one_codec( "ti.c6accel", "C6ACCEL" );
+          validate_one_codec( "ti.sdo.codecs.aachedec", "AACHEDEC" );
+          validate_one_codec( "ti.sdo.codecs.deinterlacer", "I2P" );
+          validate_one_codec( "ti.sdo.codecs.g711dec", "G711DEC" );
