@@ -185,7 +185,7 @@ do_install () {
 
 }
 
-PACKAGES += "ti-dsplink-module"
+PACKAGES =+ "ti-dsplink-module"
 FILES_ti-dsplink-module = "/lib/modules/${KERNEL_VERSION}/kernel/drivers/dsp/dsplinkk.ko" 
 RDEPENDS_ti-dsplink-module += "update-modules"
 
