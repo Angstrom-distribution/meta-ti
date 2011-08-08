@@ -197,3 +197,4 @@ RDEPENDS_ti-codec-engine-examples_append_omapl138 = " ti-dsplink-module"
 FILES_ti-codec-engine-examples = "${installdir}/ti-codec-engine-examples/*"
 INSANE_SKIP_ti-codec-engine-examples = True
 
+FILES_${PN}-dbg += "${installdir}/ti-codec-engine-examples/*/.debug"
