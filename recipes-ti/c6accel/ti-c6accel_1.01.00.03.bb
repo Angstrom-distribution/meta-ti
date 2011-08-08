@@ -1,5 +1,7 @@
 require ti-c6accel.inc
 
+LIC_FILES_CHKSUM = "file://docs/ReleaseNotes_C6Accel.txt;md5=880049ffbd3d0207e90ef5a03d6cc0c3"
+
 SRC_URI[c6accelbin.md5sum] = "0ddf37fd9dad91fa3a914e549da933b9"
 SRC_URI[c6accelbin.sha256sum] = "453399a84bf117bd7a91393242c7c005e2829692db5ede18e4be166c61e4354c"
 
