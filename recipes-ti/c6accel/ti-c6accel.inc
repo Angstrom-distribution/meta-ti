@@ -10,7 +10,7 @@ require recipes-ti/includes/ti-eula-unpack.inc
 
 PLATFORM_omapl138 = "omapl138"
 PLATFORM_omap3 = "omap3530"
-PLATFORM ?= "<UNDEFINED_PLATFORM>"
+PLATFORM ?= "UNDEFINED_PLATFORM"
 
 COMPATIBLE_MACHINE = "(omapl138|omap3)"
 
