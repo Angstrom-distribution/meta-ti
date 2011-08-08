@@ -114,7 +114,8 @@ do_compile () {
             BIOS_INSTALL_DIR="${BIOS_INSTALL_DIR}"\
             LINUXLIBS_INSTALL_DIR="${STAGING_DIR_TARGET}/usr" \
             USER_XDC_PATH="${USER_XDC_PATH}" \
-            CROSS_COMPILE="${TOOLCHAIN_PATH}/bin/${TARGET_PREFIX}" \
+            CROSS_COMPILE="${TOOLCHAIN_PATH}/${TARGET_PREFIX}" \
+            CSTOOL_DIR="${TOOLCHAIN_PATH}" \
             VERBOSE="true" \
             XDAIS_INSTALL_DIR="${XDAIS_INSTALL_DIR}" \
             LINK_INSTALL_DIR="${LINK_INSTALL_DIR}" \

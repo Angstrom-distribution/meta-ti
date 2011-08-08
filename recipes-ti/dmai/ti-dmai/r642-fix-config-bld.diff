@@ -1,0 +1,36 @@
+Index: dmai/packages/config.bld
+===================================================================
+--- dmai/packages/config.bld	(revisione 642)
++++ dmai/packages/config.bld	(copia locale)
+@@ -44,29 +44,9 @@
+ C6X.rootDir = codegen;
+ C6X.platform = xdcplat;
+ 
+-/* User passes in $(CROSS_COMPILE) where $(CROSS_COMPILE)gcc is their compiler
+-   Then the TOOLDIR and LONGNAME are derived based on a regex of CROSS_COMPILE
+-*/
+-var crosscompile = "" + java.lang.System.getenv("CROSS_COMPILE");
++var tooldir = "" + java.lang.System.getenv("CSTOOL_DIR");
++var longName = "" + java.lang.System.getenv("MVTOOL_PREFIX") + "gcc";
+ 
+-var tooldir = "";
+-var longName = "";
+-
+-/* Search CROSS_COMPILE for bin/ If only 1 bin/ is found, set the tooldir to
+-   the path prior to bin/ and the prefix to "bin/" + remainder of path,
+-   else leave the tooldir as "" and set the LONGNAME to the full CROSS_COMPILE
+-   path
+-*/
+-var regex = new RegExp("bin/");
+-var find = crosscompile.split( regex );
+-
+-if (find[0]!=crosscompile && find.length==2) {
+-    tooldir = find[0];
+-    longName = "bin/" + find[1] + "gcc";
+-} else {
+-    longName = crosscompile + "gcc";
+-}
+-
+ /* location of the GCC Arm9 tools */
+ var GCArmv5T = xdc.useModule('gnu.targets.arm.GCArmv5T');
+ GCArmv5T.LONGNAME = longName;

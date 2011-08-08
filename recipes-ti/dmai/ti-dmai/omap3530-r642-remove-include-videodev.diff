@@ -1,0 +1,48 @@
+Index: dmai/packages/ti/sdo/dmai/linux/omap3530/priv/_VideoBuf.h
+===================================================================
+--- dmai/packages/ti/sdo/dmai/linux/omap3530/priv/_VideoBuf.h	(revisione 642)
++++ dmai/packages/ti/sdo/dmai/linux/omap3530/priv/_VideoBuf.h	(copia locale)
+@@ -34,7 +34,6 @@
+ #ifndef ti_sdo_dai_linux_priv__VideoBuf_h_
+ #define ti_sdo_dai_linux_priv__VideoBuf_h_
+ 
+-#include <linux/videodev.h>
+ #include <linux/videodev2.h>
+ 
+ #include <ti/sdo/dmai/BufferGfx.h>
+Index: dmai/packages/ti/sdo/dmai/linux/omap3530/_VideoBuf.c
+===================================================================
+--- dmai/packages/ti/sdo/dmai/linux/omap3530/_VideoBuf.c	(revisione 642)
++++ dmai/packages/ti/sdo/dmai/linux/omap3530/_VideoBuf.c	(copia locale)
+@@ -38,7 +38,6 @@
+ #include <sys/ioctl.h>
+ #include <sys/mman.h>
+ #include <errno.h>
+-#include <linux/videodev.h>
+ #include <linux/videodev2.h>
+ 
+ #include <xdc/std.h>
+Index: dmai/packages/ti/sdo/dmai/linux/omap3530/Capture.c
+===================================================================
+--- dmai/packages/ti/sdo/dmai/linux/omap3530/Capture.c	(revisione 642)
++++ dmai/packages/ti/sdo/dmai/linux/omap3530/Capture.c	(copia locale)
+@@ -40,7 +40,6 @@
+ #include <sys/mman.h>
+ #include <sys/ioctl.h>
+ #include <asm/types.h>
+-#include <linux/videodev.h>
+ #include <linux/videodev2.h>
+ 
+ #include <xdc/std.h>
+Index: dmai/packages/ti/sdo/dmai/linux/omap3530/Display_v4l2.c
+===================================================================
+--- dmai/packages/ti/sdo/dmai/linux/omap3530/Display_v4l2.c	(revisione 642)
++++ dmai/packages/ti/sdo/dmai/linux/omap3530/Display_v4l2.c	(copia locale)
+@@ -38,7 +38,6 @@
+ #include <sys/ioctl.h>
+ #include <sys/mman.h>
+ #include <errno.h>
+-#include <linux/videodev.h>
+ #include <linux/videodev2.h>
+ 
+ #include <xdc/std.h>
