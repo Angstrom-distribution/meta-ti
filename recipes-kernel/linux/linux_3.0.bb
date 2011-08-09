@@ -9,7 +9,7 @@ COMPATIBLE_MACHINE = "(beagleboard)"
 SRCREV_pn-${PN} = "94ed5b4788a7cdbe68bc7cb8516972cbebdc8274"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "j"
+MACHINE_KERNEL_PR_append = "k"
 
 FILESPATHPKG_prepend = "linux-3.0:"
 
@@ -195,6 +195,7 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-3.0.y.git
             file://beagle/0003-HACK-OMAP3-beagle-switch-to-GPTIMER1.patch \
             file://beagle/0004-OMAP3-beagle-HACK-add-in-1GHz-OPP.patch \
             file://beagle/0005-omap3-Add-basic-support-for-720MHz-part.patch \
+            file://beagle/0006-omap-mmc-Adjust-dto-to-eliminate-timeout-errors.patch \
             file://madc/0001-Enabling-Hwmon-driver-for-twl4030-madc.patch \
             file://madc/0002-mfd-twl-core-enable-madc-clock.patch \
             \
