@@ -18,6 +18,7 @@ MACHINE_KERNEL_PR_append = "d"
 inherit module
 
 do_compile() {
+    do_make_scripts
     unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS
 
     case ${SOC_FAMILY} in 
