@@ -200,6 +200,7 @@ do_install() {
     cp -pPrf ${CODEC_SUITE_NAME}/* ${D}${CODEC_INSTALL_DIR_RECIPE}
 }
 
+PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 PACKAGES += "ti-codecs-omap3530-server"
 FILES_ti-codecs-omap3530-server = "${installdir}/ti-codecs-server/*"

@@ -109,6 +109,7 @@ do_install () {
     cp -pPrf ${S}/* ${D}${LPM_INSTALL_DIR_RECIPE}
 }
 
+PACKAGE_ARCH = "${MACHINE_ARCH}"
 PACKAGES += "ti-lpm-module"
 FILES_ti-lpm-module = "/lib/modules/${KERNEL_VERSION}/kernel/drivers/dsp/*lpm*ko"
 RDEPENDS_ti-lpm-module += "ti-dsplink-module"

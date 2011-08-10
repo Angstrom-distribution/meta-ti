@@ -143,6 +143,8 @@ pkg_postinst_${PN} () {
 	fi
 }
 
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+
 INITSCRIPT_NAME = "gstti-init"
 INITSCRIPT_PARAMS = "start 30 5 2 . stop 40 0 1 6 ."
 

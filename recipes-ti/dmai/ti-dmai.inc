@@ -141,6 +141,8 @@ do_install () {
     cp -pPrf ${S}/* ${D}${DMAI_INSTALL_DIR_RECIPE}
 }
 
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+
 PACKAGES += "ti-dmai-apps"
 FILES_ti-dmai-apps = "${installdir}/ti-dmai-apps/*"
 INSANE_SKIP_ti-dmai-apps = True

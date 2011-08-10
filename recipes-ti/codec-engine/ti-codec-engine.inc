@@ -186,6 +186,8 @@ do_install() {
         cp -pPrf ${S}/* ${D}${CE_INSTALL_DIR_RECIPE}
 }
 
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+
 PACKAGES += "ti-codec-engine-examples"
 
 RDEPENDS_ti-codec-engine-examples                 = " ti-cmem-module"
