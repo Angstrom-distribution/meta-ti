@@ -7,14 +7,16 @@ Subject: [PATCH 10/13] rtc-twl: add support for backup battery recharge
  drivers/rtc/rtc-twl.c |   25 +++++++++++++++++++++++++
  1 files changed, 25 insertions(+), 0 deletions(-)
 
+
 diff --git a/drivers/rtc/rtc-twl.c b/drivers/rtc/rtc-twl.c
-index f3e5045..1fe1bc9 100644
+index a64494e..552446b 100644
 --- a/drivers/rtc/rtc-twl.c
 +++ b/drivers/rtc/rtc-twl.c
-@@ -30,6 +30,23 @@
+@@ -30,7 +30,24 @@
  
  #include <linux/i2c/twl.h>
  
+-
 +/*
 + * PM_RECEIVER block register offsets (use TWL4030_MODULE_PM_RECEIVER)
 + */
@@ -32,12 +34,13 @@ index f3e5045..1fe1bc9 100644
 +#define BIT_PM_RECEIVER_BB_CFG_BBISEL_150UA     0x01
 +#define BIT_PM_RECEIVER_BB_CFG_BBISEL_500UA     0x02
 +#define BIT_PM_RECEIVER_BB_CFG_BBISEL_1MA       0x03
- 
++ 
  /*
   * RTC block register offsets (use TWL_MODULE_RTC)
-@@ -495,6 +512,14 @@ static int __devinit twl_rtc_probe(struct platform_device *pdev)
- 	if (ret < 0)
+  */
+@@ -484,6 +501,14 @@ static int __devinit twl_rtc_probe(struct platform_device *pdev)
  		goto out2;
+ 	}
  
 +	/* enable backup battery charging */
 +	/* use a conservative 25uA @ 3.1V */
@@ -47,9 +50,6 @@ index f3e5045..1fe1bc9 100644
 +		BIT_PM_RECEIVER_BB_CFG_BBISEL_25UA,
 +		REG_BB_CFG);
 +
- 	return ret;
- 
- out2:
--- 
-1.6.6.1
+ 	platform_set_drvdata(pdev, rtc);
+ 	return 0;
 

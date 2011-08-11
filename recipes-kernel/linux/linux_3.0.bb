@@ -9,7 +9,7 @@ COMPATIBLE_MACHINE = "(beagleboard)"
 SRCREV_pn-${PN} = "94ed5b4788a7cdbe68bc7cb8516972cbebdc8274"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "k"
+MACHINE_KERNEL_PR_append = "m"
 
 FILESPATHPKG_prepend = "linux-3.0:"
 
@@ -208,10 +208,11 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-3.0.y.git
             file://sakoman/0007-drivers-input-touchscreen-ads7846-return-ENODEV-if-d.patch \
             file://sakoman/0008-Revert-omap2_mcspi-Flush-posted-writes.patch \
             file://sakoman/0009-rtc-twl-Switch-to-using-threaded-irq.patch \
-            file://sakoman/0010-rtc-twl-add-support-for-backup-battery-recharge.patch \
+            file://sakoman/0010-fix-registration-vs-init-order.patch \
             file://sakoman/0011-soc-codecs-Enable-audio-capture-by-default-for-twl40.patch \
             file://sakoman/0012-soc-codecs-twl4030-Turn-on-mic-bias-by-default.patch \
             file://sakoman/0013-omap-mmc-twl4030-move-clock-input-selection-prior-to.patch \
+            file://sakoman/0014-rtc-twl-add-support-for-backup-battery-recharge.patch \
             \
             file://sgx/0001-ARM-L2-Add-and-export-outer_clean_all.patch \
             file://defconfig"
