@@ -9,7 +9,7 @@ COMPATIBLE_MACHINE = "(beagleboard)"
 SRCREV_pn-${PN} = "94ed5b4788a7cdbe68bc7cb8516972cbebdc8274"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "m"
+MACHINE_KERNEL_PR_append = "n"
 
 FILESPATHPKG_prepend = "linux-3.0:"
 
@@ -215,6 +215,10 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-3.0.y.git
             file://sakoman/0014-rtc-twl-add-support-for-backup-battery-recharge.patch \
             \
             file://sgx/0001-ARM-L2-Add-and-export-outer_clean_all.patch \
+            \
+            file://ulcd/0001-omap2-displays-Add-support-for-ThreeFiveCorp-S9700-D.patch \
+            file://ulcd/0002-omap3-beagle-added-lcd-driver.patch \
+            file://ulcd/0003-Make-fbset-show-correct-timing-values.patch \
             file://defconfig"
 
 SRC_URI_append_beagleboard = " file://logo_linux_clut224.ppm \

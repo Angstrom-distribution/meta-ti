@@ -1,0 +1,40 @@
+From a2fa8fa573f44d60d812779cf55e546303dcd6cb Mon Sep 17 00:00:00 2001
+From: Joel A Fernandes <agnel.joel@gmail.com>
+Date: Wed, 17 Aug 2011 00:28:49 -0500
+Subject: [PATCH 3/3] Make fbset show correct timing values
+
+Signed-off-by: Joel A Fernandes <agnel.joel@gmail.com>
+Cc: "Monk, Roger" <r-monk@ti.com>
+---
+ .../omap2/displays/panel-tfc-s9700rtwv35tr01b.c    |    8 +++++++-
+ 1 files changed, 7 insertions(+), 1 deletions(-)
+
+diff --git a/drivers/video/omap2/displays/panel-tfc-s9700rtwv35tr01b.c b/drivers/video/omap2/displays/panel-tfc-s9700rtwv35tr01b.c
+index 796393d..9689a2c 100644
+--- a/drivers/video/omap2/displays/panel-tfc-s9700rtwv35tr01b.c
++++ b/drivers/video/omap2/displays/panel-tfc-s9700rtwv35tr01b.c
+@@ -88,6 +88,12 @@ static int tfc_panel_resume(struct omap_dss_device *dssdev)
+ 	return tfc_panel_enable(dssdev);
+ }
+ 
++static void tfc_panel_get_timings(struct omap_dss_device *dssdev,
++		            struct omap_video_timings *timings)
++{
++	    *timings = dssdev->panel.timings;
++}
++
+ static struct omap_dss_driver tfc_s9700_driver = {
+ 	.probe		= tfc_panel_probe,
+ 	.remove		= tfc_panel_remove,
+@@ -96,7 +102,7 @@ static struct omap_dss_driver tfc_s9700_driver = {
+ 	.disable	= tfc_panel_disable,
+ 	.suspend	= tfc_panel_suspend,
+ 	.resume		= tfc_panel_resume,
+-
++	.get_timings = tfc_panel_get_timings,
+ 	.driver         = {
+ 		.name   = "tfc_s9700_panel",
+ 		.owner  = THIS_MODULE,
+-- 
+1.6.6.1
+
