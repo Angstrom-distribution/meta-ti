@@ -5,13 +5,14 @@ KERNEL_IMAGETYPE = "uImage"
 
 COMPATIBLE_MACHINE = "(beagleboard)"
 
-# v3.0.1 tag
-SRCREV_pn-${PN} = "94ed5b4788a7cdbe68bc7cb8516972cbebdc8274"
+PV = "3.0.3"
+# v3.0.3 tag
+SRCREV_pn-${PN} = "d31bf2883542cd3414674238f94123bd1d9c0b9f"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "o"
+MACHINE_KERNEL_PR_append = "a"
 
-FILESPATHPKG_prepend = "linux-3.0:"
+FILESPATH =. "${FILE_DIRNAME}/linux-3.0:${FILE_DIRNAME}/linux-3.0/${MACHINE}:"
 
 SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-3.0.y.git;protocol=git \
             file://pm-wip/voltdm/0001-cleanup-regulator-supply-definitions-in-mach-omap2.patch \
