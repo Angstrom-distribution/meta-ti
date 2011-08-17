@@ -1,4 +1,4 @@
-From 1fc2bd36acf09d22db63b59985eab1a663855581 Mon Sep 17 00:00:00 2001
+From 807d261326e06903007c95457d6934588a483be0 Mon Sep 17 00:00:00 2001
 From: Jason Kridner <jkridner@beagleboard.org>
 Date: Fri, 5 Aug 2011 18:07:09 +0000
 Subject: [PATCH 2/3] omap3: beagle: added lcd driver

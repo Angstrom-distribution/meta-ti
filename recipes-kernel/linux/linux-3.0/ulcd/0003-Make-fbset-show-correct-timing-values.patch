@@ -1,4 +1,4 @@
-From a2fa8fa573f44d60d812779cf55e546303dcd6cb Mon Sep 17 00:00:00 2001
+From cddc76248e1bec4d8cd345c72fcb0ff7c0e22054 Mon Sep 17 00:00:00 2001
 From: Joel A Fernandes <agnel.joel@gmail.com>
 Date: Wed, 17 Aug 2011 00:28:49 -0500
 Subject: [PATCH 3/3] Make fbset show correct timing values
@@ -10,7 +10,7 @@ Cc: "Monk, Roger" <r-monk@ti.com>
  1 files changed, 7 insertions(+), 1 deletions(-)
 
 diff --git a/drivers/video/omap2/displays/panel-tfc-s9700rtwv35tr01b.c b/drivers/video/omap2/displays/panel-tfc-s9700rtwv35tr01b.c
-index 796393d..9689a2c 100644
+index c2a1a19..6afd4e3 100644
 --- a/drivers/video/omap2/displays/panel-tfc-s9700rtwv35tr01b.c
 +++ b/drivers/video/omap2/displays/panel-tfc-s9700rtwv35tr01b.c
 @@ -88,6 +88,12 @@ static int tfc_panel_resume(struct omap_dss_device *dssdev)
