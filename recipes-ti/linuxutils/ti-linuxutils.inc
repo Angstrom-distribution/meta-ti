@@ -12,6 +12,8 @@ S = "${WORKDIR}/linuxutils_${PV}"
 require recipes-ti/includes/ti-paths.inc
 require recipes-ti/includes/ti-staging.inc
 
+PR = "${MACHINE_KERNEL_PR}"
+
 #This is a kernel module, don't set PR directly
 MACHINE_KERNEL_PR_append = "d"
 
