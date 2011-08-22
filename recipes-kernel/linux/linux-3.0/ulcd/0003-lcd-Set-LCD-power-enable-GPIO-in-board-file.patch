@@ -1,0 +1,49 @@
+From 4b175ec2e08d1fa4a0bbaeb79ee2381164572fba Mon Sep 17 00:00:00 2001
+From: Joel A Fernandes <agnel.joel@gmail.com>
+Date: Thu, 18 Aug 2011 16:19:40 -0500
+Subject: [PATCH 3/4] lcd: Set LCD power-enable GPIO in board file
+
+With this, the ULCD-lite display works with the 3.0 kernel
+
+v2 changes:
+Fixed the beagle_config structure
+
+Signed-off-by: Joel A Fernandes <agnel.joel@gmail.com>
+---
+ arch/arm/mach-omap2/board-omap3beagle.c |    7 +++++++
+ 1 files changed, 7 insertions(+), 0 deletions(-)
+
+diff --git a/arch/arm/mach-omap2/board-omap3beagle.c b/arch/arm/mach-omap2/board-omap3beagle.c
+index b525a5e..6b0afda 100644
+--- a/arch/arm/mach-omap2/board-omap3beagle.c
++++ b/arch/arm/mach-omap2/board-omap3beagle.c
+@@ -85,12 +85,14 @@ static struct {
+ 	int reset_gpio;
+ 	int usr_button_gpio;
+ 	char *lcd_driver_name;
++	int lcd_pwren;
+ } beagle_config = {
+ 	.mmc1_gpio_wp = -EINVAL,
+ 	.usb_pwr_level = GPIOF_OUT_INIT_LOW,
+ 	.reset_gpio = 129,
+ 	.usr_button_gpio = 4,
+ 	.lcd_driver_name = "",
++	.lcd_pwren = 156
+ };
+ 
+ static struct gpio omap3_beagle_rev_gpios[] __initdata = {
+@@ -423,6 +425,11 @@ static void __init beagle_display_init(void)
+ {
+ 	int r;
+ 
++	r = gpio_request_one(beagle_config.lcd_pwren, GPIOF_OUT_INIT_LOW,
++			     "LCD power");
++	if (r < 0)
++		printk(KERN_ERR "Unable to get LCD power enable GPIO\n");
++
+ 	r = gpio_request_one(beagle_dvi_device.reset_gpio, GPIOF_OUT_INIT_LOW,
+ 			     "DVI reset");
+ 	if (r < 0)
+-- 
+1.6.6.1
+

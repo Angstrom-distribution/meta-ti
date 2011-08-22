@@ -10,7 +10,7 @@ PV = "3.0.3"
 SRCREV_pn-${PN} = "d31bf2883542cd3414674238f94123bd1d9c0b9f"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "a"
+MACHINE_KERNEL_PR_append = "b"
 
 FILESPATH =. "${FILE_DIRNAME}/linux-3.0:${FILE_DIRNAME}/linux-3.0/${MACHINE}:"
 
@@ -219,7 +219,8 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-3.0.y.git
             \
             file://ulcd/0001-omap2-displays-Add-support-for-ThreeFiveCorp-S9700-D.patch \
             file://ulcd/0002-omap3-beagle-added-lcd-driver.patch \
-            file://ulcd/0003-Make-fbset-show-correct-timing-values.patch \
+            file://ulcd/0003-lcd-Set-LCD-power-enable-GPIO-in-board-file.patch \
+            file://ulcd/0004-Make-fbset-show-correct-timing-values.patch \
             \
             file://omap4/0001-OMAP-Fix-linking-error-in-twl-common.c-for-OMAP2-3-4.patch \
             \

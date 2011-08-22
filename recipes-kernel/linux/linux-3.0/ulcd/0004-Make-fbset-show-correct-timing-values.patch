@@ -1,7 +1,7 @@
-From cddc76248e1bec4d8cd345c72fcb0ff7c0e22054 Mon Sep 17 00:00:00 2001
+From 1d70480dca0c7648f5f51fad5ffb0e191212615a Mon Sep 17 00:00:00 2001
 From: Joel A Fernandes <agnel.joel@gmail.com>
 Date: Wed, 17 Aug 2011 00:28:49 -0500
-Subject: [PATCH 3/3] Make fbset show correct timing values
+Subject: [PATCH 4/4] Make fbset show correct timing values
 
 Signed-off-by: Joel A Fernandes <agnel.joel@gmail.com>
 Cc: "Monk, Roger" <r-monk@ti.com>

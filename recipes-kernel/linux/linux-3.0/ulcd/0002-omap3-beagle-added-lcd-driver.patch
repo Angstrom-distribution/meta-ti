@@ -1,7 +1,7 @@
-From 807d261326e06903007c95457d6934588a483be0 Mon Sep 17 00:00:00 2001
+From 6b0587615fd0099261d049be17f12eae9f92ae85 Mon Sep 17 00:00:00 2001
 From: Jason Kridner <jkridner@beagleboard.org>
 Date: Fri, 5 Aug 2011 18:07:09 +0000
-Subject: [PATCH 2/3] omap3: beagle: added lcd driver
+Subject: [PATCH 2/4] omap3: beagle: added lcd driver
 
 This enables the tfc_s9700_panel by default.  Needs to be extended to
 redefine the driver name at boot time.
