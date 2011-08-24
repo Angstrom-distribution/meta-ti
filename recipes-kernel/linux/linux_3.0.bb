@@ -10,7 +10,7 @@ PV = "3.0.3"
 SRCREV_pn-${PN} = "d31bf2883542cd3414674238f94123bd1d9c0b9f"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "b"
+MACHINE_KERNEL_PR_append = "c"
 
 FILESPATH =. "${FILE_DIRNAME}/linux-3.0:${FILE_DIRNAME}/linux-3.0/${MACHINE}:"
 
