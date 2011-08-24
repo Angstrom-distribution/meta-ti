@@ -6,10 +6,10 @@ KERNEL_IMAGETYPE = "uImage"
 DEFAULT_PREFERENCE = "-99"
 
 PV = "3.0+3.1rc"
-SRCREV_pn-${PN} = "93ee7a9340d64f20295aacc3fb6a22b759323280"
+SRCREV_pn-${PN} = "fcb8ce5cfe30ca9ca5c9a79cdfe26d1993e65e0c"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "c"
+MACHINE_KERNEL_PR_append = "d"
 
 SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git;protocol=git \
             file://beagle/0001-UNFINISHED-OMAP3-beagle-add-support-for-expansionboa.patch \
