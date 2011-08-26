@@ -20,7 +20,7 @@ After "Step 1" go into the newl created 'setup-scripts' directory and do
 
 This will set it up for the OpenEmbedded-core layout instead of the old OpenEmbedded-dev layout.
 
-Send pull requests to openembedded-core@lists.openembedded.org
+Send pull requests to angstrom-distro-devel@linuxtogo.org
 
 Main layer maintainer: Koen Kooi <koen@dominion.thruhere.net>
 
