@@ -168,7 +168,6 @@ SRC_URI_append_omap3-touchbook = " \
                                   file://0014-backlight-add-PWM-support.patch \
                                   file://0015-Forward-port-TWL4030-BCI-driver-from-2.6.29-to-2.6.3.patch \
                                   file://0016-ARM-OMAP-omap3-touchbook-update-boardfile.patch \
-#                                 file://0017-ARM-OMAP-add-800MHz-OPP-and-remove-125MHz-one.patch \
 "
 
 SRC_URI_append_am3517-crane = " \
