@@ -5,12 +5,12 @@ KERNEL_IMAGETYPE = "uImage"
 
 COMPATIBLE_MACHINE = "(beagleboard)"
 
-PV = "3.0.3"
-# v3.0.3 tag
-SRCREV_pn-${PN} = "d31bf2883542cd3414674238f94123bd1d9c0b9f"
+PV = "3.0.4"
+# v3.0.4 tag
+SRCREV_pn-${PN} = "04aa37b5f943920017ad094e776cd5514b1a9246"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "c"
+MACHINE_KERNEL_PR_append = "a"
 
 FILESPATH =. "${FILE_DIRNAME}/linux-3.0:${FILE_DIRNAME}/linux-3.0/${MACHINE}:"
 
