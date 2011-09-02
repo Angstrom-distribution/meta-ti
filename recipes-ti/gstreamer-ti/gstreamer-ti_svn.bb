@@ -12,8 +12,9 @@ SRCREV = "962"
 # https://gstreamer.ti.com/gf/project/gstreamer_ti/tracker/?action=TrackerItemEdit&tracker_item_id=1208&start=175
 
 SRC_URI = "svn://gforge.ti.com/svn/gstreamer_ti/trunk;module=gstreamer_ti;proto=https;user=anonymous;pswd='' \
-file://gstreamer-ti-rc.sh \
-file://r962-remove-include-videodev.diff \
+           file://gstreamer-ti-rc.sh \
+           file://r962-remove-include-videodev.diff \
+           file://gstti-init.service \
 "
 
 # use local loadmodules.sh for these platform

@@ -15,7 +15,7 @@ require recipes-ti/includes/ti-paths.inc
 require recipes-ti/includes/ti-staging.inc
 
 # Rebuild on kernel change since it links statically to ti-dmai, ti-codec-engine, etc
-PR = "r84+${MACHINE_KERNEL_PR}"
+PR = "r85+${MACHINE_KERNEL_PR}"
 
 DEPENDS = "ti-dmai gstreamer gst-plugins-base"
 
@@ -52,6 +52,10 @@ XDC_PLATFORM_omapl137  = "ti.platforms.evmOMAPL137"
 XDC_PLATFORM_omapl138  = "ti.platforms.evmOMAPL138"
 XDC_PLATFORM          ?= "UNDEFINED_XDC_PLATFORM"
 
+MEMARGS_omap3         = "99M@0x80000000"
+MEMARGS              ?= "UNDEFINED_MEM_ARGS"
+
+export MEMARGS
 export PLATFORM
 export GST_TI_PLATFORM
 export XDC_PLATFORM
@@ -121,8 +125,11 @@ do_install_prepend () {
 
     install -d ${D}${sysconfdir}/init.d/
     install -m 0755  ${WORKDIR}/gstreamer-ti-rc.sh ${D}${sysconfdir}/init.d/gstti-init
-
     sed -i -e 's|<platform>|${PLATFORM}|g' ${D}${sysconfdir}/init.d/gstti-init
+
+	install -d ${D}${base_libdir}/systemd/system
+	install -m 0644 ${WORKDIR}/gstti-init.service ${D}${base_libdir}/systemd/system/
+	sed -i -e 's|<platform>|${PLATFORM}|g' -e 's|MEMARGS|99M@0x80000000|' ${D}${base_libdir}/systemd/system/gstti-init.service
 }
 
 RRECOMMENDS_${PN}_append_dm6446    += "ti-codecs-dm6446-server   ti-cmem-module ti-dsplink-module"
@@ -133,11 +140,19 @@ RRECOMMENDS_${PN}_append_dm365     += "ti-codecs-dm365           ti-cmem-module 
 RRECOMMENDS_${PN}_append_omapl137  += "ti-codecs-omapl137-server ti-cmem-module ti-dsplink-module"
 RRECOMMENDS_${PN}_append_omapl138  += "ti-codecs-omapl138-server ti-cmem-module ti-dsplink-module"
 
-FILES_${PN}     += "${libdir}/gstreamer-0.10/*.so ${sysconfdir} ${installdir}"
+FILES_${PN}     += "${libdir}/gstreamer-0.10/*.so ${sysconfdir} ${installdir} ${base_libdir}/systemd"
 FILES_${PN}-dev += "${libdir}/gstreamer-0.10/*.a ${libdir}/gstreamer-0.10/*.la"
 FILES_${PN}-dbg += "${libdir}/gstreamer-0.10/.debug"
 
 pkg_postinst_${PN} () {
+if test "x$D" != "x"; then
+	echo "Can't run gstreamer-ti postinst offline"
+    exit 1
+fi
+	if [ -e ${base_bindir}/systemctl ] ; then
+		systemctl enable gstti-init.service
+	fi
+
 	if [ -d ${installdir}/ti-codecs-server/ ]; then
         ln -sf ${installdir}/ti-codecs-server/* ${installdir}/gst/${PLATFORM}/
 	fi

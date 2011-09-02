@@ -1,0 +1,10 @@
+[Unit]
+Description=TI Gstreamer plugins init
+ConditionKernelCommandLine=mem=MEMARGS
+
+[Service]
+ExecStart=/usr/share/ti/gst/<platform>/loadmodules.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
