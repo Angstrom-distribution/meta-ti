@@ -1,5 +1,7 @@
 require linux.inc
 
+COMPATIBLE_MACHINE = "omap3"
+
 DESCRIPTION = "Linux kernel for TI processors"
 KERNEL_IMAGETYPE = "uImage"
 
