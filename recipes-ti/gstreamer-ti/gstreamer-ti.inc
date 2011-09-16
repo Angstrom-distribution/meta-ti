@@ -129,7 +129,7 @@ do_install_prepend () {
 
 	install -d ${D}${base_libdir}/systemd/system
 	install -m 0644 ${WORKDIR}/gstti-init.service ${D}${base_libdir}/systemd/system/
-	sed -i -e 's|<platform>|${PLATFORM}|g' -e 's|MEMARGS|99M@0x80000000|' ${D}${base_libdir}/systemd/system/gstti-init.service
+	sed -i -e 's|<platform>|${PLATFORM}|g' -e 's|MEMARGS|${MEMARGS}|' ${D}${base_libdir}/systemd/system/gstti-init.service
 }
 
 RRECOMMENDS_${PN}_append_dm6446    += "ti-codecs-dm6446-server   ti-cmem-module ti-dsplink-module"
