@@ -5,8 +5,8 @@
 
 TAG="v3.0.4"
 EXTRATAG="-3.0"
+PATCHPATH=$(dirname $0)
 
-git fetch mainline
 git am --abort
 git reset --hard ${TAG}
 rm export -rf
@@ -16,7 +16,7 @@ PATCHSET="pm-wip/voltdm pm-wip/cpufreq bias beagle madc sakoman sgx ulcd omap4"
 
 # apply patches
 for patchset in ${PATCHSET} ; do
-	git am $patchset/* && git tag "${patchset}${EXTRATAG}" -f
+	git am $PATCHPATH/$patchset/* && git tag "${patchset}${EXTRATAG}" -f
 done
 
 # export patches and output SRC_URI for them
