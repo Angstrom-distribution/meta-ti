@@ -2,12 +2,13 @@
 # (c) 2009 - 2011 Koen Kooi <koen@dominion.thruhere.net>
 # This script will take a set of directories with patches and make a git tree out of it
 # After all the patches are applied it will output a SRC_URI fragment you can copy/paste into a recipe
+set -e
 
 TAG="v3.0.4"
-EXTRATAG="-3.0"
+EXTRATAG=""
 PATCHPATH=$(dirname $0)
 
-git am --abort
+git am --abort || echo "Do you need to make sure the patches apply cleanly first?"
 git reset --hard ${TAG}
 rm export -rf
 
@@ -16,12 +17,13 @@ PATCHSET="pm-wip/voltdm pm-wip/cpufreq bias beagle madc sakoman sgx ulcd omap4"
 
 # apply patches
 for patchset in ${PATCHSET} ; do
-	git am $PATCHPATH/$patchset/* && git tag "${patchset}${EXTRATAG}" -f
+	git am $PATCHPATH/$patchset/*
+	git tag "${TAG}-${patchset}${EXTRATAG}" -f
 done
 
 # export patches and output SRC_URI for them
 for patchset in ${PATCHSET} ; do
 	mkdir export/$patchset -p
-	( cd export/$patchset && git format-patch ${previous}..${patchset}${EXTRATAG} >& /dev/null && for i in *.patch ; do echo "            file://${patchset}/$i \\" ; done )
-	previous=${patchset}${EXTRATAG}
+	( cd export/$patchset && git format-patch ${previous}..${TAG}-${patchset}${EXTRATAG} >& /dev/null && for i in *.patch ; do echo "            file://${patchset}/$i \\" ; done )
+	previous=${TAG}-${patchset}${EXTRATAG}
 done
