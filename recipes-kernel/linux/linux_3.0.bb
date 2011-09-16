@@ -10,7 +10,7 @@ PV = "3.0.4"
 SRCREV_pn-${PN} = "04aa37b5f943920017ad094e776cd5514b1a9246"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "b"
+MACHINE_KERNEL_PR_append = "c"
 
 FILESPATH =. "${FILE_DIRNAME}/linux-3.0:${FILE_DIRNAME}/linux-3.0/${MACHINE}:"
 
@@ -210,10 +210,8 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-3.0.y.git
             \
             file://sgx/0001-ARM-L2-Add-and-export-outer_clean_all.patch \
             \
-            file://ulcd/0001-omap2-displays-Add-support-for-ThreeFiveCorp-S9700-D.patch \
-            file://ulcd/0002-omap3-beagle-added-lcd-driver.patch \
-            file://ulcd/0003-lcd-Set-LCD-power-enable-GPIO-in-board-file.patch \
-            file://ulcd/0004-Make-fbset-show-correct-timing-values.patch \
+            file://ulcd/0001-OMAP_VOUT-Fix-build-break-caused-by-update_mode-remo.patch \
+            file://ulcd/0002-WIP-omap-beagleboard-add-bbtoys-ulcd-lite-support.patch \
             \
             file://omap4/0001-OMAP-Fix-linking-error-in-twl-common.c-for-OMAP2-3-4.patch \
             \
