@@ -1,0 +1,39 @@
+From 316e3a4573bdbbbc395baeca4f7b2208707e30fa Mon Sep 17 00:00:00 2001
+From: Jason Kridner <jdk@ti.com>
+Date: Wed, 7 Sep 2011 08:56:48 -0400
+Subject: [PATCH 3/3] Increased some timeout durations for MMC and EHCI
+
+---
+ drivers/mmc/omap_hsmmc.c |    2 +-
+ include/usb.h            |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/mmc/omap_hsmmc.c b/drivers/mmc/omap_hsmmc.c
+index ef12ecd..7e35372 100644
+--- a/drivers/mmc/omap_hsmmc.c
++++ b/drivers/mmc/omap_hsmmc.c
+@@ -33,7 +33,7 @@
+ #include <asm/arch/sys_proto.h>
+ 
+ /* If we fail after 1 second wait, something is really bad */
+-#define MAX_RETRY_MS	1000
++#define MAX_RETRY_MS	5000
+ 
+ static int mmc_read_data(hsmmc_t *mmc_base, char *buf, unsigned int size);
+ static int mmc_write_data(hsmmc_t *mmc_base, const char *buf, unsigned int siz);
+diff --git a/include/usb.h b/include/usb.h
+index 06170cd..0d99b92 100644
+--- a/include/usb.h
++++ b/include/usb.h
+@@ -46,7 +46,7 @@
+  * This is the timeout to allow for submitting an urb in ms. We allow more
+  * time for a BULK device to react - some are slow.
+  */
+-#define USB_TIMEOUT_MS(pipe) (usb_pipebulk(pipe) ? 5000 : 1000)
++#define USB_TIMEOUT_MS(pipe) (usb_pipebulk(pipe) ? 5000 : 5000)
+ 
+ /* device request (setup) */
+ struct devrequest {
+-- 
+1.7.4.1
+
