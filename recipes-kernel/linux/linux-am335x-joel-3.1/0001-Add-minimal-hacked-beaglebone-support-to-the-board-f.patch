@@ -1,0 +1,95 @@
+From c8ecfb4e84c80d96c2582430d9ffab996f5ab422 Mon Sep 17 00:00:00 2001
+From: Steve Kipisz <s-kipisz2@ti.com>
+Date: Thu, 6 Oct 2011 15:56:51 -0500
+Subject: [PATCH 1/2] Add minimal hacked beaglebone support to the board file.
+
+---
+ arch/arm/mach-omap2/board-am335xevm.c |   44 ++++++++++++++++++++++++++++++--
+ 1 files changed, 41 insertions(+), 3 deletions(-)
+
+diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
+index 0b91789..0f47b65 100644
+--- a/arch/arm/mach-omap2/board-am335xevm.c
++++ b/arch/arm/mach-omap2/board-am335xevm.c
+@@ -396,6 +396,21 @@ static struct pinmux_config mii1_pin_mux[] = {
+ 	{NULL, 0},
+ };
+ 
++/* Module pin mux for rmii1 */
++static struct pinmux_config rmii1_pin_mux[] = {
++	{"mii1_crs.rmii1_crs_dv", OMAP_MUX_MODE1 | AM335X_PIN_INPUT_PULLDOWN},
++	{"mii1_rxerr.mii1_rxerr", OMAP_MUX_MODE1 | AM335X_PIN_INPUT_PULLDOWN},
++	{"mii1_txen.mii1_txen", OMAP_MUX_MODE1 | AM335X_PIN_OUTPUT},
++	{"mii1_txd1.mii1_txd1", OMAP_MUX_MODE1 | AM335X_PIN_OUTPUT},
++	{"mii1_txd0.mii1_txd0", OMAP_MUX_MODE1 | AM335X_PIN_OUTPUT},
++	{"mii1_rxd1.mii1_rxd1", OMAP_MUX_MODE1 | AM335X_PIN_INPUT_PULLDOWN},
++	{"mii1_rxd0.mii1_rxd0", OMAP_MUX_MODE1 | AM335X_PIN_INPUT_PULLDOWN},
++	{"rmii1_refclk.rmii1_refclk", OMAP_MUX_MODE0 | AM335X_PIN_INPUT_PULLDOWN},
++	{"mdio_data.mdio_data", OMAP_MUX_MODE0 | AM335X_PIN_INPUT_PULLUP},
++	{"mdio_clk.mdio_clk", OMAP_MUX_MODE0 | AM335X_PIN_OUTPUT_PULLUP},
++	{NULL, 0},
++};
++
+ static struct pinmux_config i2c1_pin_mux[] = {
+ 	{"spi0_d1.i2c1_sda",    OMAP_MUX_MODE2 | AM335X_SLEWCTRL_SLOW |
+ 					AM335X_PULL_ENBL | AM335X_INPUT_EN},
+@@ -634,6 +649,12 @@ static void mii1_init(int evm_id, int profile)
+ 	return;
+ }
+ 
++static void rmii1_init(int evm_id, int profile)
++{
++	setup_pin_mux(rmii1_pin_mux);
++	return;
++}
++
+ static void usb0_init(int evm_id, int profile)
+ {
+ 	setup_pin_mux(usb0_pin_mux);
+@@ -816,6 +837,16 @@ static struct evm_dev_cfg ip_phn_evm_dev_cfg[] = {
+ 	{NULL, 0, 0},
+ };
+ 
++/* Beaglebone */
++static struct evm_dev_cfg beaglebone_dev_cfg[] = {
++	{rmii1_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
++	{usb0_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
++	{usb1_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
++	{mmc0_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
++	{i2c1_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
++	{NULL, 0, 0},
++};
++
+ static void setup_low_cost_evm(void)
+ {
+ 	pr_info("The board is a AM335x Low Cost EVM.\n");
+@@ -858,6 +889,13 @@ static void setup_ip_phone_evm(void)
+ 	_configure_device(IP_PHN_EVM, ip_phn_evm_dev_cfg, PROFILE_NONE);
+ }
+ 
++static void setup_beaglebone(void)
++{
++	pr_info("The board is a AM335x Beaglebone.\n");
++
++	_configure_device(LOW_COST_EVM, beaglebone_dev_cfg, PROFILE_NONE);
++}
++
+ static void am335x_setup_daughter_board(struct memory_accessor *m, void *c)
+ {
+ 	u8 tmp;
+@@ -933,9 +971,9 @@ out:
+ 	 * eventually be changed to assume a minimal configuration
+ 	 */
+ 	pr_err("Could not detect any board, falling back to: "
+-		"General purpose EVM in profile 0 with daughter card connected\n");
+-	daughter_brd_detected = true;
+-	setup_general_purpose_evm();
++		"Beaglebone in profile 0 with no daughter card connected\n");
++	daughter_brd_detected = false;
++	setup_beaglebone();
+ 
+ 	/* Initialize cpsw after board detection is completed as board
+ 	 * information is required for configuring phy address and hence
+-- 
+1.6.6.1
+
