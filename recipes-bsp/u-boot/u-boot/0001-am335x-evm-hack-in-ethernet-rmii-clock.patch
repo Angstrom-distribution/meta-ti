@@ -1,0 +1,26 @@
+From 5db18d5efdbdcd52ab33e28929a30f743a202bf8 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Fri, 7 Oct 2011 18:17:50 +0200
+Subject: [PATCH] am335x-evm: hack in ethernet rmii clock
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/am335x_evm.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
+index 543c604..0f806aa 100755
+--- a/include/configs/am335x_evm.h
++++ b/include/configs/am335x_evm.h
+@@ -163,7 +163,7 @@
+ 		"bootm ${loadaddr}\0" \
+ 
+ #define CONFIG_BOOTCOMMAND \
+-	"if mmc rescan; then " \
++	"mw.l 0x44e10650 0x05 ; if mmc rescan; then " \
+ 		"if run loadbootscript; then " \
+ 			"run bootscript; " \
+ 		"else " \
+-- 
+1.6.6.1
+

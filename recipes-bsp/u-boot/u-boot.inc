@@ -64,4 +64,5 @@ do_deploy () {
 
 	cd ${DEPLOY_DIR_IMAGE}
 	rm -f ${UBOOT_SYMLINK}
+	ln -sf ${UBOOT_IMAGE} ${UBOOT_SYMLINK}
 }
