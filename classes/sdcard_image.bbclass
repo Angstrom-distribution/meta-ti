@@ -10,12 +10,12 @@ IMAGE_CMD_sdimg () {
 		losetup -d $loop_dev || true
 	done
 
-	dd if=/dev/zero of=${SDIMG} bs=4k seek=$(echo '256 * 1024' | bc) count=1
+	dd if=/dev/zero of=${SDIMG} bs=$(echo '255 * 63 * 512' | bc) count=444
 	losetup -f ${SDIMG}
 	LOOPDEV=$(losetup -j ${SDIMG} -o 0 | cut -d ":" -f 1)
 
 	# Create partition table
-	dd if=/dev/zero of=${LOOPDEV} bs=1024 count=1024
+	#dd if=/dev/zero of=${LOOPDEV} bs=1024 count=1024
 	SIZE=`fdisk -l ${LOOPDEV} | grep Disk | grep bytes | awk '{print $5}'`
 	CYLINDERS=`echo $SIZE/255/63/512 | bc`
 	{
