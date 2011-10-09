@@ -1,5 +1,7 @@
 require u-boot.inc
 
+PR = "r1"
+
 # No patches for other machines yet
 COMPATIBLE_MACHINE = "(beagleboard)"
 
@@ -7,6 +9,7 @@ SRC_URI = "git://www.denx.de/git/u-boot.git;protocol=git \
            file://2011.09/0001-HACK-beagleboard-config-disable-cache-for-USB.patch \
            file://2011.09/0002-beagleboard-config-enable-gpio-command.patch \
            file://2011.09/0003-Increased-some-timeout-durations-for-MMC-and-EHCI.patch \
+           file://2011.09/0001-beagleboard-probe-DDC-bus-for-expansionboard-EEPROMS.patch \
            file://fw_env.config \
           "
 # v2011.09 tag -> 6ceb0135f96d73063ffbaab5be7ce23933367388

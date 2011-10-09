@@ -1,0 +1,39 @@
+From f6ce74793e6341895153e43643460b7fc812dc9d Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Sat, 8 Oct 2011 21:56:35 +0200
+Subject: [PATCH] beagleboard: add support for TCT Beacon board
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ board/ti/beagle/beagle.c |    8 ++++++++
+ 1 files changed, 8 insertions(+), 0 deletions(-)
+
+diff --git a/board/ti/beagle/beagle.c b/board/ti/beagle/beagle.c
+index 8cdceaf..be40e96 100644
+--- a/board/ti/beagle/beagle.c
++++ b/board/ti/beagle/beagle.c
+@@ -62,6 +62,7 @@ extern volatile struct ehci_hcor *hcor;
+ #define TINCANTOOLS_ZIPPY2		0x02000100
+ #define TINCANTOOLS_TRAINER		0x04000100
+ #define TINCANTOOLS_SHOWDOG		0x03000100
++#define TINCANTOOLS_BEACON		0x05000100
+ #define KBADC_BEAGLEFPGA		0x01000600
+ #define LW_BEAGLETOUCH			0x01000700
+ #define BRAINMUX_LCDOG			0x01000800
+@@ -290,6 +291,13 @@ int misc_init_r(void)
+ 		setenv("defaultdisplay", "showdoglcd");
+ 		setenv("buddy", "showdog");
+ 		break;
++	case TINCANTOOLS_BEACON:
++		printf("Recognized Tincantools Beacon board (rev %d %s)\n",
++			expansion_config.revision,
++			expansion_config.fab_revision);
++		/* Place holder for DSS2 definition for showdog lcd */
++		setenv("buddy", "beacon");
++		break;
+ 	case KBADC_BEAGLEFPGA:
+ 		printf("Recognized KBADC Beagle FPGA board\n");
+ 		MUX_KBADC_BEAGLEFPGA();
+-- 
+1.6.6.1
+
