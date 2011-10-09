@@ -1,7 +1,7 @@
-From 5db18d5efdbdcd52ab33e28929a30f743a202bf8 Mon Sep 17 00:00:00 2001
+From 8bf8cbead1115e2a47b74f53b96272bbacad0df2 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Fri, 7 Oct 2011 18:17:50 +0200
-Subject: [PATCH] am335x-evm: hack in ethernet rmii clock
+Subject: [PATCH 1/5] am335x-evm: hack in ethernet rmii clock
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
