@@ -5,14 +5,23 @@ Subject: [PATCH] beagleboard: add support for TCT Beacon board
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
- board/ti/beagle/beagle.c |    8 ++++++++
- 1 files changed, 8 insertions(+), 0 deletions(-)
+ board/ti/beagle/beagle.c       |   59 ++++++++++++++++++++++++++++++++++++++++
+ board/ti/beagle/beagle.h       |    7 +++++
+ include/configs/omap3_beagle.h |    7 +++++
+ 3 files changed, 73 insertions(+), 0 deletions(-)
 
 diff --git a/board/ti/beagle/beagle.c b/board/ti/beagle/beagle.c
-index 8cdceaf..be40e96 100644
+index 8cdceaf..f4e986c 100644
 --- a/board/ti/beagle/beagle.c
 +++ b/board/ti/beagle/beagle.c
-@@ -62,6 +62,7 @@ extern volatile struct ehci_hcor *hcor;
+@@ -57,11 +57,14 @@ extern volatile struct ehci_hcor *hcor;
+ #define TWL4030_I2C_BUS			0
+ #define EXPANSION_EEPROM_I2C_BUS	1
+ #define EXPANSION_EEPROM_I2C_ADDRESS	0x50
++#define DVI_EDID_I2C_BUS	2
++#define DVI_EDID_I2C_ADDRESS	0x50
+ 
+ #define TINCANTOOLS_ZIPPY		0x01000100
  #define TINCANTOOLS_ZIPPY2		0x02000100
  #define TINCANTOOLS_TRAINER		0x04000100
  #define TINCANTOOLS_SHOWDOG		0x03000100
@@ -20,7 +29,7 @@ index 8cdceaf..be40e96 100644
  #define KBADC_BEAGLEFPGA		0x01000600
  #define LW_BEAGLETOUCH			0x01000700
  #define BRAINMUX_LCDOG			0x01000800
-@@ -290,6 +291,13 @@ int misc_init_r(void)
+@@ -290,6 +331,13 @@ int misc_init_r(void)
  		setenv("defaultdisplay", "showdoglcd");
  		setenv("buddy", "showdog");
  		break;
@@ -28,12 +37,27 @@ index 8cdceaf..be40e96 100644
 +		printf("Recognized Tincantools Beacon board (rev %d %s)\n",
 +			expansion_config.revision,
 +			expansion_config.fab_revision);
-+		/* Place holder for DSS2 definition for showdog lcd */
++		MUX_TINCANTOOLS_BEACON();
 +		setenv("buddy", "beacon");
 +		break;
  	case KBADC_BEAGLEFPGA:
  		printf("Recognized KBADC Beagle FPGA board\n");
  		MUX_KBADC_BEAGLEFPGA();
--- 
-1.6.6.1
-
+diff --git a/board/ti/beagle/beagle.h b/board/ti/beagle/beagle.h
+index 18bfaa8..6a9ad73 100644
+--- a/board/ti/beagle/beagle.h
++++ b/board/ti/beagle/beagle.h
+@@ -456,6 +456,13 @@ const omap3_sysinfo sysinfo = {
+ 	MUX_VAL(CP(MCBSP3_CLKX),    (IEN  | PTU | EN  | M4)) /*GPIO_141*/\
+ 	MUX_VAL(CP(MCBSP1_CLKX),    (IEN  | PTU | EN  | M4)) /*GPIO_162*/
+ 
++#define MUX_TINCANTOOLS_BEACON() \
++	MUX_VAL(CP(MMC2_DAT3),      (IEN  | PTU | EN  | M4)) /*GPIO_135*/\
++	MUX_VAL(CP(MMC2_DAT4),      (IEN  | PTU | EN  | M4)) /*GPIO_136*/\
++	MUX_VAL(CP(MMC2_DAT5),      (IEN  | PTU | EN  | M4)) /*GPIO_137*/\
++	MUX_VAL(CP(MMC2_DAT6),      (IEN  | PTU | EN  | M4)) /*GPIO_138*/\
++	MUX_VAL(CP(MMC2_DAT7),      (IEN  | PTU | EN  | M4)) /*GPIO_139*/\
++
+ #define MUX_KBADC_BEAGLEFPGA() \
+ 	MUX_VAL(CP(MCBSP1_CLKR),    (IEN  | PTU | DIS | M1)) /*MCSPI4_CLK*/\
+ 	MUX_VAL(CP(MCBSP1_DX),      (IDIS | PTU | DIS | M1)) /*MCSPI4_SIMO*/\
