@@ -1,23 +1,20 @@
 DESCRIPTION = "Matrix GUI Application launcher"
 HOMEPAGE = "https://gforge.ti.com/gf/project/matrix-gui-v2/"
+
 LICENSE = "BSD MIT Apache"
+LIC_FILES_CHKSUM = "file://scripts/jquery-1.6.2.min.js;md5=a1a8cb16a060f6280a767187fd22e037"
+
 SECTION = "multimedia"
-PRIORITY = "optional"
 
-PR = "r3"
+PR = "r1"
 
-INITSCRIPT_NAME = "matrix-gui-2.0"
-INITSCRIPT_PARAMS = "defaults 99"
-
-PACKAGE_ARCH = "all"
-
-inherit update-rc.d
+inherit allarch
 
 BRANCH ?= "master"
 SRCREV = "c6db82baffcd96b20e67aa5cfdb4c0c98ef208b9"
 
 SRC_URI = "git://gitorious.org/matrix-gui-v2/matrix-gui-v2.git;protocol=git;branch=${BRANCH} \
-           file://init"
+           file://matrix-gui.service"
 
 require matrix-gui-paths.inc
 
@@ -28,12 +25,15 @@ do_install(){
 	cp -rf ${S}/* ${D}${MATRIX_BASE_DIR}
 
     # Set the proper path in the init script
-    sed -i -e s=__MATRIX_BASE_DIR__=${MATRIX_BASE_DIR}= ${WORKDIR}/init
+    sed -i -e s=__MATRIX_BASE_DIR__=${MATRIX_BASE_DIR}=g ${WORKDIR}/matrix-gui.service
 
-	install -d ${D}${sysconfdir}/init.d
-    install -m 0755 ${WORKDIR}/init ${D}${sysconfdir}/init.d/matrix-gui-2.0
+	install -d ${D}${base_libdir}/systemd/system/
+    install -m 0755 ${WORKDIR}/matrix-gui.service ${D}${base_libdir}/systemd/system/
+
+	# activate it on first boot
+	install -d ${D}${base_libdir}/systemd/system/multi-user.target.wants
+	ln -sf ../matrix-gui.service ${D}${base_libdir}/systemd/system/multi-user.target.wants/
 }
 
-RDEPENDS_${PN} += nodejs
-
-FILES_${PN} += "${MATRIX_BASE_DIR}/*"
+RDEPENDS_${PN} += "nodejs"
+FILES_${PN} += "${MATRIX_BASE_DIR}/* ${base_libdir}/systemd/system"

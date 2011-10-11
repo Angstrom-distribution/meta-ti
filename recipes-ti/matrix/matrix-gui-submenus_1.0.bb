@@ -1,14 +1,12 @@
 DESCRIPTION = "Submenu packages for Matrix GUI v2"
 HOMEPAGE = "https://gforge.ti.com/gf/project/matrixguiv2apps/"
 LICENSE = "CC-BY-SA"
-PRIORITY = "optional"
-
-PR = "r0"
+LIC_FILES_CHKSUM = "file://settings/settings.desktop;md5=a447e92dfe653e63e5b91b305e969d6c"
 
 require matrix-gui-paths.inc
 
 # These packages make submenus in matrix and are not architecture specific
-PACKAGE_ARCH = "all"
+inherit allarch
 
 # List of submenu tarballs to use.  Each tarball contains a desktop file
 # and PNG graphic file for the submenu.
@@ -44,6 +42,9 @@ PACKAGES += "${PN}-arm ${PN}-3d ${PN}-cryptos ${PN}-display ${PN}-ethernet ${PN}
 
 # All submenu packages should depend on matrix-gui being installed
 RDEPENDS +=  matrix-gui
+
+RRECOMMENDS_${PN} = "${PN}-arm ${PN}-3d ${PN}-cryptos ${PN}-display ${PN}-ethernet ${PN}-multimedia ${PN}-power ${PN}-pru ${PN}-qt4 ${PN}-settings ${PN}-usb ${PN}-wifi"
+ALLOW_EMPTY_${PN} = "1"
 
 # Add the files for each submenu package
 FILES_${PN}-arm = "${MATRIX_APP_DIR}/arm/*"

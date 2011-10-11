@@ -1,15 +1,13 @@
 DESCRIPTION = "coming soon descriptions for Matrix v2"
 HOMEPAGE = "https://gforge.ti.com/gf/project/matrixguiv2apps/"
 LICENSE = "CC-BY-SA"
-PRIORITY = "optional"
+LIC_FILES_CHKSUM = "file://comingsoon/comingsoon.desktop;md5=01ebad171fad40705288fcabccc770a2"
 
-PR = "r0"
-
-PACKAGE_ARCH = "all"
+inherit allarch
 
 SRC_URI = "https://gforge.ti.com/gf/download/frsrelease/616/5029/comingsoon_1.0.tar.gz"
 
-S = ${WORKDIR}
+S = "${WORKDIR}"
 
 require matrix-gui-apps.inc
 

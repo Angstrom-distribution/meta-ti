@@ -5,4 +5,3 @@ require matrix-gui-common.inc
 RRECOMMENDS_${PN} = "am-sysinfo"
 
 SRCREV = "275"
-PR = "${INC_PR}.6"

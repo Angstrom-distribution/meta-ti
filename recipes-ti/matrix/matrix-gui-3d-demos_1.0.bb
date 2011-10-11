@@ -1,9 +1,7 @@
 DESCRIPTION = "3D demo descriptions for Matrix v2"
 HOMEPAGE = "https://gforge.ti.com/gf/project/matrixguiv2apps/"
 LICENSE = "CC-BY-SA"
-PRIORITY = "optional"
 
-PR = "r0"
 
 SRC_URI = "https://gforge.ti.com/gf/download/frsrelease/603/5030/3ddemos_1.0.tar.gz"
 

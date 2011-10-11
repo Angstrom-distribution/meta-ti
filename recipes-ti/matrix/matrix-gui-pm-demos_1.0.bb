@@ -1,11 +1,9 @@
 DESCRIPTION = "Power management demo descriptions for Matrix v2"
 HOMEPAGE = "https://gforge.ti.com/gf/project/matrixguiv2apps/"
 LICENSE = "CC-BY-SA"
-PRIORITY = "optional"
 
-PR = "r0"
 
-PACKAGE_ARCH = "all"
+inherit allarch
 
 SRC_URI = "https://gforge.ti.com/gf/download/frsrelease/610/5035/pmdemos_1.0.tar.gz"
 

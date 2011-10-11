@@ -1,11 +1,8 @@
 DESCRIPTION = "Clock setting descriptions for Matrix v2"
 HOMEPAGE = "https://gforge.ti.com/gf/project/matrixguiv2apps/"
 LICENSE = "CC-BY-SA"
-PRIORITY = "optional"
 
-PR = "r0"
-
-PACKAGE_ARCH = "all"
+inherit allarch
 
 SRC_URI = "https://gforge.ti.com/gf/download/frsrelease/612/5031/clocks_1.0.tar.gz"
 

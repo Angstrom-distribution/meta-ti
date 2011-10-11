@@ -1,11 +1,9 @@
 DESCRIPTION = "Qt4 demo descriptions for Matrix v2"
 HOMEPAGE = "https://gforge.ti.com/gf/project/matrixguiv2apps/"
 LICENSE = "CC-BY-SA"
-PRIORITY = "optional"
 
-PR = "r0"
 
-PACKAGE_ARCH = "all"
+inherit allarch
 
 SRC_URI = "https://gforge.ti.com/gf/download/frsrelease/608/5036/qt4demos_1.0.tar.gz"
 
