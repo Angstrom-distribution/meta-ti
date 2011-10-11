@@ -10,7 +10,7 @@ PV = "3.0.6"
 SRCREV_pn-${PN} = "a004e0962a10dfa7fc83dfa4ed4109d1cf84124b"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "a"
+MACHINE_KERNEL_PR_append = "b"
 
 FILESPATH =. "${FILE_DIRNAME}/linux-3.0:${FILE_DIRNAME}/linux-3.0/${MACHINE}:"
 
@@ -214,6 +214,8 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.gi
             \
             file://ulcd/0001-OMAP_VOUT-Fix-build-break-caused-by-update_mode-remo.patch \
             file://ulcd/0002-WIP-omap-beagleboard-add-bbtoys-ulcd-lite-support.patch \
+            file://ulcd/0001-ARM-OMAP2-beagleboard-add-support-for-loopthrough-ex.patch \
+            file://ulcd/0002-LEDS-add-initial-support-for-WS2801-controller.patch \
             \
             file://omap4/0001-OMAP-Fix-linking-error-in-twl-common.c-for-OMAP2-3-4.patch \
             \
