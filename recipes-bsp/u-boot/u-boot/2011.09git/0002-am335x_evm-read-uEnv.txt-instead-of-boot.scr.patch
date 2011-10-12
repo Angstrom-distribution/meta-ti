@@ -1,35 +1,32 @@
-From abf7185e16b2b96db7aa06af56bd84836eff92f6 Mon Sep 17 00:00:00 2001
-From: Jason Kridner <jdk@ti.com>
-Date: Sat, 8 Oct 2011 16:20:50 -0400
-Subject: [PATCH 4/5] am335x_evm: read uEnv.txt instead of boot.scr
+From 527309ca11da0a258479da8443f00de0003c4bf9 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Wed, 12 Oct 2011 10:50:51 +0200
+Subject: [PATCH 2/2] am335x_evm: read uEnv.txt instead of boot.scr
 
-Also restructured the BOOTCMD flow a bit to avoid pointless if/then depth.
-
-I'm considering to respect both boot.scr and uEnv.txt.
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
- include/configs/am335x_evm.h |   30 ++++++++++++++++++------------
- 1 files changed, 18 insertions(+), 12 deletions(-)
+ include/configs/am335x_evm.h |   25 ++++++++++++++-----------
+ 1 files changed, 14 insertions(+), 11 deletions(-)
 
 diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
-index a2e4564..e157fd7 100755
+index dbb412a..5a28724 100755
 --- a/include/configs/am335x_evm.h
 +++ b/include/configs/am335x_evm.h
-@@ -112,6 +112,10 @@
+@@ -116,6 +116,10 @@
  	"loadbootscript=fatload mmc 0 ${script_addr} boot.scr\0" \
  	"bootscript= echo Running bootscript from MMC/SD to set the ENV...; " \
  		"source ${script_addr}\0" \
 +	"bootenv=uEnv.txt\0" \
 +	"loadbootenv=fatload mmc 0 ${loadaddr} ${bootenv}\0" \
 +	"importbootenv=echo Importing environment from mmc ...; " \
-+		"env import -t $loadaddr $filesize\0" \
++			"env import -t $loadaddr $filesize\0" \
  	"mmc_load_uimage_fat=fatload mmc 0 ${loadaddr} ${bootfile}\0" \
  	"mmc_load_uimage=ext2load mmc 0:2 ${loadaddr} /boot/${bootfile}\0" \
  	"bootargs_defaults=setenv bootargs " \
-@@ -161,19 +165,21 @@
- 		"bootm ${loadaddr}\0" \
+@@ -167,18 +171,17 @@
  
  #define CONFIG_BOOTCOMMAND \
--	"mw.l 0x44e10650 0x05 ; if mmc rescan; then " \
+ 	"if mmc rescan; then " \
 -		"if run loadbootscript; then " \
 -			"run bootscript; " \
 -		"else " \
@@ -38,8 +35,6 @@ index a2e4564..e157fd7 100755
 -			"else " \
 -				"run nand_boot; " \
 -			"fi; " \
-+	"mw.l 0x44e10650 0x05 ; " \
-+	"if mmc rescan; then " \
 +		"if run loadbootenv; then " \
 +			"echo Loaded environment from ${bootenv};" \
 +			"run importbootenv; " \
@@ -51,9 +46,7 @@ index a2e4564..e157fd7 100755
 +			"echo Running uenvcmd ...;" \
 +			"run uenvcmd;" \
 +		"fi;" \
-+		"if run mmc_load_uimage; then " \
-+			"run mmc_boot; " \
-+		"fi; " \
++		"run mmc_boot; " \
 +	"fi; " \
 +	"run nand_boot; " \
  
