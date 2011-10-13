@@ -91,13 +91,6 @@ IMAGE_CMD_sdimg () {
 		cp -v ${DEPLOY_DIR_IMAGE}/u-boot-${MACHINE}.$suffix ${WORKDIR}/tmp-mnt-boot/u-boot.$suffix 
 	fi
 
-	# Deprecated, u-boot should load it from ext3 instead
-	if [ -e ${IMAGE_ROOTFS}/boot/uImage ] ; then
-		cp -v ${IMAGE_ROOTFS}/boot/uImage ${WORKDIR}/tmp-mnt-boot
-	else
-		cp -v ${DEPLOY_DIR_IMAGE}/uImage-${MACHINE}.bin ${WORKDIR}/tmp-mnt-boot/uImage
-	fi
-
 	# Cleanup VFAT mount
 	echo "Cleaning up VFAT mount"
 	umount ${WORKDIR}/tmp-mnt-boot
