@@ -20,6 +20,7 @@ IMAGE_INSTALL += " \
 	task-ti-test \
 	evtest \
 	bc \
+	kernel-modules \
 "
 
 CONMANPKGS = "connman connman-plugin-loopback connman-plugin-ethernet connman-plugin-wifi connman-systemd"
