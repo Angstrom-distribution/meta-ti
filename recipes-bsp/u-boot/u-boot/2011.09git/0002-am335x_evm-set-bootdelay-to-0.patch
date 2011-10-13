@@ -1,7 +1,7 @@
 From 481457db4fe870fcbab47fe29cb768daf235fd1f Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 13 Oct 2011 12:17:27 +0200
-Subject: [PATCH 2/2] am335x_evm: set bootdelay to 0
+Subject: [PATCH 2/2] am335x_evm: set bootdelay to 1
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
@@ -17,7 +17,7 @@ index 9ce360d..78c823b 100755
  
  /* set to negative value for no autoboot */
 -#define CONFIG_BOOTDELAY		3
-+#define CONFIG_BOOTDELAY		0
++#define CONFIG_BOOTDELAY		1
  
  #define CONFIG_MMC
  #define CONFIG_NAND

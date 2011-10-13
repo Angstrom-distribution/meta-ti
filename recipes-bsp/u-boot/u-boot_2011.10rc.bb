@@ -4,7 +4,7 @@ require u-boot.inc
 COMPATIBLE_MACHINE = "beaglebone"
 DEFAULT_PREFERENCE_beaglebone = "99"
 PV = "2011.09+git"
-PR = "r5"
+PR = "r6"
 
 # SPL build
 UBOOT_BINARY = "u-boot.img"
