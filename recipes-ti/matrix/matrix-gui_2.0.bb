@@ -6,12 +6,12 @@ LIC_FILES_CHKSUM = "file://scripts/jquery-1.6.2.min.js;md5=a1a8cb16a060f6280a767
 
 SECTION = "multimedia"
 
-PR = "r1"
+PR = "r2"
 
 inherit allarch
 
 BRANCH ?= "master"
-SRCREV = "c6db82baffcd96b20e67aa5cfdb4c0c98ef208b9"
+SRCREV = "9f5d27fec216f223c43b48fa146edf4a4bb7aa24"
 
 SRC_URI = "git://gitorious.org/matrix-gui-v2/matrix-gui-v2.git;protocol=git;branch=${BRANCH} \
            file://matrix-gui.service"

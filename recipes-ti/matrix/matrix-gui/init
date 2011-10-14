@@ -12,21 +12,22 @@ export QWS_MOUSE_PROTO=Tslib:/dev/input/touchscreen0
 case "$1" in
   start)
     chvt 4
-    if [ ! -f /etc/pointercal ] ; then
-        echo -n "Calibrating touchscreen (first time only)"
-        ts_calibrate
-        echo "."
-    fi
 
     # Temporarily create the /dev/input/touchscreen0 symlink if it is
     # not already present.  On devices like am335x the driver does not
     # report the right string in /sys/devices/platform/tsc/input/input0/modalias
     # to match the regular expression in /etc/udev/rules.d/local.rules
     # to have this symlink created automatically.
-    if [ ! -e /dev/input/touchscreen0 ]
+    if [ -e /dev/input/event0 ]
     then
         # assume we are going to use event0
         ln -s /dev/input/event0 /dev/input/touchscreen0
+
+        if [ ! -f /etc/pointercal ] ; then
+            echo -n "Calibrating touchscreen (first time only)"
+            ts_calibrate
+            echo "."
+        fi
     fi
 
 	if [ -e $PIDFILE ]; then

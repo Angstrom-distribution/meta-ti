@@ -39,6 +39,8 @@ do_install(){
 }
 
 PACKAGES += "${PN}-arm ${PN}-3d ${PN}-cryptos ${PN}-display ${PN}-ethernet ${PN}-multimedia ${PN}-power ${PN}-pru ${PN}-qt4 ${PN}-settings ${PN}-usb ${PN}-wifi"
+# This should be automatic, but isn't :(
+PROVIDES += "${PACKAGES}"
 
 # All submenu packages should depend on matrix-gui being installed
 RDEPENDS +=  matrix-gui
