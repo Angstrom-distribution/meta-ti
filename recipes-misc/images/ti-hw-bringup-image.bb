@@ -17,12 +17,7 @@ IMAGE_INSTALL += " \
 	alsa-utils \
 	devmem2 \
 	iw \
-	bonnie++ \
-	hdparm \
-	iozone3 \
-	iperf \
-	lmbench \
-	rt-tests \
+	task-ti-test \
 	evtest \
 	bc \
 "
