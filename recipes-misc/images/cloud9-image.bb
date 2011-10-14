@@ -14,6 +14,7 @@ IMAGE_INSTALL += " \
 	matrix-gui-submenus-usb \
 	vim \
 	procps \
+	beaglebone-tester \
 	"
 
 export IMAGE_BASENAME = "Cloud9-IDE"
