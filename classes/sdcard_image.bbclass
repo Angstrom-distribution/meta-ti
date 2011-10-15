@@ -12,6 +12,10 @@ LOOPDEV ?= "/dev/loop1"
 LOOPDEV_BOOT ?= "/dev/loop2"
 LOOPDEV_FS ?= "/dev/loop3"
 
+# Default to 4GiB images, but use 2GiB images for beaglebone
+SDIMG_SIZE ?= "444" 
+SDIMG_SIZE_beaglebone = "222"
+
 IMAGE_CMD_sdimg () {
 	SDIMG=${WORKDIR}/sd.img
 
@@ -29,7 +33,7 @@ IMAGE_CMD_sdimg () {
 
 	# If an SD image is already present, reuse and reformat it
 	if [ ! -e ${SDIMG} ] ; then
-		dd if=/dev/zero of=${SDIMG} bs=$(echo '255 * 63 * 512' | bc) count=222
+		dd if=/dev/zero of=${SDIMG} bs=$(echo '255 * 63 * 512' | bc) count=${SDIMG_SIZE}
 	fi
 
 	${LOSETUP} ${LOOPDEV} ${SDIMG}
