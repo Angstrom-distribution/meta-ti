@@ -1,0 +1,26 @@
+From 78080b20d8daa8e80f962beeab898d171bcc8eac Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Sun, 16 Oct 2011 09:37:38 +0200
+Subject: [PATCH 3/3] beagleboard: mount rootfs RO instead of RW at boot
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/omap3_beagle.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index a67e5a0..95a134b 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -231,7 +231,7 @@
+ 	"dvimode=640x480MR-16@60\0" \
+ 	"defaultdisplay=dvi\0" \
+ 	"mmcdev=0\0" \
+-	"mmcroot=/dev/mmcblk0p2 rw\0" \
++	"mmcroot=/dev/mmcblk0p2 ro\0" \
+ 	"mmcrootfstype=ext3 rootwait\0" \
+ 	"nandroot=/dev/mtdblock4 rw\0" \
+ 	"nandrootfstype=jffs2\0" \
+-- 
+1.6.6.1
+

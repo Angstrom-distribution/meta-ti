@@ -1,0 +1,26 @@
+From 9f8585887a08e6a9c7ca24c2a9c0e9a8c66a2a54 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Sun, 16 Oct 2011 09:57:06 +0200
+Subject: [PATCH 3/3] am335x-evm: make rootfs RO on boot
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/am335x_evm.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
+index cb45037..5db3d9f 100755
+--- a/include/configs/am335x_evm.h
++++ b/include/configs/am335x_evm.h
+@@ -50,7 +50,7 @@
+ 	"script_addr=0x81900000\0" \
+ 	"console=ttyO0,115200n8\0" \
+ 	"mmc_dev=0\0" \
+-	"mmc_root=/dev/mmcblk0p2 rw\0" \
++	"mmc_root=/dev/mmcblk0p2 ro\0" \
+ 	"nand_root=/dev/mtdblock4 rw\0" \
+ 	"spi_root=/dev/mtdblock4 rw\0" \
+ 	"nor_root=/dev/mtdblock3 rw\0" \
+-- 
+1.6.6.1
+

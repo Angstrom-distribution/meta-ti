@@ -1,6 +1,6 @@
 require u-boot.inc
 
-PR = "r3"
+PR = "r4"
 
 # No patches for other machines yet
 COMPATIBLE_MACHINE = "(beagleboard)"
@@ -12,6 +12,7 @@ SRC_URI = "git://www.denx.de/git/u-boot.git;protocol=git \
            file://2011.09/0001-beagleboard-add-support-for-TCT-Beacon-board.patch \
            file://2011.09/0001-beagleboard-add-support-for-scanning-loop-through-ex.patch \
            file://2011.09/0002-beagleboard-switch-to-ttyO2.patch \
+           file://2011.09/0003-beagleboard-mount-rootfs-RO-instead-of-RW-at-boot.patch \
            file://fw_env.config \
           "
 

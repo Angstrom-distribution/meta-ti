@@ -4,7 +4,7 @@ require u-boot.inc
 COMPATIBLE_MACHINE = "beaglebone"
 DEFAULT_PREFERENCE_beaglebone = "99"
 PV = "2011.09+git"
-PR = "r6"
+PR = "r7"
 
 # SPL build
 UBOOT_BINARY = "u-boot.img"
@@ -14,6 +14,7 @@ UBOOT_SYMLINK = "u-boot-${MACHINE}.img"
 SRC_URI = "git://github.com/trini/u-boot.git;protocol=git;branch=int_am335xpsp_04.06.00.01-v2011.09-for-sdk-05.03.00.00 \
            file://2011.09git/0001-am335x_evm-boot-kernel-from-ext2-3-filesystem.patch \
            file://2011.09git/0002-am335x_evm-set-bootdelay-to-0.patch \
+           file://2011.09git/0003-am335x-evm-make-rootfs-RO-on-boot.patch \
           "
 
 SRCREV = "456880b203bc44c025c374c98fa327b804a9cf64"
