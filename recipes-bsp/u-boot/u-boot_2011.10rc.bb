@@ -1,10 +1,10 @@
 require u-boot.inc
 
 # No patches for other machines yet
-COMPATIBLE_MACHINE = "beaglebone"
-DEFAULT_PREFERENCE_beaglebone = "99"
+COMPATIBLE_MACHINE = "(ti33x)"
+DEFAULT_PREFERENCE_ti33x = "99"
 PV = "2011.09+git"
-PR = "r8"
+PR = "r9"
 
 # SPL build
 UBOOT_BINARY = "u-boot.img"
