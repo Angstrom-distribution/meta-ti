@@ -1,0 +1,10 @@
+[Unit]
+Description=Texas Instruments Matrix GUI
+ConditionPathExists=|__MATRIX_BASE_DIR__
+
+[Service]
+WorkingDirectory=__MATRIX_BASE_DIR__
+ExecStart=/usr/bin/node -- server.js
+
+[Install]
+WantedBy=multi-user.target
