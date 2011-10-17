@@ -4,7 +4,7 @@ require u-boot.inc
 COMPATIBLE_MACHINE = "beaglebone"
 DEFAULT_PREFERENCE_beaglebone = "99"
 PV = "2011.09+git"
-PR = "r7"
+PR = "r8"
 
 # SPL build
 UBOOT_BINARY = "u-boot.img"
@@ -17,7 +17,7 @@ SRC_URI = "git://github.com/trini/u-boot.git;protocol=git;branch=int_am335xpsp_0
            file://2011.09git/0003-am335x-evm-make-rootfs-RO-on-boot.patch \
           "
 
-SRCREV = "456880b203bc44c025c374c98fa327b804a9cf64"
+SRCREV = "3fb65523c5994718b56a3b4b18ddf1ef3ffc02dc"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=1707d6db1d42237583f50183a5651ecb"
 
