@@ -6,4 +6,4 @@ After=storage-gadget-init.service
 ExecStart=/sbin/modprobe g_zero
 
 [Install]
-WantedBy=basic-user.target
+WantedBy=basic.target

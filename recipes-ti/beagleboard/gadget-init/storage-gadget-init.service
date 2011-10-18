@@ -6,4 +6,4 @@ After=dev-mmcblk0p1.device
 ExecStart=/sbin/modprobe g_mass_storage file=/dev/mmcblk0p1 cdrom=0 stall=0 removable=1 nofua=1
 
 [Install]
-WantedBy=basic-user.target
+WantedBy=basic.target
