@@ -16,6 +16,8 @@ LOOPDEV_FS ?= "/dev/loop3"
 SDIMG_SIZE ?= "444" 
 SDIMG_SIZE_beaglebone = "222"
 
+BOOTPARTNAME ?= "${MACHINE}"
+
 IMAGE_CMD_sdimg () {
 	SDIMG=${WORKDIR}/sd.img
 
@@ -61,7 +63,7 @@ IMAGE_CMD_sdimg () {
 
 	${LOSETUP} ${LOOPDEV_BOOT} ${SDIMG} -o ${BOOT_OFFSET} 
 
-	/sbin/mkfs.msdos ${LOOPDEV_BOOT} -n boot $LOOPDEV_BLOCKS
+	/sbin/mkfs.msdos ${LOOPDEV_BOOT} -n ${BOOTPARTNAME} $LOOPDEV_BLOCKS
 
 	# Prepare filesystem partition
 	# Copy ubi used by flashing scripts
