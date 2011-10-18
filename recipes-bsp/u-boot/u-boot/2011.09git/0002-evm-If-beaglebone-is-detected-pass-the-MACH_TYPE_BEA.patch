@@ -1,0 +1,29 @@
+From 17c0530b1539fb8813efc11c60dd87fd9a3a074b Mon Sep 17 00:00:00 2001
+From: Steve Kipisz <s-kipisz2@ti.com>
+Date: Thu, 13 Oct 2011 16:31:26 -0500
+Subject: [PATCH 2/4] evm: If beaglebone is detected, pass the MACH_TYPE_BEAGLEBONE to Linux
+
+Signed-off-by: Steve Kipisz <s-kipisz2@ti.com>
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ board/ti/am335x/evm.c |    4 +++-
+ 1 files changed, 3 insertions(+), 1 deletions(-)
+
+diff --git a/board/ti/am335x/evm.c b/board/ti/am335x/evm.c
+index 95e790b..af34bfd 100755
+--- a/board/ti/am335x/evm.c
++++ b/board/ti/am335x/evm.c
+@@ -447,7 +447,9 @@ static void detect_daughter_board_profile(void)
+ int board_evm_init(void)
+ {
+ 	/* mach type passed to kernel */
+-	if (board_id == IA_BOARD)
++	if (board_id == BONE_BOARD)
++		gd->bd->bi_arch_number = MACH_TYPE_BEAGLEBONE;
++	else if (board_id == IA_BOARD)
+ 		gd->bd->bi_arch_number = MACH_TYPE_TIAM335IAEVM;
+ 	else
+ 		gd->bd->bi_arch_number = MACH_TYPE_TIAM335EVM;
+-- 
+1.6.6.1
+
