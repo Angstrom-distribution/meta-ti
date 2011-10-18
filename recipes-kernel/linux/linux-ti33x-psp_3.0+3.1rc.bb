@@ -11,7 +11,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "master"
 SRCREV = "10a9c95f6713ce4f7db7088443676808ca79a851"
-MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "c+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -27,6 +27,9 @@ SRC_URI += "git://arago-project.org/git/projects/linux-am33x.git;protocol=git;br
 PATCHES_OVER_PSP = " \
 	file://0001-f_rndis-HACK-around-undefined-variables.patch \
 	file://0001-am335x-evm-hack-in-LED-support-for-beaglebone.patch \
+	file://0001-mach-types-Add-new-machine-type-beaglebone-to-mach-t.patch \
+	file://0002-Kconfig-Add-support-for-beaglebone-machine-id.patch \
+	file://0003-am335xevm-Use-new-beaglebone-machine-id.patch \
 	"
 
 SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
