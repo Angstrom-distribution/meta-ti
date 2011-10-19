@@ -10,7 +10,7 @@ PV = "3.0.7"
 SRCREV_pn-${PN} = "62bf7928bfe312ec6cf829b06893eb5649ceaec5"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "a"
+MACHINE_KERNEL_PR_append = "b"
 
 FILESPATH =. "${FILE_DIRNAME}/linux-3.0:${FILE_DIRNAME}/linux-3.0/${MACHINE}:"
 
@@ -192,6 +192,7 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.gi
             file://beagle/0006-omap-mmc-Adjust-dto-to-eliminate-timeout-errors.patch \
             file://beagle/0007-OMAP2-add-cpu-id-register-to-MAC-address-helper.patch \
             file://beagle/0008-HACK-OMAP2-BeagleBoard-Fix-up-random-or-missing-MAC-.patch \
+            file://beagle/0001-ARM-OMAP2-beagleboard-fix-mmc-write-protect-pin-when.patch \
             file://madc/0001-Enabling-Hwmon-driver-for-twl4030-madc.patch \
             file://madc/0002-mfd-twl-core-enable-madc-clock.patch \
             \
