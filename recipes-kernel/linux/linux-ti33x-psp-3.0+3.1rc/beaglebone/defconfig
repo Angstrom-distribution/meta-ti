@@ -2763,7 +2763,7 @@ CONFIG_RTC_DRV_TWL4030=y
 #
 # on-CPU RTC drivers
 #
-# CONFIG_RTC_DRV_OMAP is not set
+CONFIG_RTC_DRV_OMAP=y
 # CONFIG_DMADEVICES is not set
 # CONFIG_AUXDISPLAY is not set
 # CONFIG_UIO is not set
