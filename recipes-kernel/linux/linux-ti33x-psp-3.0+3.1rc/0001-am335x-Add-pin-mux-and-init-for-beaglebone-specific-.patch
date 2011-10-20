@@ -1,16 +1,20 @@
-From f658d7975f2e7232786190002ddd24d6b92ba965 Mon Sep 17 00:00:00 2001
-From: Denys Dmytriyenko <denys@ti.com>
+From 5be793dc9de7e694d9256396aecfdc136c8e2cf6 Mon Sep 17 00:00:00 2001
+From: Joel A Fernandes <joelagnel@ti.com>
 Date: Mon, 17 Oct 2011 02:00:39 -0400
-Subject: [PATCH] am335x-evm: hack in LED support for beaglebone
+Subject: [PATCH] am335x: Add pin mux and init for beaglebone specific devices
 
-Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
-Signed-off-by: Denys Dmytriyenko <denys@ti.com>
+Currently added for following:
+  * User LEDs (added by Koen Kooi <k-kooi@ti.com>)
+  * BeagleBone tester
+
+Signed-off-by: Joel A Fernandes <joelagnel@ti.com>
 ---
- arch/arm/mach-omap2/board-am335xevm.c |   63 +++++++++++++++++++++++++++++++++
- 1 files changed, 63 insertions(+), 0 deletions(-)
+ arch/arm/mach-omap2/board-am335xevm.c |   69 +++++++++++++++++++++++++++++++++
+ arch/arm/mach-omap2/mux33xx.c         |    2 +-
+ 2 files changed, 70 insertions(+), 1 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index 87eec7b..3a3c55b 100644
+index f625510..6beaa23 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
 @@ -17,6 +17,7 @@
@@ -21,7 +25,7 @@ index 87eec7b..3a3c55b 100644
  #include <linux/spi/spi.h>
  #include <linux/spi/flash.h>
  #include <linux/mtd/mtd.h>
-@@ -588,6 +589,58 @@ static struct pinmux_config usb1_pin_mux[] = {
+@@ -590,6 +591,61 @@ static struct pinmux_config usb1_pin_mux[] = {
  	{NULL, 0},
  };
  
@@ -70,24 +74,30 @@ index 87eec7b..3a3c55b 100644
 +		    &leds_gpio,
 +};
 +
-+static struct pinmux_config boneled_pin_mux[] = {
-+    {"gpmc_a5.rgmii2_td0", OMAP_MUX_MODE7 | AM33XX_PIN_OUTPUT}, // gpio 21
-+    {"gpmc_a6.rgmii2_tclk", OMAP_MUX_MODE7 | AM33XX_PIN_OUTPUT}, // gpio22
-+    {"gpmc_a7.rgmii2_rclk", OMAP_MUX_MODE7 | AM33XX_PIN_OUTPUT}, // gpio23
-+    {"gpmc_a8.rgmii2_rd3", OMAP_MUX_MODE7 | AM33XX_PIN_OUTPUT}, // gpio 24
++static struct pinmux_config bone_pin_mux[] = {
++	/* User LED gpios (gpio1_21 to gpio1_24) */
++    {"gpmc_a5.rgmii2_td0", OMAP_MUX_MODE7 | AM33XX_PIN_OUTPUT},
++    {"gpmc_a6.rgmii2_tclk", OMAP_MUX_MODE7 | AM33XX_PIN_OUTPUT},
++    {"gpmc_a7.rgmii2_rclk", OMAP_MUX_MODE7 | AM33XX_PIN_OUTPUT},
++    {"gpmc_a8.rgmii2_rd3", OMAP_MUX_MODE7 | AM33XX_PIN_OUTPUT},
++    /* Grounding gpio1_6 (pin 3 Conn A) signals bone tester to start diag tests */
++    {"gpmc_ad6.gpio1_6", OMAP_MUX_MODE7 | AM33XX_PIN_INPUT_PULLUP},
 +};
 +
  /* Module pin mux for eCAP0 */
  static struct pinmux_config ecap0_pin_mux[] = {
  	{"ecap0_in_pwm0_out.gpio0_7", AM33XX_PIN_OUTPUT},
-@@ -696,6 +749,15 @@ static void tsc_init(int evm_id, int profile)
+@@ -698,6 +754,18 @@ static void tsc_init(int evm_id, int profile)
  		pr_err("failed to register touchscreen device\n");
  }
  
-+static void bone_leds_init(int evm_id, int profil )
++/*
++ * Initialization of BeagleBone specific devices
++ */
++static void bone_init(int evm_id, int profil )
 +{
 +	int err;
-+	setup_pin_mux(boneled_pin_mux);
++	setup_pin_mux(bone_pin_mux);
 +	err = platform_add_devices(bone_devices, ARRAY_SIZE(bone_devices));
 +	if (err)
 +		pr_err("failed to register LEDS\n");
@@ -96,14 +106,27 @@ index 87eec7b..3a3c55b 100644
  static void rgmii1_init(int evm_id, int profile)
  {
  	setup_pin_mux(rgmii1_pin_mux);
-@@ -1101,6 +1163,7 @@ static struct evm_dev_cfg beaglebone_dev_cfg[] = {
+@@ -1103,6 +1171,7 @@ static struct evm_dev_cfg beaglebone_dev_cfg[] = {
  	{usb0_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
  	{usb1_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
  	{mmc0_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
-+	{bone_leds_init,  DEV_ON_BASEBOARD, PROFILE_ALL},
++	{bone_init,	DEV_ON_BASEBOARD, PROFILE_ALL},
  	{NULL, 0, 0},
  };
  
+diff --git a/arch/arm/mach-omap2/mux33xx.c b/arch/arm/mach-omap2/mux33xx.c
+index 0286c4f..f09e827 100644
+--- a/arch/arm/mach-omap2/mux33xx.c
++++ b/arch/arm/mach-omap2/mux33xx.c
+@@ -49,7 +49,7 @@ static struct omap_mux __initdata am33xx_muxmodes[] = {
+ 		NULL, NULL, NULL, NULL),
+ 	_AM33XX_MUXENTRY(GPMC_AD6, 0,
+ 		"gpmc_ad6", "mmc1_dat6", NULL, NULL,
+-		NULL, NULL, NULL, NULL),
++		NULL, NULL, NULL, "gpio1_6"),
+ 	_AM33XX_MUXENTRY(GPMC_AD7, 0,
+ 		"gpmc_ad7", "mmc1_dat7", NULL, NULL,
+ 		NULL, NULL, NULL, NULL),
 -- 
-1.7.0.4
+1.7.1
 
