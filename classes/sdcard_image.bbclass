@@ -16,6 +16,7 @@ LOOPDEV_FS ?= "/dev/loop3"
 SDIMG_SIZE ?= "444" 
 SDIMG_SIZE_beaglebone = "222"
 
+BOOTPARTNAME_beaglebone = "BEAGLE_BONE"
 BOOTPARTNAME ?= "${MACHINE}"
 
 IMAGE_CMD_sdimg () {
