@@ -7,10 +7,11 @@ LIC_FILES_CHKSUM="file://gpl.txt;md5=5b122a36d0f6dc55279a0ebc69f3c60b"
 # only scripts and data
 inherit allarch
 
+PR = "r1"
+
 SRC_URI = "git://github.com/joelagnel/validation-scripts.git;protocol=git \
-           file://0001-Initscript-check-for-run_hardware_tests-in-systemd-u.patch \
           "
-SRCREV = "1b0b8d45cf0718a1768503e8f7616aff6fc3ca03"
+SRCREV = "0806b54c1248b080953402728b0e420243fe844c"
 
 S = "${WORKDIR}/git"
 
