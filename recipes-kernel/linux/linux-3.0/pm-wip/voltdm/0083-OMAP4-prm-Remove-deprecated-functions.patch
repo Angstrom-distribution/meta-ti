@@ -1,4 +1,4 @@
-From 9f79b860c9bf49e39339ab5d619cbc376cff7fdc Mon Sep 17 00:00:00 2001
+From 5b299acba0f1a1ed0003dcea0ae2c8e31b6ee4c7 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:56:31 -0600
 Subject: [PATCH 083/149] OMAP4: prm: Remove deprecated functions

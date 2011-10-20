@@ -1,7 +1,7 @@
-From bbe3f55963a08d3b4a8324abee8e05f25f2d9200 Mon Sep 17 00:00:00 2001
+From 7e4a2721ae775570792653e6749c55156baf85b7 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 11 Oct 2011 13:13:35 +0200
-Subject: [PATCH] ARM: OMAP2: beagleboard: add support for loopthrough expansionboard, make uLCD use it
+Subject: [PATCH 3/4] ARM: OMAP2: beagleboard: add support for loopthrough expansionboard, make uLCD use it
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
  1 files changed, 13 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-omap3beagle.c b/arch/arm/mach-omap2/board-omap3beagle.c
-index 8c0d1a3..7e5558d 100644
+index 8b30b4c..47bc79b 100644
 --- a/arch/arm/mach-omap2/board-omap3beagle.c
 +++ b/arch/arm/mach-omap2/board-omap3beagle.c
 @@ -253,6 +253,7 @@ static void __init omap3_beagle_init_rev(void)
@@ -20,7 +20,7 @@ index 8c0d1a3..7e5558d 100644
  
  #if defined(CONFIG_WL12XX) || defined(CONFIG_WL12XX_MODULE)
  #include <linux/regulator/fixed.h>
-@@ -868,6 +869,15 @@ static int __init expansionboard_setup(char *str)
+@@ -862,6 +863,15 @@ static int __init expansionboard_setup(char *str)
  	return 0;
  }
  
@@ -36,7 +36,7 @@ index 8c0d1a3..7e5558d 100644
  static void __init beagle_opp_init(void)
  {
  	int r = 0;
-@@ -1003,9 +1013,9 @@ static void __init omap3_beagle_init(void)
+@@ -997,9 +1007,9 @@ static void __init omap3_beagle_init(void)
  		platform_device_register(&omap_vwlan_device);
  	}
  
@@ -48,7 +48,7 @@ index 8c0d1a3..7e5558d 100644
  		omap_register_i2c_bus(2, 400,  beagle_i2c2_bbtoys_ulcd,
  							ARRAY_SIZE(beagle_i2c2_bbtoys_ulcd));
  	}
-@@ -1027,6 +1037,7 @@ static void __init omap3_beagle_init(void)
+@@ -1021,6 +1031,7 @@ static void __init omap3_beagle_init(void)
  }
  
  early_param("buddy", expansionboard_setup);

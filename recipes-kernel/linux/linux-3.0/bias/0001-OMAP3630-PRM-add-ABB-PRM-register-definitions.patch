@@ -1,4 +1,4 @@
-From 61a5cf6b9cc7ca0c2c6ae41fb2c68e4562ffd513 Mon Sep 17 00:00:00 2001
+From 2deaccf427c0fa1e87ed764877c03c2b1ba9b913 Mon Sep 17 00:00:00 2001
 From: Mike Turquette <mturquette@ti.com>
 Date: Wed, 29 Jun 2011 17:25:53 -0700
 Subject: [PATCH 1/8] OMAP3630: PRM: add ABB PRM register definitions

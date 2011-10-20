@@ -1,4 +1,4 @@
-From b93f62c84a56b34f1e2245f44f7b5e63bb60c4a5 Mon Sep 17 00:00:00 2001
+From 5dcb26adb60fe59e4c2dc66972e8df3e7d9c1697 Mon Sep 17 00:00:00 2001
 From: Arnd Bergmann <arnd@arndb.de>
 Date: Thu, 30 Jun 2011 12:58:01 +0000
 Subject: [PATCH 021/149] omap2+: fix build regression

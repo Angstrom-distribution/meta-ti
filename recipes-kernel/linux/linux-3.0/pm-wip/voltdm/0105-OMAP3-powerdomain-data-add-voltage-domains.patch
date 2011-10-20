@@ -1,4 +1,4 @@
-From ebfb9f1594bff7976e19b4fa13e17b1ef88eadb1 Mon Sep 17 00:00:00 2001
+From 7648a62e696dc773c337484f9fa31fa37c83cdd3 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Fri, 18 Mar 2011 14:12:18 -0700
 Subject: [PATCH 105/149] OMAP3: powerdomain data: add voltage domains

@@ -1,4 +1,4 @@
-From fe0d54009b2a757db1e43e5fcc1292bdeb42a9e5 Mon Sep 17 00:00:00 2001
+From f298d33d9c793178e21b6494fc909e75330d99e4 Mon Sep 17 00:00:00 2001
 From: Peter Ujfalusi <peter.ujfalusi@ti.com>
 Date: Tue, 7 Jun 2011 10:28:54 +0300
 Subject: [PATCH 024/149] OMAP3: Move common twl configuration to twl-common

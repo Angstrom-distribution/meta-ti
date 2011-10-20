@@ -1,12 +1,11 @@
-From 4573fb9d0d830ba76ff4fcf43353989e597f289f Mon Sep 17 00:00:00 2001
+From efd806bdb387b529f7c971adee6524dbc41e0ba8 Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <steve@sakoman.com>
 Date: Thu, 4 Feb 2010 12:26:22 -0800
-Subject: [PATCH 10/13] rtc-twl: add support for backup battery recharge
+Subject: [PATCH 14/14] rtc-twl: add support for backup battery recharge
 
 ---
- drivers/rtc/rtc-twl.c |   25 +++++++++++++++++++++++++
- 1 files changed, 25 insertions(+), 0 deletions(-)
-
+ drivers/rtc/rtc-twl.c |   27 ++++++++++++++++++++++++++-
+ 1 files changed, 26 insertions(+), 1 deletions(-)
 
 diff --git a/drivers/rtc/rtc-twl.c b/drivers/rtc/rtc-twl.c
 index a64494e..552446b 100644
@@ -52,4 +51,7 @@ index a64494e..552446b 100644
 +
  	platform_set_drvdata(pdev, rtc);
  	return 0;
+ 
+-- 
+1.6.6.1
 

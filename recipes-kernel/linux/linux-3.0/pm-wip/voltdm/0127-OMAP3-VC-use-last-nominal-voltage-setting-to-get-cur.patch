@@ -1,4 +1,4 @@
-From f205166d812b98a1e76a50a128be024207c0d824 Mon Sep 17 00:00:00 2001
+From 7bb694d25f6020c2d91347be8a88e707ac776fdd Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 18 Jul 2011 15:31:00 -0700
 Subject: [PATCH 127/149] OMAP3+: VC: use last nominal voltage setting to get current_vsel

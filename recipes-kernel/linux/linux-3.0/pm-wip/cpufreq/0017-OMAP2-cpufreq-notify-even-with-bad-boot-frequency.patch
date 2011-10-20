@@ -1,4 +1,4 @@
-From b7eba0abd9f95f963fbd84c08a2f79f46037941c Mon Sep 17 00:00:00 2001
+From 2dd7fe3249bc8cbabc1faa46b7a858e401cafd5a Mon Sep 17 00:00:00 2001
 From: Colin Cross <ccross@google.com>
 Date: Mon, 6 Jun 2011 21:05:29 -0500
 Subject: [PATCH 17/19] OMAP2+: cpufreq: notify even with bad boot frequency

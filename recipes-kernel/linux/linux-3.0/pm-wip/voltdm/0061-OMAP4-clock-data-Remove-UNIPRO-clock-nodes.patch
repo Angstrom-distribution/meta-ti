@@ -1,4 +1,4 @@
-From b4dabb9f26cc66fcc03335ac64cc0ca315fcd866 Mon Sep 17 00:00:00 2001
+From 458573ba88efc687c36c46cef92836ba0e7de3f2 Mon Sep 17 00:00:00 2001
 From: Jon Hunter <jon-hunter@ti.com>
 Date: Sat, 9 Jul 2011 19:14:47 -0600
 Subject: [PATCH 061/149] OMAP4: clock data: Remove UNIPRO clock nodes

@@ -1,4 +1,4 @@
-From d1ea061218154da4492ddb5fa3735e5dc449ae88 Mon Sep 17 00:00:00 2001
+From d8d3f4c82b790d2cc392264dd41048b2a95d0245 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Fri, 15 Jul 2011 16:05:12 -0700
 Subject: [PATCH 143/149] OMAP3+: voltage: rename omap_voltage_get_nom_volt -> voltdm_get_voltage

@@ -1,4 +1,4 @@
-From 212ec0afcc7342e4c2cf96ff3e081d46432fc8d3 Mon Sep 17 00:00:00 2001
+From 627e72e631f0a1af0e006fd1bbb0c3b6b64bb0df Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Fri, 1 Jul 2011 22:54:07 +0200
 Subject: [PATCH 036/149] OMAP: hwmod: Move pr_debug to improve the readability

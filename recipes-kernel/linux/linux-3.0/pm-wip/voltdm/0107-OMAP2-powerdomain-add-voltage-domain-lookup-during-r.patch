@@ -1,4 +1,4 @@
-From 54e8d76201ff340526f2d7a6c305fb5a5bbd2d95 Mon Sep 17 00:00:00 2001
+From fb48b30cab3dc3aa1772925320d8564b4a306f78 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 16 Mar 2011 15:52:47 -0700
 Subject: [PATCH 107/149] OMAP2+: powerdomain: add voltage domain lookup during register

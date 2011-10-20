@@ -1,4 +1,4 @@
-From 4673e538bc2a85d37ebe222b6f7500cbc0a340de Mon Sep 17 00:00:00 2001
+From 24b1b0c669d953c277ce267fb4fd78117ffbfa65 Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <steve@sakoman.com>
 Date: Sat, 23 Jan 2010 06:26:54 -0800
 Subject: [PATCH 2/2] mfd: twl-core: enable madc clock

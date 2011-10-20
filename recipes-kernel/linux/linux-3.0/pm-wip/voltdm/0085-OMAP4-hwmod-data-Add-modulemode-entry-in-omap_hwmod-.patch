@@ -1,4 +1,4 @@
-From a4a29c36e63803d0ad78da49578ac4ace909720a Mon Sep 17 00:00:00 2001
+From 79f7ff483cfcd16b48f8546b0327cf7b1038627d Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:56:32 -0600
 Subject: [PATCH 085/149] OMAP4: hwmod data: Add modulemode entry in omap_hwmod structure

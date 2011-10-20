@@ -1,7 +1,7 @@
-From 47282736d78c31ba07a83748b3d8f7a1510e082e Mon Sep 17 00:00:00 2001
+From 1714658473cd1abe2ad5f6fa81119384297a926e Mon Sep 17 00:00:00 2001
 From: archit taneja <archit@ti.com>
 Date: Fri, 5 Aug 2011 07:19:21 +0000
-Subject: [PATCH 1/2] OMAP_VOUT: Fix build break caused by update_mode removal in DSS2
+Subject: [PATCH 1/4] OMAP_VOUT: Fix build break caused by update_mode removal in DSS2
 
 The DSS2 driver does not support the configuration of the update_mode of a
 panel anymore. Remove the setting of update_mode done in omap_vout_probe().
@@ -40,5 +40,5 @@ index 4d07c58..d17d6b6 100644
  	}
  
 -- 
-1.7.4.1
+1.6.6.1
 

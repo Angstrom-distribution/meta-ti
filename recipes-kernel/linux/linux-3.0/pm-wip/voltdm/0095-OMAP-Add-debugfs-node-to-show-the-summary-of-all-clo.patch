@@ -1,4 +1,4 @@
-From b49b248a8109e24a3a115701c3ba27d07e21dc05 Mon Sep 17 00:00:00 2001
+From 7565d23055d7881290d69c226b070b19fc36db43 Mon Sep 17 00:00:00 2001
 From: Jon Hunter <jon-hunter@ti.com>
 Date: Sun, 10 Jul 2011 05:57:33 -0600
 Subject: [PATCH 095/149] OMAP: Add debugfs node to show the summary of all clocks

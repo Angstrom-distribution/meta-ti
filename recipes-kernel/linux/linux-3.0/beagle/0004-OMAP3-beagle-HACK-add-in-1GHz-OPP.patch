@@ -1,7 +1,7 @@
-From c40bba5ed8521183a9498923172d4605f671432b Mon Sep 17 00:00:00 2001
+From f0b5e5f22a295318030f92dc6103118fde35cf6d Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Wed, 25 May 2011 08:57:40 +0200
-Subject: [PATCH 4/5] OMAP3: beagle: HACK! add in 1GHz OPP
+Subject: [PATCH 04/10] OMAP3: beagle: HACK! add in 1GHz OPP
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

@@ -10,7 +10,7 @@ PV = "3.0.7"
 SRCREV_pn-${PN} = "62bf7928bfe312ec6cf829b06893eb5649ceaec5"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "b"
+MACHINE_KERNEL_PR_append = "c"
 
 FILESPATH =. "${FILE_DIRNAME}/linux-3.0:${FILE_DIRNAME}/linux-3.0/${MACHINE}:"
 
@@ -189,10 +189,11 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.gi
             file://beagle/0003-HACK-OMAP3-beagle-switch-to-GPTIMER1.patch \
             file://beagle/0004-OMAP3-beagle-HACK-add-in-1GHz-OPP.patch \
             file://beagle/0005-omap3-Add-basic-support-for-720MHz-part.patch \
-            file://beagle/0006-omap-mmc-Adjust-dto-to-eliminate-timeout-errors.patch \
-            file://beagle/0007-OMAP2-add-cpu-id-register-to-MAC-address-helper.patch \
-            file://beagle/0008-HACK-OMAP2-BeagleBoard-Fix-up-random-or-missing-MAC-.patch \
-            file://beagle/0001-ARM-OMAP2-beagleboard-fix-mmc-write-protect-pin-when.patch \
+            file://beagle/0006-ARM-OMAP2-beagleboard-make-wilink-init-look-more-lik.patch \
+            file://beagle/0007-omap_hsmmc-Set-dto-to-max-value-of-14-to-avoid-SD-Ca.patch \
+            file://beagle/0008-OMAP2-add-cpu-id-register-to-MAC-address-helper.patch \
+            file://beagle/0009-HACK-OMAP2-BeagleBoard-Fix-up-random-or-missing-MAC-.patch \
+            file://beagle/0010-ARM-OMAP2-beagleboard-fix-mmc-write-protect-pin-when.patch \
             file://madc/0001-Enabling-Hwmon-driver-for-twl4030-madc.patch \
             file://madc/0002-mfd-twl-core-enable-madc-clock.patch \
             \
@@ -204,8 +205,8 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.gi
             file://sakoman/0006-drivers-net-smsc911x-return-ENODEV-if-device-is-not-.patch \
             file://sakoman/0007-drivers-input-touchscreen-ads7846-return-ENODEV-if-d.patch \
             file://sakoman/0008-Revert-omap2_mcspi-Flush-posted-writes.patch \
-            file://sakoman/0009-rtc-twl-Switch-to-using-threaded-irq.patch \
-            file://sakoman/0010-fix-registration-vs-init-order.patch \
+            file://sakoman/0009-rtc-twl-Use-threaded-IRQ-remove-IRQ-enable-in-interr.patch \
+            file://sakoman/0010-rtc-twl-Fix-registration-vs.-init-order.patch \
             file://sakoman/0011-soc-codecs-Enable-audio-capture-by-default-for-twl40.patch \
             file://sakoman/0012-soc-codecs-twl4030-Turn-on-mic-bias-by-default.patch \
             file://sakoman/0013-omap-mmc-twl4030-move-clock-input-selection-prior-to.patch \
@@ -215,8 +216,8 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.gi
             \
             file://ulcd/0001-OMAP_VOUT-Fix-build-break-caused-by-update_mode-remo.patch \
             file://ulcd/0002-WIP-omap-beagleboard-add-bbtoys-ulcd-lite-support.patch \
-            file://ulcd/0001-ARM-OMAP2-beagleboard-add-support-for-loopthrough-ex.patch \
-            file://ulcd/0002-LEDS-add-initial-support-for-WS2801-controller.patch \
+            file://ulcd/0003-ARM-OMAP2-beagleboard-add-support-for-loopthrough-ex.patch \
+            file://ulcd/0004-LEDS-add-initial-support-for-WS2801-controller.patch \
             \
             file://omap4/0001-OMAP-Fix-linking-error-in-twl-common.c-for-OMAP2-3-4.patch \
             \

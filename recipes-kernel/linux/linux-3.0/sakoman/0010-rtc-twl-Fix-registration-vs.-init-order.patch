@@ -1,15 +1,7 @@
-From patchwork Wed Jul 27 07:07:21 2011
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Subject: [2/2] rtc: twl: Fix registration vs. init order
-Date: Wed, 27 Jul 2011 07:07:21 -0000
+From 806a0fc320ad8f6c391b6e4a4d872af0ffc17fbc Mon Sep 17 00:00:00 2001
 From: Todd Poynor <toddpoynor@google.com>
-X-Patchwork-Id: 1010892
-Message-Id: <1311750441-5559-2-git-send-email-toddpoynor@google.com>
-To: Alessandro Zummo <a.zummo@towertech.it>
-Cc: rtc-linux@googlegroups.com, linux-omap@vger.kernel.org,
- linux-kernel@vger.kernel.org, Todd Poynor <toddpoynor@google.com>
+Date: Wed, 27 Jul 2011 07:07:21 +0000
+Subject: [PATCH 10/14] rtc: twl: Fix registration vs. init order
 
 Only register as an RTC device after the hardware has been
 successfully initialized.  The RTC class driver will call
@@ -24,13 +16,12 @@ device drvdata set to an unregistered struct rtc_device *
 on probe errors.
 
 Signed-off-by: Todd Poynor <toddpoynor@google.com>
-
 ---
-drivers/rtc/rtc-twl.c |   52 ++++++++++++++++++++++--------------------------
+ drivers/rtc/rtc-twl.c |   52 ++++++++++++++++++++++--------------------------
  1 files changed, 24 insertions(+), 28 deletions(-)
 
 diff --git a/drivers/rtc/rtc-twl.c b/drivers/rtc/rtc-twl.c
-index ece41b9..20687d5 100644
+index 3fee95e..a64494e 100644
 --- a/drivers/rtc/rtc-twl.c
 +++ b/drivers/rtc/rtc-twl.c
 @@ -420,24 +420,12 @@ static struct rtc_class_ops twl_rtc_ops = {
@@ -126,3 +117,6 @@ index ece41b9..20687d5 100644
  	return ret;
  }
  
+-- 
+1.6.6.1
+

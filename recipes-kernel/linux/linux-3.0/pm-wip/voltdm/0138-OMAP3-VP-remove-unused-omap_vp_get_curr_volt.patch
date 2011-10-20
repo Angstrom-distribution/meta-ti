@@ -1,4 +1,4 @@
-From e5090910ddd1810907430f1768c6aefed55acc95 Mon Sep 17 00:00:00 2001
+From 574140f8a6d815c79600447577bf9c38ede6be02 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Fri, 15 Jul 2011 16:38:10 -0700
 Subject: [PATCH 138/149] OMAP3+: VP: remove unused omap_vp_get_curr_volt()

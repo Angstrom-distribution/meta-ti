@@ -1,4 +1,4 @@
-From c43158f7ca6a50ea5dd78b1a021717dbee175137 Mon Sep 17 00:00:00 2001
+From 5ba31c178c6b03776fbc9fa336d01dbd09e174fc Mon Sep 17 00:00:00 2001
 From: Tony Lindgren <tony@atomide.com>
 Date: Tue, 29 Mar 2011 15:54:49 -0700
 Subject: [PATCH 008/149] omap2+: Remove gptimer_wakeup for now

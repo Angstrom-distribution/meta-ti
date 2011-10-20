@@ -1,4 +1,4 @@
-From 3343fed3abebcc5709ebb83438bb86eed2896d89 Mon Sep 17 00:00:00 2001
+From 6c37762ba048bf1756440e7032e2128d081bea00 Mon Sep 17 00:00:00 2001
 From: Paul Walmsley <paul@pwsan.com>
 Date: Sun, 10 Jul 2011 05:56:54 -0600
 Subject: [PATCH 090/149] OMAP2+: clockdomain: add clkdm_in_hwsup()

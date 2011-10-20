@@ -1,7 +1,7 @@
-From 7d5084b0e8d604eb61358b8dd341c9d316071d82 Mon Sep 17 00:00:00 2001
+From 6f003fe8fce7d5ac74bf5caeacb67369f94fdaed Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <steve@sakoman.com>
 Date: Wed, 29 Dec 2010 11:39:16 -0800
-Subject: [PATCH 12/13] soc: codecs: twl4030: Turn on mic bias by default
+Subject: [PATCH 12/14] soc: codecs: twl4030: Turn on mic bias by default
 
 ---
  sound/soc/codecs/twl4030.c |    2 +-

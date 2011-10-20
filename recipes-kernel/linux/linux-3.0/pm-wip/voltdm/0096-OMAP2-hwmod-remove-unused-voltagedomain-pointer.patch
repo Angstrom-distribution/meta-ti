@@ -1,4 +1,4 @@
-From 0931266680c70098211a747b3a6d9e09e574a771 Mon Sep 17 00:00:00 2001
+From e417f95e0df4d6c8182ad93ef0900464fbb0bb41 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 16 Mar 2011 11:02:59 -0700
 Subject: [PATCH 096/149] OMAP2+: hwmod: remove unused voltagedomain pointer

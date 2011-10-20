@@ -1,4 +1,4 @@
-From d69d0d45cda4dc4943b5f2dfbf52ee928e9778dc Mon Sep 17 00:00:00 2001
+From 47ca09682a2c2ce670196443dbb3946057bc39e6 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Fri, 1 Jul 2011 22:54:05 +0200
 Subject: [PATCH 034/149] OMAP2+: hwmod: Fix the HW reset management

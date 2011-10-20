@@ -1,4 +1,4 @@
-From 9e3ee13fa765876a455928d54e7e7b88abd1bf6e Mon Sep 17 00:00:00 2001
+From 35fc68e090a4f4241c7b3488fd24e82b3f839994 Mon Sep 17 00:00:00 2001
 From: Mike Turquette <mturquette@ti.com>
 Date: Wed, 29 Jun 2011 17:25:59 -0700
 Subject: [PATCH 7/8] OMAP3+: ABB: initialization & transition functions

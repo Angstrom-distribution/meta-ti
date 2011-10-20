@@ -1,4 +1,4 @@
-From 7dfdb4d81720a09c11378e655c7132ca9812cace Mon Sep 17 00:00:00 2001
+From b1096b8873a8ffd74a2de22fa2edb6e138bedf83 Mon Sep 17 00:00:00 2001
 From: Jarkko Nikula <jhnikula@gmail.com>
 Date: Fri, 1 Jul 2011 08:52:27 +0000
 Subject: [PATCH 027/149] omap: mcbsp: Remove port number enums

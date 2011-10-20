@@ -1,4 +1,4 @@
-From 8fc283441ae8b825210a988a55a06bcfc5acd99e Mon Sep 17 00:00:00 2001
+From da35165116eabf6149d558b426549784c93af164 Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Wed, 29 Jun 2011 17:25:55 -0700
 Subject: [PATCH 3/8] OMAP3+: PRM: add tranxdone IRQ handlers for ABB

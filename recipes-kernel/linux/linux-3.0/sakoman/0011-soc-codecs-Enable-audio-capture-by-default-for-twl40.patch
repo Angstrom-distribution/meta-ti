@@ -1,7 +1,7 @@
-From 64d570ac8601faae09df34b7a08d3c39ed33a5ae Mon Sep 17 00:00:00 2001
+From 91b5b6e5f13f8044848f788afe3c9ed26eec1cc1 Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <steve@sakoman.com>
 Date: Thu, 17 Dec 2009 12:45:20 -0800
-Subject: [PATCH 11/13] soc: codecs: Enable audio capture by default for twl4030
+Subject: [PATCH 11/14] soc: codecs: Enable audio capture by default for twl4030
 
 ---
  sound/soc/codecs/twl4030.c |    4 ++--

@@ -1,13 +1,7 @@
-From patchwork Wed Jul 27 07:07:20 2011
-Subject: [1/2] rtc: twl: Use threaded IRQ,
- remove IRQ enable in interrupt handler
-Date: Wed, 27 Jul 2011 07:07:20 -0000
+From 8c4508bad147a2eec870b7dd70f94f7aef4e921f Mon Sep 17 00:00:00 2001
 From: Todd Poynor <toddpoynor@google.com>
-X-Patchwork-Id: 1010862
-Message-Id: <1311750441-5559-1-git-send-email-toddpoynor@google.com>
-To: Alessandro Zummo <a.zummo@towertech.it>
-Cc: rtc-linux@googlegroups.com, linux-omap@vger.kernel.org,
- linux-kernel@vger.kernel.org, Todd Poynor <toddpoynor@google.com>
+Date: Wed, 27 Jul 2011 07:07:20 +0000
+Subject: [PATCH 09/14] rtc: twl: Use threaded IRQ, remove IRQ enable in interrupt handler
 
 IRQs disabled on entry to twl_rtc_interrupt is not a consequence
 of LOCKDEP; both twl6030 and twl4030 explicitly disable IRQs
@@ -22,13 +16,12 @@ Also fixes warnings:
   irq nnn handler twl_rtc_interrupt+nnn enabled interrupts
 
 Signed-off-by: Todd Poynor <toddpoynor@google.com>
-
 ---
-drivers/rtc/rtc-twl.c |   14 +++-----------
+ drivers/rtc/rtc-twl.c |   14 +++-----------
  1 files changed, 3 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/rtc/rtc-twl.c b/drivers/rtc/rtc-twl.c
-index 9a81f77..ece41b9 100644
+index f9a2799..3fee95e 100644
 --- a/drivers/rtc/rtc-twl.c
 +++ b/drivers/rtc/rtc-twl.c
 @@ -362,14 +362,6 @@ static irqreturn_t twl_rtc_interrupt(int irq, void *rtc)
@@ -59,3 +52,6 @@ index 9a81f77..ece41b9 100644
  	if (ret < 0) {
  		dev_err(&pdev->dev, "IRQ is not free.\n");
  		goto out1;
+-- 
+1.6.6.1
+

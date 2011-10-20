@@ -1,4 +1,4 @@
-From fa116b7302c8e36484d619b685edb6824f5a5ca3 Mon Sep 17 00:00:00 2001
+From 13fef4c46a5cbd531538c5e83846b05f1369a6c3 Mon Sep 17 00:00:00 2001
 From: Santosh Shilimkar <santosh.shilimkar@ti.com>
 Date: Sat, 9 Jul 2011 20:42:59 -0600
 Subject: [PATCH 065/149] OMAP4: clock data: Keep GPMC clocks always enabled and hardware managed

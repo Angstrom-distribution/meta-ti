@@ -1,4 +1,4 @@
-From ce072ac6bf0df699d354f98006a4260bbcf19384 Mon Sep 17 00:00:00 2001
+From bb7b0da5577dc660cd953a0c664f544f2811917f Mon Sep 17 00:00:00 2001
 From: Tony Lindgren <tony@atomide.com>
 Date: Tue, 29 Mar 2011 15:54:49 -0700
 Subject: [PATCH 015/149] omap2+: Remove omap2_gp_clockevent_set_gptimer

@@ -1,4 +1,4 @@
-From b95bcb8b537f862bfa890640a715b0c16e9b021c Mon Sep 17 00:00:00 2001
+From edd2506bcab63d077b0ac31c5d51c6b3850dc866 Mon Sep 17 00:00:00 2001
 From: Andy Green <andy@warmcat.com>
 Date: Sun, 10 Jul 2011 05:27:14 -0600
 Subject: [PATCH 069/149] I2C: OMAP2+: increase omap_i2c_dev_attr flags from u8 to u32

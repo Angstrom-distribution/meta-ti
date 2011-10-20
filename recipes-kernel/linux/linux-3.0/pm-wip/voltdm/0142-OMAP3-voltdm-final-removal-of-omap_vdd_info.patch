@@ -1,4 +1,4 @@
-From b9454c089d129624b9cf3cab80fe9c41bef3d2df Mon Sep 17 00:00:00 2001
+From 2986b51c38a0c0f3e1d97496758ef781000c9e3c Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Thu, 14 Jul 2011 11:29:06 -0700
 Subject: [PATCH 142/149] OMAP3+: voltdm: final removal of omap_vdd_info

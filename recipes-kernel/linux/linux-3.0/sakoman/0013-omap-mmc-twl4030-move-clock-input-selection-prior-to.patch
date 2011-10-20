@@ -1,7 +1,7 @@
-From 3bf652f3194b3c33644681c01f8294e0997af8bf Mon Sep 17 00:00:00 2001
+From 19ba0d517fb9bf14ecf1557fdd77f79de677104f Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <steve@sakoman.com>
 Date: Sun, 24 Jan 2010 09:33:56 -0800
-Subject: [PATCH 13/13] omap: mmc-twl4030: move clock input selection prior to vcc test
+Subject: [PATCH 13/14] omap: mmc-twl4030: move clock input selection prior to vcc test
 
 otherwise it is not executed on systems that use non-twl regulators
 ---

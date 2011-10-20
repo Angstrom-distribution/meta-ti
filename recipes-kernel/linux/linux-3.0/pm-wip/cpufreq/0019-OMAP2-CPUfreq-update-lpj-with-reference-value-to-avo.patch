@@ -1,4 +1,4 @@
-From e6664ff50ca54539bd904329d38c5b882ec5cfb0 Mon Sep 17 00:00:00 2001
+From 9b352c30c2ddb0dec7f6597148f22ae5bbc27877 Mon Sep 17 00:00:00 2001
 From: Russell King <rmk+kernel@arm.linux.org.uk>
 Date: Mon, 11 Jul 2011 23:10:04 +0530
 Subject: [PATCH 19/19] OMAP2+: CPUfreq: update lpj with reference value to avoid progressive error.

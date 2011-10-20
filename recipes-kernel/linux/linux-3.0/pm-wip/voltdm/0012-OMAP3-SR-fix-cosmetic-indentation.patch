@@ -1,4 +1,4 @@
-From b8242bd79943e805522b715f1a60e72130af5b8c Mon Sep 17 00:00:00 2001
+From 98f0d59201499ec52907464492480bc9d60915b3 Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Mon, 14 Feb 2011 12:33:13 +0530
 Subject: [PATCH 012/149] OMAP3+: SR: fix cosmetic indentation

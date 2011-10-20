@@ -1,4 +1,4 @@
-From 34c219d2ab8537e9d9ec98d8516d352eda68ce7a Mon Sep 17 00:00:00 2001
+From 925027602ce4f4d7f8c9c37dd3690e76267eabc0 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 23 Mar 2011 11:18:08 -0700
 Subject: [PATCH 100/149] OMAP3: voltage: rename "mpu" voltagedomain to "mpu_iva"

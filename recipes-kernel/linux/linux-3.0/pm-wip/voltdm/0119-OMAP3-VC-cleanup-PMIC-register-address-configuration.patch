@@ -1,4 +1,4 @@
-From 46b7e2d23b58717617438f7f060aefbae2f2e355 Mon Sep 17 00:00:00 2001
+From ddca1ad28b86944d1d024b7b1c985f86c5f70109 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Thu, 9 Jun 2011 11:01:55 -0700
 Subject: [PATCH 119/149] OMAP3+: VC: cleanup PMIC register address configuration

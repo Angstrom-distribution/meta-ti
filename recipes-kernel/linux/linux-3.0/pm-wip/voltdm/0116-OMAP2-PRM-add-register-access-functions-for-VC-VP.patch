@@ -1,4 +1,4 @@
-From 23f9fbc8cd14c9330cede0fab2b223a59be78343 Mon Sep 17 00:00:00 2001
+From 98722cef533ce6500c9f39eae2155db24a3157af Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 28 Mar 2011 10:25:12 -0700
 Subject: [PATCH 116/149] OMAP2+: PRM: add register access functions for VC/VP

@@ -1,4 +1,4 @@
-From 59884cb0ac9ab5fc5d0975b291b07a484f2c824f Mon Sep 17 00:00:00 2001
+From c110d6a4682a98c50d98abcb409fefdd5f6611a1 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:56:30 -0600
 Subject: [PATCH 078/149] OMAP2+: hwmod: Init clkdm field at boot time

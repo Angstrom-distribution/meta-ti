@@ -1,4 +1,4 @@
-From 9e5ebd0009cec5a7fb896bb4b8be1233035d25d7 Mon Sep 17 00:00:00 2001
+From 1dd9bfe00db002cace782002ad0b1c73bc58df16 Mon Sep 17 00:00:00 2001
 From: Paul Walmsley <paul@pwsan.com>
 Date: Sat, 9 Jul 2011 18:00:25 -0600
 Subject: [PATCH 028/149] OMAP: dmtimer: add missing include

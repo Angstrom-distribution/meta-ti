@@ -1,4 +1,4 @@
-From 374d86ab1e2f413daf4247b59f0acb5764df41a0 Mon Sep 17 00:00:00 2001
+From 872a3007113d65d07cbc22e5cffc2e9264a7636d Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Thu, 2 Jun 2011 17:28:13 -0700
 Subject: [PATCH 126/149] OMAP3+: PM: VC: handle mutant channel config for OMAP4 MPU channel

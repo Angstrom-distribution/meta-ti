@@ -1,7 +1,7 @@
-From 67f39ef3d73d377b13dbf34bd5170d94f00cc2c2 Mon Sep 17 00:00:00 2001
+From cd24ee61ea78fad5c592f9b1fe58bc4415fd4c5c Mon Sep 17 00:00:00 2001
 From: Jason Kridner <jdk@ti.com>
 Date: Thu, 15 Sep 2011 18:23:02 -0400
-Subject: [PATCH 8/8] HACK: OMAP2+: BeagleBoard: Fix up random or missing MAC addresses for eth0 and wlan0
+Subject: [PATCH 09/10] HACK: OMAP2+: BeagleBoard: Fix up random or missing MAC addresses for eth0 and wlan0
 
 This was borrowed from the Panda implementation at http://patches.linaro.org/777/
 
@@ -22,7 +22,7 @@ Cc: Andy Green <andy@warmcat.com>
  1 files changed, 90 insertions(+), 0 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-omap3beagle.c b/arch/arm/mach-omap2/board-omap3beagle.c
-index 5e1d9f9..9712099 100644
+index 13fffb0..5ffe185 100644
 --- a/arch/arm/mach-omap2/board-omap3beagle.c
 +++ b/arch/arm/mach-omap2/board-omap3beagle.c
 @@ -33,6 +33,8 @@
@@ -152,5 +152,5 @@ index 5e1d9f9..9712099 100644
  }
  
 -- 
-1.7.4.1
+1.6.6.1
 

@@ -1,7 +1,7 @@
-From 846578cb98e201d771098968c7022a125cb6bb07 Mon Sep 17 00:00:00 2001
-From: David Anders <x0132446@ti.com>
-Date: Mon, 22 Aug 2011 11:00:38 -0500
-Subject: [PATCH 2/2] LEDS: add initial support for WS2801 controller
+From 38782c0a69e29fc321f648441221e8fe153eb36b Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Thu, 20 Oct 2011 16:13:16 +0200
+Subject: [PATCH 4/4] LEDS: add initial support for WS2801 controller
 
 This adds initial support for the WS2801 RGB LED controller.
 
@@ -15,10 +15,10 @@ Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
  create mode 100644 drivers/leds/leds-ws2801.c
 
 diff --git a/arch/arm/mach-omap2/board-omap3beagle.c b/arch/arm/mach-omap2/board-omap3beagle.c
-index 787891d..0e73089 100644
+index 47bc79b..016d098 100644
 --- a/arch/arm/mach-omap2/board-omap3beagle.c
 +++ b/arch/arm/mach-omap2/board-omap3beagle.c
-@@ -802,6 +802,11 @@ static struct platform_device leds_gpio = {
+@@ -796,6 +796,11 @@ static struct platform_device leds_gpio = {
  	},
  };
  
@@ -30,8 +30,8 @@ index 787891d..0e73089 100644
  static struct gpio_keys_button gpio_buttons[] = {
  	{
  		.code			= BTN_EXTRA,
-@@ -1018,6 +1023,12 @@ static void __init omap3_beagle_init(void)
- 		lcd_panel.name = beagle_config.lcd_driver_name;
+@@ -1014,6 +1019,12 @@ static void __init omap3_beagle_init(void)
+ 							ARRAY_SIZE(beagle_i2c2_bbtoys_ulcd));
  	}
  
 +	if(!strcmp(expansionboard_name, "beacon"))
@@ -74,7 +74,7 @@ index bbfd2e3..14f849e 100644
  obj-$(CONFIG_LEDS_DAC124S085)		+= leds-dac124s085.o
 diff --git a/drivers/leds/leds-ws2801.c b/drivers/leds/leds-ws2801.c
 new file mode 100644
-index 0000000..17d0666
+index 0000000..9526a84
 --- /dev/null
 +++ b/drivers/leds/leds-ws2801.c
 @@ -0,0 +1,159 @@

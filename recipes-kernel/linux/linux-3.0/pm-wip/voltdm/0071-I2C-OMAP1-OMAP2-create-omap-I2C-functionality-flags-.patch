@@ -1,4 +1,4 @@
-From 15b22d1849cfad56d430e6bf45bec6432dfb61b2 Mon Sep 17 00:00:00 2001
+From 855e6dbd730acb59e12cf7d0f41fe22bb5b81f48 Mon Sep 17 00:00:00 2001
 From: Andy Green <andy@warmcat.com>
 Date: Sun, 10 Jul 2011 05:27:15 -0600
 Subject: [PATCH 071/149] I2C: OMAP1/OMAP2+: create omap I2C functionality flags for each cpu_... test

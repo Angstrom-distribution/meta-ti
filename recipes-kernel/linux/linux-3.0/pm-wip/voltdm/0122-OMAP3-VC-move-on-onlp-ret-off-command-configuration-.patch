@@ -1,4 +1,4 @@
-From 26969b97a76681b65ce20fa9e034f3fa4abfb1bd Mon Sep 17 00:00:00 2001
+From afddf3b902d667963c9fad95b69c7318a6cafd97 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Tue, 29 Mar 2011 15:14:38 -0700
 Subject: [PATCH 122/149] OMAP3+: VC: move on/onlp/ret/off command configuration into common init

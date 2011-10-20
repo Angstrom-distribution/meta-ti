@@ -1,4 +1,4 @@
-From 06b361fe80883a12c586e75ab37713d93dfa6f78 Mon Sep 17 00:00:00 2001
+From 3685b19f9ee67549df2323a5203c1e5a639c3883 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:15:06 -0600
 Subject: [PATCH 056/149] OMAP4: prcm_mpu: Fix indent in few macros
