@@ -1,9 +1,0 @@
-[Unit]
-Description=Hokey Pokey modprobe dance to get the USB host port working
-After=storage-gadget-init.service
-
-[Service]
-ExecStart=/sbin/modprobe g_zero
-
-[Install]
-WantedBy=basic.target
