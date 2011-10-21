@@ -4,7 +4,7 @@ require u-boot.inc
 COMPATIBLE_MACHINE = "(ti33x)"
 DEFAULT_PREFERENCE_ti33x = "99"
 PV = "2011.09+git"
-PR = "r12"
+PR = "r13"
 
 # SPL build
 UBOOT_BINARY = "u-boot.img"
@@ -21,7 +21,7 @@ SRC_URI = "git://arago-project.org/git/projects/u-boot-am33x.git;protocol=git;br
            file://2011.09git/0004-am335x-evm-fall-back-to-bone-if-header.config-is-emp.patch \
           "
 
-SRCREV = "066e4c106677e9243bd7ae26e638f8d98e1f0606"
+SRCREV = "9158d7f37d596b867039345cb2e3f8f18f54fe46"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=1707d6db1d42237583f50183a5651ecb"
 
