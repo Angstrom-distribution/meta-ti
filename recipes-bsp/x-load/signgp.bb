@@ -13,6 +13,8 @@ do_install() {
 	install -m 0755 signGP ${D}${bindir}
 }
 
+S = "${WORKDIR}"
+
 NATIVE_INSTALL_WORKS = "1"
 
 BBCLASSEXTEND = "native nativesdk"
