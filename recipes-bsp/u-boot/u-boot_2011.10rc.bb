@@ -4,7 +4,7 @@ require u-boot.inc
 COMPATIBLE_MACHINE = "(ti33x)"
 DEFAULT_PREFERENCE_ti33x = "99"
 PV = "2011.09+git"
-PR = "r14"
+PR = "r15"
 
 # SPL build
 UBOOT_BINARY = "u-boot.img"
@@ -18,6 +18,7 @@ SRC_URI = "git://arago-project.org/git/projects/u-boot-am33x.git;protocol=git;br
            file://2011.09git/0001-mach-types-Add-new-beaglebone-machine-type.patch \
            file://2011.09git/0003-am335x_evm-single-byte-address-EEPROM-for-board-iden.patch \
            file://2011.09git/0004-am335x-evm-fall-back-to-bone-if-header.config-is-emp.patch \
+           file://2011.09git/0005-am335x-evm-Read-name-field-in-EEPROM-header-for-Beag.patch \
           "
 
 SRCREV = "9158d7f37d596b867039345cb2e3f8f18f54fe46"

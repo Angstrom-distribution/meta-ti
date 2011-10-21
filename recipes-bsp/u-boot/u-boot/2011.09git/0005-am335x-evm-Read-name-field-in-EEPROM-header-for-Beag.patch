@@ -1,0 +1,28 @@
+From 186250ee6abca3f080b5321504a1c5881ffbf7c6 Mon Sep 17 00:00:00 2001
+From: Joel A Fernandes <joelagnel@ti.com>
+Date: Thu, 20 Oct 2011 19:46:53 -0500
+Subject: [PATCH] am335x-evm: Read name field in EEPROM header for BeagleBoard bone detection
+
+Signed-off-by: Joel A Fernandes <joelagnel@ti.com>
+---
+ board/ti/am335x/evm.c |    4 ++++
+ 1 files changed, 4 insertions(+), 0 deletions(-)
+
+diff --git a/board/ti/am335x/evm.c b/board/ti/am335x/evm.c
+index 37e348f..b63dcbe 100755
+--- a/board/ti/am335x/evm.c
++++ b/board/ti/am335x/evm.c
+@@ -501,6 +501,10 @@ int board_init(void)
+ 		detect_daughter_board_profile();
+ 	} else if (!strncmp("SKU#03", header.config, 6)) {
+ 		board_id = IPP_BOARD;
++	} else if (!strncmp("A335BONE", header.name, 8)) {
++		board_id = BONE_BOARD;
++		profile = 1;	/* profile 0 is internally considered as 1 */
++		daughter_board_connected = 0;
+ 	} else {
+ 		printf("Did not find a recognized configuration, "
+ 			"assuming BeagleBone\n");
+-- 
+1.7.1
+
