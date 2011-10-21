@@ -3,6 +3,8 @@ HOMEPAGE = "https://gforge.ti.com/gf/project/matrixguiv2apps/"
 LICENSE = "CC-BY-SA"
 LIC_FILES_CHKSUM = "file://settings/settings.desktop;md5=a447e92dfe653e63e5b91b305e969d6c"
 
+PR = "r3"
+
 require matrix-gui-paths.inc
 
 # These packages make submenus in matrix and are not architecture specific
@@ -14,7 +16,7 @@ SRC_URI = "https://gforge.ti.com/gf/download/frsrelease/589/5037/arm.tar.gz;name
            https://gforge.ti.com/gf/download/frsrelease/588/5038/3d.tar.gz;name=3dtarball \
            https://gforge.ti.com/gf/download/frsrelease/591/5039/cryptos.tar.gz;name=cryptostarball \
            https://gforge.ti.com/gf/download/frsrelease/592/5040/display.tar.gz;name=displaytarball \
-           https://gforge.ti.com/gf/download/frsrelease/593/5041/ethernet.tar.gz;name=ethernettarball \
+           https://gforge.ti.com/gf/download/frsrelease/666/5088/ethernet_1.2.tar.gz;name=ethernettarball \
            https://gforge.ti.com/gf/download/frsrelease/594/5042/multimedia.tar.gz;name=multimediatarball \
            https://gforge.ti.com/gf/download/frsrelease/595/5043/power.tar.gz;name=powertarball \
            https://gforge.ti.com/gf/download/frsrelease/596/5044/pru.tar.gz;name=prutarball \
@@ -22,12 +24,13 @@ SRC_URI = "https://gforge.ti.com/gf/download/frsrelease/589/5037/arm.tar.gz;name
            https://gforge.ti.com/gf/download/frsrelease/598/5046/settings.tar.gz;name=settingstarball \
            https://gforge.ti.com/gf/download/frsrelease/599/5047/usb.tar.gz;name=usbtarball \
            https://gforge.ti.com/gf/download/frsrelease/600/5048/wifi.tar.gz;name=wifitarball \
+           https://gforge.ti.com/gf/download/frsrelease/662/5068/oprofile.tar.gz;name=oprofiletarball \
 "
 
 S = ${WORKDIR}
 
 # List of submenus to build packages for
-SUBMENUS = "arm 3d cryptos display ethernet multimedia power pru qt4 settings usb wifi"
+SUBMENUS = "arm 3d cryptos display ethernet multimedia power pru qt4 settings usb wifi oprofile"
 
 do_install(){
 	install -d ${D}${MATRIX_APP_DIR}
@@ -38,15 +41,13 @@ do_install(){
     done
 }
 
-PACKAGES += "${PN}-arm ${PN}-3d ${PN}-cryptos ${PN}-display ${PN}-ethernet ${PN}-multimedia ${PN}-power ${PN}-pru ${PN}-qt4 ${PN}-settings ${PN}-usb ${PN}-wifi"
+PACKAGES += "${PN}-arm ${PN}-3d ${PN}-cryptos ${PN}-display ${PN}-ethernet ${PN}-multimedia ${PN}-power ${PN}-pru ${PN}-qt4 ${PN}-settings ${PN}-usb ${PN}-wifi ${PN}-oprofile"
+
 # This should be automatic, but isn't :(
 PROVIDES += "${PACKAGES}"
 
 # All submenu packages should depend on matrix-gui being installed
 RDEPENDS +=  matrix-gui
-
-RRECOMMENDS_${PN} = "${PN}-arm ${PN}-3d ${PN}-cryptos ${PN}-display ${PN}-ethernet ${PN}-multimedia ${PN}-power ${PN}-pru ${PN}-qt4 ${PN}-settings ${PN}-usb ${PN}-wifi"
-ALLOW_EMPTY_${PN} = "1"
 
 # Add the files for each submenu package
 FILES_${PN}-arm = "${MATRIX_APP_DIR}/arm/*"
@@ -61,6 +62,7 @@ FILES_${PN}-qt4 = "${MATRIX_APP_DIR}/qt4/*"
 FILES_${PN}-settings = "${MATRIX_APP_DIR}/settings/*"
 FILES_${PN}-usb = "${MATRIX_APP_DIR}/usb/*"
 FILES_${PN}-wifi = "${MATRIX_APP_DIR}/wifi/*"
+FILES_${PN}-oprofile = "${MATRIX_APP_DIR}/oprofile/*"
 
 # checksums for the submenu tarballs
 SRC_URI[armtarball.md5sum] = "ed7d73441e0d85e84aa6df06d86e9d72"
@@ -75,8 +77,8 @@ SRC_URI[cryptostarball.sha256um] = "f4c1645bf858dc157d4efae3ca66e437310294bfd564
 SRC_URI[displaytarball.md5sum] = "aa72fc22aa550b48ab32e28b2f8cbbcf"
 SRC_URI[displaytarball.sha256sum] = "593a7f91226b10b1f37fdf85c0d70c8aaf4a690df50ae364c422dbc2c586352b"
 
-SRC_URI[ethernettarball.md5sum] = "2a8afa6b2666d210eb9ac3c48dd173c0"
-SRC_URI[ethernettarball.sha256sum] = "1f78b81b043f4ed75b89697ad4609b5752a804300a094b279bc0391464c8af8d"
+SRC_URI[ethernettarball.md5sum] = "3e8e9e38bf6a755ea4f839f45654d29f"
+SRC_URI[ethernettarball.sha256sum] = "af78982d3c1bd745eef50728b00815eb602c642b99ade83f03e4f1b51e24c188"
 
 SRC_URI[multimediatarball.md5sum] = "8ef64f7b252633d6b2f74561f047f874"
 SRC_URI[multimediatarball.sha256sum] = "e093c06b7bb40e51ab42ef1d896008d3ba3463629532bd0dcc1417368b73054b"
@@ -98,3 +100,6 @@ SRC_URI[usbtarball.sha256sum] = "384f733ef1b6808a29a0cfd102ab1ec766913fc88bfa587
 
 SRC_URI[wifitarball.md5sum] = "f6ee538c77ac1ea7a502955e7e3cc624"
 SRC_URI[wifitarball.sha256sum] = "83edd8cf1c6efbfaa8c2e25b4a984ff6587aa7e379b833810452cb47ff5a6200"
+
+SRC_URI[oprofiletarball.md5sum] = "bc4f93018910817bab79eef4e0e20564"
+SRC_URI[oprofiletarball.sha256sum] = "67803d1bee995496d4b632aaf2dc731d58f6826cc45b79f5545d1a8ffb3d2583"
