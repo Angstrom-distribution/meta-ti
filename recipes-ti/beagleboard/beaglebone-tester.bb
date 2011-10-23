@@ -7,11 +7,11 @@ LIC_FILES_CHKSUM="file://gpl.txt;md5=5b122a36d0f6dc55279a0ebc69f3c60b"
 # only scripts and data
 inherit allarch
 
-PR = "r1"
+PR = "r2"
 
 SRC_URI = "git://github.com/joelagnel/validation-scripts.git;protocol=git \
           "
-SRCREV = "0806b54c1248b080953402728b0e420243fe844c"
+SRCREV = "fdeaf580e553a0968b777e75306aac3f6a73519e"
 
 S = "${WORKDIR}/git"
 
@@ -44,7 +44,7 @@ FILES_${PN} += "${base_libdir}/systemd \
                 /boot \
                "
 
-RDEPENDS_${PN} = "iputils"
+RDEPENDS_${PN} = "iputils memtester"
 RRECOMMENDS_${PN} = "kernel-module-g-zero \
                      kernel-module-g-file-storage \
                      kernel-module-smsc95xx"
