@@ -1,0 +1,57 @@
+From 8d0697f8962ef52e06012101efdea7713e0e5055 Mon Sep 17 00:00:00 2001
+From: Joel A Fernandes <joelagnel@ti.com>
+Date: Sat, 22 Oct 2011 12:56:44 -0500
+Subject: [PATCH 2/3] at24: Add ability to dynamically reconfigure chip information
+
+As some EEPROMs are used for board name detection, it is not possible to detect
+in advance which EEPROM type is connected without detecting the board first.
+
+In board-a335xevm.c, we use a trial and error approach and this requires for us
+to reconfigure the driver with a new 'eeprom_info' structure different from any
+earlier ones that were passed.
+
+We add new accessor functions to the at24 driver to help with this.
+
+Signed-off-by: Joel A Fernandes <joelagnel@ti.com>
+---
+ drivers/misc/eeprom/at24.c |   11 +++++++++++
+ include/linux/i2c/at24.h   |    3 +++
+ 2 files changed, 14 insertions(+), 0 deletions(-)
+
+diff --git a/drivers/misc/eeprom/at24.c b/drivers/misc/eeprom/at24.c
+index ab1ad41..41ebc1f 100644
+--- a/drivers/misc/eeprom/at24.c
++++ b/drivers/misc/eeprom/at24.c
+@@ -456,6 +456,17 @@ static ssize_t at24_macc_write(struct memory_accessor *macc, const char *buf,
+ 	return at24_write(at24, buf, offset, count);
+ }
+ 
++struct at24_platform_data *at24_macc_getpdata(struct memory_accessor *macc)
++{
++	struct at24_data *at24 = container_of(macc, struct at24_data, macc);
++	return &at24->chip;
++}
++
++void at24_macc_setpdata(struct memory_accessor *macc, struct at24_platform_data *chip)
++{
++	struct at24_data *at24 = container_of(macc, struct at24_data, macc);
++	at24->chip = *chip;
++}
+ /*-------------------------------------------------------------------------*/
+ 
+ #ifdef CONFIG_OF
+diff --git a/include/linux/i2c/at24.h b/include/linux/i2c/at24.h
+index 8ace930..7872912 100644
+--- a/include/linux/i2c/at24.h
++++ b/include/linux/i2c/at24.h
+@@ -29,4 +29,7 @@ struct at24_platform_data {
+ 	void		*context;
+ };
+ 
++struct at24_platform_data *at24_macc_getpdata(struct memory_accessor *macc);
++void at24_macc_setpdata(struct memory_accessor *macc, struct at24_platform_data *chip);
++
+ #endif /* _LINUX_AT24_H */
+-- 
+1.7.4.1
+

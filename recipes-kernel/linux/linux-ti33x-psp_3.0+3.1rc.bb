@@ -27,6 +27,9 @@ SRC_URI += "git://arago-project.org/git/projects/linux-am33x.git;protocol=git;br
 PATCHES_OVER_PSP = " \
 	file://0001-f_rndis-HACK-around-undefined-variables.patch \
 	file://0001-am335x-Add-pin-mux-and-init-for-beaglebone-specific-.patch \
+	file://0001-am335x-Check-return-value-of-omap_mux_init_signal.patch \
+	file://0002-at24-Add-ability-to-dynamically-reconfigure-chip-inf.patch \
+	file://0003-am335x-evm-Reconfigure-EEPROM-with-new-eeprom_info-in.patch \
 	"
 
 SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"

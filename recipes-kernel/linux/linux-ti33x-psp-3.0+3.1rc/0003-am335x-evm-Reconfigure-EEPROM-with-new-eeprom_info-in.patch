@@ -1,0 +1,65 @@
+From 18a4a980113f7b290c5694239b0e9b21fb7fe132 Mon Sep 17 00:00:00 2001
+From: Joel A Fernandes <joelagnel@ti.com>
+Date: Sat, 22 Oct 2011 13:03:08 -0500
+Subject: [PATCH 3/3] am335x-evm: Reconfigure EEPROM with new eeprom_info incase of failure
+
+The earlier bone boards have an 8-bit address capable EEPROM with 2kbit size
+and 16 byte page size. This is very different from the EEPROM on the AM335x
+EVM and causes problem when reading for board detection and other purposes.
+
+We first attempt a read with the original EEPROM settings and incase of an
+invalid header, we reconfigure the EEPROM driver with bone_eeprom_info and
+perform a restart of the setup function to reread all EEPROM data again this
+time with the correct EEPROM configuration.
+
+This patch is required to get EEPROM reading working correctly on bone board
+without breaking support for EVM.
+
+Signed-off-by: Joel A Fernandes <joelagnel@ti.com>
+---
+ arch/arm/mach-omap2/board-am335xevm.c |   15 +++++++++++++++
+ 1 files changed, 15 insertions(+), 0 deletions(-)
+
+diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
+index f959d95..eb18fb9 100644
+--- a/arch/arm/mach-omap2/board-am335xevm.c
++++ b/arch/arm/mach-omap2/board-am335xevm.c
+@@ -1387,6 +1387,8 @@ static void am335x_setup_daughter_board(struct memory_accessor *m, void *c)
+ 	}
+ }
+ 
++static struct at24_platform_data bone_eeprom_info;
++
+ static void am335x_evm_setup(struct memory_accessor *mem_acc, void *context)
+ {
+ 	int ret;
+@@ -1413,6 +1415,11 @@ static void am335x_evm_setup(struct memory_accessor *mem_acc, void *context)
+ 	}
+ 
+ 	if (config.header != AM335X_EEPROM_HEADER) {
++		if(memcmp(at24_macc_getpdata(mem_acc), &bone_eeprom_info,
++		  sizeof(struct at24_platform_data)) != 0) {
++			at24_macc_setpdata(mem_acc, &bone_eeprom_info);
++			return am335x_evm_setup(mem_acc, context);
++		}
+ 		pr_warning("AM335X: wrong header 0x%x, expected 0x%x\n",
+ 			config.header, AM335X_EEPROM_HEADER);
+ 		goto out;
+@@ -1485,6 +1492,14 @@ static struct at24_platform_data am335x_baseboard_eeprom_info = {
+ 	.context        = (void *)NULL,
+ };
+ 
++static struct at24_platform_data bone_eeprom_info = {
++	.byte_len       = (2*1024) / 8,
++	.page_size      = 16,
++	.flags          = 0x0,
++	.setup          = am335x_evm_setup,
++	.context        = (void *)NULL,
++};
++
+ /*
+ * Daughter board Detection.
+ * Every board has a ID memory (EEPROM) on board. We probe these devices at
+-- 
+1.7.4.1
+
