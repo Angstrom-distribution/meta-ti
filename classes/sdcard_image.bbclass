@@ -93,7 +93,7 @@ IMAGE_CMD_sdimg () {
 		suffix=bin
 	fi
 
-	#cp -v ${IMAGE_ROOTFS}/boot/uEnv.txt ${WORKDIR}/tmp-mnt-boot || true
+	cp -v ${IMAGE_ROOTFS}/boot/uEnv.txt ${WORKDIR}/tmp-mnt-boot || true
 	cp -v ${IMAGE_ROOTFS}/boot/user.txt ${WORKDIR}/tmp-mnt-boot || true
 
 	if [ -e ${IMAGE_ROOTFS}/boot/u-boot.$suffix ] ; then
