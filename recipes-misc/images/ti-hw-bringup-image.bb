@@ -12,7 +12,6 @@ EXTRA_MACHINE_IMAGE_INSTALL_ti33x = "gadget-init"
 
 IMAGE_INSTALL += " \
 	angstrom-task-boot \
-	systemd-speed-hacks \
 	task-basic \
 	${CONMANPKGS} \
 	python-dbus python-pycairo \
