@@ -2558,7 +2558,8 @@ CONFIG_USB_LIBUSUAL=y
 # USB port drivers
 #
 # CONFIG_USB_USS720 is not set
-# CONFIG_USB_SERIAL is not set
+CONFIG_USB_SERIAL=m
+CONFIG_USB_SERIAL_PL2303=m
 
 #
 # USB Miscellaneous drivers
