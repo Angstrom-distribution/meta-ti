@@ -46,9 +46,9 @@ IMAGE_CMD_sdimg () {
 	SIZE=$(/sbin/fdisk -l ${LOOPDEV} | grep Disk | grep bytes | awk '{print $5}')
 	CYLINDERS=$(echo $SIZE/255/63/512 | bc)
 	{
-	echo ,9,0x0C,*
-	echo ,,,-
-	} | /sbin/sfdisk -D -H 255 -S 63 -C ${CYLINDERS} ${LOOPDEV}
+	echo 128,130944,0x0C,*
+	echo 131072,,,-
+	} | /sbin/sfdisk -D -uS -H 255 -S 63 -C ${CYLINDERS} ${LOOPDEV}
 
 	# Prepare loop devices for boot and filesystem partitions
 	BOOT_OFFSET=32256
