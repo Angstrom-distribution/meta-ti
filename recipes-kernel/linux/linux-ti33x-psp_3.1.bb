@@ -11,7 +11,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "master"
 SRCREV = "fd97d5068496ab770991a263e9046781ca2441a5"
-MACHINE_KERNEL_PR_append = "l+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "m+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -30,6 +30,7 @@ PATCHES_OVER_PSP = " \
 	file://0001-am335x-Check-return-value-of-omap_mux_init_signal.patch \
 	file://0002-at24-Add-ability-to-dynamically-reconfigure-chip-inf.patch \
 	file://0003-am335x-evm-Reconfigure-EEPROM-with-new-eeprom_info-in.patch \
+	file://0001-ARM-OMAP2-beaglebone-hack-in-DVI-support.patch \
 	"
 
 SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
