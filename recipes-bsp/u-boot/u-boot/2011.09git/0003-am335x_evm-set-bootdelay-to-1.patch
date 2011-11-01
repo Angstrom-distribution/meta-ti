@@ -1,7 +1,7 @@
-From 481457db4fe870fcbab47fe29cb768daf235fd1f Mon Sep 17 00:00:00 2001
+From bf513a05bc37f6d32e14c1e46d090773d1664c99 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
-Date: Thu, 13 Oct 2011 12:17:27 +0200
-Subject: [PATCH 2/2] am335x_evm: set bootdelay to 1
+Date: Tue, 1 Nov 2011 12:21:38 +0100
+Subject: [PATCH 3/4] am335x_evm: set bootdelay to 1
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
  1 files changed, 1 insertions(+), 1 deletions(-)
 
 diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
-index 9ce360d..78c823b 100755
+index 9bbfe3b..6143dc3 100755
 --- a/include/configs/am335x_evm.h
 +++ b/include/configs/am335x_evm.h
 @@ -38,7 +38,7 @@
@@ -22,5 +22,5 @@ index 9ce360d..78c823b 100755
  #define CONFIG_MMC
  #define CONFIG_NAND
 -- 
-1.6.6.1
+1.7.2.5
 

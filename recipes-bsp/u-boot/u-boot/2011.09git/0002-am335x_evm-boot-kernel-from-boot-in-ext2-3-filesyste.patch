@@ -1,7 +1,7 @@
-From 30c5198d37863d4f1598f7fe2b8f690b6cf6ae53 Mon Sep 17 00:00:00 2001
+From 206baf5d1d8eb19312c0c8216e6722a63548573d Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
-Date: Thu, 13 Oct 2011 12:15:25 +0200
-Subject: [PATCH 1/2] am335x_evm: boot kernel from ext2/3 filesystem
+Date: Tue, 1 Nov 2011 12:21:07 +0100
+Subject: [PATCH 2/4] am335x_evm: boot kernel from /boot in ext2/3 filesystem
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
  1 files changed, 2 insertions(+), 1 deletions(-)
 
 diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
-index f1cc2b2..9ce360d 100755
+index 93b3161..9bbfe3b 100755
 --- a/include/configs/am335x_evm.h
 +++ b/include/configs/am335x_evm.h
 @@ -74,7 +74,8 @@
@@ -19,9 +19,9 @@ index f1cc2b2..9ce360d 100755
 -	"mmc_load_uimage=fatload mmc ${mmc_dev} ${loadaddr} ${bootfile}\0" \
 +	"mmc_load_uimage_fat=fatload mmc ${mmc_dev} ${loadaddr} ${bootfile}\0" \
 +	"mmc_load_uimage=ext2load mmc 0:2 ${loadaddr} /boot/${bootfile}\0" \
+ 	"optargs=\0" \
  	"bootargs_defaults=setenv bootargs " \
- 		"console=${console}\0" \
- 	"mmc_args=run bootargs_defaults;" \
+ 		"console=${console} " \
 -- 
-1.6.6.1
+1.7.2.5
 
