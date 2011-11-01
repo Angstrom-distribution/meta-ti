@@ -13,13 +13,9 @@ branch: master
 revision: HEAD
 
 It is recommended to follow the instructions at http://www.angstrom-distribution.org/building-angstrom
-with one important difference:
-
-After "Step 1" go into the newly created 'setup-scripts' directory and do
-	$ git checkout origin/oe-core -b oe-core
 
 This will set it up for the OpenEmbedded-core layout instead of the old
-OpenEmbedded-dev layout.
+OpenEmbedded-dev layout. You can optionally tweak sources/layers.txt and conf/bblayers.conf to (de)select BSP layers.
 
 Send pull requests to meta-ti@yoctoproject.org
 
