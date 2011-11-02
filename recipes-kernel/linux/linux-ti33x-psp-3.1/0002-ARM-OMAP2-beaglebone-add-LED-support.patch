@@ -1,12 +1,13 @@
-From 3672d287f5382b102e02400298a00d6f8052dd9d Mon Sep 17 00:00:00 2001
+From 4df4ee83b31e09942932d67890d36ae116363ac1 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Wed, 2 Nov 2011 09:11:59 +0100
-Subject: [PATCH 2/3] ARM: OMAP2+: beaglebone: add LED support
+Subject: [PATCH] ARM: OMAP2+: beaglebone: add LED support
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |   66 +++++++++++++++++++++++++++++++++
- 1 files changed, 66 insertions(+), 0 deletions(-)
+ arch/arm/mach-omap2/mux33xx.c         |    2 +-
+ 2 files changed, 67 insertions(+), 1 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index ee936e0..ecf4a76 100644
@@ -113,6 +114,19 @@ index ee936e0..ecf4a76 100644
  	{NULL, 0, 0},
  };
  
+diff --git a/arch/arm/mach-omap2/mux33xx.c b/arch/arm/mach-omap2/mux33xx.c
+index 0286c4f..f09e827 100644
+--- a/arch/arm/mach-omap2/mux33xx.c
++++ b/arch/arm/mach-omap2/mux33xx.c
+@@ -49,7 +49,7 @@ static struct omap_mux __initdata am33xx_muxmodes[] = {
+ 		NULL, NULL, NULL, NULL),
+ 	_AM33XX_MUXENTRY(GPMC_AD6, 0,
+ 		"gpmc_ad6", "mmc1_dat6", NULL, NULL,
+-		NULL, NULL, NULL, NULL),
++		NULL, NULL, NULL, "gpio1_6"),
+ 	_AM33XX_MUXENTRY(GPMC_AD7, 0,
+ 		"gpmc_ad7", "mmc1_dat7", NULL, NULL,
+ 		NULL, NULL, NULL, NULL),
 -- 
-1.7.2.5
+1.7.4.1
 
