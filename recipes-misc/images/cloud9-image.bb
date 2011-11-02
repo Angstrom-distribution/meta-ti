@@ -15,6 +15,8 @@ IMAGE_INSTALL += " \
 	vim vim-vimrc \
 	procps \
 	beaglebone-tester \
+	screen minicom \
+	git \
 	"
 
 export IMAGE_BASENAME = "Cloud9-IDE"
