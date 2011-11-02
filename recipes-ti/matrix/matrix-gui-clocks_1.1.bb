@@ -4,7 +4,7 @@ LICENSE = "CC-BY-SA"
 
 inherit allarch
 
-SRC_URI = "https://gforge.ti.com/gf/download/frsrelease/612/5031/clocks_1.0.tar.gz"
+SRC_URI = "https://gforge.ti.com/gf/download/frsrelease/673/5096/clocks_1.1.tar.gz"
 
 S = ${WORKDIR}/clocks
 
@@ -30,5 +30,5 @@ FILES_${PN}-600mhz += "${bindir}/setopp3.sh"
 FILES_${PN}-800mhz += "${bindir}/setopp4.sh"
 FILES_${PN}-1ghz += "${bindir}/setopp1.sh"
 
-SRC_URI[md5sum] = "9e76951feab2ecd9334e9c890426500f"
-SRC_URI[sha256sum] = "96dc90fffe45fc4bb499215f57c416d16ff874290d6b2f16b9e2fdbcb9c18cbe"
+SRC_URI[md5sum] = "6d50592e364f39d7ed3b2805e6c227cb"
+SRC_URI[sha256sum] = "ab51df1651a391e3f6a947faccf45354ef187508c65cb3de92cc9fef88206e65"
