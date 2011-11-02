@@ -1,31 +1,26 @@
-From 5be793dc9de7e694d9256396aecfdc136c8e2cf6 Mon Sep 17 00:00:00 2001
-From: Joel A Fernandes <joelagnel@ti.com>
-Date: Mon, 17 Oct 2011 02:00:39 -0400
-Subject: [PATCH] am335x: Add pin mux and init for beaglebone specific devices
+From 3672d287f5382b102e02400298a00d6f8052dd9d Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Wed, 2 Nov 2011 09:11:59 +0100
+Subject: [PATCH 2/3] ARM: OMAP2+: beaglebone: add LED support
 
-Currently added for following:
-  * User LEDs (added by Koen Kooi <k-kooi@ti.com>)
-  * BeagleBone tester
-
-Signed-off-by: Joel A Fernandes <joelagnel@ti.com>
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
- arch/arm/mach-omap2/board-am335xevm.c |   69 +++++++++++++++++++++++++++++++++
- arch/arm/mach-omap2/mux33xx.c         |    2 +-
- 2 files changed, 70 insertions(+), 1 deletions(-)
+ arch/arm/mach-omap2/board-am335xevm.c |   66 +++++++++++++++++++++++++++++++++
+ 1 files changed, 66 insertions(+), 0 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index f625510..6beaa23 100644
+index ee936e0..ecf4a76 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
-@@ -17,6 +17,7 @@
- #include <linux/i2c.h>
+@@ -18,6 +18,7 @@
  #include <linux/i2c/at24.h>
+ #include <linux/phy.h>
  #include <linux/gpio.h>
 +#include <linux/leds.h>
  #include <linux/spi/spi.h>
  #include <linux/spi/flash.h>
  #include <linux/mtd/mtd.h>
-@@ -590,6 +591,61 @@ static struct pinmux_config usb1_pin_mux[] = {
+@@ -649,6 +650,60 @@ static struct pinmux_config usb1_pin_mux[] = {
  	{NULL, 0},
  };
  
@@ -35,6 +30,9 @@ index f625510..6beaa23 100644
 +#define BEAGLEBONE_USR2_LED  GPIO_TO_PIN(1, 22)
 +#define BEAGLEBONE_USR3_LED  GPIO_TO_PIN(1, 23)
 +#define BEAGLEBONE_USR4_LED  GPIO_TO_PIN(1, 24)
++
++#define BEAGLEBONEDVI_USR0_LED  GPIO_TO_PIN(1, 18)
++#define BEAGLEBONEDVI_USR1_LED  GPIO_TO_PIN(1, 19)
 +
 +static struct gpio_led gpio_leds[] = {
 +	{
@@ -70,10 +68,6 @@ index f625510..6beaa23 100644
 +	},
 +};
 +
-+static struct platform_device *bone_devices[] __initdata = {
-+		    &leds_gpio,
-+};
-+
 +static struct pinmux_config bone_pin_mux[] = {
 +	/* User LED gpios (gpio1_21 to gpio1_24) */
 +    {"gpmc_a5.rgmii2_td0", OMAP_MUX_MODE7 | AM33XX_PIN_OUTPUT},
@@ -87,46 +81,38 @@ index f625510..6beaa23 100644
  /* Module pin mux for eCAP0 */
  static struct pinmux_config ecap0_pin_mux[] = {
  	{"ecap0_in_pwm0_out.gpio0_7", AM33XX_PIN_OUTPUT},
-@@ -698,6 +754,18 @@ static void tsc_init(int evm_id, int profile)
+@@ -757,6 +812,15 @@ static void tsc_init(int evm_id, int profile)
  		pr_err("failed to register touchscreen device\n");
  }
  
-+/*
-+ * Initialization of BeagleBone specific devices
-+ */
-+static void bone_init(int evm_id, int profil )
++static void boneleds_init(int evm_id, int profile )
 +{
 +	int err;
 +	setup_pin_mux(bone_pin_mux);
-+	err = platform_add_devices(bone_devices, ARRAY_SIZE(bone_devices));
++	err = platform_device_register(&leds_gpio);
 +	if (err)
-+		pr_err("failed to register LEDS\n");
++		pr_err("failed to register BeagleBone LEDS\n");
 +}
 +
  static void rgmii1_init(int evm_id, int profile)
  {
  	setup_pin_mux(rgmii1_pin_mux);
-@@ -1103,6 +1171,7 @@ static struct evm_dev_cfg beaglebone_dev_cfg[] = {
+@@ -1230,6 +1294,7 @@ static struct evm_dev_cfg beaglebone_old_dev_cfg[] = {
  	{usb0_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
  	{usb1_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
  	{mmc0_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
-+	{bone_init,	DEV_ON_BASEBOARD, PROFILE_ALL},
++	{boneleds_init,	DEV_ON_BASEBOARD, PROFILE_ALL},
  	{NULL, 0, 0},
  };
  
-diff --git a/arch/arm/mach-omap2/mux33xx.c b/arch/arm/mach-omap2/mux33xx.c
-index 0286c4f..f09e827 100644
---- a/arch/arm/mach-omap2/mux33xx.c
-+++ b/arch/arm/mach-omap2/mux33xx.c
-@@ -49,7 +49,7 @@ static struct omap_mux __initdata am33xx_muxmodes[] = {
- 		NULL, NULL, NULL, NULL),
- 	_AM33XX_MUXENTRY(GPMC_AD6, 0,
- 		"gpmc_ad6", "mmc1_dat6", NULL, NULL,
--		NULL, NULL, NULL, NULL),
-+		NULL, NULL, NULL, "gpio1_6"),
- 	_AM33XX_MUXENTRY(GPMC_AD7, 0,
- 		"gpmc_ad7", "mmc1_dat7", NULL, NULL,
- 		NULL, NULL, NULL, NULL),
+@@ -1239,6 +1304,7 @@ static struct evm_dev_cfg beaglebone_dev_cfg[] = {
+ 	{usb0_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
+ 	{usb1_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
+ 	{mmc0_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
++	{boneleds_init,	DEV_ON_BASEBOARD, PROFILE_ALL},
+ 	{NULL, 0, 0},
+ };
+ 
 -- 
-1.7.1
+1.7.2.5
 

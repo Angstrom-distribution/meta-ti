@@ -9,9 +9,9 @@ S = "${WORKDIR}/git"
 
 MULTI_CONFIG_BASE_SUFFIX = ""
 
-BRANCH = "master"
-SRCREV = "fd97d5068496ab770991a263e9046781ca2441a5"
-MACHINE_KERNEL_PR_append = "m+gitr${SRCREV}"
+BRANCH = "v3.1-staging"
+SRCREV = "1d84d8853fa30cf3db2571a5aec572accca4e29d"
+MACHINE_KERNEL_PR_append = "n+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -26,11 +26,9 @@ SRC_URI += "git://arago-project.org/git/projects/linux-am33x.git;protocol=git;br
 
 PATCHES_OVER_PSP = " \
 	file://0001-f_rndis-HACK-around-undefined-variables.patch \
-	file://0001-am335x-Add-pin-mux-and-init-for-beaglebone-specific-.patch \
-	file://0001-am335x-Check-return-value-of-omap_mux_init_signal.patch \
-	file://0002-at24-Add-ability-to-dynamically-reconfigure-chip-inf.patch \
-	file://0003-am335x-evm-Reconfigure-EEPROM-with-new-eeprom_info-in.patch \
-	file://0001-ARM-OMAP2-beaglebone-hack-in-DVI-support.patch \
+	file://0001-ARM-omap-am335x-BeagleBone-version-detection-and-sup.patch \
+	file://0002-ARM-OMAP2-beaglebone-add-LED-support.patch \
+	file://0003-ARM-OMAP2-beaglebone-add-DVI-support-needs-cleanup.patch \
 	"
 
 SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"

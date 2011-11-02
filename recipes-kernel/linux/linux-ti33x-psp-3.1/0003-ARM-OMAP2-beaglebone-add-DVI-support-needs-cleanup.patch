@@ -1,16 +1,15 @@
-From 53f68267a95eac46ee91a692ef8a9b144102b3ec Mon Sep 17 00:00:00 2001
+From e3b1d8e6480879ecd533d8a3ac17bb7c4aa2baf0 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
-Date: Mon, 31 Oct 2011 20:14:46 +0100
-Subject: [PATCH] ARM: OMAP2+: beaglebone: hack in DVI support
+Date: Wed, 2 Nov 2011 09:14:29 +0100
+Subject: [PATCH 3/3] ARM: OMAP2+: beaglebone: add DVI support (needs cleanup)
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
- arch/arm/mach-omap2/board-am335xevm.c |  124 ++++++++++++++++++++++++++++++---
- drivers/video/da8xx-fb.c              |   14 ++++
- 2 files changed, 127 insertions(+), 11 deletions(-)
+ arch/arm/mach-omap2/board-am335xevm.c |  106 +++++++++++++++++++++++++++++++++
+ 1 files changed, 106 insertions(+), 0 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index eb18fb9..3d60530 100644
+index ecf4a76..6840422 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
 @@ -144,6 +144,36 @@ struct da8xx_lcdc_platform_data TFC_S9700RTWV35TR_01B_pdata = {
@@ -101,17 +100,7 @@ index eb18fb9..3d60530 100644
  static struct pinmux_config tsc_pin_mux[] = {
  	{"ain0.ain0",           OMAP_MUX_MODE0 | AM33XX_INPUT_EN},
  	{"ain1.ain1",           OMAP_MUX_MODE0 | AM33XX_INPUT_EN},
-@@ -659,6 +733,9 @@ static struct pinmux_config usb1_pin_mux[] = {
- #define BEAGLEBONE_USR3_LED  GPIO_TO_PIN(1, 23)
- #define BEAGLEBONE_USR4_LED  GPIO_TO_PIN(1, 24)
- 
-+#define BEAGLEBONEDVI_USR0_LED  GPIO_TO_PIN(1, 18)
-+#define BEAGLEBONEDVI_USR1_LED  GPIO_TO_PIN(1, 19)
-+
- static struct gpio_led gpio_leds[] = {
- 	{
- 		.name			= "beaglebone::usr0",
-@@ -678,6 +755,16 @@ static struct gpio_led gpio_leds[] = {
+@@ -679,6 +753,16 @@ static struct gpio_led gpio_leds[] = {
  		.name           = "beaglebone::usr3",
  		.gpio           = BEAGLEBONE_USR4_LED,
  	},
@@ -128,18 +117,7 @@ index eb18fb9..3d60530 100644
  };
  
  static struct gpio_led_platform_data gpio_led_info = {
-@@ -693,10 +780,6 @@ static struct platform_device leds_gpio = {
- 	},
- };
- 
--static struct platform_device *bone_devices[] __initdata = {
--		    &leds_gpio,
--};
--
- static struct pinmux_config bone_pin_mux[] = {
- 	/* User LED gpios (gpio1_21 to gpio1_24) */
-     {"gpmc_a5.rgmii2_td0", OMAP_MUX_MODE7 | AM33XX_PIN_OUTPUT},
-@@ -806,6 +889,26 @@ static void lcdc_init(int evm_id, int profile)
+@@ -803,6 +887,26 @@ static void lcdc_init(int evm_id, int profile)
  	return;
  }
  
@@ -166,65 +144,22 @@ index eb18fb9..3d60530 100644
  static void tsc_init(int evm_id, int profile)
  {
  	int err;
-@@ -815,16 +918,14 @@ static void tsc_init(int evm_id, int profile)
- 		pr_err("failed to register touchscreen device\n");
- }
- 
--/*
-- * Initialization of BeagleBone specific devices
-- */
--static void bone_init(int evm_id, int profil )
-+
-+static void boneleds_init(int evm_id, int profile )
- {
- 	int err;
- 	setup_pin_mux(bone_pin_mux);
--	err = platform_add_devices(bone_devices, ARRAY_SIZE(bone_devices));
-+	err = platform_device_register(&leds_gpio);
- 	if (err)
--		pr_err("failed to register LEDS\n");
-+		pr_err("failed to register BeagleBone LEDS\n");
- }
- 
- static void rgmii1_init(int evm_id, int profile)
-@@ -1297,10 +1398,11 @@ static struct evm_dev_cfg ip_phn_evm_dev_cfg[] = {
- /* Beaglebone */
- static struct evm_dev_cfg beaglebone_dev_cfg[] = {
+@@ -1291,6 +1395,7 @@ static struct evm_dev_cfg ip_phn_evm_dev_cfg[] = {
+ /* Beaglebone < Rev A3 */
+ static struct evm_dev_cfg beaglebone_old_dev_cfg[] = {
  	{rmii1_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
 +	{dvi_init,	DEV_ON_BASEBOARD, PROFILE_ALL},
  	{usb0_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
  	{usb1_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
  	{mmc0_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
--	{bone_init,	DEV_ON_BASEBOARD, PROFILE_ALL},
-+	{boneleds_init,	DEV_ON_BASEBOARD, PROFILE_ALL},
- 	{NULL, 0, 0},
- };
- 
-diff --git a/drivers/video/da8xx-fb.c b/drivers/video/da8xx-fb.c
-index 4347421..9619518 100644
---- a/drivers/video/da8xx-fb.c
-+++ b/drivers/video/da8xx-fb.c
-@@ -266,6 +266,20 @@ static struct da8xx_panel known_lcd_panels[] = {
- 		.pxl_clk = 30000000,
- 		.invert_pxl_clk = 0,
- 	},
-+	[3] = {
-+		 /* 1024 x 768 @ 60 Hz  Reduced blanking VESA CVT 0.79M3-R */ 
-+		.name = "1024x768@60",
-+		.width = 1024,
-+		.height = 768,
-+		.hfp = 48,
-+		.hbp = 80,
-+		.hsw = 32,
-+		.vfp = 3,
-+		.vbp = 15,
-+		.vsw = 4,
-+		.pxl_clk = 56000000,
-+		.invert_pxl_clk = 0,
-+	},
- };
- 
- /* Enable the Raster Engine of the LCD Controller */
+@@ -1301,6 +1406,7 @@ static struct evm_dev_cfg beaglebone_old_dev_cfg[] = {
+ /* Beaglebone Rev A3 and after */
+ static struct evm_dev_cfg beaglebone_dev_cfg[] = {
+ 	{mii1_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
++	{dvi_init,	DEV_ON_BASEBOARD, PROFILE_ALL},
+ 	{usb0_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
+ 	{usb1_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
+ 	{mmc0_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
 -- 
-1.6.6.1
+1.7.2.5
 
