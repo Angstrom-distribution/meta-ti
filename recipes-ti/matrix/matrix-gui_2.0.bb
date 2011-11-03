@@ -6,14 +6,15 @@ LIC_FILES_CHKSUM = "file://javascript/jquery-latest.js;md5=9118381924c51c89d9414
 
 SECTION = "multimedia"
 
-PR = "r4"
+PR = "r5"
 
 inherit allarch
 
 BRANCH ?= "master"
 SRCREV = "8e2bd5ffdded23bb662476fcd2490fa1526801f8"
 
-SRC_URI = "git://gitorious.org/matrix-gui-v2/matrix-gui-v2.git;protocol=git;branch=${BRANCH}"
+SRC_URI = "git://gitorious.org/matrix-gui-v2/matrix-gui-v2.git;protocol=git;branch=${BRANCH} \
+           file://php.ini"
 
 require matrix-gui-paths.inc
 
