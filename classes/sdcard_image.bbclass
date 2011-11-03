@@ -12,9 +12,8 @@ LOOPDEV ?= "/dev/loop1"
 LOOPDEV_BOOT ?= "/dev/loop2"
 LOOPDEV_FS ?= "/dev/loop3"
 
-# Default to 4GiB images, but use 2GiB images for beaglebone
+# Default to 4GiB images
 SDIMG_SIZE ?= "444" 
-SDIMG_SIZE_beaglebone = "222"
 
 BOOTPARTNAME_beaglebone = "BEAGLE_BONE"
 BOOTPARTNAME ?= "${MACHINE}"
