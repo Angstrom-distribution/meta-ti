@@ -29,6 +29,7 @@ PATCHES_OVER_PSP = " \
 	file://0001-ARM-omap-am335x-BeagleBone-version-detection-and-sup.patch \
 	file://0002-ARM-OMAP2-beaglebone-add-LED-support.patch \
 	file://0003-ARM-OMAP2-beaglebone-add-DVI-support-needs-cleanup.patch \
+	file://0004-da8xx-fb-add-DVI-support-for-beaglebone.patch \
 	"
 
 SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
