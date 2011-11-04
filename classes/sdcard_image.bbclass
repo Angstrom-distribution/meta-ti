@@ -109,7 +109,7 @@ IMAGE_CMD_sdimg () {
 	if [ -n ${FATPAYLOAD} ] ; then
 		echo "Copying payload into VFAT"
 		for entry in ${FATPAYLOAD} ; do
-			cp -av $entry ${WORKDIR}/tmp-mnt-boot
+				cp -av ${IMAGE_ROOTFS}$entry ${WORKDIR}/tmp-mnt-boot
 		done
 	fi
 
