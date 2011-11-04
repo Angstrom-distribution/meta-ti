@@ -109,7 +109,8 @@ IMAGE_CMD_sdimg () {
 	if [ -n ${FATPAYLOAD} ] ; then
 		echo "Copying payload into VFAT"
 		for entry in ${FATPAYLOAD} ; do
-				cp -av ${IMAGE_ROOTFS}$entry ${WORKDIR}/tmp-mnt-boot
+				# add the || true to stop aborting on vfat issues like not supporting .~lock files
+				cp -av ${IMAGE_ROOTFS}$entry ${WORKDIR}/tmp-mnt-boot || true
 		done
 	fi
 
