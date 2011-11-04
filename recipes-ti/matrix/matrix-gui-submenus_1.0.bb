@@ -1,7 +1,7 @@
 DESCRIPTION = "Submenu packages for Matrix GUI v2"
 HOMEPAGE = "https://gforge.ti.com/gf/project/matrixguiv2apps/"
 LICENSE = "CC-BY-SA"
-LIC_FILES_CHKSUM = "file://settings/settings.desktop;md5=a447e92dfe653e63e5b91b305e969d6c"
+LIC_FILES_CHKSUM = "file://settings/settings.desktop;md5=bbd663594c3e13b280ff5fffaddca672"
 
 PR = "r7"
 
