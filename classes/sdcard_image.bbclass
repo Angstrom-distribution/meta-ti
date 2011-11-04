@@ -18,6 +18,8 @@ SDIMG_SIZE ?= "444"
 BOOTPARTNAME_beaglebone = "BEAGLE_BONE"
 BOOTPARTNAME ?= "${MACHINE}"
 
+IMAGEDATESTAMP = "${@time.strftime('%Y.%m.%d',time.gmtime())}"
+
 IMAGE_CMD_sdimg () {
 	SDIMG=${WORKDIR}/sd.img
 
@@ -121,6 +123,6 @@ IMAGE_CMD_sdimg () {
 
 	${LOSETUP} -d ${LOOPDEV_FS} || true
 
-	gzip -c ${WORKDIR}/sd.img > ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}-${PR}.img.gz
+	gzip -c ${WORKDIR}/sd.img > ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}-${IMAGEDATESTAMP}.img.gz
 	rm -f ${WORKDIR}/sd.img
 }
