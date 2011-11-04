@@ -2,6 +2,8 @@
 
 require ti-hw-bringup-image.bb
 
+FATPAYLOAD = "${datadir}/beaglebone-getting-started/"
+
 IMAGE_INSTALL += " \
 	cloud9 \
 	task-sdk-target \
@@ -17,7 +19,8 @@ IMAGE_INSTALL += " \
 	beaglebone-tester \
 	screen minicom \
 	git \
-	"
+	beaglebone-getting-started bonescript \
+"
 
 export IMAGE_BASENAME = "Cloud9-IDE"
 
