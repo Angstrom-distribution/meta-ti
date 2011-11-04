@@ -1,0 +1,67 @@
+From 801316091ac7e14cc8fa9b0bd2cdce76bea06991 Mon Sep 17 00:00:00 2001
+From: Joel A Fernandes <joelagnel@ti.com>
+Date: Thu, 3 Nov 2011 22:19:19 -0500
+Subject: [PATCH] am335x-evm: Fix bone pmic shut down over USB power
+Cc: trini@ti.com
+
+* Set DCDC2 to 1.2v for all boards irrespective of board version, or power source.
+* Set USB current trip point to 1300mA for all boards and power sources.
+* Only Skip setting of MPU frequency to 720MHz for A1 and USB-powered boards.
+
+Credits to Jason for noticing this. Tested with 20 reboots over USB.
+
+Signed-off-by: Jason Kridner <jdk@ti.com>
+Signed-off-by: Joel A Fernandes <joelagnel@ti.com>
+---
+ board/ti/am335x/evm.c |   27 ++++++++++++++-------------
+ 1 files changed, 14 insertions(+), 13 deletions(-)
+
+diff --git a/board/ti/am335x/evm.c b/board/ti/am335x/evm.c
+index e95a088..bd3c09a 100644
+--- a/board/ti/am335x/evm.c
++++ b/board/ti/am335x/evm.c
+@@ -483,12 +483,10 @@ void spl_board_init(void)
+ 		if (tps65217_reg_read(STATUS, &pmic_status_reg))
+ 			return;
+ 
+-		/* Only perform PMIC configurations if board rev > A1 */
+-		if (!strncmp(header.version, "00A1", 4))
+-			return;
+-
+-		if (!(pmic_status_reg & PWR_SRC_AC_BITMASK)) {
+-			printf("No AC power, disabling frequency switch\n");
++		/* Set DCDC2 (MPU) voltage to 1.275V */
++		if (tps65217_voltage_update(DEFDCDC2,
++					     DCDC_VOLT_SEL_1275MV)) {
++			printf("tps65217_voltage_update failure\n");
+ 			return;
+ 		}
+ 
+@@ -507,14 +505,17 @@ void spl_board_init(void)
+ 				       USB_INPUT_CUR_LIMIT_MASK))
+ 			printf("tps65217_reg_write failure\n");
+ 
+-		/* Set DCDC2 (MPU) voltage to 1.275V */
+-		if (!tps65217_voltage_update(DEFDCDC2,
+-					     DCDC_VOLT_SEL_1275MV)) {
+-			/* Set MPU Frequency to 720MHz */
+-			mpu_pll_config(MPUPLL_M_720);
+-		} else {
+-			printf("tps65217_voltage_update failure\n");
++		/* Only perform PMIC configurations if board rev > A1 */
++		if (!strncmp(header.version, "00A1", 4))
++			return;
++
++		if (!(pmic_status_reg & PWR_SRC_AC_BITMASK)) {
++			printf("No AC power, disabling frequency switch\n");
++			return;
+ 		}
++
++		/* Set MPU Frequency to 720MHz */
++		mpu_pll_config(MPUPLL_M_720);
+ 	} else {
+ 		/* 
+ 		 * EVM PMIC code.  PMIC voltage is configuring for frequency
+-- 
+1.7.4.1
+
