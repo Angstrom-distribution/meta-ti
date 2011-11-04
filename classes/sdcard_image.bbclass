@@ -20,6 +20,9 @@ BOOTPARTNAME ?= "${MACHINE}"
 
 IMAGEDATESTAMP = "${@time.strftime('%Y.%m.%d',time.gmtime())}"
 
+# Files and/or directories to be copied into the vfat partition
+FATPAYLOAD ?= ""
+
 IMAGE_CMD_sdimg () {
 	SDIMG=${WORKDIR}/sd.img
 
@@ -101,6 +104,13 @@ IMAGE_CMD_sdimg () {
 		cp -v ${IMAGE_ROOTFS}/boot/{u-boot.$suffix} ${WORKDIR}/tmp-mnt-boot || true
 	else
 		cp -v ${DEPLOY_DIR_IMAGE}/u-boot-${MACHINE}.$suffix ${WORKDIR}/tmp-mnt-boot/u-boot.$suffix 
+	fi
+
+	if [ -n ${FATPAYLOAD} ] ; then
+		echo "Copying payload into VFAT"
+		for entry in ${FATPAYLOAD} ; do
+			cp -av $entry ${WORKDIR}/tmp-mnt-boot
+		done
 	fi
 
 	# Cleanup VFAT mount
