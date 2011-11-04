@@ -1,5 +1,7 @@
 DESCRIPTION = "Scripting tools for the BeagleBoard and BeagleBone"
 
+PR = "r1"
+
 inherit allarch
 
 # Ask Jason
@@ -16,4 +18,5 @@ do_install() {
 	cp -a ${S}/.git ${D}${localstatedir}/lib/cloud9/
 }
 
+RDEPENDS_${PN} = "nodejs"
 FILES_${PN} += "${localstatedir}"
