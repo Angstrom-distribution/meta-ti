@@ -127,7 +127,7 @@ IMAGE_CMD_sdimg () {
 	echo "Creating ext3 image"
 	touch ${WORKDIR}/${IMAGE_NAME}.rootfs.ext3
 	# lots of small files, so use 8k per inode, not 64k
-	genext2fs -i 8192 -b $FS_SIZE_BLOCKS -d ${IMAGE_ROOTFS} ${WORKDIR}/${IMAGE_NAME}.rootfs.ext3
+	genext2fs -i 4096 -b $FS_SIZE_BLOCKS -d ${IMAGE_ROOTFS} ${WORKDIR}/${IMAGE_NAME}.rootfs.ext3
 	tune2fs -L ${IMAGE_NAME} -j ${WORKDIR}/${IMAGE_NAME}.rootfs.ext3
 
 	dd if=${WORKDIR}/${IMAGE_NAME}.rootfs.ext3 of=${LOOPDEV_FS}
