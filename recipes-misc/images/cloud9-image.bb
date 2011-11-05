@@ -20,6 +20,7 @@ IMAGE_INSTALL += " \
 	screen minicom \
 	git \
 	beaglebone-getting-started bonescript \
+	led-config \
 "
 
 export IMAGE_BASENAME = "Cloud9-IDE"
