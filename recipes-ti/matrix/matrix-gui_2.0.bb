@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://javascript/jquery-latest.js;md5=9118381924c51c89d9414
 
 SECTION = "multimedia"
 
-PR = "r5"
+PR = "r6"
 
 inherit allarch
 
@@ -29,6 +29,6 @@ do_install(){
     install -m 0644 ${WORKDIR}/php.ini ${D}${MATRIX_BASE_DIR}/
 }
 
-RDEPENDS_${PN} += "lighttpd lighttpd-module-cgi lighttpd-module-compress lighttpd-module-expire php php-cgi php-cli"
+RDEPENDS_${PN} += "matrix-lighttpd-config lighttpd lighttpd-module-cgi lighttpd-module-compress lighttpd-module-expire php php-cgi php-cli"
 
 FILES_${PN} += "${MATRIX_BASE_DIR}/*"
