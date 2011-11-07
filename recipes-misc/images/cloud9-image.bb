@@ -2,7 +2,7 @@
 
 require ti-hw-bringup-image.bb
 
-FATPAYLOAD = "${datadir}/beaglebone-getting-started/"
+FATPAYLOAD = "${datadir}/beaglebone-getting-started/*"
 
 IMAGE_INSTALL += " \
 	cloud9 \
@@ -21,6 +21,7 @@ IMAGE_INSTALL += " \
 	git \
 	beaglebone-getting-started bonescript \
 	led-config \
+	opencv-dev \
 "
 
 export IMAGE_BASENAME = "Cloud9-IDE"
