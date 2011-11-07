@@ -4,6 +4,8 @@ require ti-hw-bringup-image.bb
 
 FATPAYLOAD = "${datadir}/beaglebone-getting-started/*"
 
+ROOTFSTYPE_beaglebone = "ext4"
+
 IMAGE_INSTALL += " \
 	cloud9 \
 	task-sdk-target \
