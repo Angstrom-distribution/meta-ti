@@ -130,6 +130,10 @@ IMAGE_CMD_sdimg () {
 	genext2fs -i 4096 -b $FS_SIZE_BLOCKS -d ${IMAGE_ROOTFS} ${WORKDIR}/${IMAGE_NAME}.rootfs.ext3
 	tune2fs -L ${IMAGE_NAME} -j ${WORKDIR}/${IMAGE_NAME}.rootfs.ext3
 
+	#ext4 support
+	#cp ${WORKDIR}/${IMAGE_NAME}.rootfs.ext3 ${WORKDIR}/${IMAGE_NAME}.rootfs.ext4 
+	#tune2fs -O extents,uninit_bg,dir_index ${WORKDIR}/${IMAGE_NAME}.rootfs.ext4
+
 	dd if=${WORKDIR}/${IMAGE_NAME}.rootfs.ext3 of=${LOOPDEV_FS}
 
 	${LOSETUP} -d ${LOOPDEV_FS} || true
