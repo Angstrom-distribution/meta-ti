@@ -15,6 +15,9 @@ LOOPDEV_FS ?= "/dev/loop3"
 # Default to 4GiB images
 SDIMG_SIZE ?= "444" 
 
+# FS type for rootfs
+ROOTFSTYPE ?= "ext3"
+
 BOOTPARTNAME_beaglebone = "BEAGLE_BONE"
 BOOTPARTNAME ?= "${MACHINE}"
 
@@ -119,22 +122,32 @@ IMAGE_CMD_sdimg () {
 	umount ${WORKDIR}/tmp-mnt-boot
 	${LOSETUP} -d ${LOOPDEV_BOOT} || true
 
-	# Prepare ext3 parition
-	echo "Creating ext3 loopback"
+	# Prepare rootfs parition
+	echo "Creating rootfs loopback"
 	${LOSETUP} ${LOOPDEV_FS} ${SDIMG} -o ${FS_OFFSET}
 
 	# should use fdisk info
-	echo "Creating ext3 image"
-	touch ${WORKDIR}/${IMAGE_NAME}.rootfs.ext3
-	# lots of small files, so use 8k per inode, not 64k
-	genext2fs -i 4096 -b $FS_SIZE_BLOCKS -d ${IMAGE_ROOTFS} ${WORKDIR}/${IMAGE_NAME}.rootfs.ext3
-	tune2fs -L ${IMAGE_NAME} -j ${WORKDIR}/${IMAGE_NAME}.rootfs.ext3
+	echo "Creating rootfs image"
+	touch ${WORKDIR}/${IMAGE_NAME}.rootfs.img
 
-	#ext4 support
-	#cp ${WORKDIR}/${IMAGE_NAME}.rootfs.ext3 ${WORKDIR}/${IMAGE_NAME}.rootfs.ext4 
-	#tune2fs -O extents,uninit_bg,dir_index ${WORKDIR}/${IMAGE_NAME}.rootfs.ext4
+	FS_NUM_INODES=$(echo $FS_SIZE_BLOCKS / 4 | bc)
 
-	dd if=${WORKDIR}/${IMAGE_NAME}.rootfs.ext3 of=${LOOPDEV_FS}
+	case "${ROOTFSTYPE}" in
+		ext3)
+				genext2fs -z -N $FS_NUM_INODES -b $FS_SIZE_BLOCKS -d ${IMAGE_ROOTFS} ${WORKDIR}/${IMAGE_NAME}.rootfs.img
+				tune2fs -L ${IMAGE_NAME} -j ${WORKDIR}/${IMAGE_NAME}.rootfs.img
+				;;
+		ext4)
+				genext2fs -z -N $FS_NUM_INODES -b $FS_SIZE_BLOCKS -d ${IMAGE_ROOTFS} ${WORKDIR}/${IMAGE_NAME}.rootfs.img
+				tune2fs -L ${IMAGE_NAME} -j -O extents,uninit_bg,dir_index ${WORKDIR}/${IMAGE_NAME}.rootfs.img
+				;;
+		*)
+				echo "Please set ROOTFSTYPE to something supported"
+				exit 1
+				;;
+	esac
+
+	dd if=${WORKDIR}/${IMAGE_NAME}.rootfs.img of=${LOOPDEV_FS}
 
 	${LOSETUP} -d ${LOOPDEV_FS} || true
 
