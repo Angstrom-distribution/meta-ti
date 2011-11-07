@@ -1,0 +1,26 @@
+From d2032a2932911159985451d76c547b4e6d99fb61 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Mon, 7 Nov 2011 21:33:32 +0100
+Subject: [PATCH 7/7] am335x_evm: switch to ext4
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/am335x_evm.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
+index 8c0fae2..8bf3ff1 100755
+--- a/include/configs/am335x_evm.h
++++ b/include/configs/am335x_evm.h
+@@ -54,7 +54,7 @@
+ 	"nand_root=/dev/mtdblock7 rw\0" \
+ 	"spi_root=/dev/mtdblock4 rw\0" \
+ 	"nor_root=/dev/mtdblock3 rw\0" \
+-	"mmc_root_fs_type=ext3 rootwait\0" \
++	"mmc_root_fs_type=ext4 rootwait\0" \
+ 	"nand_root_fs_type=jffs2\0" \
+ 	"spi_root_fs_type=jffs2\0" \
+ 	"nor_root_fs_type=jffs2\0" \
+-- 
+1.7.2.5
+
