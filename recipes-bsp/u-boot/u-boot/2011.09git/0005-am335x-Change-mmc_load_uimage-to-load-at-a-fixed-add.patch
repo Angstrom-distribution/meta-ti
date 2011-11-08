@@ -31,7 +31,7 @@ index 56e36da..8c0fae2 100755
  	"mmc_boot=run mmc_args; " \
  		"run mmc_load_uimage; " \
 -		"bootm ${loadaddr}\0" \
-+		"bootm\0" \
++		"bootm 0x80007fc0\0" \
  	"nand_boot=echo Booting from nand ...; " \
  		"run nand_args; " \
  		"nand read.i ${loadaddr} ${nand_src_addr} ${nand_img_siz}; " \
@@ -40,7 +40,7 @@ index 56e36da..8c0fae2 100755
  		"if run mmc_load_uimage; then " \
  			"run mmc_args;" \
 -			"bootm ${loadaddr};" \
-+			"bootm;" \
++			"bootm 0x80007fc0;" \
  		"fi;" \
  	"fi;" \
  	"run nand_boot;" \

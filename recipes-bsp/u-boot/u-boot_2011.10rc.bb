@@ -4,7 +4,7 @@ require u-boot.inc
 COMPATIBLE_MACHINE = "(ti33x)"
 DEFAULT_PREFERENCE_ti33x = "99"
 PV = "2011.09+git"
-PR = "r22"
+PR = "r23"
 
 # SPL build
 UBOOT_BINARY = "u-boot.img"
