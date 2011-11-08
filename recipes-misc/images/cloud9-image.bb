@@ -17,6 +17,7 @@ IMAGE_INSTALL += " \
 	beaglebone-getting-started bonescript \
 	led-config \
 	opencv-dev \
+	ntp \
 "
 
 export IMAGE_BASENAME = "Cloud9-IDE"
