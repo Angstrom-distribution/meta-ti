@@ -32,7 +32,7 @@ IMAGE_CMD_sdimg () {
 	# sanity check fstab entry for boot partition mounting
 	if [ "x$(cat /etc/fstab | grep ${LOOPDEV_BOOT} | grep ${WORKDIR}/tmp-mnt-boot | grep user || true)" = "x" ]; then
 		echo "/etc/fstab entries need to be created with the user flag for the loop devices like:"
-		echo "${LOOPDEV_BOOT} ${WORKDIR}/tmp-mnt-boot msdos user 0 0"
+		echo "${LOOPDEV_BOOT} ${WORKDIR}/tmp-mnt-boot vfat user 0 0"
         false
 	fi
 
@@ -71,7 +71,7 @@ IMAGE_CMD_sdimg () {
 
 	${LOSETUP} ${LOOPDEV_BOOT} ${SDIMG} -o ${BOOT_OFFSET} 
 
-	/sbin/mkfs.msdos ${LOOPDEV_BOOT} -n ${BOOTPARTNAME} $LOOPDEV_BLOCKS
+	/sbin/mkfs.vfat ${LOOPDEV_BOOT} -n ${BOOTPARTNAME} $LOOPDEV_BLOCKS
 
 	# Prepare filesystem partition
 	# Copy ubi used by flashing scripts
