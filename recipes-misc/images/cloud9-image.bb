@@ -17,7 +17,7 @@ IMAGE_INSTALL += " \
 	beaglebone-getting-started bonescript \
 	led-config \
 	opencv-dev \
-	ntp ntpdate ntp-systemd \
+	cronie-systemd ntpdate \
 	nano \
     minicom \
 "
