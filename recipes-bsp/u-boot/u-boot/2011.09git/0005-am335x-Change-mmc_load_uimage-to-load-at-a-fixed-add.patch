@@ -19,10 +19,10 @@ index 56e36da..8c0fae2 100755
  	"loadbootenv=fatload mmc ${mmc_dev} ${loadaddr} ${bootenv}\0" \
  	"importbootenv=echo Importing environment from mmc ...; " \
  		"env import -t $loadaddr $filesize\0" \
--	"mmc_load_uimage_fat=fatload mmc ${mmc_dev} ${loadaddr} ${bootfile}\0" \
--	"mmc_load_uimage=ext2load mmc 0:2 ${loadaddr} /boot/${bootfile}\0" \
-+	"mmc_load_uimage_fat=fatload mmc ${mmc_dev} 0x80007fc0 ${bootfile}\0" \
-+	"mmc_load_uimage=ext2load mmc 0:2 0x80007fc0 /boot/${bootfile}\0" \
+-	"mmc_load_uimage=fatload mmc ${mmc_dev} ${loadaddr} ${bootfile}\0" \
+-	"mmc_load_uimage_ext2=ext2load ${mmc_dev} ${loadaddr} /boot/${bootfile}\0" \
++	"mmc_load_uimage=fatload mmc ${mmc_dev} 0x80007fc0 ${bootfile}\0" \
++	"mmc_load_uimage_ext2=ext2load ${mmc_dev} 0x80007fc0 /boot/${bootfile}\0" \
  	"optargs=\0" \
  	"bootargs_defaults=setenv bootargs " \
  		"console=${console} " \
