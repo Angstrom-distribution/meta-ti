@@ -22,6 +22,8 @@ IMAGE_INSTALL += " \
 	minicom \
 	hicolor-icon-theme \
 	gateone \
+	tar \
+	gdb gdbserver \
 "
 
 export IMAGE_BASENAME = "Cloud9-IDE"
