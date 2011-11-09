@@ -33,3 +33,5 @@ PATCHES_OVER_PSP = " \
 	"
 
 SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
+SRC_URI_append_beaglebone = " file://logo_linux_clut224.ppm"
+
