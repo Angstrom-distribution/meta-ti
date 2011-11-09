@@ -21,6 +21,7 @@ IMAGE_INSTALL += " \
 	nano \
 	minicom \
 	hicolor-icon-theme \
+	gateone \
 "
 
 export IMAGE_BASENAME = "Cloud9-IDE"
