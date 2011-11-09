@@ -19,7 +19,8 @@ IMAGE_INSTALL += " \
 	opencv-dev \
 	cronie-systemd ntpdate \
 	nano \
-    minicom \
+	minicom \
+	hicolor-icon-theme \
 "
 
 export IMAGE_BASENAME = "Cloud9-IDE"
