@@ -3,6 +3,9 @@ inherit image
 # Add the fstypes we need
 IMAGE_FSTYPES_append = " tar.bz2 sdimg"
 
+# Ensure required utilities are present
+IMAGE_DEPENDS_sdimg = "genext2fs-native e2fsprogs-native"
+
 # Change this to match your host distro
 LOSETUP ?= "/sbin/losetup"
 
