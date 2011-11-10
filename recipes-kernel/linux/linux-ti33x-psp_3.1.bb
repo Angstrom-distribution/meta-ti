@@ -11,7 +11,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.1-staging"
 SRCREV = "1d84d8853fa30cf3db2571a5aec572accca4e29d"
-MACHINE_KERNEL_PR_append = "p+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "q+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -30,6 +30,11 @@ PATCHES_OVER_PSP = " \
 	file://0002-ARM-OMAP2-beaglebone-add-LED-support.patch \
 	file://0003-ARM-OMAP2-beaglebone-add-DVI-support-needs-cleanup.patch \
 	file://0004-da8xx-fb-add-DVI-support-for-beaglebone.patch \
+	file://0001-usb-musb_core-kill-all-global-and-static-variables.patch \
+	file://0002-arm-omap-am335x-correct-32KHz-clk-rate.patch \
+	file://0003-arm-omap-mcspi-correct-memory-range-when-requesting-.patch \
+	file://0004-arm-omap-mcspi-follow-proper-pm_runtime-enable-disab.patch \
+	file://0005-arm-omap-mcspi-follow-proper-probe-remove-steps.patch \
 	"
 
 SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
