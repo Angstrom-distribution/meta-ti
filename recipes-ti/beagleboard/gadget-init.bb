@@ -1,6 +1,6 @@
 DESCRIPTION = "Units to initialize usb gadgets"
 
-PR = "r8"
+PR = "r9"
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58"
@@ -48,10 +48,12 @@ FILES_${PN}-storage = "${base_libdir}/systemd/system/storage-gadget-init.service
                        ${sysconfdir}/udev/rules.d/bone-gmass-eject.rules"
 
 FILES_${PN}-network = "${base_libdir}/systemd/system/network-gadget-init.service \
+                       ${base_libdir}systemd/system/basic.target.wants/network-gadget-init.service \
                        ${bindir}/g-ether-load.sh \
                        ${bindir}/g-ether-start-service.sh"
 
 FILES_${PN}-udhcpd = "${base_libdir}/systemd/system/udhcpd.service \
+                      ${base_libdir}/systemd/system/basic.target.wants/udhcpd.service \
                       ${sysconfdir}/udhcpd.conf"
 
 RRECOMMENDS_${PN} = "${PN}-storage ${PN}-network ${PN}-udhcpd"
