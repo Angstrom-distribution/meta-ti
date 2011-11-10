@@ -35,6 +35,12 @@ PATCHES_OVER_PSP = " \
 	file://0003-arm-omap-mcspi-correct-memory-range-when-requesting-.patch \
 	file://0004-arm-omap-mcspi-follow-proper-pm_runtime-enable-disab.patch \
 	file://0005-arm-omap-mcspi-follow-proper-probe-remove-steps.patch \
+	file://can/0001-can-d_can-Added-support-for-Bosch-D_CAN-controller.patch \
+	file://can/0002-can-d_can-Added-platform-data-for-am33xx-device.patch \
+	file://can/0003-can-d_can-DCAN-config-added-to-am335x_evm_defconfig.patch \
+	file://can/0004-can-d_can-fix-for-cansend-loop-issue.patch \
+	file://can/0005-can-d_can-fixes-the-rmmod-crash.patch \
+	file://can/0007-can-d_can-am335x-profile-modification-for-dcan0.patch \
 	"
 
 SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
