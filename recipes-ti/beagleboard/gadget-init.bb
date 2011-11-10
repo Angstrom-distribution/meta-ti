@@ -1,6 +1,6 @@
 DESCRIPTION = "Units to initialize usb gadgets"
 
-PR = "r9"
+PR = "r10"
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58"
@@ -24,7 +24,7 @@ do_install() {
 	install -d ${D}${base_libdir}/systemd/system/basic.target.wants
 	install -m 0644 ${WORKDIR}/*.service ${D}${base_libdir}/systemd/system
 
-	for i in ${WORKDIR}/*.service ; do
+	for i in ${WORKDIR}/storage-gadget-init.service ; do
 		install -m 0644 $i ${D}${base_libdir}/systemd/system
 		ln -sf ../$(basename $i) ${D}${base_libdir}/systemd/system/basic.target.wants/
 	done
@@ -48,7 +48,7 @@ FILES_${PN}-storage = "${base_libdir}/systemd/system/storage-gadget-init.service
                        ${sysconfdir}/udev/rules.d/bone-gmass-eject.rules"
 
 FILES_${PN}-network = "${base_libdir}/systemd/system/network-gadget-init.service \
-                       ${base_libdir}systemd/system/basic.target.wants/network-gadget-init.service \
+                       ${base_libdir}/systemd/system/basic.target.wants/network-gadget-init.service \
                        ${bindir}/g-ether-load.sh \
                        ${bindir}/g-ether-start-service.sh"
 

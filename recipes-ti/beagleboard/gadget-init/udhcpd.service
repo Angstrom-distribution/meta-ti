@@ -1,6 +1,7 @@
 [Unit]
 Description=DHCP server for USB0 network gadget
-After=sys-devices-platform-omap-ti81xx\x2dusbss-musb\x2dhdrc.0-gadget-net-usb0.device
+After=dev-usb0.device
+Conflicts=storage-gadget-init.service
 
 [Service]
 ExecStart=/usr/sbin/udhcpd -f -S /etc/udhcpd.conf
@@ -8,4 +9,4 @@ ExecStop=/bin/kill -TERM $MAINPID
 KillSignal=SIGINT
 
 [Install]
-WantedBy=basic.target
+WantedBy=gether.target
