@@ -24,6 +24,7 @@ IMAGE_INSTALL += " \
 	evtest \
 	bc \
 	kernel-modules \
+	timestamp-service \
 	${EXTRA_MACHINE_IMAGE_INSTALL} \
 "
 
