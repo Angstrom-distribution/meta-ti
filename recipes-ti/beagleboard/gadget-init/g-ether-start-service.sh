@@ -6,6 +6,5 @@ then
 	then
 		/bin/systemctl stop storage-gadget-init.service
 		/bin/systemctl start network-gadget-init.service
-		/bin/systemctl start udhcpd.service
 	fi
 fi

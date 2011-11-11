@@ -4,8 +4,7 @@ Conflicts=storage-gadget-init.service
 
 [Service]
 RemainAfterExit=yes
-ExecStartPre=/usr/bin/g-ether-load.sh
-ExecStart=/sbin/ifconfig usb0 192.168.7.2 netmask 255.255.255.252
+ExecStart=/usr/bin/g-ether-load.sh
 ExecStop=/sbin/rmmod g_ether
 
 [Install]

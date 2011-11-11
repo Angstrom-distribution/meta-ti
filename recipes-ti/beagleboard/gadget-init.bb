@@ -1,6 +1,6 @@
 DESCRIPTION = "Units to initialize usb gadgets"
 
-PR = "r10"
+PR = "r11"
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58"
@@ -15,6 +15,7 @@ SRC_URI = "file://storage-gadget-init.service \
            file://99-hokey-pokey.rules \
            file://hokey-pokey.sh \
            file://bone-gmass-eject.rules \
+           file://udhcpd.rules \
            file://g-storage-reinsert.sh \
            file://g-ether-start-service.sh \
            file://g-ether-load.sh \
@@ -50,7 +51,8 @@ FILES_${PN}-storage = "${base_libdir}/systemd/system/storage-gadget-init.service
 FILES_${PN}-network = "${base_libdir}/systemd/system/network-gadget-init.service \
                        ${base_libdir}/systemd/system/basic.target.wants/network-gadget-init.service \
                        ${bindir}/g-ether-load.sh \
-                       ${bindir}/g-ether-start-service.sh"
+                       ${bindir}/g-ether-start-service.sh \
+                       ${sysconfdir}/udev/rules.d/udhcpd.rules"
 
 FILES_${PN}-udhcpd = "${base_libdir}/systemd/system/udhcpd.service \
                       ${base_libdir}/systemd/system/basic.target.wants/udhcpd.service \
