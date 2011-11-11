@@ -24,6 +24,7 @@ IMAGE_INSTALL += " \
 	gateone \
 	tar \
 	gdb gdbserver \
+	nodejs-dev \
 "
 
 export IMAGE_BASENAME = "Cloud9-IDE"
