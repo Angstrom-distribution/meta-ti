@@ -1,0 +1,42 @@
+From b564457d26931a00f8c5645981a00c1eb78e9a90 Mon Sep 17 00:00:00 2001
+From: Joel A Fernandes <joelagnel@ti.com>
+Date: Sat, 12 Nov 2011 23:42:26 -0600
+Subject: [PATCH] usb::musb::cppi41_dma: Check if scheduling is required after DMA
+
+Even after TX DMA, data can still be in the FIFO and we would keep
+rescheduling the worker thread in a polling fashion taking up a lot
+of CPU if the controller was slow to respond. We check if rescheduling
+is required and sleep if so.
+
+This fixes high CPU load issue seen with g_mass_storage on a BeagleBone
+and could potentially fix similar issues seen with other gadget drivers.
+
+Signed-off-by: Joel A Fernandes <joelagnel@ti.com>
+---
+ drivers/usb/musb/cppi41_dma.c |   10 ++++++++++
+ 1 files changed, 10 insertions(+), 0 deletions(-)
+
+diff --git a/drivers/usb/musb/cppi41_dma.c b/drivers/usb/musb/cppi41_dma.c
+index a24707c..e68c5d7 100644
+--- a/drivers/usb/musb/cppi41_dma.c
++++ b/drivers/usb/musb/cppi41_dma.c
+@@ -1319,6 +1319,16 @@ void txdma_completion_work(struct work_struct *data)
+ 	struct musb *musb = cppi->musb;
+ 	unsigned long flags;
+ 
++	/*
++	 * txdma worker thread can call schedule_work on itself and cause
++	 * itself to be scheduled immediately and because the data might still
++	 * be in FIFO if it hasn't been pushed out after DMA, it is possible for
++	 * the worker to consume lot of CPU when the controller is slow, so we
++	 * reschedule if necessary.
++	 */
++	if (need_resched())
++		cond_resched();
++
+ 	spin_lock_irqsave(&musb->lock, flags);
+ 	cppi41_check_fifo_empty(cppi);
+ 	spin_unlock_irqrestore(&musb->lock, flags);
+-- 
+1.7.4.1
+

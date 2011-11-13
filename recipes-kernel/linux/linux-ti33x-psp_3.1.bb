@@ -11,7 +11,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.1-staging"
 SRCREV = "1d84d8853fa30cf3db2571a5aec572accca4e29d"
-MACHINE_KERNEL_PR_append = "q+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "r+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -35,6 +35,7 @@ PATCHES_OVER_PSP = " \
 	file://0003-arm-omap-mcspi-correct-memory-range-when-requesting-.patch \
 	file://0004-arm-omap-mcspi-follow-proper-pm_runtime-enable-disab.patch \
 	file://0005-arm-omap-mcspi-follow-proper-probe-remove-steps.patch \
+	file://0006-usb-musb-cppi41_dma-Check-if-scheduling-is-required-.patch \
 	file://can/0001-can-d_can-Added-support-for-Bosch-D_CAN-controller.patch \
 	file://can/0002-can-d_can-Added-platform-data-for-am33xx-device.patch \
 	file://can/0003-can-d_can-DCAN-config-added-to-am335x_evm_defconfig.patch \
