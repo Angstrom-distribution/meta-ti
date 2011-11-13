@@ -1,8 +1,8 @@
 DESCRIPTION = "BeagleBone Getting Started Guide"
 
-PR = "r10"
+PR = "r11"
 
-inherit allarch systemd
+inherit allarch
 
 LICENSE = "GPLv2+ && MIT && PD && others"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=603591dea023c3c75b48e07cb47ce639"
