@@ -1,8 +1,8 @@
 DESCRIPTION = "BeagleBone Getting Started Guide"
 
-PR = "r8"
+PR = "r9"
 
-inherit allarch
+inherit allarch systemd
 
 LICENSE = "GPLv2+ && MIT && PD && others"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=603591dea023c3c75b48e07cb47ce639"
@@ -20,5 +20,8 @@ do_install() {
 	install -d ${D}${base_libdir}/systemd/system
 	install -m 0644 ${WORKDIR}/bone101.service ${D}${base_libdir}/systemd/system
 }
+
+SYSTEMD_PACKAGES = "${PN}"
+SYSTEMD_SERVICE_${PN} = "bone101.service"
 
 FILES_${PN} += "${datadir}/${PN} ${base_libdir}/systemd/system"
