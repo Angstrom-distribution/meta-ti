@@ -4,7 +4,7 @@ require u-boot.inc
 COMPATIBLE_MACHINE = "(ti33x)"
 DEFAULT_PREFERENCE_ti33x = "99"
 PV = "2011.09+git"
-PR = "r23"
+PR = "r24"
 
 # SPL build
 UBOOT_BINARY = "u-boot.img"
@@ -28,6 +28,3 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=1707d6db1d42237583f50183a5651ecb"
 
 S = "${WORKDIR}/git"
 
-do_deploy_append () {
-    install ${S}/MLO ${DEPLOY_DIR_IMAGE}/MLO
-}
