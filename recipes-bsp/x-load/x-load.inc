@@ -54,4 +54,6 @@ do_deploy () {
 	ln -sf ${XLOAD_USB_IMAGE} ${XLOAD_USB_SYMLINK}	
 	rm -f ${MLO_SYMLINK}
 	ln -sf ${MLO_IMAGE} ${MLO_SYMLINK}
+	rm -f ${MLO_SYMLINK_NOMACHINE}
+	ln -sf ${MLO_IMAGE} ${MLO_SYMLINK_NOMACHINE}
 }
