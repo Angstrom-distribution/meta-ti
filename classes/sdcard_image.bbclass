@@ -130,28 +130,22 @@ IMAGE_CMD_sdimg () {
 	echo "Creating rootfs loopback"
 	${LOSETUP} ${LOOPDEV_FS} ${SDIMG} -o ${FS_OFFSET}
 
-	# should use fdisk info
-	echo "Creating rootfs image"
-	touch ${WORKDIR}/${IMAGE_NAME}.rootfs.img
-
 	FS_NUM_INODES=$(echo $FS_SIZE_BLOCKS / 4 | bc)
 
 	case "${ROOTFSTYPE}" in
 		ext3)
-				genext2fs -z -N $FS_NUM_INODES -b $FS_SIZE_BLOCKS -d ${IMAGE_ROOTFS} ${WORKDIR}/${IMAGE_NAME}.rootfs.img
-				tune2fs -L ${IMAGE_NAME} -j ${WORKDIR}/${IMAGE_NAME}.rootfs.img
+				genext2fs -z -N $FS_NUM_INODES -b $FS_SIZE_BLOCKS -d ${IMAGE_ROOTFS} ${LOOPDEV_FS}
+				tune2fs -L ${IMAGE_NAME} -j ${LOOPDEV_FS}
 				;;
 		ext4)
-				genext2fs -z -N $FS_NUM_INODES -b $FS_SIZE_BLOCKS -d ${IMAGE_ROOTFS} ${WORKDIR}/${IMAGE_NAME}.rootfs.img
-				tune2fs -L ${IMAGE_NAME} -j -O extents,uninit_bg,dir_index ${WORKDIR}/${IMAGE_NAME}.rootfs.img
+				genext2fs -z -N $FS_NUM_INODES -b $FS_SIZE_BLOCKS -d ${IMAGE_ROOTFS} ${LOOPDEV_FS}
+				tune2fs -L ${IMAGE_NAME} -j -O extents,uninit_bg,dir_index ${LOOPDEV_FS}
 				;;
 		*)
 				echo "Please set ROOTFSTYPE to something supported"
 				exit 1
 				;;
 	esac
-
-	dd if=${WORKDIR}/${IMAGE_NAME}.rootfs.img of=${LOOPDEV_FS}
 
 	${LOSETUP} -d ${LOOPDEV_FS} || true
 
