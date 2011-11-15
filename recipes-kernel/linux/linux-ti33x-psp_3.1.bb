@@ -11,7 +11,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.1-staging"
 SRCREV = "1d84d8853fa30cf3db2571a5aec572accca4e29d"
-MACHINE_KERNEL_PR_append = "r+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "s+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
