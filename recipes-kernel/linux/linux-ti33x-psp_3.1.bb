@@ -11,7 +11,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.1-staging"
 SRCREV = "1d84d8853fa30cf3db2571a5aec572accca4e29d"
-MACHINE_KERNEL_PR_append = "s+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "t+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -41,7 +41,6 @@ PATCHES_OVER_PSP = " \
 	file://can/0003-can-d_can-DCAN-config-added-to-am335x_evm_defconfig.patch \
 	file://can/0004-can-d_can-fix-for-cansend-loop-issue.patch \
 	file://can/0005-can-d_can-fixes-the-rmmod-crash.patch \
-	file://can/0007-can-d_can-am335x-profile-modification-for-dcan0.patch \
 	"
 
 SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
