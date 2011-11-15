@@ -4,6 +4,7 @@ After=dev-mmcblk0p1.device
 
 [Service]
 RemainAfterExit=yes
+ExecStartPre=/usr/bin/update-image-info-on-mmcblk0p1.sh
 ExecStart=/sbin/modprobe g_mass_storage file=/dev/mmcblk0p1 cdrom=0 stall=0 removable=1 nofua=1
 ExecStop=/sbin/rmmod g_mass_storage
 

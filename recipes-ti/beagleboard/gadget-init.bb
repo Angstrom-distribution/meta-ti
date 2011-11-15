@@ -1,6 +1,6 @@
 DESCRIPTION = "Units to initialize usb gadgets"
 
-PR = "r11"
+PR = "r12"
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58"
@@ -19,6 +19,7 @@ SRC_URI = "file://storage-gadget-init.service \
            file://g-storage-reinsert.sh \
            file://g-ether-start-service.sh \
            file://g-ether-load.sh \
+           file://update-image-info-on-mmcblk0p1.sh \
           "
 
 do_install() {
@@ -46,6 +47,7 @@ FILES_${PN} = "${sysconfdir}/udev/rules.d/99-hokey-pokey.rules \
 FILES_${PN}-storage = "${base_libdir}/systemd/system/storage-gadget-init.service \
                        ${base_libdir}/systemd/system/basic.target.wants/storage-gadget-init.service \
                        ${bindir}/g-storage-reinsert.sh \
+                       ${bindir}/update-image-info-on-mmcblk0p1.sh \
                        ${sysconfdir}/udev/rules.d/bone-gmass-eject.rules"
 
 FILES_${PN}-network = "${base_libdir}/systemd/system/network-gadget-init.service \
