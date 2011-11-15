@@ -27,6 +27,10 @@ echo "/etc/angstrom-build-info:" >> /mnt/info.txt
 cat /etc/angstrom-build-info >> /mnt/info.txt
 
 echo >> /mnt/info.txt
+echo "/etc/image-version-info:" >> /mnt/info.txt
+cat /etc/image-version-info >> /mnt/info.txt
+
+echo >> /mnt/info.txt
 echo "opkg list-installed:" >> /mnt/info.txt
 opkg list-installed >> /mnt/info.txt
 
