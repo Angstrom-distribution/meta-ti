@@ -11,7 +11,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3
 SRCREV = "c6c5f3b013eea425d3f4ee64d58b993289d2530f"
 SRC_URI = "git://github.com/jadonk/bonescript.git \
            file://bonescript-git \
-           file://file://bone101.service \
+           file://bone101.service \
           "
 S = "${WORKDIR}/git"
 
