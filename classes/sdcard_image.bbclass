@@ -121,6 +121,8 @@ IMAGE_CMD_sdimg () {
 		done
 	fi
 
+	echo "${IMAGE_NAME}-${IMAGEDATESTAMP}" > ${IMAGE_ROOTFS}/etc/image-version-info
+
 	# Cleanup VFAT mount
 	echo "Cleaning up VFAT mount"
 	umount ${WORKDIR}/tmp-mnt-boot
