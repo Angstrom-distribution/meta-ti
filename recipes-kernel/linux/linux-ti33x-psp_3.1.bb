@@ -9,9 +9,9 @@ S = "${WORKDIR}/git"
 
 MULTI_CONFIG_BASE_SUFFIX = ""
 
-BRANCH = "v3.1-staging"
+BRANCH = "v3.1-meta-ti-r1r+gitr1d84d8853fa30cf3db2571a5aec572accca4e29d"
 SRCREV = "1d84d8853fa30cf3db2571a5aec572accca4e29d"
-MACHINE_KERNEL_PR_append = "t+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -21,7 +21,7 @@ ${@base_set_filespath(["${THISDIR}/${PN}/tipspkernel"], d)}:\
 ${@base_set_filespath(["${THISDIR}/files/tipspkernel"], d)}:"
 FILESPATH =. "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "${CONFIGS_PSP}", "", d)}"
 
-SRC_URI += "git://arago-project.org/git/projects/linux-am33x.git;protocol=git;branch=${BRANCH} \
+SRC_URI += "git://github.com/beagleboard/linux.git;branch=${BRANCH} \
 	file://defconfig"
 
 PATCHES_OVER_PSP = " \
