@@ -1,6 +1,6 @@
 DESCRIPTION = "Scripting tools for the BeagleBoard and BeagleBone"
 
-PR = "r8"
+PR = "r9"
 
 inherit allarch systemd
 
@@ -8,7 +8,7 @@ inherit allarch systemd
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58"
 
-SRCREV = "c6c5f3b013eea425d3f4ee64d58b993289d2530f"
+SRCREV = "f246a7236d3e7f4694b88406c3d8d901c9842820"
 SRC_URI = "git://github.com/jadonk/bonescript.git \
            file://bonescript-git \
            file://bone101.service \
