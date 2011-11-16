@@ -1,13 +1,13 @@
 DESCRIPTION = "BeagleBone Getting Started Guide"
 
-PR = "r13"
+PR = "r14"
 
 inherit allarch
 
 LICENSE = "GPLv2+ && MIT && PD && others"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=603591dea023c3c75b48e07cb47ce639"
 
-SRCREV = "8382dc6cafe3d6b38117fac57c5f1ebd081c3424"
+SRCREV = "18d815200cfc628f1543704716fff2f12db702d8"
 SRC_URI = "git://github.com/jadonk/beaglebone-getting-started.git"
 
 S = "${WORKDIR}/git"
