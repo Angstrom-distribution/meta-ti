@@ -11,7 +11,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.1-meta-ti-r1r+gitr1d84d8853fa30cf3db2571a5aec572accca4e29d"
 SRCREV = "1d84d8853fa30cf3db2571a5aec572accca4e29d"
-MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -41,6 +41,9 @@ PATCHES_OVER_PSP = " \
 	file://can/0003-can-d_can-DCAN-config-added-to-am335x_evm_defconfig.patch \
 	file://can/0004-can-d_can-fix-for-cansend-loop-issue.patch \
 	file://can/0005-can-d_can-fixes-the-rmmod-crash.patch \
+	file://i2c/0001-arm-omap-mux33xx-Add-i2c2-pin-muix.patch \
+	file://i2c/0002-omap-hwmod-33xx-Add-support-for-third-i2c-bus.patch \
+	file://i2c/0003-arm-omap-board-Add-quick-hack-to-get-i2c2-bus-suppor.patch	\
 	"
 
 SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
