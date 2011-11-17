@@ -1,0 +1,63 @@
+From 2df6e88944b98466e0b1225a873bfed005cea4e4 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Wed, 16 Nov 2011 18:57:12 +0100
+Subject: [PATCH] am335x-evm: enable i2c2 pinmux for beaglebone
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ board/ti/am335x/mux.c |   18 ++++++++++++++++++
+ 1 files changed, 18 insertions(+), 0 deletions(-)
+
+diff --git a/board/ti/am335x/mux.c b/board/ti/am335x/mux.c
+index d9956f3..313d5a5 100644
+--- a/board/ti/am335x/mux.c
++++ b/board/ti/am335x/mux.c
+@@ -309,6 +309,12 @@ static struct module_pin_mux i2c1_pin_mux[] = {
+ 	{-1},
+ };
+ 
++static struct module_pin_mux i2c2_pin_mux[] = {
++	{OFFSET(uart1_ctsn), (MODE(3) | RXACTIVE | PULLUDEN | SLEWCTRL)},  /* I2C_DATA */
++	{OFFSET(uart1_rtsn), (MODE(3) | RXACTIVE | PULLUDEN | SLEWCTRL)}, /* I2C_SCLK */
++	{-1},
++};
++
+ #ifndef CONFIG_NO_ETH
+ static struct module_pin_mux rgmii1_pin_mux[] = {
+ 	{OFFSET(mii1_txen), MODE(2)},			/* RGMII1_TCTL */
+@@ -568,6 +574,7 @@ static struct evm_pin_mux low_cost_evm_pin_mux[] = {
+ static struct evm_pin_mux beaglebone_pin_mux[] = {
+ 	{uart0_pin_mux, PROFILE_ALL, DEV_ON_BASEBOARD},
+ 	{i2c1_pin_mux, PROFILE_ALL & ~PROFILE_2 & ~PROFILE_4, DEV_ON_BASEBOARD},
++	{i2c2_pin_mux, PROFILE_ALL, DEV_ON_BASEBOARD},
+ #ifdef CONFIG_NAND
+ 	{nand_pin_mux, PROFILE_ALL & ~PROFILE_2 & ~PROFILE_3, DEV_ON_DGHTR_BRD},
+ #endif
+@@ -587,6 +594,7 @@ static struct evm_pin_mux beaglebone_pin_mux[] = {
+ static struct evm_pin_mux beaglebone_old_pin_mux[] = {
+ 	{uart0_pin_mux, PROFILE_ALL, DEV_ON_BASEBOARD},
+ 	{i2c1_pin_mux, PROFILE_ALL & ~PROFILE_2 & ~PROFILE_4, DEV_ON_BASEBOARD},
++	{i2c2_pin_mux, PROFILE_ALL, DEV_ON_BASEBOARD},
+ #ifdef CONFIG_NAND
+ 	{nand_pin_mux, PROFILE_ALL & ~PROFILE_2 & ~PROFILE_3, DEV_ON_DGHTR_BRD},
+ #endif
+@@ -682,6 +690,16 @@ void enable_i2c0_pin_mux(void)
+ 	configure_module_pin_mux(i2c0_pin_mux);
+ }
+ 
++void enable_i2c1_pin_mux(void)
++{
++	configure_module_pin_mux(i2c1_pin_mux);
++}
++
++void enable_i2c2_pin_mux(void)
++{
++	configure_module_pin_mux(i2c2_pin_mux);
++}
++
+ void enable_uart0_pin_mux(void)
+ {
+ 	configure_module_pin_mux(uart0_pin_mux);
+-- 
+1.7.2.5
+

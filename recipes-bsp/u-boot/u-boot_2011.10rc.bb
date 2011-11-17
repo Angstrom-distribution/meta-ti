@@ -4,7 +4,7 @@ require u-boot.inc
 COMPATIBLE_MACHINE = "(ti33x)"
 DEFAULT_PREFERENCE_ti33x = "99"
 PV = "2011.09+git"
-PR = "r24"
+PR = "r25"
 
 # SPL build
 UBOOT_BINARY = "u-boot.img"
@@ -20,6 +20,7 @@ SRC_URI = "git://arago-project.org/git/projects/u-boot-am33x.git;protocol=git;br
            file://2011.09git/0006-am335x-evm-Fix-bone-pmic-shut-down-over-USB-power.patch \
            file://2011.09git/0007-am335x_evm-switch-to-ext4.patch \
            file://2011.09git/0008-HACK-am335x-evm-turn-d-cache-on-globally-turn-it-off.patch \
+           file://2011.09git/0009-am335x-evm-enable-i2c2-pinmux-for-beaglebone.patch \
           "
 
 SRCREV = "f63b270e47f62f4d1a05b2001357e215966c6f5a"
