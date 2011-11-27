@@ -1,7 +1,9 @@
-From d901c32c1bd9343a932f8bdd96f3ec539407b42b Mon Sep 17 00:00:00 2001
+From ceb3c55ff226f068edb369342e3bd2db70ca8827 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
-Date: Tue, 11 Oct 2011 13:53:21 +0200
-Subject: [PATCH 2/2] beagleboard: switch to ttyO2
+Date: Sun, 27 Nov 2011 14:46:04 +0100
+Subject: [PATCH 19/21] BeagleBoard: config: Really switch to ttyO2
+
+The previous commit changed it to "zero two" instead of the proper "Oh two". This was completely broken!
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
@@ -9,18 +11,18 @@ Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
  1 files changed, 1 insertions(+), 1 deletions(-)
 
 diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
-index 23f19f6..04c2188 100644
+index 186586f..833f86a 100644
 --- a/include/configs/omap3_beagle.h
 +++ b/include/configs/omap3_beagle.h
-@@ -220,7 +220,7 @@
+@@ -217,7 +217,7 @@
  	"rdaddr=0x81000000\0" \
  	"usbtty=cdc_acm\0" \
  	"bootfile=uImage.beagle\0" \
--	"console=ttyS2,115200n8\0" \
+-	"console=tty02,115200n8\0" \
 +	"console=ttyO2,115200n8\0" \
  	"mpurate=auto\0" \
  	"buddy=none "\
- 	"buddy2=none "\
+ 	"optargs=\0" \
 -- 
-1.6.6.1
+1.7.2.5
 

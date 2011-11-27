@@ -1,0 +1,66 @@
+From 42db3ebdd76628017e7ab83752e9b288ec4f26a0 Mon Sep 17 00:00:00 2001
+From: Tom Rini <trini@ti.com>
+Date: Fri, 18 Nov 2011 12:47:59 +0000
+Subject: [PATCH 02/21] OMAP3: Update SDRC dram_init to always call make_cs1_contiguous()
+
+We update the comment in make_cs1_contiguous() to be a little bit
+more clear (it's been copy/pasted from other silicons) and then
+explain in dram_init() why we need to always try this.
+
+Note that in the previous behavior we were always calling this on
+boards that never had cs1 populated anyhow so making sure we do
+this always is fine and will correct things like omap3evm detecting
+an invalid amount of memory (384MB).
+
+Signed-off-by: Tom Rini <trini@ti.com>
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ arch/arm/cpu/armv7/omap3/sdrc.c |   23 +++++++++++------------
+ 1 files changed, 11 insertions(+), 12 deletions(-)
+
+diff --git a/arch/arm/cpu/armv7/omap3/sdrc.c b/arch/arm/cpu/armv7/omap3/sdrc.c
+index 0dd1955..66ce33f 100644
+--- a/arch/arm/cpu/armv7/omap3/sdrc.c
++++ b/arch/arm/cpu/armv7/omap3/sdrc.c
+@@ -58,10 +58,9 @@ u32 is_mem_sdr(void)
+ 
+ /*
+  * make_cs1_contiguous -
+- *  - For es2 and above remap cs1 behind cs0 to allow command line
+- *    mem=xyz use all memory with out discontinuous support compiled in.
+- *    Could do it at the ATAG, but there really is two banks...
+- *  - Called as part of 2nd phase DDR init.
++ * - When we have CS1 populated we want to have it mapped after cs0 to allow
++ *   command line mem=xyz use all memory with out discontinuous support
++ *   compiled in.  We could do it in the ATAG, but there really is two banks...
+  */
+ void make_cs1_contiguous(void)
+ {
+@@ -207,16 +206,16 @@ int dram_init(void)
+ 
+ 	size0 = get_sdr_cs_size(CS0);
+ 	/*
+-	 * If a second bank of DDR is attached to CS1 this is
+-	 * where it can be started.  Early init code will init
+-	 * memory on CS0.
++	 * We always need to have cs_cfg point at where the second
++	 * bank would be, if present.  Failure to do so can lead to
++	 * strange situations where memory isn't detected and
++	 * configured correctly.  CS0 will already have been setup
++	 * at this point.
+ 	 */
+-	if ((sysinfo.mtype == DDR_COMBO) || (sysinfo.mtype == DDR_STACKED)) {
+-		do_sdrc_init(CS1, NOT_EARLY);
+-		make_cs1_contiguous();
++	make_cs1_contiguous();
++	do_sdrc_init(CS1, NOT_EARLY);
++	size1 = get_sdr_cs_size(CS1);
+ 
+-		size1 = get_sdr_cs_size(CS1);
+-	}
+ 	gd->ram_size = size0 + size1;
+ 
+ 	return 0;
+-- 
+1.7.2.5
+

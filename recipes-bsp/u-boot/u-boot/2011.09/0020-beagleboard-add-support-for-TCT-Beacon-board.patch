@@ -1,20 +1,19 @@
-From f6ce74793e6341895153e43643460b7fc812dc9d Mon Sep 17 00:00:00 2001
+From e368b3cc2b281146c7848a2044e8a7d457ea1e38 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Sat, 8 Oct 2011 21:56:35 +0200
-Subject: [PATCH] beagleboard: add support for TCT Beacon board
+Subject: [PATCH 20/21] beagleboard: add support for TCT Beacon board
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
- board/ti/beagle/beagle.c       |   59 ++++++++++++++++++++++++++++++++++++++++
- board/ti/beagle/beagle.h       |    7 +++++
- include/configs/omap3_beagle.h |    7 +++++
- 3 files changed, 73 insertions(+), 0 deletions(-)
+ board/ti/beagle/beagle.c |   10 ++++++++++
+ board/ti/beagle/beagle.h |    7 +++++++
+ 2 files changed, 17 insertions(+), 0 deletions(-)
 
 diff --git a/board/ti/beagle/beagle.c b/board/ti/beagle/beagle.c
-index 8cdceaf..f4e986c 100644
+index 6a457cb..9c2e6d0 100644
 --- a/board/ti/beagle/beagle.c
 +++ b/board/ti/beagle/beagle.c
-@@ -57,11 +57,14 @@ extern volatile struct ehci_hcor *hcor;
+@@ -59,11 +59,14 @@ extern volatile struct ehci_hcor *hcor;
  #define TWL4030_I2C_BUS			0
  #define EXPANSION_EEPROM_I2C_BUS	1
  #define EXPANSION_EEPROM_I2C_ADDRESS	0x50
@@ -29,7 +28,7 @@ index 8cdceaf..f4e986c 100644
  #define KBADC_BEAGLEFPGA		0x01000600
  #define LW_BEAGLETOUCH			0x01000700
  #define BRAINMUX_LCDOG			0x01000800
-@@ -290,6 +331,13 @@ int misc_init_r(void)
+@@ -351,6 +354,13 @@ int misc_init_r(void)
  		setenv("defaultdisplay", "showdoglcd");
  		setenv("buddy", "showdog");
  		break;
@@ -61,3 +60,6 @@ index 18bfaa8..6a9ad73 100644
  #define MUX_KBADC_BEAGLEFPGA() \
  	MUX_VAL(CP(MCBSP1_CLKR),    (IEN  | PTU | DIS | M1)) /*MCSPI4_CLK*/\
  	MUX_VAL(CP(MCBSP1_DX),      (IDIS | PTU | DIS | M1)) /*MCSPI4_SIMO*/\
+-- 
+1.7.2.5
+

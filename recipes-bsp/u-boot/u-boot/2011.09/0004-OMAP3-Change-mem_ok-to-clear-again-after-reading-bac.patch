@@ -1,0 +1,30 @@
+From 0cf0d611823f6e1f3b63f9233c145a3940a89694 Mon Sep 17 00:00:00 2001
+From: Tom Rini <trini@ti.com>
+Date: Fri, 18 Nov 2011 12:48:01 +0000
+Subject: [PATCH 04/21] OMAP3: Change mem_ok to clear again after reading back
+
+It's possible to need to call this function on the same banks multiple
+times so we want to be sure that 'pos A' is cleared out again at the
+end.
+
+Signed-off-by: Tom Rini <trini@ti.com>
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ arch/arm/cpu/armv7/omap3/mem.c |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/arch/arm/cpu/armv7/omap3/mem.c b/arch/arm/cpu/armv7/omap3/mem.c
+index 2f1efea..2fe5ac7 100644
+--- a/arch/arm/cpu/armv7/omap3/mem.c
++++ b/arch/arm/cpu/armv7/omap3/mem.c
+@@ -86,6 +86,7 @@ u32 mem_ok(u32 cs)
+ 	writel(0x0, addr + 4);		/* remove pattern off the bus */
+ 	val1 = readl(addr + 0x400);	/* get pos A value */
+ 	val2 = readl(addr);		/* get val2 */
++	writel(0x0, addr + 0x400);	/* clear pos A */
+ 
+ 	if ((val1 != 0) || (val2 != pattern))	/* see if pos A val changed */
+ 		return 0;
+-- 
+1.7.2.5
+

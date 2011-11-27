@@ -1,0 +1,315 @@
+From 4ce72b52b5eeb172c1118fbd6e23d49eeec30ad2 Mon Sep 17 00:00:00 2001
+From: Tom Rini <trini@ti.com>
+Date: Fri, 18 Nov 2011 12:48:08 +0000
+Subject: [PATCH 11/21] OMAP3: Add SPL support to Beagleboard
+
+This introduces 200MHz Micron parts timing information based on x-loader
+to <asm/arch-omap3/mem.h> and Numonyx MCFG calculation.  The memory init
+logic is also based on what x-loader does in these cases.  Note that
+while previously u-boot would be flashed in with SW ECC in this case it
+now must be flashed with HW ECC.  We also change CONFIG_SYS_TEXT_BASE to
+0x80100000.
+
+Cc: Dirk Behme <dirk.behme@gmail.com>
+Beagleboard rev C5, xM rev A:
+Tested-by: Tom Rini <trini@ti.com>
+Beagleboard xM rev C:
+Tested-by: Matt Ranostay <mranostay@gmail.com>
+Beagleboard rev B7, C2, xM rev B:
+Tested-by: Matt Porter <mporter@ti.com>
+Signed-off-by: Tom Rini <trini@ti.com>
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ arch/arm/include/asm/arch-omap3/mem.h |   29 +++++++++++++
+ board/ti/beagle/beagle.c              |   71 ++++++++++++++++++++++++++++++++-
+ board/ti/beagle/config.mk             |   33 ---------------
+ include/configs/omap3_beagle.h        |   59 +++++++++++++++++++++++++--
+ 4 files changed, 153 insertions(+), 39 deletions(-)
+ delete mode 100644 board/ti/beagle/config.mk
+
+diff --git a/arch/arm/include/asm/arch-omap3/mem.h b/arch/arm/include/asm/arch-omap3/mem.h
+index 09f5872..4ea5f74 100644
+--- a/arch/arm/include/asm/arch-omap3/mem.h
++++ b/arch/arm/include/asm/arch-omap3/mem.h
+@@ -186,6 +186,32 @@ enum {
+ 		(MICRON_CASL_165 << 4) | (MICRON_SIL_165 << 3) | \
+ 		(MICRON_BL_165))
+ 
++/* Micron part (200MHz optimized) 5 ns */
++#define MICRON_TDAL_200		6
++#define MICRON_TDPL_200		3
++#define MICRON_TRRD_200		2
++#define MICRON_TRCD_200		3
++#define MICRON_TRP_200		3
++#define MICRON_TRAS_200		8
++#define MICRON_TRC_200		11
++#define MICRON_TRFC_200		15
++#define MICRON_V_ACTIMA_200	\
++		ACTIM_CTRLA(MICRON_TRFC_200, MICRON_TRC_200,		\
++				MICRON_TRAS_200, MICRON_TRP_200,	\
++				MICRON_TRCD_200, MICRON_TRRD_200,	\
++				MICRON_TDPL_200, MICRON_TDAL_200)
++
++#define MICRON_TWTR_200		2
++#define MICRON_TCKE_200		4
++#define MICRON_TXP_200		2
++#define MICRON_XSR_200		23
++#define MICRON_V_ACTIMB_200	\
++		ACTIM_CTRLB(MICRON_TWTR_200, MICRON_TCKE_200,	\
++				MICRON_TXP_200,	MICRON_XSR_200)
++
++#define MICRON_RASWIDTH_200	0x3
++#define MICRON_V_MCFG_200(size)	MCFG((size), MICRON_RASWIDTH_200)
++
+ /* NUMONYX part of IGEP v2 (165MHz optimized) 6.06ns */
+ #define NUMONYX_TDAL_165	6	/* Twr/Tck + Trp/tck		*/
+ 					/* 15/6 + 18/6 = 5.5 -> 6	*/
+@@ -212,6 +238,9 @@ enum {
+ 		ACTIM_CTRLB(NUMONYX_TWTR_165, NUMONYX_TCKE_165,	\
+ 				NUMONYX_TXP_165, NUMONYX_XSR_165)
+ 
++#define NUMONYX_RASWIDTH_165		0x4
++#define NUMONYX_V_MCFG_165(size)	MCFG((size), NUMONYX_RASWIDTH_165)
++
+ /*
+  * GPMC settings -
+  * Definitions is as per the following format
+diff --git a/board/ti/beagle/beagle.c b/board/ti/beagle/beagle.c
+index 9482c5e..6a457cb 100644
+--- a/board/ti/beagle/beagle.c
++++ b/board/ti/beagle/beagle.c
+@@ -1,5 +1,5 @@
+ /*
+- * (C) Copyright 2004-2008
++ * (C) Copyright 2004-2011
+  * Texas Instruments, <www.ti.com>
+  *
+  * Author :
+@@ -34,9 +34,11 @@
+ #include <status_led.h>
+ #endif
+ #include <twl4030.h>
++#include <linux/mtd/nand.h>
+ #include <asm/io.h>
+ #include <asm/arch/mmc_host_def.h>
+ #include <asm/arch/mux.h>
++#include <asm/arch/mem.h>
+ #include <asm/arch/sys_proto.h>
+ #include <asm/gpio.h>
+ #include <asm/mach-types.h>
+@@ -135,6 +137,69 @@ int get_board_revision(void)
+ 	return revision;
+ }
+ 
++#ifdef CONFIG_SPL_BUILD
++/*
++ * Routine: get_board_mem_timings
++ * Description: If we use SPL then there is no x-loader nor config header
++ * so we have to setup the DDR timings ourself on both banks.
++ */
++void get_board_mem_timings(u32 *mcfg, u32 *ctrla, u32 *ctrlb, u32 *rfr_ctrl,
++		u32 *mr)
++{
++	int pop_mfr, pop_id;
++
++	/*
++	 * We need to identify what PoP memory is on the board so that
++	 * we know what timings to use.  If we can't identify it then
++	 * we know it's an xM.  To map the ID values please see nand_ids.c
++	 */
++	identify_nand_chip(&pop_mfr, &pop_id);
++
++	*mr = MICRON_V_MR_165;
++	switch (get_board_revision()) {
++	case REVISION_C4:
++		if (pop_mfr == NAND_MFR_STMICRO && pop_id == 0xba) {
++			/* 512MB DDR */
++			*mcfg = NUMONYX_V_MCFG_165(512 << 20);
++			*ctrla = NUMONYX_V_ACTIMA_165;
++			*ctrlb = NUMONYX_V_ACTIMB_165;
++			*rfr_ctrl = SDP_3430_SDRC_RFR_CTRL_165MHz;
++			break;
++		} else if (pop_mfr == NAND_MFR_MICRON && pop_id == 0xbc) {
++			/* Beagleboard Rev C5, 256MB DDR */
++			*mcfg = MICRON_V_MCFG_200(256 << 20);
++			*ctrla = MICRON_V_ACTIMA_200;
++			*ctrlb = MICRON_V_ACTIMB_200;
++			*rfr_ctrl = SDP_3430_SDRC_RFR_CTRL_200MHz;
++			break;
++		}
++	case REVISION_XM_A:
++	case REVISION_XM_B:
++	case REVISION_XM_C:
++		if (pop_mfr == 0) {
++			/* 256MB DDR */
++			*mcfg = MICRON_V_MCFG_200(256 << 20);
++			*ctrla = MICRON_V_ACTIMA_200;
++			*ctrlb = MICRON_V_ACTIMB_200;
++			*rfr_ctrl = SDP_3430_SDRC_RFR_CTRL_200MHz;
++		} else {
++			/* 512MB DDR */
++			*mcfg = NUMONYX_V_MCFG_165(512 << 20);
++			*ctrla = NUMONYX_V_ACTIMA_165;
++			*ctrlb = NUMONYX_V_ACTIMB_165;
++			*rfr_ctrl = SDP_3430_SDRC_RFR_CTRL_165MHz;
++		}
++		break;
++	default:
++		/* Assume 128MB and Micron/165MHz timings to be safe */
++		*mcfg = MICRON_V_MCFG_165(128 << 20);
++		*ctrla = MICRON_V_ACTIMA_165;
++		*ctrlb = MICRON_V_ACTIMB_165;
++		*rfr_ctrl = SDP_3430_SDRC_RFR_CTRL_165MHz;
++	}
++}
++#endif
++
+ /*
+  * Routine: get_expansion_id
+  * Description: This function checks for expansion board by checking I2C
+@@ -367,7 +432,7 @@ void set_muxconf_regs(void)
+ 	MUX_BEAGLE();
+ }
+ 
+-#ifdef CONFIG_GENERIC_MMC
++#if defined(CONFIG_GENERIC_MMC) && !defined(CONFIG_SPL_BUILD)
+ int board_mmc_init(bd_t *bis)
+ {
+ 	omap_mmc_init(0);
+@@ -476,6 +541,7 @@ int ehci_hcd_init(void)
+ 
+ #endif /* CONFIG_USB_EHCI */
+ 
++#ifndef CONFIG_SPL_BUILD
+ /*
+  * This command returns the status of the user button on beagle xM
+  * Input - none
+@@ -528,3 +594,4 @@ U_BOOT_CMD(
+ 	"Return the status of the BeagleBoard USER button",
+ 	""
+ );
++#endif
+diff --git a/board/ti/beagle/config.mk b/board/ti/beagle/config.mk
+deleted file mode 100644
+index cf055db..0000000
+--- a/board/ti/beagle/config.mk
++++ /dev/null
+@@ -1,33 +0,0 @@
+-#
+-# (C) Copyright 2006
+-# Texas Instruments, <www.ti.com>
+-#
+-# Beagle Board uses OMAP3 (ARM-CortexA8) cpu
+-# see http://www.ti.com/ for more information on Texas Instruments
+-#
+-# See file CREDITS for list of people who contributed to this
+-# project.
+-#
+-# This program is free software; you can redistribute it and/or
+-# modify it under the terms of the GNU General Public License as
+-# published by the Free Software Foundation; either version 2 of
+-# the License, or (at your option) any later version.
+-#
+-# This program is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with this program; if not, write to the Free Software
+-# Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+-# MA 02111-1307 USA
+-#
+-# Physical Address:
+-# 8000'0000 (bank0)
+-# A000/0000 (bank1)
+-# Linux-Kernel is expected to be at 8000'8000, entry 8000'8000
+-# (mem base + reserved)
+-
+-# For use with external or internal boots.
+-CONFIG_SYS_TEXT_BASE = 0x80008000
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index 15e40c5..941ec38 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -111,9 +111,6 @@
+ #define STATUS_LED_BOOT			STATUS_LED_BIT
+ #define STATUS_LED_GREEN		STATUS_LED_BIT1
+ 
+-/* DDR - I use Micron DDR */
+-#define CONFIG_OMAP3_MICRON_DDR		1
+-
+ /* Enable Multi Bus support for I2C */
+ #define CONFIG_I2C_MULTI_BUS		1
+ 
+@@ -347,7 +344,6 @@
+  */
+ #define CONFIG_NR_DRAM_BANKS	2	/* CS1 may or may not be populated */
+ #define PHYS_SDRAM_1		OMAP34XX_SDRC_CS0
+-#define PHYS_SDRAM_1_SIZE	(32 << 20)	/* at least 32 MiB */
+ #define PHYS_SDRAM_2		OMAP34XX_SDRC_CS1
+ 
+ /* SDRAM Bank Allocation method */
+@@ -390,4 +386,59 @@
+ 
+ #define CONFIG_OMAP3_SPI
+ 
++/* Defines for SPL */
++#define CONFIG_SPL
++#define CONFIG_SPL_NAND_SIMPLE
++#define CONFIG_SPL_TEXT_BASE		0x40200800
++#define CONFIG_SPL_MAX_SIZE		(45 * 1024)
++#define CONFIG_SPL_STACK		LOW_LEVEL_SRAM_STACK
++
++#define CONFIG_SPL_BSS_START_ADDR	0x80000000
++#define CONFIG_SPL_BSS_MAX_SIZE		0x80000		/* 512 KB */
++
++#define CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_SECTOR	0x300 /* address 0x60000 */
++#define CONFIG_SYS_U_BOOT_MAX_SIZE_SECTORS	0x200 /* 256 KB */
++#define CONFIG_SYS_MMC_SD_FAT_BOOT_PARTITION	1
++#define CONFIG_SPL_FAT_LOAD_PAYLOAD_NAME	"u-boot.img"
++
++#define CONFIG_SPL_LIBCOMMON_SUPPORT
++#define CONFIG_SPL_LIBDISK_SUPPORT
++#define CONFIG_SPL_I2C_SUPPORT
++#define CONFIG_SPL_LIBGENERIC_SUPPORT
++#define CONFIG_SPL_MMC_SUPPORT
++#define CONFIG_SPL_FAT_SUPPORT
++#define CONFIG_SPL_SERIAL_SUPPORT
++#define CONFIG_SPL_NAND_SUPPORT
++#define CONFIG_SPL_POWER_SUPPORT
++#define CONFIG_SPL_OMAP3_ID_NAND
++#define CONFIG_SPL_LDSCRIPT		"$(CPUDIR)/omap-common/u-boot-spl.lds"
++
++/* NAND boot config */
++#define CONFIG_SYS_NAND_5_ADDR_CYCLE
++#define CONFIG_SYS_NAND_PAGE_COUNT	64
++#define CONFIG_SYS_NAND_PAGE_SIZE	2048
++#define CONFIG_SYS_NAND_OOBSIZE		64
++#define CONFIG_SYS_NAND_BLOCK_SIZE	(128*1024)
++#define CONFIG_SYS_NAND_BAD_BLOCK_POS	0
++#define CONFIG_SYS_NAND_ECCPOS		{2, 3, 4, 5, 6, 7, 8, 9,\
++						10, 11, 12, 13}
++#define CONFIG_SYS_NAND_ECCSIZE		512
++#define CONFIG_SYS_NAND_ECCBYTES	3
++#define CONFIG_SYS_NAND_ECCSTEPS	(CONFIG_SYS_NAND_PAGE_SIZE / \
++						CONFIG_SYS_NAND_ECCSIZE)
++#define CONFIG_SYS_NAND_ECCTOTAL	(CONFIG_SYS_NAND_ECCBYTES * \
++						CONFIG_SYS_NAND_ECCSTEPS)
++#define CONFIG_SYS_NAND_U_BOOT_START	CONFIG_SYS_TEXT_BASE
++#define CONFIG_SYS_NAND_U_BOOT_OFFS	0x80000
++
++/*
++ * 1MB into the SDRAM to allow for SPL's bss at the beginning of SDRAM
++ * 64 bytes before this address should be set aside for u-boot.img's
++ * header. That is 0x800FFFC0--0x80100000 should not be used for any
++ * other needs.
++ */
++#define CONFIG_SYS_TEXT_BASE		0x80100000
++#define CONFIG_SYS_SPL_MALLOC_START	0x80208000
++#define CONFIG_SYS_SPL_MALLOC_SIZE	0x100000
++
+ #endif /* __CONFIG_H */
+-- 
+1.7.2.5
+

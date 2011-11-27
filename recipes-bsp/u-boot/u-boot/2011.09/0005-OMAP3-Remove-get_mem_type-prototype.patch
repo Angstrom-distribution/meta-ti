@@ -1,0 +1,28 @@
+From 45ccdf2ba3aa6e5f258c463691c85ac4529246e6 Mon Sep 17 00:00:00 2001
+From: Tom Rini <trini@ti.com>
+Date: Fri, 18 Nov 2011 12:48:02 +0000
+Subject: [PATCH 05/21] OMAP3: Remove get_mem_type prototype
+
+This function doesn't exist for omap3
+
+Signed-off-by: Tom Rini <trini@ti.com>
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ arch/arm/include/asm/arch-omap3/sys_proto.h |    1 -
+ 1 files changed, 0 insertions(+), 1 deletions(-)
+
+diff --git a/arch/arm/include/asm/arch-omap3/sys_proto.h b/arch/arm/include/asm/arch-omap3/sys_proto.h
+index 995e7cb..9e64410 100644
+--- a/arch/arm/include/asm/arch-omap3/sys_proto.h
++++ b/arch/arm/include/asm/arch-omap3/sys_proto.h
+@@ -49,7 +49,6 @@ void set_muxconf_regs(void);
+ u32 get_cpu_family(void);
+ u32 get_cpu_rev(void);
+ u32 get_sku_id(void);
+-u32 get_mem_type(void);
+ u32 get_sysboot_value(void);
+ u32 is_gpmc_muxed(void);
+ u32 get_gpmc0_type(void);
+-- 
+1.7.2.5
+

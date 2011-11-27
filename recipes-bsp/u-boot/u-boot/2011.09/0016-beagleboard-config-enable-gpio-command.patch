@@ -1,7 +1,7 @@
-From 79e8280783d445f7630b8a9830f8db73f2e04828 Mon Sep 17 00:00:00 2001
+From e5bf80f2fb4af9a2627541cb8bc8686e8a9e8404 Mon Sep 17 00:00:00 2001
 From: Jason Kridner <jdk@ti.com>
 Date: Tue, 6 Sep 2011 18:56:11 -0400
-Subject: [PATCH 2/3] beagleboard: config: enable gpio command
+Subject: [PATCH 16/21] beagleboard: config: enable gpio command
 
 Now that we are using the generic GPIO framework, enable the command.
 ---
@@ -9,10 +9,10 @@ Now that we are using the generic GPIO framework, enable the command.
  1 files changed, 1 insertions(+), 0 deletions(-)
 
 diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
-index 8a84d7a..43dc94a 100644
+index 569d747..337ca29 100644
 --- a/include/configs/omap3_beagle.h
 +++ b/include/configs/omap3_beagle.h
-@@ -169,6 +169,7 @@
+@@ -164,6 +164,7 @@
  #define CONFIG_CMD_PING
  #define CONFIG_CMD_DHCP
  #define CONFIG_CMD_SETEXPR	/* Evaluate expressions		*/
@@ -21,5 +21,5 @@ index 8a84d7a..43dc94a 100644
  #undef CONFIG_CMD_FLASH		/* flinfo, erase, protect	*/
  #undef CONFIG_CMD_FPGA		/* FPGA configuration Support	*/
 -- 
-1.7.4.1
+1.7.2.5
 

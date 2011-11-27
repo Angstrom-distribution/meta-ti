@@ -1,0 +1,174 @@
+From bf66bbd9347874b6ad13f7747288327e968022d2 Mon Sep 17 00:00:00 2001
+From: Tom Rini <trini@ti.com>
+Date: Fri, 18 Nov 2011 12:48:06 +0000
+Subject: [PATCH 09/21] OMAP3 SPL: Rework memory initalization and devkit8000 support
+
+This changes to making the board be responsible for providing the
+memory initialization timings in SPL and converts the devkit8000
+to this framework.  In SPL we try and initialize both CS0 and CS1.
+
+Cc: Frederik Kriewitz <frederik@kriewitz.eu>
+Signed-off-by: Tom Rini <trini@ti.com>
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ arch/arm/cpu/armv7/omap3/sdrc.c             |   28 ++++++++++++++------------
+ arch/arm/include/asm/arch-omap3/mem.h       |   26 -------------------------
+ arch/arm/include/asm/arch-omap3/sys_proto.h |    2 +
+ board/timll/devkit8000/devkit8000.c         |   21 ++++++++++++++++++++
+ include/configs/devkit8000.h                |    5 ----
+ 5 files changed, 38 insertions(+), 44 deletions(-)
+
+diff --git a/arch/arm/cpu/armv7/omap3/sdrc.c b/arch/arm/cpu/armv7/omap3/sdrc.c
+index 2756024..a27b4b1 100644
+--- a/arch/arm/cpu/armv7/omap3/sdrc.c
++++ b/arch/arm/cpu/armv7/omap3/sdrc.c
+@@ -148,6 +148,18 @@ void do_sdrc_init(u32 cs, u32 early)
+ 	sdrc_actim_base0 = (struct sdrc_actim *)SDRC_ACTIM_CTRL0_BASE;
+ 	sdrc_actim_base1 = (struct sdrc_actim *)SDRC_ACTIM_CTRL1_BASE;
+ 
++	/*
++	 * When called in the early context this may be SPL and we will
++	 * need to set all of the timings.  This ends up being board
++	 * specific so we call a helper function to take care of this
++	 * for us.  Otherwise, to be safe, we need to copy the settings
++	 * from the first bank to the second.  We will setup CS0,
++	 * then set cs_cfg to the appropriate value then try and
++	 * setup CS1.
++	 */
++#ifdef CONFIG_SPL_BUILD
++	get_board_mem_timings(&mcfg, &ctrla, &ctrlb, &rfr_ctrl, &mr);
++#endif
+ 	if (early) {
+ 		/* reset sdrc controller */
+ 		writel(SOFTRESET, &sdrc_base->sysconfig);
+@@ -164,22 +176,12 @@ void do_sdrc_init(u32 cs, u32 early)
+ 
+ 		writel(ENADLL | DLLPHASE_90, &sdrc_base->dlla_ctrl);
+ 		sdelay(0x20000);
+-/* As long as V_MCFG and V_RFR_CTRL is not defined for all OMAP3 boards we need
+- * to prevent this to be build in non-SPL build */
+ #ifdef CONFIG_SPL_BUILD
+-		/*
+-		 * If we use a SPL there is no x-loader nor config header so
+-		 * we have to do the job ourselfs
+-		 */
+-
+-		mcfg = V_MCFG;
+-		ctrla = V_ACTIMA_165;
+-		ctrlb = V_ACTIMB_165;
+-		rfr_ctrl = V_RFR_CTRL;
+-		mr = V_MR;
+-
+ 		write_sdrc_timings(CS0, sdrc_actim_base0, mcfg, ctrla, ctrlb,
+ 				rfr_ctrl, mr);
++		make_cs1_contiguous();
++		write_sdrc_timings(CS0, sdrc_actim_base1, mcfg, ctrla, ctrlb,
++				rfr_ctrl, mr);
+ #endif
+ 
+ 	}
+diff --git a/arch/arm/include/asm/arch-omap3/mem.h b/arch/arm/include/asm/arch-omap3/mem.h
+index 4f996d9..09f5872 100644
+--- a/arch/arm/include/asm/arch-omap3/mem.h
++++ b/arch/arm/include/asm/arch-omap3/mem.h
+@@ -212,32 +212,6 @@ enum {
+ 		ACTIM_CTRLB(NUMONYX_TWTR_165, NUMONYX_TCKE_165,	\
+ 				NUMONYX_TXP_165, NUMONYX_XSR_165)
+ 
+-#ifdef CONFIG_OMAP3_INFINEON_DDR
+-#define V_ACTIMA_165		INFINEON_V_ACTIMA_165
+-#define V_ACTIMB_165		INFINEON_V_ACTIMB_165
+-#endif
+-
+-#ifdef CONFIG_OMAP3_MICRON_DDR
+-#define V_ACTIMA_165		MICRON_V_ACTIMA_165
+-#define V_ACTIMB_165		MICRON_V_ACTIMB_165
+-#define V_MCFG			MICRON_V_MCFG_165(PHYS_SDRAM_1_SIZE)
+-#define V_RFR_CTRL		SDP_3430_SDRC_RFR_CTRL_165MHz
+-#define V_MR			MICRON_V_MR_165
+-#endif
+-
+-#ifdef CONFIG_OMAP3_NUMONYX_DDR
+-#define V_ACTIMA_165		NUMONYX_V_ACTIMA_165
+-#define V_ACTIMB_165		NUMONYX_V_ACTIMB_165
+-#endif
+-
+-#if !defined(V_ACTIMA_165) || !defined(V_ACTIMB_165)
+-#error "Please choose the right DDR type in config header"
+-#endif
+-
+-#if defined(CONFIG_SPL_BUILD) && (!defined(V_MCFG) || !defined(V_RFR_CTRL))
+-#error "Please choose the right DDR type in config header"
+-#endif
+-
+ /*
+  * GPMC settings -
+  * Definitions is as per the following format
+diff --git a/arch/arm/include/asm/arch-omap3/sys_proto.h b/arch/arm/include/asm/arch-omap3/sys_proto.h
+index 9e64410..80e167b 100644
+--- a/arch/arm/include/asm/arch-omap3/sys_proto.h
++++ b/arch/arm/include/asm/arch-omap3/sys_proto.h
+@@ -38,6 +38,8 @@ void per_clocks_enable(void);
+ void memif_init(void);
+ void sdrc_init(void);
+ void do_sdrc_init(u32, u32);
++void get_board_mem_timings(u32 *mcfg, u32 *ctrla, u32 *ctrlb, u32 *rfr_ctrl,
++		u32 *mr);
+ void emif4_init(void);
+ void gpmc_init(void);
+ void enable_gpmc_cs_config(const u32 *gpmc_config, struct gpmc_cs *cs, u32 base,
+diff --git a/board/timll/devkit8000/devkit8000.c b/board/timll/devkit8000/devkit8000.c
+index fee0dff..b06aab6 100644
+--- a/board/timll/devkit8000/devkit8000.c
++++ b/board/timll/devkit8000/devkit8000.c
+@@ -138,3 +138,24 @@ int board_eth_init(bd_t *bis)
+ 	return dm9000_initialize(bis);
+ }
+ #endif
++
++/*
++ * Routine: get_board_mem_timings
++ * Description: If we use SPL then there is no x-loader nor config header
++ * so we have to setup the DDR timings ourself on the first bank.  This
++ * provides the timing values back to the function that configures
++ * the memory.  We have either one or two banks of 128MB DDR.
++ */
++void get_board_mem_timings(u32 *mcfg, u32 *ctrla, u32 *ctrlb, u32 *rfr_ctrl,
++		u32 *mr)
++{
++	/* General SDRC config */
++	*mcfg = MICRON_V_MCFG_165(128 << 20);
++	*rfr_ctrl = SDP_3430_SDRC_RFR_CTRL_165MHz;
++
++	/* AC timings */
++	*ctrla = MICRON_V_ACTIMA_165;
++	*ctrlb = MICRON_V_ACTIMB_165;
++
++	*mr = MICRON_V_MR_165;
++}
+diff --git a/include/configs/devkit8000.h b/include/configs/devkit8000.h
+index e1743dc..b3e60cd 100644
+--- a/include/configs/devkit8000.h
++++ b/include/configs/devkit8000.h
+@@ -68,10 +68,6 @@
+ #define CONFIG_SYS_MALLOC_LEN		(CONFIG_ENV_SIZE + (128 << 10))
+ 
+ /* Hardware drivers */
+-
+-/* DDR - I use Micron DDR */
+-#define CONFIG_OMAP3_MICRON_DDR		1
+-
+ /* DM9000 */
+ #define CONFIG_NET_RETRY_COUNT		20
+ #define	CONFIG_DRIVER_DM9000		1
+@@ -284,7 +280,6 @@
+ /*  Physical Memory Map  */
+ #define CONFIG_NR_DRAM_BANKS		2 /* CS1 may or may not be populated */
+ #define PHYS_SDRAM_1			OMAP34XX_SDRC_CS0
+-#define PHYS_SDRAM_1_SIZE		(128 << 20)	/* at least 128 MiB */
+ #define PHYS_SDRAM_2			OMAP34XX_SDRC_CS1
+ 
+ /* SDRAM Bank Allocation method */
+-- 
+1.7.2.5
+
