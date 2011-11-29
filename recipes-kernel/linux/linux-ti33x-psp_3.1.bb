@@ -11,7 +11,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.1-meta-ti-r1r+gitr1d84d8853fa30cf3db2571a5aec572accca4e29d"
 SRCREV = "1d84d8853fa30cf3db2571a5aec572accca4e29d"
-MACHINE_KERNEL_PR_append = "c+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "d+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -44,6 +44,16 @@ PATCHES_OVER_PSP = " \
 	file://i2c/0001-arm-omap-mux33xx-Add-i2c2-pin-muix.patch \
 	file://i2c/0002-omap-hwmod-33xx-Add-support-for-third-i2c-bus.patch \
 	file://i2c/0003-arm-omap-board-Add-quick-hack-to-get-i2c2-bus-suppor.patch	\
+	file://adc/0001-AM335x-Add-support-for-TSC-on-Beta-GP-EVM.patch \
+	file://adc/0002-ARM-OMAP-AM335x-Add-support-for-Beta-GP-EVM.patch \
+	file://adc/0003-AM335x-Add-support-for-pressure-measurement-on-TSC.patch \
+	file://adc/0004-tscadc-Add-general-purpose-mode-untested-with-touchs.patch \
+	file://adc/0005-tscadc-Add-board-file-mfd-support-fix-warning.patch \
+	file://adc/0006-AM335X-init-tsc-bone-style-for-new-boards.patch \
+	file://adc/0007-tscadc-make-stepconfig-channel-configurable.patch \
+	file://adc/0008-tscadc-Trigger-through-sysfs.patch \
+	file://adc/0009-meta-ti-Remove-debug-messages-for-meta-ti.patch \
+	file://adc/0010-tscadc-switch-to-polling-instead-of-interrupts.patch \
 	"
 
 SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
