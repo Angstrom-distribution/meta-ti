@@ -1,60 +1,19 @@
-From 2b44ca7878e41f25b91486ebcb8db2c3be1f61eb Mon Sep 17 00:00:00 2001
+From d987e3ae4bf83e8a46702ad44e435e6cbea183dc Mon Sep 17 00:00:00 2001
 From: Joel A Fernandes <joelagnel@ti.com>
-Date: Sat, 29 Oct 2011 01:17:43 -0500
+Date: Wed, 30 Nov 2011 15:00:40 +0100
 Subject: [PATCH 4/9] tscadc: Add general purpose mode, untested with touchscreen functionality
 
 Signed-off-by: Joel A Fernandes <joelagnel@ti.com>
 ---
- adc-notes.txt                         |   33 +++++
  arch/arm/mach-omap2/board-am335xevm.c |    6 +
  arch/arm/mach-omap2/mux33xx.c         |   12 ++
  arch/arm/mach-omap2/mux33xx.h         |    4 +
  drivers/input/touchscreen/ti_tscadc.c |  209 +++++++++++++++++++++++++--------
  include/linux/input/ti_tscadc.h       |    4 +
- 6 files changed, 216 insertions(+), 52 deletions(-)
- create mode 100755 adc-notes.txt
+ 5 files changed, 183 insertions(+), 52 deletions(-)
 
-diff --git a/adc-notes.txt b/adc-notes.txt
-new file mode 100755
-index 0000000..178e262
---- /dev/null
-+++ b/adc-notes.txt
-@@ -0,0 +1,33 @@
-+Features
-+  - software register bit for SOC (Start of conversion) and EOC
-+  - single conversion (one-shot) - software enabled
-+  - Data stored in either of 2 fifo groups- can be read through dma or cpu
-+
-+
-+Events
-+  - Status bit to indicate if ADC is busy converting (can use polling to check if conversion is finished)
-+  - Interrupts on FIFO threhold levels reached
-+  - In on one-shot mode, Step-enable bit is turned off automatically after conversion - can be used to check if conversion is finished.
-+  - END_OF_SEQUENCE interrupt can be configured when the FSM is done with the last enabled step (but should not be used to check if data is in the FIFO)
-+  - For availability of data, the FIFO interrupts and word count reg should be used.
-+
-+Clocks-
-+  - ADC uses adc_clk
-+  - Sequencers, FIFO etc use ocp_clk
-+
-+One shot mode
-+  - Step-enable bit is turned off automatically after conversion - can be used to check if conversion is finished.
-+
-+ADC Controller
-+==============
-+*** config steps
-+1. configure a STEPCONFIG register
-+	For ADC we would like to configure the steps as general-purpose (non-touch screen)
-+2. Enable TSC_ADC_SS
-+3. Set STEPENABLE bit of any step for the sequencer to go to that step, perform conversion and store the data in FIFO
-+
-+*** reading data:
-+1. Check word count reg in FIFO register
-+2. If non 0, read word
-+3. Step enable bit can be polled to check if conversion is over or not.
-+
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index 46fce3e..c8da580 100644
+index d7af6dd..8221ba9 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
 @@ -456,6 +456,10 @@ static struct pinmux_config tsc_pin_mux[] = {
@@ -68,16 +27,16 @@ index 46fce3e..c8da580 100644
  	{"vrefp.vrefp",         OMAP_MUX_MODE0 | AM33XX_INPUT_EN},
  	{"vrefn.vrefn",         OMAP_MUX_MODE0 | AM33XX_INPUT_EN},
  	{NULL, 0},
-@@ -1513,6 +1517,7 @@ static struct evm_dev_cfg beaglebone_old_dev_cfg[] = {
- 	{usb1_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
+@@ -1537,6 +1541,7 @@ static struct evm_dev_cfg beaglebone_old_dev_cfg[] = {
+ 	{i2c2_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
  	{mmc0_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
  	{boneleds_init,	DEV_ON_BASEBOARD, PROFILE_ALL},
 +	{tsc_init, 	DEV_ON_BASEBOARD, PROFILE_ALL},
  	{NULL, 0, 0},
  };
  
-@@ -1524,6 +1529,7 @@ static struct evm_dev_cfg beaglebone_dev_cfg[] = {
- 	{usb1_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
+@@ -1549,6 +1554,7 @@ static struct evm_dev_cfg beaglebone_dev_cfg[] = {
+ 	{i2c2_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
  	{mmc0_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
  	{boneleds_init,	DEV_ON_BASEBOARD, PROFILE_ALL},
 +	{tsc_init, 	DEV_ON_BASEBOARD, PROFILE_ALL},
@@ -85,7 +44,7 @@ index 46fce3e..c8da580 100644
  };
  
 diff --git a/arch/arm/mach-omap2/mux33xx.c b/arch/arm/mach-omap2/mux33xx.c
-index 4399003..832a50b 100644
+index 06719df..35986ca 100644
 --- a/arch/arm/mach-omap2/mux33xx.c
 +++ b/arch/arm/mach-omap2/mux33xx.c
 @@ -587,6 +587,18 @@ static struct omap_mux __initdata am33xx_muxmodes[] = {
@@ -459,5 +418,5 @@ index 2c547bb..850cd4b 100644
 +	int mode;
  };
 -- 
-1.7.4.1
+1.7.2.5
 

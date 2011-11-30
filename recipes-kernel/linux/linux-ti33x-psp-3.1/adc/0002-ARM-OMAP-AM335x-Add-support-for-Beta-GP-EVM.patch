@@ -1,4 +1,4 @@
-From 98d0446f94a6f89016f5ed73cb6bc304075cceb6 Mon Sep 17 00:00:00 2001
+From 0a88ddcef9bdd64f5857c2195c49365f3ef674a3 Mon Sep 17 00:00:00 2001
 From: Patil, Rachna <rachna@ti.com>
 Date: Fri, 11 Nov 2011 13:09:51 +0530
 Subject: [PATCH 2/9] ARM: OMAP: AM335x: Add support for Beta GP EVM.
@@ -19,7 +19,7 @@ Signed-off-by: Patil, Rachna <rachna@ti.com>
  1 files changed, 21 insertions(+), 36 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index 9ec56c6..d6bf7b1 100644
+index 7f52de1..ecda26a 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
 @@ -329,6 +329,11 @@ struct am335x_evm_eeprom_config {
@@ -34,7 +34,7 @@ index 9ec56c6..d6bf7b1 100644
  #define EEPROM_MAC_ADDRESS_OFFSET	60 /* 4+8+4+12+32 */
  #define EEPROM_NO_OF_MAC_ADDR		3
  static char am335x_mac_addr[EEPROM_NO_OF_MAC_ADDR][ETH_ALEN];
-@@ -629,25 +634,8 @@ static struct pinmux_config mmc1_pin_mux[] = {
+@@ -637,25 +642,8 @@ static struct pinmux_config mmc1_pin_mux[] = {
  	{"gpmc_ad0.mmc1_dat0",	OMAP_MUX_MODE1 | AM33XX_PIN_INPUT_PULLUP},
  	{"gpmc_csn1.mmc1_clk",	OMAP_MUX_MODE2 | AM33XX_PIN_INPUT_PULLUP},
  	{"gpmc_csn2.mmc1_cmd",	OMAP_MUX_MODE2 | AM33XX_PIN_INPUT_PULLUP},
@@ -62,7 +62,7 @@ index 9ec56c6..d6bf7b1 100644
  	{NULL, 0},
  };
  
-@@ -1138,20 +1126,6 @@ static void mmc1_init(int evm_id, int profile)
+@@ -1161,20 +1149,6 @@ static void mmc1_init(int evm_id, int profile)
  	return;
  }
  
@@ -83,7 +83,7 @@ index 9ec56c6..d6bf7b1 100644
  static void mmc2_wl12xx_init(int evm_id, int profile)
  {
  	setup_pin_mux(mmc2_wl12xx_pin_mux);
-@@ -1488,9 +1462,8 @@ static struct evm_dev_cfg gen_purp_evm_dev_cfg[] = {
+@@ -1511,9 +1485,8 @@ static struct evm_dev_cfg gen_purp_evm_dev_cfg[] = {
  	{evm_nand_init, DEV_ON_DGHTR_BRD,
  		(PROFILE_ALL & ~PROFILE_2 & ~PROFILE_3)},
  	{i2c1_init,	DEV_ON_DGHTR_BRD, (PROFILE_0 | PROFILE_3 | PROFILE_7)},
@@ -94,7 +94,7 @@ index 9ec56c6..d6bf7b1 100644
  	{mmc2_wl12xx_init,	DEV_ON_BASEBOARD, (PROFILE_0 | PROFILE_3 |
  								PROFILE_5)},
  	{mmc0_init,	DEV_ON_BASEBOARD, (PROFILE_ALL & ~PROFILE_5)},
-@@ -1563,9 +1536,21 @@ static void setup_low_cost_evm(void)
+@@ -1588,9 +1561,21 @@ static void setup_low_cost_evm(void)
  static void setup_general_purpose_evm(void)
  {
  	u32 prof_sel = am335x_get_profile_selection();
@@ -118,5 +118,5 @@ index 9ec56c6..d6bf7b1 100644
  }
  
 -- 
-1.7.4.1
+1.7.2.5
 

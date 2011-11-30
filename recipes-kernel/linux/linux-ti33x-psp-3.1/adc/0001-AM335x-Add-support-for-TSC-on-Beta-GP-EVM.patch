@@ -1,4 +1,4 @@
-From 3c22386bee665fb13aeb1f28016a9e77fc6c2dc2 Mon Sep 17 00:00:00 2001
+From de1ae4c44093c7f62af58caf3bdba83bb9531295 Mon Sep 17 00:00:00 2001
 From: Patil, Rachna <rachna@ti.com>
 Date: Fri, 11 Nov 2011 18:03:27 +0530
 Subject: [PATCH 1/9] AM335x: Add support for TSC on Beta GP EVM.
@@ -15,10 +15,10 @@ Signed-off-by: Patil, Rachna <rachna@ti.com>
  3 files changed, 73 insertions(+), 28 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index 590c4ca..9ec56c6 100644
+index b27fb97..7f52de1 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
-@@ -912,6 +912,14 @@ static void dvi_init(int evm_id, int profile)
+@@ -920,6 +920,14 @@ static void dvi_init(int evm_id, int profile)
  static void tsc_init(int evm_id, int profile)
  {
  	int err;
@@ -215,5 +215,5 @@ index 29f87db..b9d9a46 100644
 +
  };
 -- 
-1.7.4.1
+1.7.2.5
 

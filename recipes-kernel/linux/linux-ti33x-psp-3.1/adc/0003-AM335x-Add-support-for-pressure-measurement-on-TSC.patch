@@ -1,4 +1,4 @@
-From b086fa2754f2c5f4f05a9690f170e2ef86207b4e Mon Sep 17 00:00:00 2001
+From 4c5ada67509fc0a47941813900c03b842e6452d1 Mon Sep 17 00:00:00 2001
 From: Patil, Rachna <rachna@ti.com>
 Date: Fri, 11 Nov 2011 18:28:54 +0530
 Subject: [PATCH 3/9] AM335x: Add support for pressure measurement on TSC.
@@ -15,7 +15,7 @@ Signed-off-by: Patil, Rachna <rachna@ti.com>
  3 files changed, 66 insertions(+), 15 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index d6bf7b1..46fce3e 100644
+index ecda26a..d7af6dd 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
 @@ -194,6 +194,7 @@ static struct resource tsc_resources[]  = {
@@ -215,5 +215,5 @@ index b9d9a46..2c547bb 100644
 +	int x_plate_resistance;
  };
 -- 
-1.7.4.1
+1.7.2.5
 

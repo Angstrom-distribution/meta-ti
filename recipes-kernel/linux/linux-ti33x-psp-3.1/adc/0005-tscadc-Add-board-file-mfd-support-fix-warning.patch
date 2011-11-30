@@ -1,6 +1,6 @@
-From 800fc5594ec8922ef06e4063497d858cfd92c655 Mon Sep 17 00:00:00 2001
+From 0d765160ef94e0ab6f30725b01e5102ca119449f Mon Sep 17 00:00:00 2001
 From: Joel A Fernandes <joelagnel@ti.com>
-Date: Wed, 23 Nov 2011 17:52:57 -0600
+Date: Wed, 30 Nov 2011 15:02:17 +0100
 Subject: [PATCH 5/9] tscadc: Add board file mfd support, fix warning
 
 Signed-off-by: Joel A Fernandes <joelagnel@ti.com>
@@ -10,7 +10,7 @@ Signed-off-by: Joel A Fernandes <joelagnel@ti.com>
  2 files changed, 27 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index c8da580..563770e 100644
+index 8221ba9..30f23d7 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
 @@ -195,6 +195,11 @@ static struct resource tsc_resources[]  = {
@@ -42,7 +42,7 @@ index c8da580..563770e 100644
  static u8 am335x_iis_serializer_direction1[] = {
  	INACTIVE_MODE,	INACTIVE_MODE,	TX_MODE,	RX_MODE,
  	INACTIVE_MODE,	INACTIVE_MODE,	INACTIVE_MODE,	INACTIVE_MODE,
-@@ -919,6 +934,16 @@ static void tsc_init(int evm_id, int profile)
+@@ -927,6 +942,16 @@ static void tsc_init(int evm_id, int profile)
  		pr_err("failed to register touchscreen device\n");
  }
  
@@ -59,8 +59,8 @@ index c8da580..563770e 100644
  static void boneleds_init(int evm_id, int profile )
  {
  	int err;
-@@ -1517,7 +1542,7 @@ static struct evm_dev_cfg beaglebone_old_dev_cfg[] = {
- 	{usb1_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
+@@ -1541,7 +1566,7 @@ static struct evm_dev_cfg beaglebone_old_dev_cfg[] = {
+ 	{i2c2_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
  	{mmc0_init,	DEV_ON_BASEBOARD, PROFILE_NONE},
  	{boneleds_init,	DEV_ON_BASEBOARD, PROFILE_ALL},
 -	{tsc_init, 	DEV_ON_BASEBOARD, PROFILE_ALL},
@@ -82,5 +82,5 @@ index 76fc7b6..49a5a70 100644
  	int				clk_value;
  	int				clock_rate, irqenable, ctrl;
 -- 
-1.7.4.1
+1.7.2.5
 

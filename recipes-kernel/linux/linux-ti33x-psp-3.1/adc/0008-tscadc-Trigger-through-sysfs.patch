@@ -1,4 +1,4 @@
-From 01b25097f2ad4ca1e9f35547b1a040c5f06a5dfd Mon Sep 17 00:00:00 2001
+From 57ce0ce446d8c4626b4ea01005a1173da36f095c Mon Sep 17 00:00:00 2001
 From: Joel A Fernandes <joelagnel@ti.com>
 Date: Mon, 28 Nov 2011 20:55:25 -0600
 Subject: [PATCH 8/9] tscadc: Trigger through sysfs
@@ -147,5 +147,5 @@ index 850cd4b..fc239c6 100644
  #define TI_TSCADC_TSCMODE 0
  #define TI_TSCADC_GENMODE 1
 -- 
-1.7.4.1
+1.7.2.5
 
