@@ -11,7 +11,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.1-meta-ti-r1r+gitr1d84d8853fa30cf3db2571a5aec572accca4e29d"
 SRCREV = "1d84d8853fa30cf3db2571a5aec572accca4e29d"
-MACHINE_KERNEL_PR_append = "d+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "e+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -54,6 +54,7 @@ PATCHES_OVER_PSP = " \
 	file://adc/0008-tscadc-Trigger-through-sysfs.patch \
 	file://adc/0009-meta-ti-Remove-debug-messages-for-meta-ti.patch \
 	file://adc/0010-tscadc-switch-to-polling-instead-of-interrupts.patch \
+	file://st7735fb/0001-st7735fb-WIP-framebuffer-driver-supporting-Adafruit-.patch \
 	"
 
 SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
