@@ -5,7 +5,10 @@ require cloud9-image.bb
 IMAGE_INSTALL += " \
                   task-xserver \
                   angstrom-gnome-icon-theme-enable gtk-engine-clearlooks gtk-theme-clearlooks angstrom-clearlooks-theme-enable \
-                  elsa \
+                  e-wm-config-default e-wm-config-standard e-wm-config-illume2 \
+                  xserver-nodm-init \
+                  xserver-common \
+                  ttf-dejavu-sans ttf-dejavu-sans-mono ttf-dejavu-common \
                  "
 
 export IMAGE_BASENAME = "Cloud9-IDE-gfx"
