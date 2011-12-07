@@ -2,7 +2,9 @@ require u-boot.inc
 
 # No patches for other machines yet
 COMPATIBLE_MACHINE = "(ti33x)"
+
 DEFAULT_PREFERENCE_ti33x = "99"
+
 PV = "2011.09+git"
 PR = "r25"
 

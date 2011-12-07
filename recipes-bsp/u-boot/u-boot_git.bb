@@ -1,34 +1,11 @@
 require u-boot.inc
 PR ="r67"
 
+DEFAULT_PREFERENCE = "-1"
 DEFAULT_PREFERENCE_ti814x = "-1"
 DEFAULT_PREFERENCE_ti816x = "-1"
 
 FILESPATHPKG =. "u-boot-git:"
-
-SRC_URI_beagleboard = "git://www.denx.de/git/u-boot.git;protocol=git \
-                       file://0001-OMAP3-Beagle-Pin-Mux-initialization-glitch-fix.patch \
-                       file://0002-OMAP-Remove-omapfb.debug-y-from-Beagle-and-Overo-env.patch \
-                       file://0003-omap3_beagle-enable-the-use-of-a-plain-text-file-nam.patch \
-                       file://0004-OMAP3-BeagleBoard-Enable-pullups-on-i2c2.patch \
-                       file://0005-ARMV7-OMAP3-BeagleBoard-add-xM-rev-B-to-ID-table.patch \
-                       file://0006-OMAP3-BeagleBoard-add-more-expansionboard-IDs.patch \
-                       file://0007-OMAP3-Add-DSS-driver-for-OMAP3.patch \
-                       file://0008-BeagleBoard-Added-userbutton-command.patch \
-                       file://0009-OMAP3-beagle-pass-expansionboard-name-in-bootargs.patch \
-                       file://0010-Enable-DSS-driver-for-Beagle.patch \
-                       file://0011-Add-led-command.patch \
-                       file://0012-BeagleBoard-Added-LED-driver.patch \
-                       file://0013-OMAP3-BeagleBoard-updated-default-configuration.patch \
-                       file://0014-Corrected-LED-name-match-finding-avoiding-extraneous.patch \
-                       file://0015-omap3_beagle-Switch-default-console-from-ttyS2-to-tt.patch \
-                       file://0016-BeagleBoard-Load-kernel-via-MMC-ext2-not-fat.patch \
-                       file://fw_env.config \
-                      "
-
-SRCREV_pn-${PN}_beagleboard = "c7977858dcf1f656cbe91ea0dc3cb9139c6a8cc8"
-PV_pn-${PN}_beagleboard = "2011.02+${PR}+gitr${SRCREV}"
-LIC_FILES_CHKSUM_pn-${PN}_beagleboard = "file://COPYING;md5=1707d6db1d42237583f50183a5651ecb"
 
 # ~ TI PSP v2009.11_OMAPPSP_03.00.01.06 (+ couple of commits)
 SRC_URI_omap3evm = "git://arago-project.org/git/projects/u-boot-omap3.git;protocol=git \
