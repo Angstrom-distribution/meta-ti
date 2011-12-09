@@ -1,0 +1,26 @@
+From 90dfb660575f15ba736884139f35bfd4ba927468 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Thu, 8 Dec 2011 17:22:59 +0100
+Subject: [PATCH 4/5] omap4-common: mount root RO
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/omap4_common.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/configs/omap4_common.h b/include/configs/omap4_common.h
+index a989721..54760e9 100644
+--- a/include/configs/omap4_common.h
++++ b/include/configs/omap4_common.h
+@@ -154,7 +154,7 @@
+ 	"usbtty=cdc_acm\0" \
+ 	"vram=16M\0" \
+ 	"mmcdev=0\0" \
+-	"mmcroot=/dev/mmcblk0p2 rw\0" \
++	"mmcroot=/dev/mmcblk0p2 ro\0" \
+ 	"mmcrootfstype=ext3 rootwait\0" \
+ 	"mmcargs=setenv bootargs console=${console} " \
+ 		"vram=${vram} " \
+-- 
+1.7.2.5
+

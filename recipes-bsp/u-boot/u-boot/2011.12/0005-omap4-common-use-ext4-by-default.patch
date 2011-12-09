@@ -1,0 +1,26 @@
+From a1f9453f2450762249aa35bd5ae97150acc53eb2 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Thu, 8 Dec 2011 17:23:24 +0100
+Subject: [PATCH 5/5] omap4-common: use ext4 by default
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/omap4_common.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/configs/omap4_common.h b/include/configs/omap4_common.h
+index 54760e9..7637688 100644
+--- a/include/configs/omap4_common.h
++++ b/include/configs/omap4_common.h
+@@ -155,7 +155,7 @@
+ 	"vram=16M\0" \
+ 	"mmcdev=0\0" \
+ 	"mmcroot=/dev/mmcblk0p2 ro\0" \
+-	"mmcrootfstype=ext3 rootwait\0" \
++	"mmcrootfstype=ext4 rootwait\0" \
+ 	"mmcargs=setenv bootargs console=${console} " \
+ 		"vram=${vram} " \
+ 		"root=${mmcroot} " \
+-- 
+1.7.2.5
+
