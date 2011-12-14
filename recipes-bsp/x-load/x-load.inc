@@ -1,6 +1,5 @@
 DESCRIPTION = "x-load bootloader loader"
 SECTION = "bootloaders"
-PRIORITY = "optional"
 LICENSE = "GPLv2+"
 
 LIC_FILES_CHKSUM = "file://common/cmd_load.c;beginline=4;endline=22;md5=14420d7cc8dfb427d17ad407ddf8dc89"
