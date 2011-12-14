@@ -2,7 +2,6 @@ DESCRIPTION = "Matrix TUI"
 HOMEPAGE = "https://gforge.ti.com/gf/project/matrix_tui/"
 LICENSE = "BSD"
 SECTION = "multimedia"
-PRIORITY = "optional"
 DEPENDS = "libxml2 zlib ncurses"
 
 INC_PR = "r7"
