@@ -1,11 +1,7 @@
 DESCRIPTION = "TI XDCtools (RTSC - Real Time Software Components - http://rtsc.eclipse.org)"
 HOMEPAGE = "http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/rtsc"
 SECTION = "devel"
-LICENSE = "BSD, GPLv2"
-
-LIC_FILES_CHKSUM = "file://docs/license/xdc/shelf/package.html;md5=eace8fa313a140ef178ecfa0f53cc655"
-
-PR = "r2"
+LICENSE = "BSD & GPLv2"
 
 require ../includes/ti-paths.inc
 require ../includes/ti-staging.inc
