@@ -3,13 +3,12 @@ HOMEPAGE = "http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/b
 SECTION = "devel"
 LICENSE = "TI"
 
-LIC_FILES_CHKSUM = "file://docs/license/TSPA_License_Agreement_DSP_BIOS_bios_5_41_07_24.html;md5=86096a08e4088ef291c98313d82b8742"
+# We can't depend on license files to be present, so just use the TI logo
+LIC_FILES_CHKSUM = "file://docs/tilogo.gif;md5=f049a774c576a5cef3fca4932d707b39"
 
 require ../includes/ti-paths.inc
 require ../includes/ti-staging.inc
 require ../includes/ti-eula-unpack.inc
-
-PR = "r1"
 
 S = "${WORKDIR}/bios_${PV}"
 
