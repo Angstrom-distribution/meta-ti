@@ -1,6 +1,6 @@
 require linux.inc
 
-COMPATIBLE_MACHINE = "omap3"
+COMPATIBLE_MACHINE = "beagleboard"
 
 DESCRIPTION = "Linux kernel for TI processors"
 KERNEL_IMAGETYPE = "uImage"
