@@ -47,12 +47,12 @@ DMAIPLATFORM_dm355     = "dm355_al"
 DMAIPLATFORM_dm365     = "dm365_al"
 DMAIPLATFORM_omapl137  = "ol137_al"
 DMAIPLATFORM_omapl138  = "ol138_al"
-DMAIPLATFORM          ?= "<UNDEFINED_DMAIPLATFORM>"
+DMAIPLATFORM          ?= "UNDEFINED_DMAIPLATFORM"
 
 # Need to set this for other platforms as well
 #GPPOS_dm355      = "LINUX_GCC"
 #GPPOS_dm365      = "LINUX_GCC"
-#GPPOS           ?= "<UNDEFINEDGPPOS>"
+#GPPOS           ?= "UNDEFINEDGPPOS"
 
 # Need to re-define this for OMAP-L137/L138
 DSPSUFFIX_omapl137 = "x64P"

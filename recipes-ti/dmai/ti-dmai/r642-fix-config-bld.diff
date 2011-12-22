@@ -1,8 +1,18 @@
-Index: dmai/packages/config.bld
-===================================================================
---- dmai/packages/config.bld	(revisione 642)
-+++ dmai/packages/config.bld	(copia locale)
-@@ -44,29 +44,9 @@
+From 86e89bb160cfe67c173f1260b93066b12dd73580 Mon Sep 17 00:00:00 2001
+From: Enrico Butera <ebutera@users.berlios.de>
+Date: Thu, 22 Dec 2011 11:03:58 +0100
+Subject: [PATCH 2/2] fix toolchain names in config.bld
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ .../dmai/packages/config.bld                       |   24 +------------------
+ 1 files changed, 2 insertions(+), 22 deletions(-)
+
+diff --git a/davinci_multimedia_application_interface/dmai/packages/config.bld b/davinci_multimedia_application_interface/dmai/packages/config.bld
+index 8c2e96e..566f907 100644
+--- a/davinci_multimedia_application_interface/dmai/packages/config.bld
++++ b/davinci_multimedia_application_interface/dmai/packages/config.bld
+@@ -44,28 +44,8 @@ var C6X = xdc.useModule('ti.targets.C64P');
  C6X.rootDir = codegen;
  C6X.platform = xdcplat;
  
@@ -10,9 +20,7 @@ Index: dmai/packages/config.bld
 -   Then the TOOLDIR and LONGNAME are derived based on a regex of CROSS_COMPILE
 -*/
 -var crosscompile = "" + java.lang.System.getenv("CROSS_COMPILE");
-+var tooldir = "" + java.lang.System.getenv("CSTOOL_DIR");
-+var longName = "" + java.lang.System.getenv("MVTOOL_PREFIX") + "gcc";
- 
+-
 -var tooldir = "";
 -var longName = "";
 -
@@ -30,7 +38,11 @@ Index: dmai/packages/config.bld
 -} else {
 -    longName = crosscompile + "gcc";
 -}
--
++var tooldir = "" + java.lang.System.getenv("CSTOOL_DIR");
++var longName = "" + java.lang.System.getenv("MVTOOL_PREFIX") + "gcc";
+ 
  /* location of the GCC Arm9 tools */
  var GCArmv5T = xdc.useModule('gnu.targets.arm.GCArmv5T');
- GCArmv5T.LONGNAME = longName;
+-- 
+1.7.2.5
+
