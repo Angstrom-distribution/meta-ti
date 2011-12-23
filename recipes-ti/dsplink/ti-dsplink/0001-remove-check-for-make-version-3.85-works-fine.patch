@@ -1,0 +1,28 @@
+From a96aa25518f306138c71b3fc074381f102092a13 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Fri, 23 Dec 2011 10:58:47 +0100
+Subject: [PATCH] remove check for make version, 3.85 works fine
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ dsplink/make/start.mk |    4 ----
+ 1 files changed, 0 insertions(+), 4 deletions(-)
+
+diff --git a/dsplink/make/start.mk b/dsplink/make/start.mk
+index 0589f3c..a8f5740 100644
+--- a/dsplink/make/start.mk
++++ b/dsplink/make/start.mk
+@@ -39,10 +39,6 @@
+ #   EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #   ============================================================================
+ 
+-
+-# Check for MAKE version
+-$(if $(filter $(MAKE_VERSION), 3.81 3.81beta1 3.90 3.92),,\
+-$(error This makefile requires one of GNU make version 3.81 3.81beta1 3.90 3.92))
+ #   ============================================================================
+ #   Export the directory separator
+ #   ============================================================================
+-- 
+1.7.7.4
+
