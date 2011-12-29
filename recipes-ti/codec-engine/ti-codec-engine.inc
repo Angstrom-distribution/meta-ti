@@ -13,7 +13,6 @@ require recipes-ti/includes/ti-staging.inc
 PROVIDES += "ti-codec-engine-examples"
 
 PR = "${MACHINE_KERNEL_PR}"
-PR_append = "a"
 
 S = "${WORKDIR}/codec_engine_${PV}"
 

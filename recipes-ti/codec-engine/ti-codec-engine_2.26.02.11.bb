@@ -2,7 +2,7 @@ require ti-codec-engine.inc
 
 LIC_FILES_CHKSUM = "file://codec_engine_${PV}_manifest.html;md5=912535f1b02ecf329a3979bf313f91e0"
 PV = "2_26_02_11"
-PR_append = "1"
+PR_append = "b"
 
 SRC_URI += "file://bypass-GCArmv5T-used-is-sealed.patch"
 
