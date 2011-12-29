@@ -1,4 +1,4 @@
-From 4422038e69f79993cc21e3649715c9556e68413d Mon Sep 17 00:00:00 2001
+From fe9c653a0b0a3fa49d269b697c2058a6a55aa42b Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Sun, 27 Nov 2011 14:53:56 +0100
 Subject: [PATCH 3/5] beagleboard: add support for scanning loop-through expansionboards like the uLCD-lite
@@ -6,8 +6,8 @@ Subject: [PATCH 3/5] beagleboard: add support for scanning loop-through expansio
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  board/ti/beagle/beagle.c       |   30 ++++++++++++++++++++++++++----
- include/configs/omap3_beagle.h |    2 ++
- 2 files changed, 28 insertions(+), 4 deletions(-)
+ include/configs/omap3_beagle.h |    4 ++++
+ 2 files changed, 30 insertions(+), 4 deletions(-)
 
 diff --git a/board/ti/beagle/beagle.c b/board/ti/beagle/beagle.c
 index 9c2e6d0..5ea50d1 100644
@@ -81,7 +81,7 @@ index 9c2e6d0..5ea50d1 100644
  	switch (get_board_revision()) {
  	case REVISION_XM_A:
 diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
-index d4f33d0..04d3eed 100644
+index d4f33d0..65ab8ee 100644
 --- a/include/configs/omap3_beagle.h
 +++ b/include/configs/omap3_beagle.h
 @@ -214,6 +214,7 @@
@@ -92,7 +92,7 @@ index d4f33d0..04d3eed 100644
  	"optargs=\0" \
  	"camera=none\0" \
  	"vram=12M\0" \
-@@ -240,6 +241,7 @@
+@@ -230,6 +231,7 @@
  		"${optargs} " \
  		"mpurate=${mpurate} " \
  		"buddy=${buddy} "\
@@ -100,6 +100,22 @@ index d4f33d0..04d3eed 100644
  		"camera=${camera} "\
  		"vram=${vram} " \
  		"omapfb.mode=dvi:${dvimode} " \
+@@ -240,6 +242,7 @@
+ 		"${optargs} " \
+ 		"mpurate=${mpurate} " \
+ 		"buddy=${buddy} "\
++		"buddy2=${buddy2} "\
+ 		"camera=${camera} "\
+ 		"vram=${vram} " \
+ 		"omapfb.mode=dvi:${dvimode} " \
+@@ -254,6 +257,7 @@
+ 		"${optargs} " \
+ 		"mpurate=${mpurate} " \
+ 		"buddy=${buddy} "\
++		"buddy2=${buddy2} "\
+ 		"vram=${vram} " \
+ 		"omapfb.mode=dvi:${dvimode} " \
+ 		"omapdss.def_disp=${defaultdisplay} " \
 -- 
 1.7.2.5
 
