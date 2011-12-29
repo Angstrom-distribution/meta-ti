@@ -1,0 +1,65 @@
+From 28e5cc1f13d817f75638c72eae853e53510a1ab2 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Sat, 8 Oct 2011 21:56:35 +0200
+Subject: [PATCH 2/5] beagleboard: add support for TCT Beacon board
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ board/ti/beagle/beagle.c |   10 ++++++++++
+ board/ti/beagle/beagle.h |    7 +++++++
+ 2 files changed, 17 insertions(+), 0 deletions(-)
+
+diff --git a/board/ti/beagle/beagle.c b/board/ti/beagle/beagle.c
+index 6a457cb..9c2e6d0 100644
+--- a/board/ti/beagle/beagle.c
++++ b/board/ti/beagle/beagle.c
+@@ -59,11 +59,14 @@ extern volatile struct ehci_hcor *hcor;
+ #define TWL4030_I2C_BUS			0
+ #define EXPANSION_EEPROM_I2C_BUS	1
+ #define EXPANSION_EEPROM_I2C_ADDRESS	0x50
++#define DVI_EDID_I2C_BUS	2
++#define DVI_EDID_I2C_ADDRESS	0x50
+ 
+ #define TINCANTOOLS_ZIPPY		0x01000100
+ #define TINCANTOOLS_ZIPPY2		0x02000100
+ #define TINCANTOOLS_TRAINER		0x04000100
+ #define TINCANTOOLS_SHOWDOG		0x03000100
++#define TINCANTOOLS_BEACON		0x05000100
+ #define KBADC_BEAGLEFPGA		0x01000600
+ #define LW_BEAGLETOUCH			0x01000700
+ #define BRAINMUX_LCDOG			0x01000800
+@@ -351,6 +354,13 @@ int misc_init_r(void)
+ 		setenv("defaultdisplay", "showdoglcd");
+ 		setenv("buddy", "showdog");
+ 		break;
++	case TINCANTOOLS_BEACON:
++		printf("Recognized Tincantools Beacon board (rev %d %s)\n",
++			expansion_config.revision,
++			expansion_config.fab_revision);
++		MUX_TINCANTOOLS_BEACON();
++		setenv("buddy", "beacon");
++		break;
+ 	case KBADC_BEAGLEFPGA:
+ 		printf("Recognized KBADC Beagle FPGA board\n");
+ 		MUX_KBADC_BEAGLEFPGA();
+diff --git a/board/ti/beagle/beagle.h b/board/ti/beagle/beagle.h
+index 18bfaa8..6a9ad73 100644
+--- a/board/ti/beagle/beagle.h
++++ b/board/ti/beagle/beagle.h
+@@ -456,6 +456,13 @@ const omap3_sysinfo sysinfo = {
+ 	MUX_VAL(CP(MCBSP3_CLKX),    (IEN  | PTU | EN  | M4)) /*GPIO_141*/\
+ 	MUX_VAL(CP(MCBSP1_CLKX),    (IEN  | PTU | EN  | M4)) /*GPIO_162*/
+ 
++#define MUX_TINCANTOOLS_BEACON() \
++	MUX_VAL(CP(MMC2_DAT3),      (IEN  | PTU | EN  | M4)) /*GPIO_135*/\
++	MUX_VAL(CP(MMC2_DAT4),      (IEN  | PTU | EN  | M4)) /*GPIO_136*/\
++	MUX_VAL(CP(MMC2_DAT5),      (IEN  | PTU | EN  | M4)) /*GPIO_137*/\
++	MUX_VAL(CP(MMC2_DAT6),      (IEN  | PTU | EN  | M4)) /*GPIO_138*/\
++	MUX_VAL(CP(MMC2_DAT7),      (IEN  | PTU | EN  | M4)) /*GPIO_139*/\
++
+ #define MUX_KBADC_BEAGLEFPGA() \
+ 	MUX_VAL(CP(MCBSP1_CLKR),    (IEN  | PTU | DIS | M1)) /*MCSPI4_CLK*/\
+ 	MUX_VAL(CP(MCBSP1_DX),      (IDIS | PTU | DIS | M1)) /*MCSPI4_SIMO*/\
+-- 
+1.7.2.5
+

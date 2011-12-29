@@ -1,6 +1,6 @@
 DESCRIPTION = "MFP Linux utils for TI ARM/DSP processors"
 SECTION = "devel"
-LICENSE = "GPLv2,BSD"
+LICENSE = "GPLv2 & BSD"
 
 BASE_SRC_URI = "http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/linuxutils/${PV}/exports"
 SRC_URI = "${BASE_SRC_URI}/linuxutils_${PV}.tar.gz "
@@ -15,7 +15,7 @@ require recipes-ti/includes/ti-staging.inc
 PR = "${MACHINE_KERNEL_PR}"
 
 #This is a kernel module, don't set PR directly
-MACHINE_KERNEL_PR_append = "d"
+MACHINE_KERNEL_PR_append = "e"
 
 inherit module
 

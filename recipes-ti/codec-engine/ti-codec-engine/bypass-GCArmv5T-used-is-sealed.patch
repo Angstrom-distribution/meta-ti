@@ -1,0 +1,22 @@
+do_compile produces:
+
+js: "/prj/oe/bb/build/tmp-eglibc/work/beagleboard-angstrom-linux-gnueabi/ti-codec-engine-2_26_02_11-r114a/codec_engine_2_26_02_11/packages/ti/sdo/ce/osal/linux/package.xs", line 50: XDC runtime error: gnu.targets.arm.GCArmv5T: '$used' is sealed
+
+Fix per suggestion in http://e2e.ti.com/support/dsp/omap_applications_processors/f/447/t/110920.aspx
+
+--- ./packages/ti/sdo/ce/osal/linux/package.xs.orig	2010-12-01 23:24:48.000000000 -0600
++++ ./packages/ti/sdo/ce/osal/linux/package.xs	2011-12-27 14:59:39.382423341 -0600
+@@ -47,10 +47,10 @@
+     }
+ 
+     /* Conditionally load CMEM here */
+-    var targetMod = xdc.useModule(prog.build.target.$name);
+-    if ((":"+targetMod.getISAChain().join(":")+":").match(/:v5T:/i)) {
++    //var targetMod = xdc.useModule(prog.build.target.$name);
++    //if ((":"+targetMod.getISAChain().join(":")+":").match(/:v5T:/i)) {
+         xdc.useModule('ti.sdo.linuxutils.cmem.CMEM');
+-    }
++    //}
+ 
+     var osalGlobal = xdc.useModule('ti.sdo.ce.osal.Global');
+ 
