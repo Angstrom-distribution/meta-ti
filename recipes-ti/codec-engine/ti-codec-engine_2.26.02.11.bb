@@ -1,5 +1,6 @@
 require ti-codec-engine.inc
 
+LIC_FILES_CHKSUM = "file://codec_engine_${PV}_manifest.html;md5=912535f1b02ecf329a3979bf313f91e0"
 PV = "2_26_02_11"
 
 SRC_URI[cetarball.md5sum] = "4f755f77119e4da19ab5cc7ae7ccfdb4"
