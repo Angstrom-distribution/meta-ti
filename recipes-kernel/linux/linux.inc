@@ -269,9 +269,14 @@ python () {
     try:
         defconfig = bb.fetch2.localpath('file://defconfig', d)
     except bb.fetch2.FetchError:
-        pass
-    else:
-        if 'CONFIG_KERNEL_LZO=y\n' in open(defconfig).readlines():
-            depends = d.getVar('DEPENDS', False)
-            d.setVar('DEPENDS', depends + ' lzop-native')
+        return
+
+    try:
+        configfile = open(defconfig)
+    except IOError:
+        return
+
+    if 'CONFIG_KERNEL_LZO=y\n' in configfile.readlines():
+        depends = d.getVar('DEPENDS', False)
+        d.setVar('DEPENDS', depends + ' lzop-native')
 }
