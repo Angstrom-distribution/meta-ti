@@ -3,9 +3,9 @@ LICENSE = "proprietary-binary"
 # 'TSPA.txt' might not be the best file to md5sum
 LIC_FILES_CHKSUM = "file://TSPA.txt;md5=c0d5d9c1e38b41677144c4e24d6ddee1"
 
-PR = "r18"
+PR = "r19"
 
-COMPATIBLE_MACHINE = "(omap3|ti816x)"
+COMPATIBLE_MACHINE = "(omap3|ti816x|ti33x)"
 
 DEPENDS = "virtual/libx11 libxau libxdmcp"
 
@@ -29,6 +29,7 @@ ES2LOCATION ?= "${S}/gfx_rel_es2.x"
 ES3LOCATION ?= "${S}/gfx_rel_es3.x"
 ES5LOCATION ?= "${S}/gfx_rel_es5.x"
 ES6LOCATION ?= "${S}/gfx_rel_es6.x"
+ES8LOCATION ?= "${S}/gfx_rel_es8.x"
 
 do_configure() {
 	# Attempt to fix up the worst offenders for file permissions
@@ -158,22 +159,28 @@ do_install () {
 
 	# The ES2.x, ES3.x, ES5.x and ES6.x CPUs have different SGX hardware, so we need to install multiple sets of userspace
 
+	install -d ${D}${libdir}/ES8.0
 	install -d ${D}${libdir}/ES6.0
 	install -d ${D}${libdir}/ES5.0
 	install -d ${D}${libdir}/ES3.0
 	install -d ${D}${libdir}/ES2.0
 
+	install -d ${D}${bindir}/ES8.0
 	install -d ${D}${bindir}/ES6.0
 	install -d ${D}${bindir}/ES5.0
 	install -d ${D}${bindir}/ES3.0
 	install -d ${D}${bindir}/ES2.0
 
 
-	cp -pPR ${ES2LOCATION}/lib*${IMGPV} ${D}${libdir}/ES2.0/
-	cp ${ES2LOCATION}/p[dv]* ${D}${bindir}/ES2.0/
+	if [ -e ${ES2LOCATION} ] ; then
+		cp -pPR ${ES2LOCATION}/lib*${IMGPV} ${D}${libdir}/ES2.0/
+		cp ${ES2LOCATION}/p[dv]* ${D}${bindir}/ES2.0/
+	fi
 
-	cp -pPR ${D}${libdir}/lib*${IMGPV} ${D}${libdir}/ES3.0/
-	cp ${D}${bindir}/p[dv]* ${D}${bindir}/ES3.0
+	if [ -e ${ES3LOCATION} ] ; then
+		cp -pPR ${ES3LOCATION}/lib*${IMGPV} ${D}${libdir}/ES3.0/
+		cp ${ES3LOCATION}/p[dv]* ${D}${bindir}/ES3.0
+	fi
 
 	if [ -e ${ES5LOCATION} ] ; then 
 		cp -pPR ${ES5LOCATION}/lib*${IMGPV} ${D}${libdir}/ES5.0/
@@ -183,6 +190,11 @@ do_install () {
 	if [ -e ${ES6LOCATION} ] ; then
 		cp -pPR ${ES6LOCATION}/lib*${IMGPV} ${D}${libdir}/ES6.0/
 		cp ${ES6LOCATION}/p[dv]* ${D}${bindir}/ES6.0/
+	fi
+
+	if [ -e ${ES8LOCATION} ] ; then
+		cp -pPR ${ES8LOCATION}/lib*${IMGPV} ${D}${libdir}/ES8.0/
+		cp ${ES8LOCATION}/p[dv]* ${D}${bindir}/ES8.0/
 	fi
 
 	rm ${D}${bindir}/ES*/*.h ${D}${bindir}/ES*/pdsasm ${D}${bindir}/pdsasm -f || true
@@ -272,8 +284,6 @@ FILES_${PN}-x11wsegl-es8 = "${libdir}/ES8*/libpvrPVR2D_X11WSEGL.so.*"
 RRECOMMENDS_${PN}-x11wsegl = " ${PN}-x11wsegl-es2 ${PN}-x11wsegl-es3 ${PN}-x11wsegl-es5 ${PN}-x11wsegl-es6 ${PN}-x11wsegl-es8"
 
 CONFFILES_${PN} = "${sysconfdir}/powervr.ini"
-# 'cputype' uses /etc/init.d/functions
-RRECOMMENDS_${PN} += "initscripts"
 
 FILES_${PN} = "${sysconfdir} ${libdir}/lib*.so.* ${libdir}/ES*/* ${bindir}/pvrsrvinit ${bindir}/cputype ${bindir}/*/*"
 
