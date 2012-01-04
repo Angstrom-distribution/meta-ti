@@ -1,6 +1,6 @@
 DESCRIPTION = "Scripting tools for the BeagleBoard and BeagleBone"
 
-PR = "r11"
+PR = "r12"
 
 inherit allarch systemd
 
@@ -32,6 +32,7 @@ do_install() {
 SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE_${PN} = "bone101.service"
 
-FILES_${PN} += ""${localstatedir} ${base_libdir}/systemd/system"
+FILES_${PN} += "${localstatedir} ${base_libdir}/systemd/system"
+CONFFILES_${PN} += "${localstatedir}/lib/cloud9/.git/config"
 RDEPENDS_${PN} = "nodejs cloud9"
 RRECOMMENDS_${PN} = "git"
