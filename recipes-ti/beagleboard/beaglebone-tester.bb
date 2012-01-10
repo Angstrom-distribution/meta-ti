@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM="file://gpl.txt;md5=5b122a36d0f6dc55279a0ebc69f3c60b"
 # only scripts and data
 inherit allarch
 
-PR = "r8"
+PR = "r9"
 
 SRC_URI = "git://github.com/koenkooi/validation-scripts.git;protocol=git \
           "
@@ -46,6 +46,7 @@ FILES_${PN} += "${base_libdir}/systemd \
 
 RDEPENDS_${PN} = "iputils memtester"
 RRECOMMENDS_${PN} = "kernel-module-g-zero \
+                     kernel-module-g-mass-storage \
                      kernel-module-g-file-storage \
                      kernel-module-smsc95xx"
 
