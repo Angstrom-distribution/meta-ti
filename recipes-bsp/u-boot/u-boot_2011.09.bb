@@ -1,6 +1,6 @@
 require u-boot.inc
 
-PR = "r5"
+PR = "r6"
 
 # SPL build
 UBOOT_BINARY = "u-boot.img"
@@ -32,6 +32,7 @@ SRC_URI = "git://www.denx.de/git/u-boot.git;protocol=git \
            file://2011.09/0019-BeagleBoard-config-Really-switch-to-ttyO2.patch \
            file://2011.09/0020-beagleboard-add-support-for-TCT-Beacon-board.patch \
            file://2011.09/0021-beagleboard-add-support-for-scanning-loop-through-ex.patch \
+           file://0001-config-Always-use-GNU-ld.patch \
            file://fw_env.config \
           "
 

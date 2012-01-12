@@ -6,7 +6,7 @@ UBOOT_IMAGE = "u-boot-${MACHINE}-${PV}-${PR}.img"
 UBOOT_SYMLINK = "u-boot-${MACHINE}.img"
 
 PV = "2011.12"
-PR = "r1"
+PR = "r2"
 
 # No patches for other machines yet
 COMPATIBLE_MACHINE = "(beagleboard|pandaboard|hawkboard|am3517-evm|am37x-evm|omap3evm)"
@@ -18,6 +18,7 @@ SRC_URI = "git://www.denx.de/git/u-boot.git;protocol=git \
            file://2011.12/0004-omap4-common-mount-root-RO.patch \
            file://2011.12/0005-omap4-common-use-ext4-by-default.patch \
            file://2011.12/U-Boot-OMAP-MMC-Add-delay-before-waiting-for-status.patch \
+           file://0001-config-Always-use-GNU-ld.patch \
           "
 
 # v2011.12 tag
