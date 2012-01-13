@@ -1,4 +1,4 @@
-From edd2506bcab63d077b0ac31c5d51c6b3850dc866 Mon Sep 17 00:00:00 2001
+From c32768648dfe7f6bbe90ee0b18d1edb60fc141fe Mon Sep 17 00:00:00 2001
 From: Andy Green <andy@warmcat.com>
 Date: Sun, 10 Jul 2011 05:27:14 -0600
 Subject: [PATCH 069/149] I2C: OMAP2+: increase omap_i2c_dev_attr flags from u8 to u32
@@ -42,5 +42,5 @@ index 878d632..4c108f5 100644
  
  void __init omap1_i2c_mux_pins(int bus_id);
 -- 
-1.6.6.1
+1.7.2.5
 

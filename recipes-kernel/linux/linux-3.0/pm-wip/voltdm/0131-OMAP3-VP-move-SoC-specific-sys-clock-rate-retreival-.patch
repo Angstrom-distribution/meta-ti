@@ -1,4 +1,4 @@
-From 9ccd5395ba746bff2eb4a5053f5b41297efe70a5 Mon Sep 17 00:00:00 2001
+From d0c5c4d43250d9e7aad920ce3e7f5e7d5061be47 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 4 Apr 2011 17:22:28 -0700
 Subject: [PATCH 131/149] OMAP3+: VP: move SoC-specific sys clock rate retreival late init
@@ -180,5 +180,5 @@ index 3e7cb4e..9c20fbb 100644
  	voltdm_init(voltagedomains_omap4);
  };
 -- 
-1.6.6.1
+1.7.2.5
 

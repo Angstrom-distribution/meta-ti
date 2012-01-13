@@ -1,4 +1,4 @@
-From 963f9ea3a3d3e9f4730d0ac00a9226a839689ff6 Mon Sep 17 00:00:00 2001
+From 67101af593a16acf5d5d924f2746cc221d0360d1 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:56:29 -0600
 Subject: [PATCH 077/149] OMAP4: hwmod data: Add clock domain attribute
@@ -720,5 +720,5 @@ index fafdfe3..21d3922 100644
  	struct voltagedomain		*voltdm;
  	struct omap_hwmod_ocp_if	**masters; /* connect to *_IA */
 -- 
-1.6.6.1
+1.7.2.5
 

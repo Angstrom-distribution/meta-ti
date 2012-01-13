@@ -1,4 +1,4 @@
-From 59d55e3d37c9fe6f85ed4070666ecd2e7f3d1b2e Mon Sep 17 00:00:00 2001
+From a7e1724833070f01b82381f40b084fd33e46836d Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 21 Jul 2011 12:59:20 +0200
 Subject: [PATCH 03/10] HACK: OMAP3: beagle: switch to GPTIMER1
@@ -22,5 +22,5 @@ index f26a9a8..a04f5a0 100644
 +	.timer		= &omap3_timer,
  MACHINE_END
 -- 
-1.6.6.1
+1.7.2.5
 

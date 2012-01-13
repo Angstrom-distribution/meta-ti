@@ -1,4 +1,4 @@
-From 806a0fc320ad8f6c391b6e4a4d872af0ffc17fbc Mon Sep 17 00:00:00 2001
+From 2cc62887b37d504df009d7241e6cebc3c65c32a5 Mon Sep 17 00:00:00 2001
 From: Todd Poynor <toddpoynor@google.com>
 Date: Wed, 27 Jul 2011 07:07:21 +0000
 Subject: [PATCH 10/14] rtc: twl: Fix registration vs. init order
@@ -118,5 +118,5 @@ index 3fee95e..a64494e 100644
  }
  
 -- 
-1.6.6.1
+1.7.2.5
 

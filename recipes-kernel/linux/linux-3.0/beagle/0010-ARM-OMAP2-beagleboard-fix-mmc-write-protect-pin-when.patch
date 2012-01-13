@@ -1,4 +1,4 @@
-From e19ae187c1055a03781daca6964050aa238e1e78 Mon Sep 17 00:00:00 2001
+From 713c5b4ce910dacdd75e9616b0f989d643008536 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Wed, 19 Oct 2011 12:44:14 +0200
 Subject: [PATCH 10/10] ARM: OMAP2+: beagleboard: fix mmc write protect pin when using the wilink expansion board
@@ -22,5 +22,5 @@ index 5ffe185..0124060 100644
  	{
  		.name		= "wl1271",
 -- 
-1.6.6.1
+1.7.2.5
 

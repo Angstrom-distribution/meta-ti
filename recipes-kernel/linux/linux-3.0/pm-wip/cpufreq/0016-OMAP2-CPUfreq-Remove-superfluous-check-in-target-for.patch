@@ -1,4 +1,4 @@
-From 5dfc6be0282ea9f99f9f38c1425704af4401b0ab Mon Sep 17 00:00:00 2001
+From f0e647da78b80946ab301787aba4330bd7d1429d Mon Sep 17 00:00:00 2001
 From: Santosh Shilimkar <santosh.shilimkar@ti.com>
 Date: Fri, 3 Jun 2011 17:46:57 +0530
 Subject: [PATCH 16/19] OMAP2+: CPUfreq: Remove superfluous check in target() for online CPU's.
@@ -54,5 +54,5 @@ index a962a31..eaefa49 100644
  		dev_err(mpu_dev, "%s: cpu%d: no freq table!\n", __func__,
  				policy->cpu);
 -- 
-1.6.6.1
+1.7.2.5
 

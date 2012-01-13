@@ -1,4 +1,4 @@
-From 927d38b1180ace3c5adc9593ae6cea4cc778a688 Mon Sep 17 00:00:00 2001
+From 090b5bcad1bf67d208685461c30b68cd1ab535c5 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 23 Mar 2011 16:09:41 -0700
 Subject: [PATCH 104/149] OMAP2: add voltage domains and connect to powerdomains
@@ -134,5 +134,5 @@ index 0000000..69ff261
 +	voltdm_init(voltagedomains_omap2);
 +}
 -- 
-1.6.6.1
+1.7.2.5
 

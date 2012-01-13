@@ -1,4 +1,4 @@
-From 74bb828d1d68b2bebdd3c7197b198e99dff9f9c0 Mon Sep 17 00:00:00 2001
+From 27107815284e473d39b81df2ee65c1141f60a6cc Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:14:28 -0600
 Subject: [PATCH 045/149] OMAP4: hwmod data: Remove un-needed parens
@@ -38,5 +38,5 @@ index 94c0b60..7eed6a2 100644
  	.sdma_reqs	= omap44xx_uart3_sdma_reqs,
  	.main_clk	= "uart3_fck",
 -- 
-1.6.6.1
+1.7.2.5
 

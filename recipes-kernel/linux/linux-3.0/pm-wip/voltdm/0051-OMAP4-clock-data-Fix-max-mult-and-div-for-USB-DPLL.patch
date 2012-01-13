@@ -1,4 +1,4 @@
-From 426c76d0d595c7d6922a5ea1e04821b715a0b7a4 Mon Sep 17 00:00:00 2001
+From 6fdbb61306456ada90c0b0e3ee2c8245077b7b02 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:14:46 -0600
 Subject: [PATCH 051/149] OMAP4: clock data: Fix max mult and div for USB DPLL
@@ -139,5 +139,5 @@ index 006e599..f57e064 100644
  #if defined(CONFIG_ARCH_OMAP3) || defined(CONFIG_ARCH_OMAP4)
  	void __iomem		*autoidle_reg;
 -- 
-1.6.6.1
+1.7.2.5
 

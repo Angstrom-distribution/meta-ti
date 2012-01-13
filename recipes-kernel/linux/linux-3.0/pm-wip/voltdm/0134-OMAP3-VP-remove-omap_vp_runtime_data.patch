@@ -1,4 +1,4 @@
-From 4c4c8bb50ced9edd70a7d00c124ad825085b9d6a Mon Sep 17 00:00:00 2001
+From 7b7d6f216a49287479af9526b888df5e6325458b Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 4 Apr 2011 17:58:21 -0700
 Subject: [PATCH 134/149] OMAP3+: VP: remove omap_vp_runtime_data
@@ -166,5 +166,5 @@ index 71ac738..0d63267 100644
  extern struct omap_vp_instance omap3_vp_core;
  
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From 872a3007113d65d07cbc22e5cffc2e9264a7636d Mon Sep 17 00:00:00 2001
+From dd6773950301f38c61e0039922c685f6e0542c47 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Thu, 2 Jun 2011 17:28:13 -0700
 Subject: [PATCH 126/149] OMAP3+: PM: VC: handle mutant channel config for OMAP4 MPU channel
@@ -164,5 +164,5 @@ index 148be18..0a4fc37 100644
  	.cmdval_reg = OMAP4_PRM_VC_VAL_CMD_VDD_MPU_L_OFFSET,
  	.smps_sa_mask = OMAP4430_SA_VDD_MPU_L_PRM_VC_SMPS_SA_MASK,
 -- 
-1.6.6.1
+1.7.2.5
 

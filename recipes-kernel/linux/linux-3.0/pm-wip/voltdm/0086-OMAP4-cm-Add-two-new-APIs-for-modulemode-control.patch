@@ -1,4 +1,4 @@
-From f728b0620a6bf66fc78c59c23092c5eaea4a78b4 Mon Sep 17 00:00:00 2001
+From 3ef45618e396f3d9abb12fb4ef1c4462ccca6fd3 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:56:32 -0600
 Subject: [PATCH 086/149] OMAP4: cm: Add two new APIs for modulemode control
@@ -84,5 +84,5 @@ index a985400..f2ea645 100644
   * In an ideal world, we would not export these low-level functions,
   * but this will probably take some time to fix properly
 -- 
-1.6.6.1
+1.7.2.5
 

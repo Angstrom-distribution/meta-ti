@@ -1,4 +1,4 @@
-From 73e907e7cc7bfc4fe1115c82090470f35239bf38 Mon Sep 17 00:00:00 2001
+From 7a7bf2e165760ed106b0f4c8beb7191e3abe944f Mon Sep 17 00:00:00 2001
 From: Jarkko Nikula <jhnikula@gmail.com>
 Date: Fri, 1 Jul 2011 08:52:26 +0000
 Subject: [PATCH 026/149] omap: mcbsp: Remove rx_/tx_word_length variables
@@ -41,5 +41,5 @@ index 455eadc..3c1fbdc 100644
  	w = MCBSP_READ_CACHE(mcbsp, PCR0);
  	if (w & (FSXM | FSRM | CLKXM | CLKRM))
 -- 
-1.6.6.1
+1.7.2.5
 

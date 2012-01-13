@@ -1,4 +1,4 @@
-From 602a0ca3c36da70b47f1e8223bc978c61abf157b Mon Sep 17 00:00:00 2001
+From 52d08db173e39f2af6923dc803593d62fa05e43b Mon Sep 17 00:00:00 2001
 From: Tomi Valkeinen <tomi.valkeinen@ti.com>
 Date: Sat, 9 Jul 2011 20:39:44 -0600
 Subject: [PATCH 062/149] OMAP4: hwmod data: Modify DSS opt clocks
@@ -149,5 +149,5 @@ index e011437..a7fbe5c 100644
  	.slaves_cnt	= ARRAY_SIZE(omap44xx_dss_rfbi_slaves),
  	.omap_chip	= OMAP_CHIP_INIT(CHIP_IS_OMAP4430),
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From 90787bd0d3828d29cf41137d61409afcbb7e3cef Mon Sep 17 00:00:00 2001
+From 3dfeff8f9ad8fa7e6e434eb4b450a11ab79131da Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Wed, 25 May 2011 00:43:26 -0700
 Subject: [PATCH 01/19] PM: OPP: introduce function to free cpufreq table
@@ -16,7 +16,7 @@ Acked-by: Kevin Hilman <khilman@ti.com>
  3 files changed, 27 insertions(+), 0 deletions(-)
 
 diff --git a/Documentation/power/opp.txt b/Documentation/power/opp.txt
-index 5ae70a1..3035d00 100644
+index 5ae70a12..3035d00 100644
 --- a/Documentation/power/opp.txt
 +++ b/Documentation/power/opp.txt
 @@ -321,6 +321,8 @@ opp_init_cpufreq_table - cpufreq framework typically is initialized with
@@ -80,5 +80,5 @@ index 5449945..7020e97 100644
  
  #endif		/* __LINUX_OPP_H__ */
 -- 
-1.6.6.1
+1.7.2.5
 

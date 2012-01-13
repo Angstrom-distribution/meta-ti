@@ -1,4 +1,4 @@
-From 8c4508bad147a2eec870b7dd70f94f7aef4e921f Mon Sep 17 00:00:00 2001
+From 3532a9ceb9eb81147eab751b8c124b59acc87374 Mon Sep 17 00:00:00 2001
 From: Todd Poynor <toddpoynor@google.com>
 Date: Wed, 27 Jul 2011 07:07:20 +0000
 Subject: [PATCH 09/14] rtc: twl: Use threaded IRQ, remove IRQ enable in interrupt handler
@@ -53,5 +53,5 @@ index f9a2799..3fee95e 100644
  		dev_err(&pdev->dev, "IRQ is not free.\n");
  		goto out1;
 -- 
-1.6.6.1
+1.7.2.5
 

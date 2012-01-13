@@ -1,4 +1,4 @@
-From 62133074bed241778c6c13e9800550036b7b19b1 Mon Sep 17 00:00:00 2001
+From 3e0e5636effabe150374f2a212974f1e954be5b2 Mon Sep 17 00:00:00 2001
 From: Peter Ujfalusi <peter.ujfalusi@ti.com>
 Date: Tue, 28 Jun 2011 10:16:55 +0000
 Subject: [PATCH 018/149] omap: board-omap3evm: Fix compilation error
@@ -36,5 +36,5 @@ index 6f957ed..57bce0f 100644
  };
  
 -- 
-1.6.6.1
+1.7.2.5
 

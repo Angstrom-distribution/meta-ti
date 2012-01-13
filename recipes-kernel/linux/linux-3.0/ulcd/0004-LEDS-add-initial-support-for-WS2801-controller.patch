@@ -1,4 +1,4 @@
-From 38782c0a69e29fc321f648441221e8fe153eb36b Mon Sep 17 00:00:00 2001
+From e707458df28487c2fb0bf620cb3eff22466e2c6c Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 20 Oct 2011 16:13:16 +0200
 Subject: [PATCH 4/4] LEDS: add initial support for WS2801 controller
@@ -15,7 +15,7 @@ Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
  create mode 100644 drivers/leds/leds-ws2801.c
 
 diff --git a/arch/arm/mach-omap2/board-omap3beagle.c b/arch/arm/mach-omap2/board-omap3beagle.c
-index 47bc79b..016d098 100644
+index 47bc79b..016d0985 100644
 --- a/arch/arm/mach-omap2/board-omap3beagle.c
 +++ b/arch/arm/mach-omap2/board-omap3beagle.c
 @@ -796,6 +796,11 @@ static struct platform_device leds_gpio = {
@@ -238,5 +238,5 @@ index 0000000..9526a84
 +MODULE_LICENSE("GPL");
 +
 -- 
-1.6.6.1
+1.7.2.5
 

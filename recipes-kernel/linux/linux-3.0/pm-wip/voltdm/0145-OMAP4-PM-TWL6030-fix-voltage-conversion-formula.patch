@@ -1,4 +1,4 @@
-From 92ec6ba8620e86ee3fd312f61f6a7ac3e05322b1 Mon Sep 17 00:00:00 2001
+From 8ec7a1410e7ad5a4027deabc8025b5c7291c7579 Mon Sep 17 00:00:00 2001
 From: Patrick Titiano <p-titiano@ti.com>
 Date: Wed, 18 May 2011 00:17:30 -0500
 Subject: [PATCH 145/149] OMAP4: PM: TWL6030: fix voltage conversion formula
@@ -81,5 +81,5 @@ index 6b247d1..a66bf6b 100644
  	.onlp_volt		= 1100000,
  	.ret_volt		= 837500,
 -- 
-1.6.6.1
+1.7.2.5
 

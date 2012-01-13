@@ -1,4 +1,4 @@
-From c47fb2256d8e994ca75b6205cdd7f7329b5bd765 Mon Sep 17 00:00:00 2001
+From 8f322fa141e55da412c5d73f07f93c1e02965522 Mon Sep 17 00:00:00 2001
 From: Tony Lindgren <tony@atomide.com>
 Date: Tue, 29 Mar 2011 15:54:48 -0700
 Subject: [PATCH 007/149] omap2+: Use dmtimer macros for clockevent
@@ -275,5 +275,5 @@ index 54664a7..dd8b3ff 100644
  	unsigned enabled:1;
  	unsigned posted:1;
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From b1d7a5d50c9abdc3a1d7953442663365748174e5 Mon Sep 17 00:00:00 2001
+From 23a2e1563c2e0bf2c8162c8c91b2cf1f6007c669 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 18 Jul 2011 15:48:22 -0700
 Subject: [PATCH 111/149] OMAP2+: voltage: enable VC bypass scale method when VC is initialized
@@ -33,5 +33,5 @@ index c6352e3..e1a22a3 100644
  		if (voltdm->vdd) {
  			if (omap_vdd_data_configure(voltdm))
 -- 
-1.6.6.1
+1.7.2.5
 

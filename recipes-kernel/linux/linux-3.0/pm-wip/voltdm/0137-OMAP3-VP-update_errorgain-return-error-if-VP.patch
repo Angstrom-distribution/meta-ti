@@ -1,4 +1,4 @@
-From ac343ccd91fb47c17903a029906bc45697c28c73 Mon Sep 17 00:00:00 2001
+From abe6084b3aea9f55bb9b9127a0a4c58f915e635e Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 18 Jul 2011 15:31:43 -0700
 Subject: [PATCH 137/149] OMAP3+: VP: update_errorgain(): return error if VP
@@ -25,5 +25,5 @@ index 3807620..29698ac 100644
  	volt_data = omap_voltage_get_voltdata(voltdm, target_volt);
  	if (IS_ERR(volt_data))
 -- 
-1.6.6.1
+1.7.2.5
 

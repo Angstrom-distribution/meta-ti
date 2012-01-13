@@ -1,4 +1,4 @@
-From 14fd863086d151e68a44c18a16726587ab9d6f8e Mon Sep 17 00:00:00 2001
+From ecf26111e3d83dd4face7fa8f4327489775d1dc8 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 30 Mar 2011 16:36:30 -0700
 Subject: [PATCH 125/149] OMAP3+: VC: make I2C config programmable with PMIC-specific settings
@@ -217,5 +217,5 @@ index 72a0255..a0ae5c6 100644
  	u8 (*uv_to_vsel) (unsigned long uV);
  };
 -- 
-1.6.6.1
+1.7.2.5
 

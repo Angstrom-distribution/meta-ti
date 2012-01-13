@@ -1,4 +1,4 @@
-From 8277e114af7921a1a84e63a4b41f1641582b826b Mon Sep 17 00:00:00 2001
+From 754129bd8c94999c27162faf84abb5df24b79c9b Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 28 Mar 2011 11:57:18 -0700
 Subject: [PATCH 115/149] OMAP3+ VP: replace transaction done check/clear with VP ops
@@ -138,5 +138,5 @@ index f3503de..113c839 100644
  		udelay(1);
  	}
 -- 
-1.6.6.1
+1.7.2.5
 

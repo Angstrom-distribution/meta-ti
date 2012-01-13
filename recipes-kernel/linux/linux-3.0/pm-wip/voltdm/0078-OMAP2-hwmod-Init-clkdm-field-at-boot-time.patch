@@ -1,4 +1,4 @@
-From c110d6a4682a98c50d98abcb409fefdd5f6611a1 Mon Sep 17 00:00:00 2001
+From 57d2323014444c5d7f8c8d7e2da0a9737c3d8c28 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:56:30 -0600
 Subject: [PATCH 078/149] OMAP2+: hwmod: Init clkdm field at boot time
@@ -82,5 +82,5 @@ index 21d3922..3306bdf 100644
  	struct voltagedomain		*voltdm;
  	struct omap_hwmod_ocp_if	**masters; /* connect to *_IA */
 -- 
-1.6.6.1
+1.7.2.5
 

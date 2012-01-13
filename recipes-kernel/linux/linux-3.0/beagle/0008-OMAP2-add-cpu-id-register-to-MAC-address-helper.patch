@@ -1,4 +1,4 @@
-From 93b4f0bb46f9b9075bf830f2597816c3adeb01b7 Mon Sep 17 00:00:00 2001
+From 2a9282daf94e8b9a1c8dc6fdf5b97461eb15348d Mon Sep 17 00:00:00 2001
 From: Andy Green <andy@warmcat.com>
 Date: Thu, 24 Mar 2011 21:27:29 +0000
 Subject: [PATCH 08/10] OMAP2+: add cpu id register to MAC address helper
@@ -85,5 +85,5 @@ index 02ed3aa..373313a 100644
  
  #endif
 -- 
-1.6.6.1
+1.7.2.5
 

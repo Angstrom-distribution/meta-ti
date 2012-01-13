@@ -1,4 +1,4 @@
-From 2986b51c38a0c0f3e1d97496758ef781000c9e3c Mon Sep 17 00:00:00 2001
+From e4cf1f9419b8613017296ee163acedb79dc2967b Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Thu, 14 Jul 2011 11:29:06 -0700
 Subject: [PATCH 142/149] OMAP3+: voltdm: final removal of omap_vdd_info
@@ -278,5 +278,5 @@ index 9c20fbb..c4584e9 100644
  	for (i = 0; voltdm = voltagedomains_omap4[i], voltdm; i++)
  		voltdm->sys_clk.name = sys_clk_name;
 -- 
-1.6.6.1
+1.7.2.5
 

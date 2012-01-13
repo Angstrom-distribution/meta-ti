@@ -1,4 +1,4 @@
-From 87d3b74e7a34d655ae16a847986a9a7ac05bc29d Mon Sep 17 00:00:00 2001
+From 3bc9e748aeea5c152564186ad65ae7f7848420d3 Mon Sep 17 00:00:00 2001
 From: Andy Green <andy@warmcat.com>
 Date: Sun, 10 Jul 2011 05:27:14 -0600
 Subject: [PATCH 068/149] I2C: OMAP2+: Set hwmod flags to only allow 16-bit accesses to i2c
@@ -129,5 +129,5 @@ index b25ab83..2ebccb8 100644
  	.sdma_reqs	= omap44xx_i2c4_sdma_reqs,
  	.main_clk	= "i2c4_fck",
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From b5e51a89e54fadd997f6b510a31901fd9a6f3a46 Mon Sep 17 00:00:00 2001
+From e800b4bd2d100fea86fbfa46a20a374c691e2fcd Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:56:30 -0600
 Subject: [PATCH 080/149] OMAP: hwmod: Wait the idle status to be disabled
@@ -149,5 +149,5 @@ index 00241ea..d21f49b 100644
  	/* XXX Should this code also force-disable the optional clocks? */
  
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From f9a6193c656f30cfb8ec2933f2d309d599f668b0 Mon Sep 17 00:00:00 2001
+From 0b7a00a668b460c5a541d2d9d77a96cd0de3f57d Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Fri, 1 Jul 2011 22:54:03 +0200
 Subject: [PATCH 032/149] OMAP2+: hwmod: Do not write the enawakeup bit if SYSC_HAS_ENAWAKEUP is not set
@@ -61,5 +61,5 @@ index cbc2a8a..3800084 100644
  	if (oh->class->sysc->idlemodes & SIDLE_SMART_WKUP)
  		_set_slave_idlemode(oh, HWMOD_IDLEMODE_SMART, v);
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From f77889fb5747c6fd6e4f1431641d603565adfc2d Mon Sep 17 00:00:00 2001
+From e060d73eef027063f687feae1c3d0ad2418a88aa Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Mon, 14 Feb 2011 21:14:17 +0530
 Subject: [PATCH 011/149] OMAP3+: SR: enable/disable SR only on need
@@ -14,7 +14,7 @@ Signed-off-by: Kevin Hilman <khilman@ti.com>
  1 files changed, 7 insertions(+), 4 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/smartreflex.c b/arch/arm/mach-omap2/smartreflex.c
-index 616ef62..3bd9fac 100644
+index 6b69ada..1a370b9 100644
 --- a/arch/arm/mach-omap2/smartreflex.c
 +++ b/arch/arm/mach-omap2/smartreflex.c
 @@ -807,10 +807,13 @@ static int omap_sr_autocomp_store(void *data, u64 val)
@@ -36,5 +36,5 @@ index 616ef62..3bd9fac 100644
  	return 0;
  }
 -- 
-1.6.6.1
+1.7.2.5
 

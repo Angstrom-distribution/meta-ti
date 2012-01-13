@@ -1,4 +1,4 @@
-From 6b804de06fd4735097ad12ea1d26f8a31eaa4f93 Mon Sep 17 00:00:00 2001
+From 44ab86140417f173835e19bed62d6832023f2914 Mon Sep 17 00:00:00 2001
 From: Peter Ujfalusi <peter.ujfalusi@ti.com>
 Date: Wed, 17 Aug 2011 16:02:55 +0200
 Subject: [PATCH] OMAP: Fix linking error in twl-common.c for OMAP2/3/4 only builds
@@ -125,5 +125,5 @@ index 3aaa46f..58409c0 100644
 -}
 +#endif /* CONFIG_ARCH_OMAP4 */
 -- 
-1.6.6.1
+1.7.2.5
 

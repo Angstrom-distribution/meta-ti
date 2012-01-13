@@ -1,4 +1,4 @@
-From cc3678a94f0289df3eb72144c8d9cf26fc9fc169 Mon Sep 17 00:00:00 2001
+From ebe24c52d0431437103277f4e378c3dad0bde3e9 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Tue, 29 Mar 2011 14:24:47 -0700
 Subject: [PATCH 120/149] OMAP3+: VC bypass: use fields from VC struct instead of PMIC info
@@ -38,5 +38,5 @@ index 50b1f7c..9e0dc8d 100644
  	voltdm->write(vc_bypass_value, vc_bypass_val_reg);
  	voltdm->write(vc_bypass_value | vc_valid, vc_bypass_val_reg);
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From 89d586a1085b33467443e464e50d209b4658bc20 Mon Sep 17 00:00:00 2001
+From 8009544b2ea8ceba920455bb7e5e267cc78d3827 Mon Sep 17 00:00:00 2001
 From: Tony Lindgren <tony@atomide.com>
 Date: Tue, 29 Mar 2011 15:54:49 -0700
 Subject: [PATCH 013/149] omap2+: Reserve clocksource and timesource and initialize dmtimer later
@@ -121,5 +121,5 @@ index 8adcb18..d0f3a2d 100644
  
  static inline u32 __omap_dm_timer_read(void __iomem *base, u32 reg,
 -- 
-1.6.6.1
+1.7.2.5
 

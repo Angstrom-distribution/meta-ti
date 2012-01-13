@@ -1,4 +1,4 @@
-From acc4305b143fab35cdc852f5828323af378a4792 Mon Sep 17 00:00:00 2001
+From b7fd7c4814b75005d2bf89d27e2160e863cdd5c3 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Sat, 9 Jul 2011 19:15:20 -0600
 Subject: [PATCH 058/149] OMAP: omap_device: replace _find_by_pdev() with to_omap_device()
@@ -80,5 +80,5 @@ index 49fc0df..c8b9cd1 100644
  	if (new_wakeup_lat_limit == od->dev_wakeup_lat)
  		return 0;
 -- 
-1.6.6.1
+1.7.2.5
 

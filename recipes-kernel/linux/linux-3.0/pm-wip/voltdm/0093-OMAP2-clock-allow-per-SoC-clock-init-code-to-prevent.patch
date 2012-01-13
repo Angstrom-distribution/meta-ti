@@ -1,4 +1,4 @@
-From b4db0227863a5119be5e3945abd74f87dcb9b280 Mon Sep 17 00:00:00 2001
+From 7d9356a5f4f67150d793d6be8592ea23b0692d81 Mon Sep 17 00:00:00 2001
 From: Paul Walmsley <paul@pwsan.com>
 Date: Sun, 10 Jul 2011 05:57:06 -0600
 Subject: [PATCH 093/149] OMAP2+: clock: allow per-SoC clock init code to prevent clockdomain calls from clock code
@@ -119,5 +119,5 @@ index e10ff2b..48ac568 100644
  /* clkt_clksel.c public functions */
  u32 omap2_clksel_round_rate_div(struct clk *clk, unsigned long target_rate,
 -- 
-1.6.6.1
+1.7.2.5
 

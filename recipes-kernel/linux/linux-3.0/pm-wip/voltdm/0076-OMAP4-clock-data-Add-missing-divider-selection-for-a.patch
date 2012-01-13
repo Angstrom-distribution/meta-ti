@@ -1,4 +1,4 @@
-From 1a5ffa7e2ef3468ce3e2107d56917d3cd20f7fb5 Mon Sep 17 00:00:00 2001
+From 3e03bae4fc1f9b6e413af3c3e65766913049ffa0 Mon Sep 17 00:00:00 2001
 From: Rajendra Nayak <rnayak@ti.com>
 Date: Sun, 10 Jul 2011 05:56:14 -0600
 Subject: [PATCH 076/149] OMAP4: clock data: Add missing divider selection for auxclks
@@ -288,5 +288,5 @@ index 763507f..07bf0de 100644
  	CLK(NULL,	"gpmc_ck",			&dummy_ck,	CK_443X),
  	CLK(NULL,	"gpt1_ick",			&dummy_ck,	CK_443X),
 -- 
-1.6.6.1
+1.7.2.5
 

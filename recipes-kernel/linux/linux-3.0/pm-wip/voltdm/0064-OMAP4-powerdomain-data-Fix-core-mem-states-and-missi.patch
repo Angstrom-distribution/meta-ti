@@ -1,4 +1,4 @@
-From 47d58a570faa6c6fd140fd622808071dcc1a5e01 Mon Sep 17 00:00:00 2001
+From 2e67179b61fd7b58ecbafd72fe07943620863ae7 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 20:42:11 -0600
 Subject: [PATCH 064/149] OMAP4: powerdomain data: Fix core mem states and missing cefuse flag
@@ -64,5 +64,5 @@ index 3a7e678..8f46e7d 100644
  
  /*
 -- 
-1.6.6.1
+1.7.2.5
 

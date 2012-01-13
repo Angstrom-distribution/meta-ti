@@ -1,4 +1,4 @@
-From 5bf0bd6457468d636582fb238bb9d20e45f8bd92 Mon Sep 17 00:00:00 2001
+From bf974dd3f24e623f04422b8013d047d78d430f0e Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <steve@sakoman.com>
 Date: Fri, 1 Jul 2011 10:00:03 -0700
 Subject: [PATCH 04/14] mtd: nand: Eliminate noisey "uncorrectable error" messages
@@ -24,5 +24,5 @@ index 271b8e7..ad55e55 100644
  }
  EXPORT_SYMBOL(__nand_correct_data);
 -- 
-1.6.6.1
+1.7.2.5
 

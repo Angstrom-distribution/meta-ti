@@ -1,4 +1,4 @@
-From 172e1906fd70030ce5aa3cdb60ef9215a43d6ecd Mon Sep 17 00:00:00 2001
+From b9230219fb50ac16be3f24fe872bd9537b665871 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 23 Mar 2011 17:00:21 -0700
 Subject: [PATCH 102/149] OMAP3+: voltage: add scalable flag to voltagedomain
@@ -89,5 +89,5 @@ index 245fdf9..95e1ce5 100644
  };
  
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From da8b469e1dfcba1559510081acc146c9bbaacca4 Mon Sep 17 00:00:00 2001
+From e2c80dceb999bf93d079d0a5a040951aad3d2359 Mon Sep 17 00:00:00 2001
 From: Jon Hunter <jon-hunter@ti.com>
 Date: Sat, 9 Jul 2011 19:14:47 -0600
 Subject: [PATCH 060/149] OMAP4: clock data: Remove McASP2, McASP3 and MMC6 clocks
@@ -174,5 +174,5 @@ index 8307c9e..96bc668 100644
  	CLK(NULL,	"pmd_trace_clk_mux_ck",		&pmd_trace_clk_mux_ck,	CK_443X),
  	CLK(NULL,	"syc_clk_div_ck",		&syc_clk_div_ck,	CK_443X),
 -- 
-1.6.6.1
+1.7.2.5
 

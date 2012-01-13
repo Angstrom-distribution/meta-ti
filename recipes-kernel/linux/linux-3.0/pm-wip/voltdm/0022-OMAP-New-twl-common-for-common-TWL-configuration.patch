@@ -1,4 +1,4 @@
-From c9641280760e72a387d56410c49f3f2586910aa9 Mon Sep 17 00:00:00 2001
+From 552daa4d00a2c1835e5114af852efc65175e1cc0 Mon Sep 17 00:00:00 2001
 From: Peter Ujfalusi <peter.ujfalusi@ti.com>
 Date: Sat, 4 Jun 2011 08:16:41 +0300
 Subject: [PATCH 022/149] OMAP: New twl-common for common TWL configuration
@@ -70,7 +70,7 @@ index 0043fa8..bcb0c58 100644
  	defined(CONFIG_TOUCHSCREEN_ADS7846_MODULE)
  static struct omap2_mcspi_device_config ads7846_mcspi_config = {
 diff --git a/arch/arm/mach-omap2/common-board-devices.h b/arch/arm/mach-omap2/common-board-devices.h
-index 6797190..a0b4a42 100644
+index 6797190..a0b4a428 100644
 --- a/arch/arm/mach-omap2/common-board-devices.h
 +++ b/arch/arm/mach-omap2/common-board-devices.h
 @@ -1,33 +1,11 @@
@@ -196,5 +196,5 @@ index 0000000..e9fe2ab
 +
 +#endif /* __OMAP_PMIC_COMMON__ */
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From 9ea14df0b0fc52a527d59a1d576bc070293d03b4 Mon Sep 17 00:00:00 2001
+From 19b2a24927050ee82e6f587ac47f484f1b114a57 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 4 Apr 2011 16:02:28 -0700
 Subject: [PATCH 130/149] OMAP3+: VP: struct omap_vp_common: replace shift with __ffs(mask)
@@ -210,5 +210,5 @@ index 8f75cd9..0daf2a4 100644
  	.vpconfig_timeouten = OMAP4430_TIMEOUTEN_MASK,
  	.vpconfig_initvdd = OMAP4430_INITVDD_MASK,
 -- 
-1.6.6.1
+1.7.2.5
 

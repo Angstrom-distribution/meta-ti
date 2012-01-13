@@ -1,4 +1,4 @@
-From 0bc3461bd5419127e36472e4d129a0cc4a5c429e Mon Sep 17 00:00:00 2001
+From a5fc50f2405625fef21c78c46e0e9427eb202f15 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Mon, 21 Mar 2011 12:11:54 +0100
 Subject: [PATCH 106/149] OMAP4: powerdomain data: add voltage domains
@@ -173,5 +173,5 @@ index 95e1ce5..9a17b5e 100644
  };
  
 -- 
-1.6.6.1
+1.7.2.5
 

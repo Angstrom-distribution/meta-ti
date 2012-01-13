@@ -1,4 +1,4 @@
-From 6f003fe8fce7d5ac74bf5caeacb67369f94fdaed Mon Sep 17 00:00:00 2001
+From 31ec83c7092588f41b69e024f0ddd585c1981094 Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <steve@sakoman.com>
 Date: Wed, 29 Dec 2010 11:39:16 -0800
 Subject: [PATCH 12/14] soc: codecs: twl4030: Turn on mic bias by default
@@ -21,5 +21,5 @@ index 158ea04..9bbf301 100644
  	0x14, /* REG_ANAMICR		(0x6)	*/
  	0x00, /* REG_AVADC_CTL		(0x7)	*/
 -- 
-1.6.6.1
+1.7.2.5
 

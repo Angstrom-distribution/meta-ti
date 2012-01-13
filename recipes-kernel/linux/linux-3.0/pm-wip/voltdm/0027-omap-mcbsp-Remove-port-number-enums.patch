@@ -1,4 +1,4 @@
-From b1096b8873a8ffd74a2de22fa2edb6e138bedf83 Mon Sep 17 00:00:00 2001
+From a16f9faa682c8cdd3bbd14618600ec67e4a56963 Mon Sep 17 00:00:00 2001
 From: Jarkko Nikula <jhnikula@gmail.com>
 Date: Fri, 1 Jul 2011 08:52:27 +0000
 Subject: [PATCH 027/149] omap: mcbsp: Remove port number enums
@@ -36,7 +36,7 @@ index d9af981..ab7395d 100644
  			if (!IS_ERR(api_clk)) {
  				clk_disable(api_clk);
 diff --git a/arch/arm/plat-omap/include/plat/mcbsp.h b/arch/arm/plat-omap/include/plat/mcbsp.h
-index 63464ad..9882c65 100644
+index 63464ad..9882c657 100644
 --- a/arch/arm/plat-omap/include/plat/mcbsp.h
 +++ b/arch/arm/plat-omap/include/plat/mcbsp.h
 @@ -33,7 +33,7 @@
@@ -64,5 +64,5 @@ index 63464ad..9882c65 100644
  	OMAP_MCBSP_WORD_12,
  	OMAP_MCBSP_WORD_16,
 -- 
-1.6.6.1
+1.7.2.5
 

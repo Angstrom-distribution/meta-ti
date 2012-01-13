@@ -1,4 +1,4 @@
-From 6820ff92aecd799fb3b4e3438d887fcd3873a8f3 Mon Sep 17 00:00:00 2001
+From 595da70cb0e039cbe04d9c7ce179883e6f8878c1 Mon Sep 17 00:00:00 2001
 From: Tony Lindgren <tony@atomide.com>
 Date: Tue, 29 Mar 2011 15:54:49 -0700
 Subject: [PATCH 014/149] omap2+: Use dmtimer macros for clocksource
@@ -159,5 +159,5 @@ index f7fed60..c13bc3d 100644
  {
  	return _omap_32k_sched_clock();
 -- 
-1.6.6.1
+1.7.2.5
 

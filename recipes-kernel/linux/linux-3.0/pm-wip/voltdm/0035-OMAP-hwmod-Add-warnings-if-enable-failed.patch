@@ -1,4 +1,4 @@
-From 41640a85e80636e7cec8dd2c1c346723c45d28bf Mon Sep 17 00:00:00 2001
+From ea1e84fd91f4bfa506f7d44c4183ab649308b940 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Fri, 1 Jul 2011 22:54:06 +0200
 Subject: [PATCH 035/149] OMAP: hwmod: Add warnings if enable failed
@@ -26,5 +26,5 @@ index df91bb1..64e9830 100644
  	return ret;
  }
 -- 
-1.6.6.1
+1.7.2.5
 

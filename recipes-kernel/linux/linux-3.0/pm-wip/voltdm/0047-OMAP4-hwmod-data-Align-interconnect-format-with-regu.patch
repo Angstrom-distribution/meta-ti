@@ -1,4 +1,4 @@
-From e9aad125ddf438b20011ea385cde2dbf0db0bc3d Mon Sep 17 00:00:00 2001
+From b47c49426b8f986331816c48996d9a64f0ebc0aa Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:14:28 -0600
 Subject: [PATCH 047/149] OMAP4: hwmod data: Align interconnect format with regular modules
@@ -150,5 +150,5 @@ index 1975b05..e011437 100644
  static struct omap_hwmod_ocp_if omap44xx_mpu__mpu_private = {
  	.master		= &omap44xx_mpu_hwmod,
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From 6c37762ba048bf1756440e7032e2128d081bea00 Mon Sep 17 00:00:00 2001
+From b1090dd5eb9e242f8426169718fd7241c025c1a2 Mon Sep 17 00:00:00 2001
 From: Paul Walmsley <paul@pwsan.com>
 Date: Sun, 10 Jul 2011 05:56:54 -0600
 Subject: [PATCH 090/149] OMAP2+: clockdomain: add clkdm_in_hwsup()
@@ -137,5 +137,5 @@ index 8e0da64..8782a5c 100644
  int clkdm_wakeup(struct clockdomain *clkdm);
  int clkdm_sleep(struct clockdomain *clkdm);
 -- 
-1.6.6.1
+1.7.2.5
 

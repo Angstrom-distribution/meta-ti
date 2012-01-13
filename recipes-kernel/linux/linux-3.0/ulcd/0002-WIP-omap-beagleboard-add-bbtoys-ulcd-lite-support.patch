@@ -1,4 +1,4 @@
-From 8c300d702932f9395d4fa12e4d1a4041da72f34c Mon Sep 17 00:00:00 2001
+From ba0b157d461f6b8fe61e232e92ea7ee656ad5ecb Mon Sep 17 00:00:00 2001
 From: Jason Kridner <jdk@ti.com>
 Date: Mon, 12 Sep 2011 10:28:14 -0400
 Subject: [PATCH 2/4] WIP: omap: beagleboard: add bbtoys ulcd-lite support
@@ -231,5 +231,5 @@ index 9c90f75..82c1ac3 100644
  
  struct panel_drv_data {
 -- 
-1.6.6.1
+1.7.2.5
 

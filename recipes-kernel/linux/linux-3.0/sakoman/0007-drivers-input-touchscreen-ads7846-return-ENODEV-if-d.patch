@@ -1,4 +1,4 @@
-From e326ddfb0a06023f78ef723a6bd740cecb5e9be6 Mon Sep 17 00:00:00 2001
+From 34f40fe736113c2066bf86ca163a4aff8b6d061f Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <sakoman@gmail.com>
 Date: Tue, 15 Dec 2009 15:24:10 -0800
 Subject: [PATCH 07/14] drivers: input: touchscreen: ads7846: return ENODEV if device is not found
@@ -41,5 +41,5 @@ index 5196861..b0bd1ba 100644
   err_cleanup_filter:
  	if (ts->filter_cleanup)
 -- 
-1.6.6.1
+1.7.2.5
 

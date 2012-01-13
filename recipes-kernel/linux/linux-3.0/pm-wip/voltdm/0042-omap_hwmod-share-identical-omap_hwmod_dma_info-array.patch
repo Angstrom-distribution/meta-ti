@@ -1,4 +1,4 @@
-From a4e1221f9e6803ac9a75f396e6c8a07421d15031 Mon Sep 17 00:00:00 2001
+From 79a8b76e605e0930ef1c52c2a757eb523340cda1 Mon Sep 17 00:00:00 2001
 From: Paul Walmsley <paul@pwsan.com>
 Date: Sat, 9 Jul 2011 19:14:07 -0600
 Subject: [PATCH 042/149] omap_hwmod: share identical omap_hwmod_dma_info arrays
@@ -931,5 +931,5 @@ index 1ac878c..b636cf6 100644
  /* Common IP block data across OMAP2/3 */
  extern struct omap_hwmod_irq_info omap2_timer1_mpu_irqs[];
 -- 
-1.6.6.1
+1.7.2.5
 

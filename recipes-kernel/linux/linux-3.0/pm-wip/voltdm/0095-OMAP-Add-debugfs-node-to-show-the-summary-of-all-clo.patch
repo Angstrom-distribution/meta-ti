@@ -1,4 +1,4 @@
-From 7565d23055d7881290d69c226b070b19fc36db43 Mon Sep 17 00:00:00 2001
+From 01eed55ec7b57fb5109e7eb70cbdebdc030135a5 Mon Sep 17 00:00:00 2001
 From: Jon Hunter <jon-hunter@ti.com>
 Date: Sun, 10 Jul 2011 05:57:33 -0600
 Subject: [PATCH 095/149] OMAP: Add debugfs node to show the summary of all clocks
@@ -80,5 +80,5 @@ index c9122dd..156b27d 100644
  err_out:
  	debugfs_remove_recursive(clk_debugfs_root);
 -- 
-1.6.6.1
+1.7.2.5
 

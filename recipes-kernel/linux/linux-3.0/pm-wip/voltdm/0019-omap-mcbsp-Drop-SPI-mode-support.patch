@@ -1,4 +1,4 @@
-From 7dc6fc29aeb2b3bc84c2a47c0794d1773e94e32e Mon Sep 17 00:00:00 2001
+From 20f244f6b795ee54f053eee5a5e0f9313a13e403 Mon Sep 17 00:00:00 2001
 From: Jarkko Nikula <jhnikula@gmail.com>
 Date: Tue, 14 Jun 2011 11:23:51 +0000
 Subject: [PATCH 019/149] omap: mcbsp: Drop SPI mode support
@@ -307,5 +307,5 @@ index 5587acf..1de2724 100644
  #define max_thres(m)			(mcbsp->pdata->buffer_size)
  #define valid_threshold(m, val)		((val) <= max_thres(m))
 -- 
-1.6.6.1
+1.7.2.5
 

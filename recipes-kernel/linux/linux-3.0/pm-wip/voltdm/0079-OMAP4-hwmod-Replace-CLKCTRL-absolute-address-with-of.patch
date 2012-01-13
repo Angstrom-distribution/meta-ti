@@ -1,4 +1,4 @@
-From b37b8e0b5134f793a09513a9a5f9df9e51a77333 Mon Sep 17 00:00:00 2001
+From d112244b9ada88d33ac8e856587a4645c8f11e80 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:56:30 -0600
 Subject: [PATCH 079/149] OMAP4: hwmod: Replace CLKCTRL absolute address with offset macros
@@ -972,5 +972,5 @@ index 3306bdf..fc54355 100644
  	u8		submodule_wkdep_bit;
  };
 -- 
-1.6.6.1
+1.7.2.5
 

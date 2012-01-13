@@ -1,4 +1,4 @@
-From a7088230da736a8635b26178730aca59c31c6237 Mon Sep 17 00:00:00 2001
+From baf40f002836b7c0fe9aeeba92ba483f6e9d2384 Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <steve@sakoman.com>
 Date: Thu, 3 Mar 2011 13:29:30 -0800
 Subject: [PATCH 08/14] Revert "omap2_mcspi: Flush posted writes"
@@ -23,5 +23,5 @@ index 969cdd2..da981ee 100644
  
  static void omap2_mcspi_set_dma_req(const struct spi_device *spi,
 -- 
-1.6.6.1
+1.7.2.5
 

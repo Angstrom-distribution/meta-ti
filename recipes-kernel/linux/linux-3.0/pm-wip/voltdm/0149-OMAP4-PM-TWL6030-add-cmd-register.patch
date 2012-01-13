@@ -1,4 +1,4 @@
-From 91af987d6b7658c1c01c9d7e55aecc0bd28461d7 Mon Sep 17 00:00:00 2001
+From 478e5300d4eb33cdebd393d634304a83833bc4d4 Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Wed, 18 May 2011 00:17:34 -0500
 Subject: [PATCH 149/149] OMAP4: PM: TWL6030: add cmd register
@@ -52,5 +52,5 @@ index 4bc99fb..f515a1a 100644
  	.uv_to_vsel		= twl6030_uv_to_vsel,
  };
 -- 
-1.6.6.1
+1.7.2.5
 

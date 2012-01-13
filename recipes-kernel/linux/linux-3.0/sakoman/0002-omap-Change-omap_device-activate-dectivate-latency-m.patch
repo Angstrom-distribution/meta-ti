@@ -1,4 +1,4 @@
-From 9c8761f190e351ad45ca1fce111e5aa1b2cd5442 Mon Sep 17 00:00:00 2001
+From a2e59d4041e8c42e21d90c0696ea8437a0cfc866 Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <steve@sakoman.com>
 Date: Mon, 23 May 2011 12:16:50 -0700
 Subject: [PATCH 02/14] omap: Change omap_device activate/dectivate latency messages from pr_warning to pr_debug
@@ -45,5 +45,5 @@ index be45147..e3d9520 100644
  					   "(%llu > %d)\n",
  					   od->pdev.name, od->pdev.id,
 -- 
-1.6.6.1
+1.7.2.5
 

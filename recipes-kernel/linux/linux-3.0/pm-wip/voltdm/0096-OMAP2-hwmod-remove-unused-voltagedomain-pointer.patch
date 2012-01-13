@@ -1,4 +1,4 @@
-From e417f95e0df4d6c8182ad93ef0900464fbb0bb41 Mon Sep 17 00:00:00 2001
+From c9d2e22cc8ed08fb232d99c161f8d0be18c8569e Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 16 Mar 2011 11:02:59 -0700
 Subject: [PATCH 096/149] OMAP2+: hwmod: remove unused voltagedomain pointer
@@ -26,5 +26,5 @@ index 0e329ca..38ac4af 100644
  	struct omap_hwmod_ocp_if	**slaves;  /* connect to *_TA */
  	void				*dev_attr;
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From 14c56dbb8128f6c2aa782cb2fe5791f9ecd69968 Mon Sep 17 00:00:00 2001
+From 794143b8e468ddd8715ae76a6a0f7f0c9bc6778d Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 28 Mar 2011 10:40:15 -0700
 Subject: [PATCH 117/149] OMAP3+: voltage: convert to PRM register access functions
@@ -623,5 +623,5 @@ index 738ba04..9704c7b 100644
  	.vpconfig_errorgain_mask = OMAP4430_ERRORGAIN_MASK,
  	.vpconfig_errorgain_shift = OMAP4430_ERRORGAIN_SHIFT,
 -- 
-1.6.6.1
+1.7.2.5
 

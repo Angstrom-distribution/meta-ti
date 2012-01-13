@@ -1,4 +1,4 @@
-From 12cd5e0b1bb1d3a77fcceef0570134495c959e33 Mon Sep 17 00:00:00 2001
+From 5cd00a6a7afe6757255da2256157ce5504cf4b1a Mon Sep 17 00:00:00 2001
 From: Paul Walmsley <paul@pwsan.com>
 Date: Sat, 9 Jul 2011 19:14:07 -0600
 Subject: [PATCH 040/149] omap_hwmod: share identical omap_hwmod_mpu_irqs arrays
@@ -1811,5 +1811,5 @@ index 76a2f11..1ac878c 100644
  extern struct omap_hwmod_class l3_hwmod_class;
  extern struct omap_hwmod_class l4_hwmod_class;
 -- 
-1.6.6.1
+1.7.2.5
 

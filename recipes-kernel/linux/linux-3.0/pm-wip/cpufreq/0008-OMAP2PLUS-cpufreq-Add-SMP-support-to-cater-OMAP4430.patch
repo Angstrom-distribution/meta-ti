@@ -1,4 +1,4 @@
-From bf0972efdb9557cec20b531fc0543b376eae009d Mon Sep 17 00:00:00 2001
+From fed2c5a3d929204d4fc18c6f4a3edbf920e7ee36 Mon Sep 17 00:00:00 2001
 From: Santosh Shilimkar <santosh.shilimkar@ti.com>
 Date: Mon, 14 Mar 2011 17:08:49 +0530
 Subject: [PATCH 08/19] OMAP2PLUS: cpufreq: Add SMP support to cater OMAP4430
@@ -167,5 +167,5 @@ index 27f641b..3730f96 100644
  	/* FIXME: what's the actual transition time? */
  	policy->cpuinfo.transition_latency = 300 * 1000;
 -- 
-1.6.6.1
+1.7.2.5
 

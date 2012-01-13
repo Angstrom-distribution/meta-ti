@@ -1,4 +1,4 @@
-From b8c15127d23707eb139d120faa1d30ab96da997e Mon Sep 17 00:00:00 2001
+From 5cdb1497ccc5b9dae8795e1e5e9c74f11e4e7401 Mon Sep 17 00:00:00 2001
 From: Tony Lindgren <tony@atomide.com>
 Date: Tue, 29 Mar 2011 15:54:50 -0700
 Subject: [PATCH 016/149] omap2+: Rename timer-gp.c into timer.c to combine timer init functions
@@ -733,5 +733,5 @@ index 0000000..e964072
 +OMAP_SYS_TIMER(4)
 +#endif
 -- 
-1.6.6.1
+1.7.2.5
 

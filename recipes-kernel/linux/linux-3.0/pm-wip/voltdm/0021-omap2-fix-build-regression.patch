@@ -1,4 +1,4 @@
-From 5dcb26adb60fe59e4c2dc66972e8df3e7d9c1697 Mon Sep 17 00:00:00 2001
+From 742b21718c968c17ac951b73b4ba79f4a489d35b Mon Sep 17 00:00:00 2001
 From: Arnd Bergmann <arnd@arndb.de>
 Date: Thu, 30 Jun 2011 12:58:01 +0000
 Subject: [PATCH 021/149] omap2+: fix build regression
@@ -25,5 +25,5 @@ index c6ecf60..54db41a 100644
 +	.timer		= &omap2_timer,
  MACHINE_END
 -- 
-1.6.6.1
+1.7.2.5
 

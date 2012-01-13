@@ -1,4 +1,4 @@
-From 1dd9bfe00db002cace782002ad0b1c73bc58df16 Mon Sep 17 00:00:00 2001
+From 4e6a7403182e1e30f8b403e7931ce7c832cb5db3 Mon Sep 17 00:00:00 2001
 From: Paul Walmsley <paul@pwsan.com>
 Date: Sat, 9 Jul 2011 18:00:25 -0600
 Subject: [PATCH 028/149] OMAP: dmtimer: add missing include
@@ -27,5 +27,5 @@ index d0f3a2d..eb5d16c 100644
  #ifndef __ASM_ARCH_DMTIMER_H
  #define __ASM_ARCH_DMTIMER_H
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From cd24ee61ea78fad5c592f9b1fe58bc4415fd4c5c Mon Sep 17 00:00:00 2001
+From d0212d089b62cd7ebcd53104717180482e35ec1a Mon Sep 17 00:00:00 2001
 From: Jason Kridner <jdk@ti.com>
 Date: Thu, 15 Sep 2011 18:23:02 -0400
 Subject: [PATCH 09/10] HACK: OMAP2+: BeagleBoard: Fix up random or missing MAC addresses for eth0 and wlan0
@@ -152,5 +152,5 @@ index 13fffb0..5ffe185 100644
  }
  
 -- 
-1.6.6.1
+1.7.2.5
 

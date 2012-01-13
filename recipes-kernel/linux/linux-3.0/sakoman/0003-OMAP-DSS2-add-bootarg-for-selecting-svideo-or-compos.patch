@@ -1,4 +1,4 @@
-From 983455b3582fd6db0cb250fb31b5c2835b0b4254 Mon Sep 17 00:00:00 2001
+From 630557c2785955cc0abbe4bf29b22f703a404e02 Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <steve@sakoman.com>
 Date: Tue, 19 Jan 2010 21:19:15 -0800
 Subject: [PATCH 03/14] OMAP: DSS2: add bootarg for selecting svideo or composite for tv output
@@ -71,5 +71,5 @@ index 505bc12..c35c1f8 100644
  		*bpp = 24;
  		return 0;
 -- 
-1.6.6.1
+1.7.2.5
 

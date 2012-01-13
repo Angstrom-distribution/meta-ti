@@ -1,4 +1,4 @@
-From b12bab4b974267bd906856607122425f9691d1cc Mon Sep 17 00:00:00 2001
+From ccac5e6430353118ac7b9c46493e8cdf12114bf1 Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Wed, 18 May 2011 00:17:32 -0500
 Subject: [PATCH 147/149] OMAP4: PM: TWL6030: address 0V conversions
@@ -34,5 +34,5 @@ index 5def7c2..b30adf3 100644
  	 * There is no specific formula for voltage to vsel
  	 * conversion above 1.3V. There are special hardcoded
 -- 
-1.6.6.1
+1.7.2.5
 

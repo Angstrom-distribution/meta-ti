@@ -1,4 +1,4 @@
-From 62564fcb9857c06ca2641c55e577f0feb6a22e91 Mon Sep 17 00:00:00 2001
+From 01afb0a843a221a9a32db601de7ebd529c49aa66 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Tue, 22 Mar 2011 14:12:37 -0700
 Subject: [PATCH 113/149] OMAP2+: VC: support PMICs with separate voltage and command registers
@@ -105,5 +105,5 @@ index 83fa239..641597c 100644
  	u8 (*uv_to_vsel) (unsigned long uV);
  };
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From 6cfe2201f98f68d21eecddaefed716e9803734c5 Mon Sep 17 00:00:00 2001
+From 6cc398a1452cef66c2c10eaadb3efe18f4ab8874 Mon Sep 17 00:00:00 2001
 From: Avinash.H.M <avinashhm@ti.com>
 Date: Sun, 10 Jul 2011 05:27:16 -0600
 Subject: [PATCH 074/149] OMAP: hwmod: fix the i2c-reset timeout during bootup
@@ -282,5 +282,5 @@ index ce06ac6..fafdfe3 100644
  int omap_hwmod_count_resources(struct omap_hwmod *oh);
  int omap_hwmod_fill_resources(struct omap_hwmod *oh, struct resource *res);
 -- 
-1.6.6.1
+1.7.2.5
 

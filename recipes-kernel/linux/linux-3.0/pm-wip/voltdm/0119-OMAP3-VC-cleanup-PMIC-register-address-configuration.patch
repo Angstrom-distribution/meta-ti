@@ -1,4 +1,4 @@
-From ddca1ad28b86944d1d024b7b1c985f86c5f70109 Mon Sep 17 00:00:00 2001
+From 3296114685831f06d5a73057464afbbed489dea4 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Thu, 9 Jun 2011 11:01:55 -0700
 Subject: [PATCH 119/149] OMAP3+: VC: cleanup PMIC register address configuration
@@ -181,5 +181,5 @@ index 639e85c..3129d64 100644
  	u8 (*uv_to_vsel) (unsigned long uV);
  };
 -- 
-1.6.6.1
+1.7.2.5
 

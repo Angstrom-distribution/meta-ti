@@ -1,4 +1,4 @@
-From 856780b06dd7a551dedd62c627f5d2ec69b00e5d Mon Sep 17 00:00:00 2001
+From 31e518c4d9758553f36e3dcd1138ac31f68bf571 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 16 Mar 2011 16:13:15 -0700
 Subject: [PATCH 108/149] OMAP2+: voltage: keep track of powerdomains in each voltagedomain
@@ -196,5 +196,5 @@ index 966aa88..b41d9f1 100644
 +				    struct powerdomain *pwrdm));
  #endif
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From 2a0e7b1eebafe251fc38a1d9a4439251f7ffd89b Mon Sep 17 00:00:00 2001
+From be4be1a11360222f0b0add1dadfeaf76af199990 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@deeprootsystems.com>
 Date: Wed, 11 Aug 2010 17:05:38 -0700
 Subject: [PATCH 03/19] OMAP: CPUfreq: ensure policy is fully initialized
@@ -28,5 +28,5 @@ index cd09d4b..1b36664 100644
  	policy->cpuinfo.transition_latency = 300 * 1000;
  
 -- 
-1.6.6.1
+1.7.2.5
 

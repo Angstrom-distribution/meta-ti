@@ -1,4 +1,4 @@
-From 222a727d1614446275df0986ee08c011dfee64f9 Mon Sep 17 00:00:00 2001
+From 776007fbd8db1764179c9cf9f93d3b5ef2fef782 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:14:45 -0600
 Subject: [PATCH 049/149] OMAP4: clock data: Remove usb_host_fs clkdev with NULL dev
@@ -44,5 +44,5 @@ index f28a9c9..0fa1cb8 100644
  	CLK("usbhs-omap.0",	"usbtll_fck",		&dummy_ck,	CK_443X),
  	CLK(NULL,	"usim_ck",			&usim_ck,	CK_443X),
 -- 
-1.6.6.1
+1.7.2.5
 

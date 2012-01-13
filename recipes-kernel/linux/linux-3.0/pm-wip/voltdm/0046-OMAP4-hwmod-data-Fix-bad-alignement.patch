@@ -1,4 +1,4 @@
-From c38fbee241bc7eaea4bd9398917fbdce1996bc7d Mon Sep 17 00:00:00 2001
+From b3ef885514cc4b31d763b09dd78f26e2134c47c5 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:14:28 -0600
 Subject: [PATCH 046/149] OMAP4: hwmod data: Fix bad alignement
@@ -214,5 +214,5 @@ index 7eed6a2..1975b05 100644
  	.slaves_cnt	= ARRAY_SIZE(omap44xx_usb_otg_hs_slaves),
  	.masters	= omap44xx_usb_otg_hs_masters,
 -- 
-1.6.6.1
+1.7.2.5
 

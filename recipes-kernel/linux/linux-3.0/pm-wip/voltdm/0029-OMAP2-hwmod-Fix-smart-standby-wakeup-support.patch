@@ -1,4 +1,4 @@
-From 701c27eeb6138dce78d3f26268cacca3c5432a15 Mon Sep 17 00:00:00 2001
+From 8a9259c5eedfeb7e2dd3e001aa68e4e1a9149b41 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Fri, 1 Jul 2011 22:54:00 +0200
 Subject: [PATCH 029/149] OMAP2+: hwmod: Fix smart-standby + wakeup support
@@ -126,5 +126,5 @@ index 1adea9c..e93438c 100644
  /* omap_hwmod_sysconfig.sysc_flags capability flags */
  #define SYSC_HAS_AUTOIDLE	(1 << 0)
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From 4157d80213d934caea05a590e6577593553bb1f7 Mon Sep 17 00:00:00 2001
+From 3097e6265e79329635b528dd97b7fa3ed7dbb805 Mon Sep 17 00:00:00 2001
 From: Miguel Vadillo <vadillo@ti.com>
 Date: Fri, 1 Jul 2011 22:54:02 +0200
 Subject: [PATCH 031/149] OMAP2+: hwmod: Enable module in shutdown to access sysconfig
@@ -33,5 +33,5 @@ index 384d3c3..cbc2a8a 100644
  	/*
  	 * If an IP contains only one HW reset line, then assert it
 -- 
-1.6.6.1
+1.7.2.5
 

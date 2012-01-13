@@ -1,4 +1,4 @@
-From 627e72e631f0a1af0e006fd1bbb0c3b6b64bb0df Mon Sep 17 00:00:00 2001
+From 1a090fd9d66008314ef1963ff7335462b4231d8b Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Fri, 1 Jul 2011 22:54:07 +0200
 Subject: [PATCH 036/149] OMAP: hwmod: Move pr_debug to improve the readability
@@ -91,5 +91,5 @@ index 64e9830..e530bcb 100644
  		_idle_sysc(oh);
  	_del_initiator_dep(oh, mpu_oh);
 -- 
-1.6.6.1
+1.7.2.5
 

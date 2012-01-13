@@ -1,4 +1,4 @@
-From 785861d052e5efc1e901e3ec942a5289d42f4cea Mon Sep 17 00:00:00 2001
+From bfc31f950af6d9e8eb59ffeb80b3ba39ef98a943 Mon Sep 17 00:00:00 2001
 From: Nishanth Menon <nm@ti.com>
 Date: Wed, 18 May 2011 00:17:31 -0500
 Subject: [PATCH 146/149] OMAP4: PM: TWL6030: fix uv to voltage for >0x39
@@ -33,5 +33,5 @@ index a66bf6b..5def7c2 100644
  	if (smps_offset & 0x8)
  		return DIV_ROUND_UP(uv - 709000, 12660) + 1;
 -- 
-1.6.6.1
+1.7.2.5
 

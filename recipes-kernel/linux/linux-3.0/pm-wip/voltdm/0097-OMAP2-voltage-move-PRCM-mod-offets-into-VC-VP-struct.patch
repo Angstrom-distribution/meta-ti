@@ -1,4 +1,4 @@
-From 3f8485d436965f22909600cff801a6079c36e062 Mon Sep 17 00:00:00 2001
+From 9d2ed2fa5cc20d7c0233d1c5c8070c7c3f0914c8 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 16 Mar 2011 13:35:22 -0700
 Subject: [PATCH 097/149] OMAP2+: voltage: move PRCM mod offets into VC/VP structures
@@ -573,5 +573,5 @@ index 65d1ad6..1a0842e 100644
  	.vpconfig_errorgain_mask = OMAP4430_ERRORGAIN_MASK,
  	.vpconfig_errorgain_shift = OMAP4430_ERRORGAIN_SHIFT,
 -- 
-1.6.6.1
+1.7.2.5
 

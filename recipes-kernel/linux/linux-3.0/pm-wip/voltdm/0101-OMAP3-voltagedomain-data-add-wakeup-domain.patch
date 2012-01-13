@@ -1,4 +1,4 @@
-From f6ab4c80adadf88d1aa32e8bf65156eb6f1d4bd1 Mon Sep 17 00:00:00 2001
+From 17cd354184d7ffe9fcef97a0e1beeb6e8b2a2c38 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 23 Mar 2011 13:30:33 -0700
 Subject: [PATCH 101/149] OMAP3: voltagedomain data: add wakeup domain
@@ -33,5 +33,5 @@ index 2167ef4..42d0b11 100644
  };
  
 -- 
-1.6.6.1
+1.7.2.5
 

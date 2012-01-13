@@ -1,4 +1,4 @@
-From d3395f9aed7f145cbfac108480ededf969dd091b Mon Sep 17 00:00:00 2001
+From fc1db2a579514eb36f5091b656133a6a9c2cbc0d Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Tue, 5 Apr 2011 14:39:11 -0700
 Subject: [PATCH 129/149] OMAP3+: voltage: remove unneeded debugfs interface
@@ -19,7 +19,7 @@ Signed-off-by: Kevin Hilman <khilman@ti.com>
  4 files changed, 19 insertions(+), 154 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/smartreflex.c b/arch/arm/mach-omap2/smartreflex.c
-index 2ce2fb7..f8c6305 100644
+index be6add0..edb94f2 100644
 --- a/arch/arm/mach-omap2/smartreflex.c
 +++ b/arch/arm/mach-omap2/smartreflex.c
 @@ -62,6 +62,7 @@ static LIST_HEAD(sr_list);
@@ -313,5 +313,5 @@ index 53d6018..c9a315f 100644
 -				(void *) voltdm, &vp_volt_debug_fops);
 -}
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From 59159a323bad225e6c68850622e46e24ea28a271 Mon Sep 17 00:00:00 2001
+From ba3e97075ad35eeaf35191c4e5c2b90de5d96209 Mon Sep 17 00:00:00 2001
 From: Fernandes, Joel A <joelagnel@ti.com>
 Date: Tue, 7 Jun 2011 15:54:45 -0500
 Subject: [PATCH 01/10] OMAP3: beagle: add support for beagleboard xM revision C
@@ -192,5 +192,5 @@ index 34f8411..32f5f89 100644
  			ARRAY_SIZE(omap3_beagle_devices));
  	omap_display_init(&beagle_dss_data);
 -- 
-1.6.6.1
+1.7.2.5
 

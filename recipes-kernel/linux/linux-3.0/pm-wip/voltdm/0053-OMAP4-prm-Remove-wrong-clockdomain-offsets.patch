@@ -1,4 +1,4 @@
-From e93380c31e468f980e85b18ffc79b19b7dd88218 Mon Sep 17 00:00:00 2001
+From 6066c8802de9f6a1006a8e31aa833615060a2a5b Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:15:04 -0600
 Subject: [PATCH 053/149] OMAP4: prm: Remove wrong clockdomain offsets
@@ -46,5 +46,5 @@ index 2aec8c8..6e53120 100644
  
  /* OMAP4 specific register offsets */
 -- 
-1.6.6.1
+1.7.2.5
 

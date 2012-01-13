@@ -1,4 +1,4 @@
-From 7e4a2721ae775570792653e6749c55156baf85b7 Mon Sep 17 00:00:00 2001
+From eea23f28cacdb525471ecf4dc8a2366ccef5a28b Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 11 Oct 2011 13:13:35 +0200
 Subject: [PATCH 3/4] ARM: OMAP2: beagleboard: add support for loopthrough expansionboard, make uLCD use it
@@ -57,5 +57,5 @@ index 8b30b4c..47bc79b 100644
  MACHINE_START(OMAP3_BEAGLE, "OMAP3 Beagle Board")
  	/* Maintainer: Syed Mohammed Khasim - http://beagleboard.org */
 -- 
-1.6.6.1
+1.7.2.5
 

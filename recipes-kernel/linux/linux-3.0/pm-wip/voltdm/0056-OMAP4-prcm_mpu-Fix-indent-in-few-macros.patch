@@ -1,4 +1,4 @@
-From 3685b19f9ee67549df2323a5203c1e5a639c3883 Mon Sep 17 00:00:00 2001
+From e6adacab9f633eddd83c90205bbf5a21c85c9444 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:15:06 -0600
 Subject: [PATCH 056/149] OMAP4: prcm_mpu: Fix indent in few macros
@@ -107,5 +107,5 @@ index d22d1b4..8a6e250 100644
  /* Function prototypes */
  # ifndef __ASSEMBLER__
 -- 
-1.6.6.1
+1.7.2.5
 

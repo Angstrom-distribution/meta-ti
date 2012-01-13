@@ -1,4 +1,4 @@
-From abc1199e6fd329eddbc8179a93aca860afc581a6 Mon Sep 17 00:00:00 2001
+From e19d3b7293245b4aad98b5ace320caad14e27c11 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:14:45 -0600
 Subject: [PATCH 050/149] OMAP4: clock data: Re-order some clock nodes and structure fields
@@ -225,5 +225,5 @@ index 0fa1cb8..4b57d55 100644
  
  int __init omap4xxx_clk_init(void)
 -- 
-1.6.6.1
+1.7.2.5
 

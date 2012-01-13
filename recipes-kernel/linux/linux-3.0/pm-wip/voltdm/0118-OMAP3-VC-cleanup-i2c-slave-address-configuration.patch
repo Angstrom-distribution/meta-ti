@@ -1,4 +1,4 @@
-From 85e29c42afa1d80c27739f793a8bcd2b1c529302 Mon Sep 17 00:00:00 2001
+From 8a87503677e21700900e300a8e319a8239d6591f Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Tue, 29 Mar 2011 14:02:36 -0700
 Subject: [PATCH 118/149] OMAP3+: VC: cleanup i2c slave address configuration
@@ -141,5 +141,5 @@ index f4198aa..639e85c 100644
  	u8 cmd_reg_addr;
  	unsigned long (*vsel_to_uv) (const u8 vsel);
 -- 
-1.6.6.1
+1.7.2.5
 

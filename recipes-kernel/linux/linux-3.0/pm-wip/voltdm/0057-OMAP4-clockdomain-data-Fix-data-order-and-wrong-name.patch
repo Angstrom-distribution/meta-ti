@@ -1,4 +1,4 @@
-From f8483424a0ba5e73159ad521cd524d1cdfc8688f Mon Sep 17 00:00:00 2001
+From bbf7af412d82e488052f801f294687aaf1bf260e Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:15:06 -0600
 Subject: [PATCH 057/149] OMAP4: clockdomain data: Fix data order and wrong name
@@ -290,5 +290,5 @@ index a607ec1..66090f2 100644
  
  void __init omap44xx_clockdomains_init(void)
 -- 
-1.6.6.1
+1.7.2.5
 

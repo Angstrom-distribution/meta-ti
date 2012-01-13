@@ -1,4 +1,4 @@
-From 1d2b343b9ad8be979162af881e63d43d3896cbd6 Mon Sep 17 00:00:00 2001
+From 1588fef412d710916847c3f383489af1559aa4b0 Mon Sep 17 00:00:00 2001
 From: Rajendra Nayak <rnayak@ti.com>
 Date: Sat, 9 Jul 2011 20:42:11 -0600
 Subject: [PATCH 063/149] OMAP2+: PM: Initialise sleep_switch to a non-valid value
@@ -35,5 +35,5 @@ index 49486f5..d48813f 100644
  
  	if (pwrdm == NULL || IS_ERR(pwrdm))
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From c89952d1bd277bd94c21a000ebae3d4b22fa198d Mon Sep 17 00:00:00 2001
+From 99573b33f37eede2d3d36ae71c34f5d72ccdc672 Mon Sep 17 00:00:00 2001
 From: Tony Lindgren <tony@atomide.com>
 Date: Tue, 29 Mar 2011 15:54:48 -0700
 Subject: [PATCH 005/149] omap: Move dmtimer defines to dmtimer.h
@@ -283,5 +283,5 @@ index 330bd17..3203105 100644
  
  #endif /* __ASM_ARCH_DMTIMER_H */
 -- 
-1.6.6.1
+1.7.2.5
 

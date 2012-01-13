@@ -1,4 +1,4 @@
-From fb48b30cab3dc3aa1772925320d8564b4a306f78 Mon Sep 17 00:00:00 2001
+From a57d61507ab997c347ee584b86eb54391d79bf41 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 16 Mar 2011 15:52:47 -0700
 Subject: [PATCH 107/149] OMAP2+: powerdomain: add voltage domain lookup during register
@@ -85,5 +85,5 @@ index cacd76e..966aa88 100644
 +int voltdm_add_pwrdm(struct voltagedomain *voltdm, struct powerdomain *pwrdm);
  #endif
 -- 
-1.6.6.1
+1.7.2.5
 

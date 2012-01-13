@@ -1,4 +1,4 @@
-From 9e22c7b5124240e43d840312687c7204436c3010 Mon Sep 17 00:00:00 2001
+From f0a23fe6d3c8fc9bbb60a962114b64b923ca4515 Mon Sep 17 00:00:00 2001
 From: Sanjeev Premi <premi@ti.com>
 Date: Tue, 18 Jan 2011 13:19:55 +0530
 Subject: [PATCH 05/10] omap3: Add basic support for 720MHz part
@@ -72,7 +72,7 @@ index 2537090..b6ed78a 100644
  	printk(")\n");
  }
 diff --git a/arch/arm/mach-omap2/opp3xxx_data.c b/arch/arm/mach-omap2/opp3xxx_data.c
-index 12fc2da..6906992 100644
+index d95f3f9..44fbc84 100644
 --- a/arch/arm/mach-omap2/opp3xxx_data.c
 +++ b/arch/arm/mach-omap2/opp3xxx_data.c
 @@ -18,8 +18,10 @@
@@ -86,7 +86,7 @@ index 12fc2da..6906992 100644
  
  #include "control.h"
  #include "omap_opp_data.h"
-@@ -99,6 +101,8 @@ static struct omap_opp_def __initdata omap34xx_opp_def_list[] = {
+@@ -98,6 +100,8 @@ static struct omap_opp_def __initdata omap34xx_opp_def_list[] = {
  	OPP_INITIALIZER("mpu", true, 550000000, OMAP3430_VDD_MPU_OPP4_UV),
  	/* MPU OPP5 */
  	OPP_INITIALIZER("mpu", true, 600000000, OMAP3430_VDD_MPU_OPP5_UV),
@@ -95,7 +95,7 @@ index 12fc2da..6906992 100644
  
  	/*
  	 * L3 OPP1 - 41.5 MHz is disabled because: The voltage for that OPP is
-@@ -124,6 +128,8 @@ static struct omap_opp_def __initdata omap34xx_opp_def_list[] = {
+@@ -123,6 +127,8 @@ static struct omap_opp_def __initdata omap34xx_opp_def_list[] = {
  	OPP_INITIALIZER("iva", true, 400000000, OMAP3430_VDD_MPU_OPP4_UV),
  	/* DSP OPP5 */
  	OPP_INITIALIZER("iva", true, 430000000, OMAP3430_VDD_MPU_OPP5_UV),
@@ -104,7 +104,7 @@ index 12fc2da..6906992 100644
  };
  
  static struct omap_opp_def __initdata omap36xx_opp_def_list[] = {
-@@ -151,6 +157,57 @@ static struct omap_opp_def __initdata omap36xx_opp_def_list[] = {
+@@ -150,6 +156,57 @@ static struct omap_opp_def __initdata omap36xx_opp_def_list[] = {
  	OPP_INITIALIZER("iva", false, 800000000, OMAP3630_VDD_MPU_OPP1G_UV),
  };
  
@@ -162,7 +162,7 @@ index 12fc2da..6906992 100644
  /**
   * omap3_opp_init() - initialize omap3 opp table
   */
-@@ -164,10 +221,14 @@ int __init omap3_opp_init(void)
+@@ -163,10 +220,14 @@ int __init omap3_opp_init(void)
  	if (cpu_is_omap3630())
  		r = omap_init_opp_table(omap36xx_opp_def_list,
  			ARRAY_SIZE(omap36xx_opp_def_list));
@@ -198,5 +198,5 @@ index 8198bb6..5204c1e 100644
  
  #endif
 -- 
-1.6.6.1
+1.7.2.5
 

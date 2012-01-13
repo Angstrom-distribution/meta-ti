@@ -1,4 +1,4 @@
-From a4c95493758fcd5c5f6f8ae7fe43826e0be020f9 Mon Sep 17 00:00:00 2001
+From 981e5f23fe781d26d69d8cc212674eab0353dea4 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Mon, 21 Mar 2011 14:08:55 -0700
 Subject: [PATCH 109/149] OMAP2+: voltage: split voltage controller (VC) code into dedicated layer
@@ -662,5 +662,5 @@ index 1e5c122..6ba6e49 100644
  			vdd_debugfs_init(voltdm);
  		}
 -- 
-1.6.6.1
+1.7.2.5
 

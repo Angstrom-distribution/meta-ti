@@ -1,4 +1,4 @@
-From a96276d576546ce98d7e3ea101d1138d7063d10b Mon Sep 17 00:00:00 2001
+From fcd436dfb1c2d8e4866001700a5bba2a1d4079aa Mon Sep 17 00:00:00 2001
 From: Rajendra Nayak <rnayak@ti.com>
 Date: Mon, 10 Nov 2008 17:00:25 +0530
 Subject: [PATCH 04/19] OMAP3 PM: CPUFreq driver for OMAP3
@@ -260,5 +260,5 @@ index 1b36664..f0f9430 100644
  		result = cpufreq_frequency_table_cpuinfo(policy, freq_table);
  		if (!result)
 -- 
-1.6.6.1
+1.7.2.5
 

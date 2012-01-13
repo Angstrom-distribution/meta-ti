@@ -1,4 +1,4 @@
-From 3974d9942990d3a008ea20fc2d523f057f12a4d1 Mon Sep 17 00:00:00 2001
+From 4f6739c756baab556e7ad8ddb33c0d3fb822179a Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:14:45 -0600
 Subject: [PATCH 048/149] OMAP4: clock data: Add sddiv to USB DPLL
@@ -27,5 +27,5 @@ index 8c96567..f28a9c9 100644
  	.max_divider	= OMAP4430_MAX_DPLL_DIV,
  	.min_divider	= 1,
 -- 
-1.6.6.1
+1.7.2.5
 

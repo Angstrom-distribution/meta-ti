@@ -1,4 +1,4 @@
-From 048b61df42120bfe10932a5e9055b8aeb25031fd Mon Sep 17 00:00:00 2001
+From a6647b2c4e9c1786df8dcb59595c3029f5a9f493 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sun, 10 Jul 2011 05:56:33 -0600
 Subject: [PATCH 087/149] OMAP4: hwmod: Introduce the module control in hwmod control
@@ -125,5 +125,5 @@ index a0f7d31..4424fee 100644
  	/* XXX Should this code also force-disable the optional clocks? */
  
 -- 
-1.6.6.1
+1.7.2.5
 

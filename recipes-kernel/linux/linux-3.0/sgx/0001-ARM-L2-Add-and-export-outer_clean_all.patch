@@ -1,4 +1,4 @@
-From 703f9a21e3c15b905f3e3ec4d31c6948912c73d8 Mon Sep 17 00:00:00 2001
+From 867025d0468dedea5303d1088b292ace4d01c047 Mon Sep 17 00:00:00 2001
 From: Vikram Pandita <vikram.pandita@ti.com>
 Date: Tue, 31 May 2011 09:24:58 +0100
 Subject: [PATCH] ARM: L2: Add and export outer_clean_all
@@ -63,5 +63,5 @@ index 44c0867..10b79d6 100644
  	printk(KERN_INFO "%s cache controller enabled\n", type);
  	printk(KERN_INFO "l2x0: %d ways, CACHE_ID 0x%08x, AUX_CTRL 0x%08x, Cache size: %d B\n",
 -- 
-1.6.6.1
+1.7.2.5
 

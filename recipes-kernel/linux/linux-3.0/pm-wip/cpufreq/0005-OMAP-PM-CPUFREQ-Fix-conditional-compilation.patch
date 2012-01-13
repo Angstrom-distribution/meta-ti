@@ -1,4 +1,4 @@
-From a7a51ef3357330dc8ca7056a0ac4db1a2359fc95 Mon Sep 17 00:00:00 2001
+From 62275cbaac608a17fe5ff0437e0950667927e5e8 Mon Sep 17 00:00:00 2001
 From: Silesh C V <silesh@ti.com>
 Date: Wed, 29 Sep 2010 14:52:54 +0530
 Subject: [PATCH 05/19] OMAP: PM: CPUFREQ: Fix conditional compilation
@@ -29,5 +29,5 @@ index f0f9430..c3ac065 100644
  #else
  #define MPU_CLK		"virt_prcm_set"
 -- 
-1.6.6.1
+1.7.2.5
 

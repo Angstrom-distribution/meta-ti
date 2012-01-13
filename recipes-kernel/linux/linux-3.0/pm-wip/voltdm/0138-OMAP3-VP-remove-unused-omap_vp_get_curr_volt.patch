@@ -1,4 +1,4 @@
-From 574140f8a6d815c79600447577bf9c38ede6be02 Mon Sep 17 00:00:00 2001
+From 479369a9e78273521a5998af043bcad58ee832f8 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Fri, 15 Jul 2011 16:38:10 -0700
 Subject: [PATCH 138/149] OMAP3+: VP: remove unused omap_vp_get_curr_volt()
@@ -66,5 +66,5 @@ index f78752b..d9bc4f1 100644
  			      unsigned long target_volt);
  int omap_vp_update_errorgain(struct voltagedomain *voltdm,
 -- 
-1.6.6.1
+1.7.2.5
 

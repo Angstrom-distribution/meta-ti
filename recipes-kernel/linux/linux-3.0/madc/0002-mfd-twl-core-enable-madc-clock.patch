@@ -1,4 +1,4 @@
-From 24b1b0c669d953c277ce267fb4fd78117ffbfa65 Mon Sep 17 00:00:00 2001
+From f4aed769e9e59998f44447e7309e192573e6fac6 Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <steve@sakoman.com>
 Date: Sat, 23 Jan 2010 06:26:54 -0800
 Subject: [PATCH 2/2] mfd: twl-core: enable madc clock
@@ -12,7 +12,7 @@ Signed-off-by: Steve Sakoman <steve@sakoman.com>
  2 files changed, 9 insertions(+), 0 deletions(-)
 
 diff --git a/drivers/mfd/twl-core.c b/drivers/mfd/twl-core.c
-index 463ee67..e659d4e 100644
+index e39dbed..018ee53 100644
 --- a/drivers/mfd/twl-core.c
 +++ b/drivers/mfd/twl-core.c
 @@ -217,6 +217,11 @@
@@ -50,5 +50,5 @@ index ba4f886..6802efc 100644
  #define TWL_MODULE_MADC		TWL4030_MODULE_MADC
  #define TWL_MODULE_MAIN_CHARGE	TWL4030_MODULE_MAIN_CHARGE
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From b0df1335aa40e0ece7181abf4818bc676e6cff4c Mon Sep 17 00:00:00 2001
+From e96136d547a0de958c051e0ec6a0873f27a94537 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:15:04 -0600
 Subject: [PATCH 052/149] OMAP4: prcm: Fix errors in few defines name
@@ -252,5 +252,5 @@ index 67a0d3f..2aec8c8 100644
  #define OMAP4430_PRM_VC_ERRST				OMAP44XX_PRM_REGADDR(OMAP4430_PRM_DEVICE_INST, 0x00f8)
  
 -- 
-1.6.6.1
+1.7.2.5
 

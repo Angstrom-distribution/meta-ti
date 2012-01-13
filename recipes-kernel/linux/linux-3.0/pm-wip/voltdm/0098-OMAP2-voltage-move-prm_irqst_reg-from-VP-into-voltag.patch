@@ -1,4 +1,4 @@
-From 9e4c04d6b4b03ccb8840b2ef8afff52d7caeb1a6 Mon Sep 17 00:00:00 2001
+From 6e8557b224128200bac5f99b41bc6213de05ad69 Mon Sep 17 00:00:00 2001
 From: Kevin Hilman <khilman@ti.com>
 Date: Wed, 16 Mar 2011 17:20:35 -0700
 Subject: [PATCH 098/149] OMAP2+: voltage: move prm_irqst_reg from VP into voltage domain
@@ -199,5 +199,5 @@ index 1a0842e..0957c24 100644
  };
  
 -- 
-1.6.6.1
+1.7.2.5
 

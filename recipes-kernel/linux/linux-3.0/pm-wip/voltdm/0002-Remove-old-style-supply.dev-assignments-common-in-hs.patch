@@ -1,4 +1,4 @@
-From dc6bfdf43ee0929cc9de539a29ee3e6baf4946c3 Mon Sep 17 00:00:00 2001
+From a3d13ae14bca7c412e5b0575c244ce7370fa3747 Mon Sep 17 00:00:00 2001
 From: Oleg Drokin <green@linuxhacker.ru>
 Date: Mon, 6 Jun 2011 18:57:08 +0000
 Subject: [PATCH 002/149] Remove old-style supply.dev assignments common in hsmmc init
@@ -156,5 +156,5 @@ index cb012e1..8495f82 100644
  			       "lcd enable");
  	if (ret)
 -- 
-1.6.6.1
+1.7.2.5
 

@@ -1,4 +1,4 @@
-From b10de9a3ea356e2e0994f9b248f140f3807a6cd4 Mon Sep 17 00:00:00 2001
+From b623b767d19edcc2d08909b044e1ab57956d9d49 Mon Sep 17 00:00:00 2001
 From: Tony Lindgren <tony@atomide.com>
 Date: Tue, 29 Mar 2011 15:54:48 -0700
 Subject: [PATCH 004/149] omap: Set separate timer init functions to avoid cpu_is_omap tests
@@ -224,7 +224,7 @@ index 24f0f7b..9c3b7c5 100644
 +	.timer		= &omap1_timer,
  MACHINE_END
 diff --git a/arch/arm/mach-omap1/board-voiceblue.c b/arch/arm/mach-omap1/board-voiceblue.c
-index 98826e2..036edc0 100644
+index 98826e2..036edc0e 100644
 --- a/arch/arm/mach-omap1/board-voiceblue.c
 +++ b/arch/arm/mach-omap1/board-voiceblue.c
 @@ -306,5 +306,5 @@ MACHINE_START(VOICEBLUE, "VoiceBlue OMAP5910")
@@ -535,7 +535,7 @@ index 6d2372b..dc1d6dc 100644
 +	.timer		= &omap4_timer,
  MACHINE_END
 diff --git a/arch/arm/mach-omap2/board-overo.c b/arch/arm/mach-omap2/board-overo.c
-index e3928f2..1bf2f39 100644
+index e3928f23..1bf2f39 100644
 --- a/arch/arm/mach-omap2/board-overo.c
 +++ b/arch/arm/mach-omap2/board-overo.c
 @@ -617,5 +617,5 @@ MACHINE_START(OVERO, "Gumstix Overo")
@@ -685,5 +685,5 @@ index d6c70d2..330bd17 100644
  
  int omap_dm_timer_init(void);
 -- 
-1.6.6.1
+1.7.2.5
 

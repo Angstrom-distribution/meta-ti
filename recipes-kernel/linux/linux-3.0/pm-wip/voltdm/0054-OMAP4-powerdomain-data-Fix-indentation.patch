@@ -1,4 +1,4 @@
-From b080e3b0c531e57f2235f6723276cd1de6fa3cef Mon Sep 17 00:00:00 2001
+From 7845ad0aca7c2976dc4021ed0c080f6605aacf09 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Sat, 9 Jul 2011 19:15:05 -0600
 Subject: [PATCH 054/149] OMAP4: powerdomain data: Fix indentation
@@ -105,5 +105,5 @@ index c4222c7..3a7e678 100644
  
  /*
 -- 
-1.6.6.1
+1.7.2.5
 

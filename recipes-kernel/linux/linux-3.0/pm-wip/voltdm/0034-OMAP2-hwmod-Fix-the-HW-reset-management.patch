@@ -1,4 +1,4 @@
-From 47ca09682a2c2ce670196443dbb3946057bc39e6 Mon Sep 17 00:00:00 2001
+From 0fdacba393a3d2b2c87b4a9c4b2bb811bd896c09 Mon Sep 17 00:00:00 2001
 From: Benoit Cousson <b-cousson@ti.com>
 Date: Fri, 1 Jul 2011 22:54:05 +0200
 Subject: [PATCH 034/149] OMAP2+: hwmod: Fix the HW reset management
@@ -83,5 +83,5 @@ index f401417..df91bb1 100644
  	if (oh->mux)
  		omap_hwmod_mux(oh->mux, _HWMOD_STATE_DISABLED);
 -- 
-1.6.6.1
+1.7.2.5
 

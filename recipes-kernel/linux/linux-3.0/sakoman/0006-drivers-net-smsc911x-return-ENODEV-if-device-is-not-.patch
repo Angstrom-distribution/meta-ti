@@ -1,4 +1,4 @@
-From 7659c16b1edc081b996a7a2b6a4716fffd1dd90b Mon Sep 17 00:00:00 2001
+From 948bbae38457af6a11232375f9d95fc69641e9f4 Mon Sep 17 00:00:00 2001
 From: Steve Sakoman <sakoman@gmail.com>
 Date: Tue, 15 Dec 2009 15:17:44 -0800
 Subject: [PATCH 06/14] drivers: net: smsc911x: return ENODEV if device is not found
@@ -25,5 +25,5 @@ index c6d47d1..0c7c4a2 100644
  	/* configure irq polarity and type before connecting isr */
  	if (pdata->config.irq_polarity == SMSC911X_IRQ_POLARITY_ACTIVE_HIGH)
 -- 
-1.6.6.1
+1.7.2.5
 

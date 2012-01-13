@@ -1,4 +1,4 @@
-From e61a662c4d02b9af19bd95d01e18499ef0296424 Mon Sep 17 00:00:00 2001
+From d95bccb7d0ad132153543bcc018e8da8aba1832d Mon Sep 17 00:00:00 2001
 From: Oleg Drokin <green@linuxhacker.ru>
 Date: Mon, 6 Jun 2011 18:57:07 +0000
 Subject: [PATCH 001/149] cleanup regulator supply definitions in mach-omap2
@@ -368,7 +368,7 @@ index 7f21d24..4cf7c19 100644
  
  /* VPLL2 for digital video outputs */
 diff --git a/arch/arm/mach-omap2/board-omap3evm.c b/arch/arm/mach-omap2/board-omap3evm.c
-index b4d4346..fc7a23a 100644
+index b4d43464..fc7a23a 100644
 --- a/arch/arm/mach-omap2/board-omap3evm.c
 +++ b/arch/arm/mach-omap2/board-omap3evm.c
 @@ -273,12 +273,12 @@ static struct omap_dss_board_info omap3_evm_dss_data = {
@@ -909,7 +909,7 @@ index 175e1ab..30c7556 100644
  
  /* VPLL2 for digital video outputs */
 diff --git a/arch/arm/mach-omap2/board-rx51-peripherals.c b/arch/arm/mach-omap2/board-rx51-peripherals.c
-index 88bd6f7..7810b1e 100644
+index c565971..b633ba8 100644
 --- a/arch/arm/mach-omap2/board-rx51-peripherals.c
 +++ b/arch/arm/mach-omap2/board-rx51-peripherals.c
 @@ -358,14 +358,17 @@ static struct omap2_hsmmc_info mmc[] __initdata = {
@@ -1079,5 +1079,5 @@ index 118c6f5..cb012e1 100644
  
  static int zoom_twl_gpio_setup(struct device *dev,
 -- 
-1.6.6.1
+1.7.2.5
 
