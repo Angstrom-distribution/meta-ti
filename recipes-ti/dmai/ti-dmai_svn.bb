@@ -5,7 +5,7 @@ TARGET_CC_ARCH += " -D__EXPORTED_HEADERS__"
 
 PV = "2_10_00_01+svnr${SRCPV}"
 
-LIC_FILES_CHKSUM = "file://dmai_${PV}_License.html;md5=3302f728a5a42f97cabc26a54d7fa607"
+LIC_FILES_CHKSUM = "file://dmai/dmai_${PV}_License.html;md5=3302f728a5a42f97cabc26a54d7fa607"
 
 # This package has high dependence on kernel, use kernel PR as base and append a local version
 PR = "${MACHINE_KERNEL_PR}"
