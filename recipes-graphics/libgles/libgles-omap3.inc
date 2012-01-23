@@ -3,7 +3,7 @@ LICENSE = "proprietary-binary"
 # 'TSPA.txt' might not be the best file to md5sum
 LIC_FILES_CHKSUM = "file://TSPA.txt;md5=c0d5d9c1e38b41677144c4e24d6ddee1"
 
-PR = "r21"
+PR = "r22"
 
 COMPATIBLE_MACHINE = "(omap3|ti816x|ti33x)"
 
@@ -340,8 +340,32 @@ INITSCRIPT_PARAMS = "start 30 5 2 . stop 40 0 1 6 ."
 
 # Append to update-rc.d postinst
 pkg_postinst_${PN}_append() {
-rm -f /etc/powervr-esrev
+rm -f ${sysconfdir}/powervr-esrev
 
 ln -sf /usr/lib/libXdmcp.so.6.0.0 /usr/lib/libXdmcp.so.0 
 ln -sf /usr/lib/libXau.so.6.0.0 /usr/lib/libXau.so.0
 }
+
+pkg_postinst_${PN}-blitwsegl() {
+rm -f ${sysconfdir}/powervr-esrev
+}
+
+pkg_postinst_${PN}-flipwsegl() {
+rm -f ${sysconfdir}/powervr-esrev
+}
+
+pkg_postinst_${PN}-frontwsegl() {
+rm -f ${sysconfdir}/powervr-esrev
+}
+pkg_postinst_${PN}-linuxfbwsegl() {
+rm -f ${sysconfdir}/powervr-esrev
+}
+
+pkg_postinst_${PN}-x11wsegl() {
+rm -f ${sysconfdir}/powervr-esrev
+}
+
+pkg_postinst_${PN}-driwsegl() {
+rm -f ${sysconfdir}/powervr-esrev
+}
+
