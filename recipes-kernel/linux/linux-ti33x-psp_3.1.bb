@@ -11,7 +11,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.1-meta-ti-r1r+gitr1d84d8853fa30cf3db2571a5aec572accca4e29d"
 SRCREV = "1d84d8853fa30cf3db2571a5aec572accca4e29d"
-MACHINE_KERNEL_PR_append = "i+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "j+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -55,7 +55,12 @@ PATCHES_OVER_PSP = " \
 	file://adc/0009-meta-ti-Remove-debug-messages-for-meta-ti.patch \
 	file://adc/0010-tscadc-switch-to-polling-instead-of-interrupts.patch \
 	file://st7735fb/0001-st7735fb-WIP-framebuffer-driver-supporting-Adafruit-.patch \
-    file://0031-am335x-evm-add-pdata-for-all-cape-EEPROM-permutation.patch \
+	file://0031-am335x-evm-add-pdata-for-all-cape-EEPROM-permutation.patch \
+	file://0032-am335x-add-support-for-7-LCD-cape-fix-DVI-entries.patch \
+	file://0033-beaglebone-update-DVI-cape-partnumber.patch \
+	file://0034-beaglebone-really-enable-i2c2-pullups-fixes-timeouts.patch \
+	file://0035-beaglebone-add-structs-for-DVI-cape-LEDs.patch\
+	file://0036-beaglebone-update-LCD-cape-partnumber.patch \
 	"
 
 SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
