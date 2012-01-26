@@ -3,7 +3,7 @@ LICENSE = "proprietary-binary"
 # 'TSPA.txt' might not be the best file to md5sum
 LIC_FILES_CHKSUM = "file://TSPA.txt;md5=c0d5d9c1e38b41677144c4e24d6ddee1"
 
-PR = "r22"
+PR = "r23"
 
 COMPATIBLE_MACHINE = "(omap3|ti816x|ti33x)"
 
@@ -363,6 +363,9 @@ rm -f ${sysconfdir}/powervr-esrev
 
 pkg_postinst_${PN}-x11wsegl() {
 rm -f ${sysconfdir}/powervr-esrev
+
+echo "[default]" > $D${sysconfdir}/powervr.ini
+echo "WindowSystem=libpvrPVR2D_X11WSEGL.so.1" >> $D${sysconfdir}/powervr.ini
 }
 
 pkg_postinst_${PN}-driwsegl() {
