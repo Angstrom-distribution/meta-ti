@@ -23,12 +23,12 @@ do_compile() {
     do_make_scripts
     unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS
 
-    case ${SOC_FAMILY} in 
-    dm365)
+    case "${SOC_FAMILY}" in
+    "dm365")
             modules="cmem edma irq";;
-    omap3)
+    "omap3")
             modules="cmem sdma";;
-	dm355)
+    "dm355")
             modules="cmem edma irq";;
     *)
             modules="cmem"
@@ -58,7 +58,7 @@ do_install () {
       EXEC_DIR="${D}${installdir}/ti-linuxutils-app/cmem-app" \
       install
     # Install EDMA
-    if [ ${SOC_FAMILY} = "dm365" ] ; then
+    if [ "${SOC_FAMILY}" = "dm365" ] ; then
         cd ${S}/packages/ti/sdo/linuxutils/edma/apps
         make \
          LINUXKERNEL_INSTALL_DIR="${STAGING_KERNEL_DIR}" \

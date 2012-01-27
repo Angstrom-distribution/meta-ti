@@ -196,7 +196,7 @@ do_install () {
     # Install the rtos example apps 
     install -d ${D}/${installdir}/ti-syslink-examples/dsp
     cd ${SYSLINK_ROOT}/ti/syslink/samples/rtos
-    for i in $(find . -name "*.${SYSLINKSUFFIX}" | grep ${SOC_FAMILY}); do
+    for i in $(find . -name "*.${SYSLINKSUFFIX}" | grep "${SOC_FAMILY}"); do
         install ${i} ${D}/${installdir}/ti-syslink-examples/dsp/
     done
 
