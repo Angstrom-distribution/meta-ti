@@ -1,7 +1,7 @@
-From d0556964b6bd443e8b60d5c0b3326795a02cc8a7 Mon Sep 17 00:00:00 2001
+From e435374789db01c9499ec169b295496f039ec401 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Sun, 27 Nov 2011 14:43:58 +0100
-Subject: [PATCH 1/5] beagleboard: mount rootfs RO instead of RW at boot
+Subject: [PATCH 01/10] beagleboard: mount rootfs RO instead of RW at boot
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

@@ -1,7 +1,7 @@
-From 90dfb660575f15ba736884139f35bfd4ba927468 Mon Sep 17 00:00:00 2001
+From e4ac25df241bc2f3e6e2b7116529e82dfa5aab00 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 8 Dec 2011 17:22:59 +0100
-Subject: [PATCH 4/5] omap4-common: mount root RO
+Subject: [PATCH 04/10] omap4-common: mount root RO
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

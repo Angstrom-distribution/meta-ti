@@ -1,0 +1,37 @@
+From 588d0e7259e17f302cb79d12ed0f47410a0d8697 Mon Sep 17 00:00:00 2001
+From: robertcnelson@gmail.com <robertcnelson@gmail.com>
+Date: Fri, 27 Jan 2012 07:09:42 +0000
+Subject: [PATCH 09/10] Beagleboard: Correct memory size on rev C4
+
+Beagleboard: Correct memory size on rev C4
+
+The logic for the rev C4 boards was missing one of the cases
+(variant with Micron NAND and 2x128MB).
+
+Signed-off-by: Robert Nelson <robertcnelson@gmail.com>
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ board/ti/beagle/beagle.c |    7 +++++++
+ 1 files changed, 7 insertions(+), 0 deletions(-)
+
+diff --git a/board/ti/beagle/beagle.c b/board/ti/beagle/beagle.c
+index 5ea50d1..4555977 100644
+--- a/board/ti/beagle/beagle.c
++++ b/board/ti/beagle/beagle.c
+@@ -169,6 +169,13 @@ void get_board_mem_timings(u32 *mcfg, u32 *ctrla, u32 *ctrlb, u32 *rfr_ctrl,
+ 			*ctrlb = NUMONYX_V_ACTIMB_165;
+ 			*rfr_ctrl = SDP_3430_SDRC_RFR_CTRL_165MHz;
+ 			break;
++		} else if (pop_mfr == NAND_MFR_MICRON && pop_id == 0xba) {
++			/* Beagleboard Rev C4, 512MB Nand/256MB DDR*/
++			*mcfg = MICRON_V_MCFG_165(128 << 20);
++			*ctrla = MICRON_V_ACTIMA_165;
++			*ctrlb = MICRON_V_ACTIMB_165;
++			*rfr_ctrl = SDP_3430_SDRC_RFR_CTRL_165MHz;
++			break;
+ 		} else if (pop_mfr == NAND_MFR_MICRON && pop_id == 0xbc) {
+ 			/* Beagleboard Rev C5, 256MB DDR */
+ 			*mcfg = MICRON_V_MCFG_200(256 << 20);
+-- 
+1.7.2.5
+

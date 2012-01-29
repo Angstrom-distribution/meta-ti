@@ -1,7 +1,7 @@
-From a1f9453f2450762249aa35bd5ae97150acc53eb2 Mon Sep 17 00:00:00 2001
+From 9e4679bdc5a2f3908f9d5e757c9706c0040e3643 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 8 Dec 2011 17:23:24 +0100
-Subject: [PATCH 5/5] omap4-common: use ext4 by default
+Subject: [PATCH 05/10] omap4-common: use ext4 by default
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

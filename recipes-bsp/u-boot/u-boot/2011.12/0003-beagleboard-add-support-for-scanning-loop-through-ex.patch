@@ -1,7 +1,7 @@
-From fe9c653a0b0a3fa49d269b697c2058a6a55aa42b Mon Sep 17 00:00:00 2001
+From c8c3b1adff56c49f20732846a7087e95f6916e61 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Sun, 27 Nov 2011 14:53:56 +0100
-Subject: [PATCH 3/5] beagleboard: add support for scanning loop-through expansionboards like the uLCD-lite
+Subject: [PATCH 03/10] beagleboard: add support for scanning loop-through expansionboards like the uLCD-lite
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

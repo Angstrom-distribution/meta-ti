@@ -1,0 +1,37 @@
+From 351fcc22c10beb005f589584b91298269a81aa52 Mon Sep 17 00:00:00 2001
+From: Tom Rini <trini@ti.com>
+Date: Wed, 18 Jan 2012 08:28:50 +0000
+Subject: [PATCH 10/10] OMAP3: Correct get_sdr_cs_offset mask
+
+OMAP3: Correct get_sdr_cs_offset mask
+
+The function get_sdr_cs_offset reads the CS_CFG register in the SDRC
+to determine where CS1 is mapped to.  make_cs1_contiguous() will set
+CS1 to follow after CS0.  The CS_CFG register has values in bits 9:8
+and 3:0 but we had erroneously been testing 5:4 and 3:0 resulting in
+incorrect offsets on platforms with less than 128MB as 3:0 describe
+128MB hunks and 9:8 describe 32MB offsets after the 128MB hunk.
+
+Tested-by: Grant Erickson <marathon96@gmail.com>
+Signed-off-by: Tom Rini <trini@ti.com>
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ arch/arm/cpu/armv7/omap3/sdrc.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/arch/arm/cpu/armv7/omap3/sdrc.c b/arch/arm/cpu/armv7/omap3/sdrc.c
+index a27b4b1..91f42c0 100644
+--- a/arch/arm/cpu/armv7/omap3/sdrc.c
++++ b/arch/arm/cpu/armv7/omap3/sdrc.c
+@@ -102,7 +102,7 @@ u32 get_sdr_cs_offset(u32 cs)
+ 		return 0;
+ 
+ 	offset = readl(&sdrc_base->cs_cfg);
+-	offset = (offset & 15) << 27 | (offset & 0x30) << 17;
++	offset = (offset & 15) << 27 | (offset & 0x300) << 17;
+ 
+ 	return offset;
+ }
+-- 
+1.7.2.5
+

@@ -6,13 +6,13 @@ UBOOT_IMAGE = "u-boot-${MACHINE}-${PV}-${PR}.img"
 UBOOT_SYMLINK = "u-boot-${MACHINE}.img"
 
 PV = "2011.12"
-PR = "r3"
+PR = "r4"
 
 # No patches for other machines yet
 COMPATIBLE_MACHINE = "(beagleboard|pandaboard|hawkboard|am3517-evm|am37x-evm|omap3evm)"
 
 # Non-omap4 platforms need outer cache turned on
-CACHEFIX = "file://2011.12/0001-Revert-armv7-disable-L2-cache-in-cleanup_before_linu.patch"
+CACHEFIX = "file://2011.12/0008-Revert-armv7-disable-L2-cache-in-cleanup_before_linu.patch"
 CACHEFIX_omap4 = ""
 
 SRC_URI = "git://www.denx.de/git/u-boot.git;protocol=git \
@@ -21,10 +21,13 @@ SRC_URI = "git://www.denx.de/git/u-boot.git;protocol=git \
            file://2011.12/0003-beagleboard-add-support-for-scanning-loop-through-ex.patch \
            file://2011.12/0004-omap4-common-mount-root-RO.patch \
            file://2011.12/0005-omap4-common-use-ext4-by-default.patch \
-           file://2011.12/U-Boot-OMAP-MMC-Add-delay-before-waiting-for-status.patch \
-           file://0001-config-Always-use-GNU-ld.patch \
+           file://2011.12/0006-OMAP-MMC-Add-delay-before-waiting-for-status.patch \
+           file://2011.12/0007-config-Always-use-GNU-ld.patch \
            ${CACHEFIX} \
+           file://2011.12/0009-Beagleboard-Correct-memory-size-on-rev-C4.patch \
+           file://2011.12/0010-OMAP3-Correct-get_sdr_cs_offset-mask.patch \
           "
+
 
 # v2011.12 tag
 SRCREV = "cba9a894fdb1cb49b60fcd1d1d6919cbd7995dd5"

@@ -1,7 +1,7 @@
-From 28e5cc1f13d817f75638c72eae853e53510a1ab2 Mon Sep 17 00:00:00 2001
+From 7c1bb614d0235c69e118f0552cbf46047f557b8c Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Sat, 8 Oct 2011 21:56:35 +0200
-Subject: [PATCH 2/5] beagleboard: add support for TCT Beacon board
+Subject: [PATCH 02/10] beagleboard: add support for TCT Beacon board
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
