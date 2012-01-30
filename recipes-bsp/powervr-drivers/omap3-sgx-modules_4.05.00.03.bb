@@ -25,7 +25,7 @@ export KERNELDIR = "${STAGING_KERNEL_DIR}"
 PACKAGE_STRIP = "no"
 
 TI_PLATFORM_omap3 = "omap3630"
-TI_PLATFORM_ti814x = "ti81xx
+TI_PLATFORM_ti814x = "ti81xx"
 TI_PLATFORM_ti816x = "ti81xx"
 TI_PLATFORM_ti33x = "ti335x"
 
