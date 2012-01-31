@@ -1,2 +1,0 @@
-ACTION=="remove", DEVPATH=="/devices/platform/omap/ti81xx-usbss/musb-hdrc.1/usb1/1-1",  RUN+="/usr/bin/hokey-pokey.sh"
-

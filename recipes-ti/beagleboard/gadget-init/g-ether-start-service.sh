@@ -1,7 +1,7 @@
 #!/bin/sh
-if [ -a /sys/devices/platform/omap/ti81xx-usbss/musb-hdrc.0/gadget/lun0/file ]
+if [ -a /sys/devices/platform/omap/musb-ti81xx/musb-hdrc.0/gadget/lun0/file ]
 then
-	x=$(cat /sys/devices/platform/omap/ti81xx-usbss/musb-hdrc.0/gadget/lun0/file)
+	x=$(cat /sys/devices/platform/omap/musb-ti81xx/musb-hdrc.0/gadget/lun0/file)
 	if [ -z "$x" ]
 	then
 		/bin/systemctl stop storage-gadget-init.service
