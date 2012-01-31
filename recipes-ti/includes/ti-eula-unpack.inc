@@ -53,7 +53,7 @@ python ti_bin_do_unpack() {
             wdext = bb.data.getVar('TI_BIN_UNPK_WDEXT', localdata)
             wdext = bb.data.expand(wdext, localdata)
             cmd = workdir+wdext
-        print >>f, "%s\n" % cmd
+        print >>f, cmd
     f.close()
 
     # Expand the tarball that was created if required
