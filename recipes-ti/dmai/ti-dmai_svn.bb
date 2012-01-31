@@ -1,11 +1,14 @@
 require ti-dmai.inc
 
+# Need to descend one level more to find source
+S = "${WORKDIR}/${DMAIBRANCH}/davinci_multimedia_application_interface/dmai_${PV}/dmai"
+
 # Hack to be able to use recent kernel headers from userspace
 TARGET_CC_ARCH += " -D__EXPORTED_HEADERS__"
 
 PV = "2_10_00_01+svnr${SRCPV}"
 
-LIC_FILES_CHKSUM = "file://dmai/dmai_${PV}_License.html;md5=3302f728a5a42f97cabc26a54d7fa607"
+LIC_FILES_CHKSUM = "file://dmai_${PV}_License.html;md5=3302f728a5a42f97cabc26a54d7fa607"
 
 # This package has high dependence on kernel, use kernel PR as base and append a local version
 PR = "${MACHINE_KERNEL_PR}"
@@ -29,7 +32,7 @@ SRCREV_omapl137       = "482"
 SRCREV_omapl138       = "570"
 SRCREV               ?= "UNDEFINED_SRCREV"
 
-SRC_URI_append = " file://omap3530-r642-remove-include-videodev.diff;striplevel=2 \
-                   file://r642-fix-config-bld.diff;striplevel=2 \
+SRC_URI_append = " file://omap3530-r642-remove-include-videodev.diff;striplevel=3 \
+                   file://r642-fix-config-bld.diff;striplevel=3 \
                  "
 
