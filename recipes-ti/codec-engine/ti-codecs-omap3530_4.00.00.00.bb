@@ -77,43 +77,43 @@ python do_unpack () {
     bb.build.exec_func('base_do_unpack', d)
 
     bb.data.setVar("BINFILE", "omap3530_h264enc_2_01_013_production.bin", d)
-    bb.data.setVar("TARFILE", "h264enc_dm6467_1_20_00_08/omap3530_h264enc_2_01_013_production.tar", d)
+    bb.data.setVar("TARFILE", "omap3530_h264enc_2_01_013_production.tar", d)
     bb.build.exec_func('ti_bin_do_unpack', d)
 
     bb.data.setVar("BINFILE", "omap3530_h264dec_2_01_007_production.bin", d)
-    bb.data.setVar("TARFILE", "omap3530_h264dec_2_01_007_production/omap3530_h264dec_2_01_007_production.tar", d)
+    bb.data.setVar("TARFILE", "omap3530_h264dec_2_01_007_production.tar", d)
     bb.build.exec_func('ti_bin_do_unpack', d)
 
     bb.data.setVar("BINFILE", "omap3530_jpegenc_02_01_01_00_production.bin", d)
-    bb.data.setVar("TARFILE", "omap3530_jpegenc_02_01_01_00_production/omap3530_jpegenc_02_01_01_00_production.tar", d)
+    bb.data.setVar("TARFILE", "omap3530_jpegenc_02_01_01_00_production.tar", d)
     bb.build.exec_func('ti_bin_do_unpack', d)
 
     bb.data.setVar("BINFILE", "c64xplus_jpegdec_02_00_01_01_production.bin", d)
-    bb.data.setVar("TARFILE", "c64xplus_jpegdec_02_00_01_01_production/c64xplus_jpegdec_02_00_01_01_production.tar", d)
+    bb.data.setVar("TARFILE", "c64xplus_jpegdec_02_00_01_01_production.tar", d)
     bb.build.exec_func('ti_bin_do_unpack', d)
 
     bb.data.setVar("BINFILE", "c64xplus_mpeg2dec_02_00_02_00_production.bin", d)
-    bb.data.setVar("TARFILE", "c64xplus_mpeg2dec_02_00_02_00_production/c64xplus_mpeg2dec_02_00_02_00_production.tar", d)
+    bb.data.setVar("TARFILE", "c64xplus_mpeg2dec_02_00_02_00_production.tar", d)
     bb.build.exec_func('ti_bin_do_unpack', d)
 
     bb.data.setVar("BINFILE", "omap3530_mpeg4enc_02_04_00_00_production.bin", d)
-    bb.data.setVar("TARFILE", "omap3530_mpeg4enc_02_04_00_00_production/omap3530_mpeg4enc_02_04_00_00_production.tar", d)
+    bb.data.setVar("TARFILE", "omap3530_mpeg4enc_02_04_00_00_production.tar", d)
     bb.build.exec_func('ti_bin_do_unpack', d)   
 
     bb.data.setVar("BINFILE", "c64xplus_mpeg4dec_02_01_00_00_production.bin", d)
-    bb.data.setVar("TARFILE", "h264enc_dm6467_1_20_00_08/c64xplus_mpeg4dec_02_01_00_00_production.tar", d)
+    bb.data.setVar("TARFILE", "c64xplus_mpeg4dec_02_01_00_00_production.tar", d)
     bb.build.exec_func('ti_bin_do_unpack', d)
 
     bb.data.setVar("BINFILE", "c64xplus_aachedec_01_30_03_00_production.bin", d)
-    bb.data.setVar("TARFILE", "c64xplus_aachedec_01_30_03_00_production/dm6446_aachedec_01_30_03_00_production.tar", d)
+    bb.data.setVar("TARFILE", "dm6446_aachedec_01_30_03_00_production.tar", d)
     bb.build.exec_func('ti_bin_do_unpack', d)
 
     bb.data.setVar("BINFILE", "c64xplus_g711_1_12_00_000_production.bin", d)
-    bb.data.setVar("TARFILE", "h264enc_dm6467_1_20_00_08/dm6446_g711enc_1_12_00_000_production.tar", d)
+    bb.data.setVar("TARFILE", "dm6446_g711enc_1_12_00_000_production.tar", d)
     bb.build.exec_func('ti_bin_do_unpack', d)
 
     bb.data.setVar("BINFILE", "c64xplus_g711_1_12_00_000_production.bin", d)
-    bb.data.setVar("TARFILE", "h264enc_dm6467_1_20_00_08/dm6446_g711dec_1_12_00_000_production.tar", d)
+    bb.data.setVar("TARFILE", "dm6446_g711dec_1_12_00_000_production.tar", d)
     bb.build.exec_func('ti_bin_do_unpack', d)
 
     bb.data.setVar("BINFILE", "c64xplus_deinterlacer_01_00_00_07_production.bin", d)
