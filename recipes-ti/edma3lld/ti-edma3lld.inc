@@ -8,7 +8,8 @@ require ../includes/ti-paths.inc
 require ../includes/ti-staging.inc
 require ../includes/ti-eula-unpack.inc
 
-S = "${WORKDIR}/edma3_lld_${PV}"
+TI_BIN_UNPK_WDEXT="/edma3_lld_${PV}"
+S = "${WORKDIR}${TI_BIN_UNPK_WDEXT}"
 
 SRC_URI = "http://software-dl.ti.com/dsps/dsps_public_sw/${SRC_URI_edma3lldsite}/edma3_lld/edma3-lld-bios5/${PV}/exports/EDMA3_LLD_setuplinux_${PV}.bin;name=edma3lldbin"
 
