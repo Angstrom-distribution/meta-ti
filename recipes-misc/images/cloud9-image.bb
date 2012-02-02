@@ -25,6 +25,7 @@ IMAGE_INSTALL += " \
 	tar \
 	gdb gdbserver \
 	nodejs-dev \
+	mplayer2 \
 "
 
 export IMAGE_BASENAME = "Cloud9-IDE"
