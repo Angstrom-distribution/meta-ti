@@ -26,6 +26,7 @@ IMAGE_INSTALL += " \
 	gdb gdbserver \
 	nodejs-dev \
 	mplayer2 \
+	tslib-tests tslib-calibrate \
 "
 
 export IMAGE_BASENAME = "Cloud9-IDE"
