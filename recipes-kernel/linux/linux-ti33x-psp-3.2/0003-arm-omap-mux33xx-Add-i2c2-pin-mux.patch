@@ -1,7 +1,7 @@
 From 11622554369db32c7c14572efb525ef5e418338d Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 31 Jan 2012 10:21:32 +0100
-Subject: [PATCH 03/16] arm:omap:mux33xx: Add i2c2 pin mux
+Subject: [PATCH 03/21] arm:omap:mux33xx: Add i2c2 pin mux
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
@@ -26,5 +26,5 @@ index 81a657e..36bb10a 100644
  	_AM33XX_MUXENTRY(UART1_RXD, 0,
  		"uart1_rxd", "mmc1_sdwp", NULL, NULL,
 -- 
-1.7.7.5
+1.7.7.4
 

@@ -11,7 +11,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.2-staging"
 SRCREV = "83d907e1b05dabc44f3bb64532d7b58d059a14c0"
-MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -40,7 +40,12 @@ PATCHES_OVER_PSP = " \
 	file://0013-meta-ti-Remove-debug-messages-for-meta-ti.patch \
 	file://0014-tscadc-switch-to-polling-instead-of-interrupts.patch \
 	file://0015-beaglebone-fix-ADC-init.patch \
+	file://0017-AM335x-MUX-add-ehrpwm1A.patch \
+	file://0018-beaglebone-enable-PWM-for-lcd-backlight-backlight-is.patch \
+	file://0019-omap_hsmmc-Set-dto-to-max-value-of-14-to-avoid-SD-Ca.patch \
+	file://0020-beaglebone-set-default-brightness-to-50-for-pwm-back.patch \
+	file://0021-st7735fb-WIP-framebuffer-driver-supporting-Adafruit-.patch \
 "
 
 SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
-SRC_URI_append_beaglebone = " file://logo_linux_clut224.ppm"
+
