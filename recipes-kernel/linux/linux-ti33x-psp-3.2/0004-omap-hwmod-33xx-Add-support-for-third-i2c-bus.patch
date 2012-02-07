@@ -1,4 +1,4 @@
-From 4f823ac4857d0d48b53b7a8799a745f746bfda1a Mon Sep 17 00:00:00 2001
+From 4ed424e6817669025702b1ea5bfa6b798a811b6d Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Wed, 16 Nov 2011 07:23:37 -0600
 Subject: [PATCH 04/21] omap:hwmod:33xx: Add support for third i2c bus
@@ -88,5 +88,5 @@ index 9b15ffe..f9b91fa 100644
  	&am33xx_icss_hwmod,
  	/* ieee5000 class */
 -- 
-1.7.7.4
+1.7.2.5
 

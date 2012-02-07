@@ -1,4 +1,4 @@
-From 0524d48ca4e3178d89d940b38f1fa26cf448ebb8 Mon Sep 17 00:00:00 2001
+From 6fdcca153f70cad5438d682987d6eae16aeb2ea7 Mon Sep 17 00:00:00 2001
 From: Joel A Fernandes <joelagnel@ti.com>
 Date: Mon, 28 Nov 2011 18:18:04 -0600
 Subject: [PATCH 11/21] tscadc: make stepconfig channel-configurable
@@ -42,5 +42,5 @@ index f813564..0b91bdc 100644
  		irqenable = TSCADC_IRQENB_FIFO0THRES;
  	}
 -- 
-1.7.7.4
+1.7.2.5
 

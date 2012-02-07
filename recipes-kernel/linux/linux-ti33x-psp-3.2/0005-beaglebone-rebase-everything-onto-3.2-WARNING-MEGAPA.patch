@@ -1,8 +1,7 @@
-From c240df1d9fd60f318e719d0e77bc5955fecbb64e Mon Sep 17 00:00:00 2001
+From 788e842835e3ecb2d218ab11381e9c9dea4fa91c Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Mon, 30 Jan 2012 21:30:09 +0100
-Subject: [PATCH 05/21] beaglebone: rebase everything onto 3.2  - WARNING
- MEGAPATCH
+Subject: [PATCH 05/21] beaglebone: rebase everything onto 3.2 - WARNING MEGAPATCH
 
 ---
  arch/arm/mach-omap2/board-am335xevm.c |  429 ++++++++++++++++++++++++++++++++-
@@ -544,5 +543,5 @@ index 4c09cc9..e0c20c5 100644
  	/* Beagle Bone has Micro-SD slot which doesn't have Write Protect pin */
  	am335x_mmc[0].gpio_wp = -EINVAL;
 -- 
-1.7.7.4
+1.7.2.5
 

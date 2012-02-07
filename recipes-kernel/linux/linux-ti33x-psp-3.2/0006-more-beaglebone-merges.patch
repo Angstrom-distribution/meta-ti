@@ -1,4 +1,4 @@
-From 873c06849ccdb685b5cab1e6e809eda260427d42 Mon Sep 17 00:00:00 2001
+From 2e5a948c8a5bcd6ac904ec5e6feb44eaa8085dce Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 31 Jan 2012 10:04:03 +0100
 Subject: [PATCH 06/21] more beaglebone merges
@@ -121,5 +121,5 @@ index e0c20c5..177ab9e 100644
  	} else if (!strncmp("1.0", config.version, 3)) {
  		gp_evm_revision = GP_EVM_REV_IS_1_0;
 -- 
-1.7.7.4
+1.7.2.5
 

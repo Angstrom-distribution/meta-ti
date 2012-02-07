@@ -1,4 +1,4 @@
-From 9289020d4d0f1dc6a973feca4b6465ee1dbcb1b7 Mon Sep 17 00:00:00 2001
+From baaf9182087ab02092c028f9a7d0c8a89c9cd4e2 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 31 Jan 2012 14:50:55 +0100
 Subject: [PATCH 15/21] beaglebone: fix ADC init
@@ -43,5 +43,5 @@ index ac4f78f..177ab9e 100644
  };
  
 -- 
-1.7.7.4
+1.7.2.5
 

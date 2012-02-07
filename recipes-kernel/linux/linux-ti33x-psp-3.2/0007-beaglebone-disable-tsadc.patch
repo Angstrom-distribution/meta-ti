@@ -1,4 +1,4 @@
-From 6f50bf55f6182ecd09aac93d3b613a99159b606c Mon Sep 17 00:00:00 2001
+From 418ca67a6e1bc3009b63587b0d65d064fa9c6e1a Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 31 Jan 2012 10:09:06 +0100
 Subject: [PATCH 07/21] beaglebone: disable tsadc
@@ -27,5 +27,5 @@ index 177ab9e..87ccf14 100644
  
  static struct platform_device tsc_device = {
 -- 
-1.7.7.4
+1.7.2.5
 
