@@ -15,7 +15,7 @@ PE = "1"
 SRCREV               ?= "UNDEFINED_SRCREV"
 DMAIBRANCH           ?= "UNDEFINED_DMAIBRANCH"
 
-S = "${WORKDIR}/${DMAIBRANCH}/davinci_multimedia_application_interface/dmai_${PV}"
+S = "${WORKDIR}/${DMAIBRANCH}/davinci_multimedia_application_interface/dmai_${PV}/dmai"
 
 SRC_URI = "svn://gforge.ti.com/svn/dmai/;module=${DMAIBRANCH};proto=https;user=anonymous;pswd='' \
 		file://loadmodules-ti-dmai-dm6446_al.sh \
