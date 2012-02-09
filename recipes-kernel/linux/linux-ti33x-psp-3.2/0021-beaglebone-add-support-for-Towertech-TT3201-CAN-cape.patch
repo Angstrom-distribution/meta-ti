@@ -1,15 +1,15 @@
-From af31b4d5a2d52284b169633b9a601c39c7300300 Mon Sep 17 00:00:00 2001
+From 7a669d97dae9aa8b7404a9dbe6d559c422971566 Mon Sep 17 00:00:00 2001
 From: Alessandro Zummo <a.zummo@towertech.it>
 Date: Thu, 9 Feb 2012 12:46:52 +0100
-Subject: [PATCH 22/22] beaglebone: add support for Towertech TT3201 CAN cape
+Subject: [PATCH 21/21] beaglebone: add support for Towertech TT3201 CAN cape
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |   54 ++++++++++++++++++++++++++++++++-
- arch/arm/mach-omap2/mux33xx.c         |    4 +-
+ arch/arm/mach-omap2/mux33xx.c         |    8 ++--
  drivers/net/can/dev.c                 |    8 ++--
  drivers/net/can/mcp251x.c             |   47 ++++++++++++++++++++++------
- 4 files changed, 96 insertions(+), 17 deletions(-)
+ 4 files changed, 98 insertions(+), 19 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index 538466d..36efca1 100644
@@ -98,19 +98,27 @@ index 538466d..36efca1 100644
  		pr_info("BeagleBone cape: exporting ADC pins to sysfs\n");
  		bone_tsc_init(0,0);
 diff --git a/arch/arm/mach-omap2/mux33xx.c b/arch/arm/mach-omap2/mux33xx.c
-index 0a06241..e4f3bd9 100644
+index fcb81ec..2de76e3 100644
 --- a/arch/arm/mach-omap2/mux33xx.c
 +++ b/arch/arm/mach-omap2/mux33xx.c
-@@ -318,10 +318,10 @@ static struct omap_mux __initdata am33xx_muxmodes[] = {
- 		"uart1_rtsn", NULL, "d_can0_rx", "i2c2_scl",
+@@ -312,16 +312,16 @@ static struct omap_mux __initdata am33xx_muxmodes[] = {
+ 		"uart0_txd", "spi1_cs1", "d_can0_rx", "i2c2_scl",
+ 		NULL, NULL, NULL, "gpio1_11"),
+ 	_AM33XX_MUXENTRY(UART1_CTSN, 0,
+-		"uart1_ctsn", NULL, NULL, "i2c2_sda",
++		"uart1_ctsn", NULL, "d_can0_tx", "i2c2_sda",
+ 		"spi1_cs0", NULL, NULL, "gpio0_12"),
+ 	_AM33XX_MUXENTRY(UART1_RTSN, 0,
+-		"uart1_rtsn", NULL, NULL, "i2c2_scl",
++		"uart1_rtsn", NULL, "d_can0_rx", "i2c2_scl",
  		"spi1_cs1", NULL, NULL, "gpio0_13"),
  	_AM33XX_MUXENTRY(UART1_RXD, 0,
--		"uart1_rxd", "mmc1_sdwp", NULL, NULL,
-+		"uart1_rxd", "mmc1_sdwp", "d_can1_tx", NULL,
+-		"uart1_rxd", "mmc1_sdwp", NULL, "i2c1_sda",
++		"uart1_rxd", "mmc1_sdwp", "d_can1_tx", "i2c1_sda",
  		NULL, "pr1_uart0_rxd_mux1", NULL, "gpio0_14"),
  	_AM33XX_MUXENTRY(UART1_TXD, 0,
--		"uart1_txd", "mmc2_sdwp", NULL, NULL,
-+		"uart1_txd", "mmc2_sdwp", "d_can1_rx", NULL,
+-		"uart1_txd", "mmc2_sdwp", NULL, "i2c1_scl",
++		"uart1_txd", "mmc2_sdwp", "d_can1_rx", "i2c1_scl",
  		NULL, "pr1_uart0_txd_mux1", NULL, "gpio0_15"),
  	_AM33XX_MUXENTRY(I2C0_SDA, 0,
  		"i2c0_sda", NULL, NULL, NULL,
@@ -308,5 +316,5 @@ index 330140e..b3e231c 100644
  	}
  error_probe:
 -- 
-1.7.2.5
+1.7.7.4
 

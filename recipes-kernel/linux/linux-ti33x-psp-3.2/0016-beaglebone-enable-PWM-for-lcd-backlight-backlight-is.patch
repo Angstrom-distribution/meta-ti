@@ -1,7 +1,8 @@
-From cf8d37c600dbe0d13e55874db46d385db435d6dc Mon Sep 17 00:00:00 2001
+From 69cea1f60bd1b22f382093feabf7fdec69f10f70 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 31 Jan 2012 17:02:10 +0100
-Subject: [PATCH 17/21] beaglebone: enable PWM for lcd backlight <- backlight is inverted
+Subject: [PATCH 16/21] beaglebone: enable PWM for lcd backlight <- backlight
+ is inverted
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
@@ -137,10 +138,10 @@ index 177ab9e..6a77194 100644
  	}
  	
 diff --git a/arch/arm/mach-omap2/devices.c b/arch/arm/mach-omap2/devices.c
-index 4b137e9..33291ae 100644
+index 198df7b..8cd2523 100644
 --- a/arch/arm/mach-omap2/devices.c
 +++ b/arch/arm/mach-omap2/devices.c
-@@ -1277,6 +1277,19 @@ void register_ehrpwm(int max_freq)
+@@ -1278,6 +1278,19 @@ void register_ehrpwm(int max_freq)
  	platform_device_register(&am335x_epwm2_device);
  }
  
@@ -172,5 +173,5 @@ index e086839..5161eb4 100644
  
  #endif
 -- 
-1.7.2.5
+1.7.7.4
 
