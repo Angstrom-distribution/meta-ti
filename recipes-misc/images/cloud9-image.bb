@@ -28,6 +28,7 @@ IMAGE_INSTALL += " \
 	nodejs-dev \
 	mplayer2 \
 	tslib-tests tslib-calibrate \
+	iproute2 canutils \
 "
 
 export IMAGE_BASENAME = "Cloud9-IDE"
