@@ -11,7 +11,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.2-staging"
 SRCREV = "83d907e1b05dabc44f3bb64532d7b58d059a14c0"
-MACHINE_KERNEL_PR_append = "c+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "d+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -46,6 +46,7 @@ PATCHES_OVER_PSP = " \
 	file://0019-beaglebone-set-default-brightness-to-50-for-pwm-back.patch \
 	file://0020-st7735fb-WIP-framebuffer-driver-supporting-Adafruit-.patch \
 	file://0021-beaglebone-use-P8_6-gpio1_3-as-w1-bus.patch \
+	file://0022-beaglebone-add-support-for-Towertech-TT3201-CAN-cape.patch \
 "
 
 SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
