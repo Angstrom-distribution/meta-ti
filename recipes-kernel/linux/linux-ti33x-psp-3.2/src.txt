@@ -1,30 +1,3 @@
-SECTION = "kernel"
-DESCRIPTION = "Linux kernel for TI33x EVM from PSP, based on am335x-kernel"
-LICENSE = "GPLv2"
-KERNEL_IMAGETYPE = "uImage"
-
-require multi-kernel.inc
-
-S = "${WORKDIR}/git"
-
-MULTI_CONFIG_BASE_SUFFIX = ""
-
-BRANCH = "v3.2-staging"
-SRCREV = "09e9651bcf2ee8d86685f2a8075bc6557b1d3b91"
-MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
-
-COMPATIBLE_MACHINE = "(ti33x)"
-
-THISDIR := "${@os.path.dirname(bb.data.getVar('FILE', d, True))}"
-CONFIGS_PSP = "${@base_set_filespath(["${THISDIR}/${PN}-${PV}/tipspkernel"], d)}:\
-${@base_set_filespath(["${THISDIR}/${PN}/tipspkernel"], d)}:\
-${@base_set_filespath(["${THISDIR}/files/tipspkernel"], d)}:"
-FILESPATH =. "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "${CONFIGS_PSP}", "", d)}"
-
-SRC_URI += "git://arago-project.org/git/projects/linux-am33x.git;protocol=http;branch=${BRANCH} \
-	file://defconfig"
-
-PATCHES_OVER_PSP = " \
 	file://3.2.1/0001-MAINTAINERS-stable-Update-address.patch \
 	file://3.2.1/0002-Documentation-Update-stable-address.patch \
 	file://3.2.1/0003-firmware-Fix-an-oops-on-reading-fw_priv-fw-in-sysfs-.patch \
@@ -62,18 +35,19 @@ PATCHES_OVER_PSP = " \
 	file://3.2.1/0035-usb-usb-storage-doesn-t-support-dynamic-id-currently.patch \
 	file://3.2.1/0036-USB-pxa168-Fix-compilation-error.patch \
 	file://3.2.1/0037-USB-add-quirk-for-another-camera.patch \
-	file://3.2.1/0038-USB-omninet-fix-write_room.patch \
-	file://3.2.1/0039-usb-option-add-ZD-Incorporated-HSPA-modem.patch \
-	file://3.2.1/0040-USB-Add-USB-ID-for-Multiplex-RC-serial-adapter-to-cp.patch \
-	file://3.2.1/0041-usb-fix-number-of-mapped-SG-DMA-entries.patch \
-	file://3.2.1/0042-xhci-Properly-handle-COMP_2ND_BW_ERR.patch \
-	file://3.2.1/0043-usb-ch9-fix-up-MaxStreams-helper.patch \
-	file://3.2.1/0044-igmp-Avoid-zero-delay-when-receiving-odd-mixture-of-.patch \
-	file://3.2.1/0045-asix-fix-infinite-loop-in-rx_fixup.patch \
-	file://3.2.1/0046-bonding-fix-error-handling-if-slave-is-busy-v2.patch \
-	file://3.2.1/0047-usb-cdc-acm-Fix-acm_tty_hangup-vs.-acm_tty_close-rac.patch \
-	file://3.2.1/0048-xfs-fix-acl-count-validation-in-xfs_acl_from_disk.patch \
-	file://3.2.1/0049-Linux-3.2.1.patch \
+	file://3.2.1/0038-usb-musb-fix-pm_runtime-mismatch.patch \
+	file://3.2.1/0039-USB-omninet-fix-write_room.patch \
+	file://3.2.1/0040-usb-option-add-ZD-Incorporated-HSPA-modem.patch \
+	file://3.2.1/0041-USB-Add-USB-ID-for-Multiplex-RC-serial-adapter-to-cp.patch \
+	file://3.2.1/0042-usb-fix-number-of-mapped-SG-DMA-entries.patch \
+	file://3.2.1/0043-xhci-Properly-handle-COMP_2ND_BW_ERR.patch \
+	file://3.2.1/0044-usb-ch9-fix-up-MaxStreams-helper.patch \
+	file://3.2.1/0045-igmp-Avoid-zero-delay-when-receiving-odd-mixture-of-.patch \
+	file://3.2.1/0046-asix-fix-infinite-loop-in-rx_fixup.patch \
+	file://3.2.1/0047-bonding-fix-error-handling-if-slave-is-busy-v2.patch \
+	file://3.2.1/0048-usb-cdc-acm-Fix-acm_tty_hangup-vs.-acm_tty_close-rac.patch \
+	file://3.2.1/0049-xfs-fix-acl-count-validation-in-xfs_acl_from_disk.patch \
+	file://3.2.1/0050-Linux-3.2.1.patch \
 	file://3.2.2/0001-mtdoops-fix-the-oops_page_used-array-size.patch \
 	file://3.2.2/0002-mtd-mtdoops-skip-reading-initially-bad-blocks.patch \
 	file://3.2.2/0003-mtd-mtd_blkdevs-don-t-increase-open-count-on-error-p.patch \
@@ -319,8 +293,3 @@ PATCHES_OVER_PSP = " \
 	file://0019-st7735fb-WIP-framebuffer-driver-supporting-Adafruit-.patch \
 	file://0020-beaglebone-use-P8_6-gpio1_3-as-w1-bus.patch \
 	file://0021-beaglebone-add-support-for-Towertech-TT3201-CAN-cape.patch \
-"
-
-SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
-SRC_URI_append_beaglebone = " file://logo_linux_clut224.ppm"
-
