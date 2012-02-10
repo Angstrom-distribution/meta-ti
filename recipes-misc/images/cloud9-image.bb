@@ -29,6 +29,7 @@ IMAGE_INSTALL += " \
 	mplayer2 \
 	tslib-tests tslib-calibrate \
 	iproute2 canutils \
+	connman-tests \
 "
 
 export IMAGE_BASENAME = "Cloud9-IDE"
