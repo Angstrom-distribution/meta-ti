@@ -1,5 +1,5 @@
 require u-boot.inc
-PR ="r67"
+PR ="r68"
 
 DEFAULT_PREFERENCE = "-1"
 DEFAULT_PREFERENCE_ti814x = "-1"
@@ -57,3 +57,5 @@ PV_hawkboard               = "2009.08+gitr${SRCREV}"
 
 
 S = "${WORKDIR}/git"
+
+RRECOMMENDS_${PN}_omap3-touchbook = "u-boot-fw-utils"
