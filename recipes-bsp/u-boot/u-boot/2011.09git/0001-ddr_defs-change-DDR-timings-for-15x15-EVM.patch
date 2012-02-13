@@ -1,0 +1,30 @@
+From 7a3b3b04b1aed6a649d99396f914ec042968f924 Mon Sep 17 00:00:00 2001
+From: Chase Maupin <Chase.Maupin@ti.com>
+Date: Thu, 9 Feb 2012 13:09:27 -0600
+Subject: [PATCH] ddr_defs: change DDR timings for 15x15 EVM
+
+* For cold silicon the DDR timings need to be relaxed in order for
+  the device to boot with DDR at 266MHz
+* Fix proposed by James Doublesin
+
+Signed-off-by: Chase Maupin <Chase.Maupin@ti.com>
+---
+ arch/arm/include/asm/arch-ti81xx/ddr_defs.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/arch/arm/include/asm/arch-ti81xx/ddr_defs.h b/arch/arm/include/asm/arch-ti81xx/ddr_defs.h
+index 6c4b422..0b7ffe7 100644
+--- a/arch/arm/include/asm/arch-ti81xx/ddr_defs.h
++++ b/arch/arm/include/asm/arch-ti81xx/ddr_defs.h
+@@ -338,7 +338,7 @@
+ #define DDR2_RD_DQS		0x40
+ #define DDR2_PHY_FIFO_WE	0x56
+ #else
+-#define EMIF_READ_LATENCY	0x04
++#define EMIF_READ_LATENCY	0x05
+ #define EMIF_TIM1		0x0666B3D6
+ #define EMIF_TIM2		0x143731DA
+ #define	EMIF_TIM3		0x00000347
+-- 
+1.7.0.4
+
