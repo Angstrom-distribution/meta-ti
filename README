@@ -4,18 +4,29 @@ URI: git://git.openembedded.org/openembedded-core
 branch: master
 revision: HEAD
 
-URI: git://git.angstrom-distribution.org/meta-angstrom
-branch: master
-revision: HEAD
-
 URI: git://git.openembedded.org/meta-openembedded
 branch: master
 revision: HEAD
 
-It is recommended to follow the instructions at http://www.angstrom-distribution.org/building-angstrom
+URI: git://git.angstrom-distribution.org/meta-angstrom
+branch: master
+revision: HEAD
 
-This will set it up for the OpenEmbedded-core layout instead of the old
-OpenEmbedded-dev layout. You can optionally tweak sources/layers.txt and conf/bblayers.conf to (de)select BSP layers.
+Currently meta-ti only works with the Angstrom distribution and hence
+requires the meta-angstrom layer. There are known issues when using
+gcc-4.6 based toolchain from OpenEmbedded-Core, thus gcc-4.5 toolchain,
+provided by meta-openembedded, is needed. It is planned to fix these
+shortcomings in the near future and allow building the base BSP part
+of meta-ti with different distributions and layer stacks, such as:
+distro-less (only with OE-Core), with Yocto/Poky, with Angstrom or
+Arago.
+
+Due to the above, it is now recommended to follow the instructions at
+http://www.angstrom-distribution.org/building-angstrom
+
+This will set it up for the OpenEmbedded-core layout instead of the
+old "Classic" OpenEmbedded-dev layout. You can optionally tweak
+sources/layers.txt and conf/bblayers.conf to (de)select BSP layers.
 
 Send pull requests to meta-ti@yoctoproject.org
 
