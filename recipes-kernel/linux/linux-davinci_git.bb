@@ -22,13 +22,13 @@ ARAGO_L1_BR  = "master"
 ARAGO_L1_PV  = "2.6.32+2.6.33-rc4-${PR}+gitr${SRCREV}"
 ARAGO_L1_URI = "git://arago-project.org/git/projects/linux-omapl1.git;protocol=git;branch=${BRANCH} "
 
-SRCREV_hawkboard                  = ${ARAGO_L1_REV}
+SRCREV_hawkboard                  = "${ARAGO_L1_REV}"
 
-PV_omapl138             = ${ARAGO_L1_PV}
+PV_omapl138             = "${ARAGO_L1_PV}"
 
-BRANCH_omapl138         = ${ARAGO_L1_BR}
+BRANCH_omapl138         = "${ARAGO_L1_BR}"
 
-SRC_URI_append_omapl138 = ${ARAGO_L1_URI}
+SRC_URI_append_omapl138 = "${ARAGO_L1_URI}"
 
 SRC_URI_append_omapl138 = " file://logo_linux_clut224.ppm \
                                      file://0001-ahci-ti-Fix-currently-harmless-typo-in-SATA-PHY.patch \
