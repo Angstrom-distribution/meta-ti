@@ -44,7 +44,7 @@ do_install () {
 
 FILES_${PN} = "/boot ${sysconfdir}"
 # no gnu_hash in uboot.bin, by design, so skip QA
-INSANE_SKIP_${PN} = True
+INSANE_SKIP_${PN} = "1"
 
 inherit deploy
 

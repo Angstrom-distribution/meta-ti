@@ -13,7 +13,7 @@ SRC_URI = "git://gitorious.org/x-loader/x-loader.git;branch=master;protocol=git 
 S = "${WORKDIR}/git"
 
 XLOAD_MACHINE_beagleboard = "omap3530beagle_config"
-CONFIG_HEADER_beagleboard = 1
+CONFIG_HEADER_beagleboard = "1"
 XLOAD_MACHINE_omap3-touchbook = "omap3530beagle_config"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
