@@ -41,7 +41,7 @@ PLATFORM_dm365         = "dm365"
 PLATFORM_omapl137      = "omapl137"
 PLATFORM_omapl138      = "omapl138"
 PLATFORM              ?= "UNDEFINED_PLATFORM"
-GST_TI_PLATFORM = ${PLATFORM}
+GST_TI_PLATFORM = "${PLATFORM}"
 
 XDC_PLATFORM_dm6446    = "ti.platforms.evmDM6446"
 XDC_PLATFORM_dm6467    = "ti.platforms.evmDM6467"

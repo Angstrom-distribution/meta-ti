@@ -84,6 +84,6 @@ do_install() {
 
 PACKAGES += "ti-c6accel-apps"
 FILES_ti-c6accel-apps = "${installdir}/c6accel-apps/*"
-INSANE_SKIP_ti-c6accel-apps = True
+INSANE_SKIP_ti-c6accel-apps = "1"
 RDEPENDS_ti-c6accel-apps += "ti-cmem-module ti-dsplink-module"
 

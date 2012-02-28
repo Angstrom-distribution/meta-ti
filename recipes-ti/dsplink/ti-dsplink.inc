@@ -208,4 +208,4 @@ PACKAGES += "ti-dsplink-examples"
 RDEPENDS_ti-dsplink-examples_append = " ti-dsplink-module"
 RDEPENDS_ti-dsplink-examples_append_omap3 += " ti-lpm-module ti-lpm-utils"
 FILES_ti-dsplink-examples = "${installdir}/ti-dsplink-examples/*"
-INSANE_SKIP_ti-dsplink-examples = True
+INSANE_SKIP_ti-dsplink-examples = "1"

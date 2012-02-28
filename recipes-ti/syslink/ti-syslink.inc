@@ -236,6 +236,6 @@ update-modules || true
 PACKAGES =+ "ti-syslink-examples"
 RRECOMMENDS_ti-syslink-examples_append = " ti-syslink-module"
 FILES_ti-syslink-examples = "${installdir}/ti-syslink-examples/*"
-INSANE_SKIP_ti-syslink-examples = True
+INSANE_SKIP_ti-syslink-examples = "1"
 
 FILES_ti-syslink-dev = "${libdir}/*"

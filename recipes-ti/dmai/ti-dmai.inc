@@ -145,7 +145,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 PACKAGES += "ti-dmai-apps"
 FILES_ti-dmai-apps = "${installdir}/ti-dmai-apps/*"
-INSANE_SKIP_ti-dmai-apps = True
+INSANE_SKIP_ti-dmai-apps = "1"
 
 RDEPENDS_ti-dmai-apps_dm6446    += "ti-codecs-dm6446-server   ti-cmem-module ti-dsplink-module"
 RDEPENDS_ti-dmai-apps_dm6467    += "ti-codecs-dm6467          ti-cmem-module ti-dsplink-module"

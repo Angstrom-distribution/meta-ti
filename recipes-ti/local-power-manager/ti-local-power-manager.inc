@@ -130,4 +130,4 @@ pkg_postrm_ti-lpm-module_append () {
 PACKAGES += "ti-lpm-utils"
 RDEPENDS_ti-lpm-utils += "ti-lpm-module"
 FILES_ti-lpm-utils = "${installdir}/ti-lpm-utils/*"
-INSANE_SKIP_ti-lpm-utils = True
+INSANE_SKIP_ti-lpm-utils = "1"
