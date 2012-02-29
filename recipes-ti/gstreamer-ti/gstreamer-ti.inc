@@ -60,7 +60,7 @@ export PLATFORM
 export GST_TI_PLATFORM
 export XDC_PLATFORM
 export XDC_TARGET      = "gnu.targets.arm.GCArmv5T"
-export PLATFORM_XDC    = ${XDC_PLATFORM}
+export PLATFORM_XDC    = "${XDC_PLATFORM}"
 export CSTOOL_DIR      = "${TOOLCHAIN_PATH}"
 export MVTOOL_DIR      = "${TOOLCHAIN_PATH}"
 export MVTOOL_PREFIX   = "${TARGET_PREFIX}"
@@ -162,4 +162,3 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 INITSCRIPT_NAME = "gstti-init"
 INITSCRIPT_PARAMS = "start 30 5 2 . stop 40 0 1 6 ."
-
