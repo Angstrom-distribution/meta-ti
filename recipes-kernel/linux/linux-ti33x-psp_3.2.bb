@@ -480,7 +480,6 @@ PATCHES_OVER_PSP = " \
 	file://3.2.9/0051-hwmon-max6639-Fix-PPR-register-initialization-to-set.patch \
 	file://3.2.9/0052-hwmon-ads1015-Fix-file-leak-in-probe-function.patch \
 	file://3.2.9/0053-ARM-omap-fix-oops-in-drivers-video-omap2-dss-dpi.c.patch \
-	file://3.2.9/0054-ARM-omap-fix-oops-in-arch-arm-mach-omap2-vp.c-when-p.patch \
 	file://3.2.9/0055-x86-amd-Fix-L1i-and-L2-cache-sharing-information-for.patch \
 	file://3.2.9/0056-ath9k-stop-on-rates-with-idx-1-in-ath9k-rate-control.patch \
 	file://3.2.9/0057-genirq-Unmask-oneshot-irqs-when-thread-was-not-woken.patch \
