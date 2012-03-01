@@ -11,7 +11,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.2-staging"
 SRCREV = "09e9651bcf2ee8d86685f2a8075bc6557b1d3b91"
-MACHINE_KERNEL_PR_append = "c+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -386,6 +386,120 @@ PATCHES_OVER_PSP = " \
 	file://3.2.6/0085-powernow-k8-Avoid-Pstate-MSR-accesses-on-systems-sup.patch \
 	file://3.2.6/0086-powernow-k8-Fix-indexing-issue.patch \
 	file://3.2.6/0087-Linux-3.2.6.patch \
+	file://3.2.7/0001-ixgbe-fix-vf-lookup.patch \
+	file://3.2.7/0002-igb-fix-vf-lookup.patch \
+	file://3.2.7/0003-perf-evsel-Fix-an-issue-where-perf-report-fails-to-s.patch \
+	file://3.2.7/0004-perf-tools-Fix-perf-stack-to-non-executable-on-x86_6.patch \
+	file://3.2.7/0005-drm-i915-Force-explicit-bpp-selection-for-intel_dp_l.patch \
+	file://3.2.7/0006-drm-i915-no-lvds-quirk-for-AOpen-MP45.patch \
+	file://3.2.7/0007-ath9k-Fix-kernel-panic-during-driver-initilization.patch \
+	file://3.2.7/0008-ath9k-fix-a-WEP-crypto-related-regression.patch \
+	file://3.2.7/0009-ath9k_hw-fix-a-RTS-CTS-timeout-regression.patch \
+	file://3.2.7/0010-hwmon-f75375s-Fix-bit-shifting-in-f75375_write16.patch \
+	file://3.2.7/0011-net-enable-TC35815-for-MIPS-again.patch \
+	file://3.2.7/0012-lib-proportion-lower-PROP_MAX_SHIFT-to-32-on-64-bit-.patch \
+	file://3.2.7/0013-relay-prevent-integer-overflow-in-relay_open.patch \
+	file://3.2.7/0014-mac80211-timeout-a-single-frame-in-the-rx-reorder-bu.patch \
+	file://3.2.7/0015-writeback-fix-NULL-bdi-dev-in-trace-writeback_single.patch \
+	file://3.2.7/0016-writeback-fix-dereferencing-NULL-bdi-dev-on-trace_wr.patch \
+	file://3.2.7/0017-hwmon-f75375s-Fix-automatic-pwm-mode-setting-for-F75.patch \
+	file://3.2.7/0018-cifs-request-oplock-when-doing-open-on-lookup.patch \
+	file://3.2.7/0019-cifs-don-t-return-error-from-standard_receive3-after.patch \
+	file://3.2.7/0020-crypto-sha512-Use-binary-and-instead-of-modulus.patch \
+	file://3.2.7/0021-crypto-sha512-Avoid-stack-bloat-on-i386.patch \
+	file://3.2.7/0022-backing-dev-fix-wakeup-timer-races-with-bdi_unregist.patch \
+	file://3.2.7/0023-ALSA-intel8x0-Fix-default-inaudible-sound-on-Gateway.patch \
+	file://3.2.7/0024-ALSA-hda-Fix-initialization-of-secondary-capture-sou.patch \
+	file://3.2.7/0025-ALSA-hda-Fix-silent-speaker-output-on-Acer-Aspire-69.patch \
+	file://3.2.7/0026-mmc-atmel-mci-save-and-restore-sdioirq-when-soft-res.patch \
+	file://3.2.7/0027-mmc-dw_mmc-Fix-PIO-mode-with-support-of-highmem.patch \
+	file://3.2.7/0028-xen-pvhvm-do-not-remap-pirqs-onto-evtchns-if-xen_hav.patch \
+	file://3.2.7/0029-crypto-sha512-use-standard-ror64.patch \
+	file://3.2.7/0030-Linux-3.2.7.patch \
+	file://3.2.8/0001-i387-math_state_restore-isn-t-called-from-asm.patch \
+	file://3.2.8/0002-i387-make-irq_fpu_usable-tests-more-robust.patch \
+	file://3.2.8/0003-i387-fix-sense-of-sanity-check.patch \
+	file://3.2.8/0004-i387-fix-x86-64-preemption-unsafe-user-stack-save-re.patch \
+	file://3.2.8/0005-i387-move-TS_USEDFPU-clearing-out-of-__save_init_fpu.patch \
+	file://3.2.8/0006-i387-don-t-ever-touch-TS_USEDFPU-directly-use-helper.patch \
+	file://3.2.8/0007-i387-do-not-preload-FPU-state-at-task-switch-time.patch \
+	file://3.2.8/0008-i387-move-AMD-K7-K8-fpu-fxsave-fxrstor-workaround-fr.patch \
+	file://3.2.8/0009-i387-move-TS_USEDFPU-flag-from-thread_info-to-task_s.patch \
+	file://3.2.8/0010-i387-re-introduce-FPU-state-preloading-at-context-sw.patch \
+	file://3.2.8/0011-Linux-3.2.8.patch \
+	file://3.2.9/0001-Security-tomoyo-add-.gitignore-file.patch \
+	file://3.2.9/0002-powerpc-perf-power_pmu_start-restores-incorrect-valu.patch \
+	file://3.2.9/0003-ARM-at91-USB-AT91-gadget-registration-for-module.patch \
+	file://3.2.9/0004-drm-radeon-kms-fix-MSI-re-arm-on-rv370.patch \
+	file://3.2.9/0005-PCI-workaround-hard-wired-bus-number-V2.patch \
+	file://3.2.9/0006-mac80211-Fix-a-rwlock-bad-magic-bug.patch \
+	file://3.2.9/0007-ipheth-Add-iPhone-4S.patch \
+	file://3.2.9/0008-regmap-Fix-cache-defaults-initialization-from-raw-ca.patch \
+	file://3.2.9/0009-eCryptfs-Copy-up-lower-inode-attrs-after-setting-low.patch \
+	file://3.2.9/0010-S390-correct-ktime-to-tod-clock-comparator-conversio.patch \
+	file://3.2.9/0011-vfs-fix-d_inode_lookup-dentry-ref-leak.patch \
+	file://3.2.9/0012-ARM-7326-2-PL330-fix-null-pointer-dereference-in-pl3.patch \
+	file://3.2.9/0013-ALSA-hda-Fix-redundant-jack-creations-for-cx5051.patch \
+	file://3.2.9/0014-mmc-core-check-for-zero-length-ioctl-data.patch \
+	file://3.2.9/0015-NFSv4-Fix-an-Oops-in-the-NFSv4-getacl-code.patch \
+	file://3.2.9/0016-NFSv4-Ensure-we-throw-out-bad-delegation-stateids-on.patch \
+	file://3.2.9/0017-NFSv4-fix-server_scope-memory-leak.patch \
+	file://3.2.9/0018-ARM-7321-1-cache-v7-Disable-preemption-when-reading-.patch \
+	file://3.2.9/0019-ARM-7325-1-fix-v7-boot-with-lockdep-enabled.patch \
+	file://3.2.9/0020-3c59x-shorten-timer-period-for-slave-devices.patch \
+	file://3.2.9/0021-net-Don-t-proxy-arp-respond-if-iif-rt-dst.dev-if-pri.patch \
+	file://3.2.9/0022-netpoll-netpoll_poll_dev-should-access-dev-flags.patch \
+	file://3.2.9/0023-net_sched-Bug-in-netem-reordering.patch \
+	file://3.2.9/0024-veth-Enforce-minimum-size-of-VETH_INFO_PEER.patch \
+	file://3.2.9/0025-via-velocity-S3-resume-fix.patch \
+	file://3.2.9/0026-ipv4-reset-flowi-parameters-on-route-connect.patch \
+	file://3.2.9/0027-tcp_v4_send_reset-binding-oif-to-iif-in-no-sock-case.patch \
+	file://3.2.9/0028-ipv4-Fix-wrong-order-of-ip_rt_get_source-and-update-.patch \
+	file://3.2.9/0029-net-Make-qdisc_skb_cb-upper-size-bound-explicit.patch \
+	file://3.2.9/0030-IPoIB-Stop-lying-about-hard_header_len-and-use-skb-c.patch \
+	file://3.2.9/0031-gro-more-generic-L2-header-check.patch \
+	file://3.2.9/0032-tcp-allow-tcp_sacktag_one-to-tag-ranges-not-aligned-.patch \
+	file://3.2.9/0033-tcp-fix-range-tcp_shifted_skb-passes-to-tcp_sacktag_.patch \
+	file://3.2.9/0034-tcp-fix-tcp_shifted_skb-adjustment-of-lost_cnt_hint-.patch \
+	file://3.2.9/0035-USB-Added-Kamstrup-VID-PIDs-to-cp210x-serial-driver.patch \
+	file://3.2.9/0036-USB-option-cleanup-zte-3g-dongle-s-pid-in-option.c.patch \
+	file://3.2.9/0037-USB-Serial-ti_usb_3410_5052-Add-Abbot-Diabetes-Care-.patch \
+	file://3.2.9/0038-USB-Remove-duplicate-USB-3.0-hub-feature-defines.patch \
+	file://3.2.9/0039-USB-Fix-handoff-when-BIOS-disables-host-PCI-device.patch \
+	file://3.2.9/0040-xhci-Fix-oops-caused-by-more-USB2-ports-than-USB3-po.patch \
+	file://3.2.9/0041-xhci-Fix-encoding-for-HS-bulk-control-NAK-rate.patch \
+	file://3.2.9/0042-USB-Don-t-fail-USB3-probe-on-missing-legacy-PCI-IRQ.patch \
+	file://3.2.9/0043-USB-Set-hub-depth-after-USB3-hub-reset.patch \
+	file://3.2.9/0044-usb-storage-fix-freezing-of-the-scanning-thread.patch \
+	file://3.2.9/0045-target-Allow-control-CDBs-with-data-1-page.patch \
+	file://3.2.9/0046-ASoC-wm8962-Fix-sidetone-enumeration-texts.patch \
+	file://3.2.9/0047-ALSA-hda-realtek-Fix-overflow-of-vol-sw-check-bitmap.patch \
+	file://3.2.9/0048-ALSA-hda-realtek-Fix-surround-output-regression-on-A.patch \
+	file://3.2.9/0049-NOMMU-Lock-i_mmap_mutex-for-access-to-the-VMA-prio-l.patch \
+	file://3.2.9/0050-hwmon-max6639-Fix-FAN_FROM_REG-calculation.patch \
+	file://3.2.9/0051-hwmon-max6639-Fix-PPR-register-initialization-to-set.patch \
+	file://3.2.9/0052-hwmon-ads1015-Fix-file-leak-in-probe-function.patch \
+	file://3.2.9/0053-ARM-omap-fix-oops-in-drivers-video-omap2-dss-dpi.c.patch \
+	file://3.2.9/0054-ARM-omap-fix-oops-in-arch-arm-mach-omap2-vp.c-when-p.patch \
+	file://3.2.9/0055-x86-amd-Fix-L1i-and-L2-cache-sharing-information-for.patch \
+	file://3.2.9/0056-ath9k-stop-on-rates-with-idx-1-in-ath9k-rate-control.patch \
+	file://3.2.9/0057-genirq-Unmask-oneshot-irqs-when-thread-was-not-woken.patch \
+	file://3.2.9/0058-genirq-Handle-pending-irqs-in-irq_startup.patch \
+	file://3.2.9/0059-scsi_scan-Fix-Poison-overwritten-warning-caused-by-u.patch \
+	file://3.2.9/0060-scsi_pm-Fix-bug-in-the-SCSI-power-management-handler.patch \
+	file://3.2.9/0061-ipvs-fix-matching-of-fwmark-templates-during-schedul.patch \
+	file://3.2.9/0062-jme-Fix-FIFO-flush-issue.patch \
+	file://3.2.9/0063-davinci_emac-Do-not-free-all-rx-dma-descriptors-duri.patch \
+	file://3.2.9/0064-builddeb-Don-t-create-files-in-tmp-with-predictable-.patch \
+	file://3.2.9/0065-can-sja1000-fix-isr-hang-when-hw-is-unplugged-under-.patch \
+	file://3.2.9/0066-hdpvr-fix-race-conditon-during-start-of-streaming.patch \
+	file://3.2.9/0067-imon-don-t-wedge-hardware-after-early-callbacks.patch \
+	file://3.2.9/0068-hwmon-f75375s-Fix-register-write-order-when-setting-.patch \
+	file://3.2.9/0069-epoll-introduce-POLLFREE-to-flush-signalfd_wqh-befor.patch \
+	file://3.2.9/0070-epoll-ep_unregister_pollwait-can-use-the-freed-pwq-w.patch \
+	file://3.2.9/0071-epoll-limit-paths.patch \
+	file://3.2.9/0072-cdrom-use-copy_to_user-without-the-underscores.patch \
+	file://3.2.9/0073-Linux-3.2.9.patch \
 	file://0002-f_rndis-HACK-around-undefined-variables.patch \
 	file://0003-da8xx-fb-add-DVI-support-for-beaglebone.patch \
 	file://0004-beaglebone-rebase-everything-onto-3.2-WARNING-MEGAPA.patch \
@@ -406,6 +520,8 @@ PATCHES_OVER_PSP = " \
 	file://0019-st7735fb-WIP-framebuffer-driver-supporting-Adafruit-.patch \
 	file://0020-beaglebone-use-P8_6-gpio1_3-as-w1-bus.patch \
 	file://0021-beaglebone-add-support-for-Towertech-TT3201-CAN-cape.patch \
+	file://0022-ARM-OMAP2-am33xx-fix-serial-mux-warnings-for-am33xx.patch \
+	file://0023-ARM-OMAP2-am335x-correct-McASP0-pin-mux-detail.patch \
 "
 
 SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
