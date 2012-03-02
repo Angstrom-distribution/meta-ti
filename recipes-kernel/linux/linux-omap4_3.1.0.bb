@@ -1,4 +1,4 @@
-COMPATIBLE_MACHINE = "omap4430-panda"
+COMPATIBLE_MACHINE = "omap4430-panda|pandaboard"
 
 DEFAULT_PREFERENCE = "-1"
 
@@ -9,10 +9,10 @@ require linux.inc
 
 CORTEXA8FIXUP = "no"
 
-#glp 1.5.4
-SRCREV = "3adddccb1e296027873df5999b5917cafd62b3db"
+# ti-ubuntu-3.1.0-1282.11
+SRCREV = "a5c60c099296fcfc0c8fa8085c40883971486512"
 
-SRC_URI = "git://dev.omapzoom.org/pub/scm/integration/kernel-ubuntu.git;protocol=git;branch=ti-ubuntu-glp1.5.2 \
+SRC_URI = "git://dev.omapzoom.org/pub/scm/integration/kernel-ubuntu.git;protocol=git;branch=ti-ubuntu-3.1-1282 \
            file://defconfig \
            "
 

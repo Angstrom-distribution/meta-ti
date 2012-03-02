@@ -15,7 +15,7 @@ XSERVER = "xserver-xorg \
            xf86-video-fbdev" 
 
 # Increase this everytime you change something in the kernel
-MACHINE_KERNEL_PR = "r0"
+MACHINE_KERNEL_PR = "r1"
 
 KERNEL_IMAGETYPE = "uImage"
 
