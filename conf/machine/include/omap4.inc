@@ -1,4 +1,5 @@
 SOC_FAMILY = "omap4"
+require conf/machine/include/soc-family.inc
 
 require conf/machine/include/tune-cortexa8.inc
 

@@ -1,4 +1,5 @@
 SOC_FAMILY = "ti816x"
+require conf/machine/include/soc-family.inc
 
 require conf/machine/include/tune-cortexa8.inc
 

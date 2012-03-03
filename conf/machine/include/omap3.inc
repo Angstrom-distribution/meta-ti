@@ -1,4 +1,5 @@
 SOC_FAMILY = "omap3"
+require conf/machine/include/soc-family.inc
 
 require conf/machine/include/tune-cortexa8.inc
 PREFERRED_PROVIDER_virtual/kernel = "linux-omap"
