@@ -13,7 +13,7 @@
 require linux.inc
 
 SRC_URI += " \
-           file://configs/* "
+           file://configs "
 
 MULTI_CONFIG_BASE_SUFFIX = "multi-config-"
 
