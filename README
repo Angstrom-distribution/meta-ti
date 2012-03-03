@@ -1,4 +1,4 @@
-This layer depends on:
+This layer hard depends on:
 
 URI: git://git.openembedded.org/openembedded-core
 branch: master
@@ -7,6 +7,8 @@ revision: HEAD
 URI: git://git.openembedded.org/meta-openembedded
 branch: master
 revision: HEAD
+
+And optionally depends on:
 
 URI: git://git.angstrom-distribution.org/meta-angstrom
 branch: master
@@ -24,8 +26,8 @@ Arago.
 Due to the above, it is now recommended to follow the instructions at
 http://www.angstrom-distribution.org/building-angstrom
 
-This will set it up for the OpenEmbedded-core layout instead of the
-old "Classic" OpenEmbedded-dev layout. You can optionally tweak
+This will set it up for the OpenEmbedded-core ('yocto') layout instead
+of the old "Classic" OpenEmbedded-dev layout. You can optionally tweak
 sources/layers.txt and conf/bblayers.conf to (de)select BSP layers.
 
 Send pull requests to meta-ti@yoctoproject.org
