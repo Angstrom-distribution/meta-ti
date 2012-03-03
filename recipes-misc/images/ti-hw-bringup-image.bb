@@ -1,6 +1,6 @@
 # Image for assisting in hardware bringup
 
-require recipes-images/angstrom/systemd-image.bb
+include recipes-images/angstrom/systemd-image.bb
 
 EXTRA_MACHINE_IMAGE_INSTALL ?= ""
 
