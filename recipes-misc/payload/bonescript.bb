@@ -1,18 +1,18 @@
 DESCRIPTION = "Scripting tools for the BeagleBoard and BeagleBone"
 
-PR = "r13"
+PR = "r14"
 
 inherit systemd
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=659ee0c98db2664403c769d6b9ab50eb"
 
-SRC_URI = "http://dominion.thruhere.net/koen/angstrom/beaglebone/bonescript-8898f4ee4ae2548642679626a03e332a4cd43331.tar.bz2 \
+SRC_URI = "http://dominion.thruhere.net/koen/angstrom/beaglebone/bonescript-ca0f663083cea4e434864aa276d46ff79d471dff.tar.bz2 \
            file://bonescript-git \
            file://bone101.service \
           "
-SRC_URI[md5sum] = "306278a2afc10b75f4fc886918fb02b7"
-SRC_URI[sha256sum] = "01c87e59adcc663365c664b0731f0e5a23feeae1965a5cd5edd3e89255f8a30b"
+SRC_URI[md5sum] = "2b7edd83a752eaf0be0c7488d32c7e72"
+SRC_URI[sha256sum] = "839ee1147b83924f259dc5e373d73eb0eaa6ece76322dc156a6b04113fa89a91"
 
 S = "${WORKDIR}/bonescript"
 
