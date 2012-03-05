@@ -1,7 +1,7 @@
 require u-boot.inc
 
 # No patches for other machines yet
-COMPATIBLE_MACHINE = "(beagleboard|omap4430-panda)"
+COMPATIBLE_MACHINE = "(beagleboard)"
 
 SRC_URI = "git://www.denx.de/git/u-boot.git;protocol=git \
            file://2011.06/0001-OMAP3-Beagle-Pin-Mux-initialization-glitch-fix.patch \

@@ -1,4 +1,4 @@
-COMPATIBLE_MACHINE = "omap4430-panda|pandaboard"
+COMPATIBLE_MACHINE = "pandaboard"
 
 DEFAULT_PREFERENCE = "-1"
 
