@@ -1,6 +1,6 @@
 require u-boot.inc
 
-PR = "r6"
+PR = "r7"
 
 # SPL build
 UBOOT_BINARY = "u-boot.img"
