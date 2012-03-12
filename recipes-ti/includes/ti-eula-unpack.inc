@@ -19,6 +19,14 @@ python ti_bin_do_unpack() {
 
     import os
 
+    # InstallJammer requires 32bit version of glibc
+    lib32path = '/lib'
+    if os.path.exists('/lib64') and ( os.path.islink('/lib64') or os.path.islink('/lib') ):
+       lib32path = '/lib32'
+    if not os.path.exists('%s/libc.so.6' % lib32path):
+	raise bb.build.FuncFailed, \
+        "\nTI installer requires 32bit glibc libraries for proper operation\n\trun 'yum install glibc.i686' on Fedora or 'apt-get install ia32-libs' on Ubuntu/Debian"
+
     localdata = bb.data.createCopy(d)
     bb.data.update_data(localdata)
 
