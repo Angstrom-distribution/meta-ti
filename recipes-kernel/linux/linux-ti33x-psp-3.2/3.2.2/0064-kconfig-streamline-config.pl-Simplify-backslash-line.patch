@@ -1,4 +1,4 @@
-From 700e5b37d0da1b3688992c53abba2ba9c123c547 Mon Sep 17 00:00:00 2001
+From d52eba613a8cd0e74e52248bff0ed579f3e801bc Mon Sep 17 00:00:00 2001
 From: Steven Rostedt <srostedt@redhat.com>
 Date: Fri, 13 Jan 2012 17:50:39 -0500
 Subject: [PATCH 064/130] kconfig/streamline-config.pl: Simplify backslash
@@ -14,7 +14,7 @@ Signed-off-by: Steven Rostedt <rostedt@goodmis.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  scripts/kconfig/streamline_config.pl |   25 ++++++++++++-------------
- 1 files changed, 12 insertions(+), 13 deletions(-)
+ 1 file changed, 12 insertions(+), 13 deletions(-)
 
 diff --git a/scripts/kconfig/streamline_config.pl b/scripts/kconfig/streamline_config.pl
 index ec7afce..42ef5ea 100644
@@ -64,5 +64,5 @@ index ec7afce..42ef5ea 100644
  		$obj =~ s/-/_/g;
  		if ($obj =~ /(.*)\.o$/) {
 -- 
-1.7.7.4
+1.7.9.4
 

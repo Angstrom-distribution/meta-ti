@@ -1,7 +1,7 @@
-From 2ab9cc5409e9871927ef2799b41af3288cf7114c Mon Sep 17 00:00:00 2001
+From dcc7fca10922a9b707bbc8ea3138a8df665f8e55 Mon Sep 17 00:00:00 2001
 From: Alan Stern <stern@rowland.harvard.edu>
 Date: Tue, 21 Feb 2012 13:16:32 -0500
-Subject: [PATCH 44/73] usb-storage: fix freezing of the scanning thread
+Subject: [PATCH 44/72] usb-storage: fix freezing of the scanning thread
 
 commit bb94a406682770a35305daaa241ccdb7cab399de upstream.
 
@@ -209,5 +209,5 @@ index 7b0f211..75f70f0 100644
  	/* subdriver information */
  	void			*extra;		 /* Any extra data          */
 -- 
-1.7.7.4
+1.7.9.4
 

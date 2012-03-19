@@ -1,4 +1,4 @@
-From a4d5a638ff204626f6244b3a316cf8f01ef3e2fa Mon Sep 17 00:00:00 2001
+From ae6644f8572872abad3082d4ecf29fa7c48f20d5 Mon Sep 17 00:00:00 2001
 From: Andy Adamson <andros@netapp.com>
 Date: Wed, 9 Nov 2011 13:58:20 -0500
 Subject: [PATCH 023/130] NFSv4.1: fix backchannel slotid off-by-one bug
@@ -10,7 +10,7 @@ Signed-off-by: Trond Myklebust <Trond.Myklebust@netapp.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  fs/nfs/callback_proc.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/fs/nfs/callback_proc.c b/fs/nfs/callback_proc.c
 index 43926ad..54cea8a 100644
@@ -26,5 +26,5 @@ index 43926ad..54cea8a 100644
  
  	slot = tbl->slots + args->csa_slotid;
 -- 
-1.7.7.4
+1.7.9.4
 

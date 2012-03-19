@@ -1,4 +1,4 @@
-From 0046f18e8ee26577b8b75d678ee353a9ab31773b Mon Sep 17 00:00:00 2001
+From 15259eb18bbb73a316954965e66a8a85a9e12635 Mon Sep 17 00:00:00 2001
 From: Cliff Wickman <cpw@sgi.com>
 Date: Mon, 16 Jan 2012 15:17:50 -0600
 Subject: [PATCH 114/130] x86/UV2: Fix new UV2 hardware by using native UV2
@@ -18,7 +18,7 @@ Signed-off-by: Ingo Molnar <mingo@elte.hu>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  arch/x86/include/asm/uv/uv_bau.h |   93 +++++++++++++++++++++++++++++++++++---
- arch/x86/platform/uv/tlb_uv.c    |   88 ++++++++++++++++++++++++++---------
+ arch/x86/platform/uv/tlb_uv.c    |   88 ++++++++++++++++++++++++++----------
  2 files changed, 151 insertions(+), 30 deletions(-)
 
 diff --git a/arch/x86/include/asm/uv/uv_bau.h b/arch/x86/include/asm/uv/uv_bau.h
@@ -346,5 +346,5 @@ index 5b55219..1341a2e 100644
  	}
  
 -- 
-1.7.7.4
+1.7.9.4
 

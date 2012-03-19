@@ -1,11 +1,11 @@
-From ba50be5b9e68e504f1cb2c3042ee64b9c14a2aa9 Mon Sep 17 00:00:00 2001
+From 43a16c537c58047f07f1700cb0b15982ab68c6b8 Mon Sep 17 00:00:00 2001
 From: Greg Kroah-Hartman <gregkh@suse.de>
 Date: Wed, 25 Jan 2012 16:39:32 -0800
 Subject: [PATCH 130/130] Linux 3.2.2
 
 ---
  Makefile |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
 index c5edffa..2f684da 100644
@@ -20,5 +20,5 @@ index c5edffa..2f684da 100644
  NAME = Saber-toothed Squirrel
  
 -- 
-1.7.7.4
+1.7.9.4
 

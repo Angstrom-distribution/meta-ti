@@ -1,4 +1,4 @@
-From 6ddbb15e9a2b460a42697a83ab2b4119978af8c8 Mon Sep 17 00:00:00 2001
+From d790354ebeffb41bfe1fb34572c258a7a5fdb475 Mon Sep 17 00:00:00 2001
 From: David Henningsson <david.henningsson@canonical.com>
 Date: Mon, 16 Jan 2012 10:52:20 +0100
 Subject: [PATCH 096/130] ALSA: HDA: Fix internal microphone on Dell Studio 16
@@ -16,7 +16,7 @@ Signed-off-by: Takashi Iwai <tiwai@suse.de>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  sound/pci/hda/patch_sigmatel.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/sound/pci/hda/patch_sigmatel.c b/sound/pci/hda/patch_sigmatel.c
 index a87b260..f3c73a9 100644
@@ -32,5 +32,5 @@ index a87b260..f3c73a9 100644
  				"Dell Studio 1558", STAC_DELL_M6_DMIC),
  	{} /* terminator */
 -- 
-1.7.7.4
+1.7.9.4
 

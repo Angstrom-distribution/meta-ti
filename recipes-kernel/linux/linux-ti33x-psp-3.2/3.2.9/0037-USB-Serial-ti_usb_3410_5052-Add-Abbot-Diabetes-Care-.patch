@@ -1,7 +1,7 @@
-From f891ac47c26ed3a7efcf4bd641590e54869cd37e Mon Sep 17 00:00:00 2001
+From 84a3b2d1fb95be76ec543d381ec14af2a252c1b8 Mon Sep 17 00:00:00 2001
 From: Andrew Lunn <andrew@lunn.ch>
 Date: Mon, 20 Feb 2012 09:31:57 +0100
-Subject: [PATCH 37/73] USB: Serial: ti_usb_3410_5052: Add Abbot Diabetes Care
+Subject: [PATCH 37/72] USB: Serial: ti_usb_3410_5052: Add Abbot Diabetes Care
  cable id
 
 commit 7fd25702ba616d9ba56e2a625472f29e5aff25ee upstream.
@@ -72,5 +72,5 @@ index 2aac195..f140f1b 100644
  #define TI_GET_VERSION			0x01
  #define TI_GET_PORT_STATUS		0x02
 -- 
-1.7.7.4
+1.7.9.4
 

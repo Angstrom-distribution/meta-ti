@@ -1,7 +1,7 @@
-From 60e1345a34208c8024e01dc7481e090737720d90 Mon Sep 17 00:00:00 2001
+From 84f1532950e62e2578f5dfd7ad2a206f15f380ea Mon Sep 17 00:00:00 2001
 From: Sarah Sharp <sarah.a.sharp@linux.intel.com>
 Date: Thu, 9 Feb 2012 14:43:44 -0800
-Subject: [PATCH 40/73] xhci: Fix oops caused by more USB2 ports than USB3
+Subject: [PATCH 40/72] xhci: Fix oops caused by more USB2 ports than USB3
  ports.
 
 commit 3278a55a1aebe2bbd47fbb5196209e5326a88b56 upstream.
@@ -19,7 +19,7 @@ Signed-off-by: Sarah Sharp <sarah.a.sharp@linux.intel.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  drivers/usb/host/xhci-hub.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/usb/host/xhci-hub.c b/drivers/usb/host/xhci-hub.c
 index 430e88f..a8b2980 100644
@@ -35,5 +35,5 @@ index 430e88f..a8b2980 100644
  		 * hub descriptor DeviceRemovable bits.
  		 */
 -- 
-1.7.7.4
+1.7.9.4
 

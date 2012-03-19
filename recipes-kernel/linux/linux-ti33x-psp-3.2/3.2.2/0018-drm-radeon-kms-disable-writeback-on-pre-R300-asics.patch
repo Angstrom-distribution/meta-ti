@@ -1,4 +1,4 @@
-From 056276f2509223f4f07a0778f1f1b398fdc8ae87 Mon Sep 17 00:00:00 2001
+From f021f7ff80f10b57d44b122e655a8b8b32de0391 Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Tue, 3 Jan 2012 09:48:38 -0500
 Subject: [PATCH 018/130] drm/radeon/kms: disable writeback on pre-R300 asics
@@ -16,7 +16,7 @@ Signed-off-by: Dave Airlie <airlied@redhat.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  drivers/gpu/drm/radeon/radeon_device.c |    5 ++++-
- 1 files changed, 4 insertions(+), 1 deletions(-)
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/radeon/radeon_device.c b/drivers/gpu/drm/radeon/radeon_device.c
 index c4d00a1..9b39145 100644
@@ -36,5 +36,5 @@ index c4d00a1..9b39145 100644
  		} else {
  			rdev->wb.enabled = true;
 -- 
-1.7.7.4
+1.7.9.4
 

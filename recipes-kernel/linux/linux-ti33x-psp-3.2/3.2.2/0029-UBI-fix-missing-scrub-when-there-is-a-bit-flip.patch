@@ -1,4 +1,4 @@
-From e20542f497522671fa121d7612442a2557bfa2ff Mon Sep 17 00:00:00 2001
+From 7c9f37ae89d2e888e7be2c0b23b96765670bf00f Mon Sep 17 00:00:00 2001
 From: Bhavesh Parekh <bparekh@nvidia.com>
 Date: Wed, 30 Nov 2011 17:43:42 +0530
 Subject: [PATCH 029/130] UBI: fix missing scrub when there is a bit-flip
@@ -77,5 +77,5 @@ index 42c684c..277c429 100644
  		    err == MOVE_TARGET_RD_ERR) {
  			/*
 -- 
-1.7.7.4
+1.7.9.4
 

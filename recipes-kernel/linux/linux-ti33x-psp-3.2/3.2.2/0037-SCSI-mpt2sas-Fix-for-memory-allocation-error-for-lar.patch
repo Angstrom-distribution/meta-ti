@@ -1,4 +1,4 @@
-From fe5907648567469336c06cf215932adac76a8e11 Mon Sep 17 00:00:00 2001
+From 9ebea3b971f454ee2d1c0970ac76636d2fa4f5a2 Mon Sep 17 00:00:00 2001
 From: "nagalakshmi.nandigama@lsi.com" <nagalakshmi.nandigama@lsi.com>
 Date: Thu, 1 Dec 2011 07:53:08 +0530
 Subject: [PATCH 037/130] SCSI: mpt2sas : Fix for memory allocation error for
@@ -173,5 +173,5 @@ index 3a4f666..9bc6fb2 100644
  	}
  	chain_req = list_entry(ioc->free_chain_list.next,
 -- 
-1.7.7.4
+1.7.9.4
 

@@ -1,4 +1,4 @@
-From d0a77dc1abbe11f8d14a6cce8632d85ff79f3636 Mon Sep 17 00:00:00 2001
+From 25a6cd70476e3d2a0314a4295a0514a4448dbac2 Mon Sep 17 00:00:00 2001
 From: Hugh Dickins <hughd@google.com>
 Date: Wed, 8 Feb 2012 17:13:40 -0800
 Subject: [PATCH 66/87] mm: fix UP THP spin_is_locked BUGs
@@ -59,5 +59,5 @@ index a91caf7..55b266d 100644
  	SetPageLRU(page_tail);
  
 -- 
-1.7.7.4
+1.7.9.4
 

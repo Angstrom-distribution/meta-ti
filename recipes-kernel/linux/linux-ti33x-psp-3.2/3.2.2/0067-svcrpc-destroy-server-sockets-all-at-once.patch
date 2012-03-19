@@ -1,4 +1,4 @@
-From c132bb68434e1dcfc0e148d1e677f4433d6cf075 Mon Sep 17 00:00:00 2001
+From d6eeab4595a510bd2e02a2e3055e02e9a70229de Mon Sep 17 00:00:00 2001
 From: "J. Bruce Fields" <bfields@redhat.com>
 Date: Tue, 29 Nov 2011 11:35:35 -0500
 Subject: [PATCH 067/130] svcrpc: destroy server sockets all at once
@@ -81,5 +81,5 @@ index 447cd0e..dcdc8df 100644
   * Handle defer and revisit of requests
   */
 -- 
-1.7.7.4
+1.7.9.4
 

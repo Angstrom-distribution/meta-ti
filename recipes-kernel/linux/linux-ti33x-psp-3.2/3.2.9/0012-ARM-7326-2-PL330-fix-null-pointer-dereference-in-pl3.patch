@@ -1,7 +1,7 @@
-From 32818d15fe50ef5465fc635252ca4c2c1bcf1673 Mon Sep 17 00:00:00 2001
+From 4dba080e4a963820e5b9a810bdbec72c2e33a5cb Mon Sep 17 00:00:00 2001
 From: Javi Merino <javi.merino@arm.com>
 Date: Wed, 15 Feb 2012 17:36:39 +0100
-Subject: [PATCH 12/73] ARM: 7326/2: PL330: fix null pointer dereference in
+Subject: [PATCH 12/72] ARM: 7326/2: PL330: fix null pointer dereference in
  pl330_chan_ctrl()
 
 commit 46e33c606af8e0caeeca374103189663d877c0d6 upstream.
@@ -19,7 +19,7 @@ Signed-off-by: Russell King <rmk+kernel@arm.linux.org.uk>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  arch/arm/common/pl330.c |    3 ++-
- 1 files changed, 2 insertions(+), 1 deletions(-)
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm/common/pl330.c b/arch/arm/common/pl330.c
 index 8d8df74..67abef5 100644
@@ -41,5 +41,5 @@ index 8d8df74..67abef5 100644
  	spin_lock_irqsave(&pl330->lock, flags);
  
 -- 
-1.7.7.4
+1.7.9.4
 

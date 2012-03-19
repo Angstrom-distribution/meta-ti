@@ -1,4 +1,4 @@
-From 5aefc74158a4193f8e1f0ee3b9af21fd76ace6ca Mon Sep 17 00:00:00 2001
+From a28e25b364a1ed96a8a19fbf5328bb750af80342 Mon Sep 17 00:00:00 2001
 From: Artem Bityutskiy <artem.bityutskiy@linux.intel.com>
 Date: Tue, 10 Jan 2012 19:32:30 +0200
 Subject: [PATCH 053/130] UBI: fix debugging messages
@@ -19,7 +19,7 @@ Signed-off-by: Artem Bityutskiy <artem.bityutskiy@linux.intel.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  drivers/mtd/ubi/debug.h |    5 ++++-
- 1 files changed, 4 insertions(+), 1 deletions(-)
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/mtd/ubi/debug.h b/drivers/mtd/ubi/debug.h
 index 64fbb00..ead2cd1 100644
@@ -38,5 +38,5 @@ index 64fbb00..ead2cd1 100644
  #define dbg_gen(fmt, ...) ubi_dbg_msg("gen", fmt, ##__VA_ARGS__)
  /* Messages from the eraseblock association sub-system */
 -- 
-1.7.7.4
+1.7.9.4
 

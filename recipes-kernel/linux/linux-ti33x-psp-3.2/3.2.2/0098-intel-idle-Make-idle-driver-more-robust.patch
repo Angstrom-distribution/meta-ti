@@ -1,4 +1,4 @@
-From 1ca189655bf3edf14c4837eba5873fc9c50f7e15 Mon Sep 17 00:00:00 2001
+From ea9646e5ea87fd6140ed54f3b09ca46475ce6a2e Mon Sep 17 00:00:00 2001
 From: Thomas Renninger <trenn@suse.de>
 Date: Sun, 4 Dec 2011 22:17:29 +0100
 Subject: [PATCH 098/130] intel idle: Make idle driver more robust
@@ -32,7 +32,7 @@ Signed-off-by: Len Brown <len.brown@intel.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  drivers/idle/intel_idle.c |    3 ++-
- 1 files changed, 2 insertions(+), 1 deletions(-)
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/idle/intel_idle.c b/drivers/idle/intel_idle.c
 index 5d2f8e1..1dafcc3 100644
@@ -49,5 +49,5 @@ index 5d2f8e1..1dafcc3 100644
  
  	pr_debug(PREFIX "MWAIT substates: 0x%x\n", mwait_substates);
 -- 
-1.7.7.4
+1.7.9.4
 

@@ -1,7 +1,7 @@
-From d8c3ee4541529fe177c8afac31b890a7c2adecfd Mon Sep 17 00:00:00 2001
+From 4c64933ec58a84dbda536345d8ff36cdd503cebe Mon Sep 17 00:00:00 2001
 From: Sarah Sharp <sarah.a.sharp@linux.intel.com>
 Date: Thu, 5 Jan 2012 16:28:54 -0800
-Subject: [PATCH 38/73] USB: Remove duplicate USB 3.0 hub feature #defines.
+Subject: [PATCH 38/72] USB: Remove duplicate USB 3.0 hub feature #defines.
 
 commit d9f5343e35d9138432657202afa8e3ddb2ade360 upstream.
 
@@ -39,7 +39,7 @@ Cc: Jamey Sharp <jamey@minilop.net>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  include/linux/usb/ch11.h |   10 ++--------
- 1 files changed, 2 insertions(+), 8 deletions(-)
+ 1 file changed, 2 insertions(+), 8 deletions(-)
 
 diff --git a/include/linux/usb/ch11.h b/include/linux/usb/ch11.h
 index 4ebaf08..1eb735b 100644
@@ -70,5 +70,5 @@ index 4ebaf08..1eb735b 100644
  #define USB_PORT_FEAT_BH_PORT_RESET		28
  #define USB_PORT_FEAT_C_BH_PORT_RESET		29
 -- 
-1.7.7.4
+1.7.9.4
 

@@ -1,7 +1,7 @@
-From 608951f12d572bd36c95a5629a9c5bb7b6cf244c Mon Sep 17 00:00:00 2001
+From 107b4c2d038911dd42e9450fc6abd42a9b5c0d7f Mon Sep 17 00:00:00 2001
 From: Yinghai Lu <yinghai.lu@oracle.com>
 Date: Mon, 30 Jan 2012 12:25:24 +0100
-Subject: [PATCH 05/73] PCI: workaround hard-wired bus number V2
+Subject: [PATCH 05/72] PCI: workaround hard-wired bus number V2
 
 commit 71f6bd4a23130cd2f4b036010c5790b1295290b9 upstream.
 
@@ -21,7 +21,7 @@ Signed-off-by: Jesse Barnes <jbarnes@virtuousgeek.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  drivers/pci/probe.c |    5 +++++
- 1 files changed, 5 insertions(+), 0 deletions(-)
+ 1 file changed, 5 insertions(+)
 
 diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
 index 04e74f4..dfee1b3 100644
@@ -40,5 +40,5 @@ index 04e74f4..dfee1b3 100644
  	if (!pass &&
  	    (primary != bus->number || secondary <= bus->number)) {
 -- 
-1.7.7.4
+1.7.9.4
 

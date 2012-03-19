@@ -1,4 +1,4 @@
-From a4064a0d9fab7c0a6aa4b6bf170d6ffaed93601a Mon Sep 17 00:00:00 2001
+From 8eb079554654f8de6153fa79f38b2cafcaaa6843 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michel=20D=C3=A4nzer?= <michel.daenzer@amd.com>
 Date: Thu, 5 Jan 2012 18:42:17 +0100
 Subject: [PATCH 019/130] radeon: Fix disabling PCI bus mastering on big
@@ -66,5 +66,5 @@ index b1053d6..c259e21 100644
  	mdelay(1);
  }
 -- 
-1.7.7.4
+1.7.9.4
 

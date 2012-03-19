@@ -1,7 +1,7 @@
-From 4651f6ab6be87e326d7ed3820be6cedfca323e51 Mon Sep 17 00:00:00 2001
+From 02a1b3c427ee77fbfb9f7444d9d6bf26b6147f38 Mon Sep 17 00:00:00 2001
 From: Guenter Roeck <guenter.roeck@ericsson.com>
 Date: Wed, 22 Feb 2012 08:13:52 -0800
-Subject: [PATCH 52/73] hwmon: (ads1015) Fix file leak in probe function
+Subject: [PATCH 52/72] hwmon: (ads1015) Fix file leak in probe function
 
 commit 363434b5dc352464ac7601547891e5fc9105f124 upstream.
 
@@ -15,7 +15,7 @@ Acked-by: Jean Delvare <khali@linux-fr.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  drivers/hwmon/ads1015.c |    3 +--
- 1 files changed, 1 insertions(+), 2 deletions(-)
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/hwmon/ads1015.c b/drivers/hwmon/ads1015.c
 index eedca3c..dd87ae9 100644
@@ -39,5 +39,5 @@ index eedca3c..dd87ae9 100644
  exit:
  	return err;
 -- 
-1.7.7.4
+1.7.9.4
 

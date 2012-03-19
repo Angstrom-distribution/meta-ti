@@ -1,4 +1,4 @@
-From 876118d108ac910a4b4b4384b6d827ef9eb599bb Mon Sep 17 00:00:00 2001
+From 7738b871ed07b550480b1b26d7bb6349f54c3d55 Mon Sep 17 00:00:00 2001
 From: NeilBrown <neilb@suse.de>
 Date: Wed, 16 Nov 2011 11:46:31 +1100
 Subject: [PATCH 024/130] NFS - fix recent breakage to NFS error handling.
@@ -33,7 +33,7 @@ Signed-off-by: Trond Myklebust <Trond.Myklebust@netapp.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  fs/nfs/file.c |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/fs/nfs/file.c b/fs/nfs/file.c
 index 606ef0f..c43a452 100644
@@ -56,5 +56,5 @@ index 606ef0f..c43a452 100644
  	if (have_error)
  		ret = xchg(&ctx->error, 0);
 -- 
-1.7.7.4
+1.7.9.4
 

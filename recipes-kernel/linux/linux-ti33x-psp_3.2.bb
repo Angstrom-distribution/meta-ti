@@ -11,7 +11,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.2-staging"
 SRCREV = "09e9651bcf2ee8d86685f2a8075bc6557b1d3b91"
-MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -23,6 +23,9 @@ FILESPATH =. "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "${CONFIGS_PSP}
 
 SRC_URI += "git://arago-project.org/git/projects/linux-am33x.git;protocol=http;branch=${BRANCH} \
 	file://defconfig"
+
+SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
+SRC_URI_append_beaglebone = " file://logo_linux_clut224.ppm"
 
 PATCHES_OVER_PSP = " \
 	file://3.2.1/0001-MAINTAINERS-stable-Update-address.patch \
@@ -480,49 +483,142 @@ PATCHES_OVER_PSP = " \
 	file://3.2.9/0051-hwmon-max6639-Fix-PPR-register-initialization-to-set.patch \
 	file://3.2.9/0052-hwmon-ads1015-Fix-file-leak-in-probe-function.patch \
 	file://3.2.9/0053-ARM-omap-fix-oops-in-drivers-video-omap2-dss-dpi.c.patch \
-	file://3.2.9/0055-x86-amd-Fix-L1i-and-L2-cache-sharing-information-for.patch \
-	file://3.2.9/0056-ath9k-stop-on-rates-with-idx-1-in-ath9k-rate-control.patch \
-	file://3.2.9/0057-genirq-Unmask-oneshot-irqs-when-thread-was-not-woken.patch \
-	file://3.2.9/0058-genirq-Handle-pending-irqs-in-irq_startup.patch \
-	file://3.2.9/0059-scsi_scan-Fix-Poison-overwritten-warning-caused-by-u.patch \
-	file://3.2.9/0060-scsi_pm-Fix-bug-in-the-SCSI-power-management-handler.patch \
-	file://3.2.9/0061-ipvs-fix-matching-of-fwmark-templates-during-schedul.patch \
-	file://3.2.9/0062-jme-Fix-FIFO-flush-issue.patch \
-	file://3.2.9/0063-davinci_emac-Do-not-free-all-rx-dma-descriptors-duri.patch \
-	file://3.2.9/0064-builddeb-Don-t-create-files-in-tmp-with-predictable-.patch \
-	file://3.2.9/0065-can-sja1000-fix-isr-hang-when-hw-is-unplugged-under-.patch \
-	file://3.2.9/0066-hdpvr-fix-race-conditon-during-start-of-streaming.patch \
-	file://3.2.9/0067-imon-don-t-wedge-hardware-after-early-callbacks.patch \
-	file://3.2.9/0068-hwmon-f75375s-Fix-register-write-order-when-setting-.patch \
-	file://3.2.9/0069-epoll-introduce-POLLFREE-to-flush-signalfd_wqh-befor.patch \
-	file://3.2.9/0070-epoll-ep_unregister_pollwait-can-use-the-freed-pwq-w.patch \
-	file://3.2.9/0071-epoll-limit-paths.patch \
-	file://3.2.9/0072-cdrom-use-copy_to_user-without-the-underscores.patch \
-	file://3.2.9/0073-Linux-3.2.9.patch \
-	file://0002-f_rndis-HACK-around-undefined-variables.patch \
-	file://0003-da8xx-fb-add-DVI-support-for-beaglebone.patch \
-	file://0004-beaglebone-rebase-everything-onto-3.2-WARNING-MEGAPA.patch \
-	file://0005-more-beaglebone-merges.patch \
-	file://0006-beaglebone-disable-tsadc.patch \
-	file://0007-tscadc-Add-general-purpose-mode-untested-with-touchs.patch \
-	file://0008-tscadc-Add-board-file-mfd-support-fix-warning.patch \
-	file://0009-AM335X-init-tsc-bone-style-for-new-boards.patch \
-	file://0010-tscadc-make-stepconfig-channel-configurable.patch \
-	file://0011-tscadc-Trigger-through-sysfs.patch \
-	file://0012-meta-ti-Remove-debug-messages-for-meta-ti.patch \
-	file://0013-tscadc-switch-to-polling-instead-of-interrupts.patch \
-	file://0014-beaglebone-fix-ADC-init.patch \
-	file://0015-AM335x-MUX-add-ehrpwm1A.patch \
-	file://0016-beaglebone-enable-PWM-for-lcd-backlight-backlight-is.patch \
-	file://0017-omap_hsmmc-Set-dto-to-max-value-of-14-to-avoid-SD-Ca.patch \
-	file://0018-beaglebone-set-default-brightness-to-50-for-pwm-back.patch \
-	file://0019-st7735fb-WIP-framebuffer-driver-supporting-Adafruit-.patch \
-	file://0020-beaglebone-use-P8_6-gpio1_3-as-w1-bus.patch \
-	file://0021-beaglebone-add-support-for-Towertech-TT3201-CAN-cape.patch \
-	file://0022-ARM-OMAP2-am33xx-fix-serial-mux-warnings-for-am33xx.patch \
-	file://0023-ARM-OMAP2-am335x-correct-McASP0-pin-mux-detail.patch \
+	file://3.2.9/0054-x86-amd-Fix-L1i-and-L2-cache-sharing-information-for.patch \
+	file://3.2.9/0055-ath9k-stop-on-rates-with-idx-1-in-ath9k-rate-control.patch \
+	file://3.2.9/0056-genirq-Unmask-oneshot-irqs-when-thread-was-not-woken.patch \
+	file://3.2.9/0057-genirq-Handle-pending-irqs-in-irq_startup.patch \
+	file://3.2.9/0058-scsi_scan-Fix-Poison-overwritten-warning-caused-by-u.patch \
+	file://3.2.9/0059-scsi_pm-Fix-bug-in-the-SCSI-power-management-handler.patch \
+	file://3.2.9/0060-ipvs-fix-matching-of-fwmark-templates-during-schedul.patch \
+	file://3.2.9/0061-jme-Fix-FIFO-flush-issue.patch \
+	file://3.2.9/0062-davinci_emac-Do-not-free-all-rx-dma-descriptors-duri.patch \
+	file://3.2.9/0063-builddeb-Don-t-create-files-in-tmp-with-predictable-.patch \
+	file://3.2.9/0064-can-sja1000-fix-isr-hang-when-hw-is-unplugged-under-.patch \
+	file://3.2.9/0065-hdpvr-fix-race-conditon-during-start-of-streaming.patch \
+	file://3.2.9/0066-imon-don-t-wedge-hardware-after-early-callbacks.patch \
+	file://3.2.9/0067-hwmon-f75375s-Fix-register-write-order-when-setting-.patch \
+	file://3.2.9/0068-epoll-introduce-POLLFREE-to-flush-signalfd_wqh-befor.patch \
+	file://3.2.9/0069-epoll-ep_unregister_pollwait-can-use-the-freed-pwq-w.patch \
+	file://3.2.9/0070-epoll-limit-paths.patch \
+	file://3.2.9/0071-cdrom-use-copy_to_user-without-the-underscores.patch \
+	file://3.2.9/0072-Linux-3.2.9.patch \
+	file://3.2.10/0001-autofs-work-around-unhappy-compat-problem-on-x86-64.patch \
+	file://3.2.10/0002-Fix-autofs-compile-without-CONFIG_COMPAT.patch \
+	file://3.2.10/0003-compat-fix-compile-breakage-on-s390.patch \
+	file://3.2.10/0004-drm-i915-Prevent-a-machine-hang-by-checking-crtc-act.patch \
+	file://3.2.10/0005-ARM-LPC32xx-serial.c-HW-bug-workaround.patch \
+	file://3.2.10/0006-ARM-LPC32xx-serial.c-Fixed-loop-limit.patch \
+	file://3.2.10/0007-ARM-LPC32xx-irq.c-Clear-latched-event.patch \
+	file://3.2.10/0008-ARM-LPC32xx-Fix-interrupt-controller-init.patch \
+	file://3.2.10/0009-ARM-LPC32xx-Fix-irq-on-GPI_28.patch \
+	file://3.2.10/0010-watchdog-hpwdt-clean-up-set_memory_x-call-for-32-bit.patch \
+	file://3.2.10/0011-i2c-mxs-only-flag-completion-when-queue-is-completel.patch \
+	file://3.2.10/0012-regulator-fix-the-ldo-configure-according-to-88pm860.patch \
+	file://3.2.10/0013-S390-KEYS-Enable-the-compat-keyctl-wrapper-on-s390x.patch \
+	file://3.2.10/0014-perf-x86-kvm-Fix-Host-Only-Guest-Only-counting-with-.patch \
+	file://3.2.10/0015-ALSA-hda-realtek-Fix-resume-of-multiple-input-source.patch \
+	file://3.2.10/0016-ALSA-hda-Add-a-fake-mute-feature.patch \
+	file://3.2.10/0017-ALSA-hda-Always-set-HP-pin-in-unsol-handler-for-STAC.patch \
+	file://3.2.10/0018-regset-Prevent-null-pointer-reference-on-readonly-re.patch \
+	file://3.2.10/0019-regset-Return-EFAULT-not-EIO-on-host-side-memory-fau.patch \
+	file://3.2.10/0020-mfd-Fix-ACPI-conflict-check.patch \
+	file://3.2.10/0021-mfd-Test-for-jack-detection-when-deciding-if-wm8994-.patch \
+	file://3.2.10/0022-genirq-Clear-action-thread_mask-if-IRQ_ONESHOT-is-no.patch \
+	file://3.2.10/0023-ARM-S3C24XX-DMA-resume-regression-fix.patch \
+	file://3.2.10/0024-Move-Logitech-Harmony-900-from-cdc_ether-to-zaurus.patch \
+	file://3.2.10/0025-alpha-fix-32-64-bit-bug-in-futex-support.patch \
+	file://3.2.10/0026-mmc-atmel-mci-don-t-use-dma-features-when-using-DMA-.patch \
+	file://3.2.10/0027-mmc-sdhci-esdhc-imx-fix-for-mmc-cards-on-i.MX5.patch \
+	file://3.2.10/0028-aio-wake-up-waiters-when-freeing-unused-kiocbs.patch \
+	file://3.2.10/0029-mm-memcg-Correct-unregistring-of-events-attached-to-.patch \
+	file://3.2.10/0030-NOMMU-Don-t-need-to-clear-vm_mm-when-deleting-a-VMA.patch \
+	file://3.2.10/0031-cifs-fix-dentry-refcount-leak-when-opening-a-FIFO-on.patch \
+	file://3.2.10/0032-mac80211-zero-initialize-count-field-in-ieee80211_tx.patch \
+	file://3.2.10/0033-ath9k_hw-prevent-writes-to-const-data-on-AR9160.patch \
+	file://3.2.10/0034-kprobes-return-proper-error-code-from-register_kprob.patch \
+	file://3.2.10/0035-mm-thp-fix-BUG-on-mm-nr_ptes.patch \
+	file://3.2.10/0036-iwlwifi-fix-key-removal.patch \
+	file://3.2.10/0037-tty-powerpc-early-udbg-consoles-can-t-be-modules.patch \
+	file://3.2.10/0038-S390-qdio-fix-handler-function-arguments-for-zfcp-da.patch \
+	file://3.2.10/0039-rapidio-tsi721-fix-queue-wrapping-bug-in-inbound-doo.patch \
+	file://3.2.10/0040-HID-usbhid-Add-NOGET-quirk-for-the-AIREN-Slim-keyboa.patch \
+	file://3.2.10/0041-crypto-mv_cesa-fix-final-callback-not-ignoring-input.patch \
+	file://3.2.10/0042-osd_uld-Bump-MAX_OSD_DEVICES-from-64-to-1-048-576.patch \
+	file://3.2.10/0043-viafb-select-HW-scaling-on-VX900-for-IGA2.patch \
+	file://3.2.10/0044-viafb-fix-IGA1-modesetting-on-VX900.patch \
+	file://3.2.10/0045-ASoC-dapm-Check-for-bias-level-when-powering-down.patch \
+	file://3.2.10/0046-ASoC-i.MX-SSI-Fix-DSP_A-format.patch \
+	file://3.2.10/0047-bsg-fix-sysfs-link-remove-warning.patch \
+	file://3.2.10/0048-avr32-select-generic-atomic64_t-support.patch \
+	file://3.2.10/0049-ACPI-PM-Do-not-save-restore-NVS-on-Asus-K54C-K54HR.patch \
+	file://3.2.10/0050-rtl8192cu-Add-new-device-IDs.patch \
+	file://3.2.10/0051-drm-i915-gen7-implement-rczunit-workaround.patch \
+	file://3.2.10/0052-drm-i915-gen7-Implement-an-L3-caching-workaround.patch \
+	file://3.2.10/0053-drm-i915-gen7-work-around-a-system-hang-on-IVB.patch \
+	file://3.2.10/0054-drm-i915-gen7-Disable-the-RHWO-optimization-as-it-ca.patch \
+	file://3.2.10/0055-drm-i915-fix-ELD-writing-for-SandyBridge.patch \
+	file://3.2.10/0056-ARM-orion-Fix-USB-phy-for-orion5x.patch \
+	file://3.2.10/0057-ARM-orion-Fix-Orion5x-GPIO-regression-from-MPP-clean.patch \
+	file://3.2.10/0058-OMAP-4430SDP-Panda-use-gpio_free_array-to-free-HDMI-.patch \
+	file://3.2.10/0059-OMAP-4430SDP-Panda-rename-HPD-GPIO-to-CT_CP_HPD.patch \
+	file://3.2.10/0060-OMAPDSS-remove-wrong-HDMI-HPD-muxing.patch \
+	file://3.2.10/0061-OMAP-4430SDP-Panda-setup-HDMI-GPIO-muxes.patch \
+	file://3.2.10/0062-OMAP-4430SDP-Panda-add-HDMI-HPD-gpio.patch \
+	file://3.2.10/0063-OMAPDSS-HDMI-PHY-burnout-fix.patch \
+	file://3.2.10/0064-OMAPDSS-HDMI-hot-plug-detect-fix.patch \
+	file://3.2.10/0065-ARM-7345-1-errata-update-workaround-for-A9-erratum-7.patch \
+	file://3.2.10/0066-ARM-7354-1-perf-limit-sample_period-to-half-max_peri.patch \
+	file://3.2.10/0067-ARM-7355-1-perf-clear-overflow-flag-when-disabling-c.patch \
+	file://3.2.10/0068-ARM-7356-1-perf-check-that-we-have-an-event-in-the-P.patch \
+	file://3.2.10/0069-ARM-7357-1-perf-fix-overflow-handling-for-xscale2-PM.patch \
+	file://3.2.10/0070-media-staging-lirc_serial-Fix-init-exit-order.patch \
+	file://3.2.10/0071-media-staging-lirc_serial-Free-resources-on-failure-.patch \
+	file://3.2.10/0072-media-staging-lirc_serial-Fix-deadlock-on-resume-fai.patch \
+	file://3.2.10/0073-media-staging-lirc_serial-Do-not-assume-error-codes-.patch \
+	file://3.2.10/0074-Input-ALPS-fix-touchpad-detection-when-buttons-are-p.patch \
+	file://3.2.10/0075-hwmon-pmbus_core-Fix-maximum-number-of-POUT-alarm-at.patch \
+	file://3.2.10/0076-hwmon-jc42-Add-support-for-ST-Microelectronics-STTS2.patch \
+	file://3.2.10/0077-hwmon-jc42-Add-support-for-AT30TS00-TS3000GB2-TSE200.patch \
+	file://3.2.10/0078-hwmon-zl6100-Maintain-delay-parameter-in-driver-inst.patch \
+	file://3.2.10/0079-carl9170-Fix-memory-accounting-when-sta-is-in-power-.patch \
+	file://3.2.10/0080-carl9170-fix-frame-delivery-if-sta-is-in-powersave-m.patch \
+	file://3.2.10/0081-drm-radeon-kms-set-SX_MISC-in-the-r6xx-blit-code-v2.patch \
+	file://3.2.10/0082-net-usbnet-avoid-recursive-locking-in-usbnet_stop.patch \
+	file://3.2.10/0083-x86-amd-iommu_set_device_table-must-not-be-__init.patch \
+	file://3.2.10/0084-dm-ioctl-do-not-leak-argv-if-target-message-only-con.patch \
+	file://3.2.10/0085-dm-io-fix-discard-support.patch \
+	file://3.2.10/0086-dm-flakey-fix-crash-on-read-when-corrupt_bio_byte-no.patch \
+	file://3.2.10/0087-dm-thin-metadata-remove-incorrect-close_device-on-cr.patch \
+	file://3.2.10/0088-dm-thin-metadata-unlock-superblock-in-init_pmd-error.patch \
+	file://3.2.10/0089-dm-thin-metadata-decrement-counter-after-removing-ma.patch \
+	file://3.2.10/0090-dm-raid-set-MD_CHANGE_DEVS-when-rebuilding.patch \
+	file://3.2.10/0091-dm-raid-fix-flush-support.patch \
+	file://3.2.10/0092-cs5535-mfgpt-don-t-call-__init-function-from-__devin.patch \
+	file://3.2.10/0093-mfd-Fix-cs5535-section-mismatch.patch \
+	file://3.2.10/0094-spi-topcliff-pch-rename-pch_spi_pcidev-to-pch_spi_pc.patch \
+	file://3.2.10/0095-Linux-3.2.10.patch \
+	file://3.2.11/0001-Revert-mfd-Test-for-jack-detection-when-deciding-if-.patch \
+	file://3.2.11/0002-Linux-3.2.11.patch \
+	file://beaglebone/0001-f_rndis-HACK-around-undefined-variables.patch \
+	file://beaglebone/0002-da8xx-fb-add-DVI-support-for-beaglebone.patch \
+	file://beaglebone/0003-beaglebone-rebase-everything-onto-3.2-WARNING-MEGAPA.patch \
+	file://beaglebone/0004-more-beaglebone-merges.patch \
+	file://beaglebone/0005-beaglebone-disable-tsadc.patch \
+	file://beaglebone/0006-tscadc-Add-general-purpose-mode-untested-with-touchs.patch \
+	file://beaglebone/0007-tscadc-Add-board-file-mfd-support-fix-warning.patch \
+	file://beaglebone/0008-AM335X-init-tsc-bone-style-for-new-boards.patch \
+	file://beaglebone/0009-tscadc-make-stepconfig-channel-configurable.patch \
+	file://beaglebone/0010-tscadc-Trigger-through-sysfs.patch \
+	file://beaglebone/0011-meta-ti-Remove-debug-messages-for-meta-ti.patch \
+	file://beaglebone/0012-tscadc-switch-to-polling-instead-of-interrupts.patch \
+	file://beaglebone/0013-beaglebone-fix-ADC-init.patch \
+	file://beaglebone/0014-AM335x-MUX-add-ehrpwm1A.patch \
+	file://beaglebone/0015-beaglebone-enable-PWM-for-lcd-backlight-backlight-is.patch \
+	file://beaglebone/0016-omap_hsmmc-Set-dto-to-max-value-of-14-to-avoid-SD-Ca.patch \
+	file://beaglebone/0017-beaglebone-set-default-brightness-to-50-for-pwm-back.patch \
+	file://beaglebone/0018-st7735fb-WIP-framebuffer-driver-supporting-Adafruit-.patch \
+	file://beaglebone/0019-beaglebone-use-P8_6-gpio1_3-as-w1-bus.patch \
+	file://beaglebone/0020-beaglebone-add-support-for-Towertech-TT3201-CAN-cape.patch \
+	file://beaglebone/0021-ARM-OMAP2-am33xx-fix-serial-mux-warnings-for-am33xx.patch \
+	file://beaglebone/0022-ARM-OMAP2-am335x-correct-McASP0-pin-mux-detail.patch \
 "
-
-SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
-SRC_URI_append_beaglebone = " file://logo_linux_clut224.ppm"
-

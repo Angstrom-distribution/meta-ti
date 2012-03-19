@@ -1,4 +1,4 @@
-From 4adb778fc31d3c9c7707167165b07138f31c78c4 Mon Sep 17 00:00:00 2001
+From fd9b7416ae26e584935f0a1fdf215fb318c54b07 Mon Sep 17 00:00:00 2001
 From: Paolo Bonzini <pbonzini@redhat.com>
 Date: Thu, 12 Jan 2012 16:01:27 +0100
 Subject: [PATCH 090/130] block: add and use scsi_blk_cmd_ioctl
@@ -162,5 +162,5 @@ index 94acd81..ca7b869 100644
  			  unsigned int, void __user *);
  extern int sg_scsi_ioctl(struct request_queue *, struct gendisk *, fmode_t,
 -- 
-1.7.7.4
+1.7.9.4
 

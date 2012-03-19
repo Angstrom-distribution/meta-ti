@@ -1,4 +1,4 @@
-From 7435d88f019f5550cf2d481b582e17ad65b061c0 Mon Sep 17 00:00:00 2001
+From 1abfab7c1e994f5b4419387491666091141f9dbf Mon Sep 17 00:00:00 2001
 From: Richard Weinberger <rw@linutronix.de>
 Date: Thu, 22 Dec 2011 16:12:57 +0100
 Subject: [PATCH 054/130] UBI: make vid_hdr non-static
@@ -16,7 +16,7 @@ Signed-off-by: Artem Bityutskiy <artem.bityutskiy@linux.intel.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  drivers/mtd/ubi/vtbl.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/mtd/ubi/vtbl.c b/drivers/mtd/ubi/vtbl.c
 index 9ad18da..890754c 100644
@@ -32,5 +32,5 @@ index 9ad18da..890754c 100644
  
  	ubi_msg("create volume table (copy #%d)", copy + 1);
 -- 
-1.7.7.4
+1.7.9.4
 

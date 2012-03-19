@@ -1,4 +1,4 @@
-From dedf47c7159cb4b5d1744557aa744145f161eac5 Mon Sep 17 00:00:00 2001
+From a440374ae75fd885b2b2d0c2fd932affa09ca0e9 Mon Sep 17 00:00:00 2001
 From: Jiri Olsa <jolsa@redhat.com>
 Date: Mon, 5 Dec 2011 18:22:48 +0100
 Subject: [PATCH 063/130] ftrace: Fix unregister ftrace_ops accounting
@@ -104,7 +104,7 @@ Signed-off-by: Steven Rostedt <rostedt@goodmis.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  kernel/trace/ftrace.c |   27 +++++++++++++--------------
- 1 files changed, 13 insertions(+), 14 deletions(-)
+ 1 file changed, 13 insertions(+), 14 deletions(-)
 
 diff --git a/kernel/trace/ftrace.c b/kernel/trace/ftrace.c
 index b1e8943..25b4f4d 100644
@@ -223,5 +223,5 @@ index b1e8943..25b4f4d 100644
  		mutex_unlock(&ftrace_lock);
  	}
 -- 
-1.7.7.4
+1.7.9.4
 

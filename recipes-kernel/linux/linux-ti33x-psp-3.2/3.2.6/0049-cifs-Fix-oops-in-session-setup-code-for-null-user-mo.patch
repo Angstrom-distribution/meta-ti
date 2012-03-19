@@ -1,4 +1,4 @@
-From 85f2f3e05e8e0deec4fc8b751324f91acb276d21 Mon Sep 17 00:00:00 2001
+From e0a7f0f91350c70df6f6525ebf80859c4536e10d Mon Sep 17 00:00:00 2001
 From: Shirish Pargaonkar <shirishpargaonkar@gmail.com>
 Date: Thu, 2 Feb 2012 15:28:28 -0600
 Subject: [PATCH 49/87] cifs: Fix oops in session setup code for null user
@@ -16,7 +16,7 @@ Signed-off-by: Steve French <smfrench@gmail.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  fs/cifs/sess.c |    7 +++----
- 1 files changed, 3 insertions(+), 4 deletions(-)
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/fs/cifs/sess.c b/fs/cifs/sess.c
 index 4ec3ee9..2504809 100644
@@ -43,5 +43,5 @@ index 4ec3ee9..2504809 100644
  		strncpy(bcc_ptr, ses->domainName, 256);
  		bcc_ptr += strnlen(ses->domainName, 256);
 -- 
-1.7.7.4
+1.7.9.4
 

@@ -1,4 +1,4 @@
-From 7e1c31ad0d3116ac301e5d6ef6df036eec548229 Mon Sep 17 00:00:00 2001
+From 9e050cc5ce9a3890b8bcd2ec63b81921719cba83 Mon Sep 17 00:00:00 2001
 From: Brian Norris <computersforpeace@gmail.com>
 Date: Mon, 7 Nov 2011 15:51:05 -0800
 Subject: [PATCH 003/130] mtd: mtd_blkdevs: don't increase 'open' count on
@@ -57,7 +57,7 @@ Signed-off-by: David Woodhouse <David.Woodhouse@intel.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  drivers/mtd/mtd_blkdevs.c |    3 ++-
- 1 files changed, 2 insertions(+), 1 deletions(-)
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/mtd/mtd_blkdevs.c b/drivers/mtd/mtd_blkdevs.c
 index ed8b5e7..424ca5f 100644
@@ -81,5 +81,5 @@ index ed8b5e7..424ca5f 100644
  	blktrans_dev_put(dev);
  	return ret;
 -- 
-1.7.7.4
+1.7.9.4
 

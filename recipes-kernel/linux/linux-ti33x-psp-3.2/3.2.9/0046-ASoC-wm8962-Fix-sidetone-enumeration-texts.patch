@@ -1,7 +1,7 @@
-From 8fb548906ee57c17c6a770007075b92b1a9d89b6 Mon Sep 17 00:00:00 2001
+From 5e37abd88b778975e31615fb27be99b0de88b9c9 Mon Sep 17 00:00:00 2001
 From: Mark Brown <broonie@opensource.wolfsonmicro.com>
 Date: Mon, 13 Feb 2012 22:00:47 -0800
-Subject: [PATCH 46/73] ASoC: wm8962: Fix sidetone enumeration texts
+Subject: [PATCH 46/72] ASoC: wm8962: Fix sidetone enumeration texts
 
 commit 31794bc37bf2db84f085da52b72bfba65739b2d2 upstream.
 
@@ -11,7 +11,7 @@ Signed-off-by: Mark Brown <broonie@opensource.wolfsonmicro.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  sound/soc/codecs/wm8962.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/sound/soc/codecs/wm8962.c b/sound/soc/codecs/wm8962.c
 index d795294..07dd7eb 100644
@@ -27,5 +27,5 @@ index d795294..07dd7eb 100644
  static const struct soc_enum str_enum =
  	SOC_ENUM_SINGLE(WM8962_DAC_DSP_MIXING_1, 2, 3, st_text);
 -- 
-1.7.7.4
+1.7.9.4
 

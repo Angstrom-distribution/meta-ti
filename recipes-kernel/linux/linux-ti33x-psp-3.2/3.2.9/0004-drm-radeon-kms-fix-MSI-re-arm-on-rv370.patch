@@ -1,7 +1,7 @@
-From 74d54f57ce5ae36b8e74cab2a349edb614f1b5cb Mon Sep 17 00:00:00 2001
+From d8981763b4d9a3eb23de25d46f474ed4c880179e Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Mon, 13 Feb 2012 16:36:34 -0500
-Subject: [PATCH 04/73] drm/radeon/kms: fix MSI re-arm on rv370+
+Subject: [PATCH 04/72] drm/radeon/kms: fix MSI re-arm on rv370+
 
 commit b7f5b7dec3d539a84734f2bcb7e53fbb1532a40b upstream.
 
@@ -50,5 +50,5 @@ index c259e21..ee898e9 100644
  		}
  	}
 -- 
-1.7.7.4
+1.7.9.4
 

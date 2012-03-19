@@ -1,4 +1,4 @@
-From b2b56aa7932508ce3a81187a68e6a558268efc35 Mon Sep 17 00:00:00 2001
+From 317d33b7d9f1ae588576781c738a4f7e187c4385 Mon Sep 17 00:00:00 2001
 From: Jan Kara <jack@suse.cz>
 Date: Sat, 10 Dec 2011 02:30:48 +0100
 Subject: [PATCH 32/49] udf: Fix deadlock when converting file from in-ICB one
@@ -126,5 +126,5 @@ index 4fd1d80..e2787d0 100644
  				iinfo->i_lenAlloc = newsize;
  		}
 -- 
-1.7.7.4
+1.7.9.4
 

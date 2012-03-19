@@ -1,4 +1,4 @@
-From f245d82f78e86e6c7ac4965cfc272a8c95ab8cac Mon Sep 17 00:00:00 2001
+From ddef510f3f47839e2c1c9498aba0ed5ef09fd792 Mon Sep 17 00:00:00 2001
 From: Dave Chinner <dchinner@redhat.com>
 Date: Wed, 18 Jan 2012 14:41:45 -0600
 Subject: [PATCH 119/130] xfs: fix endian conversion issue in discard code
@@ -16,7 +16,7 @@ Signed-off-by: Ben Myers <bpm@sgi.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  fs/xfs/xfs_discard.c |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/fs/xfs/xfs_discard.c b/fs/xfs/xfs_discard.c
 index 8a24f0c..286a051 100644
@@ -41,5 +41,5 @@ index 8a24f0c..286a051 100644
  		/*
  		 * Too small?  Give up.
 -- 
-1.7.7.4
+1.7.9.4
 

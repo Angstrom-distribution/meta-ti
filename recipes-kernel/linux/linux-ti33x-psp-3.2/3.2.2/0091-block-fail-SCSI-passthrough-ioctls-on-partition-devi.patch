@@ -1,4 +1,4 @@
-From b4bc30558b98e2eba6f6d86239d49bf3d60015cb Mon Sep 17 00:00:00 2001
+From 5c9da4628ea28104cb0ec862b8564e413e7615db Mon Sep 17 00:00:00 2001
 From: Paolo Bonzini <pbonzini@redhat.com>
 Date: Thu, 12 Jan 2012 16:01:28 +0100
 Subject: [PATCH 091/130] block: fail SCSI passthrough ioctls on partition
@@ -162,5 +162,5 @@ index ca7b869..0ed1eb0 100644
  			      unsigned int, void __user *);
  extern int scsi_cmd_ioctl(struct request_queue *, struct gendisk *, fmode_t,
 -- 
-1.7.7.4
+1.7.9.4
 

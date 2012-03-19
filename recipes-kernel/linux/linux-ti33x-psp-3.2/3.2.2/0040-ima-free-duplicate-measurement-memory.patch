@@ -1,4 +1,4 @@
-From 52e6ae83dbb962de0a33d2cd1b610cdfd0a09b0d Mon Sep 17 00:00:00 2001
+From 20da29ae3a7382bd51c44de1e5f5e8220b9f21b0 Mon Sep 17 00:00:00 2001
 From: Roberto Sassu <roberto.sassu@polito.it>
 Date: Mon, 19 Dec 2011 15:57:27 +0100
 Subject: [PATCH 040/130] ima: free duplicate measurement memory
@@ -48,5 +48,5 @@ index 8e28f04..e1a5062 100644
  		}
  	}
 -- 
-1.7.7.4
+1.7.9.4
 

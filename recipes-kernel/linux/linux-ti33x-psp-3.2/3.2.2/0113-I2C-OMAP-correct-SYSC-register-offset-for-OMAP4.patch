@@ -1,4 +1,4 @@
-From 9d4b4b0db1a41d1ec947a28c1bae7685211d934d Mon Sep 17 00:00:00 2001
+From f7455ca607fd743b247e01c51d4558ff4f4b0e23 Mon Sep 17 00:00:00 2001
 From: Alexander Aring <a.aring@phytec.de>
 Date: Thu, 8 Dec 2011 15:43:53 +0100
 Subject: [PATCH 113/130] I2C: OMAP: correct SYSC register offset for OMAP4
@@ -14,7 +14,7 @@ Signed-off-by: Kevin Hilman <khilman@ti.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  drivers/i2c/busses/i2c-omap.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/i2c/busses/i2c-omap.c b/drivers/i2c/busses/i2c-omap.c
 index 82fff06..e0733b7 100644
@@ -30,5 +30,5 @@ index 82fff06..e0733b7 100644
  	[OMAP_I2C_OA_REG] = 0xa8,
  	[OMAP_I2C_SA_REG] = 0xac,
 -- 
-1.7.7.4
+1.7.9.4
 

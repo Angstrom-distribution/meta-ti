@@ -1,4 +1,4 @@
-From 483f23031ea337d0abf4392186bdfd2b8ae5dce3 Mon Sep 17 00:00:00 2001
+From 7d09634d53fa1f102121d718ca837ebae0fdce18 Mon Sep 17 00:00:00 2001
 From: Linus Torvalds <torvalds@linux-foundation.org>
 Date: Tue, 17 Jan 2012 15:21:19 -0800
 Subject: [PATCH 093/130] proc: clean up and fix /proc/<pid>/mem handling
@@ -33,7 +33,7 @@ Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  fs/proc/base.c |  145 +++++++++++++++-----------------------------------------
- 1 files changed, 39 insertions(+), 106 deletions(-)
+ 1 file changed, 39 insertions(+), 106 deletions(-)
 
 diff --git a/fs/proc/base.c b/fs/proc/base.c
 index 851ba3d..1fc1dca 100644
@@ -267,5 +267,5 @@ index 851ba3d..1fc1dca 100644
  
  static ssize_t environ_read(struct file *file, char __user *buf,
 -- 
-1.7.7.4
+1.7.9.4
 

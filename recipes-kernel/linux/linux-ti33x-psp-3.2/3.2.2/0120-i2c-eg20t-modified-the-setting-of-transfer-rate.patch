@@ -1,4 +1,4 @@
-From 6bbe2a11996ac0900c43c0729b2574d96d191608 Mon Sep 17 00:00:00 2001
+From 8d6915d8e53d9b080f079af5891d109011c6b112 Mon Sep 17 00:00:00 2001
 From: Toshiharu Okada <toshiharu-linux@dsn.okisemi.com>
 Date: Mon, 26 Sep 2011 16:16:23 +0900
 Subject: [PATCH 120/130] i2c-eg20t: modified the setting of transfer rate.
@@ -13,7 +13,7 @@ Signed-off-by: Ben Dooks <ben-linux@fluff.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  drivers/i2c/busses/i2c-eg20t.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/i2c/busses/i2c-eg20t.c b/drivers/i2c/busses/i2c-eg20t.c
 index 18936ac..730215e 100644
@@ -29,5 +29,5 @@ index 18936ac..730215e 100644
  	iowrite32(pch_i2cbc, p + PCH_I2CBC);
  
 -- 
-1.7.7.4
+1.7.9.4
 

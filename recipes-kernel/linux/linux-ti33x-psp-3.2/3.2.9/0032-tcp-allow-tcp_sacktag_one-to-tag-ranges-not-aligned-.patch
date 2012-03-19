@@ -1,7 +1,7 @@
-From aaa9bcd96008a3d7879c3a679625c7ff61b6360b Mon Sep 17 00:00:00 2001
+From 4387753e32179f5e4ef62572b7f06f77d8c37330 Mon Sep 17 00:00:00 2001
 From: Neal Cardwell <ncardwell@google.com>
 Date: Sun, 12 Feb 2012 18:37:09 +0000
-Subject: [PATCH 32/73] tcp: allow tcp_sacktag_one() to tag ranges not aligned
+Subject: [PATCH 32/72] tcp: allow tcp_sacktag_one() to tag ranges not aligned
  with skbs
 
 [ Upstream commit cc9a672ee522d4805495b98680f4a3db5d0a0af9 ]
@@ -18,7 +18,7 @@ Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  net/ipv4/tcp_input.c |   36 ++++++++++++++++++++++--------------
- 1 files changed, 22 insertions(+), 14 deletions(-)
+ 1 file changed, 22 insertions(+), 14 deletions(-)
 
 diff --git a/net/ipv4/tcp_input.c b/net/ipv4/tcp_input.c
 index 52b5c2d..41440f1 100644
@@ -115,5 +115,5 @@ index 52b5c2d..41440f1 100644
  			if (!before(TCP_SKB_CB(skb)->seq,
  				    tcp_highest_sack_seq(tp)))
 -- 
-1.7.7.4
+1.7.9.4
 

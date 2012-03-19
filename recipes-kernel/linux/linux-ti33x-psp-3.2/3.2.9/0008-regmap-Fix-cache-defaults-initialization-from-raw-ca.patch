@@ -1,7 +1,7 @@
-From 2a66303d51a096182e881319aef517e4847de32b Mon Sep 17 00:00:00 2001
+From 8aff5c7aa69b29b924063b4424cf5ff5823b3fd1 Mon Sep 17 00:00:00 2001
 From: Lars-Peter Clausen <lars@metafoo.de>
 Date: Wed, 15 Feb 2012 10:23:25 +0100
-Subject: [PATCH 08/73] regmap: Fix cache defaults initialization from raw
+Subject: [PATCH 08/72] regmap: Fix cache defaults initialization from raw
  cache defaults
 
 commit 61cddc57dc14a5dffa0921d9a24fd68edbb374ac upstream.
@@ -24,7 +24,7 @@ Signed-off-by: Mark Brown <broonie@opensource.wolfsonmicro.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  drivers/base/regmap/regcache.c |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/base/regmap/regcache.c b/drivers/base/regmap/regcache.c
 index 666f6f5..64004b0 100644
@@ -49,5 +49,5 @@ index 666f6f5..64004b0 100644
  		map->reg_defaults[j].reg = i;
  		map->reg_defaults[j].def = val;
 -- 
-1.7.7.4
+1.7.9.4
 

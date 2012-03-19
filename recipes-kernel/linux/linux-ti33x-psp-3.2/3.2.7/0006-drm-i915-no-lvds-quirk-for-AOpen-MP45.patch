@@ -1,4 +1,4 @@
-From e0de290452ad63560c1051b1f0a3d2fba665094e Mon Sep 17 00:00:00 2001
+From 9cacfb00d741b68404612ba454125c99e1c28382 Mon Sep 17 00:00:00 2001
 From: Daniel Vetter <daniel.vetter@ffwll.ch>
 Date: Wed, 8 Feb 2012 16:42:52 +0100
 Subject: [PATCH 06/30] drm/i915: no lvds quirk for AOpen MP45
@@ -14,7 +14,7 @@ Signed-off-by: Keith Packard <keithp@keithp.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  drivers/gpu/drm/i915/intel_lvds.c |    8 ++++++++
- 1 files changed, 8 insertions(+), 0 deletions(-)
+ 1 file changed, 8 insertions(+)
 
 diff --git a/drivers/gpu/drm/i915/intel_lvds.c b/drivers/gpu/drm/i915/intel_lvds.c
 index e441911..b83f745 100644
@@ -36,5 +36,5 @@ index e441911..b83f745 100644
  		.matches = {
  			DMI_MATCH(DMI_PRODUCT_VERSION, "AO00001JW"),
 -- 
-1.7.7.4
+1.7.9.4
 

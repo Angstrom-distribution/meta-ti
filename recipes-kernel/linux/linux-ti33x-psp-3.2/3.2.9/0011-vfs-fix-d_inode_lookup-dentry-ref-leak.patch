@@ -1,7 +1,7 @@
-From 3c40e5e0828215d90ab4374405019cd5d170615b Mon Sep 17 00:00:00 2001
+From e221415cd0f639fc061e48a8edcfd2658fa6c440 Mon Sep 17 00:00:00 2001
 From: Miklos Szeredi <mszeredi@suse.cz>
 Date: Fri, 3 Feb 2012 14:25:18 +0100
-Subject: [PATCH 11/73] vfs: fix d_inode_lookup() dentry ref leak
+Subject: [PATCH 11/72] vfs: fix d_inode_lookup() dentry ref leak
 
 commit e188dc02d3a9c911be56eca5aa114fe7e9822d53 upstream.
 
@@ -12,7 +12,7 @@ Signed-off-by: Al Viro <viro@zeniv.linux.org.uk>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  fs/namei.c |    4 +++-
- 1 files changed, 3 insertions(+), 1 deletions(-)
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/fs/namei.c b/fs/namei.c
 index 5008f01..744e942 100644
@@ -31,5 +31,5 @@ index 5008f01..744e942 100644
  	old = inode->i_op->lookup(inode, dentry, nd);
  	if (unlikely(old)) {
 -- 
-1.7.7.4
+1.7.9.4
 

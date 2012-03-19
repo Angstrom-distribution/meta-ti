@@ -1,4 +1,4 @@
-From 8662eba088f07fc218cd70a54eb75f19dd89121b Mon Sep 17 00:00:00 2001
+From 5be98e8ad61eb5fb868590255329e30408707c1b Mon Sep 17 00:00:00 2001
 From: Stanislaw Gruszka <sgruszka@redhat.com>
 Date: Fri, 23 Dec 2011 08:13:50 +0100
 Subject: [PATCH 127/130] iwlegacy: 3945: fix hw passive scan on radar
@@ -30,7 +30,7 @@ Signed-off-by: John W. Linville <linville@tuxdriver.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  drivers/net/wireless/iwlegacy/iwl3945-base.c |    9 ++++-----
- 1 files changed, 4 insertions(+), 5 deletions(-)
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/net/wireless/iwlegacy/iwl3945-base.c b/drivers/net/wireless/iwlegacy/iwl3945-base.c
 index b282d86..05f2ad1 100644
@@ -56,5 +56,5 @@ index b282d86..05f2ad1 100644
  	len = iwl_legacy_fill_probe_req(priv, (struct ieee80211_mgmt *)scan->data,
  					vif->addr, priv->scan_request->ie,
 -- 
-1.7.7.4
+1.7.9.4
 

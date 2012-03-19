@@ -1,4 +1,4 @@
-From 37a4221e9e94eb1841d5367baba68e31b0c29d4b Mon Sep 17 00:00:00 2001
+From e6eeafa7a6932f54162e6412135d5ff6e3aabe9b Mon Sep 17 00:00:00 2001
 From: Pavel Hofman <pavel.hofman@ivitera.com>
 Date: Thu, 5 Jan 2012 23:05:18 +0100
 Subject: [PATCH 011/130] ALSA: ice1724 - Check for ac97 to avoid kernel oops
@@ -13,7 +13,7 @@ Signed-off-by: Takashi Iwai <tiwai@suse.de>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  sound/pci/ice1712/amp.c |    7 +++++--
- 1 files changed, 5 insertions(+), 2 deletions(-)
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/sound/pci/ice1712/amp.c b/sound/pci/ice1712/amp.c
 index e328cfb..e525da2 100644
@@ -34,5 +34,5 @@ index e328cfb..e525da2 100644
  }
  
 -- 
-1.7.7.4
+1.7.9.4
 

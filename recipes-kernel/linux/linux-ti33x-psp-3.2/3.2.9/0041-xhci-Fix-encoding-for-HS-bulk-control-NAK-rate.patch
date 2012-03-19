@@ -1,7 +1,7 @@
-From 0eec53088be92edf907c345ff96d94059d89f124 Mon Sep 17 00:00:00 2001
+From d32148ecb8f71e584a880ef74f1cfb590bcead55 Mon Sep 17 00:00:00 2001
 From: Sarah Sharp <sarah.a.sharp@linux.intel.com>
 Date: Mon, 13 Feb 2012 14:42:11 -0800
-Subject: [PATCH 41/73] xhci: Fix encoding for HS bulk/control NAK rate.
+Subject: [PATCH 41/72] xhci: Fix encoding for HS bulk/control NAK rate.
 
 commit 340a3504fd39dad753ba908fb6f894ee81fc3ae2 upstream.
 
@@ -28,7 +28,7 @@ Suggested-by: Andiry Xu <andiry.xu@amd.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  drivers/usb/host/xhci-mem.c |   32 ++++++++++++++++++++++++--------
- 1 files changed, 24 insertions(+), 8 deletions(-)
+ 1 file changed, 24 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/usb/host/xhci-mem.c b/drivers/usb/host/xhci-mem.c
 index 0e4b25f..c69cf54 100644
@@ -94,5 +94,5 @@ index 0e4b25f..c69cf54 100644
  		}
  		/* Fall through - SS and HS isoc/int have same decoding */
 -- 
-1.7.7.4
+1.7.9.4
 

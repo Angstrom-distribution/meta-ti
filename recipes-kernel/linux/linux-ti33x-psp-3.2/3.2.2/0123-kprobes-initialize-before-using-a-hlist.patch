@@ -1,4 +1,4 @@
-From 4dbd29bd7e0b2a712370f8d0c25d025d996edbc1 Mon Sep 17 00:00:00 2001
+From 7e71cd56cf6675bb6ffebddbc6fae6cc1bc17d4d Mon Sep 17 00:00:00 2001
 From: Ananth N Mavinakayanahalli <ananth@in.ibm.com>
 Date: Fri, 20 Jan 2012 14:34:04 -0800
 Subject: [PATCH 123/130] kprobes: initialize before using a hlist
@@ -22,7 +22,7 @@ Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  kernel/kprobes.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/kernel/kprobes.c b/kernel/kprobes.c
 index e5d8464..52fd049 100644
@@ -45,5 +45,5 @@ index e5d8464..52fd049 100644
  		hlist_del(&ri->hlist);
  		kfree(ri);
 -- 
-1.7.7.4
+1.7.9.4
 

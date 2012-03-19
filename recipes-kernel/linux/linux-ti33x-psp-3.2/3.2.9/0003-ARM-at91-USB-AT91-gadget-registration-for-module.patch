@@ -1,7 +1,7 @@
-From 4f89dcb180bf8f614410c8fd9cb2ab1d951155b1 Mon Sep 17 00:00:00 2001
+From a6ee86920e1888c173cabbc4e6dabfd12e68270b Mon Sep 17 00:00:00 2001
 From: Nicolas Ferre <nicolas.ferre@atmel.com>
 Date: Fri, 27 Jan 2012 11:14:44 +0100
-Subject: [PATCH 03/73] ARM: at91: USB AT91 gadget registration for module
+Subject: [PATCH 03/72] ARM: at91: USB AT91 gadget registration for module
 
 commit e8c9dc93e27d891636defbc269f182a83e6abba8 upstream.
 
@@ -74,5 +74,5 @@ index d5fbac9..32a7e43 100644
  
  static struct resource udc_resources[] = {
 -- 
-1.7.7.4
+1.7.9.4
 

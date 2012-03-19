@@ -1,4 +1,4 @@
-From 1b3cf92e4f993769ceaf78263ccebc8eaf67a804 Mon Sep 17 00:00:00 2001
+From 45ed8ba5d25772dde8ca17b50a3f5f64ceb9633e Mon Sep 17 00:00:00 2001
 From: Artem Bityutskiy <artem.bityutskiy@linux.intel.com>
 Date: Tue, 10 Jan 2012 19:32:30 +0200
 Subject: [PATCH 055/130] UBIFS: fix debugging messages
@@ -18,7 +18,7 @@ Signed-off-by: Artem Bityutskiy <artem.bityutskiy@linux.intel.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  fs/ubifs/debug.h |    5 ++++-
- 1 files changed, 4 insertions(+), 1 deletions(-)
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/fs/ubifs/debug.h b/fs/ubifs/debug.h
 index 8d9c468..3f65829 100644
@@ -37,5 +37,5 @@ index 8d9c468..3f65829 100644
  #define dbg_gen(fmt, ...)   ubifs_dbg_msg("gen", fmt, ##__VA_ARGS__)
  /* Additional journal messages */
 -- 
-1.7.7.4
+1.7.9.4
 

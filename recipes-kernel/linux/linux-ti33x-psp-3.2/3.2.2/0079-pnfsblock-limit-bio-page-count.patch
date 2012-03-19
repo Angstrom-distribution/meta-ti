@@ -1,4 +1,4 @@
-From 4ebc5f6665b0d03c9488fafb7ac6f8bd2f104d70 Mon Sep 17 00:00:00 2001
+From c4fcaffd613b46fc4257023138c60d8f164bf584 Mon Sep 17 00:00:00 2001
 From: Peng Tao <bergwolf@gmail.com>
 Date: Thu, 12 Jan 2012 23:18:48 +0800
 Subject: [PATCH 079/130] pnfsblock: limit bio page count
@@ -14,7 +14,7 @@ Signed-off-by: Trond Myklebust <Trond.Myklebust@netapp.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  fs/nfs/blocklayout/blocklayout.c |   17 +++++++++++------
- 1 files changed, 11 insertions(+), 6 deletions(-)
+ 1 file changed, 11 insertions(+), 6 deletions(-)
 
 diff --git a/fs/nfs/blocklayout/blocklayout.c b/fs/nfs/blocklayout/blocklayout.c
 index ce8129d..3db6b82 100644
@@ -47,5 +47,5 @@ index ce8129d..3db6b82 100644
  }
  
 -- 
-1.7.7.4
+1.7.9.4
 

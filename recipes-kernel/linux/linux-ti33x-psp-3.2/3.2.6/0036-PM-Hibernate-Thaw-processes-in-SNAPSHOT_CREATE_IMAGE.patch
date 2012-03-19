@@ -1,4 +1,4 @@
-From 26b67a54a31d8e18f66f52d6bae4907963648d3c Mon Sep 17 00:00:00 2001
+From acedd2d4a628503e05c4c6e8d344399738d6f4bc Mon Sep 17 00:00:00 2001
 From: "Srivatsa S. Bhat" <srivatsa.bhat@linux.vnet.ibm.com>
 Date: Thu, 1 Dec 2011 22:33:10 +0100
 Subject: [PATCH 36/87] PM / Hibernate: Thaw processes in
@@ -79,5 +79,5 @@ index 3565b15..f08bbfb 100644
  
  	case SNAPSHOT_ATOMIC_RESTORE:
 -- 
-1.7.7.4
+1.7.9.4
 

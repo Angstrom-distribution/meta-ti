@@ -1,4 +1,4 @@
-From a19ea3b8cc51cbeb52d0b2e1aa7d8987f123e3ab Mon Sep 17 00:00:00 2001
+From 3a12635bc47f7e3cd83525ce9e6e98dd3c58b31a Mon Sep 17 00:00:00 2001
 From: Wey-Yi Guy <wey-yi.w.guy@intel.com>
 Date: Thu, 10 Nov 2011 06:55:04 -0800
 Subject: [PATCH 126/130] iwlagn: check for SMPS mode
@@ -17,7 +17,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  drivers/net/wireless/iwlwifi/iwl-agn-lib.c  |    1 +
  drivers/net/wireless/iwlwifi/iwl-agn-rxon.c |    3 +++
- 2 files changed, 4 insertions(+), 0 deletions(-)
+ 2 files changed, 4 insertions(+)
 
 diff --git a/drivers/net/wireless/iwlwifi/iwl-agn-lib.c b/drivers/net/wireless/iwlwifi/iwl-agn-lib.c
 index 1a52ed2..6465983 100644
@@ -46,5 +46,5 @@ index 5c7c17c..d552fa3 100644
  		IWL_DEBUG_MAC80211(priv, "leave - scanning\n");
  		goto out;
 -- 
-1.7.7.4
+1.7.9.4
 

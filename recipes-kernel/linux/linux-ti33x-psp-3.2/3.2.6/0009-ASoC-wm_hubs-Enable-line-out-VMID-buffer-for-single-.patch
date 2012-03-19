@@ -1,4 +1,4 @@
-From 7e1a603295915f189e0b1b2207f5c9297ee65250 Mon Sep 17 00:00:00 2001
+From 83421691fca33f4cc4c93666a48f76cfb4c4f580 Mon Sep 17 00:00:00 2001
 From: Mark Brown <broonie@opensource.wolfsonmicro.com>
 Date: Fri, 20 Jan 2012 12:19:43 +0000
 Subject: [PATCH 09/87] ASoC: wm_hubs: Enable line out VMID buffer for single
@@ -13,7 +13,7 @@ Signed-off-by: Mark Brown <broonie@opensource.wolfsonmicro.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  sound/soc/codecs/wm_hubs.c |    6 ++++++
- 1 files changed, 6 insertions(+), 0 deletions(-)
+ 1 file changed, 6 insertions(+)
 
 diff --git a/sound/soc/codecs/wm_hubs.c b/sound/soc/codecs/wm_hubs.c
 index 48e61e9..8c26c6d 100644
@@ -53,5 +53,5 @@ index 48e61e9..8c26c6d 100644
  
  	{ "LINEOUT2N Driver", NULL, "LINEOUT2N Mixer" },
 -- 
-1.7.7.4
+1.7.9.4
 

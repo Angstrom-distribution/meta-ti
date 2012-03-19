@@ -1,4 +1,4 @@
-From b5be4dc54cfe7c5bb0ce387519c2019d9915435e Mon Sep 17 00:00:00 2001
+From 52428cef38a83932b588b3ceff080a7411780dc9 Mon Sep 17 00:00:00 2001
 From: Roberto Sassu <roberto.sassu@polito.it>
 Date: Mon, 19 Dec 2011 15:57:28 +0100
 Subject: [PATCH 041/130] ima: fix invalid memory reference
@@ -12,7 +12,7 @@ Signed-off-by: Mimi Zohar <zohar@us.ibm.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  security/integrity/ima/ima_queue.c |   16 +++++++++++-----
- 1 files changed, 11 insertions(+), 5 deletions(-)
+ 1 file changed, 11 insertions(+), 5 deletions(-)
 
 diff --git a/security/integrity/ima/ima_queue.c b/security/integrity/ima/ima_queue.c
 index e1a5062..55a6271 100644
@@ -64,5 +64,5 @@ index e1a5062..55a6271 100644
  	}
  out:
 -- 
-1.7.7.4
+1.7.9.4
 

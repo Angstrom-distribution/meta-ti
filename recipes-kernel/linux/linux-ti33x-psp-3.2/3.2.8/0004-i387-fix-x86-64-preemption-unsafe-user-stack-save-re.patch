@@ -1,4 +1,4 @@
-From a5c28716652f9f71c848452b67795e5af690a91f Mon Sep 17 00:00:00 2001
+From 7210b32988217b6b9dac74789ec4d349a1a191fc Mon Sep 17 00:00:00 2001
 From: Linus Torvalds <torvalds@linux-foundation.org>
 Date: Thu, 16 Feb 2012 09:15:04 -0800
 Subject: [PATCH 04/11] i387: fix x86-64 preemption-unsafe user stack
@@ -159,5 +159,5 @@ index a391134..86f1f09 100644
  		err = restore_user_xstate(buf);
  	else
 -- 
-1.7.7.4
+1.7.9.4
 

@@ -1,7 +1,7 @@
-From 79246cb05913bd4262514210136d087c1beb6d3b Mon Sep 17 00:00:00 2001
+From b17cba61819b25694b3179e250aa442ecb191d83 Mon Sep 17 00:00:00 2001
 From: "David S. Miller" <davem@davemloft.net>
 Date: Mon, 6 Feb 2012 15:14:37 -0500
-Subject: [PATCH 29/73] net: Make qdisc_skb_cb upper size bound explicit.
+Subject: [PATCH 29/72] net: Make qdisc_skb_cb upper size bound explicit.
 
 [ Upstream commit 16bda13d90c8d5da243e2cfa1677e62ecce26860 ]
 
@@ -86,5 +86,5 @@ index e83c272..17859ea 100644
  }
  
 -- 
-1.7.7.4
+1.7.9.4
 

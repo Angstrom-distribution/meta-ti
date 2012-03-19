@@ -1,4 +1,4 @@
-From df673b323fa5ef227649ad218343f244261c0611 Mon Sep 17 00:00:00 2001
+From 10d32d7599943b0209facd8ac9d12ce5024225d2 Mon Sep 17 00:00:00 2001
 From: Boaz Harrosh <bharrosh@panasas.com>
 Date: Fri, 6 Jan 2012 09:28:12 +0200
 Subject: [PATCH 020/130] pnfs-obj: pNFS errors are communicated on
@@ -21,7 +21,7 @@ Signed-off-by: Trond Myklebust <Trond.Myklebust@netapp.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  fs/nfs/objlayout/objlayout.c |    4 ++++
- 1 files changed, 4 insertions(+), 0 deletions(-)
+ 1 file changed, 4 insertions(+)
 
 diff --git a/fs/nfs/objlayout/objlayout.c b/fs/nfs/objlayout/objlayout.c
 index 72074e3..b3c2903 100644
@@ -46,5 +46,5 @@ index 72074e3..b3c2903 100644
  	objlayout_iodone(oir);
  	/* must not use oir after this point */
 -- 
-1.7.7.4
+1.7.9.4
 

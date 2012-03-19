@@ -1,7 +1,7 @@
-From 90f91ae1598200e5f650c5ddb1d7165398cf7f5a Mon Sep 17 00:00:00 2001
+From a5e7847241035f1293439ae2422c9e19271c0c24 Mon Sep 17 00:00:00 2001
 From: Anton Blanchard <anton@samba.org>
 Date: Wed, 15 Feb 2012 18:48:22 +0000
-Subject: [PATCH 02/73] powerpc/perf: power_pmu_start restores incorrect
+Subject: [PATCH 02/72] powerpc/perf: power_pmu_start restores incorrect
  values, breaking frequency events
 
 commit 9a45a9407c69d068500923480884661e2b9cc421 upstream.
@@ -25,7 +25,7 @@ Signed-off-by: Benjamin Herrenschmidt <benh@kernel.crashing.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  arch/powerpc/kernel/perf_event.c |    8 +++++++-
- 1 files changed, 7 insertions(+), 1 deletions(-)
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/arch/powerpc/kernel/perf_event.c b/arch/powerpc/kernel/perf_event.c
 index 10a140f..64483fd 100644
@@ -54,5 +54,5 @@ index 10a140f..64483fd 100644
  	perf_event_update_userpage(event);
  	perf_pmu_enable(event->pmu);
 -- 
-1.7.7.4
+1.7.9.4
 

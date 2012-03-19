@@ -1,4 +1,4 @@
-From 9d9e1e743ab7ca6f40a0f6f60f5ebda2a6b8b07b Mon Sep 17 00:00:00 2001
+From b55d48c7cec81071f13dc9e88a657b507573a4ec Mon Sep 17 00:00:00 2001
 From: Alex Williamson <alex.williamson@redhat.com>
 Date: Wed, 16 Nov 2011 09:24:16 -0700
 Subject: [PATCH 031/130] PCI: Fix PCI_EXP_TYPE_RC_EC value
@@ -12,7 +12,7 @@ Signed-off-by: Jesse Barnes <jbarnes@virtuousgeek.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  include/linux/pci_regs.h |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/linux/pci_regs.h b/include/linux/pci_regs.h
 index b5d9657..411c412 100644
@@ -28,5 +28,5 @@ index b5d9657..411c412 100644
  #define PCI_EXP_FLAGS_IRQ	0x3e00	/* Interrupt message number */
  #define PCI_EXP_DEVCAP		4	/* Device capabilities */
 -- 
-1.7.7.4
+1.7.9.4
 

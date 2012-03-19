@@ -1,7 +1,7 @@
-From 1b22d2ddf4f62bc4f600f9b4c5d9d6ad65dcca14 Mon Sep 17 00:00:00 2001
+From 0a931ee27fd34630d00daa779ce846e9f2e26ec8 Mon Sep 17 00:00:00 2001
 From: Thomas Graf <tgraf@suug.ch>
 Date: Fri, 10 Feb 2012 04:07:11 +0000
-Subject: [PATCH 21/73] net: Don't proxy arp respond if iif == rt->dst.dev if
+Subject: [PATCH 21/72] net: Don't proxy arp respond if iif == rt->dst.dev if
  private VLAN is disabled
 
 [ Upstream commit 70620c46ac2b45c24b0f22002fdf5ddd1f7daf81 ]
@@ -22,7 +22,7 @@ Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  net/ipv4/arp.c |    3 ++-
- 1 files changed, 2 insertions(+), 1 deletions(-)
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/net/ipv4/arp.c b/net/ipv4/arp.c
 index 96a164a..59a7041 100644
@@ -39,5 +39,5 @@ index 96a164a..59a7041 100644
  				if (n)
  					neigh_release(n);
 -- 
-1.7.7.4
+1.7.9.4
 

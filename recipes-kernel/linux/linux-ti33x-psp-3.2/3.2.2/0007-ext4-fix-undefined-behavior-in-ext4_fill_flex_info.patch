@@ -1,4 +1,4 @@
-From 149672e502af36fdb60960faaf2ca3bdde96bd5e Mon Sep 17 00:00:00 2001
+From 448f3344b91e15d4f94a9e687bd95157c5dcc7e2 Mon Sep 17 00:00:00 2001
 From: Xi Wang <xi.wang@gmail.com>
 Date: Tue, 10 Jan 2012 11:51:10 -0500
 Subject: [PATCH 007/130] ext4: fix undefined behavior in
@@ -42,7 +42,7 @@ Signed-off-by: "Theodore Ts'o" <tytso@mit.edu>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  fs/ext4/super.c |    7 +++----
- 1 files changed, 3 insertions(+), 4 deletions(-)
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/fs/ext4/super.c b/fs/ext4/super.c
 index 3e1329e..9281dbe 100644
@@ -70,5 +70,5 @@ index 3e1329e..9281dbe 100644
  	/* We allocate both existing and potentially added groups */
  	flex_group_count = ((sbi->s_groups_count + groups_per_flex - 1) +
 -- 
-1.7.7.4
+1.7.9.4
 

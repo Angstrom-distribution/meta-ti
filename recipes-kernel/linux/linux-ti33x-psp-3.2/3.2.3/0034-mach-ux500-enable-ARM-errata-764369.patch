@@ -1,4 +1,4 @@
-From 7e7ae7c2a3f4433e2401717a641cab1a86249f94 Mon Sep 17 00:00:00 2001
+From 26df6080d3107e6fe26a10eb8d37977d38482caf Mon Sep 17 00:00:00 2001
 From: Srinidhi KASAGAR <srinidhi.kasagar@stericsson.com>
 Date: Thu, 12 Jan 2012 11:07:43 +0530
 Subject: [PATCH 34/90] mach-ux500: enable ARM errata 764369
@@ -12,7 +12,7 @@ Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  arch/arm/mach-ux500/Kconfig |    1 +
- 1 files changed, 1 insertions(+), 0 deletions(-)
+ 1 file changed, 1 insertion(+)
 
 diff --git a/arch/arm/mach-ux500/Kconfig b/arch/arm/mach-ux500/Kconfig
 index a3e0c86..52af004 100644
@@ -27,5 +27,5 @@ index a3e0c86..52af004 100644
  menu "Ux500 SoC"
  
 -- 
-1.7.7.4
+1.7.9.4
 

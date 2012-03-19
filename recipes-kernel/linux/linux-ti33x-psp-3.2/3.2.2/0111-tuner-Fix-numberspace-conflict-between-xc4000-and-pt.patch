@@ -1,4 +1,4 @@
-From d713ae5fcd06e723ac059ae03311b10d5508a272 Mon Sep 17 00:00:00 2001
+From 9f3c2f09e3c5ffbbbb98cb248b423cbdd8a86a9e Mon Sep 17 00:00:00 2001
 From: Miroslav Slugen <thunder.mmm@gmail.com>
 Date: Sun, 11 Dec 2011 18:47:32 -0300
 Subject: [PATCH 111/130] tuner: Fix numberspace conflict between xc4000 and
@@ -14,7 +14,7 @@ Signed-off-by: Mauro Carvalho Chehab <mchehab@redhat.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  include/media/tuner.h |    3 ++-
- 1 files changed, 2 insertions(+), 1 deletions(-)
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/include/media/tuner.h b/include/media/tuner.h
 index 89c290b..29e1920 100644
@@ -38,5 +38,5 @@ index 89c290b..29e1920 100644
  #define TDA9887_PRESENT 		(1<<0)
  #define TDA9887_PORT1_INACTIVE 		(1<<1)
 -- 
-1.7.7.4
+1.7.9.4
 

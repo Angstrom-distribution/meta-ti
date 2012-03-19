@@ -1,7 +1,7 @@
-From b21abc775d2095a517f74f6df989569e3131e9c7 Mon Sep 17 00:00:00 2001
+From 29c5e80570c2f6a8715e9a0ecb45346433c1b364 Mon Sep 17 00:00:00 2001
 From: Hagen Paul Pfeifer <hagen@jauu.net>
 Date: Wed, 15 Feb 2012 04:09:46 +0000
-Subject: [PATCH 24/73] veth: Enforce minimum size of VETH_INFO_PEER
+Subject: [PATCH 24/72] veth: Enforce minimum size of VETH_INFO_PEER
 
 [ Upstream commit 237114384ab22c174ec4641e809f8e6cbcfce774 ]
 
@@ -15,7 +15,7 @@ Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
  drivers/net/veth.c |    4 +++-
- 1 files changed, 3 insertions(+), 1 deletions(-)
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/net/veth.c b/drivers/net/veth.c
 index ef883e9..b907398 100644
@@ -33,5 +33,5 @@ index ef883e9..b907398 100644
  static struct rtnl_link_ops veth_link_ops = {
  	.kind		= DRV_NAME,
 -- 
-1.7.7.4
+1.7.9.4
 

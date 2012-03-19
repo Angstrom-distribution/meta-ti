@@ -1,4 +1,4 @@
-From e8f072aad40b7d45c605e27f1337b5eb7b6fbc11 Mon Sep 17 00:00:00 2001
+From 485b51057dd6e8de3541b41d9369a2791889ac65 Mon Sep 17 00:00:00 2001
 From: Roman Tereshonkov <roman.tereshonkov@nokia.com>
 Date: Fri, 2 Dec 2011 15:07:17 +0200
 Subject: [PATCH 002/130] mtd: mtdoops: skip reading initially bad blocks
@@ -15,7 +15,7 @@ Signed-off-by: David Woodhouse <David.Woodhouse@intel.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
  drivers/mtd/mtdoops.c |    3 +++
- 1 files changed, 3 insertions(+), 0 deletions(-)
+ 1 file changed, 3 insertions(+)
 
 diff --git a/drivers/mtd/mtdoops.c b/drivers/mtd/mtdoops.c
 index 0782b31..f3cdce9 100644
@@ -32,5 +32,5 @@ index 0782b31..f3cdce9 100644
  		mark_page_used(cxt, page);
  		ret = mtd->read(mtd, page * record_size, MTDOOPS_HEADER_SIZE,
 -- 
-1.7.7.4
+1.7.9.4
 
