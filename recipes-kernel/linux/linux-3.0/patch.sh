@@ -13,7 +13,7 @@ git reset --hard ${TAG}
 rm export -rf
 
 previous=${TAG}
-PATCHSET="pm-wip/voltdm pm-wip/cpufreq beagle madc sakoman sgx ulcd omap4 misc"
+PATCHSET="pm-wip/voltdm pm-wip/cpufreq beagle madc sakoman sgx ulcd omap4 misc usb"
 
 # apply patches
 for patchset in ${PATCHSET} ; do

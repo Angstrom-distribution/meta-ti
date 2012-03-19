@@ -10,7 +10,7 @@ PV = "3.0.23"
 SRCREV_pn-${PN} = "bf6a68d2a214e07f7c0d6538e00e17b826714160"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "a"
+MACHINE_KERNEL_PR_append = "b"
 
 FILESPATH =. "${FILE_DIRNAME}/linux-3.0:${FILE_DIRNAME}/linux-3.0/${MACHINE}:"
 
@@ -223,6 +223,8 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.gi
             file://omap4/0001-OMAP-Fix-linking-error-in-twl-common.c-for-OMAP2-3-4.patch \
             \
             file://misc/0001-compiler.h-Undef-before-redefining-__attribute_const.patch \
+            \
+            file://usb/0001-Fix-sprz319-erratum-2.1.patch \
             \
             file://defconfig"
 
