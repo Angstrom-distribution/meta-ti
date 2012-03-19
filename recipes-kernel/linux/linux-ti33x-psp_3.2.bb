@@ -12,7 +12,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.2-staging"
 SRCREV = "09e9651bcf2ee8d86685f2a8075bc6557b1d3b91"
-MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -667,4 +667,8 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0020-beaglebone-add-support-for-Towertech-TT3201-CAN-cape.patch \
 	file://beaglebone/0021-ARM-OMAP2-am33xx-fix-serial-mux-warnings-for-am33xx.patch \
 	file://beaglebone/0022-ARM-OMAP2-am335x-correct-McASP0-pin-mux-detail.patch \
+	file://beaglebone/0023-beaglebone-add-more-beagleboardtoys-cape-partnumbers.patch \
+	file://beaglebone/0024-beaglebone-add-gpio-keys-for-lcd7-add-notes-for-miss.patch \
+	file://beaglebone/0025-beaglebone-add-enter-key-for-lcd7-cape.patch \
+	file://beaglebone/0026-beaglebone-add-gpio-keys-for-lcd.patch \
 "
