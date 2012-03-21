@@ -107,7 +107,7 @@ index ed2ff18..badee96 100644
 +		beaglebone_lcd3_keys_init(0,0);
  	}
  	
- 	if (!strncmp("BB-BONE-VGA0-01", cape_config.partnumber, 15)) {
+ 	if (!strncmp("BB-BONE-VGA-01", cape_config.partnumber, 15)) {
 -- 
 1.7.2.5
 
