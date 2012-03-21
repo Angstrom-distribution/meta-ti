@@ -105,7 +105,7 @@ index 58a0e77..7a2b851 100644
 +		// gpio1_28 -> button
  	}
  	
- 	if (!strncmp("BB-BONE-VGA0-01", cape_config.partnumber, 15)) {
+ 	if (!strncmp("BB-BONE-VGA-01", cape_config.partnumber, 15)) {
 @@ -1898,11 +1971,17 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context
  	
  	if (!strncmp("BB-BONE-BATT-01", cape_config.partnumber, 15)) {

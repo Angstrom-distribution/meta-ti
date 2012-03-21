@@ -24,7 +24,7 @@ index 36efca1..58a0e77 100644
 +		beaglebone_tsadcpins_free = 0;
 +	}
 +	
-+	if (!strncmp("BB-BONE-VGA0-01", cape_config.partnumber, 15)) {
++	if (!strncmp("BB-BONE-VGA-01", cape_config.partnumber, 15)) {
 +		pr_info("BeagleBone cape: initializing VGA cape\n");
 +		dvi_init(0,0);
 +	}
