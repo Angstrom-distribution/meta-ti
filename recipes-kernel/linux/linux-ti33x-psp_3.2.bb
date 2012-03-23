@@ -4,6 +4,7 @@ LICENSE = "GPLv2"
 KERNEL_IMAGETYPE = "uImage"
 
 require multi-kernel.inc
+require tipspkernel.inc
 
 S = "${WORKDIR}/git"
 
@@ -15,16 +16,9 @@ MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
-THISDIR := "${@os.path.dirname(bb.data.getVar('FILE', d, True))}"
-CONFIGS_PSP = "${@base_set_filespath(["${THISDIR}/${PN}-${PV}/tipspkernel"], d)}:\
-${@base_set_filespath(["${THISDIR}/${PN}/tipspkernel"], d)}:\
-${@base_set_filespath(["${THISDIR}/files/tipspkernel"], d)}:"
-FILESPATH =. "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "${CONFIGS_PSP}", "", d)}"
-
 SRC_URI += "git://arago-project.org/git/projects/linux-am33x.git;protocol=http;branch=${BRANCH} \
 	file://defconfig"
 
-SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
 SRC_URI_append_beaglebone = " file://logo_linux_clut224.ppm"
 
 PATCHES_OVER_PSP = " \

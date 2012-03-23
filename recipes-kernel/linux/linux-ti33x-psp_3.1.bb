@@ -4,6 +4,7 @@ LICENSE = "GPLv2"
 KERNEL_IMAGETYPE = "uImage"
 
 require multi-kernel.inc
+require tipspkernel.inc
 
 S = "${WORKDIR}/git"
 
@@ -14,12 +15,6 @@ SRCREV = "1d84d8853fa30cf3db2571a5aec572accca4e29d"
 MACHINE_KERNEL_PR_append = "l+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
-
-THISDIR := "${@os.path.dirname(bb.data.getVar('FILE', d, True))}"
-CONFIGS_PSP = "${@base_set_filespath(["${THISDIR}/${PN}-${PV}/tipspkernel"], d)}:\
-${@base_set_filespath(["${THISDIR}/${PN}/tipspkernel"], d)}:\
-${@base_set_filespath(["${THISDIR}/files/tipspkernel"], d)}:"
-FILESPATH =. "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "${CONFIGS_PSP}", "", d)}"
 
 SRC_URI += "git://github.com/beagleboard/linux.git;branch=${BRANCH} \
 	file://defconfig"
@@ -61,10 +56,8 @@ PATCHES_OVER_PSP = " \
 	file://0034-beaglebone-really-enable-i2c2-pullups-fixes-timeouts.patch \
 	file://0035-beaglebone-add-structs-for-DVI-cape-LEDs.patch\
 	file://0036-beaglebone-update-LCD-cape-partnumber.patch \
-    file://0037-beaglebone-compare-complete-partnumber-not-the-first.patch \
+	file://0037-beaglebone-compare-complete-partnumber-not-the-first.patch \
 	file://0038-omap_hsmmc-Set-dto-to-max-value-of-14-to-avoid-SD-Ca.patch \
 	"
 
-SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
 SRC_URI_append_beaglebone = " file://logo_linux_clut224.ppm"
-

@@ -4,6 +4,7 @@ LICENSE = "GPLv2"
 KERNEL_IMAGETYPE = "uImage"
 
 require multi-kernel.inc
+require tipspkernel.inc
 
 S = "${WORKDIR}/git"
 
@@ -13,12 +14,6 @@ BRANCH = "03.21.00.03"
 SRCREV = "v2.6.37_DAVINCIPSP_03.21.00.04"
 
 COMPATIBLE_MACHINE = "(omapl138)"
-
-THISDIR := "${@os.path.dirname(bb.data.getVar('FILE', d, True))}"
-CONFIGS_PSP = "${@base_set_filespath(["${THISDIR}/${PN}-${PV}/tipspkernel"], d)}:\
-${@base_set_filespath(["${THISDIR}/${PN}/tipspkernel"], d)}:\
-${@base_set_filespath(["${THISDIR}/files/tipspkernel"], d)}:"
-FILESPATH =. "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "${CONFIGS_PSP}", "", d)}"
 
 SRC_URI += "git://arago-project.org/git/projects/linux-davinci.git;protocol=git;branch=${BRANCH} \
 	file://defconfig"
@@ -32,5 +27,3 @@ PATCHES_OVER_PSP = " \
 	file://0006-Add-wlan-and-BT-config-switches.patch \
 	file://uio_pruss.patch \
 	"
-
-SRC_URI += "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "", "${PATCHES_OVER_PSP}", d)}"
