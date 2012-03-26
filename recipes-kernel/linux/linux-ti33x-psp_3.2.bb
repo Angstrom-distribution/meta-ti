@@ -593,6 +593,58 @@ PATCHES_OVER_PSP = " \
 	file://3.2.10/0095-Linux-3.2.10.patch \
 	file://3.2.11/0001-Revert-mfd-Test-for-jack-detection-when-deciding-if-.patch \
 	file://3.2.11/0002-Linux-3.2.11.patch \
+	file://3.2.12/0001-ASoC-neo1973-fix-neo1973-wm8753-initialization.patch \
+	file://3.2.12/0002-ALSA-hda-realtek-Apply-the-coef-setup-only-to-ALC269.patch \
+	file://3.2.12/0003-aio-fix-io_setup-io_destroy-race.patch \
+	file://3.2.12/0004-aio-fix-the-too-late-munmap-race.patch \
+	file://3.2.12/0005-x86-Derandom-delay_tsc-for-64-bit.patch \
+	file://3.2.12/0006-PCI-ignore-pre-1.1-ASPM-quirking-when-ASPM-is-disabl.patch \
+	file://3.2.12/0007-omap3isp-ccdc-Fix-crash-in-HS-VS-interrupt-handler.patch \
+	file://3.2.12/0008-rt2x00-fix-random-stalls.patch \
+	file://3.2.12/0009-perf-x86-Fix-local-vs-remote-memory-events-for-NHM-W.patch \
+	file://3.2.12/0010-CIFS-Do-not-kmalloc-under-the-flocks-spinlock.patch \
+	file://3.2.12/0011-vfs-fix-return-value-from-do_last.patch \
+	file://3.2.12/0012-vfs-fix-double-put-after-complete_walk.patch \
+	file://3.2.12/0013-acer-wmi-No-wifi-rfkill-on-Lenovo-machines.patch \
+	file://3.2.12/0014-atl1c-dont-use-highprio-tx-queue.patch \
+	file://3.2.12/0015-neighbour-Fixed-race-condition-at-tbl-nht.patch \
+	file://3.2.12/0016-ipsec-be-careful-of-non-existing-mac-headers.patch \
+	file://3.2.12/0017-ppp-fix-ppp_mp_reconstruct-bad-seq-errors.patch \
+	file://3.2.12/0018-sfc-Fix-assignment-of-ip_summed-for-pre-allocated-sk.patch \
+	file://3.2.12/0019-tcp-fix-false-reordering-signal-in-tcp_shifted_skb.patch \
+	file://3.2.12/0020-vmxnet3-Fix-transport-header-size.patch \
+	file://3.2.12/0021-packetengines-fix-config-default.patch \
+	file://3.2.12/0022-r8169-corrupted-IP-fragments-fix-for-large-mtu.patch \
+	file://3.2.12/0023-tcp-don-t-fragment-SACKed-skbs-in-tcp_mark_head_lost.patch \
+	file://3.2.12/0024-bridge-check-return-value-of-ipv6_dev_get_saddr.patch \
+	file://3.2.12/0025-tcp-fix-tcp_shift_skb_data-to-not-shift-SACKed-data-.patch \
+	file://3.2.12/0026-IPv6-Fix-not-join-all-router-mcast-group-when-forwar.patch \
+	file://3.2.12/0027-usb-asix-Patch-for-Sitecom-LN-031.patch \
+	file://3.2.12/0028-regulator-Fix-setting-selector-in-tps6524x-set_volta.patch \
+	file://3.2.12/0029-block-Fix-NULL-pointer-dereference-in-sd_revalidate_.patch \
+	file://3.2.12/0030-block-sx8-fix-pointer-math-issue-getting-fw-version.patch \
+	file://3.2.12/0031-block-fix-__blkdev_get-and-add_disk-race-condition.patch \
+	file://3.2.12/0032-Block-use-a-freezable-workqueue-for-disk-event-polli.patch \
+	file://3.2.12/0033-sparc32-Add-Av8-to-assembler-command-line.patch \
+	file://3.2.12/0034-hwmon-w83627ehf-Fix-writing-into-fan_stop_time-for-N.patch \
+	file://3.2.12/0035-hwmon-w83627ehf-Fix-memory-leak-in-probe-function.patch \
+	file://3.2.12/0036-hwmon-w83627ehf-Fix-temp2-source-for-W83627UHG.patch \
+	file://3.2.12/0037-rapidio-tsi721-fix-bug-in-register-offset-definition.patch \
+	file://3.2.12/0038-i2c-algo-bit-Fix-spurious-SCL-timeouts-under-heavy-l.patch \
+	file://3.2.12/0039-iscsi-target-Fix-reservation-conflict-EBUSY-response.patch \
+	file://3.2.12/0040-target-Fix-compatible-reservation-handling-CRH-1-wit.patch \
+	file://3.2.12/0041-hwmon-zl6100-Enable-interval-between-chip-accesses-f.patch \
+	file://3.2.12/0042-Linux-3.2.12.patch \
+	file://3.2.13/0001-nilfs2-fix-NULL-pointer-dereference-in-nilfs_load_su.patch \
+	file://3.2.13/0002-afs-Read-of-file-returns-EBADMSG.patch \
+	file://3.2.13/0003-afs-Remote-abort-can-cause-BUG-in-rxrpc-code.patch \
+	file://3.2.13/0004-perf-tools-Incorrect-use-of-snprintf-results-in-SEGV.patch \
+	file://3.2.13/0005-perf-tools-Use-scnprintf-where-applicable.patch \
+	file://3.2.13/0006-tcp-fix-syncookie-regression.patch \
+	file://3.2.13/0007-ipv6-Don-t-dev_hold-dev-in-ip6_mc_find_dev_rcu.patch \
+	file://3.2.13/0008-iwl3945-fix-possible-il-txq-NULL-pointer-dereference.patch \
+	file://3.2.13/0009-powerpc-pmac-Fix-SMP-kernels-on-pre-core99-UP-machin.patch \
+	file://3.2.13/0010-Linux-3.2.13.patch \
 	file://beaglebone/0001-f_rndis-HACK-around-undefined-variables.patch \
 	file://beaglebone/0002-da8xx-fb-add-DVI-support-for-beaglebone.patch \
 	file://beaglebone/0003-beaglebone-rebase-everything-onto-3.2-WARNING-MEGAPA.patch \
