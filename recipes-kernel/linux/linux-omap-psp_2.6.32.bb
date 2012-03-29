@@ -1,5 +1,7 @@
 require multi-kernel.inc
 
+MULTI_CONFIG_BASE_SUFFIX = ""
+
 DESCRIPTION = "Linux kernel for OMAP processors"
 KERNEL_IMAGETYPE = "uImage"
 
@@ -9,7 +11,7 @@ COMPATIBLE_MACHINE = "am3517-crane|beagleboard|omap3evm|am3517-evm|dm37x-evm|am3
 SRCREV = "5fc29e7b2a76a64a739f857858ef0b98294aa155"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "c+gitr${SRCREV}"
 
 SRC_URI += "git://arago-project.org/git/projects/linux-omap3.git;protocol=git;branch=master \
            file://0001-Revert-omap3-beagle-Fix-compile-time-errors.patch \

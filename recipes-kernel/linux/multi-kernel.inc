@@ -16,6 +16,14 @@ SRC_URI += " \
            file://configs "
 
 MULTI_CONFIG_BASE_SUFFIX = "multi-config-"
+MODULES_IMAGE_BASE_NAME = "modules-${PV}-${PR}-${MACHINE}"
+
+do_preparekernel () {
+	unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS MACHINE
+	oe_runmake prepare CC="${KERNEL_CC}" LD="${KERNEL_LD}"
+}
+
+addtask preparekernel after do_configure before do_compile
 
 do_compileconfigs () {
 
@@ -100,5 +108,4 @@ do_deploy_append () {
 }
 
 do_compileconfigs[depends] += "u-boot-mkimage-native:do_populate_sysroot virtual/${TARGET_PREFIX}gcc:do_populate_sysroot virtual/${TARGET_PREFIX}gcc${KERNEL_CCSUFFIX}:do_populate_sysroot"
-addtask compileconfigs after do_patch before do_configure
-
+addtask compileconfigs after do_preparekernel before do_compile
