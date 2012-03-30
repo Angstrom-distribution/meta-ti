@@ -1,14 +1,24 @@
-# This .inc file allows you to build and deploy multiple sets of kernel + modules with different defconfigs
+# This .inc file allows building and deploying multiple sets of kernel + modules
+# with different defconfigs
 #
-# Note that this include will NOT stage anything nor create packages, since that is virtually impossible
-# Userspace should be built against the 'regular' kernel
+# Note that this include will NOT stage anything nor create packages, since that
+# is virtually impossible. Userspace should be built against the 'regular' kernel
 #
-# The intended usecase is for machines that have mutually exclusive drivers due to e.g. pinmuxing issues.
-# For example the LogicPD omap-l138 experimenter board can have multiple mutually exclusive expansion boards
-# like lcd, ethernet, sound, 20x2 character LCD, etc. To be able to easily test all of those you can use this .inc
+# The intended usecase is for machines that have mutually exclusive drivers due
+# to e.g. pinmuxing issues. For example the LogicPD omap-l138 experimenter board
+# can have multiple mutually exclusive expansion boards like lcd, ethernet,
+# sound, 20x2 character LCD, etc. To be able to easily test all of those you can
+# use this .inc
 #
-# To make it easier finding the original defconfig from a running kernel, this also forcefully turns on 
-# CONFIG_IKCONFIG_PROC so people can do 'zcat /proc/config.gz' on the target.
+# To make it easier finding the original defconfig from a running kernel, this
+# also forcefully turns on CONFIG_IKCONFIG_PROC so people can do
+# 'zcat /proc/config.gz' on the target.
+#
+# The function get_kernelversion uses generated header files to extract the
+# version number. But those files are not available until do_compile, and
+# do_compileconfigs is injected before that, hence the version becomes None
+# and breaks in several places. Introduce a task do_preparekernel that calls
+# "make prepare" in the kernel tree to generate all the necessary files.
 
 require linux.inc
 
