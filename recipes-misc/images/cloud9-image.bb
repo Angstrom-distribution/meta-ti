@@ -30,6 +30,7 @@ IMAGE_INSTALL += " \
 	tslib-tests tslib-calibrate \
 	iproute2 canutils \
 	connman-tests \
+	rsync \
 "
 
 export IMAGE_BASENAME = "Cloud9-IDE"
