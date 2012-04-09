@@ -818,4 +818,6 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0024-beaglebone-add-gpio-keys-for-lcd7-add-notes-for-miss.patch \
 	file://beaglebone/0025-beaglebone-add-enter-key-for-lcd7-cape.patch \
 	file://beaglebone/0026-beaglebone-add-gpio-keys-for-lcd.patch \
+	file://beaglebone/0027-beaglebone-fix-direction-of-gpio-keys.patch \
+	file://beaglebone/0028-beaglebone-fix-3.5-lcd-cape-support.patch \
 "
