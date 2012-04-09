@@ -6,7 +6,7 @@ COMPATIBLE_MACHINE = "(ti33x)"
 DEFAULT_PREFERENCE_ti33x = "99"
 
 PV = "2011.09+git"
-PR = "r26"
+PR = "r27"
 
 # SPL build
 UBOOT_BINARY = "u-boot.img"
@@ -24,6 +24,11 @@ SRC_URI = "git://arago-project.org/git/projects/u-boot-am33x.git;protocol=git;br
            file://2011.09git/0008-HACK-am335x-evm-turn-d-cache-on-globally-turn-it-off.patch \
            file://2011.09git/0009-am335x-evm-enable-i2c2-pinmux-for-beaglebone.patch \
            file://2011.09git/0001-ddr_defs-change-DDR-timings-for-15x15-EVM.patch \
+           file://2011.09git/0011-ext2load-increase-read-speed.patch \
+           file://2011.09git/0012-am335x-evm-fix-ext2load-and-specify-partition-for-bo.patch \
+           file://2011.09git/0013-am335x-evm-load-uImage-from-boot-instead-of-VFAT.patch \
+           file://2011.09git/0014-ext4fs-ls-load-support.patch \
+           file://2011.09git/0015-am335x-switch-to-ext4-mode.patch \
           "
 
 SRCREV = "f63b270e47f62f4d1a05b2001357e215966c6f5a"

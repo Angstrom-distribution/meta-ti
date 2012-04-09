@@ -1,0 +1,51 @@
+From 89f08384d5048059ac0a8ab72b6a7a194513dc64 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Wed, 4 Apr 2012 00:06:31 +0200
+Subject: [PATCH 15/15] am335x: switch to ext4 mode
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/am335x_evm.h |    6 ++++--
+ 1 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
+index b2628c5..18d2cac 100755
+--- a/include/configs/am335x_evm.h
++++ b/include/configs/am335x_evm.h
+@@ -76,6 +76,7 @@
+ 		"env import -t $loadaddr $filesize\0" \
+ 	"mmc_load_uimage=fatload mmc ${mmc_dev}:1 0x80007fc0 ${bootfile}\0" \
+ 	"mmc_load_uimage_ext2=ext2load mmc ${mmc_dev}:2 0x80007fc0 /boot/${bootfile}\0" \
++	"mmc_load_uimage_ext4=ext4load mmc ${mmc_dev}:2 0x80007fc0 /boot/${bootfile}\0" \
+ 	"optargs=\0" \
+ 	"bootargs_defaults=setenv bootargs " \
+ 		"console=${console} " \
+@@ -102,7 +103,7 @@
+ 		"nfsroot=${serverip}:${rootpath},${nfsopts} rw " \
+ 		"ip=dhcp\0" \
+ 	"mmc_boot=run mmc_args; " \
+-		"run mmc_load_uimage_ext2; " \
++		"run mmc_load_uimage_ext4; " \
+ 		"bootm 0x80007fc0\0" \
+ 	"nand_boot=echo Booting from nand ...; " \
+ 		"run nand_args; " \
+@@ -136,7 +137,7 @@
+ 			"echo Running uenvcmd ...;" \
+ 			"run uenvcmd;" \
+ 		"fi;" \
+-		"if run mmc_load_uimage_ext2; then " \
++		"if run mmc_load_uimage_ext4; then " \
+ 			"run mmc_args;" \
+ 			"bootm 0x80007fc0;" \
+ 		"fi;" \
+@@ -404,6 +405,7 @@
+ #define CONFIG_DOS_PARTITION
+ #define CONFIG_CMD_FAT
+ #define CONFIG_CMD_EXT2
++#define CONFIG_CMD_EXT4
+ #endif
+ 
+ /* Unsupported features */
+-- 
+1.7.2.5
+

@@ -1,0 +1,35 @@
+From 4c7580268803485ecbc05c3da3e1bbb9f2f431e0 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Sun, 1 Apr 2012 23:10:22 +0200
+Subject: [PATCH 13/15] am335x-evm: load uImage from /boot instead of VFAT
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/am335x_evm.h |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
+index 9a4b407..b2628c5 100755
+--- a/include/configs/am335x_evm.h
++++ b/include/configs/am335x_evm.h
+@@ -102,7 +102,7 @@
+ 		"nfsroot=${serverip}:${rootpath},${nfsopts} rw " \
+ 		"ip=dhcp\0" \
+ 	"mmc_boot=run mmc_args; " \
+-		"run mmc_load_uimage; " \
++		"run mmc_load_uimage_ext2; " \
+ 		"bootm 0x80007fc0\0" \
+ 	"nand_boot=echo Booting from nand ...; " \
+ 		"run nand_args; " \
+@@ -136,7 +136,7 @@
+ 			"echo Running uenvcmd ...;" \
+ 			"run uenvcmd;" \
+ 		"fi;" \
+-		"if run mmc_load_uimage; then " \
++		"if run mmc_load_uimage_ext2; then " \
+ 			"run mmc_args;" \
+ 			"bootm 0x80007fc0;" \
+ 		"fi;" \
+-- 
+1.7.2.5
+
