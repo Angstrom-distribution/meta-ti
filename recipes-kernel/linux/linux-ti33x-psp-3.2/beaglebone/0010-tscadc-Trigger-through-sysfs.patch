@@ -1,7 +1,7 @@
-From fb718df2afa6f3876c22d830c55de70943d95812 Mon Sep 17 00:00:00 2001
+From 50c698d37ac59a4ba4cec9d6b844444e312e1a26 Mon Sep 17 00:00:00 2001
 From: Joel A Fernandes <joelagnel@ti.com>
 Date: Mon, 28 Nov 2011 20:55:25 -0600
-Subject: [PATCH 10/22] tscadc: Trigger through sysfs
+Subject: [PATCH 10/26] tscadc: Trigger through sysfs
 
 Signed-off-by: Joel A Fernandes <joelagnel@ti.com>
 
@@ -14,15 +14,16 @@ Conflicts:
  2 files changed, 56 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/input/touchscreen/ti_tscadc.c b/drivers/input/touchscreen/ti_tscadc.c
-index 0b91bdc..a74d9ba 100644
+index 3950696..8661b3a 100644
 --- a/drivers/input/touchscreen/ti_tscadc.c
 +++ b/drivers/input/touchscreen/ti_tscadc.c
-@@ -26,6 +26,17 @@
+@@ -26,8 +26,19 @@
  #include <linux/io.h>
  #include <linux/input/ti_tscadc.h>
  #include <linux/delay.h>
 +#include <linux/device.h>
-+
+ #include <linux/pm_runtime.h>
+ 
 +size_t do_adc_sample(struct kobject *, struct attribute *, char *);
 +static DEVICE_ATTR(ain1, S_IRUGO, do_adc_sample, NULL);
 +static DEVICE_ATTR(ain2, S_IRUGO, do_adc_sample, NULL);
@@ -32,10 +33,11 @@ index 0b91bdc..a74d9ba 100644
 +static DEVICE_ATTR(ain6, S_IRUGO, do_adc_sample, NULL);
 +static DEVICE_ATTR(ain7, S_IRUGO, do_adc_sample, NULL);
 +static DEVICE_ATTR(ain8, S_IRUGO, do_adc_sample, NULL);
- 
++
  /* Memory mapped registers here have incorrect offsets!
   * Correct after referring TRM */
-@@ -144,12 +155,12 @@ static void tsc_adc_step_config(struct tscadc *ts_dev, int channel)
+ #define TSCADC_REG_IRQEOI		0x020
+@@ -149,12 +160,12 @@ static void tsc_adc_step_config(struct tscadc *ts_dev, int channel)
  	stepconfig = TSCADC_STEPCONFIG_MODE_SWONESHOT |
  		TSCADC_STEPCONFIG_2SAMPLES_AVG |
  		((channel-1) << 19);
@@ -50,7 +52,7 @@ index 0b91bdc..a74d9ba 100644
  	/* Get the ball rolling, this will trigger the FSM to step through
   	 * as soon as TSC_ADC_SS is turned on */
  	tscadc_writel(ts_dev, TSCADC_REG_SE, TSCADC_STPENB_STEPENB_GENERAL);
-@@ -199,7 +210,7 @@ static irqreturn_t tsc_adc_interrupt(int irq, void *dev)
+@@ -204,7 +215,7 @@ static irqreturn_t tsc_adc_interrupt(int irq, void *dev)
  		irqclr |= TSCADC_IRQENB_FIFO1THRES;
  	}
  
@@ -59,7 +61,7 @@ index 0b91bdc..a74d9ba 100644
  
  	tscadc_writel(ts_dev, TSCADC_REG_IRQSTATUS, irqclr);
  
-@@ -207,7 +218,7 @@ static irqreturn_t tsc_adc_interrupt(int irq, void *dev)
+@@ -212,7 +223,7 @@ static irqreturn_t tsc_adc_interrupt(int irq, void *dev)
  	tscadc_writel(ts_dev, TSCADC_REG_IRQEOI, 0x0);
  
  	/* Turn on Step 1 again */
@@ -68,7 +70,7 @@ index 0b91bdc..a74d9ba 100644
  	return IRQ_HANDLED;
  }
  
-@@ -461,6 +472,34 @@ static irqreturn_t tsc_interrupt(int irq, void *dev)
+@@ -467,6 +478,34 @@ static irqreturn_t tsc_interrupt(int irq, void *dev)
  * The functions for inserting/removing driver as a module.
  */
  
@@ -103,7 +105,7 @@ index 0b91bdc..a74d9ba 100644
  static	int __devinit tscadc_probe(struct platform_device *pdev)
  {
  	struct tscadc			*ts_dev;
-@@ -472,6 +511,18 @@ static	int __devinit tscadc_probe(struct platform_device *pdev)
+@@ -478,6 +517,18 @@ static	int __devinit tscadc_probe(struct platform_device *pdev)
  	struct resource			*res;
  	struct clk			*clk;
  
@@ -122,7 +124,7 @@ index 0b91bdc..a74d9ba 100644
  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
  	if (!res) {
  		dev_err(&pdev->dev, "no memory resource defined.\n");
-@@ -604,7 +655,6 @@ static	int __devinit tscadc_probe(struct platform_device *pdev)
+@@ -605,7 +656,6 @@ static	int __devinit tscadc_probe(struct platform_device *pdev)
  			goto err_fail;
  	}
  	else {
@@ -143,5 +145,5 @@ index 850cd4b..fc239c6 100644
  #define TI_TSCADC_TSCMODE 0
  #define TI_TSCADC_GENMODE 1
 -- 
-1.7.9.4
+1.7.9.5
 

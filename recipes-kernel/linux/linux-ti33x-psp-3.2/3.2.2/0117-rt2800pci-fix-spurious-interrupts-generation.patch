@@ -1,7 +1,7 @@
-From 5feb9896b1fbfcb0ccd73789f3deeef7a53e19c4 Mon Sep 17 00:00:00 2001
+From 021083c5844b20210ced59ad5b760d2a7cb97cd2 Mon Sep 17 00:00:00 2001
 From: Stanislaw Gruszka <sgruszka@redhat.com>
 Date: Fri, 13 Jan 2012 12:59:32 +0100
-Subject: [PATCH 118/130] rt2800pci: fix spurious interrupts generation
+Subject: [PATCH 117/129] rt2800pci: fix spurious interrupts generation
 
 commit dfd00c4c8f3dfa1fd7cec45f83d98b2a49743dcd upstream.
 
@@ -82,5 +82,5 @@ index da48c8a..837b460 100644
  	spin_unlock_irqrestore(&rt2x00dev->irqmask_lock, flags);
  
 -- 
-1.7.9.4
+1.7.9.5
 

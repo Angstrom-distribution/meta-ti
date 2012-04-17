@@ -1,18 +1,19 @@
-From 58f1b0546b2831d9ed15e8bf43f709085a60b2e9 Mon Sep 17 00:00:00 2001
+From fd358035f83d5edab1130ea569be580960a0dce7 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Mon, 19 Mar 2012 13:32:43 +0100
-Subject: [PATCH 24/27] beaglebone: add gpio-keys for lcd7, add notes for missing functionality for other capes
+Subject: [PATCH 22/26] beaglebone: add gpio-keys for lcd7, add notes for
+ missing functionality for other capes
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |   79 +++++++++++++++++++++++++++++++++
- 1 files changed, 79 insertions(+), 0 deletions(-)
+ 1 file changed, 79 insertions(+)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index 58a0e77..7a2b851 100644
+index 73d9dd9..a3d7846 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
-@@ -980,6 +980,73 @@ static void volume_keys_init(int evm_id, int profile)
+@@ -992,6 +992,73 @@ static void volume_keys_init(int evm_id, int profile)
  		pr_err("failed to register matrix keypad (2x3) device\n");
  }
  
@@ -86,7 +87,7 @@ index 58a0e77..7a2b851 100644
  /*
  * @evm_id - evm id which needs to be configured
  * @dev_cfg - single evm structure which includes
-@@ -1881,6 +1948,8 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context
+@@ -1943,6 +2010,8 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context
  		pr_info("BeagleBone cape: Registering PWM backlight for LCD cape\n");
  		enable_ehrpwm1(0,0);
  		beaglebone_tsadcpins_free = 0;
@@ -95,7 +96,7 @@ index 58a0e77..7a2b851 100644
  	}
  	
  	if (!strncmp("BB-BONE-LCD3-01", cape_config.partnumber, 15)) {
-@@ -1889,6 +1958,10 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context
+@@ -1951,6 +2020,10 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context
  		pr_info("BeagleBone cape: initializing LCD cape touchscreen\n");
  		tsc_init(0,0);
  		beaglebone_tsadcpins_free = 0;
@@ -106,7 +107,7 @@ index 58a0e77..7a2b851 100644
  	}
  	
  	if (!strncmp("BB-BONE-VGA-01", cape_config.partnumber, 15)) {
-@@ -1898,11 +1971,17 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context
+@@ -1960,11 +2033,17 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context
  	
  	if (!strncmp("BB-BONE-BATT-01", cape_config.partnumber, 15)) {
  		pr_info("BeagleBone cape: initializing battery cape\n");
@@ -125,5 +126,5 @@ index 58a0e77..7a2b851 100644
  	}
  	
 -- 
-1.7.2.5
+1.7.9.5
 

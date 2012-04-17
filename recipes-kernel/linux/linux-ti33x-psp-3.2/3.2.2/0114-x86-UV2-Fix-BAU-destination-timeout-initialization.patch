@@ -1,7 +1,7 @@
-From b92c8d886296debcaf5af9cceb74f02bbce4d83d Mon Sep 17 00:00:00 2001
+From 0b3a1f5aefb71777fec89809de87c49b917a88e7 Mon Sep 17 00:00:00 2001
 From: Cliff Wickman <cpw@sgi.com>
 Date: Mon, 16 Jan 2012 15:18:48 -0600
-Subject: [PATCH 115/130] x86/UV2: Fix BAU destination timeout initialization
+Subject: [PATCH 114/129] x86/UV2: Fix BAU destination timeout initialization
 
 commit d059f9fa84a30e04279c6ff615e9e2cf3b260191 upstream.
 
@@ -62,5 +62,5 @@ index 1341a2e..c425ff1 100644
  
  	for_each_possible_blade(uvhub) {
 -- 
-1.7.9.4
+1.7.9.5
 

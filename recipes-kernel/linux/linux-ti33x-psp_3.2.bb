@@ -11,15 +11,20 @@ S = "${WORKDIR}/git"
 MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.2-staging"
-SRCREV = "09e9651bcf2ee8d86685f2a8075bc6557b1d3b91"
+SRCREV = "88dcc46017b970660ff113c1bb4e7d832c5a3693"
 MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
 SRC_URI += "git://arago-project.org/git/projects/linux-am33x.git;protocol=http;branch=${BRANCH} \
+	file://am335x-pm-firmware.bin \
 	file://defconfig"
 
 SRC_URI_append_beaglebone = " file://logo_linux_clut224.ppm"
+
+do_compile_prepend() {
+	cp ${WORKDIR}/am335x-pm-firmware.bin ${S}/firmware/
+}
 
 PATCHES_OVER_PSP = " \
 	file://3.2.1/0001-MAINTAINERS-stable-Update-address.patch \
@@ -183,24 +188,23 @@ PATCHES_OVER_PSP = " \
 	file://3.2.2/0110-cx88-fix-don-t-duplicate-xc4000-entry-for-radio.patch \
 	file://3.2.2/0111-tuner-Fix-numberspace-conflict-between-xc4000-and-pt.patch \
 	file://3.2.2/0112-tracepoints-module-Fix-disabling-tracepoints-with-ta.patch \
-	file://3.2.2/0113-I2C-OMAP-correct-SYSC-register-offset-for-OMAP4.patch \
-	file://3.2.2/0114-x86-UV2-Fix-new-UV2-hardware-by-using-native-UV2-bro.patch \
-	file://3.2.2/0115-x86-UV2-Fix-BAU-destination-timeout-initialization.patch \
-	file://3.2.2/0116-x86-UV2-Work-around-BAU-bug.patch \
-	file://3.2.2/0117-ath9k_hw-fix-interpretation-of-the-rx-KeyMiss-flag.patch \
-	file://3.2.2/0118-rt2800pci-fix-spurious-interrupts-generation.patch \
-	file://3.2.2/0119-xfs-fix-endian-conversion-issue-in-discard-code.patch \
-	file://3.2.2/0120-i2c-eg20t-modified-the-setting-of-transfer-rate.patch \
-	file://3.2.2/0121-score-fix-off-by-one-index-into-syscall-table.patch \
-	file://3.2.2/0122-cifs-lower-default-wsize-when-unix-extensions-are-no.patch \
-	file://3.2.2/0123-kprobes-initialize-before-using-a-hlist.patch \
-	file://3.2.2/0124-proc-clear_refs-do-not-clear-reserved-pages.patch \
-	file://3.2.2/0125-mm-fix-NULL-ptr-dereference-in-__count_immobile_page.patch \
-	file://3.2.2/0126-iwlagn-check-for-SMPS-mode.patch \
-	file://3.2.2/0127-iwlegacy-3945-fix-hw-passive-scan-on-radar-channels.patch \
-	file://3.2.2/0128-SHM_UNLOCK-fix-long-unpreemptible-section.patch \
-	file://3.2.2/0129-SHM_UNLOCK-fix-Unevictable-pages-stranded-after-swap.patch \
-	file://3.2.2/0130-Linux-3.2.2.patch \
+	file://3.2.2/0113-x86-UV2-Fix-new-UV2-hardware-by-using-native-UV2-bro.patch \
+	file://3.2.2/0114-x86-UV2-Fix-BAU-destination-timeout-initialization.patch \
+	file://3.2.2/0115-x86-UV2-Work-around-BAU-bug.patch \
+	file://3.2.2/0116-ath9k_hw-fix-interpretation-of-the-rx-KeyMiss-flag.patch \
+	file://3.2.2/0117-rt2800pci-fix-spurious-interrupts-generation.patch \
+	file://3.2.2/0118-xfs-fix-endian-conversion-issue-in-discard-code.patch \
+	file://3.2.2/0119-i2c-eg20t-modified-the-setting-of-transfer-rate.patch \
+	file://3.2.2/0120-score-fix-off-by-one-index-into-syscall-table.patch \
+	file://3.2.2/0121-cifs-lower-default-wsize-when-unix-extensions-are-no.patch \
+	file://3.2.2/0122-kprobes-initialize-before-using-a-hlist.patch \
+	file://3.2.2/0123-proc-clear_refs-do-not-clear-reserved-pages.patch \
+	file://3.2.2/0124-mm-fix-NULL-ptr-dereference-in-__count_immobile_page.patch \
+	file://3.2.2/0125-iwlagn-check-for-SMPS-mode.patch \
+	file://3.2.2/0126-iwlegacy-3945-fix-hw-passive-scan-on-radar-channels.patch \
+	file://3.2.2/0127-SHM_UNLOCK-fix-long-unpreemptible-section.patch \
+	file://3.2.2/0128-SHM_UNLOCK-fix-Unevictable-pages-stranded-after-swap.patch \
+	file://3.2.2/0129-Linux-3.2.2.patch \
 	file://3.2.3/0001-ALSA-hda-Fix-buffer-alignment-regression-with-Nvidia.patch \
 	file://3.2.3/0002-ALSA-hda-Fix-silent-outputs-from-docking-station-jac.patch \
 	file://3.2.3/0003-eCryptfs-Sanitize-write-counts-of-dev-ecryptfs.patch \
@@ -812,12 +816,10 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0018-st7735fb-WIP-framebuffer-driver-supporting-Adafruit-.patch \
 	file://beaglebone/0019-beaglebone-use-P8_6-gpio1_3-as-w1-bus.patch \
 	file://beaglebone/0020-beaglebone-add-support-for-Towertech-TT3201-CAN-cape.patch \
-	file://beaglebone/0021-ARM-OMAP2-am33xx-fix-serial-mux-warnings-for-am33xx.patch \
-	file://beaglebone/0022-ARM-OMAP2-am335x-correct-McASP0-pin-mux-detail.patch \
-	file://beaglebone/0023-beaglebone-add-more-beagleboardtoys-cape-partnumbers.patch \
-	file://beaglebone/0024-beaglebone-add-gpio-keys-for-lcd7-add-notes-for-miss.patch \
-	file://beaglebone/0025-beaglebone-add-enter-key-for-lcd7-cape.patch \
-	file://beaglebone/0026-beaglebone-add-gpio-keys-for-lcd.patch \
-	file://beaglebone/0027-beaglebone-fix-direction-of-gpio-keys.patch \
-	file://beaglebone/0028-beaglebone-fix-3.5-lcd-cape-support.patch \
+	file://beaglebone/0021-beaglebone-add-more-beagleboardtoys-cape-partnumbers.patch \
+	file://beaglebone/0022-beaglebone-add-gpio-keys-for-lcd7-add-notes-for-miss.patch \
+	file://beaglebone/0023-beaglebone-add-enter-key-for-lcd7-cape.patch \
+	file://beaglebone/0024-beaglebone-add-gpio-keys-for-lcd.patch \
+	file://beaglebone/0025-beaglebone-fix-direction-of-gpio-keys.patch \
+	file://beaglebone/0026-beaglebone-fix-3.5-lcd-cape-support.patch \
 "

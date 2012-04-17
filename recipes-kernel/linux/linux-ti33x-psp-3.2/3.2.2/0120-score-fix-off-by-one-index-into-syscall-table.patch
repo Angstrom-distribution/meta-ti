@@ -1,7 +1,7 @@
-From 9e5123c755ee15680df171b9b871533faa20bd70 Mon Sep 17 00:00:00 2001
+From 9ed6d95eba2ead578e1fa4e5be8cb16b185c8c97 Mon Sep 17 00:00:00 2001
 From: Dan Rosenberg <drosenberg@vsecurity.com>
 Date: Fri, 20 Jan 2012 14:34:27 -0800
-Subject: [PATCH 121/130] score: fix off-by-one index into syscall table
+Subject: [PATCH 120/129] score: fix off-by-one index into syscall table
 
 commit c25a785d6647984505fa165b5cd84cfc9a95970b upstream.
 
@@ -42,5 +42,5 @@ index 577abba..83bb960 100644
  	slli	r8, r27, 2		# get syscall routine
  	la	r11, sys_call_table
 -- 
-1.7.9.4
+1.7.9.5
 

@@ -1,18 +1,18 @@
-From a0bf4fec50d8a0690e6f4ded292d24fb00d9e01a Mon Sep 17 00:00:00 2001
+From 6f8cb102c35b2770f11da5fc4ad9585b529c0bf2 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Mon, 19 Mar 2012 12:01:35 +0100
-Subject: [PATCH 23/27] beaglebone: add more beagleboardtoys cape partnumbers
+Subject: [PATCH 21/26] beaglebone: add more beagleboardtoys cape partnumbers
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |   25 ++++++++++++++++++++++++-
- 1 files changed, 24 insertions(+), 1 deletions(-)
+ 1 file changed, 24 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index 36efca1..58a0e77 100644
+index a30689f..73d9dd9 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
-@@ -1883,11 +1883,34 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context
+@@ -1945,11 +1945,34 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context
  		beaglebone_tsadcpins_free = 0;
  	}
  	
@@ -49,5 +49,5 @@ index 36efca1..58a0e77 100644
  		pr_info("BeagleBone cape: exporting ADC pins to sysfs\n");
  		bone_tsc_init(0,0);
 -- 
-1.7.2.5
+1.7.9.5
 

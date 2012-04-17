@@ -1,7 +1,7 @@
-From 15259eb18bbb73a316954965e66a8a85a9e12635 Mon Sep 17 00:00:00 2001
+From ec2a416f6ce2e5b896074a6e8c86fda4d1d21466 Mon Sep 17 00:00:00 2001
 From: Cliff Wickman <cpw@sgi.com>
 Date: Mon, 16 Jan 2012 15:17:50 -0600
-Subject: [PATCH 114/130] x86/UV2: Fix new UV2 hardware by using native UV2
+Subject: [PATCH 113/129] x86/UV2: Fix new UV2 hardware by using native UV2
  broadcast mode
 
 commit da87c937e5a2374686edd58df06cfd5050b125fa upstream.
@@ -346,5 +346,5 @@ index 5b55219..1341a2e 100644
  	}
  
 -- 
-1.7.9.4
+1.7.9.5
 

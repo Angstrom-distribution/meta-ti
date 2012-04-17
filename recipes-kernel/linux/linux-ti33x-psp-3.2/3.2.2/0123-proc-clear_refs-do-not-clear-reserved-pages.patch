@@ -1,7 +1,7 @@
-From 669ae9fcf0f482983eed166dd9edc06ce3e1f1e9 Mon Sep 17 00:00:00 2001
+From 1740c878a52dd4afc5b6e927d9b157d6db230184 Mon Sep 17 00:00:00 2001
 From: Will Deacon <will.deacon@arm.com>
 Date: Fri, 20 Jan 2012 14:34:09 -0800
-Subject: [PATCH 124/130] proc: clear_refs: do not clear reserved pages
+Subject: [PATCH 123/129] proc: clear_refs: do not clear reserved pages
 
 commit 85e72aa5384b1a614563ad63257ded0e91d1a620 upstream.
 
@@ -60,5 +60,5 @@ index e418c5a..7dcd2a2 100644
  		ptep_test_and_clear_young(vma, addr, pte);
  		ClearPageReferenced(page);
 -- 
-1.7.9.4
+1.7.9.5
 

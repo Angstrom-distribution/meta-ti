@@ -1,7 +1,7 @@
-From 43a16c537c58047f07f1700cb0b15982ab68c6b8 Mon Sep 17 00:00:00 2001
+From 8e03b0ed729407fef72578c24148208a079e7f2c Mon Sep 17 00:00:00 2001
 From: Greg Kroah-Hartman <gregkh@suse.de>
 Date: Wed, 25 Jan 2012 16:39:32 -0800
-Subject: [PATCH 130/130] Linux 3.2.2
+Subject: [PATCH 129/129] Linux 3.2.2
 
 ---
  Makefile |    2 +-
@@ -20,5 +20,5 @@ index c5edffa..2f684da 100644
  NAME = Saber-toothed Squirrel
  
 -- 
-1.7.9.4
+1.7.9.5
 

@@ -1,7 +1,7 @@
-From 67963c536b1b1f4304913ad0d1b32821510f690d Mon Sep 17 00:00:00 2001
+From d1eaa067ea8545101d57f6d484519722ee8c3783 Mon Sep 17 00:00:00 2001
 From: Cliff Wickman <cpw@sgi.com>
 Date: Mon, 16 Jan 2012 15:19:47 -0600
-Subject: [PATCH 116/130] x86/UV2: Work around BAU bug
+Subject: [PATCH 115/129] x86/UV2: Work around BAU bug
 
 commit c5d35d399e685acccc85a675e8765c26b2a9813a upstream.
 
@@ -566,5 +566,5 @@ index c425ff1..9010ca7 100644
  			printk(KERN_EMERG "%d cpus per uvhub invalid\n",
  				bcp->uvhub_cpu);
 -- 
-1.7.9.4
+1.7.9.5
 

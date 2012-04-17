@@ -7,7 +7,8 @@ set -e
 # don't use builtin 'echo' from /bin/sh
 export ECHO="$(which echo)"
 
-git tag -f beaglebone-v3.2 09e9651bcf2ee8d86685f2a8075bc6557b1d3b91
+#git tag -f beaglebone-v3.2 09e9651bcf2ee8d86685f2a8075bc6557b1d3b91
+git tag -f beaglebone-v3.2 88dcc46017b970660ff113c1bb4e7d832c5a3693
 
 TAG="beaglebone-v3.2"
 EXTRATAG=""
@@ -19,13 +20,13 @@ git reset --hard ${TAG}
 rm -Rf export
 
 previous=${TAG}
-PATCHSET="3.2.1 3.2.2 3.2.3 3.2.4 3.2.5 3.2.6 3.2.7 3.2.8 3.2.9 3.2.10 3.2.11 3.2.12 3.2.13 beaglebone"
+PATCHSET="3.2.1 3.2.2 3.2.3 3.2.4 3.2.5 3.2.6 3.2.7 3.2.8 3.2.9 3.2.10 3.2.11 3.2.12 3.2.13 3.2.14 beaglebone"
 
 # apply patches
 for patchset in ${PATCHSET} ; do
 	for patch in $(ls -1 $PATCHPATH/$patchset/* | sort -n) ; do
 		$ECHO -n "$patch: "
-		git am -q $patch && echo applied
+		git am -q $patch && echo applied || exit 1
 	done
 	git tag "${TAG}-${patchset}${EXTRATAG}" -f
 done

@@ -1,18 +1,18 @@
-From e32e80d4258b45a8b59306c3cf2ab35e6ec19ac2 Mon Sep 17 00:00:00 2001
+From f5d99c334bedef5b0213118590ea2ad7dbc2e29a Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 31 Jan 2012 10:04:03 +0100
-Subject: [PATCH 04/22] more beaglebone merges
+Subject: [PATCH 04/26] more beaglebone merges
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
- arch/arm/mach-omap2/board-am335xevm.c |   63 +++++++++++++++++++++++++++++++--
- 1 file changed, 60 insertions(+), 3 deletions(-)
+ arch/arm/mach-omap2/board-am335xevm.c |   52 +++++++++++++++++++++++++++++++--
+ 1 file changed, 50 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index e0c20c5..177ab9e 100644
+index 12a269f..3c67e94 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
-@@ -248,6 +248,11 @@ static struct resource tsc_resources[]  = {
+@@ -240,6 +240,11 @@ struct da8xx_lcdc_platform_data dvi_pdata = {
  static struct tsc_data am335x_touchscreen_data  = {
  	.wires  = 4,
  	.x_plate_resistance = 200,
@@ -23,34 +23,16 @@ index e0c20c5..177ab9e 100644
 +	.mode = TI_TSCADC_GENMODE,
  };
  
- static struct platform_device tsc_device = {
-@@ -260,6 +265,16 @@ static struct platform_device tsc_device = {
- 	.resource       = tsc_resources,
- };
- 
-+static struct platform_device bone_tsc_device = {
-+	.name   = "tsc",
-+	.id     = -1,
-+	.dev    = {
-+			.platform_data  = &bone_touchscreen_data,
-+	},
-+	.num_resources  = ARRAY_SIZE(tsc_resources),
-+	.resource       = tsc_resources,
-+};
-+
  static u8 am335x_iis_serializer_direction1[] = {
- 	INACTIVE_MODE,	INACTIVE_MODE,	TX_MODE,	RX_MODE,
- 	INACTIVE_MODE,	INACTIVE_MODE,	INACTIVE_MODE,	INACTIVE_MODE,
-@@ -404,7 +419,7 @@ static bool beaglebone_cape_detected;
- static int capecount = 0;
- static bool beaglebone_tsadcpins_free = 1;
+@@ -427,6 +432,7 @@ static bool beaglebone_tsadcpins_free = 1;
  
--
-+#define GP_EVM_REV_IS_1_0		0x1
- #define GP_EVM_REV_IS_1_0A		0x1
+ 
+ #define GP_EVM_REV_IS_1_0		0x1
++#define GP_EVM_REV_IS_1_0A		0x1
  #define GP_EVM_REV_IS_1_1A		0x2
  #define GP_EVM_REV_IS_UNKNOWN		0xFF
-@@ -1000,6 +1015,47 @@ static struct pinmux_config profibus_pin_mux[] = {
+ #define GP_EVM_ACTUALLY_BEAGLEBONE  0xBB
+@@ -1022,6 +1028,47 @@ static struct pinmux_config profibus_pin_mux[] = {
  	{NULL, 0},
  };
  
@@ -98,7 +80,7 @@ index e0c20c5..177ab9e 100644
  
  #define BEAGLEBONEDVI_USR0_LED  GPIO_TO_PIN(1, 18)
  #define BEAGLEBONEDVI_USR1_LED  GPIO_TO_PIN(1, 19)
-@@ -1703,11 +1759,11 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context
+@@ -1775,11 +1822,11 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context
  	snprintf(tmp, sizeof(cape_config.partnumber) + 1, "%s", cape_config.partnumber);
  	pr_info("BeagleBone cape partnumber: %s\n", tmp);   
  
@@ -112,7 +94,7 @@ index e0c20c5..177ab9e 100644
  		pr_info("BeagleBone cape: initializing LCD cape\n");
  		bbtoys7lcd_init(0,0);
  		pr_info("BeagleBone cape: initializing LCD cape touchscreen\n");
-@@ -2154,6 +2210,7 @@ static void setup_general_purpose_evm(void)
+@@ -2226,6 +2273,7 @@ static void setup_general_purpose_evm(void)
  	pr_info("The board is general purpose EVM in profile %d\n", prof_sel);
  
  	if (!strncmp("1.1A", config.version, 4)) {
@@ -121,5 +103,5 @@ index e0c20c5..177ab9e 100644
  	} else if (!strncmp("1.0", config.version, 3)) {
  		gp_evm_revision = GP_EVM_REV_IS_1_0;
 -- 
-1.7.9.4
+1.7.9.5
 

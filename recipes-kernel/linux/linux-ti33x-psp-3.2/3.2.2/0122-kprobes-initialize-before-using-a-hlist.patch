@@ -1,7 +1,7 @@
-From 7e71cd56cf6675bb6ffebddbc6fae6cc1bc17d4d Mon Sep 17 00:00:00 2001
+From d159bea43eb9f0ba806a4ddc7e03dbb218b88136 Mon Sep 17 00:00:00 2001
 From: Ananth N Mavinakayanahalli <ananth@in.ibm.com>
 Date: Fri, 20 Jan 2012 14:34:04 -0800
-Subject: [PATCH 123/130] kprobes: initialize before using a hlist
+Subject: [PATCH 122/129] kprobes: initialize before using a hlist
 
 commit d496aab567e7e52b3e974c9192a5de6e77dce32c upstream.
 
@@ -45,5 +45,5 @@ index e5d8464..52fd049 100644
  		hlist_del(&ri->hlist);
  		kfree(ri);
 -- 
-1.7.9.4
+1.7.9.5
 

@@ -1,7 +1,7 @@
-From 8d6915d8e53d9b080f079af5891d109011c6b112 Mon Sep 17 00:00:00 2001
+From 072d0e473d1a1d4adc67a7d39be9f71fea4fadad Mon Sep 17 00:00:00 2001
 From: Toshiharu Okada <toshiharu-linux@dsn.okisemi.com>
 Date: Mon, 26 Sep 2011 16:16:23 +0900
-Subject: [PATCH 120/130] i2c-eg20t: modified the setting of transfer rate.
+Subject: [PATCH 119/129] i2c-eg20t: modified the setting of transfer rate.
 
 commit ff35e8b18984ad2a82cbd259fc07f0be4b34b1aa upstream.
 
@@ -29,5 +29,5 @@ index 18936ac..730215e 100644
  	iowrite32(pch_i2cbc, p + PCH_I2CBC);
  
 -- 
-1.7.9.4
+1.7.9.5
 
