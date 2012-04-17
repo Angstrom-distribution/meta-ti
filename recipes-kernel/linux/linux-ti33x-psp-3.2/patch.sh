@@ -7,8 +7,7 @@ set -e
 # don't use builtin 'echo' from /bin/sh
 export ECHO="$(which echo)"
 
-#git tag -f beaglebone-v3.2 09e9651bcf2ee8d86685f2a8075bc6557b1d3b91
-git tag -f beaglebone-v3.2 88dcc46017b970660ff113c1bb4e7d832c5a3693
+git tag -f beaglebone-v3.2 e8004dad869568692ca2a45c04e8464ce48cc4d7
 
 TAG="beaglebone-v3.2"
 EXTRATAG=""
