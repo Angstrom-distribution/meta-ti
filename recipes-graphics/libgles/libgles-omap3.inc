@@ -3,7 +3,7 @@ LICENSE = "proprietary-binary"
 # 'TSPA.txt' might not be the best file to md5sum
 LIC_FILES_CHKSUM = "file://TSPA.txt;md5=c0d5d9c1e38b41677144c4e24d6ddee1"
 
-PR = "r25"
+PR = "r26"
 
 COMPATIBLE_MACHINE = "(omap3|ti816x|ti33x)"
 
@@ -320,7 +320,7 @@ FILES_${PN}-x11trainingcourses = "${bindir}/SGX/trainingcourses/X11/*"
 RRECOMMENDS_${PN}-x11trainingcourses = "${PN}-x11wsegl"
 
 # The libs need the kernel-modules
-RRECOMMENDS_${PN} = "omap3-sgx-modules"
+RRECOMMENDS_${PN} += "omap3-sgx-modules"
 
 # The initscript calls fbset, cputype calls devmem2
 RDEPENDS_${PN} += "fbset devmem2"
