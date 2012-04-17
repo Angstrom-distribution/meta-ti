@@ -1,0 +1,8 @@
+[Unit]
+Description=Beaglebone cape support
+
+[Service]
+ExecStart=/usr/bin/cape.sh
+
+[Install]
+WantedBy=basic.target
