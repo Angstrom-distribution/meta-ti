@@ -12,7 +12,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.2-staging"
 SRCREV = "e8004dad869568692ca2a45c04e8464ce48cc4d7"
-MACHINE_KERNEL_PR_append = "c+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "d+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -825,4 +825,5 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0027-beaglebone-decrease-PWM-frequency-to-old-value-LCD7-.patch \
 	file://beaglebone/0028-beaglebone-fix-ehrpwm-backlight.patch \
 	file://beaglebone/0029-beaglebone-also-report-cape-revision.patch \
+	file://beaglebone/0030-beaglebone-don-t-compare-undefined-characters-it-mak.patch \
 "
