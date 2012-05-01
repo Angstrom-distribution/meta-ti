@@ -62,7 +62,7 @@ index 9c2e6d0..5ea50d1 100644
 +		printf("Recognized BeagleBoardToys uLCD-lite board\n");
 +		setenv("buddy2", "bbtoys-ulcd");
 +		setenv("defaultdisplay", "lcd");
-+		setenv("uenvcmd", "i2c dev 1 ; i2c mw 40 00 00; i2c mw 40 04 80; i2c mw 40 0d 05; i2c mw 40 0d 15");
++		//setenv("uenvcmd", "i2c dev 1 ; i2c mw 40 00 00; i2c mw 40 04 80; i2c mw 40 0d 05; i2c mw 40 0d 15");
 +		break;
 +	case BEAGLE_NO_EEPROM:
 +		printf("No EEPROM on expansion board\n");
