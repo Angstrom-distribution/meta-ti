@@ -3,7 +3,7 @@ LICENSE = "proprietary-binary"
 # 'TSPA.txt' might not be the best file to md5sum
 LIC_FILES_CHKSUM = "file://TSPA.txt;md5=c0d5d9c1e38b41677144c4e24d6ddee1"
 
-PR = "r27"
+PR = "r28"
 
 COMPATIBLE_MACHINE = "(omap3|ti816x|ti33x)"
 
@@ -24,12 +24,12 @@ S = "${WORKDIR}/OMAP35x_Graphics_SDK_${SGXPV}"
 TI_BIN_UNPK_CMDS="Y: qY:workdir:Y"
 require ../../recipes-ti/includes/ti-eula-unpack.inc
 
-BINLOCATION ?= "${S}/gfx_rel"
-ES2LOCATION ?= "${S}/gfx_rel_es2.x"
-ES3LOCATION ?= "${S}/gfx_rel_es3.x"
-ES5LOCATION ?= "${S}/gfx_rel_es5.x"
-ES6LOCATION ?= "${S}/gfx_rel_es6.x"
-ES8LOCATION ?= "${S}/gfx_rel_es8.x"
+export BINLOCATION ?= "${S}/gfx_rel"
+export ES2LOCATION ?= "${S}/gfx_rel_es2.x"
+export ES3LOCATION ?= "${S}/gfx_rel_es3.x"
+export ES5LOCATION ?= "${S}/gfx_rel_es5.x"
+export ES6LOCATION ?= "${S}/gfx_rel_es6.x"
+export ES8LOCATION ?= "${S}/gfx_rel_es8.x"
 
 do_configure() {
 	# Attempt to fix up the worst offenders for file permissions
@@ -132,7 +132,8 @@ do_install () {
 
 	install -m 0755 ${BINLOCATION}/*_test ${D}${bindir}/
 	install -m 0755 ${BINLOCATION}/gl* ${D}${bindir}/
-	install -m 0755 ${BINLOCATION}/p[dv]* ${D}${bindir}/
+	install -m 0755 ${BINLOCATION}/pvrsrvinit ${D}${bindir}/
+
 	install -m 0755 ${BINLOCATION}/xgles1test1 ${D}${bindir}/
 
 	install -m 0755 ${BINLOCATION}/freedesktop/kdrive/usr/X11R6_SGX/bin/Xsgx ${D}${bindir}/|| true
@@ -172,31 +173,15 @@ do_install () {
 	install -d ${D}${bindir}/ES3.0
 	install -d ${D}${bindir}/ES2.0
 
-
-	if [ -e ${ES2LOCATION} ] ; then
-		cp -pPR ${ES2LOCATION}/lib*${IMGPV} ${D}${libdir}/ES2.0/
-		cp ${ES2LOCATION}/p[dv]* ${D}${bindir}/ES2.0/
-	fi
-
-	if [ -e ${ES3LOCATION} ] ; then
-		cp -pPR ${ES3LOCATION}/lib*${IMGPV} ${D}${libdir}/ES3.0/
-		cp ${ES3LOCATION}/p[dv]* ${D}${bindir}/ES3.0
-	fi
-
-	if [ -e ${ES5LOCATION} ] ; then 
-		cp -pPR ${ES5LOCATION}/lib*${IMGPV} ${D}${libdir}/ES5.0/
-		cp ${ES5LOCATION}/p[dv]* ${D}${bindir}/ES5.0/
-	fi
-
-	if [ -e ${ES6LOCATION} ] ; then
-		cp -pPR ${ES6LOCATION}/lib*${IMGPV} ${D}${libdir}/ES6.0/
-		cp ${ES6LOCATION}/p[dv]* ${D}${bindir}/ES6.0/
-	fi
-
-	if [ -e ${ES8LOCATION} ] ; then
-		cp -pPR ${ES8LOCATION}/lib*${IMGPV} ${D}${libdir}/ES8.0/
-		cp ${ES8LOCATION}/p[dv]* ${D}${bindir}/ES8.0/
-	fi
+	for esrev in 2 3 5 6 8 ; do
+		ESLOCATION=$(eval echo $(echo \$\{ES${esrev}LOCATION\}))
+		if [ -e ${ESLOCATION} ] ; then
+			cp -pPR ${ESLOCATION}/lib*${IMGPV} ${ESLOCATION}/pvr_drv.so ${ESLOCATION}/*.a ${D}${libdir}/ES${esrev}.0/
+			for esprog in eglinfo eglinfo_x gles1test1 gles2test1 ovg_unit_test pvr2d_test pvrsrvinit services_test sgx_blit_test sgx_clipblit_test sgx_flip_test sgx_init_test sgx_render_flip_test xgles1test1 xgles2test1 xmultiegltest xovg_unit_test ; do
+				install -m 0755 ${ESLOCATION}/$esprog ${D}${bindir}/ES${esrev}.0/ || true
+			done
+		fi
+	done
 
 	rm ${D}${bindir}/ES*/*.h ${D}${bindir}/ES*/pdsasm ${D}${bindir}/pdsasm -f || true
 
