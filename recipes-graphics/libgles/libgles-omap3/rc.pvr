@@ -61,6 +61,12 @@ sgxprepare () {
 }
 
 sgxfinish () {
+	# Fix up a bug in opkg
+	if [ $(readlink /usr/lib/libsrv_um.so) != $(readlink /usr/lib/libsrv_um.so.1) ] ; then
+		cd /usr/lib
+		ln -sf $(readlink /usr/lib/libsrv_um.so.1) libsrv_um.so
+	fi
+
 	if [ "${ES_REVISION}" != "${SAVED_ESREVISION}" ] ; then
 		echo -n "Starting SGX fixup for"
 		echo " ES${ES_REVISION}.x"
@@ -68,6 +74,7 @@ sgxfinish () {
 		cp -a /usr/bin/ES${ES_REVISION}.0/* /usr/bin
 		echo "${ES_REVISION}" > /etc/powervr-esrev
 	fi
+
 	/usr/bin/pvrsrvinit
 }
 
