@@ -958,4 +958,5 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0031-beaglebone-fix-3.5-cape-support.patch \
 	file://beaglebone/0032-beaglebone-connect-batterycape-GPIO-to-gpio-charger.patch \
 	file://beaglebone/0033-beaglebone-add-support-for-CAN-and-RS232-cape.patch \
+	file://beaglebone/0001-arm-boot-compressed-default-asm-arch-to-armv7-a.patch \
 "
