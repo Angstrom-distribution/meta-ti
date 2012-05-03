@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://TSPA.txt;md5=c0d5d9c1e38b41677144c4e24d6ddee1"
 
 PR = "r31"
 
-COMPATIBLE_MACHINE = "(omap3|ti816x|ti33x)"
+COMPATIBLE_MACHINE = "(omap3|ti814x|ti816x|ti33x)"
 
 DEPENDS = "virtual/libx11 libxau libxdmcp libdrm"
 
