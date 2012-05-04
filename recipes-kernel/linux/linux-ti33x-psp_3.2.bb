@@ -12,7 +12,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.2-staging"
 SRCREV = "0d0567b6c1a61a374120b985559768077c511a6d"
-MACHINE_KERNEL_PR_append = "e+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -796,6 +796,134 @@ PATCHES_OVER_PSP = " \
 	file://3.2.14/0145-serial-sh-sci-fix-a-race-of-DMA-submit_tx-on-transfe.patch \
 	file://3.2.14/0146-ASPM-Fix-pcie-devices-with-non-pcie-children.patch \
 	file://3.2.14/0147-Linux-3.2.14.patch \
+	file://3.2.15/0001-x86-bpf_jit-fix-a-bug-in-emitting-the-16-bit-immedia.patch \
+	file://3.2.15/0002-tg3-Fix-5717-serdes-powerdown-problem.patch \
+	file://3.2.15/0003-sky2-dont-overwrite-settings-for-PHY-Quick-link.patch \
+	file://3.2.15/0004-rose_dev-fix-memcpy-bug-in-rose_set_mac_address.patch \
+	file://3.2.15/0005-net-usb-cdc_eem-fix-mtu.patch \
+	file://3.2.15/0006-Fix-non-TBI-PHY-access-a-bad-merge-undid-bug-fix-in-.patch \
+	file://3.2.15/0007-ASoC-wm8994-Update-WM8994-DCS-calibration.patch \
+	file://3.2.15/0008-mtd-ixp4xx-oops-in-ixp4xx_flash_probe.patch \
+	file://3.2.15/0009-mtd-mips-lantiq-reintroduce-support-for-cmdline-part.patch \
+	file://3.2.15/0010-mtd-nand-gpmi-use-correct-member-for-checking-NAND_B.patch \
+	file://3.2.15/0011-mtd-sst25l-initialize-writebufsize.patch \
+	file://3.2.15/0012-mtd-block2mtd-initialize-writebufsize.patch \
+	file://3.2.15/0013-mtd-lart-initialize-writebufsize.patch \
+	file://3.2.15/0014-mtd-m25p80-set-writebufsize.patch \
+	file://3.2.15/0015-ACPI-Do-cpufreq-clamping-for-throttling-per-package-.patch \
+	file://3.2.15/0016-PNPACPI-Fix-device-ref-leaking-in-acpi_pnp_match.patch \
+	file://3.2.15/0017-ACPICA-Fix-regression-in-FADT-revision-checks.patch \
+	file://3.2.15/0018-modpost-fix-ALL_INIT_DATA_SECTIONS.patch \
+	file://3.2.15/0019-genirq-Adjust-irq-thread-affinity-on-IRQ_SET_MASK_OK.patch \
+	file://3.2.15/0020-tracing-Fix-ftrace-stack-trace-entries.patch \
+	file://3.2.15/0021-tracing-Fix-ent_size-in-trace-output.patch \
+	file://3.2.15/0022-m68k-mac-Add-missing-platform-check-before-registeri.patch \
+	file://3.2.15/0023-mac80211-fix-possible-tid_rx-reorder_timer-use-after.patch \
+	file://3.2.15/0024-rtlwifi-rtl8192ce-rtl8192cu-rtl8192de-Fix-low-gain-s.patch \
+	file://3.2.15/0025-drm-Validate-requested-virtual-size-against-allocate.patch \
+	file://3.2.15/0026-drm-radeon-kms-fix-fans-after-resume.patch \
+	file://3.2.15/0027-drm-i915-no-lvds-quirk-on-MSI-DC500.patch \
+	file://3.2.15/0028-drm-i915-Sanitize-BIOS-debugging-bits-from-PIPECONF.patch \
+	file://3.2.15/0029-drm-i915-Add-lock-on-drm_helper_resume_force_mode.patch \
+	file://3.2.15/0030-drm-i915-quirk-away-broken-OpRegion-VBT.patch \
+	file://3.2.15/0031-r8169-runtime-resume-before-shutdown.patch \
+	file://3.2.15/0032-target-Fix-unsupported-WRITE_SAME-sense-payload.patch \
+	file://3.2.15/0033-kgdb-debug_core-pass-the-breakpoint-struct-instead-o.patch \
+	file://3.2.15/0034-kgdbts-Fix-kernel-oops-with-CONFIG_DEBUG_RODATA.patch \
+	file://3.2.15/0035-kgdbts-1-of-2-fix-single-step-awareness-to-work-corr.patch \
+	file://3.2.15/0036-kgdbts-2-of-2-fix-single-step-awareness-to-work-corr.patch \
+	file://3.2.15/0037-x86-kgdb-Fix-DEBUG_RODATA-limitation-using-text_poke.patch \
+	file://3.2.15/0038-CIFS-Fix-VFS-lock-usage-for-oplocked-files.patch \
+	file://3.2.15/0039-ARM-tegra-remove-Tegra30-errata-from-MACH_TEGRA_DT.patch \
+	file://3.2.15/0040-mmc-sdhci-dove-Fix-compile-error-by-including-module.patch \
+	file://3.2.15/0041-mmc-atmel-mci-correct-data-timeout-computation.patch \
+	file://3.2.15/0042-tcm_fc-Add-abort-flag-for-gracefully-handling-exchan.patch \
+	file://3.2.15/0043-tcm_fc-Do-not-free-tpg-structure-during-wq-allocatio.patch \
+	file://3.2.15/0044-sysctl-fix-write-access-to-dmesg_restrict-kptr_restr.patch \
+	file://3.2.15/0045-modpost-Fix-modpost-license-checking-of-vmlinux.o.patch \
+	file://3.2.15/0046-x86-PCI-use-host-bridge-_CRS-info-on-MSI-MS-7253.patch \
+	file://3.2.15/0047-x86-PCI-do-not-tie-MSI-MS-7253-use_crs-quirk-to-BIOS.patch \
+	file://3.2.15/0048-TOMOYO-Fix-mount-flags-checking-order.patch \
+	file://3.2.15/0049-Revert-x86-ioapic-Add-register-level-checks-to-detec.patch \
+	file://3.2.15/0050-acer-wmi-No-wifi-rfkill-on-Sony-machines.patch \
+	file://3.2.15/0051-Fix-length-of-buffer-copied-in-__nfs4_get_acl_uncach.patch \
+	file://3.2.15/0052-sched-x86-Fix-overflow-in-cyc2ns_offset.patch \
+	file://3.2.15/0053-mfd-Clear-twl6030-IRQ-status-register-only-once.patch \
+	file://3.2.15/0054-USB-Add-Motorola-Rokr-E6-Id-to-the-USBNet-driver-zau.patch \
+	file://3.2.15/0055-ioat-fix-size-of-completion-for-Xen.patch \
+	file://3.2.15/0056-ASoC-ak4642-fixup-mute-needs-1-step.patch \
+	file://3.2.15/0057-cred-copy_process-should-clear-child-replacement_ses.patch \
+	file://3.2.15/0058-iommu-amd-Make-sure-IOMMU-interrupts-are-re-enabled-.patch \
+	file://3.2.15/0059-Bluetooth-Fix-l2cap-conn-failures-for-ssp-devices.patch \
+	file://3.2.15/0060-Linux-3.2.15.patch \
+	file://3.2.16/0001-drm-i915-mask-transcoder-select-bits-before-setting-.patch \
+	file://3.2.16/0002-drm-radeon-kms-fix-DVO-setup-on-some-r4xx-chips.patch \
+	file://3.2.16/0003-drm-i915-ringbuffer-Exclude-last-2-cachlines-of-ring.patch \
+	file://3.2.16/0004-drm-radeon-only-add-the-mm-i2c-bus-if-the-hw_i2c-mod.patch \
+	file://3.2.16/0005-drm-i915-properly-compute-dp-dithering-for-user-crea.patch \
+	file://3.2.16/0006-drm-i915-make-rc6-module-parameter-read-only.patch \
+	file://3.2.16/0007-rtlwifi-Add-missing-DMA-buffer-unmapping-for-PCI-dri.patch \
+	file://3.2.16/0008-ARM-7379-1-DT-fix-atags_to_fdt-second-call-site.patch \
+	file://3.2.16/0009-ARM-7384-1-ThumbEE-Disable-userspace-TEEHBR-access-f.patch \
+	file://3.2.16/0010-md-bitmap-prevent-bitmap_daemon_work-running-while-i.patch \
+	file://3.2.16/0011-Bluetooth-uart-ldisc-Fix-memory-leak.patch \
+	file://3.2.16/0012-Bluetooth-hci_ldisc-fix-NULL-pointer-dereference-on-.patch \
+	file://3.2.16/0013-ext4-address-scalability-issue-by-removing-extent-ca.patch \
+	file://3.2.16/0014-ia64-fix-futex_atomic_cmpxchg_inatomic.patch \
+	file://3.2.16/0015-drivers-rtc-rtc-pl031.c-enable-clock-on-all-ST-varia.patch \
+	file://3.2.16/0016-hugetlb-fix-race-condition-in-hugetlb_fault.patch \
+	file://3.2.16/0017-staging-iio-hmc5843-Fix-crash-in-probe-function.patch \
+	file://3.2.16/0018-tty-serial-altera_uart-Check-for-NULL-platform_data-.patch \
+	file://3.2.16/0019-sparc64-Eliminate-obsolete-__handle_softirq-function.patch \
+	file://3.2.16/0020-sparc64-Fix-bootup-crash-on-sun4v.patch \
+	file://3.2.16/0021-cciss-Initialize-scsi-host-max_sectors-for-tape-driv.patch \
+	file://3.2.16/0022-cciss-Fix-scsi-tape-io-with-more-than-255-scatter-ga.patch \
+	file://3.2.16/0024-video-uvesafb-Fix-oops-that-uvesafb-try-to-execute-N.patch \
+	file://3.2.16/0025-nohz-Fix-stale-jiffies-update-in-tick_nohz_restart.patch \
+	file://3.2.16/0026-pch_uart-Fix-MSI-setting-issue.patch \
+	file://3.2.16/0027-USB-serial-fix-race-between-probe-and-open.patch \
+	file://3.2.16/0028-USB-pl2303-fix-DTR-RTS-being-raised-on-baud-rate-cha.patch \
+	file://3.2.16/0029-USB-option-re-add-NOVATELWIRELESS_PRODUCT_HSPA_HIGHS.patch \
+	file://3.2.16/0030-USB-ftdi_sio-fix-status-line-change-handling-for-TIO.patch \
+	file://3.2.16/0031-USB-ftdi_sio-fix-race-condition-in-TIOCMIWAIT-and-ab.patch \
+	file://3.2.16/0032-USB-sierra-add-support-for-Sierra-Wireless-MC7710.patch \
+	file://3.2.16/0033-USB-don-t-clear-urb-dev-in-scatter-gather-library.patch \
+	file://3.2.16/0034-USB-don-t-ignore-suspend-errors-for-root-hubs.patch \
+	file://3.2.16/0035-xhci-don-t-re-enable-IE-constantly.patch \
+	file://3.2.16/0036-xhci-Don-t-write-zeroed-pointers-to-xHC-registers.patch \
+	file://3.2.16/0037-xhci-Restore-event-ring-dequeue-pointer-on-resume.patch \
+	file://3.2.16/0038-USB-fix-bug-of-device-descriptor-got-from-superspeed.patch \
+	file://3.2.16/0039-xHCI-add-XHCI_RESET_ON_RESUME-quirk-for-VIA-xHCI-hos.patch \
+	file://3.2.16/0040-xHCI-Correct-the-define-XHCI_LEGACY_DISABLE_SMI.patch \
+	file://3.2.16/0041-fix-tlb-flushing-for-page-table-pages.patch \
+	file://3.2.16/0042-serial-PL011-clear-pending-interrupts.patch \
+	file://3.2.16/0043-serial-PL011-move-interrupt-clearing.patch \
+	file://3.2.16/0044-fcaps-clear-the-same-personality-flags-as-suid-when-.patch \
+	file://3.2.16/0045-ath9k-fix-max-noise-floor-threshold.patch \
+	file://3.2.16/0046-xhci-Fix-register-save-restore-order.patch \
+	file://3.2.16/0047-Bluetooth-hci_core-fix-NULL-pointer-dereference-at-u.patch \
+	file://3.2.16/0048-pch_gpio-Support-new-device-LAPIS-Semiconductor-ML78.patch \
+	file://3.2.16/0049-gpio-Add-missing-spin_lock_init-in-gpio-pch-driver.patch \
+	file://3.2.16/0050-usb-gadget-pch_udc-Fix-disconnect-issue.patch \
+	file://3.2.16/0051-usb-gadget-pch_udc-Fix-wrong-return-value.patch \
+	file://3.2.16/0052-usb-gadget-pch_udc-Fix-USB-suspend-issue.patch \
+	file://3.2.16/0053-usb-gadget-pch_udc-Fix-usb-gadget-pch_udc-Fix-ether-.patch \
+	file://3.2.16/0054-usb-gadget-pch_udc-Reduce-redundant-interrupt.patch \
+	file://3.2.16/0055-ACPICA-Fix-to-allow-region-arguments-to-reference-ot.patch \
+	file://3.2.16/0056-security-fix-compile-error-in-commoncap.c.patch \
+	file://3.2.16/0057-pch_gbe-Do-not-abort-probe-on-bad-MAC.patch \
+	file://3.2.16/0058-pch_gbe-memory-corruption-calling-pch_gbe_validate_o.patch \
+	file://3.2.16/0059-pch_dma-Support-new-device-LAPIS-Semiconductor-ML783.patch \
+	file://3.2.16/0060-spi-topcliff-pch-fix-Wuninitialized-warning.patch \
+	file://3.2.16/0061-spi-topcliff-pch-Support-new-device-LAPIS-Semiconduc.patch \
+	file://3.2.16/0062-Bluetooth-Adding-USB-device-13d3-3375-as-an-Atheros-.patch \
+	file://3.2.16/0063-Bluetooth-Add-Atheros-maryann-PIDVID-support.patch \
+	file://3.2.16/0064-Bluetooth-Add-support-for-BCM20702A0-0a5c-21e3.patch \
+	file://3.2.16/0065-futex-Do-not-leak-robust-list-to-unprivileged-proces.patch \
+	file://3.2.16/0066-drm-radeon-kms-fix-the-regression-of-DVI-connector-c.patch \
+	file://3.2.16/0067-drm-radeon-disable-MSI-on-RV515.patch \
+	file://3.2.16/0068-drm-radeon-fix-load-detect-on-rn50-with-hardcoded-ED.patch \
+	file://3.2.16/0069-Linux-3.2.16.patch \
 	file://beaglebone/0001-f_rndis-HACK-around-undefined-variables.patch \
 	file://beaglebone/0002-da8xx-fb-add-DVI-support-for-beaglebone.patch \
 	file://beaglebone/0003-beaglebone-rebase-everything-onto-3.2-WARNING-MEGAPA.patch \
@@ -829,4 +957,3 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0031-omap2-irq-process-all-4-irq-banks-for-am335x.patch \
 	file://beaglebone/0032-omap2-irqs.h-increase-number-or-irq-banks.patch \
 "
-
