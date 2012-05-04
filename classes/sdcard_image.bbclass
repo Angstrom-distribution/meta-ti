@@ -19,7 +19,7 @@ LOOPDEV_FS ?= "/dev/loop3"
 SDIMG_SIZE ?= "444" 
 
 # FS type for rootfs
-ROOTFSTYPE ?= "ext3"
+ROOTFSTYPE ?= "ext4"
 
 BOOTPARTNAME_beaglebone = "BEAGLE_BONE"
 BOOTPARTNAME ?= "${MACHINE}"
