@@ -1,0 +1,26 @@
+From d5f1df216fb51e1edc3e18b6b4c6d382141cf8dd Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Wed, 2 May 2012 13:51:57 +0200
+Subject: [PATCH 31/32] omap2+ irq: process all 4 irq banks for am335x
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ arch/arm/mach-omap2/irq.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/mach-omap2/irq.c b/arch/arm/mach-omap2/irq.c
+index 1fef061..419b1a1 100644
+--- a/arch/arm/mach-omap2/irq.c
++++ b/arch/arm/mach-omap2/irq.c
+@@ -212,7 +212,7 @@ static inline void omap_intc_handle_irq(void __iomem *base_addr, struct pt_regs
+ 			goto out;
+ 
+ 		irqnr = readl_relaxed(base_addr + 0xd8);
+-#ifdef CONFIG_SOC_OMAPTI816X
++#if defined(CONFIG_SOC_OMAPTI816X) || defined(CONFIG_SOC_OMAPAM33XX)
+ 		if (irqnr)
+ 			goto out;
+ 		irqnr = readl_relaxed(base_addr + 0xf8);
+-- 
+1.7.9.5
+
