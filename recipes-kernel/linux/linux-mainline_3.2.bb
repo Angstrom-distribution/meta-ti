@@ -10,7 +10,7 @@ PV = "3.2.16"
 SRCREV_pn-${PN} = "b1be7dd1ec231ae751d0ce3acd0d2e5760704a6f"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "a"
+MACHINE_KERNEL_PR_append = "b"
 
 FILESPATH =. "${FILE_DIRNAME}/linux-mainline-3.2:${FILE_DIRNAME}/linux-mainline-3.2/${MACHINE}:"
 
@@ -57,6 +57,7 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.gi
             file://beagle/0011-default-to-fifo-mode-5-for-old-musb-beagles.patch \
             file://beagle/0012-backlight-Add-TLC59108-backlight-control-driver.patch \
             file://beagle/0013-tlc59108-adjust-for-beagleboard-uLCD7.patch \
+            file://beagle/0014-expansion-add-wifi.patch \
             file://devkit8000/0001-arm-omap-devkit8000-for-lcd-use-samsung_lte_panel.patch \
             file://touchbook/0001-omap3-touchbook-remove-mmc-gpio_wp.patch \
             file://touchbook/0002-omap3-touchbook-drop-u-boot-readonly.patch \
