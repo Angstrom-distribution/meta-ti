@@ -11,8 +11,8 @@ S = "${WORKDIR}/git"
 MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.2-staging"
-SRCREV = "0d0567b6c1a61a374120b985559768077c511a6d"
-MACHINE_KERNEL_PR_append = "c+gitr${SRCREV}"
+SRCREV = "31944a82681a0e7ab6cc3e069c30eddc5042e3e8"
+MACHINE_KERNEL_PR_append = "d+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -954,8 +954,6 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0028-beaglebone-fix-ehrpwm-backlight.patch \
 	file://beaglebone/0029-beaglebone-also-report-cape-revision.patch \
 	file://beaglebone/0030-beaglebone-don-t-compare-undefined-characters-it-mak.patch \
-	file://beaglebone/0031-omap2-irq-process-all-4-irq-banks-for-am335x.patch \
-	file://beaglebone/0032-omap2-irqs.h-increase-number-or-irq-banks.patch \
 	file://beaglebone/0033-beaglebone-fix-3.5-cape-support.patch \
 	file://beaglebone/0034-beaglebone-connect-batterycape-GPIO-to-gpio-charger.patch \
 	file://beaglebone/0035-beaglebone-add-support-for-CAN-and-RS232-cape.patch \
