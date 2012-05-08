@@ -1,7 +1,7 @@
-From 814a0921c841d7bb82d27dfccdafea9982420c24 Mon Sep 17 00:00:00 2001
+From b694e091929929c8b56fcb1fbf28cba81dc2fe04 Mon Sep 17 00:00:00 2001
 From: NeilBrown <neilb@suse.de>
 Date: Thu, 12 Apr 2012 16:05:06 +1000
-Subject: [PATCH 10/69] md/bitmap: prevent bitmap_daemon_work running while
+Subject: [PATCH 10/68] md/bitmap: prevent bitmap_daemon_work running while
  initialising bitmap
 
 commit afbaa90b80b1ec66e5137cc3824746bfdf559b18 upstream.
@@ -38,5 +38,5 @@ index 2a8722b..62a8e68 100644
  	if (err)
  		goto out;
 -- 
-1.7.9.5
+1.7.10
 

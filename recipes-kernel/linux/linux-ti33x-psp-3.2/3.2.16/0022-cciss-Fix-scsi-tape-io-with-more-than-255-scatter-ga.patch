@@ -1,7 +1,7 @@
-From 80461d138d8963f19b97fda7126455f12ba70bc8 Mon Sep 17 00:00:00 2001
+From 3c8f69ec2a543e0b0c3f0f2a84663629ea0a1711 Mon Sep 17 00:00:00 2001
 From: "Stephen M. Cameron" <scameron@beardog.cce.hp.com>
 Date: Thu, 22 Mar 2012 21:40:09 +0100
-Subject: [PATCH 22/69] cciss: Fix scsi tape io with more than 255 scatter
+Subject: [PATCH 22/68] cciss: Fix scsi tape io with more than 255 scatter
  gather elements
 
 commit bc67f63650fad6b3478d9ddfd5406d45a95987c9 upstream.
@@ -34,5 +34,5 @@ index f510a9c..acda773 100644
  		c->Header.SGList = h->max_cmd_sgentries;
  	else
 -- 
-1.7.9.5
+1.7.10
 

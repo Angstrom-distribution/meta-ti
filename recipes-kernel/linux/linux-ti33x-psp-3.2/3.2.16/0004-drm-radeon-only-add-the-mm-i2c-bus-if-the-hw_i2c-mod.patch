@@ -1,7 +1,7 @@
-From 3168f6f46758c36d5b33ed5e77329bffed67033f Mon Sep 17 00:00:00 2001
+From 40d10e38c38f6f39e29b78688a4bcb368e265b5c Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Tue, 10 Apr 2012 12:14:27 -0400
-Subject: [PATCH 04/69] drm/radeon: only add the mm i2c bus if the hw_i2c
+Subject: [PATCH 04/68] drm/radeon: only add the mm i2c bus if the hw_i2c
  module param is set
 
 commit 46783150a6552f9513f08e62cfcc07125d6e502b upstream.
@@ -37,5 +37,5 @@ index 7bb1b07..1441b00 100644
  	if (i2c == NULL)
  		return NULL;
 -- 
-1.7.9.5
+1.7.10
 

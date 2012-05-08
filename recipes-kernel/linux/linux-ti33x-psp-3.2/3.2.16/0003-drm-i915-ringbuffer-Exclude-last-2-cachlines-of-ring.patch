@@ -1,7 +1,7 @@
-From 6905e24cc8b935ca1db7f0af4ec3fe95ffd30122 Mon Sep 17 00:00:00 2001
+From 283aa265f1ec642ce070bb3f1d3d69777b544144 Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Mon, 9 Apr 2012 13:59:46 +0100
-Subject: [PATCH 03/69] drm/i915/ringbuffer: Exclude last 2 cachlines of ring
+Subject: [PATCH 03/68] drm/i915/ringbuffer: Exclude last 2 cachlines of ring
  on 845g
 
 commit 27c1cbd06a7620b354cbb363834f3bb8df4f410d upstream.
@@ -30,5 +30,5 @@ index 30a9af9..8673581 100644
  
  	return 0;
 -- 
-1.7.9.5
+1.7.10
 

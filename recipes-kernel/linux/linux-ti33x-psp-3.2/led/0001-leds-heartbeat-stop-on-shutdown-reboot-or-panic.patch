@@ -1,4 +1,4 @@
-From fa1fff60e0f18032378fa97a6951c6f79e24507d Mon Sep 17 00:00:00 2001
+From 59d23a375a752abc6a6a8ddd935d1b367f69ed3d Mon Sep 17 00:00:00 2001
 From: Alexander Holler <hol...@ahsoftware.de>
 Date: Wed, 25 Apr 2012 00:50:03 +0200
 Subject: [PATCH] leds: heartbeat: stop on shutdown, reboot or panic
@@ -63,5 +63,5 @@ index 759c0bb..31c234c 100644
  }
  
 -- 
-1.7.9.5
+1.7.10
 

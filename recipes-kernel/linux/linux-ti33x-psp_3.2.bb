@@ -11,8 +11,8 @@ S = "${WORKDIR}/git"
 MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.2-staging"
-SRCREV = "baaa0c0425528486efcc70b7696dd6359f10b5bd"
-MACHINE_KERNEL_PR_append = "g+gitr${SRCREV}"
+SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
+MACHINE_KERNEL_PR_append = "h+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -878,52 +878,52 @@ PATCHES_OVER_PSP = " \
 	file://3.2.16/0020-sparc64-Fix-bootup-crash-on-sun4v.patch \
 	file://3.2.16/0021-cciss-Initialize-scsi-host-max_sectors-for-tape-driv.patch \
 	file://3.2.16/0022-cciss-Fix-scsi-tape-io-with-more-than-255-scatter-ga.patch \
-	file://3.2.16/0024-video-uvesafb-Fix-oops-that-uvesafb-try-to-execute-N.patch \
-	file://3.2.16/0025-nohz-Fix-stale-jiffies-update-in-tick_nohz_restart.patch \
-	file://3.2.16/0026-pch_uart-Fix-MSI-setting-issue.patch \
-	file://3.2.16/0027-USB-serial-fix-race-between-probe-and-open.patch \
-	file://3.2.16/0028-USB-pl2303-fix-DTR-RTS-being-raised-on-baud-rate-cha.patch \
-	file://3.2.16/0029-USB-option-re-add-NOVATELWIRELESS_PRODUCT_HSPA_HIGHS.patch \
-	file://3.2.16/0030-USB-ftdi_sio-fix-status-line-change-handling-for-TIO.patch \
-	file://3.2.16/0031-USB-ftdi_sio-fix-race-condition-in-TIOCMIWAIT-and-ab.patch \
-	file://3.2.16/0032-USB-sierra-add-support-for-Sierra-Wireless-MC7710.patch \
-	file://3.2.16/0033-USB-don-t-clear-urb-dev-in-scatter-gather-library.patch \
-	file://3.2.16/0034-USB-don-t-ignore-suspend-errors-for-root-hubs.patch \
-	file://3.2.16/0035-xhci-don-t-re-enable-IE-constantly.patch \
-	file://3.2.16/0036-xhci-Don-t-write-zeroed-pointers-to-xHC-registers.patch \
-	file://3.2.16/0037-xhci-Restore-event-ring-dequeue-pointer-on-resume.patch \
-	file://3.2.16/0038-USB-fix-bug-of-device-descriptor-got-from-superspeed.patch \
-	file://3.2.16/0039-xHCI-add-XHCI_RESET_ON_RESUME-quirk-for-VIA-xHCI-hos.patch \
-	file://3.2.16/0040-xHCI-Correct-the-define-XHCI_LEGACY_DISABLE_SMI.patch \
-	file://3.2.16/0041-fix-tlb-flushing-for-page-table-pages.patch \
-	file://3.2.16/0042-serial-PL011-clear-pending-interrupts.patch \
-	file://3.2.16/0043-serial-PL011-move-interrupt-clearing.patch \
-	file://3.2.16/0044-fcaps-clear-the-same-personality-flags-as-suid-when-.patch \
-	file://3.2.16/0045-ath9k-fix-max-noise-floor-threshold.patch \
-	file://3.2.16/0046-xhci-Fix-register-save-restore-order.patch \
-	file://3.2.16/0047-Bluetooth-hci_core-fix-NULL-pointer-dereference-at-u.patch \
-	file://3.2.16/0048-pch_gpio-Support-new-device-LAPIS-Semiconductor-ML78.patch \
-	file://3.2.16/0049-gpio-Add-missing-spin_lock_init-in-gpio-pch-driver.patch \
-	file://3.2.16/0050-usb-gadget-pch_udc-Fix-disconnect-issue.patch \
-	file://3.2.16/0051-usb-gadget-pch_udc-Fix-wrong-return-value.patch \
-	file://3.2.16/0052-usb-gadget-pch_udc-Fix-USB-suspend-issue.patch \
-	file://3.2.16/0053-usb-gadget-pch_udc-Fix-usb-gadget-pch_udc-Fix-ether-.patch \
-	file://3.2.16/0054-usb-gadget-pch_udc-Reduce-redundant-interrupt.patch \
-	file://3.2.16/0055-ACPICA-Fix-to-allow-region-arguments-to-reference-ot.patch \
-	file://3.2.16/0056-security-fix-compile-error-in-commoncap.c.patch \
-	file://3.2.16/0057-pch_gbe-Do-not-abort-probe-on-bad-MAC.patch \
-	file://3.2.16/0058-pch_gbe-memory-corruption-calling-pch_gbe_validate_o.patch \
-	file://3.2.16/0059-pch_dma-Support-new-device-LAPIS-Semiconductor-ML783.patch \
-	file://3.2.16/0060-spi-topcliff-pch-fix-Wuninitialized-warning.patch \
-	file://3.2.16/0061-spi-topcliff-pch-Support-new-device-LAPIS-Semiconduc.patch \
-	file://3.2.16/0062-Bluetooth-Adding-USB-device-13d3-3375-as-an-Atheros-.patch \
-	file://3.2.16/0063-Bluetooth-Add-Atheros-maryann-PIDVID-support.patch \
-	file://3.2.16/0064-Bluetooth-Add-support-for-BCM20702A0-0a5c-21e3.patch \
-	file://3.2.16/0065-futex-Do-not-leak-robust-list-to-unprivileged-proces.patch \
-	file://3.2.16/0066-drm-radeon-kms-fix-the-regression-of-DVI-connector-c.patch \
-	file://3.2.16/0067-drm-radeon-disable-MSI-on-RV515.patch \
-	file://3.2.16/0068-drm-radeon-fix-load-detect-on-rn50-with-hardcoded-ED.patch \
-	file://3.2.16/0069-Linux-3.2.16.patch \
+	file://3.2.16/0023-video-uvesafb-Fix-oops-that-uvesafb-try-to-execute-N.patch \
+	file://3.2.16/0024-nohz-Fix-stale-jiffies-update-in-tick_nohz_restart.patch \
+	file://3.2.16/0025-pch_uart-Fix-MSI-setting-issue.patch \
+	file://3.2.16/0026-USB-serial-fix-race-between-probe-and-open.patch \
+	file://3.2.16/0027-USB-pl2303-fix-DTR-RTS-being-raised-on-baud-rate-cha.patch \
+	file://3.2.16/0028-USB-option-re-add-NOVATELWIRELESS_PRODUCT_HSPA_HIGHS.patch \
+	file://3.2.16/0029-USB-ftdi_sio-fix-status-line-change-handling-for-TIO.patch \
+	file://3.2.16/0030-USB-ftdi_sio-fix-race-condition-in-TIOCMIWAIT-and-ab.patch \
+	file://3.2.16/0031-USB-sierra-add-support-for-Sierra-Wireless-MC7710.patch \
+	file://3.2.16/0032-USB-don-t-clear-urb-dev-in-scatter-gather-library.patch \
+	file://3.2.16/0033-USB-don-t-ignore-suspend-errors-for-root-hubs.patch \
+	file://3.2.16/0034-xhci-don-t-re-enable-IE-constantly.patch \
+	file://3.2.16/0035-xhci-Don-t-write-zeroed-pointers-to-xHC-registers.patch \
+	file://3.2.16/0036-xhci-Restore-event-ring-dequeue-pointer-on-resume.patch \
+	file://3.2.16/0037-USB-fix-bug-of-device-descriptor-got-from-superspeed.patch \
+	file://3.2.16/0038-xHCI-add-XHCI_RESET_ON_RESUME-quirk-for-VIA-xHCI-hos.patch \
+	file://3.2.16/0039-xHCI-Correct-the-define-XHCI_LEGACY_DISABLE_SMI.patch \
+	file://3.2.16/0040-fix-tlb-flushing-for-page-table-pages.patch \
+	file://3.2.16/0041-serial-PL011-clear-pending-interrupts.patch \
+	file://3.2.16/0042-serial-PL011-move-interrupt-clearing.patch \
+	file://3.2.16/0043-fcaps-clear-the-same-personality-flags-as-suid-when-.patch \
+	file://3.2.16/0044-ath9k-fix-max-noise-floor-threshold.patch \
+	file://3.2.16/0045-xhci-Fix-register-save-restore-order.patch \
+	file://3.2.16/0046-Bluetooth-hci_core-fix-NULL-pointer-dereference-at-u.patch \
+	file://3.2.16/0047-pch_gpio-Support-new-device-LAPIS-Semiconductor-ML78.patch \
+	file://3.2.16/0048-gpio-Add-missing-spin_lock_init-in-gpio-pch-driver.patch \
+	file://3.2.16/0049-usb-gadget-pch_udc-Fix-disconnect-issue.patch \
+	file://3.2.16/0050-usb-gadget-pch_udc-Fix-wrong-return-value.patch \
+	file://3.2.16/0051-usb-gadget-pch_udc-Fix-USB-suspend-issue.patch \
+	file://3.2.16/0052-usb-gadget-pch_udc-Fix-usb-gadget-pch_udc-Fix-ether-.patch \
+	file://3.2.16/0053-usb-gadget-pch_udc-Reduce-redundant-interrupt.patch \
+	file://3.2.16/0054-ACPICA-Fix-to-allow-region-arguments-to-reference-ot.patch \
+	file://3.2.16/0055-security-fix-compile-error-in-commoncap.c.patch \
+	file://3.2.16/0056-pch_gbe-Do-not-abort-probe-on-bad-MAC.patch \
+	file://3.2.16/0057-pch_gbe-memory-corruption-calling-pch_gbe_validate_o.patch \
+	file://3.2.16/0058-pch_dma-Support-new-device-LAPIS-Semiconductor-ML783.patch \
+	file://3.2.16/0059-spi-topcliff-pch-fix-Wuninitialized-warning.patch \
+	file://3.2.16/0060-spi-topcliff-pch-Support-new-device-LAPIS-Semiconduc.patch \
+	file://3.2.16/0061-Bluetooth-Adding-USB-device-13d3-3375-as-an-Atheros-.patch \
+	file://3.2.16/0062-Bluetooth-Add-Atheros-maryann-PIDVID-support.patch \
+	file://3.2.16/0063-Bluetooth-Add-support-for-BCM20702A0-0a5c-21e3.patch \
+	file://3.2.16/0064-futex-Do-not-leak-robust-list-to-unprivileged-proces.patch \
+	file://3.2.16/0065-drm-radeon-kms-fix-the-regression-of-DVI-connector-c.patch \
+	file://3.2.16/0066-drm-radeon-disable-MSI-on-RV515.patch \
+	file://3.2.16/0067-drm-radeon-fix-load-detect-on-rn50-with-hardcoded-ED.patch \
+	file://3.2.16/0068-Linux-3.2.16.patch \
 	file://led/0001-leds-heartbeat-stop-on-shutdown-reboot-or-panic.patch \
 	file://beaglebone/0001-f_rndis-HACK-around-undefined-variables.patch \
 	file://beaglebone/0002-da8xx-fb-add-DVI-support-for-beaglebone.patch \
@@ -955,7 +955,7 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0028-beaglebone-fix-ehrpwm-backlight.patch \
 	file://beaglebone/0029-beaglebone-also-report-cape-revision.patch \
 	file://beaglebone/0030-beaglebone-don-t-compare-undefined-characters-it-mak.patch \
-	file://beaglebone/0033-beaglebone-fix-3.5-cape-support.patch \
-	file://beaglebone/0034-beaglebone-connect-batterycape-GPIO-to-gpio-charger.patch \
-	file://beaglebone/0035-beaglebone-add-support-for-CAN-and-RS232-cape.patch \
+	file://beaglebone/0031-beaglebone-fix-3.5-cape-support.patch \
+	file://beaglebone/0032-beaglebone-connect-batterycape-GPIO-to-gpio-charger.patch \
+	file://beaglebone/0033-beaglebone-add-support-for-CAN-and-RS232-cape.patch \
 "

@@ -1,7 +1,7 @@
-From a8c85bb6818c1e5d3fec8904cae9a851ed700bb6 Mon Sep 17 00:00:00 2001
+From 98861c7257e3ce6dd351c07abed856e73add7858 Mon Sep 17 00:00:00 2001
 From: Larry Finger <Larry.Finger@lwfinger.net>
 Date: Mon, 26 Mar 2012 10:48:20 -0500
-Subject: [PATCH 07/69] rtlwifi: Add missing DMA buffer unmapping for PCI
+Subject: [PATCH 07/68] rtlwifi: Add missing DMA buffer unmapping for PCI
  drivers
 
 commit 673f7786e205c87b5d978c62827b9a66d097bebb upstream.
@@ -41,5 +41,5 @@ index 9afcad3..d44d398 100644
  	/*NB: the beacon data buffer must be 32-bit aligned. */
  	pskb = ieee80211_beacon_get(hw, mac->vif);
 -- 
-1.7.9.5
+1.7.10
 

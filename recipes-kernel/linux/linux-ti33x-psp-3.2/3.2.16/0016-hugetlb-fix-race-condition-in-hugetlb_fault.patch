@@ -1,7 +1,7 @@
-From 7295297274cc9506d1600eb09ab93f203e860f48 Mon Sep 17 00:00:00 2001
+From cabab70ca89f34dacc965ea927f0f67706fcc22b Mon Sep 17 00:00:00 2001
 From: Chris Metcalf <cmetcalf@tilera.com>
 Date: Thu, 12 Apr 2012 12:49:15 -0700
-Subject: [PATCH 16/69] hugetlb: fix race condition in hugetlb_fault()
+Subject: [PATCH 16/68] hugetlb: fix race condition in hugetlb_fault()
 
 commit 66aebce747eaf9bc456bf1f1b217d8db843031d0 upstream.
 
@@ -85,5 +85,5 @@ index 2316840..bd936ed 100644
  out_mutex:
  	mutex_unlock(&hugetlb_instantiation_mutex);
 -- 
-1.7.9.5
+1.7.10
 
