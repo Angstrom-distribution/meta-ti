@@ -1,7 +1,7 @@
-From 55315e3442ea08e4bd0d676921f968dc1fccf588 Mon Sep 17 00:00:00 2001
+From 2d746bba72e5334bbf6269e1063dea891ad58394 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Wed, 1 Feb 2012 14:10:38 +0100
-Subject: [PATCH 17/26] beaglebone: set default brightness to 50% for pwm
+Subject: [PATCH 17/33] beaglebone: set default brightness to 50% for pwm
  backlights
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
@@ -10,10 +10,10 @@ Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index 23b59c2..9294af5 100644
+index 43a83ca..97b069f 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
-@@ -133,7 +133,7 @@ static const struct display_panel disp_panel = {
+@@ -135,7 +135,7 @@ static const struct display_panel disp_panel = {
  
  /* LCD backlight platform Data */
  #define AM335X_BACKLIGHT_MAX_BRIGHTNESS        100
@@ -23,5 +23,5 @@ index 23b59c2..9294af5 100644
  
  #define PWM_DEVICE_ID   "ecap.0"
 -- 
-1.7.9.5
+1.7.10
 

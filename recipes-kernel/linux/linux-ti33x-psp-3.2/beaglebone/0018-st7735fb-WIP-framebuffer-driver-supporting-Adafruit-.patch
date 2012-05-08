@@ -1,7 +1,7 @@
-From 87a3d78cceff02796574ec9c0e5ee9c81372cd29 Mon Sep 17 00:00:00 2001
+From 5d3a23267ebf757159b1dce032505d0c15683909 Mon Sep 17 00:00:00 2001
 From: Matt Porter <mporter@ti.com>
 Date: Mon, 21 Nov 2011 12:55:23 -0500
-Subject: [PATCH 18/26] st7735fb: WIP framebuffer driver supporting Adafruit
+Subject: [PATCH 18/33] st7735fb: WIP framebuffer driver supporting Adafruit
  1.8" SPI LCD
 
 Signed-off-by: Matt Porter <mporter@ti.com>
@@ -664,5 +664,5 @@ index 0000000..250f036
 +
 +
 -- 
-1.7.9.5
+1.7.10
 

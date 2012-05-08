@@ -1,7 +1,7 @@
-From c150d02db78ceb0ec05774b834bf2001c6427552 Mon Sep 17 00:00:00 2001
+From 32868ed9e44bf2cf9193e4bb8a903c20ca5a8d93 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 31 Jan 2012 16:49:52 +0100
-Subject: [PATCH 14/26] AM335x: MUX: add ehrpwm1A
+Subject: [PATCH 14/33] AM335x: MUX: add ehrpwm1A
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
@@ -22,5 +22,5 @@ index 572ed16..0f71646 100644
  		"gpmc_a3", "mii2_txd2", "rgmii2_td2", "mmc2_dat2",
  		NULL, NULL, NULL, "gpio1_19"),
 -- 
-1.7.9.5
+1.7.10
 

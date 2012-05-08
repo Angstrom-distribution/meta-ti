@@ -1,7 +1,7 @@
-From 95523fb19e6eea48b9c0632b81780268f386b22f Mon Sep 17 00:00:00 2001
+From bfbf01f9468232ac6856b46665b6998afa45e4a6 Mon Sep 17 00:00:00 2001
 From: Daniel Vetter <daniel.vetter@ffwll.ch>
 Date: Tue, 10 Apr 2012 10:42:36 +0200
-Subject: [PATCH 05/69] drm/i915: properly compute dp dithering for
+Subject: [PATCH 05/68] drm/i915: properly compute dp dithering for
  user-created modes
 
 commit c4867936474183332db4c19791a65fdad6474fd5 upstream.
@@ -126,5 +126,5 @@ index 94f860c..12eb789 100644
  		for (clock = 0; clock <= max_clock; clock++) {
  			int link_avail = intel_dp_max_data_rate(intel_dp_link_clock(bws[clock]), lane_count);
 -- 
-1.7.9.5
+1.7.10
 
