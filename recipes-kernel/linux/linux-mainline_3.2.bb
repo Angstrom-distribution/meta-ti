@@ -10,7 +10,7 @@ PV = "3.2.16"
 SRCREV_pn-${PN} = "b1be7dd1ec231ae751d0ce3acd0d2e5760704a6f"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "c"
+MACHINE_KERNEL_PR_append = "d"
 
 FILESPATH =. "${FILE_DIRNAME}/linux-mainline-3.2:${FILE_DIRNAME}/linux-mainline-3.2/${MACHINE}:"
 
@@ -73,6 +73,7 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.gi
             file://omap_fixes/0005-ARM-OMAP3-hwmod-data-disable-multiblock-reads-on-MMC.patch \
             file://omap_fixes/0006-OMAP-HWMOD-add-es3plus-to-am36xx-am35xx.patch \
             file://sgx/0001-Revert-OMAP-DSS2-remove-update_mode-from-omapdss-v3.2.patch \
+            file://led/0001-leds-heartbeat-stop-on-shutdown-reboot-or-panic.patch \
             \
             file://defconfig"
 
