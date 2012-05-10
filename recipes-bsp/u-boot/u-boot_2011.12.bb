@@ -30,9 +30,9 @@ SRC_URI = "git://www.denx.de/git/u-boot.git;protocol=git \
            ${CACHEFIX} \
            file://2011.12/0009-Beagleboard-Correct-memory-size-on-rev-C4.patch \
            file://2011.12/0010-OMAP3-Correct-get_sdr_cs_offset-mask.patch \
-           file://0011-ext2load-increase-read-speed.patch \
-           file://0012-ext4fs-ls-load-support.patch \
-           file://0013-beagleboard-switch-mmcroots-to-ext4.patch \
+           file://2011.12/0011-ext2load-increase-read-speed.patch \
+           file://2011.12/0012-ext4fs-ls-load-support.patch \
+           file://2011.12/0013-beagleboard-switch-mmcroots-to-ext4.patch \
            ${FWENV} \
           "
 
