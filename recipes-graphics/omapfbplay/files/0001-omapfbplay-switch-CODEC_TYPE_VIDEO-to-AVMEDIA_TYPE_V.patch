@@ -1,0 +1,26 @@
+From 71670f4a067efc169018a9ec9321ccc9af3bbd59 Mon Sep 17 00:00:00 2001
+From: Roger Monk <r-monk@ti.com>
+Date: Thu, 10 May 2012 14:50:11 +0100
+Subject: [PATCH] omapfbplay:  switch CODEC_TYPE_VIDEO to AVMEDIA_TYPE_VIDEO
+
+Signed-off-by: Roger Monk <r-monk@ti.com>
+---
+ omapfbplay.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/omapfbplay.c b/omapfbplay.c
+index ad35bd5..818cf2c 100644
+--- a/omapfbplay.c
++++ b/omapfbplay.c
+@@ -74,7 +74,7 @@ find_stream(AVFormatContext *afc)
+     int i;
+ 
+     for (i = 0; i < afc->nb_streams; i++) {
+-        if (afc->streams[i]->codec->codec_type == CODEC_TYPE_VIDEO && !st)
++        if (afc->streams[i]->codec->codec_type == AVMEDIA_TYPE_VIDEO && !st)
+             st = afc->streams[i];
+         else
+             afc->streams[i]->discard = AVDISCARD_ALL;
+-- 
+1.7.0.4
+
