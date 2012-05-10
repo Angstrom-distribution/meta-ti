@@ -1,0 +1,26 @@
+From dca631cfa22b1f903c943a9e03597aa6f9ae10d4 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Thu, 10 May 2012 14:01:27 +0200
+Subject: [PATCH] rollback to libav 0.7.4 API
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ omapfbplay.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/omapfbplay.c b/omapfbplay.c
+index 6a6fc96..1e5a29c 100644
+--- a/omapfbplay.c
++++ b/omapfbplay.c
+@@ -674,7 +674,7 @@ main(int argc, char **argv)
+     pthread_join(dispt, NULL);
+ 
+ out:
+-    if (afc) avformat_close_input(&afc);
++    if (afc) av_close_input_file(&afc);
+ 
+     if (codec)   codec->close();
+     if (timer)   timer->close();
+-- 
+1.7.10
+
