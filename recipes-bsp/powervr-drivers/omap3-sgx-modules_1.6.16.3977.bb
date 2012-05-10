@@ -26,7 +26,7 @@ S = "${WORKDIR}/Graphics_SDK_${SGXPV}/GFX_Linux_KM"
 PVRBUILD = "release"
 export KERNELDIR = "${STAGING_KERNEL_DIR}"
 
-PACKAGE_STRIP = "no"
+INHIBIT_PACKAGE_STRIP = "1"
 
 TI_PLATFORM_omap3 = "omap3630"
 TI_PLATFORM_ti816x = "ti81xx"
