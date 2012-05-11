@@ -22,6 +22,8 @@ SRC_URI += "git://arago-project.org/git/projects/linux-am33x.git;protocol=http;b
 
 SRC_URI_append_beaglebone = " file://logo_linux_clut224.ppm"
 
+KERNEL_LDSUFFIX_beaglebone = "${@base_contains('DISTRO_FEATURES', 'ld-is-gold', '.bfd', '', d)}"
+
 do_compile_prepend() {
 	cp ${WORKDIR}/am335x-pm-firmware.bin ${S}/firmware/
 }
