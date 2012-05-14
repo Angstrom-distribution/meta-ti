@@ -12,7 +12,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
-MACHINE_KERNEL_PR_append = "h+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "i+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -960,5 +960,12 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0031-beaglebone-fix-3.5-cape-support.patch \
 	file://beaglebone/0032-beaglebone-connect-batterycape-GPIO-to-gpio-charger.patch \
 	file://beaglebone/0033-beaglebone-add-support-for-CAN-and-RS232-cape.patch \
+	file://beaglebone/0034-beaglebone-add-support-for-DVI-rev.-A2-capes.patch \
+	file://beaglebone/0035-beaglebone-enable-LEDs-for-DVI-LCD3-and-LCD7-capes.patch \
+	file://beaglebone/0036-Beaglebone-Fixed-compiletime-warnings.patch \
+	file://beaglebone/0037-Beaglebone-Added-missing-termination-record-to-bone_.patch \
+	file://beaglebone/0038-board-am335xevm.c-Beaglebone-expose-all-pwms-through.patch \
+	file://beaglebone/0039-ARM-OMAP-Mux-Fixed-debugfs-mux-output-always-reporti.patch \
+	file://beaglebone/0040-beaglebone-export-SPI2-as-spidev-when-no-capes-are-u.patch \
 	file://beaglebone/0001-arm-boot-compressed-default-asm-arch-to-armv7-a.patch \
 "
