@@ -2,7 +2,10 @@
 Description=Beaglebone cape support
 
 [Service]
+Type=oneshot
+RemainAfterExit=yes
 ExecStart=/usr/bin/cape.sh
+ExecStop=/usr/bin/cape-stop.sh
 
 [Install]
 WantedBy=basic.target
