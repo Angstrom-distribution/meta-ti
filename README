@@ -1,30 +1,22 @@
 The official OpenEmbedded/Yocto BSP layer for Texas Instruments platforms.
 
+It is hosted on http://git.yoctoproject.org/cgit/cgit.cgi/meta-ti/ with the
+source repository at git://git.yoctoproject.org/meta-ti
+
+
 This layer depends on:
 
 URI: git://git.openembedded.org/openembedded-core
 layers: meta
 branch: master
-revision: HEAD
 
-URI: git://git.openembedded.org/meta-openembedded
-layers: toolchain-layer
-branch: master
-revision: HEAD
-
-There are known issues when using a toolchain with gcc-4.6 and binutils-2.22
-from OpenEmbedded-Core, thus it is recommended to use toolchain-layer from
-meta-openembedded with gcc-4.5 + Linaro patches and binutils-2.20.1.
 
 The base BSP part of meta-ti should work with different OpenEmbedded/Yocto
 distributions and layer stacks, such as:
 distro-less (only with OE-Core), with Yocto/Poky, with Angstrom or Arago.
 
-Please follow the recommended setup procedures of your OE distribution. When
-using in a distro-less configuration, please add to your local.conf:
+Please follow the recommended setup procedures of your OE distribution.
 
-GCCVERSION = "4.5%"
-BINUVERSION = "2.20.1"
 
 Send pull requests, patches, comments or questions to meta-ti@yoctoproject.org
 
