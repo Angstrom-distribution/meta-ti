@@ -12,7 +12,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
-MACHINE_KERNEL_PR_append = "m+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "n+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -29,6 +29,12 @@ do_compile_prepend() {
 }
 
 PATCHES_OVER_PSP = " \
+	file://usb/0001-usb-musb-cppi41-revisit-the-teardown-path-to-fix-iso.patch \
+	file://usb/0002-usb-musb-fix-bug-in-data-toggle-sw-workaround.patch \
+	file://usb/0003-usb-gadget-udc-core-stop-UDC-on-device-initiated-dis.patch \
+	file://usb/0004-usb-gadget-udc-core-fix-asymmetric-calls-in-remove_d.patch \
+	file://usb/0005-usb-gadget-udc-core-fix-wrong-call-order.patch \
+	file://usb/0006-usb-gadget-udc-core-fix-incompatibility-with-dummy-h.patch \
 	file://3.2.1/0001-MAINTAINERS-stable-Update-address.patch \
 	file://3.2.1/0002-Documentation-Update-stable-address.patch \
 	file://3.2.1/0003-firmware-Fix-an-oops-on-reading-fw_priv-fw-in-sysfs-.patch \
