@@ -12,7 +12,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
-MACHINE_KERNEL_PR_append = "n+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "o+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -992,4 +992,9 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0054-Workaround-for-boards-with-mistaken-ASCII-interpreta.patch \
 	file://beaglebone/0055-Workaround-for-EEPROM-contents-blocking-further-I2C-.patch \
 	file://beaglebone/0056-Added-check-on-EEPROM-revision-to-prevent-interpreti.patch \
+	file://beaglebone/0057-i2c-prescalar-fix-i2c-fixed-prescalar-setting-issue.patch \
+	file://beaglebone/0058-beaglebone-annotate-default-beaglebone-pinmux.patch \
+	file://beaglebone/0059-beaglebone-fix-pin-free-thinko-this-method-doesn-t-g.patch \
+	file://beaglebone/0060-beaglebone-switch-RS232-cape-to-ttyO2.patch \
+	file://beaglebone/0061-beaglebone-make-uart2-pinmux-match-the-uart0-pinmux.patch \
 "
