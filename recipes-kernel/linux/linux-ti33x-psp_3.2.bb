@@ -968,6 +968,7 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0039-ARM-OMAP-Mux-Fixed-debugfs-mux-output-always-reporti.patch \
 	file://beaglebone/0040-beaglebone-export-SPI2-as-spidev-when-no-capes-are-u.patch \
     file://beaglebone/0043-st7735fb-Working-WIP-changes-to-make-DMA-safe-and-ad.patch \
+	file://beaglebone/0044-omap-hwmod-silence-st_shift-error.patch \
 	file://beaglebone/0001-arm-boot-compressed-default-asm-arch-to-armv7-a.patch \
 	file://beaglebone/0045-cpws-phy_device-demote-PHY-message-to-INFO.patch \
 "
