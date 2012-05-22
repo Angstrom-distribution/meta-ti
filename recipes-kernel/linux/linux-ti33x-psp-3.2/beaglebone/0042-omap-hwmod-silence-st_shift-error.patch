@@ -1,7 +1,7 @@
-From 4119ec2ea20b7ae4095049e9f192c751559fbb87 Mon Sep 17 00:00:00 2001
+From 60182b1efd893c0e8c4c6176d2ce0e766d702abb Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Wed, 16 May 2012 17:57:31 +0200
-Subject: [PATCH] omap hwmod: silence st_shift error
+Subject: [PATCH 42/56] omap hwmod: silence st_shift error
 
 During boot the following error is shown:
 

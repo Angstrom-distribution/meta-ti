@@ -1,7 +1,7 @@
-From 557ed6bc4850bcb4610ff1b9e024a4fd13785c27 Mon Sep 17 00:00:00 2001
+From adcb99ec934a692e4bdeb993901f5df89188a32c Mon Sep 17 00:00:00 2001
 From: Rob Kellett <r-kellett@ti.com>
 Date: Mon, 14 May 2012 09:35:35 +0100
-Subject: [PATCH 38/40] board-am335xevm.c: Beaglebone - expose all pwms
+Subject: [PATCH 38/56] board-am335xevm.c: Beaglebone - expose all pwms
  through sysfs
 
 ---

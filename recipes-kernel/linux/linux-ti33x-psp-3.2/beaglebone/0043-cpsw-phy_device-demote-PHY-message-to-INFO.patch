@@ -1,7 +1,7 @@
-From 04924dfd0335b8adca0e7783112827df30e70a5f Mon Sep 17 00:00:00 2001
+From e846fa8a57d5f050fdb382e8d5599d9b0341a111 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 17 May 2012 10:59:18 +0200
-Subject: [PATCH] cpsw,phy_device: demote PHY message to INFO
+Subject: [PATCH 43/56] cpsw,phy_device: demote PHY message to INFO
 
 This keeps them from appearing on the screen when booting with 'quiet'
 

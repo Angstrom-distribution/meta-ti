@@ -1,12 +1,12 @@
-From 555493dc65a5f0ff80bfb8fc60a10bb8c0fef0de Mon Sep 17 00:00:00 2001
+From 15f9d6c3d2ea7b9c932b311e7b615735bb940f01 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Mon, 19 Mar 2012 15:15:06 +0100
-Subject: [PATCH 24/33] beaglebone: add gpio-keys for lcd
+Subject: [PATCH 24/56] beaglebone: add gpio-keys for lcd
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |   82 +++++++++++++++++++++++++++++++--
- 1 file changed, 78 insertions(+), 4 deletions(-)
+ 1 files changed, 78 insertions(+), 4 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index 8c78eb5..5266f78 100644
@@ -109,5 +109,5 @@ index 8c78eb5..5266f78 100644
  	
  	if (!strncmp("BB-BONE-VGA-01", cape_config.partnumber, 15)) {
 -- 
-1.7.10
+1.7.7.6
 

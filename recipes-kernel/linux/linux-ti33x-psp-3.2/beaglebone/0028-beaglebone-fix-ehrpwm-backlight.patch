@@ -1,12 +1,12 @@
-From 61314ea39f2f7cbf5e72efa93350820b83b95fd9 Mon Sep 17 00:00:00 2001
+From 1ca68f8e87f5825a54c41f5d1fbf90fc2c09496c Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 17 Apr 2012 12:35:01 +0200
-Subject: [PATCH 28/33] beaglebone: fix ehrpwm backlight
+Subject: [PATCH 28/56] beaglebone: fix ehrpwm backlight
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |    1 +
- 1 file changed, 1 insertion(+)
+ 1 files changed, 1 insertions(+), 0 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index 4d5238d..24ed0b6 100644
@@ -21,5 +21,5 @@ index 4d5238d..24ed0b6 100644
  
  /* Setup pwm-backlight for bbtoys7lcd */
 -- 
-1.7.10
+1.7.7.6
 

@@ -1,7 +1,7 @@
-From 8688e4d9d9bdf1a9ff34b77b9a5b5ac22ca1c548 Mon Sep 17 00:00:00 2001
+From b038926e4aa0feeeb20bbcf5bb24765ae40162f5 Mon Sep 17 00:00:00 2001
 From: Bas Laarhoven <sjml@xs4all.nl>
 Date: Sun, 13 May 2012 18:06:24 +0200
-Subject: [PATCH 36/40] Beaglebone: Fixed compiletime warnings.
+Subject: [PATCH 36/56] Beaglebone: Fixed compiletime warnings.
 
 Signed-off-by: Bas Laarhoven <sjml@xs4all.nl>
 ---

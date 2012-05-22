@@ -1,7 +1,7 @@
-From f1f19044cff0ac6a145c4f14782e4ddb78bb38cb Mon Sep 17 00:00:00 2001
+From 387e0633f95924f2e70dd48651720c6718e0ff2f Mon Sep 17 00:00:00 2001
 From: Bas Laarhoven <sjml@xs4all.nl>
 Date: Sun, 13 May 2012 18:18:52 +0200
-Subject: [PATCH 37/40] Beaglebone: Added missing termination record to
+Subject: [PATCH 37/56] Beaglebone: Added missing termination record to
  bone_pin_mux data.
 
 Signed-off-by: Bas Laarhoven <sjml@xs4all.nl>

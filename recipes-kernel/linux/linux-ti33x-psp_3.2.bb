@@ -12,7 +12,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
-MACHINE_KERNEL_PR_append = "l+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "m+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -927,6 +927,9 @@ PATCHES_OVER_PSP = " \
 	file://3.2.16/0067-drm-radeon-fix-load-detect-on-rn50-with-hardcoded-ED.patch \
 	file://3.2.16/0068-Linux-3.2.16.patch \
 	file://led/0001-leds-heartbeat-stop-on-shutdown-reboot-or-panic.patch \
+	\
+	file://beaglebone/0001-arm-boot-compressed-default-asm-arch-to-armv7-a.patch \
+	\
 	file://beaglebone/0001-f_rndis-HACK-around-undefined-variables.patch \
 	file://beaglebone/0002-da8xx-fb-add-DVI-support-for-beaglebone.patch \
 	file://beaglebone/0003-beaglebone-rebase-everything-onto-3.2-WARNING-MEGAPA.patch \
@@ -967,8 +970,20 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0038-board-am335xevm.c-Beaglebone-expose-all-pwms-through.patch \
 	file://beaglebone/0039-ARM-OMAP-Mux-Fixed-debugfs-mux-output-always-reporti.patch \
 	file://beaglebone/0040-beaglebone-export-SPI2-as-spidev-when-no-capes-are-u.patch \
-    file://beaglebone/0043-st7735fb-Working-WIP-changes-to-make-DMA-safe-and-ad.patch \
-	file://beaglebone/0044-omap-hwmod-silence-st_shift-error.patch \
-	file://beaglebone/0001-arm-boot-compressed-default-asm-arch-to-armv7-a.patch \
-	file://beaglebone/0045-cpws-phy_device-demote-PHY-message-to-INFO.patch \
+	file://beaglebone/0041-st7735fb-Working-WIP-changes-to-make-DMA-safe-and-ad.patch \
+	file://beaglebone/0042-omap-hwmod-silence-st_shift-error.patch \
+	file://beaglebone/0043-cpsw-phy_device-demote-PHY-message-to-INFO.patch \
+	file://beaglebone/0044-beaglebone-add-support-for-7-LCD-cape-revision-A2.patch \
+	file://beaglebone/0045-beaglebone-allow-capes-to-disable-w1-gpio.patch \
+	file://beaglebone/0046-beaglebone-add-stub-for-the-camera-cape-to-disable-w.patch \
+	file://beaglebone/0047-Adding-many-of-the-missing-signals-to-the-mux-table.patch \
+	file://beaglebone/0048-Fixed-reversed-part-of-LCD-bus.-Added-even-more-miss.patch \
+	file://beaglebone/0049-ts_tscadc-add-defines-for-4x-and-16x-oversampling.patch \
+	file://beaglebone/0050-ts_tscadc-switch-to-4x-oversampling.patch \
+	file://beaglebone/0051-Fixed-size-of-pinmux-data-array-in-EEPROM-data-struc.patch \
+	file://beaglebone/0052-Implemented-Bone-Cape-configuration-from-EEPROM.-Onl.patch \
+	file://beaglebone/0053-Replaced-conditional-debug-code-by-pr_debug-statemen.patch \
+	file://beaglebone/0054-Workaround-for-boards-with-mistaken-ASCII-interpreta.patch \
+	file://beaglebone/0055-Workaround-for-EEPROM-contents-blocking-further-I2C-.patch \
+	file://beaglebone/0056-Added-check-on-EEPROM-revision-to-prevent-interpreti.patch \
 "

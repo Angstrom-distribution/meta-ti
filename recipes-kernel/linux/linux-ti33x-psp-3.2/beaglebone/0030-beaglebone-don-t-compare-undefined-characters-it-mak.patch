@@ -1,13 +1,13 @@
-From 7757a6ad6989fc4baeb7fcd8a1784531cdfc76c8 Mon Sep 17 00:00:00 2001
+From e33f195b5e929944ce6934c38a135821f8206a1a Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 19 Apr 2012 07:55:55 +0200
-Subject: [PATCH 30/33] beaglebone: don't compare undefined characters, it
+Subject: [PATCH 30/56] beaglebone: don't compare undefined characters, it
  makes strncomp fail
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index a4e113c..f2f03b6 100644
@@ -23,5 +23,5 @@ index a4e113c..f2f03b6 100644
  		dvi_init(0,0);
  	}
 -- 
-1.7.10
+1.7.7.6
 

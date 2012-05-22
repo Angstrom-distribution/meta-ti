@@ -1,12 +1,12 @@
-From 831a092f5cad298cb9d7d3f2d1a2d08cec82e733 Mon Sep 17 00:00:00 2001
+From 7db7d9b0c2ca8aea0ae522b7fc30c7ac034edfe2 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 3 Nov 2011 17:35:50 +0100
-Subject: [PATCH 02/33] da8xx-fb: add DVI support for beaglebone
+Subject: [PATCH 02/56] da8xx-fb: add DVI support for beaglebone
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  drivers/video/da8xx-fb.c |   14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ 1 files changed, 14 insertions(+), 0 deletions(-)
 
 diff --git a/drivers/video/da8xx-fb.c b/drivers/video/da8xx-fb.c
 index 2e69278..b01f15b 100644
@@ -34,5 +34,5 @@ index 2e69278..b01f15b 100644
  
  /* Enable the Raster Engine of the LCD Controller */
 -- 
-1.7.10
+1.7.7.6
 

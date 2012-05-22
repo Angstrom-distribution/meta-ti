@@ -1,7 +1,7 @@
-From b97227a0f246edd115cba03d8509c2b7460a815b Mon Sep 17 00:00:00 2001
+From 64918c14ce7c12660cdf3b7650d6992a4eb7a69e Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 19 Apr 2012 14:23:06 +0200
-Subject: [PATCH 34/40] beaglebone: add support for DVI rev. A2 capes
+Subject: [PATCH 34/56] beaglebone: add support for DVI rev. A2 capes
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

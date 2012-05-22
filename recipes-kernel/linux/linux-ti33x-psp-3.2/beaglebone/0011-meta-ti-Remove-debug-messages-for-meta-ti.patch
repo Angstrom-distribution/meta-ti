@@ -1,12 +1,12 @@
-From a893b2486f36716a3196fa58fae5b7d973976b5a Mon Sep 17 00:00:00 2001
+From 44e604188006ae23fb48fe27b68b20cc9e3b20cb Mon Sep 17 00:00:00 2001
 From: Joel A Fernandes <joelagnel@ti.com>
 Date: Mon, 28 Nov 2011 20:56:48 -0600
-Subject: [PATCH 11/33] meta-ti: Remove debug messages for meta-ti
+Subject: [PATCH 11/56] meta-ti: Remove debug messages for meta-ti
 
 Signed-off-by: Joel A Fernandes <joelagnel@ti.com>
 ---
  drivers/input/touchscreen/ti_tscadc.c |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ 1 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/input/touchscreen/ti_tscadc.c b/drivers/input/touchscreen/ti_tscadc.c
 index d6aec8c..da48bcd 100644
@@ -30,5 +30,5 @@ index d6aec8c..da48bcd 100644
  		for (i = 0; i < fifo1count; i++) {
  			read_sample = tscadc_readl(ts_dev, TSCADC_REG_FIFO0);
 -- 
-1.7.10
+1.7.7.6
 

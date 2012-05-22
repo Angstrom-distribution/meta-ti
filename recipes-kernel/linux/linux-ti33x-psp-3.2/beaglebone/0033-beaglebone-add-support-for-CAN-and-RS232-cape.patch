@@ -1,12 +1,12 @@
-From 0bed6db60e5a5bf78931b7da0376676a14bfce6f Mon Sep 17 00:00:00 2001
+From 2345361d8188eb3a946f2a0ab9e648eba2cc9c27 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Fri, 4 May 2012 13:19:45 +0200
-Subject: [PATCH 33/33] beaglebone: add support for CAN and RS232 cape
+Subject: [PATCH 33/56] beaglebone: add support for CAN and RS232 cape
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
- arch/arm/mach-omap2/board-am335xevm.c |   36 +++++++++++++++++++++++++++------
- 1 file changed, 30 insertions(+), 6 deletions(-)
+ arch/arm/mach-omap2/board-am335xevm.c |   36 +++++++++++++++++++++++++++-----
+ 1 files changed, 30 insertions(+), 6 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index 717bb8c..6e7b203 100644
@@ -63,5 +63,5 @@ index 717bb8c..6e7b203 100644
  	}
  	
 -- 
-1.7.10
+1.7.7.6
 

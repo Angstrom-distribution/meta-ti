@@ -1,7 +1,7 @@
-From 080d90fddb1c39a5197b56b3aab0a7701adced75 Mon Sep 17 00:00:00 2001
+From 11a78ddde39b0ae90c718b724426e01b6af3f8e1 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Fri, 11 May 2012 13:08:24 +0200
-Subject: [PATCH 35/40] beaglebone: enable LEDs for DVI, LCD3 and LCD7 capes
+Subject: [PATCH 35/56] beaglebone: enable LEDs for DVI, LCD3 and LCD7 capes
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

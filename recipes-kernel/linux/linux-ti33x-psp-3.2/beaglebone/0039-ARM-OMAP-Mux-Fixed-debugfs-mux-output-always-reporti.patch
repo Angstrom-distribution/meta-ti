@@ -1,7 +1,7 @@
-From b8241eee030b29f23a5792de1eec03830699ae98 Mon Sep 17 00:00:00 2001
+From d38171c24019061250e120d554ad89199c58ad53 Mon Sep 17 00:00:00 2001
 From: Bas Laarhoven <sjml@xs4all.nl>
 Date: Sun, 13 May 2012 18:09:57 +0200
-Subject: [PATCH 39/40] ARM: OMAP: Mux: Fixed debugfs mux output (always
+Subject: [PATCH 39/56] ARM: OMAP: Mux: Fixed debugfs mux output (always
  reporting pins as output)
 
 Signed-off-by: Bas Laarhoven <sjml@xs4all.nl>
