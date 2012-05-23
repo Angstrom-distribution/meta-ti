@@ -12,7 +12,7 @@ MULTI_CONFIG_BASE_SUFFIX = ""
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
-MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -1218,4 +1218,6 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0059-beaglebone-fix-pin-free-thinko-this-method-doesn-t-g.patch \
 	file://beaglebone/0060-beaglebone-switch-RS232-cape-to-ttyO2.patch \
 	file://beaglebone/0061-beaglebone-make-uart2-pinmux-match-the-uart0-pinmux.patch \
+	file://beaglebone/0062-da8xx-fb-Rounding-FB-size-to-satisfy-SGX-buffer-requ.patch \
+	file://beaglebone/0063-beaglebone-dvi-cape-audio-hacks.patch \
 "
