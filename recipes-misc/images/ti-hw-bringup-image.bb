@@ -29,4 +29,5 @@ IMAGE_INSTALL += " \
 
 export IMAGE_BASENAME = "TI-hw-bringup"
 
-inherit sdcard_image
+# This doesn't work with the current genext2fs in oe-core
+# inherit sdcard_image
