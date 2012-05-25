@@ -10,7 +10,7 @@ PV = "3.2.18"
 SRCREV_pn-${PN} = "52c6b95f8a2edaff98b779f15b2f4d69b61b18b9"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "a"
+MACHINE_KERNEL_PR_append = "b"
 
 FILESPATH =. "${FILE_DIRNAME}/linux-mainline-3.2:${FILE_DIRNAME}/linux-mainline-3.2/${MACHINE}:"
 
@@ -74,7 +74,23 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.gi
             file://omap_fixes/0006-OMAP-HWMOD-add-es3plus-to-am36xx-am35xx.patch \
             file://sgx/0001-Revert-OMAP-DSS2-remove-update_mode-from-omapdss-v3.2.patch \
             file://led/0001-leds-heartbeat-stop-on-shutdown-reboot-or-panic.patch \
-            \
+            file://libertas/0001-USB-convert-drivers-net-to-use-module_usb_driver.patch \
+            file://libertas/0002-net-fix-assignment-of-0-1-to-bool-variables.patch \
+            file://libertas/0003-switch-debugfs-to-umode_t.patch \
+            file://libertas/0004-drivers-net-Remove-unnecessary-k.alloc-v.alloc-OOM-m.patch \
+            file://libertas/0005-libertas-remove-dump_survey-implementation.patch \
+            file://libertas/0007-wireless-libertas-remove-redundant-NULL-tests-before.patch \
+            file://libertas/0008-libertas-fix-signedness-bug-in-lbs_auth_to_authtype.patch \
+            file://libertas/0009-drivers-net-wireless-libertas-if_usb.c-add-missing-d.patch \
+            file://libertas/0010-libertas-Firmware-loading-simplifications.patch \
+            file://libertas/0011-libertas-harden-up-exit-paths.patch \
+            file://libertas/0012-libertas-add-asynchronous-firmware-loading-capabilit.patch \
+            file://libertas/0013-libertas-SDIO-convert-to-asynchronous-firmware-loadi.patch \
+            file://libertas/0014-libertas-USB-convert-to-asynchronous-firmware-loadin.patch \
+            file://libertas/0015-libertas-CS-convert-to-asynchronous-firmware-loading.patch \
+            file://libertas/0016-libertas-add-missing-include.patch \
+            file://libertas/0017-remove-debug-msgs-due-to-missing-in_interrupt.patch \
+           \
             file://defconfig"
 
 SRC_URI_append_beagleboard = " file://logo_linux_clut224.ppm \
