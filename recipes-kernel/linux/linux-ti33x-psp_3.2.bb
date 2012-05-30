@@ -10,6 +10,9 @@ S = "${WORKDIR}/git"
 
 MULTI_CONFIG_BASE_SUFFIX = ""
 
+# the PATCHES_OVER_PSP updates it to 3.2.x, so adjust PV to match
+PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.18", d)}"
+
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
 MACHINE_KERNEL_PR_append = "c+gitr${SRCREV}"
