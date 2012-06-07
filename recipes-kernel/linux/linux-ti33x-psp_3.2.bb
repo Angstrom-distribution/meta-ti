@@ -15,7 +15,7 @@ PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.18", d)}"
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
-MACHINE_KERNEL_PR_append = "e+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "g+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -1228,4 +1228,6 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0066-beaglebone-disable-OPP-for-275MHz-due-to-silicon-err.patch \
 	file://beaglebone/0067-video-da8xx-fb-Add-Newhaven-LCD-Panel-details.patch \
 	file://beaglebone/0068-beaglebone-add-support-for-the-4.3-lcd-cape-with-res.patch \
+	file://beaglebone/0069-beaglebone-add-support-for-LCD3-rev-A1.patch \
+	file://beaglebone/0070-beaglebone-fix-buttons-spidev-clash-when-using-mcasp.patch \
 "
