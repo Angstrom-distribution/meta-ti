@@ -15,7 +15,7 @@ PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.18", d)}"
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
-MACHINE_KERNEL_PR_append = "g+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "h+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -38,6 +38,24 @@ PATCHES_OVER_PSP = " \
 	file://usb/0004-usb-gadget-udc-core-fix-asymmetric-calls-in-remove_d.patch \
 	file://usb/0005-usb-gadget-udc-core-fix-wrong-call-order.patch \
 	file://usb/0006-usb-gadget-udc-core-fix-incompatibility-with-dummy-h.patch \
+	file://psp/0001-ARM-OMAP-AM33XX-Add-missing-EMIF-register-offsets.patch \
+	file://psp/0002-ARM-OMAP-AM33XX-PM-Get-rid-of-hardcoded-resume-addre.patch \
+	file://psp/0003-ARM-OMAP-AM33XX-PM-Skip-DDR-PHY-reconfiguration-in-r.patch \
+	file://psp/0004-ARM-OMAP-AM33XX-PM-Save-and-restore-EMIF-registers.patch \
+	file://psp/0005-ARM-OMAP-AM33XX-PM-Wait-correctly-for-the-PLLs-to-re.patch \
+	file://psp/0006-ARM-OMAP-AM33XX-PM-Restore-the-PLLs-to-pre-suspend-s.patch \
+	file://psp/0007-ARM-OMAP-PM-AM33XX-Update-the-sleep-code-to-handle-D.patch \
+	file://psp/0008-usb-musb-update-babble-workaround-fix.patch \
+	file://psp/0009-usb-musb-ti81xx-print-the-usbss-revision-id-during-i.patch \
+	file://psp/0010-usb-musb-cppi41-enable-txfifo-empty-interrupt-logic.patch \
+	file://psp/0011-usb-musb-host-Flush-txfifo-only-if-TxPktRdy-bit-set.patch \
+	file://psp/0012-usb-musb-cppi41-use-dsb-to-make-sure-PDs-are-updated.patch \
+	file://psp/0013-usb-musb-cppi41-fix-zero-byte-OUT-issue.patch \
+	file://psp/0014-usb-musb-host-fix-for-urb-error-handling.patch \
+	file://psp/0015-usb-musb-cppi41-txdma-flushfifo-fixes-during-channel.patch \
+	file://psp/0016-usb-musb-cppi41-tx-dma-completion-fixes.patch \
+	file://psp/0017-usb-musb-host-Flush-RxFIFO-only-when-RxPktRdy-is-set.patch \
+	file://psp/0018-usb-musb-ti81xx-fix-role-switching-issue.patch \
 	file://3.2.1/0001-MAINTAINERS-stable-Update-address.patch \
 	file://3.2.1/0002-Documentation-Update-stable-address.patch \
 	file://3.2.1/0003-firmware-Fix-an-oops-on-reading-fw_priv-fw-in-sysfs-.patch \
