@@ -7,11 +7,11 @@ LIC_FILES_CHKSUM="file://gpl.txt;md5=5b122a36d0f6dc55279a0ebc69f3c60b"
 # only scripts and data
 inherit allarch
 
-PR = "r16"
+PR = "r17"
 
 SRC_URI = "git://github.com/koenkooi/validation-scripts.git;protocol=git \
           "
-SRCREV = "4f6335aedf520917a0bc0c83e9c1ac1135b8a2af"
+SRCREV = "c748d157b9afbb71e6eadf1dca7a787a456c0149"
 
 S = "${WORKDIR}/git"
 
