@@ -1,7 +1,7 @@
-From 1bbf40a55f2df6d045b872384e8b7de72bce4c63 Mon Sep 17 00:00:00 2001
+From cf6e92f0c3bbf4cdbd62a8838b9b8f2153d9607a Mon Sep 17 00:00:00 2001
 From: Takashi Iwai <tiwai@suse.de>
 Date: Tue, 10 Jan 2012 15:16:02 +0100
-Subject: [PATCH 015/130] ALSA: hda - Fix the detection of "Loopback Mixing"
+Subject: [PATCH 015/129] ALSA: hda - Fix the detection of "Loopback Mixing"
  control for VIA codecs
 
 commit 4808d12d1dddb046ec86425e5f6766f02e950292 upstream.
@@ -38,5 +38,5 @@ index b513762..8d69e59 100644
  	if (!via_clone_control(spec, &via_aamix_ctl_enum))
  		return -ENOMEM;
 -- 
-1.7.9.4
+1.7.9.5
 

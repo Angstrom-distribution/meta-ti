@@ -1,7 +1,7 @@
-From d790354ebeffb41bfe1fb34572c258a7a5fdb475 Mon Sep 17 00:00:00 2001
+From c46905cc61a1b5ff0500d15d79ba8110283e6c58 Mon Sep 17 00:00:00 2001
 From: David Henningsson <david.henningsson@canonical.com>
 Date: Mon, 16 Jan 2012 10:52:20 +0100
-Subject: [PATCH 096/130] ALSA: HDA: Fix internal microphone on Dell Studio 16
+Subject: [PATCH 096/129] ALSA: HDA: Fix internal microphone on Dell Studio 16
  XPS 1645
 
 commit ffe535edb9a9c5b4d5fe03dfa3d89a1495580f1b upstream.
@@ -32,5 +32,5 @@ index a87b260..f3c73a9 100644
  				"Dell Studio 1558", STAC_DELL_M6_DMIC),
  	{} /* terminator */
 -- 
-1.7.9.4
+1.7.9.5
 

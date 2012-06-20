@@ -1,7 +1,7 @@
-From 8b26929b86cded7fa66cc9074a4090e14ebb0c4b Mon Sep 17 00:00:00 2001
+From ac774661d11eb00497542857681b22c652d3d67c Mon Sep 17 00:00:00 2001
 From: Steven Rostedt <srostedt@redhat.com>
 Date: Fri, 13 Jan 2012 17:53:40 -0500
-Subject: [PATCH 065/130] kconfig/streamline-config.pl: Fix parsing Makefile
+Subject: [PATCH 065/129] kconfig/streamline-config.pl: Fix parsing Makefile
  with variables
 
 commit 364212fddaaa60c5a64f67a0f5624ad996ecc8a0 upstream.
@@ -39,7 +39,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
  1 file changed, 29 insertions(+)
 
 diff --git a/scripts/kconfig/streamline_config.pl b/scripts/kconfig/streamline_config.pl
-index 42ef5ea..bccf07d 100644
+index 42ef5ea..bccf07dd 100644
 --- a/scripts/kconfig/streamline_config.pl
 +++ b/scripts/kconfig/streamline_config.pl
 @@ -250,10 +250,33 @@ if ($kconfig) {
@@ -94,5 +94,5 @@ index 42ef5ea..bccf07d 100644
  	if (defined($objs)) {
  	    foreach my $obj (split /\s+/,$objs) {
 -- 
-1.7.9.4
+1.7.9.5
 

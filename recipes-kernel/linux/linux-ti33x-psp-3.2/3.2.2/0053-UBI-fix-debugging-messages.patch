@@ -1,7 +1,7 @@
-From a28e25b364a1ed96a8a19fbf5328bb750af80342 Mon Sep 17 00:00:00 2001
+From 96bd5436400b64fe57b0be756f9424b1e1d1e430 Mon Sep 17 00:00:00 2001
 From: Artem Bityutskiy <artem.bityutskiy@linux.intel.com>
 Date: Tue, 10 Jan 2012 19:32:30 +0200
-Subject: [PATCH 053/130] UBI: fix debugging messages
+Subject: [PATCH 053/129] UBI: fix debugging messages
 
 commit 72f0d453d81d35087b1d3ad7c8285628c2be6e1d upstream.
 
@@ -38,5 +38,5 @@ index 64fbb00..ead2cd1 100644
  #define dbg_gen(fmt, ...) ubi_dbg_msg("gen", fmt, ##__VA_ARGS__)
  /* Messages from the eraseblock association sub-system */
 -- 
-1.7.9.4
+1.7.9.5
 

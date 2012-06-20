@@ -1,7 +1,7 @@
-From 26cc5985abb44928985dd7def7aace0f33b29644 Mon Sep 17 00:00:00 2001
+From e20497d523b9954e6fe3a3cd333d1286e3c241ed Mon Sep 17 00:00:00 2001
 From: Boaz Harrosh <bharrosh@panasas.com>
 Date: Fri, 6 Jan 2012 09:31:20 +0200
-Subject: [PATCH 021/130] pnfs-obj: Must return layout on IO error
+Subject: [PATCH 021/129] pnfs-obj: Must return layout on IO error
 
 commit fe0fe83585f88346557868a803a479dfaaa0688a upstream.
 
@@ -88,5 +88,5 @@ index 1509530..53d593a 100644
  
  struct nfs4_deviceid_node;
 -- 
-1.7.9.4
+1.7.9.5
 

@@ -1,7 +1,7 @@
-From d52eba613a8cd0e74e52248bff0ed579f3e801bc Mon Sep 17 00:00:00 2001
+From a3bca61c4e149d9e00102d41a0b81cae4fbca06f Mon Sep 17 00:00:00 2001
 From: Steven Rostedt <srostedt@redhat.com>
 Date: Fri, 13 Jan 2012 17:50:39 -0500
-Subject: [PATCH 064/130] kconfig/streamline-config.pl: Simplify backslash
+Subject: [PATCH 064/129] kconfig/streamline-config.pl: Simplify backslash
  line concatination
 
 commit d060d963e88f3e990cec2fe5214de49de9a49eca upstream.
@@ -64,5 +64,5 @@ index ec7afce..42ef5ea 100644
  		$obj =~ s/-/_/g;
  		if ($obj =~ /(.*)\.o$/) {
 -- 
-1.7.9.4
+1.7.9.5
 

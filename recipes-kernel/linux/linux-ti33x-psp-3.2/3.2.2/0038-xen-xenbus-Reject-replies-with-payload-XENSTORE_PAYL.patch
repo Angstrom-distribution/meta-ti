@@ -1,7 +1,7 @@
-From 5a9209c05e1082f2394f483b7326cbf0efeb2ed2 Mon Sep 17 00:00:00 2001
+From 60ff826ed445ff093db42fd2e5ac97839c3c43d4 Mon Sep 17 00:00:00 2001
 From: Ian Campbell <Ian.Campbell@citrix.com>
 Date: Wed, 4 Jan 2012 09:34:49 +0000
-Subject: [PATCH 038/130] xen/xenbus: Reject replies with payload >
+Subject: [PATCH 038/129] xen/xenbus: Reject replies with payload >
  XENSTORE_PAYLOAD_MAX.
 
 commit 9e7860cee18241633eddb36a4c34c7b61d8cecbc upstream.
@@ -74,5 +74,5 @@ index f6f07aa..7cdfca2 100644
 +
  #endif /* _XS_WIRE_H */
 -- 
-1.7.9.4
+1.7.9.5
 

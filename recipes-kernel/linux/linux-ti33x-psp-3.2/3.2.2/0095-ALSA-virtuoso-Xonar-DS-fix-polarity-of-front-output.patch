@@ -1,7 +1,7 @@
-From 569face0953213dc1e6f92c6371d3246effc9404 Mon Sep 17 00:00:00 2001
+From 142a4939e76aa02d8e2d8338a63dabf59bc83f1b Mon Sep 17 00:00:00 2001
 From: Clemens Ladisch <clemens@ladisch.de>
 Date: Sat, 14 Jan 2012 16:42:24 +0100
-Subject: [PATCH 095/130] ALSA: virtuoso: Xonar DS: fix polarity of front
+Subject: [PATCH 095/129] ALSA: virtuoso: Xonar DS: fix polarity of front
  output
 
 commit f0e48b6bd4e407459715240cd241ddb6b89bdf81 upstream.
@@ -33,5 +33,5 @@ index 42d1ab1..915546a 100644
  		     WM8776_PL_LEFT_LEFT | WM8776_PL_RIGHT_RIGHT);
  	wm8776_write(chip, WM8776_DACMUTE, chip->dac_mute ? WM8776_DMUTE : 0);
 -- 
-1.7.9.4
+1.7.9.5
 

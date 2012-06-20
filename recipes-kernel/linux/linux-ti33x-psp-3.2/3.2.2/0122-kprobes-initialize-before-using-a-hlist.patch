@@ -1,4 +1,4 @@
-From d159bea43eb9f0ba806a4ddc7e03dbb218b88136 Mon Sep 17 00:00:00 2001
+From b15b8b5f7a9cfc20c2e68ba4a6a402ff44bb6c4a Mon Sep 17 00:00:00 2001
 From: Ananth N Mavinakayanahalli <ananth@in.ibm.com>
 Date: Fri, 20 Jan 2012 14:34:04 -0800
 Subject: [PATCH 122/129] kprobes: initialize before using a hlist

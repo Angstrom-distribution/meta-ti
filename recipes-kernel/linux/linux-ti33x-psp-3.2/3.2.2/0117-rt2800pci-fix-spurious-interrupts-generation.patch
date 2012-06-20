@@ -1,4 +1,4 @@
-From 021083c5844b20210ced59ad5b760d2a7cb97cd2 Mon Sep 17 00:00:00 2001
+From a84e0b6f2dfb09db9a5cb66bb913f619d8973a62 Mon Sep 17 00:00:00 2001
 From: Stanislaw Gruszka <sgruszka@redhat.com>
 Date: Fri, 13 Jan 2012 12:59:32 +0100
 Subject: [PATCH 117/129] rt2800pci: fix spurious interrupts generation

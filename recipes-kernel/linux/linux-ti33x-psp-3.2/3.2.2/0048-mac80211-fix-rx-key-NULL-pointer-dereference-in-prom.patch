@@ -1,7 +1,7 @@
-From 967087957c3661dc97da0f17d3be6d7b105d8d0e Mon Sep 17 00:00:00 2001
+From 12b3ec5c806e2daef619f068f80115f4dc0aa6bb Mon Sep 17 00:00:00 2001
 From: Stanislaw Gruszka <sgruszka@redhat.com>
 Date: Wed, 11 Jan 2012 09:26:54 +0100
-Subject: [PATCH 048/130] mac80211: fix rx->key NULL pointer dereference in
+Subject: [PATCH 048/129] mac80211: fix rx->key NULL pointer dereference in
  promiscuous mode
 
 commit 1140afa862842ac3e56678693050760edc4ecde9 upstream.
@@ -48,5 +48,5 @@ index f614ce7..28a39bb 100644
  
  		return RX_CONTINUE;
 -- 
-1.7.9.4
+1.7.9.5
 

@@ -1,7 +1,7 @@
-From f106681ab48d6ab554c724d829c7440ba7b02385 Mon Sep 17 00:00:00 2001
+From 041400912607efd62cf9aa6ad4e5ad6baf957f1a Mon Sep 17 00:00:00 2001
 From: "J. Bruce Fields" <bfields@redhat.com>
 Date: Mon, 7 Nov 2011 16:37:57 -0500
-Subject: [PATCH 069/130] nfsd4: fix lockowner matching
+Subject: [PATCH 069/129] nfsd4: fix lockowner matching
 
 commit b93d87c19821ba7d3ee11557403d782e541071ad upstream.
 
@@ -55,5 +55,5 @@ index 47e94e3..5abced7 100644
  	return NULL;
  }
 -- 
-1.7.9.4
+1.7.9.5
 

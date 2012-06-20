@@ -1,7 +1,7 @@
-From 9a808d369e4ff2dea161f009f81fa4daf32218ad Mon Sep 17 00:00:00 2001
+From 639adc94e82ece74d00c447a2e5d9180bdfd5355 Mon Sep 17 00:00:00 2001
 From: Lin Ming <ming.m.lin@intel.com>
 Date: Tue, 13 Dec 2011 09:36:03 +0800
-Subject: [PATCH 104/130] ACPI: processor: fix acpi_get_cpuid for UP processor
+Subject: [PATCH 104/129] ACPI: processor: fix acpi_get_cpuid for UP processor
 
 commit d640113fe80e45ebd4a5b420b220d3f6bf37f682 upstream.
 
@@ -71,5 +71,5 @@ index 3a0428e..c850de4 100644
  #ifdef CONFIG_SMP
  	for_each_possible_cpu(i) {
 -- 
-1.7.9.4
+1.7.9.5
 

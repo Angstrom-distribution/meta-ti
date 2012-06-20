@@ -1,7 +1,7 @@
-From 92ea9daee26a54bdae410e9361d5059506278450 Mon Sep 17 00:00:00 2001
+From 4272b6efe99cd197257777ddeaff1b2bf5428a13 Mon Sep 17 00:00:00 2001
 From: Girish K S <girish.shivananjappa@linaro.org>
 Date: Thu, 15 Dec 2011 17:27:42 +0530
-Subject: [PATCH 058/130] mmc: core: Fix voltage select in DDR mode
+Subject: [PATCH 058/129] mmc: core: Fix voltage select in DDR mode
 
 commit 913047e9e5787a90696533a9f109552b7694ecc9 upstream.
 
@@ -35,5 +35,5 @@ index d240427..fb7c27f 100644
  					MMC_SIGNAL_VOLTAGE_120, 0);
  				if (err)
 -- 
-1.7.9.4
+1.7.9.5
 

@@ -1,7 +1,7 @@
-From b0b4fe32da41718cd4989aa2c29bc0e8806d3d6f Mon Sep 17 00:00:00 2001
+From 244e54a801fd96fbe05447599832c9eb110debeb Mon Sep 17 00:00:00 2001
 From: Takashi Iwai <tiwai@suse.de>
 Date: Tue, 10 Jan 2012 12:41:22 +0100
-Subject: [PATCH 014/130] ALSA: hda - Return the error from get_wcaps_type()
+Subject: [PATCH 014/129] ALSA: hda - Return the error from get_wcaps_type()
  for invalid NIDs
 
 commit 3a90274de3548ebb2aabfbf488cea8e275a73dc6 upstream.
@@ -54,5 +54,5 @@ index 2c981b5..254ab52 100644
  	if (names[wid_value])
  		return names[wid_value];
 -- 
-1.7.9.4
+1.7.9.5
 

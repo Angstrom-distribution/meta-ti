@@ -1,7 +1,7 @@
-From f3c55c9f0c6182e6a455ae406406e280ac34544c Mon Sep 17 00:00:00 2001
+From 785fae0af79dd35416a44469930c2cbe87ff2c48 Mon Sep 17 00:00:00 2001
 From: Johannes Berg <johannes.berg@intel.com>
 Date: Tue, 29 Nov 2011 10:20:02 +0100
-Subject: [PATCH 080/130] mac80211: revert on-channel work optimisations
+Subject: [PATCH 080/129] mac80211: revert on-channel work optimisations
 
 commit e76aadc572288a158ae18ae1c10fe395c7bca066 upstream.
 
@@ -631,5 +631,5 @@ index 6c53b6d..99165ef 100644
  		/* give connection some time to breathe */
  		run_again(local, jiffies + HZ/2);
 -- 
-1.7.9.4
+1.7.9.5
 

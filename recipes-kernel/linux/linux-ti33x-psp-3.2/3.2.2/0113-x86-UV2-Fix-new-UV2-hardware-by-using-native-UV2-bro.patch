@@ -1,4 +1,4 @@
-From ec2a416f6ce2e5b896074a6e8c86fda4d1d21466 Mon Sep 17 00:00:00 2001
+From ebde7b91a72ac0cc014d021051f8a46a786dbb00 Mon Sep 17 00:00:00 2001
 From: Cliff Wickman <cpw@sgi.com>
 Date: Mon, 16 Jan 2012 15:17:50 -0600
 Subject: [PATCH 113/129] x86/UV2: Fix new UV2 hardware by using native UV2

@@ -1,7 +1,7 @@
-From f4da550957683d2b4f271d222e936a79866c6242 Mon Sep 17 00:00:00 2001
+From 45268a6d90150936994e8b3e21eb91a54586685e Mon Sep 17 00:00:00 2001
 From: Jussi Kivilinna <jussi.kivilinna@mbnet.fi>
 Date: Tue, 10 Jan 2012 06:40:23 +0000
-Subject: [PATCH 044/130] asix: fix setting custom MAC address on Asix 88178
+Subject: [PATCH 044/129] asix: fix setting custom MAC address on Asix 88178
  devices
 
 commit 71bc5d94061516c4e70303570128797bcf768b10 upstream.
@@ -41,5 +41,5 @@ index dd2625a..b495821 100644
  	if (ret < 0)
  		return ret;
 -- 
-1.7.9.4
+1.7.9.5
 

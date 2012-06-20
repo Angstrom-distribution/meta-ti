@@ -1,7 +1,7 @@
-From 5b5be8901badfd9baec5d13fec6be5c942f2bf71 Mon Sep 17 00:00:00 2001
+From 948a5d9ea80dfda0b40581e02217f30ffefd8e60 Mon Sep 17 00:00:00 2001
 From: "Eric W. Biederman" <ebiederm@xmission.com>
 Date: Mon, 17 Oct 2011 11:46:06 -0700
-Subject: [PATCH 032/130] PCI: msi: Disable msi interrupts when we initialize
+Subject: [PATCH 032/129] PCI: msi: Disable msi interrupts when we initialize
  a pci device
 
 commit a776c491ca5e38c26d9f66923ff574d041e747f4 upstream.
@@ -49,5 +49,5 @@ index 0e6d04d..e3efb43 100644
 +	msix_set_enable(dev, 0);
  }
 -- 
-1.7.9.4
+1.7.9.5
 

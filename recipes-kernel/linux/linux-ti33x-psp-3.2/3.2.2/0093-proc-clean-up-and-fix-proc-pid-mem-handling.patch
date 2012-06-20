@@ -1,7 +1,7 @@
-From 7d09634d53fa1f102121d718ca837ebae0fdce18 Mon Sep 17 00:00:00 2001
+From b1eff256d4110a894a3a70a224d3581136645ada Mon Sep 17 00:00:00 2001
 From: Linus Torvalds <torvalds@linux-foundation.org>
 Date: Tue, 17 Jan 2012 15:21:19 -0800
-Subject: [PATCH 093/130] proc: clean up and fix /proc/<pid>/mem handling
+Subject: [PATCH 093/129] proc: clean up and fix /proc/<pid>/mem handling
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -267,5 +267,5 @@ index 851ba3d..1fc1dca 100644
  
  static ssize_t environ_read(struct file *file, char __user *buf,
 -- 
-1.7.9.4
+1.7.9.5
 

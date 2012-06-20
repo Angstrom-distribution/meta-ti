@@ -1,7 +1,7 @@
-From 1d0cc972d03315012d34ed57d5929597fe16513d Mon Sep 17 00:00:00 2001
+From 0279b040f1dafa5f545c9ef255b39a99f9490750 Mon Sep 17 00:00:00 2001
 From: Lin Ming <ming.m.lin@intel.com>
 Date: Tue, 29 Nov 2011 22:13:35 +0800
-Subject: [PATCH 103/130] ACPICA: Put back the call to
+Subject: [PATCH 103/129] ACPICA: Put back the call to
  acpi_os_validate_address
 
 commit da4d8b287abe783d30e968155614531a0937d090 upstream.
@@ -55,5 +55,5 @@ index 8c7b997..42163d8 100644
  	return_ACPI_STATUS(status);
  }
 -- 
-1.7.9.4
+1.7.9.5
 
