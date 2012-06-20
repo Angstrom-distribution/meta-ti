@@ -1,7 +1,7 @@
-From 5a7217fdd8cbda3e7d44d33a51c077ab84e6437d Mon Sep 17 00:00:00 2001
+From a509baa477542eca7e6f6d8d23dc1ba04248a62f Mon Sep 17 00:00:00 2001
 From: Fabio Estevam <festevam@gmail.com>
 Date: Thu, 12 Jan 2012 17:20:20 -0800
-Subject: [PATCH 046/130] include/linux/crash_dump.h needs elf.h
+Subject: [PATCH 046/129] include/linux/crash_dump.h needs elf.h
 
 commit 1f536b9e9f85456df93614b3c2f6a1a2b7d7cb9b upstream.
 
@@ -50,5 +50,5 @@ index 5c4abce..b936763 100644
  #define ELFCORE_ADDR_MAX	(-1ULL)
  #define ELFCORE_ADDR_ERR	(-2ULL)
 -- 
-1.7.9.4
+1.7.9.5
 

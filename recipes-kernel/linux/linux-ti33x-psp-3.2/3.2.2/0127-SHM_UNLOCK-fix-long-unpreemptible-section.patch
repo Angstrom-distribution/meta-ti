@@ -1,4 +1,4 @@
-From 5e2208d9c6ce1c5e57ad5fe56adc5b8f349ce23a Mon Sep 17 00:00:00 2001
+From e74be920e142da39a0824238a5031649fbec2890 Mon Sep 17 00:00:00 2001
 From: Hugh Dickins <hughd@google.com>
 Date: Fri, 20 Jan 2012 14:34:19 -0800
 Subject: [PATCH 127/129] SHM_UNLOCK: fix long unpreemptible section

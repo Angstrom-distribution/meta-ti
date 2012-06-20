@@ -1,4 +1,4 @@
-From 98214e3fab80dbfdf54c908de2ae0c9730d6430d Mon Sep 17 00:00:00 2001
+From 2daa9185b2ac519603743cbc902f00633947e878 Mon Sep 17 00:00:00 2001
 From: Stanislaw Gruszka <sgruszka@redhat.com>
 Date: Fri, 23 Dec 2011 08:13:50 +0100
 Subject: [PATCH 126/129] iwlegacy: 3945: fix hw passive scan on radar

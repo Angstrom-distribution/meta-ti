@@ -1,7 +1,7 @@
-From e0a32f416043d1d3dde8fccfacaaaf1dbaa07ea8 Mon Sep 17 00:00:00 2001
+From 51aa88e66716df0c5b5df5b8815cbf0b7b50ac35 Mon Sep 17 00:00:00 2001
 From: Dan Carpenter <dan.carpenter@oracle.com>
 Date: Thu, 5 Jan 2012 02:27:57 -0300
-Subject: [PATCH 061/130] V4L/DVB: v4l2-ioctl: integer overflow in
+Subject: [PATCH 061/129] V4L/DVB: v4l2-ioctl: integer overflow in
  video_usercopy()
 
 commit 6c06108be53ca5e94d8b0e93883d534dd9079646 upstream.
@@ -50,5 +50,5 @@ index 4b752d5..45a7698 100644
  #define V4L2_CID_USER_BASE 		V4L2_CID_BASE
  /*  IDs reserved for driver specific controls */
 -- 
-1.7.9.4
+1.7.9.5
 

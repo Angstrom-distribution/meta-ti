@@ -1,7 +1,7 @@
-From e6eeafa7a6932f54162e6412135d5ff6e3aabe9b Mon Sep 17 00:00:00 2001
+From 97a18462c03b9c0c3e22aaec73045024f198aacc Mon Sep 17 00:00:00 2001
 From: Pavel Hofman <pavel.hofman@ivitera.com>
 Date: Thu, 5 Jan 2012 23:05:18 +0100
-Subject: [PATCH 011/130] ALSA: ice1724 - Check for ac97 to avoid kernel oops
+Subject: [PATCH 011/129] ALSA: ice1724 - Check for ac97 to avoid kernel oops
 
 commit e7848163aa2a649d9065f230fadff80dc3519775 upstream.
 
@@ -34,5 +34,5 @@ index e328cfb..e525da2 100644
  }
  
 -- 
-1.7.9.4
+1.7.9.5
 

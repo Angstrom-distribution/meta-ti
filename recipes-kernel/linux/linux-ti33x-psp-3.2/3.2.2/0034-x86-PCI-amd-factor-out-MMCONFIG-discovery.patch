@@ -1,7 +1,7 @@
-From 4d9bd6414c035d82f217aaee1cfa52079fdd7e0e Mon Sep 17 00:00:00 2001
+From 64525bdf1bbff67faf88ccd7bc83ef856489ed24 Mon Sep 17 00:00:00 2001
 From: Bjorn Helgaas <bhelgaas@google.com>
 Date: Thu, 5 Jan 2012 14:27:19 -0700
-Subject: [PATCH 034/130] x86/PCI: amd: factor out MMCONFIG discovery
+Subject: [PATCH 034/129] x86/PCI: amd: factor out MMCONFIG discovery
 
 commit 24d25dbfa63c376323096660bfa9ad45a08870ce upstream.
 
@@ -156,5 +156,5 @@ index 026e493..385a940 100644
  
  	/* mmio resource */
 -- 
-1.7.9.4
+1.7.9.5
 

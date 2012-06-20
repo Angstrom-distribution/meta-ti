@@ -1,7 +1,7 @@
-From 0a4609957e5bbe4572cf9ace9e5011281295f296 Mon Sep 17 00:00:00 2001
+From c483f16efb181ee2384aa9d5672ebebfc714ab1d Mon Sep 17 00:00:00 2001
 From: Peng Tao <bergwolf@gmail.com>
 Date: Thu, 12 Jan 2012 23:18:47 +0800
-Subject: [PATCH 078/130] pnfsblock: don't spinlock when freeing block_dev
+Subject: [PATCH 078/129] pnfsblock: don't spinlock when freeing block_dev
 
 commit 93a3844ee0f843b05a1df4b52e1a19ff26b98d24 upstream.
 
@@ -42,5 +42,5 @@ index 281ae95..ce8129d 100644
  	}
  }
 -- 
-1.7.9.4
+1.7.9.5
 

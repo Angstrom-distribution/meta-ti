@@ -1,7 +1,7 @@
-From f021f7ff80f10b57d44b122e655a8b8b32de0391 Mon Sep 17 00:00:00 2001
+From 4080c93fb98e70e64d31c2ab2bd036a940c0807b Mon Sep 17 00:00:00 2001
 From: Alex Deucher <alexander.deucher@amd.com>
 Date: Tue, 3 Jan 2012 09:48:38 -0500
-Subject: [PATCH 018/130] drm/radeon/kms: disable writeback on pre-R300 asics
+Subject: [PATCH 018/129] drm/radeon/kms: disable writeback on pre-R300 asics
 
 commit 28eebb703e28bc455ba704adb1026f76649b768c upstream.
 
@@ -36,5 +36,5 @@ index c4d00a1..9b39145 100644
  		} else {
  			rdev->wb.enabled = true;
 -- 
-1.7.9.4
+1.7.9.5
 

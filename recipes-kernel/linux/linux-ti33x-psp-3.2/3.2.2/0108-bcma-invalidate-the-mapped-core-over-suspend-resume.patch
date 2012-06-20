@@ -1,7 +1,7 @@
-From f247747caad5d93e854a4ebab125e97e119a7c94 Mon Sep 17 00:00:00 2001
+From 744b53e5115a140039ef4e7834bb84797b4db37e Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
 Date: Fri, 13 Jan 2012 23:58:38 +0100
-Subject: [PATCH 108/130] bcma: invalidate the mapped core over suspend/resume
+Subject: [PATCH 108/129] bcma: invalidate the mapped core over suspend/resume
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -40,5 +40,5 @@ index 990f5a8..48e06be 100644
  }
  
 -- 
-1.7.9.4
+1.7.9.5
 

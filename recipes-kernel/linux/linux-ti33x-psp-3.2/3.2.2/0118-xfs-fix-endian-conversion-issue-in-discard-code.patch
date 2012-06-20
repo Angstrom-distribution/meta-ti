@@ -1,4 +1,4 @@
-From 40713843ccb84ed06d4799763c3832376d6cd5cb Mon Sep 17 00:00:00 2001
+From 1075b6106024e51af7a5108626091322d2e91710 Mon Sep 17 00:00:00 2001
 From: Dave Chinner <dchinner@redhat.com>
 Date: Wed, 18 Jan 2012 14:41:45 -0600
 Subject: [PATCH 118/129] xfs: fix endian conversion issue in discard code

@@ -1,7 +1,7 @@
-From 718c5470bcef49ad7edc9674a4e96a222a2f4512 Mon Sep 17 00:00:00 2001
+From a8cd5ec584f74044ccca71a50312fac4e69f4d64 Mon Sep 17 00:00:00 2001
 From: David Henningsson <david.henningsson@canonical.com>
 Date: Thu, 12 Jan 2012 16:31:14 +0100
-Subject: [PATCH 094/130] ALSA: HDA: Use LPIB position fix for Macbook Pro 7,1
+Subject: [PATCH 094/129] ALSA: HDA: Use LPIB position fix for Macbook Pro 7,1
 
 commit b01de4fb40137fbda7530550ff0cd37171dafb0c upstream.
 
@@ -31,5 +31,5 @@ index c2f79e6..5b2b75b 100644
  	SND_PCI_QUIRK(0x1458, 0xa022, "ga-ma770-ud3", POS_FIX_LPIB),
  	SND_PCI_QUIRK(0x1462, 0x1002, "MSI Wind U115", POS_FIX_LPIB),
 -- 
-1.7.9.4
+1.7.9.5
 

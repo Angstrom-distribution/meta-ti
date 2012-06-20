@@ -1,4 +1,4 @@
-From 072d0e473d1a1d4adc67a7d39be9f71fea4fadad Mon Sep 17 00:00:00 2001
+From d73358012ed5ac74a1f51fa250d221be5e3ca304 Mon Sep 17 00:00:00 2001
 From: Toshiharu Okada <toshiharu-linux@dsn.okisemi.com>
 Date: Mon, 26 Sep 2011 16:16:23 +0900
 Subject: [PATCH 119/129] i2c-eg20t: modified the setting of transfer rate.

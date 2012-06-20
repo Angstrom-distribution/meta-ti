@@ -1,4 +1,4 @@
-From ac9426f8233d76fd80412576fb53a26a7b1bd7ea Mon Sep 17 00:00:00 2001
+From 95b45505920a18fb705ad35e9144aaf94ea01421 Mon Sep 17 00:00:00 2001
 From: Jeff Layton <jlayton@redhat.com>
 Date: Tue, 17 Jan 2012 16:08:51 -0500
 Subject: [PATCH 121/129] cifs: lower default wsize when unix extensions are

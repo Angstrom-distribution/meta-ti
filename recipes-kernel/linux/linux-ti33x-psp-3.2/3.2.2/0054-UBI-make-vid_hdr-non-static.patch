@@ -1,7 +1,7 @@
-From 1abfab7c1e994f5b4419387491666091141f9dbf Mon Sep 17 00:00:00 2001
+From f767fd8bc40accebf74bdee01946ed6452a626df Mon Sep 17 00:00:00 2001
 From: Richard Weinberger <rw@linutronix.de>
 Date: Thu, 22 Dec 2011 16:12:57 +0100
-Subject: [PATCH 054/130] UBI: make vid_hdr non-static
+Subject: [PATCH 054/129] UBI: make vid_hdr non-static
 
 commit 6bdccffe8c4268d02f71873102131fb6ed37ed9a upstream.
 
@@ -32,5 +32,5 @@ index 9ad18da..890754c 100644
  
  	ubi_msg("create volume table (copy #%d)", copy + 1);
 -- 
-1.7.9.4
+1.7.9.5
 

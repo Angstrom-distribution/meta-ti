@@ -1,7 +1,7 @@
-From 1a8506bc77390a1f7e67a4176c6d4c5b05a18920 Mon Sep 17 00:00:00 2001
+From 4f2bf4b7d712836951cdbfa4807ae0309711487c Mon Sep 17 00:00:00 2001
 From: NeilBrown <neilb@suse.de>
 Date: Mon, 9 Jan 2012 01:41:51 +1100
-Subject: [PATCH 039/130] md/raid1: perform bad-block tests for WriteMostly
+Subject: [PATCH 039/129] md/raid1: perform bad-block tests for WriteMostly
  devices too.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -52,5 +52,5 @@ index ede2461..7d9e071 100644
  		}
  		/* This is a reasonable device to use.  It might
 -- 
-1.7.9.4
+1.7.9.5
 

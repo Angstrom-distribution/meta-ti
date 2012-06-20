@@ -1,7 +1,7 @@
-From 9bd4b771e9f598f5cebad5146585eb30ececf118 Mon Sep 17 00:00:00 2001
+From a68c39aa3ae77996cb2f2cefe21ad1e62e1767a5 Mon Sep 17 00:00:00 2001
 From: Benjamin Tissoires <benjamin.tissoires@enac.fr>
 Date: Wed, 23 Nov 2011 10:54:33 +0100
-Subject: [PATCH 084/130] HID: multitouch: add support for the MSI Windpad
+Subject: [PATCH 084/129] HID: multitouch: add support for the MSI Windpad
  110W
 
 commit 66f06127f34ad6e8a1b24a2c03144b694d19f99f upstream.
@@ -45,5 +45,5 @@ index c77d495..6f6b1d9 100644
  	{ .driver_data = MT_CLS_EGALAX,
  		HID_USB_DEVICE(USB_VENDOR_ID_DWAV,
 -- 
-1.7.9.4
+1.7.9.5
 

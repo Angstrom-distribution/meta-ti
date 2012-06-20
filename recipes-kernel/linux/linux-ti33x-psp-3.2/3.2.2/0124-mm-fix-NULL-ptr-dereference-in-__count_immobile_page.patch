@@ -1,4 +1,4 @@
-From ddcb13eadda3bcb23d81672ea705d6bfa313bbf8 Mon Sep 17 00:00:00 2001
+From e4131b26d39c1bf1f739fd09451ade0906252661 Mon Sep 17 00:00:00 2001
 From: Michal Hocko <mhocko@suse.cz>
 Date: Fri, 20 Jan 2012 14:33:55 -0800
 Subject: [PATCH 124/129] mm: fix NULL ptr dereference in

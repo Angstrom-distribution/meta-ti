@@ -1,7 +1,7 @@
-From 04e2d5556696dd62a2573c478118e7c4bedc9fba Mon Sep 17 00:00:00 2001
+From 0f951c7e3066c834b47172ee36435129c7c1d978 Mon Sep 17 00:00:00 2001
 From: Takashi Iwai <tiwai@suse.de>
 Date: Tue, 10 Jan 2012 08:59:56 +0100
-Subject: [PATCH 013/130] ALSA: hda - Use auto-parser for HP laptops with
+Subject: [PATCH 013/129] ALSA: hda - Use auto-parser for HP laptops with
  cx20459 codec
 
 commit de4da59e480cdf1075b33dbaf8078fc87bc52241 upstream.
@@ -33,5 +33,5 @@ index 0de2119..7072251 100644
  	SND_PCI_QUIRK(0x152d, 0x0753, "Benq R55E", CXT5045_BENQ),
  	SND_PCI_QUIRK(0x1734, 0x10ad, "Fujitsu Si1520", CXT5045_LAPTOP_MICSENSE),
 -- 
-1.7.9.4
+1.7.9.5
 

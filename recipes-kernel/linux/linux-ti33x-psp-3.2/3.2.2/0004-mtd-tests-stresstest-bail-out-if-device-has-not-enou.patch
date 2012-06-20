@@ -1,7 +1,7 @@
-From 8d9f0b4614ddd61c2dc00c8de8865d75c1226860 Mon Sep 17 00:00:00 2001
+From 401f9918c9daf754c70eb65a895c8ef3bde5b441 Mon Sep 17 00:00:00 2001
 From: Wolfram Sang <w.sang@pengutronix.de>
 Date: Tue, 29 Nov 2011 15:34:08 +0100
-Subject: [PATCH 004/130] mtd: tests: stresstest: bail out if device has not
+Subject: [PATCH 004/129] mtd: tests: stresstest: bail out if device has not
  enough eraseblocks
 
 commit 2f4478ccff7df845dc9c0f8996a96373122c4417 upstream.
@@ -56,5 +56,5 @@ index 52ffd91..811642f 100644
  	if (err)
  		printk(PRINT_PREF "error %d occurred\n", err);
 -- 
-1.7.9.4
+1.7.9.5
 
