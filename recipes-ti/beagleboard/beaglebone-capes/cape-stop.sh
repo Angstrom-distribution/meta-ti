@@ -5,8 +5,8 @@ for eeprom in /sys/bus/i2c/devices/3-005*/eeprom ; do
 		"BB-BONE-LCD3-01.")
 				echo "Turning off backlight for LCD3 cape"
 				i2cset -f -y 1 0x24 0x07 0x00;;
-		"BB-BONE-LCD4-01.")
-				echo "Turning off backlight for LCD3 cape"
+		"BB-BONE-LCD4"*)
+				echo "Turning off backlight for LCD4 cape"
 				i2cset -f -y 1 0x24 0x07 0x00;;
 		*)
 				echo "unknown cape: $PARTNUMBER";;
