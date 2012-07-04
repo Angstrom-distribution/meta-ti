@@ -15,7 +15,7 @@ PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.21", d)}"
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
-MACHINE_KERNEL_PR_append = "d+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "f+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -1538,4 +1538,6 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0071-beaglebone-fix-LCD3-led-key-overlap.patch \
 	file://beaglebone/0072-beaglebone-fix-audio-spi-clash.patch \
 	file://beaglebone/0073-beaglebone-add-support-for-QuickLogic-Camera-interfa.patch \
+	file://beaglebone/0074-beaglebone-add-support-for-DVI-audio-and-audio-only-.patch \
+	file://beaglebone/0075-beaglebone-disable-LBO-GPIO-for-battery-cape.patch \
 "
