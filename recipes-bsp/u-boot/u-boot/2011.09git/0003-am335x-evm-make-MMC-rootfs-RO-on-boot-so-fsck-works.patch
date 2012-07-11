@@ -1,15 +1,15 @@
-From 63e5b3b4271917e0a3c5a4903a76fdfb30118d3c Mon Sep 17 00:00:00 2001
+From ca9a3452249bfda3d9a8096794b4fbfbf212d72f Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 1 Nov 2011 12:22:30 +0100
-Subject: [PATCH 4/4] am335x-evm: make MMC rootfs RO on boot so fsck works
+Subject: [PATCH 03/10] am335x-evm: make MMC rootfs RO on boot so fsck works
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  include/configs/am335x_evm.h |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
-index 6143dc3..56e36da 100755
+index 2558775..1b4fa37 100755
 --- a/include/configs/am335x_evm.h
 +++ b/include/configs/am335x_evm.h
 @@ -50,7 +50,7 @@
@@ -18,9 +18,9 @@ index 6143dc3..56e36da 100755
  	"mmc_dev=0\0" \
 -	"mmc_root=/dev/mmcblk0p2 rw\0" \
 +	"mmc_root=/dev/mmcblk0p2 ro\0" \
- 	"nand_root=/dev/mtdblock7 rw\0" \
+ 	"nand_root=ubi0:rootfs rw ubi.mtd=7,2048\0" \
  	"spi_root=/dev/mtdblock4 rw\0" \
  	"nor_root=/dev/mtdblock3 rw\0" \
 -- 
-1.7.2.5
+1.7.10
 
