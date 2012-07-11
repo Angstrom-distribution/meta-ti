@@ -1,0 +1,30 @@
+From 160a0a0145cbe4bca9c0f71286fc8529e57c21c4 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Sun, 1 Apr 2012 22:57:37 +0200
+Subject: [PATCH 07/10] am335x-evm: fix ext2load and specify partition for
+ both fatload and ext2load
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ include/configs/am335x_evm.h |    5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
+index 3d37058..a81d716 100755
+--- a/include/configs/am335x_evm.h
++++ b/include/configs/am335x_evm.h
+@@ -74,9 +74,8 @@
+ 	"loadbootenv=fatload mmc ${mmc_dev} ${loadaddr} ${bootenv}\0" \
+ 	"importbootenv=echo Importing environment from mmc ...; " \
+ 		"env import -t $loadaddr $filesize\0" \
+-	"mmc_load_uimage=fatload mmc ${mmc_dev} ${kloadaddr} ${bootfile}\0" \
+-	"mmc_load_uimage_ext2=ext2load ${mmc_dev} ${kloadaddr} /boot/${bootfile}\0" \
+-	"optargs=\0" \
++	"mmc_load_uimage=fatload mmc ${mmc_dev}:1 ${kloadaddr} ${bootfile}\0" \
++	"mmc_load_uimage_ext2=ext2load mmc ${mmc_dev}:2 ${kloadaddr} /boot/${bootfile}\0" \
+ 	"bootargs_defaults=setenv bootargs " \
+ 		"console=${console} " \
+ 		"${optargs}\0" \
+-- 
+1.7.10
+

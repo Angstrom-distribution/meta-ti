@@ -1,7 +1,7 @@
-From 486ce56b1203dd71bad310940b321d3ae13cadec Mon Sep 17 00:00:00 2001
-From: u-boot@lakedaemon.net <u-boot@lakedaemon.net>
+From f6894e8bc193d225267e4d58a633354e9937c93d Mon Sep 17 00:00:00 2001
+From: "u-boot@lakedaemon.net" <u-boot@lakedaemon.net>
 Date: Wed, 28 Mar 2012 04:37:11 +0000
-Subject: [PATCH 11/15] ext2load: increase read speed
+Subject: [PATCH 06/10] ext2load: increase read speed
 
 This patch dramatically drops the amount of time u-boot needs to read a
 file from an ext2 partition.  On a typical 2 to 5 MB file (kernels and
@@ -16,7 +16,7 @@ userspace, and then confirmed after ext2load.
 Signed-off-by: Jason Cooper <u-boot@lakedaemon.net>
 ---
  fs/ext2/ext2fs.c |   26 ++++++++++++++++++++++++--
- 1 files changed, 24 insertions(+), 2 deletions(-)
+ 1 file changed, 24 insertions(+), 2 deletions(-)
 
 diff --git a/fs/ext2/ext2fs.c b/fs/ext2/ext2fs.c
 index e119e13..8531db5 100644
@@ -70,5 +70,5 @@ index e119e13..8531db5 100644
  	return (len);
  }
 -- 
-1.7.2.5
+1.7.10
 

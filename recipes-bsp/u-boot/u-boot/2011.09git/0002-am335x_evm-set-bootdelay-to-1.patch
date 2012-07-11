@@ -1,26 +1,26 @@
-From bf513a05bc37f6d32e14c1e46d090773d1664c99 Mon Sep 17 00:00:00 2001
+From cb92653d26476880602a20b62da03a35d36d622e Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 1 Nov 2011 12:21:38 +0100
-Subject: [PATCH 3/4] am335x_evm: set bootdelay to 1
+Subject: [PATCH 02/10] am335x_evm: set bootdelay to 1
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  include/configs/am335x_evm.h |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
-index 9bbfe3b..6143dc3 100755
+index 83ccb5a..2558775 100755
 --- a/include/configs/am335x_evm.h
 +++ b/include/configs/am335x_evm.h
-@@ -38,7 +38,7 @@
- #define CONFIG_INITRD_TAG		/* Required for ramdisk support */
+@@ -127,7 +127,7 @@
  
+ #ifndef CONFIG_RESTORE_FLASH
  /* set to negative value for no autoboot */
 -#define CONFIG_BOOTDELAY		3
 +#define CONFIG_BOOTDELAY		1
  
- #define CONFIG_MMC
- #define CONFIG_NAND
+ #define CONFIG_BOOTCOMMAND \
+ 	"if mmc rescan; then " \
 -- 
-1.7.2.5
+1.7.10
 

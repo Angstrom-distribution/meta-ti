@@ -1,7 +1,7 @@
-From 881674a3a8258bfc0f3a130503e2663c2f22817d Mon Sep 17 00:00:00 2001
-From: uma.shankar <uma.shankar@samsung.com>
+From 4e2f3f39a37883bddbe92a71045cb90f489e1d5f Mon Sep 17 00:00:00 2001
+From: "uma.shankar" <uma.shankar@samsung.com>
 Date: Mon, 9 Jan 2012 07:54:50 +0000
-Subject: [PATCH 14/15] ext4fs ls load support
+Subject: [PATCH 09/10] ext4fs ls load support
 
 Signed-off-by: Uma Shankar <uma.shankar@samsung.com>
 Signed-off-by: Manjunatha C Achar <a.manjunatha@samsung.com>
@@ -13,7 +13,7 @@ Signed-off-by: Hakgoo Lee <goodguy.lee@samsung.com>
  common/cmd_ext4.c     |  266 +++++++++++++++
  fs/Makefile           |    1 +
  fs/ext2/dev.c         |    1 +
- fs/ext2/ext2fs.c      |  181 ++---------
+ fs/ext2/ext2fs.c      |  181 ++--------
  fs/ext4/Makefile      |   51 +++
  fs/ext4/dev.c         |  145 ++++++++
  fs/ext4/ext4_common.c |  875 +++++++++++++++++++++++++++++++++++++++++++++++++
@@ -45,7 +45,7 @@ index 99b9278..6a5068d 100644
  LIBS += net/libnet.o
  LIBS += disk/libdisk.o
 diff --git a/common/Makefile b/common/Makefile
-index 54dc558..a1ccfd8 100644
+index 838ae25..b9b5c85 100644
 --- a/common/Makefile
 +++ b/common/Makefile
 @@ -87,6 +87,7 @@ COBJS-$(CONFIG_ENV_IS_IN_EEPROM) += cmd_eeprom.o
@@ -2358,5 +2358,5 @@ index 0000000..5d48021
 +};
 +#endif
 -- 
-1.7.2.5
+1.7.10
 
