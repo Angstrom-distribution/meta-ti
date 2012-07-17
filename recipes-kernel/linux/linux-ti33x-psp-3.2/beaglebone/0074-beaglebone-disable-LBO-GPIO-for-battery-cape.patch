@@ -1,7 +1,7 @@
-From 9332627ac6b70511742208d6fa7c7042c203f852 Mon Sep 17 00:00:00 2001
+From f723bdf574163ced9a685783a475b254f6a981d5 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 3 Jul 2012 21:28:44 +0200
-Subject: [PATCH 75/75] beaglebone: disable LBO GPIO for battery cape
+Subject: [PATCH 74/79] beaglebone: disable LBO GPIO for battery cape
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index af75c88..7d6ac77 100644
+index bf40ac9..6b4539e 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
 @@ -2999,7 +2999,8 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context

@@ -1,12 +1,12 @@
-From ae3da1ea2d7c8b915e8eebec7d5f3524f53bf510 Mon Sep 17 00:00:00 2001
+From 10099d6354fc3c61306788e4070cfbd20722fb80 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 31 Jan 2012 16:49:52 +0100
-Subject: [PATCH 14/56] AM335x: MUX: add ehrpwm1A
+Subject: [PATCH 14/79] AM335x: MUX: add ehrpwm1A
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/mux33xx.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm/mach-omap2/mux33xx.c b/arch/arm/mach-omap2/mux33xx.c
 index 572ed16..0f71646 100644
@@ -22,5 +22,5 @@ index 572ed16..0f71646 100644
  		"gpmc_a3", "mii2_txd2", "rgmii2_td2", "mmc2_dat2",
  		NULL, NULL, NULL, "gpio1_19"),
 -- 
-1.7.7.6
+1.7.10
 

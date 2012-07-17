@@ -1,12 +1,12 @@
-From b5158f58ced19e39423d3f12b01f67435a1029b0 Mon Sep 17 00:00:00 2001
+From e495bd4f47ad3b8f48916582b12ec0bf0a7e7134 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 31 Jan 2012 10:04:03 +0100
-Subject: [PATCH 04/56] more beaglebone merges
+Subject: [PATCH 04/79] more beaglebone merges
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
- arch/arm/mach-omap2/board-am335xevm.c |   52 +++++++++++++++++++++++++++++++-
- 1 files changed, 50 insertions(+), 2 deletions(-)
+ arch/arm/mach-omap2/board-am335xevm.c |   52 +++++++++++++++++++++++++++++++--
+ 1 file changed, 50 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index 2741431..ffbecae 100644
@@ -103,5 +103,5 @@ index 2741431..ffbecae 100644
  	} else if (!strncmp("1.0", config.version, 3)) {
  		gp_evm_revision = GP_EVM_REV_IS_1_0;
 -- 
-1.7.7.6
+1.7.10
 

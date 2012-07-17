@@ -1,12 +1,12 @@
-From 178d60b5a56c1f8eff29d23c27cc14bc6c0a9e4c Mon Sep 17 00:00:00 2001
+From fe280a351fe71d5f1ade1aa3b8f9edc08e201ec1 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 22 May 2012 10:58:53 +0200
-Subject: [PATCH 58/61] beaglebone: annotate default beaglebone pinmux
+Subject: [PATCH 58/79] beaglebone: annotate default beaglebone pinmux
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |    8 ++++----
- 1 files changed, 4 insertions(+), 4 deletions(-)
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index 68ddfe2..b079279 100644
@@ -28,5 +28,5 @@ index 68ddfe2..b079279 100644
      {"gpmc_ad6.gpio1_6", OMAP_MUX_MODE7 | AM33XX_PIN_INPUT_PULLUP},
  	{NULL, 0},
 -- 
-1.7.7.6
+1.7.10
 

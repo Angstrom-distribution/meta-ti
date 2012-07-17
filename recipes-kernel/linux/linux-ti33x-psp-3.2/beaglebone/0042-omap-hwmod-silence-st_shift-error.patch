@@ -1,7 +1,7 @@
-From 60182b1efd893c0e8c4c6176d2ce0e766d702abb Mon Sep 17 00:00:00 2001
+From e2542efb1a4a61334eace382a2a4c6d5874cc078 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Wed, 16 May 2012 17:57:31 +0200
-Subject: [PATCH 42/56] omap hwmod: silence st_shift error
+Subject: [PATCH 42/79] omap hwmod: silence st_shift error
 
 During boot the following error is shown:
 
@@ -12,7 +12,7 @@ Since this PSP tree will never run on omap4 remove the print so people will stop
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/omap_hwmod.c |    3 ---
- 1 files changed, 0 insertions(+), 3 deletions(-)
+ 1 file changed, 3 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/omap_hwmod.c b/arch/arm/mach-omap2/omap_hwmod.c
 index bc14f9f..a050699 100644
@@ -29,5 +29,5 @@ index bc14f9f..a050699 100644
  				  oh->clkdm->pwrdm.ptr->prcm_partition,
  				  oh->clkdm->pwrdm.ptr->prcm_offs,
 -- 
-1.7.7.6
+1.7.10
 

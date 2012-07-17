@@ -1,18 +1,18 @@
-From 45ddec832968e3c1e31cf38a891372ba80027e2d Mon Sep 17 00:00:00 2001
+From 1ec20c05453acf20b9d5d385ac9574e9ab64347d Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 26 Jun 2012 08:39:04 +0200
-Subject: [PATCH] beaglebone: fix audio/spi clash
+Subject: [PATCH 71/79] beaglebone: fix audio/spi clash
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
- arch/arm/mach-omap2/board-am335xevm.c |    3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ arch/arm/mach-omap2/board-am335xevm.c |    1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index f6559b6..d0681a2 100644
+index 9a56a769..d2481af 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
-@@ -2910,6 +2910,7 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context
+@@ -2691,6 +2691,7 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context
  		
  		beaglebone_leds_free = 0;
  		dvileds_init(0,0);

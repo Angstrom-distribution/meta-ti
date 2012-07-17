@@ -1,12 +1,12 @@
-From 122136b42459ab34853157fb5de1691e890f8f88 Mon Sep 17 00:00:00 2001
+From 3813937b8337eb49978dfe8e4b938f937b11db37 Mon Sep 17 00:00:00 2001
 From: Bas Laarhoven <sjml@xs4all.nl>
 Date: Mon, 14 May 2012 18:26:12 +0200
-Subject: [PATCH 48/56] Fixed reversed part of LCD bus. Added even more
+Subject: [PATCH 48/79] Fixed reversed part of LCD bus. Added even more
  missing entries (TBC).
 
 ---
- arch/arm/mach-omap2/mux33xx.c |   56 ++++++++++++++++++++--------------------
- 1 files changed, 28 insertions(+), 28 deletions(-)
+ arch/arm/mach-omap2/mux33xx.c |   56 ++++++++++++++++++++---------------------
+ 1 file changed, 28 insertions(+), 28 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/mux33xx.c b/arch/arm/mach-omap2/mux33xx.c
 index 26ecd66..72ac899 100644
@@ -109,5 +109,5 @@ index 26ecd66..72ac899 100644
  		"lcd_data2", "gpmc_a2", "pr1_mii0_txd3", "ehrpwm2_tripzone_input",
  		NULL, "pr1_pru1_pru_r30_2", "pr1_pru1_pru_r31_2", "gpio2_8"),
 -- 
-1.7.7.6
+1.7.10
 

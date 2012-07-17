@@ -1,7 +1,7 @@
-From 5275f0cc4c9f541711ab49e7e179a153fb61cda5 Mon Sep 17 00:00:00 2001
+From dc7ef10b1e755f188cfc92f4e1d8a43c8e661392 Mon Sep 17 00:00:00 2001
 From: Joel A Fernandes <joelagnel@ti.com>
 Date: Wed, 30 Nov 2011 15:02:17 +0100
-Subject: [PATCH 07/56] tscadc: Add board file mfd support, fix warning
+Subject: [PATCH 07/79] tscadc: Add board file mfd support, fix warning
 
 Signed-off-by: Joel A Fernandes <joelagnel@ti.com>
 
@@ -40,5 +40,5 @@ index c6dc6f0..b50a08c 100644
  	int				clk_value;
  	int				clock_rate, irqenable, ctrl;
 -- 
-1.7.7.6
+1.7.10
 

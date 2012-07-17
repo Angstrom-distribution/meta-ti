@@ -1,12 +1,12 @@
-From 64918c14ce7c12660cdf3b7650d6992a4eb7a69e Mon Sep 17 00:00:00 2001
+From 79504e3e113ac68335eb899322a56f3a72462b08 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 19 Apr 2012 14:23:06 +0200
-Subject: [PATCH 34/56] beaglebone: add support for DVI rev. A2 capes
+Subject: [PATCH 34/79] beaglebone: add support for DVI rev. A2 capes
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |  150 ++++++++-------------------------
- 1 files changed, 35 insertions(+), 115 deletions(-)
+ 1 file changed, 35 insertions(+), 115 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index 6e7b203..e02c0b6 100644
@@ -238,5 +238,5 @@ index 6e7b203..e02c0b6 100644
  	if (!strncmp("BB-BONE-LCD7-01", cape_config.partnumber, 15)) {
  		pr_info("BeagleBone cape: initializing LCD cape\n");
 -- 
-1.7.7.6
+1.7.10
 

@@ -1,12 +1,12 @@
-From d7eecab57e0c72ef16663b45d2e1498368cfe9fe Mon Sep 17 00:00:00 2001
+From 1fb7daa57c2079ec42cff0d26336e430fad7946f Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Mon, 19 Mar 2012 14:26:37 +0100
-Subject: [PATCH 23/56] beaglebone: add enter key for lcd7 cape
+Subject: [PATCH 23/79] beaglebone: add enter key for lcd7 cape
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |    9 +++++++++
- 1 files changed, 9 insertions(+), 0 deletions(-)
+ 1 file changed, 9 insertions(+)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index 9e9cf5b..8c78eb5 100644
@@ -36,5 +36,5 @@ index 9e9cf5b..8c78eb5 100644
  
  static struct gpio_keys_platform_data beaglebone_lcd7_gpio_key_info = {
 -- 
-1.7.7.6
+1.7.10
 

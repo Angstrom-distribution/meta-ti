@@ -1,12 +1,12 @@
-From 14830f07a752e8c2d643a307ebb5e268008d9c04 Mon Sep 17 00:00:00 2001
+From 33bbdc8dfb22170f7be9286c653fbac9d9c8f196 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 31 Jan 2012 14:50:55 +0100
-Subject: [PATCH 13/56] beaglebone: fix ADC init
+Subject: [PATCH 13/79] beaglebone: fix ADC init
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |    6 ++----
- 1 files changed, 2 insertions(+), 4 deletions(-)
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index 6b78ae6..ffbecae 100644
@@ -43,5 +43,5 @@ index 6b78ae6..ffbecae 100644
  };
  
 -- 
-1.7.7.6
+1.7.10
 

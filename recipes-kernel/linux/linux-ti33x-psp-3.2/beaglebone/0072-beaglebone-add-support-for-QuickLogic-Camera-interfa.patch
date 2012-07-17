@@ -1,8 +1,8 @@
-From cf35e6b861c3c7d4d9c9db1557ba27b5578e8aa2 Mon Sep 17 00:00:00 2001
+From e3a4f83627a111ae21ea8c6521ad98201f55eacc Mon Sep 17 00:00:00 2001
 From: Dan Aizenstros <daizenstros@quicklogic.com>
 Date: Fri, 29 Jun 2012 13:57:49 -0400
-Subject: [PATCH] beaglebone: add support for QuickLogic Camera interface on
- camera cape
+Subject: [PATCH 72/79] beaglebone: add support for QuickLogic Camera
+ interface on camera cape
 
 Signed-off-by: Dan Aizenstros <daizenstros@quicklogic.com>
 ---
@@ -20,10 +20,10 @@ Signed-off-by: Dan Aizenstros <daizenstros@quicklogic.com>
  create mode 100644 drivers/media/video/cssp_camera/cssp_camera.h
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index dc78b4a..1680612 100644
+index d2481af..22a740f 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
-@@ -66,6 +66,10 @@
+@@ -65,6 +65,10 @@
  #include <plat/mmc.h>
  #include <plat/emif.h>
  #include <plat/nand.h>
@@ -34,7 +34,7 @@ index dc78b4a..1680612 100644
  
  #include "board-flash.h"
  #include "cpuidle33xx.h"
-@@ -804,6 +808,42 @@ static struct pinmux_config i2c1_pin_mux[] = {
+@@ -803,6 +807,42 @@ static struct pinmux_config i2c1_pin_mux[] = {
  	{NULL, 0},
  };
  
@@ -77,7 +77,7 @@ index dc78b4a..1680612 100644
  static struct pinmux_config i2c2_pin_mux[] = {
  	{"uart1_ctsn.i2c2_sda",    OMAP_MUX_MODE3 | AM33XX_SLEWCTRL_SLOW |
  					AM33XX_PIN_INPUT_PULLUP},
-@@ -1803,6 +1843,156 @@ static void dvileds_init(int evm_id, int profile )
+@@ -1802,6 +1842,156 @@ static void dvileds_init(int evm_id, int profile )
  		pr_err("failed to register BeagleBone DVI cape LEDS\n");
  }
  
@@ -234,7 +234,7 @@ index dc78b4a..1680612 100644
  static void lcd3leds_init(int evm_id, int profile )
  {
  	int err;
-@@ -2851,6 +3041,7 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context
+@@ -2821,6 +3011,7 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context
  	if (!strncmp("BB-BONE-CAM-01", cape_config.partnumber, 14)) {
  		pr_info("BeagleBone cape: recognized Camera cape\n");
  		beaglebone_w1gpio_free = 0;
@@ -242,7 +242,7 @@ index dc78b4a..1680612 100644
  	}
  
  	goto out2;
-@@ -3762,15 +3953,13 @@ static struct pinmux_config clkout2_pin_mux[] = {
+@@ -3729,15 +3920,13 @@ static struct pinmux_config clkout2_pin_mux[] = {
  
  static void __init clkout2_enable(void)
  {

@@ -1,13 +1,13 @@
-From 07553571e947d49d906d5f12fd0cb4eac6a8c4e5 Mon Sep 17 00:00:00 2001
+From b199c282abaee2188141c0885198466e8028f181 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 17 Apr 2012 11:25:00 +0200
-Subject: [PATCH 27/56] beaglebone: decrease PWM frequency to old value, LCD7
+Subject: [PATCH 27/79] beaglebone: decrease PWM frequency to old value, LCD7
  doesn't like it
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index 127516f..4d5238d 100644
@@ -23,5 +23,5 @@ index 127516f..4d5238d 100644
  #define PWM_DEVICE_ID   "ecap.0"
  
 -- 
-1.7.7.6
+1.7.10
 

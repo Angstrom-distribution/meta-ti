@@ -1,12 +1,12 @@
-From 9c7b14dcac75a1c6456e2cd4ae3e1737ed1c5f47 Mon Sep 17 00:00:00 2001
+From f138b1ab42cb36c13926e1cee6ed3cd429d1c91b Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 22 May 2012 12:25:33 +0200
-Subject: [PATCH 61/61] beaglebone: make uart2 pinmux match the uart0 pinmux
+Subject: [PATCH 61/79] beaglebone: make uart2 pinmux match the uart0 pinmux
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |    7 ++-----
- 1 files changed, 2 insertions(+), 5 deletions(-)
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index 5902df0..e8ce381 100644
@@ -27,5 +27,5 @@ index 5902df0..e8ce381 100644
  };
  
 -- 
-1.7.7.6
+1.7.10
 

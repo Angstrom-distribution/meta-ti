@@ -1,7 +1,7 @@
-From ef6c0767e7c4337f45080906cda46a2c05e000f8 Mon Sep 17 00:00:00 2001
+From 2ab55bf6a97122999e0cd6cbe18869fb89b59c0a Mon Sep 17 00:00:00 2001
 From: Bas Laarhoven <sjml@xs4all.nl>
 Date: Sun, 13 May 2012 18:14:22 +0200
-Subject: [PATCH 52/56] Implemented Bone Cape configuration from EEPROM. Only
+Subject: [PATCH 52/79] Implemented Bone Cape configuration from EEPROM. Only
  used for BEBOPR cape for now.
 
 Signed-off-by: Bas Laarhoven <sjml@xs4all.nl>
@@ -9,7 +9,7 @@ Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |  304 +++++++++++++++++++++++++++++++++
  arch/arm/mach-omap2/mux33xx.c         |   14 ++
- 2 files changed, 318 insertions(+), 0 deletions(-)
+ 2 files changed, 318 insertions(+)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index c6ec997..7fb8295 100644
@@ -359,5 +359,5 @@ index 72ac899..43c8989 100644
  int __init am33xx_mux_init(struct omap_board_mux *board_subset)
  {
 -- 
-1.7.7.6
+1.7.10
 

@@ -1,12 +1,12 @@
-From b038926e4aa0feeeb20bbcf5bb24765ae40162f5 Mon Sep 17 00:00:00 2001
+From 402cc5ad4f97373171cd7e1cfe17ad5165a8c42c Mon Sep 17 00:00:00 2001
 From: Bas Laarhoven <sjml@xs4all.nl>
 Date: Sun, 13 May 2012 18:06:24 +0200
-Subject: [PATCH 36/56] Beaglebone: Fixed compiletime warnings.
+Subject: [PATCH 36/79] Beaglebone: Fixed compiletime warnings.
 
 Signed-off-by: Bas Laarhoven <sjml@xs4all.nl>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index 8db33b9..b48e0fd 100644
@@ -44,5 +44,5 @@ index 8db33b9..b48e0fd 100644
  	ret = mem_acc->read(mem_acc, (char *)&cape_config, 0, sizeof(cape_config));
  	if (ret != sizeof(cape_config)) {
 -- 
-1.7.7.6
+1.7.10
 

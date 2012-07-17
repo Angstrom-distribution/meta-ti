@@ -11,7 +11,7 @@ S = "${WORKDIR}/git"
 MULTI_CONFIG_BASE_SUFFIX = ""
 
 # the PATCHES_OVER_PSP updates it to 3.2.x, so adjust PV to match
-PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.21", d)}"
+PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.23", d)}"
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
@@ -1445,6 +1445,101 @@ PATCHES_OVER_PSP = " \
 	file://3.2.21/0065-swap-fix-shmem-swapping-when-more-than-8-areas.patch \
 	file://3.2.21/0066-drm-radeon-add-some-additional-6xx-7xx-EG-register-i.patch \
 	file://3.2.21/0067-Linux-3.2.21.patch \
+	file://3.2.22/0001-staging-iio-ad7606-Re-add-missing-scale-attribute.patch \
+	file://3.2.22/0002-Tools-hv-verify-origin-of-netlink-connector-message.patch \
+	file://3.2.22/0003-edac-avoid-mce-decoding-crash-after-edac-driver-unlo.patch \
+	file://3.2.22/0004-hwrng-atmel-rng-fix-data-valid-check.patch \
+	file://3.2.22/0005-staging-r8712u-Add-new-USB-IDs.patch \
+	file://3.2.22/0006-hwmon-applesmc-Limit-key-length-in-warning-messages.patch \
+	file://3.2.22/0007-mm-pmd_read_atomic-fix-32bit-PAE-pmd-walk-vs-pmd_pop.patch \
+	file://3.2.22/0008-thp-avoid-atomic64_read-in-pmd_read_atomic-for-32bit.patch \
+	file://3.2.22/0009-nilfs2-ensure-proper-cache-clearing-for-gc-inodes.patch \
+	file://3.2.22/0010-drm-i915-Finish-any-pending-operations-on-the-frameb.patch \
+	file://3.2.22/0011-drm-i915-Remove-use-of-the-autoreported-ringbuffer-H.patch \
+	file://3.2.22/0012-e1000e-Disable-ASPM-L1-on-82574.patch \
+	file://3.2.22/0013-e1000e-Remove-special-case-for-82573-82574-ASPM-L1-d.patch \
+	file://3.2.22/0014-drm-i915-Do-the-fallback-non-IRQ-wait-in-ring-thrott.patch \
+	file://3.2.22/0015-staging-rts_pstor-Fix-possible-panic-by-NULL-pointer.patch \
+	file://3.2.22/0016-gspca-core-Fix-buffers-staying-in-queued-state-after.patch \
+	file://3.2.22/0017-smsusb-add-autodetection-support-for-USB-ID-2040-f5a.patch \
+	file://3.2.22/0018-drm-edid-don-t-return-stack-garbage-from-supports_rb.patch \
+	file://3.2.22/0019-drm-nouveau-fbcon-using-nv_two_heads-is-not-a-good-i.patch \
+	file://3.2.22/0020-dm-thin-reinstate-missing-mempool_free-in-cell_relea.patch \
+	file://3.2.22/0021-ath9k-Fix-a-WARNING-on-suspend-resume-with-IBSS.patch \
+	file://3.2.22/0022-cfg80211-fix-potential-deadlock-in-regulatory.patch \
+	file://3.2.22/0023-ath9k-Fix-softlockup-in-AR9485.patch \
+	file://3.2.22/0024-can-c_can-precedence-error-in-c_can_chip_config.patch \
+	file://3.2.22/0025-ath9k-fix-a-tx-rate-duration-calculation-bug.patch \
+	file://3.2.22/0026-batman-adv-fix-skb-data-assignment.patch \
+	file://3.2.22/0027-ARM-SAMSUNG-Should-check-for-IS_ERR-clk-instead-of-N.patch \
+	file://3.2.22/0028-ath9k_hw-avoid-possible-infinite-loop-in-ar9003_get_.patch \
+	file://3.2.22/0029-iwlwifi-remove-log_event-debugfs-file-debugging-is-d.patch \
+	file://3.2.22/0030-ARM-SAMSUNG-Fix-for-S3C2412-EBI-memory-mapping.patch \
+	file://3.2.22/0031-USB-option-add-id-for-Cellient-MEN-200.patch \
+	file://3.2.22/0032-oprofile-perf-use-NR_CPUS-instead-or-nr_cpumask_bits.patch \
+	file://3.2.22/0033-drm-i915-Refactor-the-deferred-PM_IIR-handling-into-.patch \
+	file://3.2.22/0034-drm-i915-rip-out-the-PM_IIR-WARN.patch \
+	file://3.2.22/0035-drm-i915-Fix-eDP-blank-screen-after-S3-resume-on-HP-.patch \
+	file://3.2.22/0036-PM-Sleep-Prevent-waiting-forever-on-asynchronous-sus.patch \
+	file://3.2.22/0037-x86-cpufeature-Rename-X86_FEATURE_DTS-to-X86_FEATURE.patch \
+	file://3.2.22/0038-stable-Allow-merging-of-backports-for-serious-user-v.patch \
+	file://3.2.22/0039-ALSA-hda-Add-Realtek-ALC280-codec-support.patch \
+	file://3.2.22/0040-USB-option-Add-USB-ID-for-Novatel-Ovation-MC551.patch \
+	file://3.2.22/0041-USB-CP210x-Add-10-Device-IDs.patch \
+	file://3.2.22/0042-xen-netfront-teardown-the-device-before-unregisterin.patch \
+	file://3.2.22/0043-can-flexcan-use-be32_to_cpup-to-handle-the-value-of-.patch \
+	file://3.2.22/0044-acpi_pad-fix-power_saving-thread-deadlock.patch \
+	file://3.2.22/0045-batman-adv-only-drop-packets-of-known-wifi-clients.patch \
+	file://3.2.22/0046-Linux-3.2.22.patch \
+	file://3.2.23/0001-splice-fix-racy-pipe-buffers-uses.patch \
+	file://3.2.23/0002-umem-fix-up-unplugging.patch \
+	file://3.2.23/0003-mwifiex-fix-11n-rx-packet-drop-issue.patch \
+	file://3.2.23/0004-mwifiex-fix-WPS-eapol-handshake-failure.patch \
+	file://3.2.23/0005-NFC-Prevent-multiple-buffer-overflows-in-NCI.patch \
+	file://3.2.23/0006-ath9k-fix-dynamic-WEP-related-regression.patch \
+	file://3.2.23/0007-NFC-Return-from-rawsock_release-when-sk-is-NULL.patch \
+	file://3.2.23/0008-rtlwifi-rtl8192cu-New-USB-IDs.patch \
+	file://3.2.23/0009-ath9k-enable-serialize_regmode-for-non-PCIE-AR9287.patch \
+	file://3.2.23/0010-mac80211-correct-behaviour-on-unrecognised-action-fr.patch \
+	file://3.2.23/0011-ASoC-tlv320aic3x-Fix-codec-pll-configure-bug.patch \
+	file://3.2.23/0012-powerpc-xmon-Use-cpumask-iterator-to-avoid-warning.patch \
+	file://3.2.23/0013-powerpc-kvm-sldi-should-be-sld.patch \
+	file://3.2.23/0014-md-raid10-Don-t-try-to-recovery-unmatched-and-unused.patch \
+	file://3.2.23/0015-md-raid5-Do-not-add-data_offset-before-call-to-is_ba.patch \
+	file://3.2.23/0016-md-raid5-In-ops_run_io-inc-nr_pending-before-calling.patch \
+	file://3.2.23/0017-md-raid10-fix-failure-when-trying-to-repair-a-read-e.patch \
+	file://3.2.23/0018-drm-i915-kick-any-firmware-framebuffers-before-claim.patch \
+	file://3.2.23/0019-dm-persistent-data-fix-shadow_info_leak-on-dm_tm_des.patch \
+	file://3.2.23/0020-dm-persistent-data-handle-space-map-checker-creation.patch \
+	file://3.2.23/0021-dm-persistent-data-fix-allocation-failure-in-space-m.patch \
+	file://3.2.23/0022-ALSA-hda-Fix-power-map-regression-for-HP-dv6-co.patch \
+	file://3.2.23/0023-tracing-change-CPU-ring-buffer-state-from-tracing_cp.patch \
+	file://3.2.23/0024-mwifiex-fix-wrong-return-values-in-add_virtual_intf-.patch \
+	file://3.2.23/0025-udf-Use-ret-instead-of-abusing-i-in-udf_load_logical.patch \
+	file://3.2.23/0026-udf-Avoid-run-away-loop-when-partition-table-length-.patch \
+	file://3.2.23/0027-udf-Fortify-loading-of-sparing-table.patch \
+	file://3.2.23/0028-ARM-fix-rcu-stalls-on-SMP-platforms.patch \
+	file://3.2.23/0029-net-sock-validate-data_len-before-allocating-skb-in-.patch \
+	file://3.2.23/0030-cipso-handle-CIPSO-options-correctly-when-NetLabel-i.patch \
+	file://3.2.23/0031-net-l2tp_eth-fix-kernel-panic-on-rmmod-l2tp_eth.patch \
+	file://3.2.23/0032-l2tp-fix-a-race-in-l2tp_ip_sendmsg.patch \
+	file://3.2.23/0033-sky2-fix-checksum-bit-management-on-some-chips.patch \
+	file://3.2.23/0034-be2net-fix-a-race-in-be_xmit.patch \
+	file://3.2.23/0035-dummy-fix-rcu_sched-self-detected-stalls.patch \
+	file://3.2.23/0036-bonding-Fix-corrupted-queue_mapping.patch \
+	file://3.2.23/0037-ethtool-allow-ETHTOOL_GSSET_INFO-for-users.patch \
+	file://3.2.23/0038-netpoll-fix-netpoll_send_udp-bugs.patch \
+	file://3.2.23/0039-ipv6-Move-ipv6-proc-file-registration-to-end-of-init.patch \
+	file://3.2.23/0040-bridge-Assign-rtnl_link_ops-to-bridge-devices-create.patch \
+	file://3.2.23/0041-Btrfs-run-delayed-directory-updates-during-log-repla.patch \
+	file://3.2.23/0042-cifs-when-server-doesn-t-set-CAP_LARGE_READ_X-cap-de.patch \
+	file://3.2.23/0043-ocfs2-clear-unaligned-io-flag-when-dio-fails.patch \
+	file://3.2.23/0044-aio-make-kiocb-private-NUll-in-init_sync_kiocb.patch \
+	file://3.2.23/0045-mtd-cafe_nand-fix-an-vs-mistake.patch \
+	file://3.2.23/0046-mm-Hold-a-file-reference-in-madvise_remove.patch \
+	file://3.2.23/0047-tcm_fc-Resolve-suspicious-RCU-usage-warnings.patch \
+	file://3.2.23/0048-vfs-make-O_PATH-file-descriptors-usable-for-fchdir.patch \
+	file://3.2.23/0049-Linux-3.2.23.patch \
 	file://led/0001-leds-heartbeat-stop-on-shutdown-reboot-or-panic.patch \
 	file://libertas/0001-USB-convert-drivers-net-to-use-module_usb_driver.patch \
 	file://libertas/0002-net-fix-assignment-of-0-1-to-bool-variables.patch \
@@ -1530,18 +1625,19 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0063-beaglebone-dvi-cape-audio-hacks.patch \
 	file://beaglebone/0064-beaglebone-always-execute-the-pin-free-checks.patch \
 	file://beaglebone/0065-ti_tscadc-switch-to-16x-averaging.patch \
-	file://beaglebone/0067-video-da8xx-fb-Add-Newhaven-LCD-Panel-details.patch \
-	file://beaglebone/0068-beaglebone-add-support-for-the-4.3-lcd-cape-with-res.patch \
-	file://beaglebone/0069-beaglebone-add-support-for-LCD3-rev-A1.patch \
-	file://beaglebone/0070-beaglebone-fix-buttons-spidev-clash-when-using-mcasp.patch \
-	file://beaglebone/0071-beaglebone-fix-LCD3-led-key-overlap.patch \
-	file://beaglebone/0072-beaglebone-fix-audio-spi-clash.patch \
-	file://beaglebone/0073-beaglebone-add-support-for-QuickLogic-Camera-interfa.patch \
-	file://beaglebone/0074-beaglebone-add-support-for-DVI-audio-and-audio-only-.patch \
-	file://beaglebone/0075-beaglebone-disable-LBO-GPIO-for-battery-cape.patch \
+	file://beaglebone/0066-video-da8xx-fb-Add-Newhaven-LCD-Panel-details.patch \
+	file://beaglebone/0067-beaglebone-add-support-for-the-4.3-lcd-cape-with-res.patch \
+	file://beaglebone/0068-beaglebone-add-support-for-LCD3-rev-A1.patch \
+	file://beaglebone/0069-beaglebone-fix-buttons-spidev-clash-when-using-mcasp.patch \
+	file://beaglebone/0070-beaglebone-fix-LCD3-led-key-overlap.patch \
+	file://beaglebone/0071-beaglebone-fix-audio-spi-clash.patch \
+	file://beaglebone/0072-beaglebone-add-support-for-QuickLogic-Camera-interfa.patch \
+	file://beaglebone/0073-beaglebone-add-support-for-DVI-audio-and-audio-only-.patch \
+	file://beaglebone/0074-beaglebone-disable-LBO-GPIO-for-battery-cape.patch \
 	file://beaglebone/0075-video-da8xx-fb-calculate-pixel-clock-period-for-the-.patch \
 	file://beaglebone/0076-beaglebone-improve-GPMC-bus-timings-for-camera-cape.patch \
 	file://beaglebone/0077-beaglebone-disable-UYVY-VYUY-and-YVYU-modes-in-camer.patch \
 	file://beaglebone/0078-beaglebone-error-handling-for-DMA-completion-in-cssp.patch \
 	file://beaglebone/0079-AM335X-errata-OPP50-on-MPU-domain-is-not-supported.patch \
+	file://beaglebone/0080-vfs-Add-a-trace-point-in-the-mark_inode_dirty-functi.patch \
 "
