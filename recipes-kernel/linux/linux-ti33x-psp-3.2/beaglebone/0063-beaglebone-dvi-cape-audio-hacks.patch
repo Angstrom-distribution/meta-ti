@@ -1,13 +1,13 @@
-From 4c0991689b1e22f28d4827b218e31131f9f56be7 Mon Sep 17 00:00:00 2001
+From 81ca4844089a80e1b1a285ce661f662a04312e81 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Wed, 23 May 2012 15:51:12 +0200
-Subject: [PATCH 63/63] beaglebone: dvi cape audio hacks
+Subject: [PATCH 63/79] beaglebone: dvi cape audio hacks
 
 ---
- arch/arm/mach-omap2/board-am335xevm.c |   72 ++++++++++++++++++++++++++------
+ arch/arm/mach-omap2/board-am335xevm.c |   72 ++++++++++++++++++++++++++-------
  arch/arm/mach-omap2/devices.c         |    2 +-
  sound/soc/codecs/tlv320aic3x.c        |    2 +-
- sound/soc/davinci/davinci-evm.c       |    7 ++-
+ sound/soc/davinci/davinci-evm.c       |    7 ++--
  4 files changed, 64 insertions(+), 19 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
@@ -173,7 +173,7 @@ index 9e029da..41c9b0f 100644
  }
  
 diff --git a/sound/soc/codecs/tlv320aic3x.c b/sound/soc/codecs/tlv320aic3x.c
-index d0dbac1..fc32b7f 100644
+index cdb473c..5567756 100644
 --- a/sound/soc/codecs/tlv320aic3x.c
 +++ b/sound/soc/codecs/tlv320aic3x.c
 @@ -52,7 +52,7 @@
@@ -213,5 +213,5 @@ index f6a62c3..7ad7b37 100644
  	platform_set_drvdata(evm_snd_device, evm_snd_dev_data);
  	ret = platform_device_add(evm_snd_device);
 -- 
-1.7.7.6
+1.7.10
 

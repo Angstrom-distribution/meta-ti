@@ -1,12 +1,12 @@
-From 979f76376236287b2e4d4b4505ed34b1f9c9d389 Mon Sep 17 00:00:00 2001
+From bd18b67644c8107920db6911aa16be680af23cf1 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Mon, 28 May 2012 09:56:45 +0200
-Subject: [PATCH 65/68] ti_tscadc: switch to 16x averaging
+Subject: [PATCH 65/79] ti_tscadc: switch to 16x averaging
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  drivers/input/touchscreen/ti_tscadc.c |    8 ++++----
- 1 files changed, 4 insertions(+), 4 deletions(-)
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/input/touchscreen/ti_tscadc.c b/drivers/input/touchscreen/ti_tscadc.c
 index 7df7bb2..ae6c4c4 100644
@@ -49,5 +49,5 @@ index 7df7bb2..ae6c4c4 100644
  				TSCADC_STEPCONFIG_YPN | TSCADC_STEPCONFIG_INM;
  	stepconfigz2 = stepconfigz1 | TSCADC_STEPCONFIG_Z1 |
 -- 
-1.7.7.6
+1.7.10
 

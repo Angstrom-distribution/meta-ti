@@ -1,15 +1,15 @@
-From b61b89f98ac85ccd8d503a902bad208343ed0aba Mon Sep 17 00:00:00 2001
+From 590a240f4bb7c6eeda5d11c9040821a71edefc53 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Mon, 4 Jun 2012 14:38:02 +0200
-Subject: [PATCH] beaglebone: add support for LCD3 rev A1
+Subject: [PATCH 68/79] beaglebone: add support for LCD3 rev A1
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |   94 +++++++++++++++++++++++++++++----
- 1 files changed, 83 insertions(+), 11 deletions(-)
+ 1 file changed, 83 insertions(+), 11 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index bb6049a..51bfa8b 100644
+index e360b22..d83431a 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
 @@ -1136,7 +1136,7 @@ static struct pinmux_config lcd3_keys_pin_mux[] = {
@@ -128,5 +128,5 @@ index bb6049a..51bfa8b 100644
  		lcd3leds_init(0,0);
  	}
 -- 
-1.7.7.6
+1.7.10
 

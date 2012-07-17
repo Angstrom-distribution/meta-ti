@@ -1,13 +1,13 @@
-From 8ba62500dc8a2a033099ddcf85fd765b09c47f6d Mon Sep 17 00:00:00 2001
+From 482ed8f98b87299bf77298b86871b4af74334751 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Mon, 30 Jan 2012 21:30:09 +0100
-Subject: [PATCH 03/56] beaglebone: rebase everything onto 3.2 - WARNING
+Subject: [PATCH 03/79] beaglebone: rebase everything onto 3.2 - WARNING
  MEGAPATCH
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |  426 ++++++++++++++++++++++++++++++++-
- 1 files changed, 415 insertions(+), 11 deletions(-)
+ 1 file changed, 415 insertions(+), 11 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index 563bdf1..2741431 100644
@@ -559,5 +559,5 @@ index 563bdf1..2741431 100644
  	/* Beagle Bone has Micro-SD slot which doesn't have Write Protect pin */
  	am335x_mmc[0].gpio_wp = -EINVAL;
 -- 
-1.7.7.6
+1.7.10
 

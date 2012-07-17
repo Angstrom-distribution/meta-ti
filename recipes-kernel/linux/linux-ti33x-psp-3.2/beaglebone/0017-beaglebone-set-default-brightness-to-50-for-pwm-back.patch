@@ -1,13 +1,13 @@
-From 8de8f4d2da1d92847f27babbf3a91ca960afdbc9 Mon Sep 17 00:00:00 2001
+From 5ef54fcdbb6f2cee36b88ed04ea7c3d604702659 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Wed, 1 Feb 2012 14:10:38 +0100
-Subject: [PATCH 17/56] beaglebone: set default brightness to 50% for pwm
+Subject: [PATCH 17/79] beaglebone: set default brightness to 50% for pwm
  backlights
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index 43a83ca..97b069f 100644
@@ -23,5 +23,5 @@ index 43a83ca..97b069f 100644
  
  #define PWM_DEVICE_ID   "ecap.0"
 -- 
-1.7.7.6
+1.7.10
 

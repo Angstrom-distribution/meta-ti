@@ -1,12 +1,12 @@
-From e9aa7ff6f36d532d2268cd3b91555cbeb72fda4f Mon Sep 17 00:00:00 2001
+From b67913c3de1b8789c9d1881391b9bfb0beaa00ee Mon Sep 17 00:00:00 2001
 From: Joel A Fernandes <joelagnel@ti.com>
 Date: Wed, 30 Nov 2011 15:03:59 +0100
-Subject: [PATCH 08/56] AM335X: init tsc bone style for new boards
+Subject: [PATCH 08/79] AM335X: init tsc bone style for new boards
 
 Signed-off-by: Joel A Fernandes <joelagnel@ti.com>
 ---
  arch/arm/mach-omap2/board-am335xevm.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
 index 64a0c0a..6b78ae6 100644
@@ -22,5 +22,5 @@ index 64a0c0a..6b78ae6 100644
  };
  
 -- 
-1.7.7.6
+1.7.10
 

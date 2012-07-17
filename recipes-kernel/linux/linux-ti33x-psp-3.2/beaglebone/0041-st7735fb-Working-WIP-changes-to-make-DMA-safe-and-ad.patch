@@ -1,7 +1,7 @@
-From eef1e8089f452606aa32ee57b6a39783bd26e51f Mon Sep 17 00:00:00 2001
+From 7f97d002d17f8de8cde7f248bb1c194172360efe Mon Sep 17 00:00:00 2001
 From: Matt Porter <mporter@ti.com>
 Date: Wed, 28 Mar 2012 23:35:44 -0400
-Subject: [PATCH 41/56] st7735fb: Working WIP changes to make DMA safe and add
+Subject: [PATCH 41/79] st7735fb: Working WIP changes to make DMA safe and add
  endian fix
 
 This removes the "from the stack" allocation of 1 byte buffers
@@ -18,7 +18,7 @@ with the driver.
 Signed-off-by: Matt Porter <mporter@ti.com>
 ---
  drivers/video/st7735fb.c |   49 ++++++++++++++++++++++++++++++----------------
- include/video/st7735fb.h |    2 +
+ include/video/st7735fb.h |    2 ++
  2 files changed, 34 insertions(+), 17 deletions(-)
 
 diff --git a/drivers/video/st7735fb.c b/drivers/video/st7735fb.c
@@ -139,5 +139,5 @@ index 250f036..e99cd05 100644
  
  struct st7735fb_platform_data {
 -- 
-1.7.7.6
+1.7.10
 
