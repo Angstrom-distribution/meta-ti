@@ -11,7 +11,7 @@ SRCREV = "962"
 # apply patches from tracker 1208 to get zero copy support.
 # https://gstreamer.ti.com/gf/project/gstreamer_ti/tracker/?action=TrackerItemEdit&tracker_item_id=1208&start=175
 
-SRC_URI = "svn://gforge.ti.com/svn/gstreamer_ti/trunk;module=gstreamer_ti;proto=https;user=anonymous;pswd='' \
+SRC_URI = "svn://gforge.ti.com/svn/gstreamer_ti/trunk;module=gstreamer_ti;protocol=https;user=anonymous;pswd='' \
            file://gstreamer-ti-rc.sh \
            file://r962-remove-include-videodev.diff \
            file://gstti-init.service \
