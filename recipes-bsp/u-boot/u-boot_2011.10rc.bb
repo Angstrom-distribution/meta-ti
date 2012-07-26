@@ -6,7 +6,7 @@ COMPATIBLE_MACHINE = "(ti33x)"
 DEFAULT_PREFERENCE_ti33x = "99"
 
 PV = "2011.09+git"
-PR = "r28"
+PR = "r29"
 
 # SPL build
 UBOOT_BINARY = "u-boot.img"
@@ -26,7 +26,7 @@ SRC_URI = "git://arago-project.org/git/projects/u-boot-am33x.git;protocol=git;br
            file://2011.09git/0010-am335x-switch-to-ext4-mode.patch \
           "
 
-SRCREV = "ec687252299796639ff9bcb981804fbec7b445a4"
+SRCREV = "dc52533ccff00a12761f793d66b39e4f6a4a3bba"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=1707d6db1d42237583f50183a5651ecb"
 
