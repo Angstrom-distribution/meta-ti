@@ -15,7 +15,7 @@ PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.23", d)}"
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
-MACHINE_KERNEL_PR_append = "h+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "i+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -1640,4 +1640,8 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0078-beaglebone-error-handling-for-DMA-completion-in-cssp.patch \
 	file://beaglebone/0079-AM335X-errata-OPP50-on-MPU-domain-is-not-supported.patch \
 	file://beaglebone/0080-vfs-Add-a-trace-point-in-the-mark_inode_dirty-functi.patch \
+	file://beaglebone/0081-beaglebone-add-support-for-LCD7-A3.patch \
+	file://beaglebone/0082-beaglebone-add-rudimentary-support-for-eMMC-cape.patch \
+	file://beaglebone/0083-beaglebone-add-extra-partnumber-for-camera-cape.patch \
+	file://beaglebone/0084-beaglebone-cssp_camera-driver-cleanup.patch \
 "
