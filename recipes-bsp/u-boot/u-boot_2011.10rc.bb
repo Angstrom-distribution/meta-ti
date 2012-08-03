@@ -6,7 +6,7 @@ COMPATIBLE_MACHINE = "(ti33x)"
 DEFAULT_PREFERENCE_ti33x = "99"
 
 PV = "2011.09+git"
-PR = "r29"
+PR = "r30"
 
 # SPL build
 UBOOT_BINARY = "u-boot.img"
@@ -24,6 +24,7 @@ SRC_URI = "git://arago-project.org/git/projects/u-boot-am33x.git;protocol=git;br
            file://2011.09git/0008-am335x-evm-load-uImage-from-boot-instead-of-VFAT.patch \
            file://2011.09git/0009-ext4fs-ls-load-support.patch \
            file://2011.09git/0010-am335x-switch-to-ext4-mode.patch \
+           file://0001-config-Always-use-GNU-ld.patch \
           "
 
 SRCREV = "dc52533ccff00a12761f793d66b39e4f6a4a3bba"
