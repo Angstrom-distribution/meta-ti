@@ -7,11 +7,11 @@ LIC_FILES_CHKSUM="file://gpl.txt;md5=5b122a36d0f6dc55279a0ebc69f3c60b"
 # only scripts and data
 inherit allarch
 
-PR = "r17"
+PR = "r18"
 
 SRC_URI = "git://github.com/koenkooi/validation-scripts.git;protocol=git \
           "
-SRCREV = "c748d157b9afbb71e6eadf1dca7a787a456c0149"
+SRCREV = "168a9604e170931d9de228f0d774f4fbda58aa37"
 
 S = "${WORKDIR}/git"
 
@@ -37,6 +37,10 @@ do_install() {
 	for i in ${S}/bone-tester/lib/* ; do
 		install -m 0755 ${i} ${D}${localstatedir}/lib/bone-tester/lib/
 	done
+
+	install -d ${D}${bindir}
+	install -m 0755 ${S}/testaudio ${D}${bindir}
+
 }
 
 
@@ -44,7 +48,7 @@ FILES_${PN} += "${base_libdir}/systemd \
                 /boot \
                "
 
-RDEPENDS_${PN} = "iputils memtester"
+RDEPENDS_${PN} = "alsa-utils-aplay sox iputils memtester"
 RRECOMMENDS_${PN} = "kernel-module-g-zero \
                      kernel-module-g-mass-storage \
                      kernel-module-g-file-storage \
