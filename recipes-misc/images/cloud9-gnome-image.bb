@@ -13,7 +13,12 @@ IMAGE_INSTALL += " \
                   ttf-dejavu-sans ttf-dejavu-sans-mono ttf-dejavu-common \
                   xinput-calibrator \
                   xterm \
+                  cheese \
+                  florence \
+                  man \
                  "
 
 export IMAGE_BASENAME = "Cloud9-IDE-GNOME"
+
+EXTRA_IMAGE_FEATURES += "package-management doc-pkgs"
 
