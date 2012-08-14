@@ -1,5 +1,7 @@
 # Image with cloud9 ide, gfx and hw tools installed
 
+CONMANPKGS ?= "connman connman-plugin-loopback connman-plugin-ethernet connman-plugin-wifi connman-systemd connman-gnome"
+
 require cloud9-image.bb
 
 # SoC specific packages, mostly 3D or multimedia related
