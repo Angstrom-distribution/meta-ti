@@ -15,7 +15,7 @@ PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.25", d)}"
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
-MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -1826,4 +1826,5 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0082-beaglebone-add-rudimentary-support-for-eMMC-cape.patch \
 	file://beaglebone/0083-beaglebone-add-extra-partnumber-for-camera-cape.patch \
 	file://beaglebone/0084-beaglebone-cssp_camera-driver-cleanup.patch \
+	file://beaglebone/0085-beaglebone-mux-camera-cape-orientation-pin-to-gpio.patch \
 "
