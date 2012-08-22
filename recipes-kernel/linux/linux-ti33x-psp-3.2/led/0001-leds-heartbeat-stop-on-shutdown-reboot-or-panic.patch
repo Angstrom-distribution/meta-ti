@@ -1,7 +1,7 @@
-From 59d23a375a752abc6a6a8ddd935d1b367f69ed3d Mon Sep 17 00:00:00 2001
+From a48682f0690f07aa31d3e9d5d24388f0aee0bf3d Mon Sep 17 00:00:00 2001
 From: Alexander Holler <hol...@ahsoftware.de>
 Date: Wed, 25 Apr 2012 00:50:03 +0200
-Subject: [PATCH] leds: heartbeat: stop on shutdown, reboot or panic
+Subject: [PATCH 1/4] leds: heartbeat: stop on shutdown, reboot or panic
 
 A halted kernel should not show a heartbeat.
 
@@ -9,7 +9,7 @@ Signed-off-by: Alexander Holler <hol...@ahsoftware.de>
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
  drivers/leds/ledtrig-heartbeat.c |   27 ++++++++++++++++++++++++++-
- 1 file changed, 26 insertions(+), 1 deletion(-)
+ 1 files changed, 26 insertions(+), 1 deletions(-)
 
 diff --git a/drivers/leds/ledtrig-heartbeat.c b/drivers/leds/ledtrig-heartbeat.c
 index 759c0bb..31c234c 100644
@@ -63,5 +63,5 @@ index 759c0bb..31c234c 100644
  }
  
 -- 
-1.7.10
+1.7.7.6
 
