@@ -11,11 +11,11 @@ S = "${WORKDIR}/git"
 MULTI_CONFIG_BASE_SUFFIX = ""
 
 # the PATCHES_OVER_PSP updates it to 3.2.x, so adjust PV to match
-PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.25", d)}"
+PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.28", d)}"
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
-MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -1722,7 +1722,116 @@ PATCHES_OVER_PSP = " \
 	file://3.2.25/0071-nouveau-Fix-alignment-requirements-on-src-and-dst-ad.patch \
 	file://3.2.25/0072-mm-fix-wrong-argument-of-migrate_huge_pages-in-soft_.patch \
 	file://3.2.25/0073-Linux-3.2.25.patch \
-	file://led/0001-leds-heartbeat-stop-on-shutdown-reboot-or-panic.patch \
+	file://3.2.26/0001-x86-Simplify-code-by-removing-a-SMP-ifdefs-from-stru.patch \
+	file://3.2.26/0002-Linux-3.2.26.patch \
+	file://3.2.27/0001-sched-Fix-race-in-task_group.patch \
+	file://3.2.27/0002-floppy-Cleanup-disk-queue-before-caling-put_disk-if-.patch \
+	file://3.2.27/0003-xen-mark-local-pages-as-FOREIGN-in-the-m2p_override.patch \
+	file://3.2.27/0004-lirc_sir-make-device-registration-work.patch \
+	file://3.2.27/0005-stable-update-references-to-older-2.6-versions-for-3.patch \
+	file://3.2.27/0006-ALSA-hda-add-dock-support-for-Thinkpad-X230-Tablet.patch \
+	file://3.2.27/0007-cfg80211-fix-interface-combinations-check-for-ADHOC-.patch \
+	file://3.2.27/0008-m68k-Correct-the-Atari-ALLOWINT-definition.patch \
+	file://3.2.27/0009-ene_ir-Fix-driver-initialisation.patch \
+	file://3.2.27/0010-nfsd4-our-filesystems-are-normally-case-sensitive.patch \
+	file://3.2.27/0011-random-Use-arch_get_random_int-instead-of-cycle-coun.patch \
+	file://3.2.27/0012-random-Use-arch-specific-RNG-to-initialize-the-entro.patch \
+	file://3.2.27/0013-random-Adjust-the-number-of-loops-when-initializing.patch \
+	file://3.2.27/0014-random-make-add_interrupt_randomness-do-something-sa.patch \
+	file://3.2.27/0015-random-use-lockless-techniques-in-the-interrupt-path.patch \
+	file://3.2.27/0016-random-create-add_device_randomness-interface.patch \
+	file://3.2.27/0017-usb-feed-USB-device-information-to-the-dev-random-dr.patch \
+	file://3.2.27/0018-net-feed-dev-random-with-the-MAC-address-when-regist.patch \
+	file://3.2.27/0019-random-use-the-arch-specific-rng-in-xfer_secondary_p.patch \
+	file://3.2.27/0020-random-add-new-get_random_bytes_arch-function.patch \
+	file://3.2.27/0021-rtc-wm831x-Feed-the-write-counter-into-device_add_ra.patch \
+	file://3.2.27/0022-mfd-wm831x-Feed-the-device-UUID-into-device_add_rand.patch \
+	file://3.2.27/0023-ASoC-wm8994-Ensure-there-are-enough-BCLKs-for-four-c.patch \
+	file://3.2.27/0024-futex-Test-for-pi_mutex-on-fault-in-futex_wait_reque.patch \
+	file://3.2.27/0025-futex-Fix-bug-in-WARN_ON-for-NULL-q.pi_state.patch \
+	file://3.2.27/0026-futex-Forbid-uaddr-uaddr2-in-futex_wait_requeue_pi.patch \
+	file://3.2.27/0027-video-smscufx-fix-line-counting-in-fb_write.patch \
+	file://3.2.27/0028-Input-synaptics-handle-out-of-bounds-values-from-the.patch \
+	file://3.2.27/0029-ALSA-hda-Fix-invalid-D3-of-headphone-DAC-on-VT202x-c.patch \
+	file://3.2.27/0030-ALSA-mpu401-Fix-missing-initialization-of-irq-field.patch \
+	file://3.2.27/0031-x86-nops-Missing-break-resulting-in-incorrect-select.patch \
+	file://3.2.27/0032-s390-mm-downgrade-page-table-after-fork-of-a-31-bit-.patch \
+	file://3.2.27/0033-Redefine-ATOMIC_INIT-and-ATOMIC64_INIT-to-drop-the-c.patch \
+	file://3.2.27/0034-dm-thin-reduce-endio_hook-pool-size.patch \
+	file://3.2.27/0035-dm-thin-fix-memory-leak-in-process_prepared_mapping-.patch \
+	file://3.2.27/0036-random-mix-in-architectural-randomness-in-extract_bu.patch \
+	file://3.2.27/0037-asus-wmi-use-ASUS_WMI_METHODID_DSTS2-as-default-DSTS.patch \
+	file://3.2.27/0038-virtio-blk-Use-block-layer-provided-spinlock.patch \
+	file://3.2.27/0039-s390-mm-fix-fault-handling-for-page-table-walk-case.patch \
+	file://3.2.27/0040-nfs-skip-commit-in-releasepage-if-we-re-freeing-memo.patch \
+	file://3.2.27/0041-md-raid1-don-t-abort-a-resync-on-the-first-badblock.patch \
+	file://3.2.27/0042-pcdp-use-early_ioremap-early_iounmap-to-access-pcdp-.patch \
+	file://3.2.27/0043-lib-vsprintf.c-kptr_restrict-fix-pK-error-in-SysRq-s.patch \
+	file://3.2.27/0044-nilfs2-fix-deadlock-issue-between-chcp-and-thaw-ioct.patch \
+	file://3.2.27/0045-SUNRPC-return-negative-value-in-case-rpcbind-client-.patch \
+	file://3.2.27/0046-ARM-7467-1-mutex-use-generic-xchg-based-implementati.patch \
+	file://3.2.27/0047-ARM-7476-1-vfp-only-clear-vfp-state-for-current-cpu-.patch \
+	file://3.2.27/0048-ARM-7477-1-vfp-Always-save-VFP-state-in-vfp_pm_suspe.patch \
+	file://3.2.27/0049-ARM-7478-1-errata-extend-workaround-for-erratum-7207.patch \
+	file://3.2.27/0050-ARM-Fix-undefined-instruction-exception-handling.patch \
+	file://3.2.27/0051-USB-echi-dbgp-increase-the-controller-wait-time-to-c.patch \
+	file://3.2.27/0052-ASoC-wm8962-Allow-VMID-time-to-fully-ramp.patch \
+	file://3.2.27/0053-mm-page_alloc.c-remove-pageblock_default_order.patch \
+	file://3.2.27/0054-mm-setup-pageblock_order-before-it-s-used-by-sparsem.patch \
+	file://3.2.27/0055-mm-mmu_notifier-fix-freed-page-still-mapped-in-secon.patch \
+	file://3.2.27/0056-mm-hugetlbfs-close-race-during-teardown-of-hugetlbfs.patch \
+	file://3.2.27/0057-ALSA-snd-usb-fix-clock-source-validity-index.patch \
+	file://3.2.27/0058-ALSA-hda-Support-dock-on-Lenovo-Thinkpad-T530-with-A.patch \
+	file://3.2.27/0059-ore-Fix-out-of-bounds-access-in-_ios_obj.patch \
+	file://3.2.27/0060-m68k-Make-sys_atomic_cmpxchg_32-work-on-classic-m68k.patch \
+	file://3.2.27/0061-drm-i915-prefer-wide-slow-to-fast-narrow-in-DP-confi.patch \
+	file://3.2.27/0062-rt2x00-Add-support-for-BUFFALO-WLI-UC-GNM2-to-rt2800.patch \
+	file://3.2.27/0063-drop_monitor-fix-sleeping-in-invalid-context-warning.patch \
+	file://3.2.27/0064-drop_monitor-Make-updating-data-skb-smp-safe.patch \
+	file://3.2.27/0065-drop_monitor-prevent-init-path-from-scheduling-on-th.patch \
+	file://3.2.27/0066-drop_monitor-dont-sleep-in-atomic-context.patch \
+	file://3.2.27/0067-pch_uart-Fix-missing-break-for-16-byte-fifo.patch \
+	file://3.2.27/0068-pch_uart-Fix-rx-error-interrupt-setting-issue.patch \
+	file://3.2.27/0069-pch_uart-Fix-parity-setting-issue.patch \
+	file://3.2.27/0070-Linux-3.2.27.patch \
+	file://3.2.28/0001-bnx2-Fix-bug-in-bnx2_free_tx_skbs.patch \
+	file://3.2.28/0002-sch_sfb-Fix-missing-NULL-check.patch \
+	file://3.2.28/0003-sctp-Fix-list-corruption-resulting-from-freeing-an-a.patch \
+	file://3.2.28/0004-caif-Fix-access-to-freed-pernet-memory.patch \
+	file://3.2.28/0005-cipso-don-t-follow-a-NULL-pointer-when-setsockopt-is.patch \
+	file://3.2.28/0006-caif-fix-NULL-pointer-check.patch \
+	file://3.2.28/0007-wanmain-comparing-array-with-NULL.patch \
+	file://3.2.28/0008-tcp-Add-TCP_USER_TIMEOUT-negative-value-check.patch \
+	file://3.2.28/0009-USB-kaweth.c-use-GFP_ATOMIC-under-spin_lock.patch \
+	file://3.2.28/0010-net-fix-rtnetlink-IFF_PROMISC-and-IFF_ALLMULTI-handl.patch \
+	file://3.2.28/0011-tcp-perform-DMA-to-userspace-only-if-there-is-a-task.patch \
+	file://3.2.28/0012-net-tun-fix-ioctl-based-info-leaks.patch \
+	file://3.2.28/0013-e1000-add-dropped-DMA-receive-enable-back-in-for-WoL.patch \
+	file://3.2.28/0014-rtlwifi-rtl8192cu-Change-buffer-allocation-for-synch.patch \
+	file://3.2.28/0015-hfsplus-fix-overflow-in-sector-calculations-in-hfspl.patch \
+	file://3.2.28/0016-drm-i915-fixup-seqno-allocation-logic-for-lazy_reque.patch \
+	file://3.2.28/0017-KVM-VMX-Advertise-CPU_BASED_RDPMC_EXITING-for-nested.patch \
+	file://3.2.28/0018-mac80211-cancel-mesh-path-timer.patch \
+	file://3.2.28/0019-ath9k-Add-PID-VID-support-for-AR1111.patch \
+	file://3.2.28/0020-ARM-mxs-Remove-MMAP_MIN_ADDR-setting-from-mxs_defcon.patch \
+	file://3.2.28/0021-ALSA-hda-add-dock-support-for-Thinkpad-T430s.patch \
+	file://3.2.28/0022-cfg80211-process-pending-events-when-unregistering-n.patch \
+	file://3.2.28/0023-rt61pci-fix-NULL-pointer-dereference-in-config_lna_g.patch \
+	file://3.2.28/0024-iwlwifi-disable-greenfield-transmissions-as-a-workar.patch \
+	file://3.2.28/0025-ALSA-hda-add-dock-support-for-Thinkpad-X230.patch \
+	file://3.2.28/0026-e1000e-NIC-goes-up-and-immediately-goes-down.patch \
+	file://3.2.28/0027-ALSA-hda-remove-quirk-for-Dell-Vostro-1015.patch \
+	file://3.2.28/0028-ALSA-hda-Fix-double-quirk-for-Quanta-FL1-Lenovo-Idea.patch \
+	file://3.2.28/0029-ARM-pxa-remove-irq_to_gpio-from-ezx-pcap-driver.patch \
+	file://3.2.28/0030-Input-eeti_ts-pass-gpio-value-instead-of-IRQ.patch \
+	file://3.2.28/0031-drm-i915-Add-wait_for-in-init_ring_common.patch \
+	file://3.2.28/0032-drm-i915-correctly-order-the-ring-init-sequence.patch \
+	file://3.2.28/0033-s390-compat-fix-compat-wrappers-for-process_vm-syste.patch \
+	file://3.2.28/0034-s390-compat-fix-mmap-compat-system-calls.patch \
+	file://3.2.28/0035-drm-radeon-fix-bank-tiling-parameters-on-evergreen.patch \
+	file://3.2.28/0036-drm-radeon-fix-bank-tiling-parameters-on-cayman.patch \
+	file://3.2.28/0037-drm-radeon-do-not-reenable-crtc-after-moving-vram-st.patch \
+	file://3.2.28/0038-Linux-3.2.28.patch \
 	file://libertas/0001-USB-convert-drivers-net-to-use-module_usb_driver.patch \
 	file://libertas/0002-net-fix-assignment-of-0-1-to-bool-variables.patch \
 	file://libertas/0003-switch-debugfs-to-umode_t.patch \
@@ -1739,9 +1848,12 @@ PATCHES_OVER_PSP = " \
 	file://libertas/0014-libertas-CS-convert-to-asynchronous-firmware-loading.patch \
 	file://libertas/0015-libertas-add-missing-include.patch \
 	file://libertas/0016-remove-debug-msgs-due-to-missing-in_interrupt.patch \
-	\
-	file://beaglebone/0001-arm-boot-compressed-default-asm-arch-to-armv7-a.patch \
-	\
+	file://pwm/0001-PWM-ecap-Correct-configuration-of-polarity.patch \
+	file://pwm/0002-ARM-OMAP2-am335x-mux-add-ecap2_in_pwm2_out-string-en.patch \
+	file://pwm/0003-ARM-OMAP2-AM335x-hwmod-Remove-PRCM-entries-for-PWMSS.patch \
+	file://pwm/0004-PWM-ecap-Resets-the-PWM-output-to-low-on-stop.patch \
+	file://pwm/0005-PWM-ecap-Fix-for-throwing-PWM-output-before-running.patch \
+	file://pwm/0006-pwm-ehrpwm-Configure-polarity-on-pwm_start.patch \
 	file://beaglebone/0001-f_rndis-HACK-around-undefined-variables.patch \
 	file://beaglebone/0002-da8xx-fb-add-DVI-support-for-beaglebone.patch \
 	file://beaglebone/0003-beaglebone-rebase-everything-onto-3.2-WARNING-MEGAPA.patch \
@@ -1827,4 +1939,9 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0083-beaglebone-add-extra-partnumber-for-camera-cape.patch \
 	file://beaglebone/0084-beaglebone-cssp_camera-driver-cleanup.patch \
 	file://beaglebone/0085-beaglebone-mux-camera-cape-orientation-pin-to-gpio.patch \
-"
+	file://beaglebone/0086-board-am335xevm-Add-Beaglebone-Motor-Cape-Support.patch \
+	file://beaglebone/0087-mux33xx-Fix-MUXENTRYs-for-MCASP0_ACLKX-FSX-to-add-eh.patch \
+	file://led/0001-leds-heartbeat-stop-on-shutdown-reboot-or-panic.patch \
+	\
+	file://beaglebone/0001-arm-boot-compressed-default-asm-arch-to-armv7-a.patch \
+	"
