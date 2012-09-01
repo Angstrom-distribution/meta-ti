@@ -14,7 +14,7 @@ python do_unpack () {
     bb.build.exec_func('ti_bin_do_unpack', d)
 }
 
-TI_BIN_UNPK_WDEXT += ""
+TI_BIN_UNPK_WDEXT ?= ""
 python ti_bin_do_unpack() {
 
     import os
@@ -60,7 +60,7 @@ python ti_bin_do_unpack() {
             wdext = bb.data.getVar('TI_BIN_UNPK_WDEXT', localdata)
             wdext = bb.data.expand(wdext, localdata)
             cmd = workdir+wdext
-        print >>f, cmd
+        f.write(cmd+'\n');
     f.close()
 
     # Expand the tarball that was created if required
