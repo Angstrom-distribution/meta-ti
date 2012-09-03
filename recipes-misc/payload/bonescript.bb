@@ -1,18 +1,18 @@
 DESCRIPTION = "Scripting tools for the BeagleBoard and BeagleBone"
 
-PR = "r15"
+PR = "r16"
 
 inherit systemd
 
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=659ee0c98db2664403c769d6b9ab50eb"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=f02920251cbdc9b014dc1cbdb2bb95c4"
 
-SRC_URI = "http://dominion.thruhere.net/koen/angstrom/beaglebone/bonescript-6af82b41178c37644399b19039ea7e80c1dbf8ee.tar.bz2 \
+SRC_URI = "http://dominion.thruhere.net/koen/angstrom/beaglebone/bonescript-debd593b47b85cab58f69a8b526160e3754e5bb5.tar.bz2 \
            file://bonescript-git \
            file://bone101.service \
           "
-SRC_URI[md5sum] = "e5e214857afbd2e59b52171e60810be2"
-SRC_URI[sha256sum] = "e703416a63406c8b6c89fb1079406833ce6a9eb0ae1ba0a55fe3802b83186c50"
+SRC_URI[md5sum] = "de5b8fa0f081725a69406293dc5423d8"
+SRC_URI[sha256sum] = "bd12f3aff0063f61520b9e210f0a552eb6b63ca2a86beef1d88ac60d766a6b9b"
 
 S = "${WORKDIR}/bonescript"
 
@@ -36,3 +36,5 @@ FILES_${PN} += "${localstatedir} ${base_libdir}/systemd/system"
 CONFFILES_${PN} += "${localstatedir}/lib/cloud9/.git/config"
 RDEPENDS_${PN} = "nodejs cloud9"
 RRECOMMENDS_${PN} = "git"
+
+FILES_${PN}-dbg += "${localstatedir}/lib/cloud9/node_modules/bonescript/build/Release/.debug"
