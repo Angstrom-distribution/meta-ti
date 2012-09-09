@@ -21,7 +21,7 @@ IMAGE_INSTALL += " \
 	rt-tests \
 	evtest \
 	bc \
-	task-ti-test \
+	packagegroup-ti-test \
 	kernel-modules \
 	timestamp-service \
 	${EXTRA_MACHINE_IMAGE_INSTALL} \

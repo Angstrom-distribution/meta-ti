@@ -3,7 +3,7 @@
 require cloud9-image.bb
 
 IMAGE_INSTALL += " \
-                  task-xserver \
+                  packagegroup-core-x11-xserver \
                   angstrom-gnome-icon-theme-enable gtk-engine-clearlooks gtk-theme-clearlooks angstrom-clearlooks-theme-enable \
                   e-wm-config-default e-wm-config-standard e-wm-config-illume2 \
                   xserver-nodm-init \

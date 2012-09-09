@@ -9,7 +9,7 @@ ROOTFSTYPE_beaglebone = "ext4"
 IMAGE_INSTALL += " \
 	systemd-analyze \
 	cloud9 \
-	task-sdk-target \
+	packagegroup-sdk-target \
 	vim vim-vimrc \
 	procps \
 	beaglebone-tester \
