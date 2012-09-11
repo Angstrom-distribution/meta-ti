@@ -15,7 +15,7 @@ PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.28", d)}"
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
-MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "c+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -1941,6 +1941,9 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0085-beaglebone-mux-camera-cape-orientation-pin-to-gpio.patch \
 	file://beaglebone/0086-board-am335xevm-Add-Beaglebone-Motor-Cape-Support.patch \
 	file://beaglebone/0087-mux33xx-Fix-MUXENTRYs-for-MCASP0_ACLKX-FSX-to-add-eh.patch \
+	file://beaglebone/0088-Add-support-for-LSR-TiWi-WiFi-cape.patch \
+	file://beaglebone/0089-beaglebone-add-a-method-to-skip-mmc-init.patch \
+	file://beaglebone/0090-beaglebone-do-mmc-init-in-TT3202-setup-method.patch \
 	file://led/0001-leds-heartbeat-stop-on-shutdown-reboot-or-panic.patch \
 	\
 	file://beaglebone/0001-arm-boot-compressed-default-asm-arch-to-armv7-a.patch \
