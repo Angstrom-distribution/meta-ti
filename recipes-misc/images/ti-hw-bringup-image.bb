@@ -23,7 +23,6 @@ IMAGE_INSTALL += " \
 	bc \
 	packagegroup-ti-test \
 	kernel-modules \
-	timestamp-service \
 	${EXTRA_MACHINE_IMAGE_INSTALL} \
 "
 
