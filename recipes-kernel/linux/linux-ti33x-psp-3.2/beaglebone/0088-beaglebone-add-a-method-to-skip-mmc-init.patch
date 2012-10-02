@@ -1,7 +1,7 @@
-From 531611a59c99e8baeb2183ec4c00c4dd1822413d Mon Sep 17 00:00:00 2001
+From df3a90737756d85e8c3180d1cdcb629a322ba8f1 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 11 Sep 2012 11:40:04 +0200
-Subject: [PATCH 89/90] beaglebone: add a method to skip mmc init
+Subject: [PATCH 88/92] beaglebone: add a method to skip mmc init
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---
@@ -9,18 +9,18 @@ Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
  1 files changed, 5 insertions(+), 1 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
-index 926abdf..f824d9f 100644
+index f2d4a69..158cb85 100644
 --- a/arch/arm/mach-omap2/board-am335xevm.c
 +++ b/arch/arm/mach-omap2/board-am335xevm.c
-@@ -526,6 +526,7 @@ static bool beaglebone_leds_free = 1;
+@@ -524,6 +524,7 @@ static bool beaglebone_tsadcpins_free = 1;
+ static bool beaglebone_leds_free = 1;
  static bool beaglebone_spi1_free = 1;
  static bool beaglebone_w1gpio_free = 1;
- static bool beaglebone_wl12xx = 0;
 +static bool beaglebone_skip_mmc0_init = 0;
  
  #define GP_EVM_REV_IS_1_0		0x1
  #define GP_EVM_REV_IS_1_0A		0x1
-@@ -3330,7 +3331,10 @@ out:
+@@ -3182,7 +3183,10 @@ out:
  	beaglebone_cape_detected = false;
  out2:
  	if (capecount > 3) {

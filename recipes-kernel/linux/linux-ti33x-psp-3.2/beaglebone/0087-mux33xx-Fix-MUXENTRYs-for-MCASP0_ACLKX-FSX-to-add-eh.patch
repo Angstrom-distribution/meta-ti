@@ -1,7 +1,7 @@
-From 3d89b576c4eeba82d327220350144c9b1d62bb05 Mon Sep 17 00:00:00 2001
+From 945f516b2ccf6ebd61c12a28e5362c7b28baea5f Mon Sep 17 00:00:00 2001
 From: Roger Monk <r-monk@ti.com>
 Date: Tue, 14 Aug 2012 18:06:13 +0100
-Subject: [PATCH 87/90] mux33xx: Fix MUXENTRYs for MCASP0_ACLKX/FSX to add
+Subject: [PATCH 87/92] mux33xx: Fix MUXENTRYs for MCASP0_ACLKX/FSX to add
  ehrpwm0 and pru pins
 
    * Add Mux Entries for ehrpwm0 to MCASP0_CLKX/FSX pins

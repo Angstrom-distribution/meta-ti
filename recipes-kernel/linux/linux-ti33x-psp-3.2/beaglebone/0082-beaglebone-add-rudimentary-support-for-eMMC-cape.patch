@@ -1,7 +1,7 @@
-From 9fd45d5967c0e09c57e2cf41e4bf26dadf31eb16 Mon Sep 17 00:00:00 2001
+From d99ca3003309032ab6bd62ae0caec15e1d299d86 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 26 Jul 2012 22:30:34 +0200
-Subject: [PATCH 82/84] beaglebone: add rudimentary support for eMMC cape
+Subject: [PATCH 82/92] beaglebone: add rudimentary support for eMMC cape
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

@@ -1,7 +1,7 @@
-From e81c7627c3d90209271a0f1e7486d0f779f05289 Mon Sep 17 00:00:00 2001
+From 37bd34f6efe933cea0e359743d8e190df4f3b29e Mon Sep 17 00:00:00 2001
 From: Dan Aizenstros <daizenstros@quicklogic.com>
 Date: Thu, 12 Jul 2012 12:31:08 -0400
-Subject: [PATCH 76/79] beaglebone: improve GPMC bus timings for camera cape
+Subject: [PATCH 76/92] beaglebone: improve GPMC bus timings for camera cape
 
 Signed-off-by: Dan Aizenstros <daizenstros@quicklogic.com>
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
@@ -101,5 +101,5 @@ index d018ca1..8eb5f83 100644
  MODULE_PARM_DESC(vid_limit, "capture memory limit in megabytes");
  
 -- 
-1.7.10
+1.7.7.6
 

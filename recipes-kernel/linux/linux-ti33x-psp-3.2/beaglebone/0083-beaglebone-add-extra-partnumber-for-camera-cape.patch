@@ -1,7 +1,7 @@
-From b9d6ae7ba8604c3c8ce64c53073990a831611414 Mon Sep 17 00:00:00 2001
+From bf09c9946ecd1eaa40cf3875765b40b838cc35a1 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 26 Jul 2012 22:31:30 +0200
-Subject: [PATCH 83/84] beaglebone: add extra partnumber for camera cape
+Subject: [PATCH 83/92] beaglebone: add extra partnumber for camera cape
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

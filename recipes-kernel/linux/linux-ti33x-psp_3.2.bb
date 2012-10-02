@@ -11,7 +11,7 @@ S = "${WORKDIR}/git"
 MULTI_CONFIG_BASE_SUFFIX = ""
 
 # the PATCHES_OVER_PSP updates it to 3.2.x, so adjust PV to match
-PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.28", d)}"
+PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.30", d)}"
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
@@ -1832,6 +1832,239 @@ PATCHES_OVER_PSP = " \
 	file://3.2.28/0036-drm-radeon-fix-bank-tiling-parameters-on-cayman.patch \
 	file://3.2.28/0037-drm-radeon-do-not-reenable-crtc-after-moving-vram-st.patch \
 	file://3.2.28/0038-Linux-3.2.28.patch \
+	file://3.2.29/0001-HID-add-ASUS-AIO-keyboard-model-AK1D.patch \
+	file://3.2.29/0002-nfs-tear-down-caches-in-nfs_init_writepagecache-when.patch \
+	file://3.2.29/0003-NFS-Use-kcalloc-when-allocating-arrays.patch \
+	file://3.2.29/0004-NFSv4.1-fix-page-number-calculation-bug-for-filelayo.patch \
+	file://3.2.29/0005-fix-page-number-calculation-bug-for-block-layout-dec.patch \
+	file://3.2.29/0006-pnfs-defer-release-of-pages-in-layoutget.patch \
+	file://3.2.29/0007-ext4-avoid-kmemcheck-complaint-from-reading-uninitia.patch \
+	file://3.2.29/0008-fuse-verify-all-ioctl-retry-iov-elements.patch \
+	file://3.2.29/0009-Bluetooth-Fix-legacy-pairing-with-some-devices.patch \
+	file://3.2.29/0010-xhci-Increase-reset-timeout-for-Renesas-720201-host.patch \
+	file://3.2.29/0011-xhci-Add-Etron-XHCI_TRUST_TX_LENGTH-quirk.patch \
+	file://3.2.29/0012-USB-ftdi_sio-Add-VID-PID-for-Kondo-Serial-USB.patch \
+	file://3.2.29/0013-USB-option-Add-Vodafone-Huawei-K5005-support.patch \
+	file://3.2.29/0014-USB-add-USB_VENDOR_AND_INTERFACE_INFO-macro.patch \
+	file://3.2.29/0015-USB-support-the-new-interfaces-of-Huawei-Data-Card-d.patch \
+	file://3.2.29/0016-usb-serial-mos7840-Fixup-mos7840_chars_in_buffer.patch \
+	file://3.2.29/0017-usb-gadget-u_ether-fix-kworker-100-CPU-issue-with-st.patch \
+	file://3.2.29/0018-ARM-7483-1-vfp-only-advertise-VFPv4-in-hwcaps-if-CON.patch \
+	file://3.2.29/0019-ARM-7488-1-mm-use-5-bits-for-swapfile-type-encoding.patch \
+	file://3.2.29/0020-ARM-7489-1-errata-fix-workaround-for-erratum-720789-.patch \
+	file://3.2.29/0021-drm-i915-ignore-eDP-bpc-settings-from-vbt.patch \
+	file://3.2.29/0022-ALSA-hda-fix-Copyright-debug-message.patch \
+	file://3.2.29/0023-sched-fix-divide-by-zero-at-thread_group-task-_times.patch \
+	file://3.2.29/0024-mutex-Place-lock-in-contended-state-after-fastpath_l.patch \
+	file://3.2.29/0025-ath9k-fix-decrypt_error-initialization-in-ath_rx_tas.patch \
+	file://3.2.29/0026-drm-nvd0-disp-mask-off-high-16-bit-of-negative-curso.patch \
+	file://3.2.29/0027-drm-i915-reorder-edp-disabling-to-fix-ivb-MacBook-Ai.patch \
+	file://3.2.29/0028-audit-don-t-free_chunk-after-fsnotify_add_mark.patch \
+	file://3.2.29/0029-audit-fix-refcounting-in-audit-tree.patch \
+	file://3.2.29/0030-vfs-canonicalize-create-mode-in-build_open_flags.patch \
+	file://3.2.29/0031-PCI-EHCI-Fix-crash-during-hibernation-on-ASUS-comput.patch \
+	file://3.2.29/0032-IB-srp-Fix-a-race-condition.patch \
+	file://3.2.29/0033-dccp-check-ccid-before-dereferencing.patch \
+	file://3.2.29/0034-md-Don-t-truncate-size-at-4TB-for-RAID0-and-Linear.patch \
+	file://3.2.29/0035-NFS-Alias-the-nfs-module-to-nfs4.patch \
+	file://3.2.29/0036-target-fix-NULL-pointer-dereference-bug-alloc_page-f.patch \
+	file://3.2.29/0037-ext4-fix-long-mount-times-on-very-big-file-systems.patch \
+	file://3.2.29/0038-PM-Runtime-Fix-rpm_resume-return-value-for-power.no_.patch \
+	file://3.2.29/0039-PM-Runtime-Clear-power.deferred_resume-on-success-in.patch \
+	file://3.2.29/0040-ASoC-wm9712-Fix-microphone-source-selection.patch \
+	file://3.2.29/0041-USB-smsusb-remove-__devinit-from-the-struct-usb_devi.patch \
+	file://3.2.29/0042-USB-spca506-remove-__devinit-from-the-struct-usb_dev.patch \
+	file://3.2.29/0043-USB-p54usb-remove-__devinit-from-the-struct-usb_devi.patch \
+	file://3.2.29/0044-USB-rtl8187-remove-__devinit-from-the-struct-usb_dev.patch \
+	file://3.2.29/0045-USB-vt6656-remove-__devinit-from-the-struct-usb_devi.patch \
+	file://3.2.29/0046-USB-winbond-remove-__devinit-from-the-struct-usb_dev.patch \
+	file://3.2.29/0047-USB-emi62-remove-__devinit-from-the-struct-usb_devic.patch \
+	file://3.2.29/0048-USB-CDC-ACM-Fix-NULL-pointer-dereference.patch \
+	file://3.2.29/0049-alpha-Don-t-export-SOCK_NONBLOCK-to-user-space.patch \
+	file://3.2.29/0050-Redefine-ATOMIC_INIT-and-ATOMIC64_INIT-to-drop-the-c.patch \
+	file://3.2.29/0051-ALSA-hda-don-t-create-dysfunctional-mixer-controls-f.patch \
+	file://3.2.29/0052-netconsole-remove-a-redundant-netconsole_target_put.patch \
+	file://3.2.29/0053-drm-radeon-kms-upstream-atombios.h-updates.patch \
+	file://3.2.29/0054-drm-radeon-kms-extend-the-Fujitsu-D3003-S2-board-con.patch \
+	file://3.2.29/0055-drm-radeon-implement-ACPI-VFCT-vbios-fetch-v3.patch \
+	file://3.2.29/0056-ACPI-export-symbol-acpi_get_table_with_size.patch \
+	file://3.2.29/0057-drm-radeon-convert-radeon-vfct-code-to-use-acpi_get_.patch \
+	file://3.2.29/0058-drm-radeon-fix-invalid-memory-access-in-radeon_atrm_.patch \
+	file://3.2.29/0059-drm-radeon-finish-getting-bios-earlier.patch \
+	file://3.2.29/0060-drm-radeon-fix-use-after-free-in-ATRM-bios-reading-c.patch \
+	file://3.2.29/0061-drm-radeon-split-ATRM-support-out-from-the-ATPX-hand.patch \
+	file://3.2.29/0062-NFSv3-Ensure-that-do_proc_get_root-reports-errors-co.patch \
+	file://3.2.29/0063-vfs-missed-source-of-f_pos-races.patch \
+	file://3.2.29/0064-svcrpc-fix-BUG-in-svc_tcp_clear_pages.patch \
+	file://3.2.29/0065-svcrpc-sends-on-closed-socket-should-stop-immediatel.patch \
+	file://3.2.29/0066-svcrpc-fix-svc_xprt_enqueue-svc_recv-busy-looping.patch \
+	file://3.2.29/0067-Revert-drm-radeon-fix-bo-creation-retry-path.patch \
+	file://3.2.29/0068-fbcon-fix-race-condition-between-console-lock-and-cu.patch \
+	file://3.2.29/0069-cciss-fix-incorrect-scsi-status-reporting.patch \
+	file://3.2.29/0070-mm-hugetlbfs-correctly-populate-shared-pmd.patch \
+	file://3.2.29/0071-drivers-misc-sgi-xp-xpc_uv.c-SGI-XPC-fails-to-load-w.patch \
+	file://3.2.29/0072-drivers-rtc-rtc-rs5c348.c-fix-hour-decoding-in-12-ho.patch \
+	file://3.2.29/0073-rapidio-tsi721-fix-inbound-doorbell-interrupt-handli.patch \
+	file://3.2.29/0074-rapidio-tsi721-fix-unused-variable-compiler-warning.patch \
+	file://3.2.29/0075-fs-buffer.c-remove-BUG-in-possible-but-rare-conditio.patch \
+	file://3.2.29/0076-block-replace-__getblk_slow-misfix-by-grow_dev_page-.patch \
+	file://3.2.29/0077-Bluetooth-Fix-using-uninitialized-option-in-RFCMode.patch \
+	file://3.2.29/0078-drivers-char-random.c-fix-boot-id-uniqueness-race.patch \
+	file://3.2.29/0079-MAINTAINERS-Theodore-Ts-o-is-taking-over-the-random-.patch \
+	file://3.2.29/0080-random-Add-comment-to-random_initialize.patch \
+	file://3.2.29/0081-dmi-Feed-DMI-table-to-dev-random-driver.patch \
+	file://3.2.29/0082-virtio_blk-fix-config-handler-race.patch \
+	file://3.2.29/0083-virtio_blk-Drop-unused-request-tracking-list.patch \
+	file://3.2.29/0084-virtio-blk-Fix-hot-unplug-race-in-remove-method.patch \
+	file://3.2.29/0085-virtio-blk-Call-del_gendisk-before-disable-guest-kic.patch \
+	file://3.2.29/0086-virtio-blk-Reset-device-after-blk_cleanup_queue.patch \
+	file://3.2.29/0087-HID-add-support-for-Cypress-barcode-scanner-04B4-ED8.patch \
+	file://3.2.29/0088-pmac_zilog-kdb-Fix-console-poll-hook-to-return-inste.patch \
+	file://3.2.29/0089-Staging-speakup-fix-an-improperly-declared-variable.patch \
+	file://3.2.29/0090-NFS-Fix-Oopses-in-nfs_lookup_revalidate-and-nfs4_loo.patch \
+	file://3.2.29/0091-asus-nb-wmi-add-some-video-toggle-keys.patch \
+	file://3.2.29/0092-Squashfs-fix-mount-time-sanity-check-for-corrupted-s.patch \
+	file://3.2.29/0093-mm-avoid-swapping-out-with-swappiness-0.patch \
+	file://3.2.29/0094-Linux-3.2.29.patch \
+	file://3.2.30/0001-Redefine-ATOMIC_INIT-and-ATOMIC64_INIT-to-drop-the-c.patch \
+	file://3.2.30/0002-ARM-S3C24XX-Fix-s3c2410_dma_enqueue-parameters.patch \
+	file://3.2.30/0003-ARM-Orion-Set-eth-packet-size-csum-offload-limit.patch \
+	file://3.2.30/0004-iwlwifi-fix-flow-handler-debug-code.patch \
+	file://3.2.30/0005-iwlwifi-protect-SRAM-debugfs.patch \
+	file://3.2.30/0006-Input-i8042-add-Gigabyte-T1005-series-netbooks-to-no.patch \
+	file://3.2.30/0007-mpt2sas-Fix-for-Driver-oops-when-loading-driver-with.patch \
+	file://3.2.30/0008-megaraid_sas-Move-poll_aen_lock-initializer.patch \
+	file://3.2.30/0009-Fix-Device-not-ready-issue-on-mpt2sas.patch \
+	file://3.2.30/0010-hwmon-asus_atk0110-Add-quirk-for-Asus-M5A78L.patch \
+	file://3.2.30/0011-drm-i915-Fix-assert_pch_hdmi_disabled-to-mention-HDM.patch \
+	file://3.2.30/0012-drm-i915-fix-wrong-order-of-parameters-in-port-check.patch \
+	file://3.2.30/0013-OMAPFB-fix-framebuffer-console-colors.patch \
+	file://3.2.30/0014-ARM-imx6-spin-the-cpu-until-hardware-takes-it-down.patch \
+	file://3.2.30/0015-ARM-dts-imx51-babbage-fix-esdhc-cd-wp-properties.patch \
+	file://3.2.30/0016-xen-setup-Fix-one-off-error-when-adding-for-balloon-.patch \
+	file://3.2.30/0017-ARM-imx-select-CPU_FREQ_TABLE-when-needed.patch \
+	file://3.2.30/0018-drm-remove-some-potentially-dangerous-DRM_ERRORs.patch \
+	file://3.2.30/0019-drm-Check-for-invalid-cursor-flags.patch \
+	file://3.2.30/0020-HID-multitouch-support-PixArt-optical-touch-screen.patch \
+	file://3.2.30/0021-HID-add-NOGET-quirk-for-Eaton-Ellipse-MAX-UPS.patch \
+	file://3.2.30/0022-drm-radeon-don-t-disable-plls-that-are-in-use-by-oth.patch \
+	file://3.2.30/0023-drm-radeon-atom-rework-DIG-modesetting-on-DCE3.patch \
+	file://3.2.30/0024-drm-radeon-force-dma32-to-fix-regression-rs4xx-rs6xx.patch \
+	file://3.2.30/0025-drm-edid-quirks-ViewSonic-VA2026w.patch \
+	file://3.2.30/0026-drm-Add-EDID_QUIRK_FORCE_REDUCED_BLANKING-for-ASUS-V.patch \
+	file://3.2.30/0027-e1000e-DoS-while-TSO-enabled-caused-by-link-partner-.patch \
+	file://3.2.30/0028-ext3-Fix-fdatasync-for-files-with-only-i_size-change.patch \
+	file://3.2.30/0029-UBI-fix-a-horrible-memory-deallocation-bug.patch \
+	file://3.2.30/0030-fuse-fix-retrieve-length.patch \
+	file://3.2.30/0031-mmc-mxs-mmc-fix-deadlock-in-SDIO-IRQ-case.patch \
+	file://3.2.30/0032-mmc-mxs-mmc-fix-deadlock-caused-by-recursion-loop.patch \
+	file://3.2.30/0033-mmc-sdhci-esdhc-break-out-early-if-clock-is-0.patch \
+	file://3.2.30/0034-mmc-card-Skip-secure-erase-on-MoviNAND-causes-unreco.patch \
+	file://3.2.30/0035-powerpc-Update-DSCR-on-all-CPUs-when-writing-sysfs-d.patch \
+	file://3.2.30/0036-powerpc-Keep-thread.dscr-and-thread.dscr_inherit-in-.patch \
+	file://3.2.30/0037-powerpc-Fix-DSCR-inheritance-in-copy_thread.patch \
+	file://3.2.30/0038-powerpc-Restore-correct-DSCR-in-context-switch.patch \
+	file://3.2.30/0039-powerpc-xics-Harden-xics-hypervisor-backend.patch \
+	file://3.2.30/0040-powerpc-Make-sure-IPI-handlers-see-data-written-by-I.patch \
+	file://3.2.30/0041-udf-Fix-data-corruption-for-files-in-ICB.patch \
+	file://3.2.30/0042-xen-Use-correct-masking-in-xen_swiotlb_alloc_coheren.patch \
+	file://3.2.30/0043-Remove-user-triggerable-BUG-from-mpol_to_str.patch \
+	file://3.2.30/0044-CIFS-Fix-error-handling-in-cifs_push_mandatory_locks.patch \
+	file://3.2.30/0045-drm-vmwgfx-add-MODULE_DEVICE_TABLE-so-vmwgfx-loads-a.patch \
+	file://3.2.30/0046-i2c-designware-Fix-build-error-if-CONFIG_I2C_DESIGNW.patch \
+	file://3.2.30/0047-net-Allow-driver-to-limit-number-of-GSO-segments-per.patch \
+	file://3.2.30/0048-sfc-Fix-maximum-number-of-TSO-segments-and-minimum-T.patch \
+	file://3.2.30/0049-tcp-Apply-device-TSO-segment-limit-earlier.patch \
+	file://3.2.30/0050-net_sched-gact-Fix-potential-panic-in-tcf_gact.patch \
+	file://3.2.30/0051-isdnloop-fix-and-simplify-isdnloop_init.patch \
+	file://3.2.30/0052-pptp-lookup-route-with-the-proper-net-namespace.patch \
+	file://3.2.30/0053-net-core-Fix-potential-memory-leak-in-dev_set_alias.patch \
+	file://3.2.30/0054-af_packet-remove-BUG-statement-in-tpacket_destruct_s.patch \
+	file://3.2.30/0055-ipv6-addrconf-Avoid-calling-netdevice-notifiers-with.patch \
+	file://3.2.30/0056-atm-fix-info-leak-in-getsockopt-SO_ATMPVC.patch \
+	file://3.2.30/0057-atm-fix-info-leak-via-getsockname.patch \
+	file://3.2.30/0058-Bluetooth-HCI-Fix-info-leak-in-getsockopt-HCI_FILTER.patch \
+	file://3.2.30/0059-Bluetooth-HCI-Fix-info-leak-via-getsockname.patch \
+	file://3.2.30/0060-Bluetooth-RFCOMM-Fix-info-leak-in-getsockopt-BT_SECU.patch \
+	file://3.2.30/0061-Bluetooth-RFCOMM-Fix-info-leak-in-ioctl-RFCOMMGETDEV.patch \
+	file://3.2.30/0062-Bluetooth-RFCOMM-Fix-info-leak-via-getsockname.patch \
+	file://3.2.30/0063-Bluetooth-L2CAP-Fix-info-leak-via-getsockname.patch \
+	file://3.2.30/0064-llc-fix-info-leak-via-getsockname.patch \
+	file://3.2.30/0065-dccp-fix-info-leak-via-getsockopt-DCCP_SOCKOPT_CCID_.patch \
+	file://3.2.30/0066-ipvs-fix-info-leak-in-getsockopt-IP_VS_SO_GET_TIMEOU.patch \
+	file://3.2.30/0067-net-fix-info-leak-in-compat-dev_ifconf.patch \
+	file://3.2.30/0068-af_packet-don-t-emit-packet-on-orig-fanout-group.patch \
+	file://3.2.30/0069-af_netlink-force-credentials-passing-CVE-2012-3520.patch \
+	file://3.2.30/0070-netlink-fix-possible-spoofing-from-non-root-processe.patch \
+	file://3.2.30/0071-gianfar-fix-default-tx-vlan-offload-feature-flag.patch \
+	file://3.2.30/0072-l2tp-avoid-to-use-synchronize_rcu-in-tunnel-free-fun.patch \
+	file://3.2.30/0073-net-ipv4-ipmr_expire_timer-causes-crash-when-removin.patch \
+	file://3.2.30/0074-bnx2x-fix-57840_MF-pci-id.patch \
+	file://3.2.30/0075-workqueue-UNBOUND-REBIND-morphing-in-rebind_workers-.patch \
+	file://3.2.30/0076-fixing-dmi-match-for-hp-t5745-and-hp-st5747-thin-cli.patch \
+	file://3.2.30/0077-time-Improve-sanity-checking-of-timekeeping-inputs.patch \
+	file://3.2.30/0078-time-Avoid-making-adjustments-if-we-haven-t-accumula.patch \
+	file://3.2.30/0079-time-Move-ktime_t-overflow-checking-into-timespec_va.patch \
+	file://3.2.30/0080-drm-i915-Wait-for-all-pending-operations-to-the-fb-b.patch \
+	file://3.2.30/0081-xhci-Fix-bug-after-deq-ptr-set-to-link-TRB.patch \
+	file://3.2.30/0082-ARM-7487-1-mm-avoid-setting-nG-bit-for-user-mappings.patch \
+	file://3.2.30/0083-i2c-i801-Add-device-IDs-for-Intel-Lynx-Point.patch \
+	file://3.2.30/0084-i2c-i801-Add-Device-IDs-for-Intel-Lynx-Point-LP-PCH.patch \
+	file://3.2.30/0085-USB-option-add-ZTE-K5006-Z.patch \
+	file://3.2.30/0086-USB-option-replace-ZTE-K5006-Z-entry-with-vendor-cla.patch \
+	file://3.2.30/0087-ARM-7496-1-hw_breakpoint-don-t-rely-on-dfsr-to-show-.patch \
+	file://3.2.30/0088-drm-i915-SDVO-hotplug-have-different-interrupt-statu.patch \
+	file://3.2.30/0089-drm-i915-only-enable-sdvo-hotplug-irq-if-needed.patch \
+	file://3.2.30/0090-can-mcp251x-avoid-repeated-frame-bug.patch \
+	file://3.2.30/0091-perf_event-Switch-to-internal-refcount-fix-race-with.patch \
+	file://3.2.30/0092-NFS-Fix-the-initialisation-of-the-readdir-cookieverf.patch \
+	file://3.2.30/0093-NFS-Fix-a-problem-with-the-legacy-binary-mount-code.patch \
+	file://3.2.30/0094-staging-comedi-das08-Correct-AI-encoding-for-das08jr.patch \
+	file://3.2.30/0095-staging-comedi-das08-Correct-AO-output-for-das08jr-1.patch \
+	file://3.2.30/0096-staging-vt6656-BUG-Failed-connection-incorrect-endia.patch \
+	file://3.2.30/0097-xhci-Recognize-USB-3.0-devices-as-superspeed-at-powe.patch \
+	file://3.2.30/0098-Intel-xhci-Only-switch-the-switchable-ports.patch \
+	file://3.2.30/0099-rt2x00-Identify-ASUS-USB-N53-device.patch \
+	file://3.2.30/0100-rt2x00-Fix-word-size-of-rt2500usb-MAC_CSR19-register.patch \
+	file://3.2.30/0101-rt2x00-Fix-rfkill-polling-prior-to-interface-start.patch \
+	file://3.2.30/0102-rt2800usb-Added-rx-packet-length-validity-check.patch \
+	file://3.2.30/0103-staging-zcache-fix-cleancache-race-condition-with-sh.patch \
+	file://3.2.30/0104-xhci-Switch-PPT-ports-to-EHCI-on-shutdown.patch \
+	file://3.2.30/0105-xhci-Fix-a-logical-vs-bitwise-AND-bug.patch \
+	file://3.2.30/0106-xhci-Make-handover-code-more-robust.patch \
+	file://3.2.30/0107-usb-host-xhci-Fix-Compliance-Mode-on-SN65LVPE502CP-H.patch \
+	file://3.2.30/0108-usb-host-xhci-fix-compilation-error-for-non-PCI-base.patch \
+	file://3.2.30/0109-tty-serial-imx-console-write-routing-is-unsafe-on-SM.patch \
+	file://3.2.30/0110-tty-serial-imx-don-t-reinit-clock-in-imx_setup_ufcr.patch \
+	file://3.2.30/0111-ibmveth-Fix-alignment-of-rx-queue-bug.patch \
+	file://3.2.30/0112-USB-ftdi-sio-add-support-for-more-Physik-Instrumente.patch \
+	file://3.2.30/0113-USB-ftdi_sio-PID-for-NZR-SEM-16-USB.patch \
+	file://3.2.30/0114-USB-add-device-quirk-for-Joss-Optical-touchboard.patch \
+	file://3.2.30/0115-kobject-fix-oops-with-input0-bad-kobj_uevent_env-con.patch \
+	file://3.2.30/0116-NFS-return-error-from-decode_getfh-in-decode-open.patch \
+	file://3.2.30/0117-SUNRPC-Fix-a-UDP-transport-regression.patch \
+	file://3.2.30/0118-ARM-7513-1-Make-sure-dtc-is-built-before-running-it.patch \
+	file://3.2.30/0119-ARM-7526-1-traps-send-SIGILL-if-get_user-fails-on-un.patch \
+	file://3.2.30/0120-ALSA-hda-Fix-Oops-at-codec-reset-reconfig.patch \
+	file://3.2.30/0121-USB-ftdi_sio-do-not-claim-CDC-ACM-function.patch \
+	file://3.2.30/0122-staging-r8712u-fix-bug-in-r8712_recv_indicatepkt.patch \
+	file://3.2.30/0123-EHCI-Update-qTD-next-pointer-in-QH-overlay-region-du.patch \
+	file://3.2.30/0124-hwmon-twl4030-madc-hwmon-Initialize-uninitialized-st.patch \
+	file://3.2.30/0125-ALSA-ice1724-Use-linear-scale-for-AK4396-volume-cont.patch \
+	file://3.2.30/0126-vmwgfx-add-dumb-ioctl-support.patch \
+	file://3.2.30/0127-ahci-Add-alternate-identifier-for-the-88SE9172.patch \
+	file://3.2.30/0128-drm-radeon-fix-up-pll-selection-on-DCE5-6.patch \
+	file://3.2.30/0129-drm-radeon-fix-ordering-in-pll-picking-on-dce4.patch \
+	file://3.2.30/0130-drm-radeon-rework-pll-selection-v3.patch \
+	file://3.2.30/0131-drm-nouveau-fix-booting-with-plymouth-dumb-support.patch \
+	file://3.2.30/0132-eCryptfs-Copy-up-attributes-of-the-lower-target-inod.patch \
+	file://3.2.30/0133-VFS-make-vfs_fstat-use-f-get-put-_light.patch \
+	file://3.2.30/0134-vfs-make-O_PATH-file-descriptors-usable-for-fstat.patch \
+	file://3.2.30/0135-Linux-3.2.30.patch \
+	file://led/0001-leds-heartbeat-stop-on-shutdown-reboot-or-panic.patch \
+	file://led/0002-led-triggers-rename-trigger-to-trig-for-unified-nami.patch \
+	file://led/0003-led-triggers-create-a-trigger-for-CPU-activity.patch \
+	file://led/0004-ARM-use-new-LEDS-CPU-trigger-stub-to-replace-old-one.patch \
 	file://libertas/0001-USB-convert-drivers-net-to-use-module_usb_driver.patch \
 	file://libertas/0002-net-fix-assignment-of-0-1-to-bool-variables.patch \
 	file://libertas/0003-switch-debugfs-to-umode_t.patch \
@@ -1854,6 +2087,7 @@ PATCHES_OVER_PSP = " \
 	file://pwm/0004-PWM-ecap-Resets-the-PWM-output-to-low-on-stop.patch \
 	file://pwm/0005-PWM-ecap-Fix-for-throwing-PWM-output-before-running.patch \
 	file://pwm/0006-pwm-ehrpwm-Configure-polarity-on-pwm_start.patch \
+	file://mfd/0001-Add-TPS65217-Backlight-Driver.patch \
 	file://beaglebone/0001-f_rndis-HACK-around-undefined-variables.patch \
 	file://beaglebone/0002-da8xx-fb-add-DVI-support-for-beaglebone.patch \
 	file://beaglebone/0003-beaglebone-rebase-everything-onto-3.2-WARNING-MEGAPA.patch \
@@ -1941,10 +2175,11 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0085-beaglebone-mux-camera-cape-orientation-pin-to-gpio.patch \
 	file://beaglebone/0086-board-am335xevm-Add-Beaglebone-Motor-Cape-Support.patch \
 	file://beaglebone/0087-mux33xx-Fix-MUXENTRYs-for-MCASP0_ACLKX-FSX-to-add-eh.patch \
-	file://beaglebone/0088-Add-support-for-LSR-TiWi-WiFi-cape.patch \
-	file://beaglebone/0089-beaglebone-add-a-method-to-skip-mmc-init.patch \
-	file://beaglebone/0090-beaglebone-do-mmc-init-in-TT3202-setup-method.patch \
-	file://led/0001-leds-heartbeat-stop-on-shutdown-reboot-or-panic.patch \
+	file://beaglebone/0088-beaglebone-add-a-method-to-skip-mmc-init.patch \
+	file://beaglebone/0089-beaglebone-do-mmc-init-in-TT3202-setup-method.patch \
+	file://beaglebone/0090-beaglebone-map-LCD7-A4-to-A3-for-the-time-being.patch \
+	file://beaglebone/0091-beaglebone-add-support-for-LCD3-rev-A2.patch \
+	file://beaglebone/0092-beaglebone-add-support-for-LCD4-rev-A1-button-suppor.patch \
 	\
 	file://beaglebone/0001-arm-boot-compressed-default-asm-arch-to-armv7-a.patch \
 	"
