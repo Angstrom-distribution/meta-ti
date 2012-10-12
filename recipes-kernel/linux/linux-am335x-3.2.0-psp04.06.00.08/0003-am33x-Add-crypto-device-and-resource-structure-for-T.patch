@@ -1,0 +1,60 @@
+From b7477dd40221a91af286bffa110879075a498943 Mon Sep 17 00:00:00 2001
+From: Greg Turner <gregturner@ti.com>
+Date: Thu, 17 May 2012 14:49:39 -0500
+Subject: [PATCH 3/8] am33x: Add crypto device and resource structure for TRNG
+
+* Add platform device and resource structure to devices.c
+* Structures are for the TRNG crypto module
+* Used in the OMAP4 crypto driver
+
+Signed-off-by: Greg Turner <gregturner@ti.com>
+---
+ arch/arm/plat-omap/devices.c |   23 +++++++++++++++++++++++
+ 1 files changed, 23 insertions(+), 0 deletions(-)
+ mode change 100644 => 100755 arch/arm/plat-omap/devices.c
+
+diff --git a/arch/arm/plat-omap/devices.c b/arch/arm/plat-omap/devices.c
+old mode 100644
+new mode 100755
+index 1971932..52720b4
+--- a/arch/arm/plat-omap/devices.c
++++ b/arch/arm/plat-omap/devices.c
+@@ -26,6 +26,7 @@
+ #include <plat/mmc.h>
+ #include <plat/menelaus.h>
+ #include <plat/omap44xx.h>
++#include <plat/am33xx.h>
+
+ #if defined(CONFIG_MMC_OMAP) || defined(CONFIG_MMC_OMAP_MODULE) || \
+	defined(CONFIG_MMC_OMAP_HS) || defined(CONFIG_MMC_OMAP_HS_MODULE)
+@@ -104,6 +105,28 @@ static void omap_init_rng(void)
+ {
+	(void) platform_device_register(&omap_rng_device);
+ }
++#elif defined(CONFIG_HW_RANDOM_OMAP4) || defined(CONFIG_HW_RANDOM_OMAP4_MODULE)
++
++static struct resource rng_resources[] = {
++	{
++		.start		= AM33XX_RNG_BASE,
++		.end		= AM33XX_RNG_BASE + 0x1FFC,
++		.flags		= IORESOURCE_MEM,
++	},
++};
++
++static struct platform_device omap4_rng_device = {
++	.name		= "omap4_rng",
++	.id		= -1,
++	.num_resources	= ARRAY_SIZE(rng_resources),
++	.resource	= rng_resources,
++};
++
++static void omap_init_rng(void)
++{
++	(void) platform_device_register(&omap4_rng_device);
++}
++
+ #else
+ static inline void omap_init_rng(void) {}
+ #endif
+--
+1.7.0.4

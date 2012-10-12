@@ -1,0 +1,35 @@
+From be52bac69dfe6a56276b16ccd234970c4f7b1255 Mon Sep 17 00:00:00 2001
+From: Vita Preskovsky <vitap@ti.com>
+Date: Wed, 18 Jul 2012 16:20:36 +0300
+Subject: [PATCH] am335xevm: using edge triggered interrupts for WLAN
+
+  *using edge triggered interrupts instead of default level triggered in
+   all platforms supporting WLAN. This reduces CPU cycles and possibility
+   for missed interrupts.
+
+
+Signed-off-by: Vita Preskovsky <vitap@ti.com>
+---
+ arch/arm/mach-omap2/board-am335xevm.c |    3 +--
+ 1 files changed, 1 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
+index 6ae4e68..ac005c8 100644
+--- a/arch/arm/mach-omap2/board-am335xevm.c
++++ b/arch/arm/mach-omap2/board-am335xevm.c
+@@ -1679,12 +1679,11 @@ static void wl12xx_init(int evm_id, int profile)
+		am335xevm_wlan_data.bt_enable_gpio = GPIO_TO_PIN(3, 21);
+		am335xevm_wlan_data.irq =
+				OMAP_GPIO_IRQ(AM335XEVM_SK_WLAN_IRQ_GPIO);
+-		am335xevm_wlan_data.platform_quirks =
+-				WL12XX_PLATFORM_QUIRK_EDGE_IRQ;
+		setup_pin_mux(wl12xx_pin_mux_sk);
+	} else {
+		setup_pin_mux(wl12xx_pin_mux);
+	}
++	am335xevm_wlan_data.platform_quirks = WL12XX_PLATFORM_QUIRK_EDGE_IRQ;
+	wl12xx_bluetooth_enable();
+
+	if (wl12xx_set_platform_data(&am335xevm_wlan_data))
+--
+1.7.0.4

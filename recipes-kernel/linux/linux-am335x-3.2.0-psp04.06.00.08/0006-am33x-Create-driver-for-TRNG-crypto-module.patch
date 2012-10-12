@@ -1,0 +1,324 @@
+From d56c0ab935577ef32ffdf23a62d2e1cecc391730 Mon Sep 17 00:00:00 2001
+From: Greg Turner <gregturner@ti.com>
+Date: Thu, 17 May 2012 15:11:26 -0500
+Subject: [PATCH 6/8] am33x: Create driver for TRNG crypto module
+
+This is the initial version of the driver for the TRNG crypto module for a GP version of OMAP4 derivative SOC's such as AM335x.
+
+Signed-off-by: Greg Turner <gregturner@ti.com>
+---
+ drivers/char/hw_random/omap4-rng.c |  303 ++++++++++++++++++++++++++++++++++++
+ 1 files changed, 303 insertions(+), 0 deletions(-)
+ create mode 100755 drivers/char/hw_random/omap4-rng.c
+
+diff --git a/drivers/char/hw_random/omap4-rng.c b/drivers/char/hw_random/omap4-rng.c
+new file mode 100755
+index 0000000..523ec63
+--- /dev/null
++++ b/drivers/char/hw_random/omap4-rng.c
+@@ -0,0 +1,303 @@
++/*
++ * drivers/char/hw_random/omap4-rng.c
++ *
++ * Copyright (c) 2012 Texas Instruments
++ * TRNG driver for OMAP4 derivatives (AM33x, etc) -  Herman Schuurman <herman@ti.com>
++ *
++ * derived from omap-rng.c.
++ *
++ * Author: Deepak Saxena <dsaxena@plexity.net>
++ *
++ * Copyright 2005 (c) MontaVista Software, Inc.
++ *
++ * Mostly based on original driver:
++ *
++ * Copyright (C) 2005 Nokia Corporation
++ * Author: Juha Yrjölä <juha.yrjola@nokia.com>
++ *
++ * This file is licensed under  the terms of the GNU General Public
++ * License version 2. This program is licensed "as is" without any
++ * warranty of any kind, whether express or implied.
++ */
++
++#include <linux/module.h>
++#include <linux/init.h>
++#include <linux/random.h>
++#include <linux/clk.h>
++#include <linux/err.h>
++#include <linux/platform_device.h>
++#include <linux/hw_random.h>
++#include <linux/delay.h>
++
++#include <mach/hardware.h>
++#include <asm/io.h>
++
++/* ==================================================================== */
++/** RNG module layout.
++ */
++/* ==================================================================== */
++#define	RNG_REG_OUTPUT_L		0x00
++#define	RNG_REG_OUTPUT_H		0x04
++
++#define	RNG_REG_STATUS			0x08
++#define	RNG_REG_STATUS_NEED_CLK		(1 << 31)
++#define	RNG_REG_STATUS_SHUTDOWN_OFLO	(1 << 1)
++#define	RNG_REG_STATUS_RDY		(1 << 0)
++
++#define	RNG_REG_IMASK			0x0C
++#define	RNG_REG_IMASK_SHUTDOWN_OFLO	(1 << 1)
++#define	RNG_REG_IMASK_RDY		(1 << 0)
++
++#define	RNG_REG_INTACK			0x10
++#define	RNG_REG_INTACK_SHUTDOWN_OFLO	(1 << 1)
++#define	RNG_REG_INTACK_RDY		(1 << 0)
++
++#define	RNG_REG_CONTROL			0x14
++#define	RNG_REG_CONTROL_STARTUP_MASK	0xFFFF0000
++#define	RNG_REG_CONTROL_ENABLE_TRNG	(1 << 10)
++#define	RNG_REG_CONTROL_NO_LFSR_FB	(1 << 2)
++
++#define	RNG_REG_CONFIG			0x18
++#define	RNG_REG_CONFIG_MAX_REFILL_MASK	0xFFFF0000
++#define	RNG_REG_CONFIG_SAMPLE_DIV	0x00000F00
++#define	RNG_REG_CONFIG_MIN_REFILL_MASK	0x000000FF
++
++#define	RNG_REG_ALARMCNT		0x1C
++#define	RNG_REG_ALARMCNT_SHTDWN_MASK	0x3F000000
++#define	RNG_REG_ALARMCNT_SD_THLD_MASK	0x001F0000
++#define	RNG_REG_ALARMCNT_ALM_THLD_MASK	0x000000FF
++
++#define	RNG_REG_FROENABLE		0x20
++#define	RNG_REG_FRODETUNE		0x24
++#define	RNG_REG_ALARMMASK		0x28
++#define	RNG_REG_ALARMSTOP		0x2C
++#define	RNG_REG_LFSR_L			0x30
++#define	RNG_REG_LFSR_M			0x34
++#define	RNG_REG_LFSR_H			0x38
++#define	RNG_REG_COUNT			0x3C
++#define	RNG_REG_TEST			0x40
++
++#define	RNG_REG_OPTIONS			0x78
++#define	RNG_REG_OPTIONS_NUM_FROS_MASK	0x00000FC0
++
++#define	RNG_REG_EIP_REV			0x7C
++#define	RNG_REG_STATUS_EN		0x1FD8
++#define	RNG_REG_STATUS_EN_SHUTDOWN_OFLO	(1 << 1)
++#define	RNG_REG_STATUS_EN_RDY		(1 << 0)
++
++#define	RNG_REG_REV			0x1FE0
++#define	 RNG_REG_REV_X_MAJOR_MASK	(0x0F << 4)
++#define	 RNG_REG_REV_Y_MINOR_MASK	(0x0F << 0)
++
++#define	RNG_REG_SYSCFG			0x1FE4
++#define	RNG_REG_SYSCFG_SIDLEMODE_MASK	(3 << 3)
++#define	 RNG_REG_SYSCFG_SIDLEMODE_FORCE	(0 << 3)
++#define	 RNG_REG_SYSCFG_SIDLEMODE_NO	(1 << 3)
++#define	 RNG_REG_SYSCFG_SIDLEMODE_SMART	(2 << 3)
++#define	RNG_REG_SYSCFG_AUTOIDLE		(1 << 0)
++
++#define	RNG_REG_STATUS_SET		0x1FEC
++#define	RNG_REG_STATUS_SET_SHUTDOWN_OFLO (1 << 1)
++#define	RNG_REG_STATUS_SET_RDY		(1 << 0)
++
++#define	RNG_REG_SOFT_RESET		0x1FF0
++#define	RNG_REG_SOFTRESET		(1 << 0)
++
++#define	RNG_REG_IRQ_EOI			0x1FF4
++#define	RNG_REG_IRQ_EOI_PULSE_INT_CLEAR	(1 << 0)
++
++#define	RNG_REG_IRQSTATUS		0x1FF8
++#define	RNG_REG_IRQSTATUS_IRQ_EN	(1 << 0)
++
++
++static void __iomem *rng_base;
++static struct clk *rng_fck;
++static struct platform_device *rng_dev;
++
++#define trng_read(reg)						\
++({								\
++	u32 __val;						\
++	__val = __raw_readl(rng_base + RNG_REG_##reg);		\
++})
++
++#define trng_write(val, reg)					\
++({								\
++	__raw_writel((val), rng_base + RNG_REG_##reg);		\
++})
++
++static int omap4_rng_data_read(struct hwrng *rng, void *buf, size_t max, bool wait)
++{
++	int res, i;
++
++	for (i = 0; i < 20; i++) {
++		res = trng_read(STATUS) & RNG_REG_STATUS_RDY;
++		if (res || !wait)
++			break;
++		/* RNG produces data fast enough (2+ MBit/sec, even
++		 * during "rngtest" loads, that these delays don't
++		 * seem to trigger.  We *could* use the RNG IRQ, but
++		 * that'd be higher overhead ... so why bother?
++		 */
++		udelay(10);
++	}
++
++	/* If we have data waiting, collect it... */
++	if (res) {
++		*(u32 *)buf = trng_read(OUTPUT_L);
++		buf += sizeof(u32);
++		*(u32 *)buf = trng_read(OUTPUT_H);
++
++		trng_write(RNG_REG_INTACK_RDY, INTACK);
++
++		res = 2  * sizeof(u32);
++	}
++	return res;
++}
++
++static struct hwrng omap4_rng_ops = {
++	.name		= "omap4",
++	.read		= omap4_rng_data_read,
++};
++
++static int __devinit omap4_rng_probe(struct platform_device *pdev)
++{
++	struct resource *res;
++	int ret;
++	u32 reg;
++
++	/*
++	 * A bit ugly, and it will never actually happen but there can
++	 * be only one RNG and this catches any bork
++	 */
++	if (rng_dev)
++		return -EBUSY;
++
++	rng_fck = clk_get(&pdev->dev, "rng_fck");
++	if (IS_ERR(rng_fck)) {
++		dev_err(&pdev->dev, "Could not get rng_fck\n");
++		ret = PTR_ERR(rng_fck);
++		return ret;
++	} else
++		clk_enable(rng_fck);
++
++	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	if (!res) {
++		ret = -ENOENT;
++		goto err_region;
++	}
++
++	if (!request_mem_region(res->start, resource_size(res), pdev->name)) {
++		ret = -EBUSY;
++		goto err_region;
++	}
++
++	dev_set_drvdata(&pdev->dev, res);
++	rng_base = ioremap(res->start, resource_size(res));
++	if (!rng_base) {
++		ret = -ENOMEM;
++		goto err_ioremap;
++	}
++
++	ret = hwrng_register(&omap4_rng_ops);
++	if (ret)
++		goto err_register;
++
++	reg = trng_read(REV);
++	dev_info(&pdev->dev, "OMAP4 Random Number Generator ver. %u.%02u\n",
++		 ((reg & RNG_REG_REV_X_MAJOR_MASK) >> 4),
++		 (reg & RNG_REG_REV_Y_MINOR_MASK));
++
++	rng_dev = pdev;
++
++	/* start TRNG if not running yet */
++	if (!(trng_read(CONTROL) & RNG_REG_CONTROL_ENABLE_TRNG)) {
++		trng_write(0x00220021, CONFIG);
++		trng_write(0x00210400, CONTROL);
++	}
++
++	return 0;
++
++err_register:
++	iounmap(rng_base);
++	rng_base = NULL;
++err_ioremap:
++	release_mem_region(res->start, resource_size(res));
++err_region:
++	clk_disable(rng_fck);
++	clk_put(rng_fck);
++	return ret;
++}
++
++static int __exit omap4_rng_remove(struct platform_device *pdev)
++{
++	struct resource *res = dev_get_drvdata(&pdev->dev);
++
++	hwrng_unregister(&omap4_rng_ops);
++
++	trng_write(trng_read(CONTROL) & ~RNG_REG_CONTROL_ENABLE_TRNG, CONTROL);
++
++	iounmap(rng_base);
++
++	clk_disable(rng_fck);
++	clk_put(rng_fck);
++	release_mem_region(res->start, resource_size(res));
++	rng_base = NULL;
++
++	return 0;
++}
++
++#ifdef CONFIG_PM
++
++static int omap4_rng_suspend(struct platform_device *pdev, pm_message_t message)
++{
++	trng_write(trng_read(CONTROL) & ~RNG_REG_CONTROL_ENABLE_TRNG, CONTROL);
++
++	return 0;
++}
++
++static int omap4_rng_resume(struct platform_device *pdev)
++{
++	trng_write(trng_read(CONTROL) | RNG_REG_CONTROL_ENABLE_TRNG, CONTROL);
++
++	return 0;
++}
++
++#else
++
++#define	omap4_rng_suspend	NULL
++#define	omap4_rng_resume	NULL
++
++#endif
++
++/* work with hotplug and coldplug */
++MODULE_ALIAS("platform:omap4_rng");
++
++static struct platform_driver omap4_rng_driver = {
++	.driver = {
++		.name		= "omap4_rng",
++		.owner		= THIS_MODULE,
++	},
++	.probe		= omap4_rng_probe,
++	.remove		= __exit_p(omap4_rng_remove),
++	.suspend	= omap4_rng_suspend,
++	.resume		= omap4_rng_resume
++};
++
++static int __init omap4_rng_init(void)
++{
++	if (!cpu_is_am33xx()  || omap_type() != OMAP2_DEVICE_TYPE_GP)
++		return -ENODEV;
++
++	return platform_driver_register(&omap4_rng_driver);
++}
++
++static void __exit omap4_rng_exit(void)
++{
++	platform_driver_unregister(&omap4_rng_driver);
++}
++
++module_init(omap4_rng_init);
++module_exit(omap4_rng_exit);
++
++MODULE_LICENSE("GPL");
++MODULE_DESCRIPTION("AM33X TRNG driver");
+--
+1.7.0.4

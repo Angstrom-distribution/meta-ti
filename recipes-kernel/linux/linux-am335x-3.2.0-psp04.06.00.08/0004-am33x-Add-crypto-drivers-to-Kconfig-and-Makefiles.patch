@@ -1,0 +1,124 @@
+From e49e6dcff5665cb2f132d9654a060fa43a382810 Mon Sep 17 00:00:00 2001
+From: Greg Turner <gregturner@ti.com>
+Date: Thu, 17 May 2012 14:53:25 -0500
+Subject: [PATCH 4/8] am33x: Add crypto drivers to Kconfig and Makefiles
+
+* Add OMAP4 TRNG driver to hw_random Kconfig and Makefile
+* Add OMAP4 AES and SHA/MD5 driver to crypto Kconfig and Makefile
+* Needed so that drivers can be selected during kernel config
+
+Signed-off-by: Greg Turner <gregturner@ti.com>
+---
+ drivers/char/hw_random/Kconfig  |   13 +++++++++++++
+ drivers/char/hw_random/Makefile |    1 +
+ drivers/crypto/Kconfig          |   22 ++++++++++++++++++++--
+ drivers/crypto/Makefile         |    2 ++
+ 4 files changed, 36 insertions(+), 2 deletions(-)
+ mode change 100644 => 100755 drivers/char/hw_random/Kconfig
+ mode change 100644 => 100755 drivers/char/hw_random/Makefile
+ mode change 100644 => 100755 drivers/crypto/Kconfig
+ mode change 100644 => 100755 drivers/crypto/Makefile
+
+diff --git a/drivers/char/hw_random/Kconfig b/drivers/char/hw_random/Kconfig
+old mode 100644
+new mode 100755
+index 0689bf6..207e3e7
+--- a/drivers/char/hw_random/Kconfig
++++ b/drivers/char/hw_random/Kconfig
+@@ -139,6 +139,19 @@ config HW_RANDOM_OMAP
+
+	  If unsure, say Y.
+
++config HW_RANDOM_OMAP4
++	tristate "OMAP4 Random Number Generator support"
++	depends on HW_RANDOM && SOC_OMAPAM33XX
++	default HW_RANDOM
++	---help---
++	  This driver provides kernel-side support for the Random Number
++	  Generator hardware found on OMAP4 derived processors.
++
++	  To compile this driver as a module, choose M here: the
++	  module will be called omap4-rng.
++
++	  If unsure, say Y.
++
+ config HW_RANDOM_OCTEON
+	tristate "Octeon Random Number Generator support"
+	depends on HW_RANDOM && CPU_CAVIUM_OCTEON
+diff --git a/drivers/char/hw_random/Makefile b/drivers/char/hw_random/Makefile
+old mode 100644
+new mode 100755
+index b2ff526..fecced0
+--- a/drivers/char/hw_random/Makefile
++++ b/drivers/char/hw_random/Makefile
+@@ -14,6 +14,7 @@ n2-rng-y := n2-drv.o n2-asm.o
+ obj-$(CONFIG_HW_RANDOM_VIA) += via-rng.o
+ obj-$(CONFIG_HW_RANDOM_IXP4XX) += ixp4xx-rng.o
+ obj-$(CONFIG_HW_RANDOM_OMAP) += omap-rng.o
++obj-$(CONFIG_HW_RANDOM_OMAP4) += omap4-rng.o
+ obj-$(CONFIG_HW_RANDOM_PASEMI) += pasemi-rng.o
+ obj-$(CONFIG_HW_RANDOM_VIRTIO) += virtio-rng.o
+ obj-$(CONFIG_HW_RANDOM_TX4939) += tx4939-rng.o
+diff --git a/drivers/crypto/Kconfig b/drivers/crypto/Kconfig
+old mode 100644
+new mode 100755
+index 6d16b4b..6c1331a
+--- a/drivers/crypto/Kconfig
++++ b/drivers/crypto/Kconfig
+@@ -250,7 +250,7 @@ config CRYPTO_DEV_PPC4XX
+
+ config CRYPTO_DEV_OMAP_SHAM
+	tristate "Support for OMAP SHA1/MD5 hw accelerator"
+-	depends on ARCH_OMAP2 || ARCH_OMAP3
++	depends on (ARCH_OMAP2) || (ARCH_OMAP3) && (!SOC_OMAPAM33XX)
+	select CRYPTO_SHA1
+	select CRYPTO_MD5
+	help
+@@ -259,12 +259,30 @@ config CRYPTO_DEV_OMAP_SHAM
+
+ config CRYPTO_DEV_OMAP_AES
+	tristate "Support for OMAP AES hw engine"
+-	depends on ARCH_OMAP2 || ARCH_OMAP3
++	depends on (ARCH_OMAP2) || (ARCH_OMAP3) && (!SOC_OMAPAM33XX)
+	select CRYPTO_AES
+	help
+	  OMAP processors have AES module accelerator. Select this if you
+	  want to use the OMAP module for AES algorithms.
+
++config CRYPTO_DEV_OMAP4_AES
++	tristate "Support for OMAP4 AES hw engine"
++	depends on SOC_OMAPAM33XX
++	select CRYPTO_AES
++	help
++	  OMAP4 -based processors have AES module accelerators. Select this if you
++	  want to use the OMAP4 module for AES algorithms.
++
++config CRYPTO_DEV_OMAP4_SHAM
++	tristate "Support for OMAP4 SHA/MD5 hw engine"
++	depends on SOC_OMAPAM33XX
++	select CRYPTO_SHA1
++	select CRYPTO_SHA256
++	select CRYPTO_MD5
++	help
++	  OMAP4 -based processors have SHA/MD5 module accelerators. Select this if you
++	  want to use the OMAP4 module for SHA/MD5 algorithms.
++
+ config CRYPTO_DEV_PICOXCELL
+	tristate "Support for picoXcell IPSEC and Layer2 crypto engines"
+	depends on ARCH_PICOXCELL && HAVE_CLK
+diff --git a/drivers/crypto/Makefile b/drivers/crypto/Makefile
+old mode 100644
+new mode 100755
+index 53ea501..5b420a5
+--- a/drivers/crypto/Makefile
++++ b/drivers/crypto/Makefile
+@@ -11,5 +11,7 @@ obj-$(CONFIG_CRYPTO_DEV_IXP4XX) += ixp4xx_crypto.o
+ obj-$(CONFIG_CRYPTO_DEV_PPC4XX) += amcc/
+ obj-$(CONFIG_CRYPTO_DEV_OMAP_SHAM) += omap-sham.o
+ obj-$(CONFIG_CRYPTO_DEV_OMAP_AES) += omap-aes.o
++obj-$(CONFIG_CRYPTO_DEV_OMAP4_AES) += omap4-aes.o
++obj-$(CONFIG_CRYPTO_DEV_OMAP4_SHAM) += omap4-sham.o
+ obj-$(CONFIG_CRYPTO_DEV_PICOXCELL) += picoxcell_crypto.o
+ obj-$(CONFIG_CRYPTO_DEV_S5P) += s5p-sss.o
+--
+1.7.0.4

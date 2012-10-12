@@ -1,0 +1,147 @@
+From 0fb328ec0a5ba8a1440336c8dc7a029cfffa4529 Mon Sep 17 00:00:00 2001
+From: Greg Turner <gregturner@ti.com>
+Date: Thu, 19 Jul 2012 15:27:59 -0500
+Subject: [PATCH 2/2] [am335x]: Add suspend resume routines to crypto driver
+
+* Add suspend resume routines to AES crypto driver
+* Add suspend resume routines to SHA crypto driver
+* Cleaned up some build warnings
+---
+ drivers/crypto/omap4-aes.c  |   31 ++++++++++++++++++++++++++++---
+ drivers/crypto/omap4-sham.c |   32 +++++++++++++++++++++++++++-----
+ 2 files changed, 55 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/crypto/omap4-aes.c b/drivers/crypto/omap4-aes.c
+index 76f988a..c7d08df 100755
+--- a/drivers/crypto/omap4-aes.c
++++ b/drivers/crypto/omap4-aes.c
+@@ -878,9 +878,9 @@ err_io:
+	udelay(1);
+
+
+-err_res:
+-	kfree(dd);
+-	dd = NULL;
++//err_res:
++	//kfree(dd);
++	//dd = NULL;
+ err_data:
+	dev_err(dev, "initialization failed.\n");
+	return err;
+@@ -916,12 +916,35 @@ static int omap4_aes_remove(struct platform_device *pdev)
+	return 0;
+ }
+
++static int omap4_aes_suspend(struct device *dev)
++{
++	pr_debug("#### Crypto: Suspend call ####\n");
++
++	return 0;
++}
++
++
++static int omap4_aes_resume(struct device *dev)
++{
++	pr_debug("#### Crypto: resume call ####\n");
++
++	return 0;
++}
++
++static struct dev_pm_ops omap4_aes_dev_pm_ops = {
++	.suspend	= omap4_aes_suspend,
++	.resume		= omap4_aes_resume,
++	.runtime_suspend = omap4_aes_suspend,
++	.runtime_resume = omap4_aes_resume,
++};
++
+ static struct platform_driver omap4_aes_driver = {
+	.probe	= omap4_aes_probe,
+	.remove	= omap4_aes_remove,
+	.driver	= {
+		.name	= "omap4-aes",
+		.owner	= THIS_MODULE,
++		.pm		= &omap4_aes_dev_pm_ops
+	},
+ };
+
+@@ -944,6 +967,8 @@ static void __exit omap4_aes_mod_exit(void)
+	platform_driver_unregister(&omap4_aes_driver);
+ }
+
++
++
+ module_init(omap4_aes_mod_init);
+ module_exit(omap4_aes_mod_exit);
+
+diff --git a/drivers/crypto/omap4-sham.c b/drivers/crypto/omap4-sham.c
+index 21f1b48..2fb71b9 100755
+--- a/drivers/crypto/omap4-sham.c
++++ b/drivers/crypto/omap4-sham.c
+@@ -239,7 +239,7 @@ static void omap4_sham_copy_ready_hash(struct ahash_request *req)
+	struct omap4_sham_reqctx *ctx = ahash_request_ctx(req);
+	u32 *in = (u32 *)ctx->digest;
+	u32 *hash = (u32 *)req->result;
+-	int i, d;
++	int i, d = 0;
+
+	if (!hash)
+		return;
+@@ -1224,8 +1224,6 @@ static void omap4_sham_dma_callback(unsigned int lch, u16 ch_status, void *data)
+
+ static int omap4_sham_dma_init(struct omap4_sham_dev *dd)
+ {
+-	int err;
+-
+	dd->dma_lch = -1;
+
+	dd->dma_lch = edma_alloc_channel(dd->dma, omap4_sham_dma_callback, dd, EVENTQ_2);
+@@ -1349,8 +1347,9 @@ io_err:
+	pm_runtime_disable(dev);
+	udelay(1);
+
+-clk_err:
+-	omap4_sham_dma_cleanup(dd);
++//clk_err:
++//	omap4_sham_dma_cleanup(dd);
++
+ dma_err:
+	if (dd->irq >= 0)
+		free_irq(dd->irq, dd);
+@@ -1392,12 +1391,35 @@ static int __devexit omap4_sham_remove(struct platform_device *pdev)
+	return 0;
+ }
+
++static int omap4_sham_suspend(struct device *dev)
++{
++	pr_debug("#### Crypto: Suspend call ####\n");
++
++	return 0;
++}
++
++
++static int omap4_sham_resume(struct device *dev)
++{
++	pr_debug("#### Crypto: resume call ####\n");
++
++	return 0;
++}
++
++static struct dev_pm_ops omap4_sham_dev_pm_ops = {
++	.suspend	= omap4_sham_suspend,
++	.resume		= omap4_sham_resume,
++	.runtime_suspend = omap4_sham_suspend,
++	.runtime_resume = omap4_sham_resume,
++};
++
+ static struct platform_driver omap4_sham_driver = {
+	.probe	= omap4_sham_probe,
+	.remove	= omap4_sham_remove,
+	.driver	= {
+		.name	= "omap4-sham",
+		.owner	= THIS_MODULE,
++		.pm		= &omap4_sham_dev_pm_ops
+	},
+ };
+
+--
+1.7.0.4

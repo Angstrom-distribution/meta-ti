@@ -1,0 +1,42 @@
+From 0f62d1f4d4543a315815b8eb15ea9cdad25d16c8 Mon Sep 17 00:00:00 2001
+From: Eyal Reizer <eyalr@ti.com>
+Date: Wed, 27 Jun 2012 16:08:53 +0300
+Subject: [PATCH] omap-serial: add delay before suspending
+
+In case suspending during Bluetooth traffic, after resume the bluetooth is
+stuck.
+It was identified that suspend is happening before the UART buffer was
+fully drained which caused this hang after resume.
+The folliwng delay is a temporary workaround until the issue is resolved
+properly.
+
+Upstream Status: Pending
+
+Signed-off-by: Eyal Reizer <eyalr@ti.com>
+---
+ drivers/tty/serial/omap-serial.c |   10 ++++++++++
+ 1 files changed, 10 insertions(+), 0 deletions(-)
+
+diff --git a/drivers/tty/serial/omap-serial.c b/drivers/tty/serial/omap-serial.c
+index ca24ab3..108ea2b 100755
+--- a/drivers/tty/serial/omap-serial.c
++++ b/drivers/tty/serial/omap-serial.c
+@@ -1166,6 +1166,16 @@ static int serial_omap_suspend(struct device *dev)
+	struct uart_omap_port *up = dev_get_drvdata(dev);
+
+	if (up) {
++                /*
++                  In case suspending during Bluetooth traffic, after resume
++                  the bluetooth is stuck.
++                  It was identified that suspend is happening before the
++                  UART buffer was fully drained which caused this hang after
++                  resume. The following delay is a temporary workaround until
++                  the issue is resolved properly.
++                */
++                msleep(10);
++
+		uart_suspend_port(&serial_omap_reg, &up->port);
+		flush_work_sync(&up->qos_work);
+	}
+--
+1.7.0.4

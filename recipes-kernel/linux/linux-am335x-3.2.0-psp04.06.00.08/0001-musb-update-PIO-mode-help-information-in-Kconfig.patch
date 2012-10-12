@@ -1,0 +1,45 @@
+From 214f6b2fee005dba5e01b3b434f184adf4386a25 Mon Sep 17 00:00:00 2001
+From: Chase Maupin <Chase.Maupin@ti.com>
+Date: Thu, 2 Feb 2012 15:52:10 -0600
+Subject: [PATCH] musb: update PIO mode help information in Kconfig
+
+* Updated the Kconfig help information for the PIO mode for MUSB
+  to make it more clear to the customer when to select this option
+  and which devices currently have issues with this option.
+* This is in accordance with the findings for CPPI4.1 DMA usage
+  for MUSB
+
+Upstream-Status: Submitted
+    * Submitted to the PSP team using the lpr list
+
+Signed-off-by: Matt Porter <mporter@ti.com>
+Signed-off-by: Chase Maupin <Chase.Maupin@ti.com>
+---
+ drivers/usb/musb/Kconfig |   12 ++++++++----
+ 1 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/usb/musb/Kconfig b/drivers/usb/musb/Kconfig
+index a06335f..3576afe 100644
+--- a/drivers/usb/musb/Kconfig
++++ b/drivers/usb/musb/Kconfig
+@@ -159,10 +159,14 @@ config MUSB_PIO_ONLY
+	  All data is copied between memory and FIFO by the CPU.
+	  DMA controllers are ignored.
+
+-	  Do not choose this unless DMA support for your SOC or board
+-	  is unavailable (or unstable).  When DMA is enabled at compile time,
+-	  you can still disable it at run time using the "use_dma=n" module
+-	  parameter.
++	  Select 'y' here if DMA support for your SOC or board
++	  is unavailable (or unstable). On CPPI 4.1 DMA based
++	  systems (AM335x, AM35x, and AM180x) DMA support is
++	  considered unstable and this option should be enabled
++	  in production systems so that DMA is disabled, unless DMA
++	  has been validated for all use cases. When DMA is enabled at
++	  compile time, you can still disable it at run time using the
++	  "use_dma=n" module parameter.
+
+ endchoice
+
+--
+1.7.0.4

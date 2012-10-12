@@ -1,0 +1,71 @@
+From 31ec2850e89414efb30accb9d8b5228257e507b1 Mon Sep 17 00:00:00 2001
+From: Chase Maupin <Chase.Maupin@ti.com>
+Date: Wed, 21 Mar 2012 10:18:03 -0500
+Subject: [PATCH 1/1] mach-omap2: pm33xx: Disable VT switch
+
+* Added a new config option TI_PM_DISABLE_VT_SWITCH which
+  disables the VT console switch which normally occurs during
+  suspend.  This console switch can cause a hange when performed
+  with applications like Matrix running.  The VT switch is
+  considered unnecessary.
+* Modified the am335x_evm_defconfig file to default the
+  TI_PM_DISABLE_VT_SWITCH to "y".
+* Based on a patch for the linux-omap3 kernel by Greg Guyotte
+
+Signed-off-by: Chase Maupin <Chase.Maupin@ti.com>
+---
+ arch/arm/configs/am335x_evm_defconfig |    1 +
+ arch/arm/mach-omap2/Kconfig           |    9 +++++++++
+ arch/arm/mach-omap2/pm33xx.c          |    5 +++++
+ 3 files changed, 15 insertions(+), 0 deletions(-)
+
+diff --git a/arch/arm/configs/am335x_evm_defconfig b/arch/arm/configs/am335x_evm_defconfig
+index 53d1b6a..7a5e7ad 100644
+--- a/arch/arm/configs/am335x_evm_defconfig
++++ b/arch/arm/configs/am335x_evm_defconfig
+@@ -325,6 +325,7 @@ CONFIG_MACH_TI8148EVM=y
+ CONFIG_MACH_AM335XEVM=y
+ CONFIG_MACH_AM335XIAEVM=y
+ # CONFIG_OMAP3_EMU is not set
++CONFIG_TI_PM_DISABLE_VT_SWITCH=y
+ # CONFIG_OMAP3_SDRC_AC_TIMING is not set
+ CONFIG_OMAP3_EDMA=y
+
+diff --git a/arch/arm/mach-omap2/Kconfig b/arch/arm/mach-omap2/Kconfig
+index e44e942..f13e9dc 100644
+--- a/arch/arm/mach-omap2/Kconfig
++++ b/arch/arm/mach-omap2/Kconfig
+@@ -372,6 +372,15 @@ config OMAP3_EMU
+	help
+	  Say Y here to enable debugging hardware of omap3
+
++config TI_PM_DISABLE_VT_SWITCH
++	bool "TI Disable PM Console Switch"
++	depends on ARCH_OMAP3
++	default y
++	help
++	  This option disables the default PM VT switch behavior for TI devices.
++	  Some platforms hang during suspend due to a failed attempt to
++	  perform the VT switch.  The VT switch is unnecessary on many platforms.
++
+ config OMAP3_SDRC_AC_TIMING
+	bool "Enable SDRC AC timing register changes"
+	depends on ARCH_OMAP3
+diff --git a/arch/arm/mach-omap2/pm33xx.c b/arch/arm/mach-omap2/pm33xx.c
+index 70bcb42..019ae46 100644
+--- a/arch/arm/mach-omap2/pm33xx.c
++++ b/arch/arm/mach-omap2/pm33xx.c
+@@ -502,6 +502,11 @@ static int __init am33xx_pm_init(void)
+	pr_info("Power Management for AM33XX family\n");
+
+ #ifdef CONFIG_SUSPEND
++
++#ifdef CONFIG_TI_PM_DISABLE_VT_SWITCH
++	pm_set_vt_switch(0);
++#endif
++
+ /* Read SDRAM_CONFIG register to determine Memory Type */
+	base = am33xx_get_ram_base();
+	reg = readl(base + EMIF4_0_SDRAM_CONFIG);
+--
+1.7.0.4

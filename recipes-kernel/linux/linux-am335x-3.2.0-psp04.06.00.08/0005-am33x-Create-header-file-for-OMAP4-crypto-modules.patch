@@ -1,0 +1,213 @@
+From 2dc9dec7510746b3c3f5420f4f3ab8395cc7b012 Mon Sep 17 00:00:00 2001
+From: Greg Turner <gregturner@ti.com>
+Date: Thu, 17 May 2012 14:59:38 -0500
+Subject: [PATCH 5/8] am33x: Create header file for OMAP4 crypto modules
+
+* This header file defines addresses and macros used to access crypto modules on OMAP4 derivative SOC's like AM335x.
+
+Signed-off-by: Greg Turner <gregturner@ti.com>
+---
+ drivers/crypto/omap4.h |  192 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 files changed, 192 insertions(+), 0 deletions(-)
+ create mode 100644 drivers/crypto/omap4.h
+
+diff --git a/drivers/crypto/omap4.h b/drivers/crypto/omap4.h
+new file mode 100644
+index 0000000..d9d6315
+--- /dev/null
++++ b/drivers/crypto/omap4.h
+@@ -0,0 +1,192 @@
++/*
++ * drivers/crypto/omap4.h
++ *
++ * Copyright © 2011 Texas Instruments Incorporated
++ * Author: Greg Turner
++ *
++ * Adapted from Netra/Centaurus crypto driver
++ * Copyright © 2011 Texas Instruments Incorporated
++ * Author: Herman Schuurman
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
++ */
++#ifndef __DRIVERS_CRYPTO_AM33X_H
++#define __DRIVERS_CRYPTO_AM33X_H
++
++/* ==================================================================== */
++/** Crypto subsystem module layout
++ */
++/* ==================================================================== */
++
++#define AM33X_AES_CLKCTRL	(AM33XX_PRCM_BASE + 0x00000094)
++#define AM33X_SHA_CLKCTRL	(AM33XX_PRCM_BASE + 0x000000A0)
++
++#define FLD_MASK(start, end)		(((1 << ((start) - (end) + 1)) - 1) << (end))
++#define FLD_VAL(val, start, end)	(((val) << (end)) & FLD_MASK(start, end))
++
++/* ==================================================================== */
++/** AES module layout
++ */
++/* ==================================================================== */
++
++#define	AES_REG_KEY2(x)			(0x1C - ((x ^ 0x01) * 0x04))
++#define	AES_REG_KEY1(x)			(0x3C - ((x ^ 0x01) * 0x04))
++#define	AES_REG_IV(x)			(0x40 + ((x) * 0x04))
++
++#define	AES_REG_CTRL			0x50
++#define	AES_REG_CTRL_CTX_RDY		(1 << 31)
++#define	AES_REG_CTRL_SAVE_CTX_RDY	(1 << 30)
++#define	AES_REG_CTRL_SAVE_CTX		(1 << 29)
++#define	AES_REG_CTRL_CCM_M_MASK		(7 << 22)
++#define	AES_REG_CTRL_CCM_M_SHFT		22
++#define	AES_REG_CTRL_CCM_L_MASK		(7 << 19)
++#define	AES_REG_CTRL_CCM_L_SHFT		19
++#define	AES_REG_CTRL_CCM		(1 << 18)
++#define	AES_REG_CTRL_GCM		(3 << 16)
++#define	AES_REG_CTRL_CBCMAC		(1 << 15)
++#define	AES_REG_CTRL_F9			(1 << 14)
++#define	AES_REG_CTRL_F8			(1 << 13)
++#define	AES_REG_CTRL_XTS_MASK		(3 << 11)
++#define	 AES_REG_CTRL_XTS_01		(1 << 11)
++#define	 AES_REG_CTRL_XTS_10		(2 << 11)
++#define	 AES_REG_CTRL_XTS_11		(3 << 11)
++#define	AES_REG_CTRL_CFB		(1 << 10)
++#define	AES_REG_CTRL_ICM		(1 << 9)
++#define	AES_REG_CTRL_CTR_WIDTH_MASK	(3 << 7)
++#define	 AES_REG_CTRL_CTR_WIDTH_32	(0 << 7)
++#define	 AES_REG_CTRL_CTR_WIDTH_64	(1 << 7)
++#define	 AES_REG_CTRL_CTR_WIDTH_96	(2 << 7)
++#define	 AES_REG_CTRL_CTR_WIDTH_128	(3 << 7)
++#define	AES_REG_CTRL_CTR		(1 << 6)
++#define	AES_REG_CTRL_CBC		(1 << 5)
++#define	AES_REG_CTRL_KEY_SIZE_MASK	(3 << 3)
++#define	 AES_REG_CTRL_KEY_SIZE_128	(1 << 3)
++#define	 AES_REG_CTRL_KEY_SIZE_192	(2 << 3)
++#define	 AES_REG_CTRL_KEY_SIZE_256	(3 << 3)
++#define	AES_REG_CTRL_DIRECTION		(1 << 2)
++#define	AES_REG_CTRL_INPUT_RDY		(1 << 1)
++#define	AES_REG_CTRL_OUTPUT_RDY		(1 << 0)
++
++#define	AES_REG_LENGTH_N(x)		(0x54 + ((x) * 0x04))
++#define	AES_REG_AUTH_LENGTH		0x5C
++#define	AES_REG_DATA			0x60
++#define	AES_REG_DATA_N(x)		(0x60 + ((x) * 0x04))
++#define	AES_REG_TAG			0x70
++#define	AES_REG_TAG_N(x)		(0x70 + ((x) * 0x04))
++
++#define AES_REG_REV			0x80
++#define	 AES_REG_REV_SCHEME_MASK	(3 << 30)
++#define	 AES_REG_REV_FUNC_MASK		(0xFFF << 16)
++#define	 AES_REG_REV_R_RTL_MASK		(0x1F << 11)
++#define	 AES_REG_REV_X_MAJOR_MASK	(7 << 8)
++#define	 AES_REG_REV_CUSTOM_MASK	(3 << 6)
++#define	 AES_REG_REV_Y_MINOR_MASK	(0x3F << 0)
++
++#define	AES_REG_SYSCFG			0x84
++#define	AES_REG_SYSCFG_K3		(1 << 12)
++#define	AES_REG_SYSCFG_KEY_ENC		(1 << 11)
++#define	AES_REG_SYSCFG_KEK_MODE		(1 << 10)
++#define	AES_REG_SYSCFG_MAP_CTX_OUT	(1 << 9)
++#define	AES_REG_SYSCFG_DREQ_MASK	(15 << 5)
++#define	 AES_REG_SYSCFG_DREQ_CTX_OUT_EN	(1 << 8)
++#define	 AES_REG_SYSCFG_DREQ_CTX_IN_EN	(1 << 7)
++#define	 AES_REG_SYSCFG_DREQ_DATA_OUT_EN (1 << 6)
++#define	 AES_REG_SYSCFG_DREQ_DATA_IN_EN	(1 << 5)
++#define	AES_REG_SYSCFG_DIRECTBUSEN	(1 << 4)
++#define	AES_REG_SYSCFG_SIDLE_MASK	(3 << 2)
++#define	 AES_REG_SYSCFG_SIDLE_FORCEIDLE	(0 << 2)
++#define	 AES_REG_SYSCFG_SIDLE_NOIDLE	(1 << 2)
++#define	 AES_REG_SYSCFG_SIDLE_SMARTIDLE	(2 << 2)
++#define	AES_REG_SYSCFG_SOFTRESET	(1 << 1)
++#define	AES_REG_SYSCFG_AUTOIDLE		(1 << 0)
++
++#define	AES_REG_SYSSTATUS		0x88
++#define	AES_REG_SYSSTATUS_RESETDONE	(1 << 0)
++
++#define	AES_REG_IRQSTATUS		0x8C
++#define	AES_REG_IRQSTATUS_CTX_OUT	(1 << 3)
++#define	AES_REG_IRQSTATUS_DATA_OUT	(1 << 2)
++#define	AES_REG_IRQSTATUS_DATA_IN	(1 << 1)
++#define	AES_REG_IRQSTATUS_CTX_IN	(1 << 0)
++
++#define	AES_REG_IRQENA			0x90
++#define	AES_REG_IRQENA_CTX_OUT		(1 << 3)
++#define	AES_REG_IRQENA_DATA_OUT		(1 << 2)
++#define	AES_REG_IRQENA_DATA_IN		(1 << 1)
++#define	AES_REG_IRQENA_CTX_IN		(1 << 0)
++
++/* ==================================================================== */
++/** SHA / MD5 module layout.
++ */
++/* ==================================================================== */
++
++#define	SHA_REG_ODIGEST			0x00
++#define	SHA_REG_ODIGEST_N(x)		(0x00 + ((x) * 0x04))
++#define	SHA_REG_IDIGEST			0x20
++#define	SHA_REG_IDIGEST_N(x)		(0x20 + ((x) * 0x04))
++
++#define SHA_REG_DIGEST_COUNT		0x40
++#define SHA_REG_MODE			0x44
++#define SHA_REG_MODE_HMAC_OUTER_HASH	(1 << 7)
++#define SHA_REG_MODE_HMAC_KEY_PROC	(1 << 5)
++#define SHA_REG_MODE_CLOSE_HASH		(1 << 4)
++#define SHA_REG_MODE_ALGO_CONSTANT	(1 << 3)
++#define SHA_REG_MODE_ALGO_MASK		(3 << 1)
++#define  SHA_REG_MODE_ALGO_MD5_128	(0 << 1)
++#define  SHA_REG_MODE_ALGO_SHA1_160	(1 << 1)
++#define  SHA_REG_MODE_ALGO_SHA2_224	(2 << 1)
++#define  SHA_REG_MODE_ALGO_SHA2_256	(3 << 1)
++
++#define SHA_REG_LENGTH			0x48
++
++#define	SHA_REG_DATA			0x80
++#define	SHA_REG_DATA_N(x)		(0x80 + ((x) * 0x04))
++
++#define SHA_REG_REV			0x100
++#define	 SHA_REG_REV_SCHEME_MASK	(3 << 30)
++#define	 SHA_REG_REV_FUNC_MASK		(0xFFF << 16)
++#define	 SHA_REG_REV_R_RTL_MASK		(0x1F << 11)
++#define	 SHA_REG_REV_X_MAJOR_MASK	(7 << 8)
++#define	 SHA_REG_REV_CUSTOM_MASK	(3 << 6)
++#define	 SHA_REG_REV_Y_MINOR_MASK	(0x3F << 0)
++
++#define	SHA_REG_SYSCFG			0x110
++#define	SHA_REG_SYSCFG_SADVANCED	(1 << 7)
++#define	SHA_REG_SYSCFG_SCONT_SWT	(1 << 6)
++#define	SHA_REG_SYSCFG_SIDLE_MASK	(3 << 4)
++#define	 SHA_REG_SYSCFG_SIDLE_FORCEIDLE	(0 << 4)
++#define	 SHA_REG_SYSCFG_SIDLE_NOIDLE	(1 << 4)
++#define	 SHA_REG_SYSCFG_SIDLE_SMARTIDLE	(2 << 4)
++#define	SHA_REG_SYSCFG_SDMA_EN		(1 << 3)
++#define	SHA_REG_SYSCFG_SIT_EN		(1 << 2)
++#define	SHA_REG_SYSCFG_SOFTRESET	(1 << 1)
++#define	SHA_REG_SYSCFG_AUTOIDLE		(1 << 0)
++
++#define SHA_REG_SYSSTATUS		0x114
++#define SHA_REG_SYSSTATUS_RESETDONE	(1 << 0)
++
++#define SHA_REG_IRQSTATUS		0x118
++#define SHA_REG_IRQSTATUS_CTX_RDY	(1 << 3)
++#define SHA_REG_IRQSTATUS_PARTHASH_RDY (1 << 2)
++#define SHA_REG_IRQSTATUS_INPUT_RDY	(1 << 1)
++#define SHA_REG_IRQSTATUS_OUTPUT_RDY	(1 << 0)
++
++#define SHA_REG_IRQENA			0x11C
++#define SHA_REG_IRQENA_CTX_RDY		(1 << 3)
++#define SHA_REG_IRQENA_PARTHASH_RDY	(1 << 2)
++#define SHA_REG_IRQENA_INPUT_RDY	(1 << 1)
++#define SHA_REG_IRQENA_OUTPUT_RDY	(1 << 0)
++
++#endif /* __DRIVERS_CRYPTO_AM33X_H */
+--
+1.7.0.4

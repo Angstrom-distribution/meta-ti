@@ -1,0 +1,26 @@
+From e1b7a67fc82991a633f0ed615d69157c98c1c35d Mon Sep 17 00:00:00 2001
+From: Greg Guyotte <gguyotte@ti.com>
+Date: Thu, 7 Jun 2012 18:15:21 -0500
+Subject: [PATCH 2/2] am33xx: Enable CONFIG_AM33XX_SMARTREFLEX
+
+Simply enables the SmartReflex driver in the defconfig file.
+
+Signed-off-by: Greg Guyotte <gguyotte@ti.com>
+---
+ arch/arm/configs/am335x_evm_defconfig |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/arch/arm/configs/am335x_evm_defconfig b/arch/arm/configs/am335x_evm_defconfig
+index de1eaad..ce5d1d6 100644
+--- a/arch/arm/configs/am335x_evm_defconfig
++++ b/arch/arm/configs/am335x_evm_defconfig
+@@ -269,6 +269,7 @@ CONFIG_ARCH_OMAP2PLUS=y
+ # OMAP Feature Selections
+ #
+ # CONFIG_OMAP_SMARTREFLEX is not set
++CONFIG_AM33XX_SMARTREFLEX=y
+ CONFIG_OMAP_RESET_CLOCKS=y
+ CONFIG_OMAP_MUX=y
+ CONFIG_OMAP_MUX_DEBUG=y
+--
+1.7.0.4
