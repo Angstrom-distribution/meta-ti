@@ -31,6 +31,7 @@ IMAGE_INSTALL += " \
 	iproute2 canutils \
 	connman-tests \
 	rsync \
+	kernel-dev \
 "
 
 export IMAGE_BASENAME = "Cloud9-IDE"
