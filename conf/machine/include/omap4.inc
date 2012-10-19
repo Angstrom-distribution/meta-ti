@@ -11,8 +11,9 @@ XSERVER = "xserver-xorg \
            xserver-xorg-extension-dri \
            xserver-xorg-extension-dri2 \
            xserver-xorg-extension-glx \
+           xserver-xorg-module-exa \
            xf86-input-evdev \
-           xf86-video-fbdev" 
+           xf86-video-omap"
 
 # Increase this everytime you change something in the kernel
 MACHINE_KERNEL_PR = "r1"
