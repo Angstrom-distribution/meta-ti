@@ -1,0 +1,34 @@
+From a4f14adcde615d2f6689ed9046464dad8a5465f6 Mon Sep 17 00:00:00 2001
+From: Chase Maupin <Chase.Maupin@ti.com>
+Date: Mon, 21 Nov 2011 07:40:40 -0600
+Subject: [PATCH] omap_hsmmc: make default dto value 14
+
+* It seems that making the dto value makes all the various SD
+  cards work.  If not we will sometimes see -110 errors during
+  boot with certain SD cards.
+* Based on input from Steve Kipisz
+
+Upstream-Status: Pending
+
+Signed-off-by: Chase Maupin <Chase.Maupin@ti.com>
+---
+ drivers/mmc/host/omap_hsmmc.c |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/drivers/mmc/host/omap_hsmmc.c b/drivers/mmc/host/omap_hsmmc.c
+index b5f496d..6985331 100644
+--- a/drivers/mmc/host/omap_hsmmc.c
++++ b/drivers/mmc/host/omap_hsmmc.c
+@@ -1494,6 +1494,9 @@ static void set_data_timeout(struct omap_hsmmc_host *host,
+ 			dto = 14;
+ 	}
+ 
++    // Use 14 by default because this seems to work will with all cards
++    dto = 14;
++
+ 	reg &= ~DTO_MASK;
+ 	reg |= dto << DTO_SHIFT;
+ 	OMAP_HSMMC_WRITE(host->base, SYSCTL, reg);
+-- 
+1.7.0.4
+

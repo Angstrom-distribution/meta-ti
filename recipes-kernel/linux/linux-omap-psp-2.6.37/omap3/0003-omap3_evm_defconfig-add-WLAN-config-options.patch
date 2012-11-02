@@ -1,0 +1,283 @@
+From c49824d3d41982eb6d655f5cc4cc4c7e20d511c4 Mon Sep 17 00:00:00 2001
+From: Chase Maupin <Chase.Maupin@ti.com>
+Date: Mon, 27 Jun 2011 14:06:58 -0500
+Subject: [PATCH 3/3] omap3_evm_defconfig: add WLAN config options
+
+* Added the WLAN config options to be base default configuration.
+
+Upstream-Status: Inappropriate [SDK specific changes]
+
+Signed-off-by: Chase Maupin <Chase.Maupin@ti.com>
+---
+ arch/arm/configs/omap3_evm_defconfig |  167 +++++++++++++++++++++++++++++++--
+ 1 files changed, 156 insertions(+), 11 deletions(-)
+
+diff --git a/arch/arm/configs/omap3_evm_defconfig b/arch/arm/configs/omap3_evm_defconfig
+index 6b9c736..5d44b2d 100644
+--- a/arch/arm/configs/omap3_evm_defconfig
++++ b/arch/arm/configs/omap3_evm_defconfig
+@@ -1,7 +1,7 @@
+ #
+ # Automatically generated make config: don't edit
+ # Linux/arm 2.6.37 Kernel Configuration
+-# Mon Jun 27 13:40:14 2011
++# Tue Jun 28 07:29:21 2011
+ #
+ CONFIG_ARM=y
+ CONFIG_SYS_SUPPORTS_APM_EMULATION=y
+@@ -515,7 +515,123 @@ CONFIG_DEFAULT_TCP_CONG="cubic"
+ # CONFIG_NETLABEL is not set
+ # CONFIG_NETWORK_SECMARK is not set
+ # CONFIG_NETWORK_PHY_TIMESTAMPING is not set
+-# CONFIG_NETFILTER is not set
++CONFIG_NETFILTER=y
++# CONFIG_NETFILTER_DEBUG is not set
++CONFIG_NETFILTER_ADVANCED=y
++
++#
++# Core Netfilter Configuration
++#
++# CONFIG_NETFILTER_NETLINK_QUEUE is not set
++# CONFIG_NETFILTER_NETLINK_LOG is not set
++CONFIG_NF_CONNTRACK=y
++# CONFIG_NF_CONNTRACK_MARK is not set
++# CONFIG_NF_CONNTRACK_EVENTS is not set
++# CONFIG_NF_CT_PROTO_DCCP is not set
++# CONFIG_NF_CT_PROTO_SCTP is not set
++# CONFIG_NF_CT_PROTO_UDPLITE is not set
++# CONFIG_NF_CONNTRACK_AMANDA is not set
++# CONFIG_NF_CONNTRACK_FTP is not set
++# CONFIG_NF_CONNTRACK_H323 is not set
++# CONFIG_NF_CONNTRACK_IRC is not set
++# CONFIG_NF_CONNTRACK_NETBIOS_NS is not set
++# CONFIG_NF_CONNTRACK_PPTP is not set
++# CONFIG_NF_CONNTRACK_SANE is not set
++# CONFIG_NF_CONNTRACK_SIP is not set
++# CONFIG_NF_CONNTRACK_TFTP is not set
++# CONFIG_NF_CT_NETLINK is not set
++CONFIG_NETFILTER_XTABLES=y
++
++#
++# Xtables combined modules
++#
++# CONFIG_NETFILTER_XT_MARK is not set
++# CONFIG_NETFILTER_XT_CONNMARK is not set
++
++#
++# Xtables targets
++#
++# CONFIG_NETFILTER_XT_TARGET_CLASSIFY is not set
++# CONFIG_NETFILTER_XT_TARGET_CONNMARK is not set
++# CONFIG_NETFILTER_XT_TARGET_IDLETIMER is not set
++# CONFIG_NETFILTER_XT_TARGET_MARK is not set
++# CONFIG_NETFILTER_XT_TARGET_NFLOG is not set
++# CONFIG_NETFILTER_XT_TARGET_NFQUEUE is not set
++# CONFIG_NETFILTER_XT_TARGET_RATEEST is not set
++# CONFIG_NETFILTER_XT_TARGET_TEE is not set
++# CONFIG_NETFILTER_XT_TARGET_TCPMSS is not set
++
++#
++# Xtables matches
++#
++# CONFIG_NETFILTER_XT_MATCH_CLUSTER is not set
++# CONFIG_NETFILTER_XT_MATCH_COMMENT is not set
++# CONFIG_NETFILTER_XT_MATCH_CONNBYTES is not set
++# CONFIG_NETFILTER_XT_MATCH_CONNLIMIT is not set
++# CONFIG_NETFILTER_XT_MATCH_CONNMARK is not set
++# CONFIG_NETFILTER_XT_MATCH_CONNTRACK is not set
++# CONFIG_NETFILTER_XT_MATCH_CPU is not set
++# CONFIG_NETFILTER_XT_MATCH_DCCP is not set
++# CONFIG_NETFILTER_XT_MATCH_DSCP is not set
++# CONFIG_NETFILTER_XT_MATCH_ESP is not set
++# CONFIG_NETFILTER_XT_MATCH_HASHLIMIT is not set
++# CONFIG_NETFILTER_XT_MATCH_HELPER is not set
++# CONFIG_NETFILTER_XT_MATCH_HL is not set
++# CONFIG_NETFILTER_XT_MATCH_IPRANGE is not set
++# CONFIG_NETFILTER_XT_MATCH_LENGTH is not set
++# CONFIG_NETFILTER_XT_MATCH_LIMIT is not set
++# CONFIG_NETFILTER_XT_MATCH_MAC is not set
++# CONFIG_NETFILTER_XT_MATCH_MARK is not set
++# CONFIG_NETFILTER_XT_MATCH_MULTIPORT is not set
++# CONFIG_NETFILTER_XT_MATCH_OWNER is not set
++# CONFIG_NETFILTER_XT_MATCH_POLICY is not set
++# CONFIG_NETFILTER_XT_MATCH_PKTTYPE is not set
++# CONFIG_NETFILTER_XT_MATCH_QUOTA is not set
++# CONFIG_NETFILTER_XT_MATCH_RATEEST is not set
++# CONFIG_NETFILTER_XT_MATCH_REALM is not set
++# CONFIG_NETFILTER_XT_MATCH_RECENT is not set
++# CONFIG_NETFILTER_XT_MATCH_SCTP is not set
++# CONFIG_NETFILTER_XT_MATCH_STATE is not set
++# CONFIG_NETFILTER_XT_MATCH_STATISTIC is not set
++# CONFIG_NETFILTER_XT_MATCH_STRING is not set
++# CONFIG_NETFILTER_XT_MATCH_TCPMSS is not set
++# CONFIG_NETFILTER_XT_MATCH_TIME is not set
++# CONFIG_NETFILTER_XT_MATCH_U32 is not set
++# CONFIG_IP_VS is not set
++
++#
++# IP: Netfilter Configuration
++#
++CONFIG_NF_DEFRAG_IPV4=y
++CONFIG_NF_CONNTRACK_IPV4=y
++CONFIG_NF_CONNTRACK_PROC_COMPAT=y
++# CONFIG_IP_NF_QUEUE is not set
++CONFIG_IP_NF_IPTABLES=y
++# CONFIG_IP_NF_MATCH_ADDRTYPE is not set
++# CONFIG_IP_NF_MATCH_AH is not set
++# CONFIG_IP_NF_MATCH_ECN is not set
++# CONFIG_IP_NF_MATCH_TTL is not set
++CONFIG_IP_NF_FILTER=y
++# CONFIG_IP_NF_TARGET_REJECT is not set
++CONFIG_IP_NF_TARGET_LOG=y
++# CONFIG_IP_NF_TARGET_ULOG is not set
++CONFIG_NF_NAT=y
++CONFIG_NF_NAT_NEEDED=y
++CONFIG_IP_NF_TARGET_MASQUERADE=y
++# CONFIG_IP_NF_TARGET_NETMAP is not set
++# CONFIG_IP_NF_TARGET_REDIRECT is not set
++# CONFIG_NF_NAT_SNMP_BASIC is not set
++# CONFIG_NF_NAT_FTP is not set
++# CONFIG_NF_NAT_IRC is not set
++# CONFIG_NF_NAT_TFTP is not set
++# CONFIG_NF_NAT_AMANDA is not set
++# CONFIG_NF_NAT_PPTP is not set
++# CONFIG_NF_NAT_H323 is not set
++# CONFIG_NF_NAT_SIP is not set
++# CONFIG_IP_NF_MANGLE is not set
++# CONFIG_IP_NF_RAW is not set
++# CONFIG_IP_NF_SECURITY is not set
++# CONFIG_IP_NF_ARPTABLES is not set
+ # CONFIG_IP_DCCP is not set
+ # CONFIG_IP_SCTP is not set
+ # CONFIG_RDS is not set
+@@ -548,7 +664,31 @@ CONFIG_DNS_RESOLVER=y
+ # CONFIG_HAMRADIO is not set
+ # CONFIG_CAN is not set
+ # CONFIG_IRDA is not set
+-# CONFIG_BT is not set
++CONFIG_BT=y
++CONFIG_BT_L2CAP=y
++CONFIG_BT_SCO=y
++CONFIG_BT_RFCOMM=y
++CONFIG_BT_RFCOMM_TTY=y
++CONFIG_BT_BNEP=y
++CONFIG_BT_BNEP_MC_FILTER=y
++CONFIG_BT_BNEP_PROTO_FILTER=y
++CONFIG_BT_HIDP=y
++
++#
++# Bluetooth device drivers
++#
++# CONFIG_BT_HCIBTUSB is not set
++# CONFIG_BT_HCIBTSDIO is not set
++CONFIG_BT_HCIUART=y
++CONFIG_BT_HCIUART_H4=y
++# CONFIG_BT_HCIUART_BCSP is not set
++# CONFIG_BT_HCIUART_ATH3K is not set
++CONFIG_BT_HCIUART_LL=y
++# CONFIG_BT_HCIBCM203X is not set
++# CONFIG_BT_HCIBPA10X is not set
++# CONFIG_BT_HCIBFUSB is not set
++# CONFIG_BT_HCIVHCI is not set
++# CONFIG_BT_MRVL is not set
+ # CONFIG_AF_RXRPC is not set
+ CONFIG_WIRELESS=y
+ CONFIG_WIRELESS_EXT=y
+@@ -566,7 +706,8 @@ CONFIG_WIRELESS_EXT_SYSFS=y
+ # Some wireless drivers require a rate control algorithm
+ #
+ # CONFIG_WIMAX is not set
+-# CONFIG_RFKILL is not set
++CONFIG_RFKILL=y
++# CONFIG_RFKILL_INPUT is not set
+ # CONFIG_NET_9P is not set
+ # CONFIG_CAIF is not set
+ # CONFIG_CEPH_LIB is not set
+@@ -851,6 +992,7 @@ CONFIG_USB_EPSON2888=y
+ CONFIG_USB_KC2190=y
+ CONFIG_USB_NET_ZAURUS=y
+ # CONFIG_USB_NET_CX82310_ETH is not set
++# CONFIG_USB_HSO is not set
+ # CONFIG_USB_NET_INT51X1 is not set
+ # CONFIG_USB_IPHETH is not set
+ # CONFIG_USB_SIERRA_NET is not set
+@@ -1278,7 +1420,7 @@ CONFIG_TWL4030_CODEC=y
+ CONFIG_REGULATOR=y
+ # CONFIG_REGULATOR_DEBUG is not set
+ CONFIG_REGULATOR_DUMMY=y
+-# CONFIG_REGULATOR_FIXED_VOLTAGE is not set
++CONFIG_REGULATOR_FIXED_VOLTAGE=y
+ # CONFIG_REGULATOR_VIRTUAL_CONSUMER is not set
+ # CONFIG_REGULATOR_USERSPACE_CONSUMER is not set
+ # CONFIG_REGULATOR_BQ24022 is not set
+@@ -1643,6 +1785,7 @@ CONFIG_USB_HID=y
+ # CONFIG_HID_CYPRESS is not set
+ # CONFIG_HID_DRAGONRISE is not set
+ # CONFIG_HID_EGALAX is not set
++# CONFIG_HID_ELECOM is not set
+ # CONFIG_HID_EZKEY is not set
+ # CONFIG_HID_KYE is not set
+ # CONFIG_HID_UCLOGIC is not set
+@@ -1651,6 +1794,7 @@ CONFIG_USB_HID=y
+ # CONFIG_HID_TWINHAN is not set
+ # CONFIG_HID_KENSINGTON is not set
+ # CONFIG_HID_LOGITECH is not set
++# CONFIG_HID_MAGICMOUSE is not set
+ # CONFIG_HID_MICROSOFT is not set
+ # CONFIG_HID_MOSART is not set
+ # CONFIG_HID_MONTEREY is not set
+@@ -1671,6 +1815,7 @@ CONFIG_USB_HID=y
+ # CONFIG_HID_SMARTJOYPLUS is not set
+ # CONFIG_HID_TOPSEED is not set
+ # CONFIG_HID_THRUSTMASTER is not set
++# CONFIG_HID_WACOM is not set
+ # CONFIG_HID_ZEROPLUS is not set
+ # CONFIG_HID_ZYDACRON is not set
+ CONFIG_USB_SUPPORT=y
+@@ -2286,7 +2431,7 @@ CONFIG_CRYPTO_WORKQUEUE=y
+ CONFIG_CRYPTO_CBC=y
+ # CONFIG_CRYPTO_CTR is not set
+ # CONFIG_CRYPTO_CTS is not set
+-# CONFIG_CRYPTO_ECB is not set
++CONFIG_CRYPTO_ECB=y
+ # CONFIG_CRYPTO_LRW is not set
+ # CONFIG_CRYPTO_PCBC is not set
+ # CONFIG_CRYPTO_XTS is not set
+@@ -2305,7 +2450,7 @@ CONFIG_CRYPTO_CRC32C=y
+ # CONFIG_CRYPTO_GHASH is not set
+ # CONFIG_CRYPTO_MD4 is not set
+ CONFIG_CRYPTO_MD5=y
+-# CONFIG_CRYPTO_MICHAEL_MIC is not set
++CONFIG_CRYPTO_MICHAEL_MIC=y
+ # CONFIG_CRYPTO_RMD128 is not set
+ # CONFIG_CRYPTO_RMD160 is not set
+ # CONFIG_CRYPTO_RMD256 is not set
+@@ -2319,9 +2464,9 @@ CONFIG_CRYPTO_MD5=y
+ #
+ # Ciphers
+ #
+-# CONFIG_CRYPTO_AES is not set
++CONFIG_CRYPTO_AES=y
+ # CONFIG_CRYPTO_ANUBIS is not set
+-# CONFIG_CRYPTO_ARC4 is not set
++CONFIG_CRYPTO_ARC4=y
+ # CONFIG_CRYPTO_BLOWFISH is not set
+ # CONFIG_CRYPTO_CAMELLIA is not set
+ # CONFIG_CRYPTO_CAST5 is not set
+@@ -2367,11 +2512,11 @@ CONFIG_BINARY_PRINTF=y
+ CONFIG_BITREVERSE=y
+ CONFIG_GENERIC_FIND_LAST_BIT=y
+ CONFIG_CRC_CCITT=y
+-# CONFIG_CRC16 is not set
++CONFIG_CRC16=y
+ # CONFIG_CRC_T10DIF is not set
+ # CONFIG_CRC_ITU_T is not set
+ CONFIG_CRC32=y
+-# CONFIG_CRC7 is not set
++CONFIG_CRC7=y
+ CONFIG_LIBCRC32C=y
+ CONFIG_ZLIB_INFLATE=y
+ CONFIG_ZLIB_DEFLATE=y
+-- 
+1.7.0.4
+

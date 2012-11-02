@@ -1,0 +1,29 @@
+From ac7635211d2a5b133bac56fec4b6ed087f553e49 Mon Sep 17 00:00:00 2001
+From: Punya Prakash <pprakash@ti.com>
+Date: Thu, 30 Jun 2011 13:52:18 -0500
+Subject: [PATCH]  mt9t111: enable clock pad register in configuration
+
+* fixes the issue where sensor sync pulses were not generated during first loopback after boot-up
+
+Upstream-Status: Pending
+
+Signed-off-by: Punya Prakash <pprakash@ti.com>
+---
+ drivers/media/video/mt9t111.c |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/drivers/media/video/mt9t111.c b/drivers/media/video/mt9t111.c
+index f18aa24..02c18a5 100644
+--- a/drivers/media/video/mt9t111.c
++++ b/drivers/media/video/mt9t111.c
+@@ -290,6 +290,9 @@ static int mt9t111_configure(struct v4l2_subdev *subdev)
+ 	if (err)
+ 		goto out;
+ 
++	// Enable Clock pad
++	err = mt9t111_write_reg(client, 0x0016, 0x0400);
++
+ 	err = mt9t111_write_regs(client, def_regs1,
+ 			   sizeof(def_regs1) / sizeof(mt9t111_regs));
+ 	if (err)
+-- 
