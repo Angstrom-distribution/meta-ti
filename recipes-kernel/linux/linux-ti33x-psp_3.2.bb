@@ -15,7 +15,7 @@ PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.30", d)}"
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
-MACHINE_KERNEL_PR_append = "g+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "h+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -2186,6 +2186,7 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0096-beaglebone-camera-cape-sensor-orientation-support-fo.patch \
 	file://beaglebone/0097-beaglebone-improve-performance-of-mt9t112-driver-for.patch \
 	file://beaglebone/0098-beaglebone-Remove-optimization-from-square-resolutio.patch \
+	file://beaglebone/0099-beaglebone-fix-DOWN-button-on-LCD4.patch \
 	\
 	file://beaglebone/0001-arm-boot-compressed-default-asm-arch-to-armv7-a.patch \
 	"
