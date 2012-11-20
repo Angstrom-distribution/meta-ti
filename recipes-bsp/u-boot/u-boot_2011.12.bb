@@ -19,7 +19,7 @@ CACHEFIX_omap4 = ""
 FWENV_beagleboard = "file://fw_env.config"
 FWENV = ""
 
-SRC_URI = "git://www.denx.de/git/u-boot.git;protocol=git \
+SRC_URI = "git://git.denx.de/u-boot.git;protocol=git \
            file://2011.12/0001-beagleboard-mount-rootfs-RO-instead-of-RW-at-boot.patch \
            file://2011.12/0002-beagleboard-add-support-for-TCT-Beacon-board.patch \
            file://2011.12/0003-beagleboard-add-support-for-scanning-loop-through-ex.patch \

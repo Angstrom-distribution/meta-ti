@@ -3,7 +3,7 @@ require u-boot.inc
 # No patches for other machines yet
 COMPATIBLE_MACHINE = "(beagleboard)"
 
-SRC_URI = "git://www.denx.de/git/u-boot.git;protocol=git \
+SRC_URI = "git://git.denx.de/u-boot.git;protocol=git \
            file://2011.06/0001-OMAP3-Beagle-Pin-Mux-initialization-glitch-fix.patch \
            file://2011.06/0002-OMAP-Remove-omapfb.debug-y-from-Beagle-and-Overo-env.patch \
            file://2011.06/0003-OMAP3-beagle-pass-expansionboard-name-in-bootargs.patch \

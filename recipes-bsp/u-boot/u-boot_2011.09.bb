@@ -10,7 +10,7 @@ UBOOT_SYMLINK = "u-boot-${MACHINE}.img"
 # No patches for other machines yet
 COMPATIBLE_MACHINE = "(beagleboard)"
 
-SRC_URI = "git://www.denx.de/git/u-boot.git;protocol=git \
+SRC_URI = "git://git.denx.de/u-boot.git;protocol=git \
            file://2011.09/0001-omap3-mem-Comment-enable_gpmc_cs_config-more.patch \
            file://2011.09/0002-OMAP3-Update-SDRC-dram_init-to-always-call-make_cs1_.patch \
            file://2011.09/0003-OMAP3-Add-a-helper-function-to-set-timings-in-SDRC.patch \
