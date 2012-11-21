@@ -1,0 +1,36 @@
+From 732a7c903ad5c300e68b882ff14be0d669f699c9 Mon Sep 17 00:00:00 2001
+From: Koen Kooi <koen@dominion.thruhere.net>
+Date: Wed, 21 Nov 2012 13:38:00 +0100
+Subject: [PATCH] beaglebone: add support for LCD4 LED
+
+Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
+---
+ arch/arm/mach-omap2/board-am335xevm.c |    5 ++++-
+ 1 files changed, 4 insertions(+), 1 deletions(-)
+
+diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
+index d75b9b3..d2b22f8 100644
+--- a/arch/arm/mach-omap2/board-am335xevm.c
++++ b/arch/arm/mach-omap2/board-am335xevm.c
+@@ -1799,7 +1799,7 @@ static struct gpio_led lcd7_gpio_leds[] = {
+ 		.gpio           = BEAGLEBONE_USR4_LED,
+ 	},
+ 	{
+-		.name			= "lcd7::usr",
++		.name			= "lcd::usr",
+ 		.default_trigger	= "heartbeat",
+ 		.gpio			= BEAGLEBONELCD7_USR_LED,
+ 	},
+@@ -3336,6 +3336,9 @@ static void beaglebone_cape_setup(struct memory_accessor *mem_acc, void *context
+ 
+ 			enable_ehrpwm1(0,0);
+ 			setup_pin_mux(ehrpwm1a_pin_mux);
++
++			beaglebone_leds_free = 0;
++			lcd7leds_init(0,0);
+ 		}
+ 	}
+ 	
+-- 
+1.7.7.6
+
