@@ -1,7 +1,7 @@
-From 81ca4844089a80e1b1a285ce661f662a04312e81 Mon Sep 17 00:00:00 2001
+From 75f0e8b5f2e6859155ed9051ec1a12cc52c110b0 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Wed, 23 May 2012 15:51:12 +0200
-Subject: [PATCH 63/79] beaglebone: dvi cape audio hacks
+Subject: [PATCH 63/92] beaglebone: dvi cape audio hacks
 
 ---
  arch/arm/mach-omap2/board-am335xevm.c |   72 ++++++++++++++++++++++++++-------

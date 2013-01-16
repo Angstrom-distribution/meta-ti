@@ -1,7 +1,7 @@
-From 4ec4eca3d419986b16b226d1ebdd2c103077ae07 Mon Sep 17 00:00:00 2001
+From 730552e1c2917ecb5e4cf8d10becdf03c3aabb8b Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Sat, 19 May 2012 11:37:21 +0200
-Subject: [PATCH 50/79] ts_tscadc: switch to 4x oversampling
+Subject: [PATCH 50/92] ts_tscadc: switch to 4x oversampling
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

@@ -1,7 +1,7 @@
-From bd18b67644c8107920db6911aa16be680af23cf1 Mon Sep 17 00:00:00 2001
+From e8110997878f33f93c980c0e2fd54e55450b1d68 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Mon, 28 May 2012 09:56:45 +0200
-Subject: [PATCH 65/79] ti_tscadc: switch to 16x averaging
+Subject: [PATCH 65/92] ti_tscadc: switch to 16x averaging
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

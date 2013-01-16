@@ -1,7 +1,7 @@
-From ff466659529efbbc2d01f1461fe461dc0fdea135 Mon Sep 17 00:00:00 2001
+From 390e9018f0699f8850adeaa8fda10ab47143fc56 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Fri, 18 May 2012 12:17:12 +0200
-Subject: [PATCH 44/79] beaglebone: add support for 7" LCD cape revision A2
+Subject: [PATCH 44/92] beaglebone: add support for 7" LCD cape revision A2
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

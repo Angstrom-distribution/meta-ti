@@ -1,7 +1,7 @@
-From 33182602bad8a5aec644e69d800f5bc5c6604419 Mon Sep 17 00:00:00 2001
+From 3899dc120731c755fdee870f9b101de4bc48f927 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 31 Jan 2012 17:02:10 +0100
-Subject: [PATCH 15/79] beaglebone: enable PWM for lcd backlight <- backlight
+Subject: [PATCH 15/92] beaglebone: enable PWM for lcd backlight <- backlight
  is inverted
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>

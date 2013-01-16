@@ -1,7 +1,7 @@
-From 023eed8b578f4b3ccc992ade8344277f9f9e08d6 Mon Sep 17 00:00:00 2001
+From 4c0199b767ffac0ef5971c9a948838e13e578efb Mon Sep 17 00:00:00 2001
 From: Bas Laarhoven <sjml@xs4all.nl>
 Date: Sun, 13 May 2012 18:16:34 +0200
-Subject: [PATCH 47/79] Adding many of the missing signals to the mux table.
+Subject: [PATCH 47/92] Adding many of the missing signals to the mux table.
 
 Signed-off-by: Bas Laarhoven <sjml@xs4all.nl>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Bas Laarhoven <sjml@xs4all.nl>
  1 file changed, 101 insertions(+), 96 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/mux33xx.c b/arch/arm/mach-omap2/mux33xx.c
-index 25dcedb..26ecd66 100644
+index 30471f0..129b59e 100644
 --- a/arch/arm/mach-omap2/mux33xx.c
 +++ b/arch/arm/mach-omap2/mux33xx.c
 @@ -28,6 +28,11 @@

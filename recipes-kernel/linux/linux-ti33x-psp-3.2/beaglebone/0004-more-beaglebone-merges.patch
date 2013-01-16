@@ -1,7 +1,7 @@
-From e495bd4f47ad3b8f48916582b12ec0bf0a7e7134 Mon Sep 17 00:00:00 2001
+From 76809330ffe3f20807905683ee94a41e18f143d0 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 31 Jan 2012 10:04:03 +0100
-Subject: [PATCH 04/79] more beaglebone merges
+Subject: [PATCH 04/92] more beaglebone merges
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

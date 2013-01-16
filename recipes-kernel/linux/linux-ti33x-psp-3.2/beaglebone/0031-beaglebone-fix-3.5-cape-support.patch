@@ -1,7 +1,7 @@
-From 46f31bc6d2e3c44f0591216db3151408a0d97133 Mon Sep 17 00:00:00 2001
+From 50bc05817084e37c00a7464805b95171a2a5cca9 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 19 Apr 2012 14:33:53 +0200
-Subject: [PATCH 31/79] beaglebone: fix 3.5" cape support
+Subject: [PATCH 31/92] beaglebone: fix 3.5" cape support
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

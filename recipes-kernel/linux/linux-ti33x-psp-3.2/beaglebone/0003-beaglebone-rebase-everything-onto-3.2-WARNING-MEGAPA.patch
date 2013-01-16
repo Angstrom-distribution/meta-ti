@@ -1,7 +1,7 @@
-From 482ed8f98b87299bf77298b86871b4af74334751 Mon Sep 17 00:00:00 2001
+From 765d5262443822aa0fd8f5cd22d423c10cfff9d5 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Mon, 30 Jan 2012 21:30:09 +0100
-Subject: [PATCH 03/79] beaglebone: rebase everything onto 3.2 - WARNING
+Subject: [PATCH 03/92] beaglebone: rebase everything onto 3.2 - WARNING
  MEGAPATCH
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>

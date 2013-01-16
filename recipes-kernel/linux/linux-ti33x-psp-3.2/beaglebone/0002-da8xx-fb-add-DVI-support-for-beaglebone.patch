@@ -1,7 +1,7 @@
-From 30dcf1f8efb223e5b6fc3c049bc8ce3236ec17a0 Mon Sep 17 00:00:00 2001
+From e1f5e9bb7bf6cad19222cb71504c9b627a32946b Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 3 Nov 2011 17:35:50 +0100
-Subject: [PATCH 02/79] da8xx-fb: add DVI support for beaglebone
+Subject: [PATCH 02/92] da8xx-fb: add DVI support for beaglebone
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

@@ -1,7 +1,7 @@
-From f138b1ab42cb36c13926e1cee6ed3cd429d1c91b Mon Sep 17 00:00:00 2001
+From 2eb87e00ebecd63acb09ead17db3c8fc00e47261 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 22 May 2012 12:25:33 +0200
-Subject: [PATCH 61/79] beaglebone: make uart2 pinmux match the uart0 pinmux
+Subject: [PATCH 61/92] beaglebone: make uart2 pinmux match the uart0 pinmux
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

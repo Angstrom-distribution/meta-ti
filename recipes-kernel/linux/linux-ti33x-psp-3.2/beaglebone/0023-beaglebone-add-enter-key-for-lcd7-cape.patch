@@ -1,7 +1,7 @@
-From 1fb7daa57c2079ec42cff0d26336e430fad7946f Mon Sep 17 00:00:00 2001
+From 15ca23da6a1882f018da2f3e7526ab6e33a13d5c Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Mon, 19 Mar 2012 14:26:37 +0100
-Subject: [PATCH 23/79] beaglebone: add enter key for lcd7 cape
+Subject: [PATCH 23/92] beaglebone: add enter key for lcd7 cape
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

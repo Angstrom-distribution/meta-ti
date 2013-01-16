@@ -11,10 +11,6 @@ DEPENDS = "virtual/libx11 libxau libxdmcp libdrm"
 
 PROVIDES += "virtual/egl virtual/libgles1 virtual/libgles2"
 
-RREPLACES_${PN} = "libegl libgles1 libgles2"
-RREPLACES_${PN}-dev = "libegl-dev libgles1-dev libgles2-dev"
-RREPLACES_${PN}-dbg = "libegl-dbg"
-
 SRC_URI = "http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/gfxsdk/${SGXPV}/exports/${BINFILE} \
 		   file://cputype \
 		   file://rc.pvr \

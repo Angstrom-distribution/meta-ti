@@ -1,7 +1,7 @@
-From 87fae6477f8987244e2331dc60001c79e5421e80 Mon Sep 17 00:00:00 2001
+From 835fb92b3cb2f9a2f3f8d49319a3923873b4cc49 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Fri, 7 Oct 2011 15:29:28 +0200
-Subject: [PATCH 01/79] f_rndis: HACK around undefined variables
+Subject: [PATCH 01/92] f_rndis: HACK around undefined variables
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

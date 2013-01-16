@@ -1,7 +1,7 @@
-From e55b5da533e82e6f61c7ccd947623bce7a45ebf9 Mon Sep 17 00:00:00 2001
+From 68e43a9b39544bdf745e53c72aaf64a8ae9f5213 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Sat, 19 May 2012 11:29:14 +0200
-Subject: [PATCH 49/79] ts_tscadc: add defines for 4x and 16x oversampling
+Subject: [PATCH 49/92] ts_tscadc: add defines for 4x and 16x oversampling
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

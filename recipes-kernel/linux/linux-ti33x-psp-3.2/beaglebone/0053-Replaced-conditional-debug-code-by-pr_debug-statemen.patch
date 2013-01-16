@@ -1,7 +1,7 @@
-From 15a5705cf271c9571719d6e5e09e33efba9576b4 Mon Sep 17 00:00:00 2001
+From 21cfe5e8e37d291bff736be1556d37a6bf581c64 Mon Sep 17 00:00:00 2001
 From: Bas Laarhoven <sjml@xs4all.nl>
 Date: Mon, 14 May 2012 14:31:37 +0200
-Subject: [PATCH 53/79] Replaced conditional debug code by pr_debug statements
+Subject: [PATCH 53/92] Replaced conditional debug code by pr_debug statements
  for cleaner code.
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>

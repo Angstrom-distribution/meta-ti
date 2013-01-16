@@ -1,7 +1,7 @@
-From d79d7b027fa6f411a64d65d56d0421cde619f43c Mon Sep 17 00:00:00 2001
+From b337ee51f38b92de8b9f735aa5a6578f97fc24d8 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 17 Apr 2012 12:57:38 +0200
-Subject: [PATCH 29/79] beaglebone: also report cape revision
+Subject: [PATCH 29/92] beaglebone: also report cape revision
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

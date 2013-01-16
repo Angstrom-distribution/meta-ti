@@ -1,7 +1,7 @@
-From fe280a351fe71d5f1ade1aa3b8f9edc08e201ec1 Mon Sep 17 00:00:00 2001
+From 5f0c956c182cd6a4627659836b15cc4848a53025 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 22 May 2012 10:58:53 +0200
-Subject: [PATCH 58/79] beaglebone: annotate default beaglebone pinmux
+Subject: [PATCH 58/92] beaglebone: annotate default beaglebone pinmux
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

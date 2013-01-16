@@ -1,7 +1,8 @@
-From a0a3563affbbebd9c7385586e1d6031de82c2a83 Mon Sep 17 00:00:00 2001
+From abfabde24b8c1a69ea911efbefda89127b7bd67a Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan at linux.intel.com>
 Date: Fri, 26 Nov 2010 12:18:03 -0800
-Subject: [PATCH] vfs: Add a trace point in the mark_inode_dirty function
+Subject: [PATCH 80/92] vfs: Add a trace point in the mark_inode_dirty
+ function
 
 PowerTOP would like to be able to show who is keeping the disk
 busy by dirtying data. The most logical spot for this is in the vfs
@@ -20,7 +21,7 @@ for later on after a transition time.
  fs/fs-writeback.c                |    3 +++
  include/linux/fs.h               |   12 ++++++++++++
  include/trace/events/writeback.h |   28 ++++++++++++++++++++++++++++
- 3 files changed, 43 insertions(+)
+ 3 files changed, 43 insertions(+), 0 deletions(-)
 
 diff --git a/fs/fs-writeback.c b/fs/fs-writeback.c
 index 54f5786..981ec8c 100644
@@ -37,10 +38,10 @@ index 54f5786..981ec8c 100644
  		block_dump___mark_inode_dirty(inode);
  
 diff --git a/include/linux/fs.h b/include/linux/fs.h
-index 43d36b7..a3e46ee 100644
+index 29b6353..3d80b22 100644
 --- a/include/linux/fs.h
 +++ b/include/linux/fs.h
-@@ -1759,6 +1759,18 @@ struct super_operations {
+@@ -1763,6 +1763,18 @@ struct super_operations {
  
  #define I_DIRTY (I_DIRTY_SYNC | I_DIRTY_DATASYNC | I_DIRTY_PAGES)
  
@@ -99,5 +100,5 @@ index 1f48f14..8053e75 100644
  
  	TP_PROTO(struct inode *inode,
 -- 
-1.7.10
+1.7.7.6
 

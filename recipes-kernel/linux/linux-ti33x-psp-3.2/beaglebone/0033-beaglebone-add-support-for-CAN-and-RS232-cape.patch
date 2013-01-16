@@ -1,7 +1,7 @@
-From f9b6989bb732e354c174da80052abbba49f238dd Mon Sep 17 00:00:00 2001
+From 14001c2a104e65f2dfef17db1742750b13e8b1d1 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Fri, 4 May 2012 13:19:45 +0200
-Subject: [PATCH 33/79] beaglebone: add support for CAN and RS232 cape
+Subject: [PATCH 33/92] beaglebone: add support for CAN and RS232 cape
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

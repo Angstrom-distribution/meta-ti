@@ -1,7 +1,7 @@
-From b1a945344e6abd9bb9f33e9a8dadb8ac22ed2422 Mon Sep 17 00:00:00 2001
+From fc34ea9cfd711008efa4c17eac92310a88180435 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Fri, 18 May 2012 12:58:16 +0200
-Subject: [PATCH 46/79] beaglebone: add stub for the camera cape to disable
+Subject: [PATCH 46/92] beaglebone: add stub for the camera cape to disable
  w1-gpio
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>

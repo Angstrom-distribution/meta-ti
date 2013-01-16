@@ -1,7 +1,7 @@
-From 8d8ad2973b9d062763f51f1bee0652a6647033a5 Mon Sep 17 00:00:00 2001
+From 7ba1f21cb4a1dfdd97808c3b6fbd5b9f7459deaf Mon Sep 17 00:00:00 2001
 From: Bas Laarhoven <sjml@xs4all.nl>
 Date: Mon, 14 May 2012 15:07:43 +0200
-Subject: [PATCH 55/79] Workaround for EEPROM contents blocking further I2C
+Subject: [PATCH 55/92] Workaround for EEPROM contents blocking further I2C
  bus access.
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>

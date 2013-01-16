@@ -1,7 +1,7 @@
-From bc8957c4a563945781b0e3c41f5a8068d88122f9 Mon Sep 17 00:00:00 2001
+From 738cceed134b8aa1f8b376f8e0bb9e3640c15a6f Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Mon, 19 Mar 2012 13:32:43 +0100
-Subject: [PATCH 22/79] beaglebone: add gpio-keys for lcd7, add notes for
+Subject: [PATCH 22/92] beaglebone: add gpio-keys for lcd7, add notes for
  missing functionality for other capes
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>

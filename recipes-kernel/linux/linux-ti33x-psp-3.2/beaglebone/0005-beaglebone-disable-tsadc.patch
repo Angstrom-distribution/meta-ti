@@ -1,7 +1,7 @@
-From fd6ae50df7aee160e23cce68bf5c0fd223f2700a Mon Sep 17 00:00:00 2001
+From 5def37731548f57f62ebca5d2057ae9aee842df1 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 31 Jan 2012 10:09:06 +0100
-Subject: [PATCH 05/79] beaglebone: disable tsadc
+Subject: [PATCH 05/92] beaglebone: disable tsadc
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

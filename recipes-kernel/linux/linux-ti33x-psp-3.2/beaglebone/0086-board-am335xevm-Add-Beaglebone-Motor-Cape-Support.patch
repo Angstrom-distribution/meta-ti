@@ -1,7 +1,7 @@
-From 4184217cda11245823527d7b3b65fcb9eeb88c6a Mon Sep 17 00:00:00 2001
+From f59c7e02ac1b0a3d7aa47dd175a0c0d09ef753cc Mon Sep 17 00:00:00 2001
 From: Roger Monk <r-monk@ti.com>
 Date: Mon, 13 Aug 2012 21:44:49 +0100
-Subject: [PATCH 86/87] board-am335xevm: Add Beaglebone Motor Cape Support
+Subject: [PATCH 86/92] board-am335xevm: Add Beaglebone Motor Cape Support
 
    * Beaglebone Motor Cape adds 4 DRV8833 devices connected to
      the 8 PWM outputs on the beaglebone allowing 8 DC Motors or

@@ -1,7 +1,7 @@
-From bb7bebd5eb51467ff920773cc8dd321102b8d528 Mon Sep 17 00:00:00 2001
+From 671c8e697f8e31b77d7d1ded017edce4717eaf3b Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Thu, 19 Apr 2012 07:55:55 +0200
-Subject: [PATCH 30/79] beaglebone: don't compare undefined characters, it
+Subject: [PATCH 30/92] beaglebone: don't compare undefined characters, it
  makes strncomp fail
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>

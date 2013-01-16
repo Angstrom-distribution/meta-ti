@@ -1,7 +1,7 @@
-From 1fcc4aabf4fa4ffe4ebfbfe4adbce3913389a0a0 Mon Sep 17 00:00:00 2001
+From ce561c80b10c1217089b872389e72245ca7bf048 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 7 Feb 2012 11:01:13 +0100
-Subject: [PATCH 19/79] beaglebone: use P8_6 (gpio1_3) as w1 bus
+Subject: [PATCH 19/92] beaglebone: use P8_6 (gpio1_3) as w1 bus
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

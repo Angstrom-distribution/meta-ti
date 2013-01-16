@@ -1,7 +1,7 @@
-From d434e8f8c1fec1f10d2475a014ed26d4e5bc8579 Mon Sep 17 00:00:00 2001
+From 96333d400ef208c65054e1fcf05f77cd951751b0 Mon Sep 17 00:00:00 2001
 From: Joel A Fernandes <joelagnel@ti.com>
 Date: Wed, 30 Nov 2011 15:00:40 +0100
-Subject: [PATCH 06/79] tscadc: Add general purpose mode, untested with
+Subject: [PATCH 06/92] tscadc: Add general purpose mode, untested with
  touchscreen functionality
 
 Signed-off-by: Joel A Fernandes <joelagnel@ti.com>
@@ -39,7 +39,7 @@ index ba611c0..8f7ee0b 100644
  };
  
 diff --git a/arch/arm/mach-omap2/mux33xx.c b/arch/arm/mach-omap2/mux33xx.c
-index 59e51e0..572ed16 100644
+index 5749d20..23391ef 100644
 --- a/arch/arm/mach-omap2/mux33xx.c
 +++ b/arch/arm/mach-omap2/mux33xx.c
 @@ -584,6 +584,18 @@ static struct omap_mux __initdata am33xx_muxmodes[] = {

@@ -1,7 +1,7 @@
-From 5ef54fcdbb6f2cee36b88ed04ea7c3d604702659 Mon Sep 17 00:00:00 2001
+From 6858dc479f60d75dae5a25f1d5aba4f8974b52f7 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Wed, 1 Feb 2012 14:10:38 +0100
-Subject: [PATCH 17/79] beaglebone: set default brightness to 50% for pwm
+Subject: [PATCH 17/92] beaglebone: set default brightness to 50% for pwm
  backlights
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>

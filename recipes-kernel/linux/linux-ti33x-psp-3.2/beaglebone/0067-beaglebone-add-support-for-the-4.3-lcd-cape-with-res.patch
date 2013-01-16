@@ -1,7 +1,7 @@
-From 8652d1a5b1a191a460de6b7214168dc77b6ceeb1 Mon Sep 17 00:00:00 2001
+From 3ff2c26e738dc82e941849febe6a092531a8bd72 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 29 May 2012 14:12:44 +0200
-Subject: [PATCH 67/79] beaglebone: add support for the 4.3" lcd cape with
+Subject: [PATCH 67/92] beaglebone: add support for the 4.3" lcd cape with
  resistive touchscreen
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>

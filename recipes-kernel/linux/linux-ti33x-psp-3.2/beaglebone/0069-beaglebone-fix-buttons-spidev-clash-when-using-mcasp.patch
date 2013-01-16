@@ -1,7 +1,7 @@
-From dbe62e3346ee4423a2d3c83e6390ef39c2a0a0bf Mon Sep 17 00:00:00 2001
+From 2b738fa65c98c3b760c2a1b08f24ecae5e7553ae Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Wed, 6 Jun 2012 11:20:21 +0200
-Subject: [PATCH 69/79] beaglebone: fix buttons/spidev clash when using
+Subject: [PATCH 69/92] beaglebone: fix buttons/spidev clash when using
  mcasp0_axr0.gpio3_16
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>

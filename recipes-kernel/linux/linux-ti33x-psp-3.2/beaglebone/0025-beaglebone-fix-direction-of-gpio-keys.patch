@@ -1,7 +1,7 @@
-From a9f029372abbaef2e9f55e2be728ae8bbc54bdaa Mon Sep 17 00:00:00 2001
+From b771f61af52d689725756cd4ff6e12a7513a3b85 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Mon, 26 Mar 2012 20:28:56 +0200
-Subject: [PATCH 25/79] beaglebone: fix direction of gpio-keys
+Subject: [PATCH 25/92] beaglebone: fix direction of gpio-keys
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

@@ -1,7 +1,7 @@
-From 44bfbc3cbd6ddc95db9a886744582ffddb79fe47 Mon Sep 17 00:00:00 2001
+From bc402d5d97d1bb3e243014443b95f7f513fab74e Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 24 Jul 2012 13:23:28 +0200
-Subject: [PATCH 81/84] beaglebone: add support for LCD7 A3
+Subject: [PATCH 81/92] beaglebone: add support for LCD7 A3
 
 ---
  arch/arm/mach-omap2/board-am335xevm.c |   93 ++++++++++++++++++++++++++++++++-

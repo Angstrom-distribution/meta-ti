@@ -1,7 +1,7 @@
-From 0bbf782ac6c97d57990886959838a6f7ed296b3a Mon Sep 17 00:00:00 2001
+From caff032c55e54c299e6029893659f3383d29d41f Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Mon, 14 May 2012 14:23:45 +0200
-Subject: [PATCH 40/79] beaglebone: export SPI2 as spidev when no capes are
+Subject: [PATCH 40/92] beaglebone: export SPI2 as spidev when no capes are
  using SPI
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>

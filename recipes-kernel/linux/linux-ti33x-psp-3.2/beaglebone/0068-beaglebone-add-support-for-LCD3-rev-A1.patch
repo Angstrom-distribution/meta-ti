@@ -1,7 +1,7 @@
-From 590a240f4bb7c6eeda5d11c9040821a71edefc53 Mon Sep 17 00:00:00 2001
+From 4d311a23d74528cf681d0e5ce3bf78638a8c7844 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Mon, 4 Jun 2012 14:38:02 +0200
-Subject: [PATCH 68/79] beaglebone: add support for LCD3 rev A1
+Subject: [PATCH 68/92] beaglebone: add support for LCD3 rev A1
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

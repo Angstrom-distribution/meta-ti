@@ -1,7 +1,7 @@
-From b199c282abaee2188141c0885198466e8028f181 Mon Sep 17 00:00:00 2001
+From e2bf9a244b58a7a885e3582b89b6b10b13ab067c Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 17 Apr 2012 11:25:00 +0200
-Subject: [PATCH 27/79] beaglebone: decrease PWM frequency to old value, LCD7
+Subject: [PATCH 27/92] beaglebone: decrease PWM frequency to old value, LCD7
  doesn't like it
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>

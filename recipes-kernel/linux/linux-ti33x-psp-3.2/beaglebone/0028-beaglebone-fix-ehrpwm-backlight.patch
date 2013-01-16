@@ -1,7 +1,7 @@
-From 4456663edfc37d478da19c13683b9e58833ca997 Mon Sep 17 00:00:00 2001
+From 1c7973a67e8048b9a6b879a4f0007406951a1dbd Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 17 Apr 2012 12:35:01 +0200
-Subject: [PATCH 28/79] beaglebone: fix ehrpwm backlight
+Subject: [PATCH 28/92] beaglebone: fix ehrpwm backlight
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>
 ---

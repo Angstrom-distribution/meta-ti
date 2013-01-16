@@ -1,7 +1,7 @@
-From ae7ecbfa459730344eeb559ce0352662c540289c Mon Sep 17 00:00:00 2001
+From 567f24d3d2cc57bee4e7d6ecf48b08548ad036d4 Mon Sep 17 00:00:00 2001
 From: Bas Laarhoven <sjml@xs4all.nl>
 Date: Tue, 15 May 2012 10:00:47 +0200
-Subject: [PATCH 56/79] Added check on EEPROM revision to prevent interpreting
+Subject: [PATCH 56/92] Added check on EEPROM revision to prevent interpreting
  unknown formats.
 
 Signed-off-by: Koen Kooi <koen@dominion.thruhere.net>

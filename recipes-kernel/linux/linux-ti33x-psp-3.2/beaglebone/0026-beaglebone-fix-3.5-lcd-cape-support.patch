@@ -1,7 +1,7 @@
-From 6f82ce8b4cd239aa7b262e0a0b62d42545b9d21b Mon Sep 17 00:00:00 2001
+From 13408d27132ecf6cc0467dfa170bd41c9cd1ef26 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Wed, 29 Feb 2012 17:25:22 +0100
-Subject: [PATCH 26/79] beaglebone: fix 3.5" lcd cape support
+Subject: [PATCH 26/92] beaglebone: fix 3.5" lcd cape support
 
 * proper timings
 * fix gpio conflict
