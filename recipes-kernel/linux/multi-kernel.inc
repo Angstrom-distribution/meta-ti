@@ -95,6 +95,8 @@ do_compileconfigs () {
 
       # Restore the regular 'defconfig'
       cp ${WORKDIR}/defconfig.save ${WORKDIR}/defconfig
+      cd ${S}
+      do_configure
     fi
 }
 
