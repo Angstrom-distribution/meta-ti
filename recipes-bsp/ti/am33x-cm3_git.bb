@@ -3,8 +3,8 @@ DESCRIPTION = "Cortex-M3 binary blob for suspend-resume"
 LICENSE = "TI-BSD"
 LIC_FILES_CHKSUM = "file://License.txt;md5=858099c817e47ea63559fc6b67ae8d91"
 
-PV = "04.06.00.07"
-SRCREV = "cf07b841d6e8c5e026eecb259d143f3dff412c8e"
+PV = "04.06.00.09"
+SRCREV = "c110752cfefa1f3d75403755a3680c8742f4d88d"
 
 SRC_URI = "git://arago-project.org/git/projects/am33x-cm3.git"
 
