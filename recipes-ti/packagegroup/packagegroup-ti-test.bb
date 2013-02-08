@@ -19,6 +19,5 @@ TI_TEST = "\
 
 RDEPENDS_${PN} = "\
     ${TEST} \
-    ${TI_TEST} \
     "
 
