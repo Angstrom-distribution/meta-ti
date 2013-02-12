@@ -1,0 +1,31 @@
+From 55161fca67023d6be30bdea495cc0fdbae316a64 Mon Sep 17 00:00:00 2001
+From: Tom Rini <trini@ti.com>
+Date: Wed, 9 Nov 2011 11:48:21 -0700
+Subject: [PATCH 1/4] OMAP3 Beagle: Set BOOTDELAY to 3
+
+This is TI Sitara SDK specific (unified user experience, 3s delay).
+
+Upstream-Status: Pending
+    * This will be submitted upstream by Tom Rini
+
+Signed-off-by: Tom Rini <trini@ti.com>
+---
+ include/configs/omap3_beagle.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index 58a29b8..ba73aa6 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -213,7 +213,7 @@
+ 							/* partition */
+ 
+ /* Environment information */
+-#define CONFIG_BOOTDELAY		2
++#define CONFIG_BOOTDELAY		3
+ 
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"loadaddr=0x80200000\0" \
+-- 
+1.7.0.4
+

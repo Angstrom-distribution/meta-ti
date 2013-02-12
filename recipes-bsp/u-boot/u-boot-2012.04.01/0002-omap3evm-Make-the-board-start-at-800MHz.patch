@@ -1,0 +1,36 @@
+From a0f4f7b85d004db36a24cc05e9c34f137186270b Mon Sep 17 00:00:00 2001
+From: Chase Maupin <Chase.Maupin@ti.com>
+Date: Wed, 23 May 2012 09:25:06 -0500
+Subject: [PATCH 2/3] omap3evm: Make the board start at 800MHz
+
+* It is safe to start the the 3630 silicon at 800MHz for all
+  revisions.  Go ahead and bump the speed to 800MHz during boot
+  instead of using the default 500MHz speed.
+* This patch was based on work by Tom Rini <trini@ti.com> at
+  http://arago-project.org/git/projects/?p=u-boot-am33x.git;a=commit;h=ad130035df754931f2939902e453cc3736412f5f
+
+Upstream-Status: Pending
+    * Will be submitted upstream since it is safe for all silicon
+      revisions to boot at 800MHz according to HW team.
+
+Signed-off-by: Chase Maupin <Chase.Maupin@ti.com>
+---
+ board/ti/evm/evm.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/board/ti/evm/evm.c b/board/ti/evm/evm.c
+index 91eb93d..0d0b4a2 100644
+--- a/board/ti/evm/evm.c
++++ b/board/ti/evm/evm.c
+@@ -180,7 +180,7 @@ int misc_init_r(void)
+ 
+         if (get_cpu_family() == CPU_OMAP36XX) {
+    		twl4030_power_mpu_init();
+-	        set_mpu_clk(500);
++	        set_mpu_clk(800);
+ 	}
+ 	return 0;
+ }
+-- 
+1.7.0.4
+

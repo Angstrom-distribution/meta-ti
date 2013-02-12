@@ -1,0 +1,34 @@
+From 372d110126f37f9f8b7d4bbedd3f02cf80e587de Mon Sep 17 00:00:00 2001
+From: Tom Rini <trini@ti.com>
+Date: Wed, 30 Nov 2011 16:16:21 -0700
+Subject: [PATCH 3/3] beagleboard: Make xM rev C go to 800MHz
+
+* This is the highest frequency supported on xM without BIAS
+  drivers.
+
+Upstream-Status: Pending
+    * Will be submitted upstream since it is safe for all silicon
+      revisions to boot at 800MHz according to HW team.
+
+Signed-off-by: Tom Rini <trini@ti.com>
+---
+ board/ti/beagle/beagle.c |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/board/ti/beagle/beagle.c b/board/ti/beagle/beagle.c
+index e26b387..69a7b4e 100644
+--- a/board/ti/beagle/beagle.c
++++ b/board/ti/beagle/beagle.c
+@@ -346,6 +346,9 @@ int misc_init_r(void)
+ 					TWL4030_PM_RECEIVER_VAUX2_VSEL_18,
+ 					TWL4030_PM_RECEIVER_VAUX2_DEV_GRP,
+ 					TWL4030_PM_RECEIVER_DEV_GRP_P1);
++		/* 800MHz support */
++		twl4030_power_mpu_init();
++		set_mpu_clk(800);
+ 		break;
+ 	default:
+ 		printf("Beagle unknown 0x%02x\n", get_board_revision());
+-- 
+1.7.0.4
+

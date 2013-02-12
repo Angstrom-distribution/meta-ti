@@ -1,0 +1,57 @@
+From 715afb049d2675106e26c5225e7e321374c32f85 Mon Sep 17 00:00:00 2001
+From: Tom Rini <trini@ti.com>
+Date: Thu, 17 Nov 2011 16:54:01 -0700
+Subject: [PATCH 4/4] beagleboard: Load uImage to the default kernel linux address
+
+This is TI Sitara SDK specific (unified user experience, load uImage
+to an 'XIP' location).
+
+Upstream-Status: Pending
+    * This functionality is being discussed upstream and there
+      is not a concensus yet.
+
+Signed-off-by: Tom Rini <trini@ti.com>
+---
+ include/configs/omap3_beagle.h |   13 +++++++------
+ 1 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index ea62580..00b2abe 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -219,6 +219,7 @@
+ 
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"loadaddr=0x80200000\0" \
++	"kloadaddr=0x80007fc0\0" \
+ 	"rdaddr=0x81000000\0" \
+ 	"usbtty=cdc_acm\0" \
+ 	"usbethaddr=de:ad:be:ef\0" \
+@@ -272,18 +273,18 @@
+ 		"root=${ramroot} " \
+ 		"rootfstype=${ramrootfstype}\0" \
+ 	"loadramdisk=fatload mmc ${mmcdev} ${rdaddr} ramdisk.gz\0" \
+-	"loaduimagefat=fatload mmc ${mmcdev} ${loadaddr} uImage\0" \
+-	"loaduimage=ext2load mmc ${mmcdev}:2 ${loadaddr} /boot/uImage\0" \
++	"loaduimagefat=fatload mmc ${mmcdev} ${kloadaddr} uImage\0" \
++	"loaduimage=ext2load mmc ${mmcdev}:2 ${kloadaddr} /boot/uImage\0" \
+ 	"mmcboot=echo Booting from mmc ...; " \
+ 		"run mmcargs; " \
+-		"bootm ${loadaddr}\0" \
++		"bootm ${kloadaddr}\0" \
+ 	"nandboot=echo Booting from nand ...; " \
+ 		"run nandargs; " \
+-		"nand read ${loadaddr} 280000 400000; " \
+-		"bootm ${loadaddr}\0" \
++		"nand read ${kloadaddr} 280000 400000; " \
++		"bootm ${kloadaddr}\0" \
+ 	"ramboot=echo Booting from ramdisk ...; " \
+ 		"run ramargs; " \
+-		"bootm ${loadaddr}\0" \
++		"bootm ${kloadaddr}\0" \
+ 	"userbutton=if gpio input 173; then run userbutton_xm; " \
+ 		"else run userbutton_nonxm; fi;\0" \
+ 	"userbutton_xm=gpio input 4;\0" \
+-- 
+1.7.0.4
+

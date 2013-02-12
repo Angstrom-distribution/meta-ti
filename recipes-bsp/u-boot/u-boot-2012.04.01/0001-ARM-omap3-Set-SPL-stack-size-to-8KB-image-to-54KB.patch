@@ -1,0 +1,172 @@
+From e0820ccc38315d88192c19e98ea9b59d3ec7d4c8 Mon Sep 17 00:00:00 2001
+From: Tom Rini <trini@ti.com>
+Date: Tue, 8 May 2012 07:29:31 +0000
+Subject: [PATCH] ARM: omap3: Set SPL stack size to 8KB, image to 54KB.
+
+With older toolchains it is possible to not fit entirely into the 45KB
+that we had assigned to SPL.  Adjust to allow for 8KB of stack (which
+should be more than required) and 54KB of text/data.
+
+Cc: Vaibhav Hiremath <hvaibhav@ti.com>
+Cc: Nagendra T S <nagendra@mistralsolutions.com>
+Cc: Thomas Weber <weber@corscience.de>
+Cc: Ilya Yanok <yanok@emcraft.com>
+Cc: Steve Sakoman <sakoman@gmail.com>
+Cc: Stefano Babic <sbabic@denx.de>
+Signed-off-by: Tom Rini <trini@ti.com>
+Acked-by: Stefano Babic <sbabic@denx.de>
+Acked-by: Vaibhav Hiremath <hvaibhav@ti.com>
+---
+ doc/SPL/README.omap3               |    4 ++--
+ include/configs/am3517_crane.h     |    2 +-
+ include/configs/am3517_evm.h       |    2 +-
+ include/configs/devkit8000.h       |    2 +-
+ include/configs/mcx.h              |    2 +-
+ include/configs/omap3_beagle.h     |    2 +-
+ include/configs/omap3_evm_common.h |    2 +-
+ include/configs/omap3_overo.h      |    2 +-
+ include/configs/tam3517-common.h   |    2 +-
+ include/configs/tricorder.h        |    2 +-
+ 10 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/doc/SPL/README.omap3 b/doc/SPL/README.omap3
+index cc5d5c0..a543e65 100644
+--- a/doc/SPL/README.omap3
++++ b/doc/SPL/README.omap3
+@@ -34,14 +34,14 @@ DDR1: 0x80000000 - 0xBFFFFFFF
+ 
+ Option 1 (SPL only):
+ 0x40200800 - 0x4020BBFF: Area for SPL text, data and rodata
+-0x4020BC00 - 0x4020FFFC: Area for the SPL stack.
++0x4020E000 - 0x4020FFFC: Area for the SPL stack.
+ 0x80000000 - 0x8007FFFF: Area for the SPL BSS.
+ 0x80100000: CONFIG_SYS_TEXT_BASE of U-Boot
+ 0x80208000 - 0x80307FFF: malloc() pool available to SPL.
+ 
+ Option 2 (SPL or X-Loader):
+ 0x40200800 - 0x4020BBFF: Area for SPL text, data and rodata
+-0x4020BC00 - 0x4020FFFC: Area for the SPL stack.
++0x4020E000 - 0x4020FFFC: Area for the SPL stack.
+ 0x80008000: CONFIG_SYS_TEXT_BASE of U-Boot
+ 0x87000000 - 0x8707FFFF: Area for the SPL BSS.
+ 0x87080000 - 0x870FFFFF: malloc() pool available to SPL.
+diff --git a/include/configs/am3517_crane.h b/include/configs/am3517_crane.h
+index 71321f3..1233985 100644
+--- a/include/configs/am3517_crane.h
++++ b/include/configs/am3517_crane.h
+@@ -325,7 +325,7 @@
+ #define CONFIG_SPL
+ #define CONFIG_SPL_NAND_SIMPLE
+ #define CONFIG_SPL_TEXT_BASE		0x40200800
+-#define CONFIG_SPL_MAX_SIZE		(45 * 1024)
++#define CONFIG_SPL_MAX_SIZE		(54 * 1024)	/* 8 KB for stack */
+ #define CONFIG_SPL_STACK		LOW_LEVEL_SRAM_STACK
+ 
+ #define CONFIG_SPL_BSS_START_ADDR	0x80000000
+diff --git a/include/configs/am3517_evm.h b/include/configs/am3517_evm.h
+index bbd19de..ff8d1b0 100644
+--- a/include/configs/am3517_evm.h
++++ b/include/configs/am3517_evm.h
+@@ -324,7 +324,7 @@
+ #define CONFIG_SPL
+ #define CONFIG_SPL_NAND_SIMPLE
+ #define CONFIG_SPL_TEXT_BASE		0x40200800
+-#define CONFIG_SPL_MAX_SIZE		(45 * 1024)
++#define CONFIG_SPL_MAX_SIZE		(54 * 1024)	/* 8 KB for stack */
+ #define CONFIG_SPL_STACK		LOW_LEVEL_SRAM_STACK
+ 
+ #define CONFIG_SPL_BSS_START_ADDR	0x80000000
+diff --git a/include/configs/devkit8000.h b/include/configs/devkit8000.h
+index eb7c376..248a5b2 100644
+--- a/include/configs/devkit8000.h
++++ b/include/configs/devkit8000.h
+@@ -324,7 +324,7 @@
+ #define CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_SECTOR 0x300 /* address 0x60000 */
+ 
+ #define CONFIG_SPL_TEXT_BASE		0x40200000 /*CONFIG_SYS_SRAM_START*/
+-#define CONFIG_SPL_MAX_SIZE		0xB400  /* 45 K */
++#define CONFIG_SPL_MAX_SIZE		(54 * 1024)	/* 8 KB for stack */
+ #define CONFIG_SPL_STACK		LOW_LEVEL_SRAM_STACK
+ 
+ #define CONFIG_SPL_BSS_START_ADDR       0x80000500 /* leave space for bootargs*/
+diff --git a/include/configs/mcx.h b/include/configs/mcx.h
+index e190e3e..f6a83a8 100644
+--- a/include/configs/mcx.h
++++ b/include/configs/mcx.h
+@@ -325,7 +325,7 @@
+ #define CONFIG_SPL_LDSCRIPT		"$(CPUDIR)/omap-common/u-boot-spl.lds"
+ 
+ #define CONFIG_SPL_TEXT_BASE		0x40200000 /*CONFIG_SYS_SRAM_START*/
+-#define CONFIG_SPL_MAX_SIZE		(45 << 10)
++#define CONFIG_SPL_MAX_SIZE		(54 * 1024)	/* 8 KB for stack */
+ #define CONFIG_SPL_STACK		LOW_LEVEL_SRAM_STACK
+ 
+ /* move malloc and bss high to prevent clashing with the main image */
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index ddeb414..6bdc2c3 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -399,7 +399,7 @@
+ #define CONFIG_SPL
+ #define CONFIG_SPL_NAND_SIMPLE
+ #define CONFIG_SPL_TEXT_BASE		0x40200800
+-#define CONFIG_SPL_MAX_SIZE		(45 * 1024)
++#define CONFIG_SPL_MAX_SIZE		(54 * 1024)	/* 8 KB for stack */
+ #define CONFIG_SPL_STACK		LOW_LEVEL_SRAM_STACK
+ 
+ #define CONFIG_SPL_BSS_START_ADDR	0x80000000
+diff --git a/include/configs/omap3_evm_common.h b/include/configs/omap3_evm_common.h
+index 4910dda..47ebbef 100644
+--- a/include/configs/omap3_evm_common.h
++++ b/include/configs/omap3_evm_common.h
+@@ -282,7 +282,7 @@
+ /* Defines for SPL */
+ #define CONFIG_SPL
+ #define CONFIG_SPL_TEXT_BASE		0x40200800
+-#define CONFIG_SPL_MAX_SIZE		(45 * 1024)	/* 45 KB */
++#define CONFIG_SPL_MAX_SIZE		(54 * 1024)	/* 8 KB for stack */
+ #define CONFIG_SPL_STACK		LOW_LEVEL_SRAM_STACK
+ 
+ #define CONFIG_SPL_BSS_START_ADDR	0x80000000
+diff --git a/include/configs/omap3_overo.h b/include/configs/omap3_overo.h
+index 64adc74..b0d144f 100644
+--- a/include/configs/omap3_overo.h
++++ b/include/configs/omap3_overo.h
+@@ -303,7 +303,7 @@
+ #define CONFIG_SPL
+ #define CONFIG_SPL_NAND_SIMPLE
+ #define CONFIG_SPL_TEXT_BASE		0x40200800
+-#define CONFIG_SPL_MAX_SIZE		(45 * 1024)
++#define CONFIG_SPL_MAX_SIZE		(54 * 1024)	/* 8 KB for stack */
+ #define CONFIG_SPL_STACK		LOW_LEVEL_SRAM_STACK
+ 
+ /* move malloc and bss high to prevent clashing with the main image */
+diff --git a/include/configs/tam3517-common.h b/include/configs/tam3517-common.h
+index 37eb87b..3fc2c44 100644
+--- a/include/configs/tam3517-common.h
++++ b/include/configs/tam3517-common.h
+@@ -257,7 +257,7 @@
+ #define CONFIG_SPL_LDSCRIPT		"$(CPUDIR)/omap-common/u-boot-spl.lds"
+ 
+ #define CONFIG_SPL_TEXT_BASE		0x40200000 /*CONFIG_SYS_SRAM_START*/
+-#define CONFIG_SPL_MAX_SIZE		(45 << 10)	/* 45 K */
++#define CONFIG_SPL_MAX_SIZE		(54 * 1024)	/* 8 KB for stack */
+ #define CONFIG_SPL_STACK		LOW_LEVEL_SRAM_STACK
+ 
+ #define CONFIG_SYS_SPL_MALLOC_START	0x8f000000
+diff --git a/include/configs/tricorder.h b/include/configs/tricorder.h
+index 801a24f..ab911aa 100644
+--- a/include/configs/tricorder.h
++++ b/include/configs/tricorder.h
+@@ -293,7 +293,7 @@
+ #define CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_SECTOR 0x300 /* address 0x60000 */
+ 
+ #define CONFIG_SPL_TEXT_BASE		0x40200000 /*CONFIG_SYS_SRAM_START*/
+-#define CONFIG_SPL_MAX_SIZE		0xB400  /* 45 K */
++#define CONFIG_SPL_MAX_SIZE		(54 * 1024)	/* 8 KB for stack */
+ #define CONFIG_SPL_STACK		LOW_LEVEL_SRAM_STACK
+ 
+ #define CONFIG_SPL_BSS_START_ADDR	0x80000000 /*CONFIG_SYS_SDRAM_BASE*/
+-- 
+1.7.0.4
+

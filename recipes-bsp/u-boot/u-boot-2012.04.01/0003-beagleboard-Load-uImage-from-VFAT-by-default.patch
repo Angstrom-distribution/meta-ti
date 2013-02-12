@@ -1,0 +1,34 @@
+From f2a15cd9e96648e05cb39159ba74cbfbfc8ff999 Mon Sep 17 00:00:00 2001
+From: Tom Rini <trini@ti.com>
+Date: Thu, 17 Nov 2011 08:41:42 -0700
+Subject: [PATCH 3/4] beagleboard: Load uImage from VFAT by default.
+
+This is TI Sitara SDK specific (unified user experience, load uImage
+from vfat).
+
+Upstream-Status: Not Appropriate
+    * This patch is to make the u-boot for beagleboard consistent
+      with other versions used in the AMSDK and doesn't make
+      sense up stream.
+
+Signed-off-by: Tom Rini <trini@ti.com>
+---
+ include/configs/omap3_beagle.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index b270598..ea62580 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -305,7 +305,7 @@
+ 			"echo Running uenvcmd ...;" \
+ 			"run uenvcmd;" \
+ 		"fi;" \
+-		"if run loaduimage; then " \
++		"if run loaduimagefat; then " \
+ 			"run mmcboot;" \
+ 		"fi;" \
+ 	"fi;" \
+-- 
+1.7.0.4
+

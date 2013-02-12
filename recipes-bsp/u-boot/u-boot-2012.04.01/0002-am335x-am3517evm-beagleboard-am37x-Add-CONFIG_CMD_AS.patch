@@ -1,0 +1,73 @@
+From 883551659d9b15dfb1ed7ad8ae4b34bfd1fa0fd9 Mon Sep 17 00:00:00 2001
+From: Tom Rini <trini@ti.com>
+Date: Wed, 16 Nov 2011 14:50:49 -0700
+Subject: [PATCH 2/4] am335x/am3517evm/beagleboard/am37x: Add CONFIG_CMD_ASKENV
+
+This is TI Sitara SDK specific (unified user experience, askenv command).
+
+Upstream-Status: Pending
+    * This will be submitted upstream by Tom Rini
+
+Signed-off-by: Tom Rini <trini@ti.com>
+---
+ include/configs/am335x_evm.h   |    2 ++
+ include/configs/am3517_evm.h   |    2 ++
+ include/configs/omap3_beagle.h |    2 ++
+ include/configs/omap3_evm.h    |    2 ++
+ 4 files changed, 8 insertions(+), 0 deletions(-)
+
+diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
+index d0fbc88..5cd7d6d 100644
+--- a/include/configs/am335x_evm.h
++++ b/include/configs/am335x_evm.h
+@@ -26,6 +26,8 @@
+ #include <asm/arch/cpu.h>
+ #include <asm/arch/hardware.h>
+ 
++#define CONFIG_CMD_ASKENV
++
+ #define CONFIG_ENV_SIZE			0x400
+ #define CONFIG_SYS_MALLOC_LEN		(CONFIG_ENV_SIZE + (8 * 1024))
+ #define CONFIG_SYS_PROMPT		"U-Boot# "
+diff --git a/include/configs/am3517_evm.h b/include/configs/am3517_evm.h
+index b5f75d1..2b3fce7 100644
+--- a/include/configs/am3517_evm.h
++++ b/include/configs/am3517_evm.h
+@@ -137,6 +137,8 @@
+ /* commands to include */
+ #include <config_cmd_default.h>
+ 
++#define CONFIG_CMD_ASKENV
++
+ #define CONFIG_CMD_EXT2		/* EXT2 Support			*/
+ #define CONFIG_CMD_FAT		/* FAT support			*/
+ #define CONFIG_CMD_JFFS2	/* JFFS2 Support		*/
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index ba73aa6..b270598 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -146,6 +146,8 @@
+ /* commands to include */
+ #include <config_cmd_default.h>
+ 
++#define CONFIG_CMD_ASKENV
++
+ #define CONFIG_CMD_CACHE
+ #define CONFIG_CMD_EXT2		/* EXT2 Support			*/
+ #define CONFIG_CMD_FAT		/* FAT support			*/
+diff --git a/include/configs/omap3_evm.h b/include/configs/omap3_evm.h
+index 1fcb7af..215d67d 100644
+--- a/include/configs/omap3_evm.h
++++ b/include/configs/omap3_evm.h
+@@ -42,6 +42,8 @@
+  */
+ #include <config_cmd_default.h>
+ 
++#define CONFIG_CMD_ASKENV
++
+ #define CONFIG_CMD_EXT2
+ #define CONFIG_CMD_FAT
+ #define CONFIG_CMD_JFFS2
+-- 
+1.7.0.4
+

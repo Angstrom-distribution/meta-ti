@@ -1,0 +1,40 @@
+From c56786770eb0ccb95204cb72b961c44c65ff343b Mon Sep 17 00:00:00 2001
+From: Chase Maupin <Chase.Maupin@ti.com>
+Date: Thu, 17 May 2012 09:51:50 -0500
+Subject: [PATCH] omap3_beagle: add usbethaddr setting to enable networking
+
+* In order for the SMSC USB ethernet device to work the
+  usbethaddr setting must be set when the "usb start" command
+  is executed and the network device is discovered.
+* Currently set this for de:ad:be:ef until we can start
+  generating random or semi-random MAC addresses.
+* Based on work by Steve Kipisz and Joel Fernandez
+
+Upstream-Status: Not Upstreamable
+    * We cannot upstream this hard coded MAC address setting.
+    * User's should look at the following web page for information on
+      how to generate a MAC address, but this patch enables the out
+      of box experience for the SDK.
+        http://www.denx.de/wiki/view/DULG/WhereCanIGetAValidMACAddress
+
+
+Signed-off-by: Chase Maupin <Chase.Maupin@ti.com>
+---
+ include/configs/omap3_beagle.h |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index ddeb414..58a29b8 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -219,6 +219,7 @@
+ 	"loadaddr=0x80200000\0" \
+ 	"rdaddr=0x81000000\0" \
+ 	"usbtty=cdc_acm\0" \
++	"usbethaddr=de:ad:be:ef\0" \
+ 	"bootfile=uImage.beagle\0" \
+ 	"console=ttyO2,115200n8\0" \
+ 	"mpurate=auto\0" \
+-- 
+1.7.0.4
+
