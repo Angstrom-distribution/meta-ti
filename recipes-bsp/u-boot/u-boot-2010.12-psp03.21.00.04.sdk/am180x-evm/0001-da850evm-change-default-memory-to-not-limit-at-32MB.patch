@@ -1,0 +1,34 @@
+From df5c87c4e1be1670475eba1187301a2f7a7aca30 Mon Sep 17 00:00:00 2001
+From: Chase Maupin <Chase.Maupin@ti.com>
+Date: Wed, 22 Jun 2011 12:12:09 -0500
+Subject: [PATCH] da850evm: change default memory to not limit at 32MB
+
+* Change the default mem= option passed to the Linux kernel to
+  not limit the memory to 32MB.
+* This change is used by AM devices that do not need to reserve
+  space for the DSP image.  By removing the mem= option we get
+  access to all of the memory on the system.
+* Limiting the memory to 32MB causes out-of-memory errors
+  when running large applications such as web browsers
+
+Signed-off-by: Chase Maupin <Chase.Maupin@ti.com>
+---
+ include/configs/da850evm.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/configs/da850evm.h b/include/configs/da850evm.h
+index 4a1e0af..55badc9 100755
+--- a/include/configs/da850evm.h
++++ b/include/configs/da850evm.h
+@@ -184,7 +184,7 @@
+ #define CONFIG_CMDLINE_TAG
+ #define CONFIG_REVISION_TAG
+ #define CONFIG_SETUP_MEMORY_TAGS
+-#define CONFIG_BOOTARGS		"mem=32M console=ttyS2,115200n8 root=/dev/mmcblk0p2 rw rootwait ip=off"
++#define CONFIG_BOOTARGS		"console=ttyS2,115200n8 root=/dev/mmcblk0p2 rw rootwait ip=off"
+ #define CONFIG_BOOTCOMMAND	"if mmc rescan 0; then if fatload mmc 0 0xc0600000 boot.scr; then source 0xc0600000; else fatload mmc 0 0xc0700000 uImage; bootm c0700000; fi; else sf probe 0; sf read 0xc0700000 0x80000 0x220000; bootm 0xc0700000; fi"
+ #define CONFIG_BOOTDELAY	3
+ 
+-- 
+1.7.0.4
+
