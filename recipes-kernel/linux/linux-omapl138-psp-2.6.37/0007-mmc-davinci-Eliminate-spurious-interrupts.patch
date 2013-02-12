@@ -1,0 +1,64 @@
+From 568c76b4c8483ca912eb55f2d69398d1a162aabf Mon Sep 17 00:00:00 2001
+From: Ido Yariv <ido@wizery.com>
+Date: Wed, 21 Dec 2011 02:13:17 +0200
+Subject: [PATCH] mmc: davinci: Eliminate spurious interrupts *EXPERIMENTAL*
+
+The davinci mmc interrupt handler fills the fifo in a loop, as long as
+the DXRDY or DRRDY bits are set in the status register.
+
+If interrupts fire during this loop, they will be handled by the
+handler, but the PIC will still buffer these. As a result, the handler
+will be called again to serve these needlessly. In order to avoid these
+spurious interrupts, keep interrupts masked during the loop.
+---
+ drivers/mmc/host/davinci_mmc.c |   35 +++++++++++++++++++++++++++++------
+ 1 files changed, 29 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/mmc/host/davinci_mmc.c b/drivers/mmc/host/davinci_mmc.c
+index 64a8325..8e3212e 100644
+--- a/drivers/mmc/host/davinci_mmc.c
++++ b/drivers/mmc/host/davinci_mmc.c
+@@ -1009,12 +1009,35 @@ static irqreturn_t mmc_davinci_irq(int irq, void *dev_id)
+	 * by read. So, it is not unbouned loop even in the case of
+	 * non-dma.
+	 */
+-	while (host->bytes_left && (status & (MMCST0_DXRDY | MMCST0_DRRDY))) {
+-		davinci_fifo_data_trans(host, rw_threshold);
+-		status = readl(host->base + DAVINCI_MMCST0);
+-		if (!status)
+-			break;
+-		qstatus |= status;
++	if (host->bytes_left && (status & (MMCST0_DXRDY | MMCST0_DRRDY))) {
++		unsigned long im_val;
++
++		/*
++		 * If interrupts fire during the following loop, they will be
++		 * handled by the handler, but the PIC will still buffer these.
++		 * As a result, the handler will be called again to serve these
++		 * needlessly. In order to avoid these spurious interrupts,
++		 * keep interrupts masked during the loop.
++		 */
++		im_val = readl(host->base + DAVINCI_MMCIM);
++		writel(0, host->base + DAVINCI_MMCIM);
++
++		do {
++			davinci_fifo_data_trans(host, rw_threshold);
++			status = readl(host->base + DAVINCI_MMCST0);
++			if (!status)
++				break;
++			qstatus |= status;
++		} while (host->bytes_left &&
++			 (status & (MMCST0_DXRDY | MMCST0_DRRDY)));
++
++		/*
++		 * Assumption: if an interrupt is already pending, it will fire
++		 * when it is unmasked. This is also assumed when the MMCIM is
++		 * first set. Otherwise, writing to MMCIM after reading the
++		 * status is race-prone.
++		 */
++		writel(im_val, host->base + DAVINCI_MMCIM);
+	}
+
+	if (qstatus & MMCST0_DATDNE) {
+--
+1.7.7.4

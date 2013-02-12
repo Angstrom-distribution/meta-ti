@@ -1,0 +1,96 @@
+From 2323173abf87fa542d8434fa187dd67ed6048da2 Mon Sep 17 00:00:00 2001
+From: Ido Yariv <ido@wizery.com>
+Date: Sat, 24 Dec 2011 14:02:45 +0200
+Subject: [PATCH] mmc: davinci: Poll for small size transfers
+
+When initiating small size sdio transactions, it might be worth while to
+poll instead of waiting for an interrupt.
+
+While this optimization wastes CPU cycles, tests have shown that the
+interrupts handling and context switches' overhead is actually larger.
+
+Signed-off-by: Ido Yariv <ido@wizery.com>
+---
+ drivers/mmc/host/davinci_mmc.c |   25 ++++++++++++++++++++++---
+ 1 files changed, 22 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/mmc/host/davinci_mmc.c b/drivers/mmc/host/davinci_mmc.c
+index c5b540b..39be44a 100644
+--- a/drivers/mmc/host/davinci_mmc.c
++++ b/drivers/mmc/host/davinci_mmc.c
+@@ -152,6 +152,11 @@ module_param(rw_threshold, uint, S_IRUGO);
+ MODULE_PARM_DESC(rw_threshold,
+		"Read/Write threshold. Default = 32");
+
++static unsigned poll_threshold = 128;
++module_param(poll_threshold, uint, S_IRUGO);
++MODULE_PARM_DESC(poll_threshold,
++		 "Polling transaction size threshold. Default = 128");
++
+ static unsigned __initdata use_dma = 1;
+ module_param(use_dma, uint, 0);
+ MODULE_PARM_DESC(use_dma, "Whether to use DMA or not. Default = 1");
+@@ -184,6 +189,7 @@ struct mmc_davinci_host {
+	u32 rxdma, txdma;
+	bool use_dma;
+	bool do_dma;
++	bool active_request;
+
+	/* Scatterlist DMA uses one or more parameter RAM entries:
+	 * the main one (associated with rxdma or txdma) plus zero or
+@@ -212,6 +218,7 @@ struct mmc_davinci_host {
+	unsigned char		power_mode;
+ };
+
++static irqreturn_t mmc_davinci_irq(int irq, void *dev_id);
+
+ /* PIO only */
+ static void mmc_davinci_sg_to_buf(struct mmc_davinci_host *host)
+@@ -369,7 +376,16 @@ static void mmc_davinci_start_command(struct mmc_davinci_host *host,
+
+	writel(cmd->arg, host->base + DAVINCI_MMCARGHL);
+	writel(cmd_reg,  host->base + DAVINCI_MMCCMD);
+-	writel(im_val, host->base + DAVINCI_MMCIM);
++
++	host->active_request = true;
++	if (!host->do_dma && host->bytes_left <= poll_threshold) {
++		while (host->active_request) {
++			mmc_davinci_irq(0, host);
++			cpu_relax();
++		}
++	} else {
++		writel(im_val, host->base + DAVINCI_MMCIM);
++	}
+ }
+
+ /*----------------------------------------------------------------------*/
+@@ -684,8 +700,9 @@ mmc_davinci_prepare_data(struct mmc_davinci_host *host, struct mmc_request *req)
+	 * While we *could* change that, unusual block sizes are rarely
+	 * used.  The occasional fallback to PIO should't hurt.
+	 */
+-	if (host->use_dma && (host->bytes_left & (rw_threshold - 1)) == 0
+-			&& mmc_davinci_start_dma_transfer(host, data) == 0) {
++	if (host->use_dma && (host->bytes_left & (rw_threshold - 1)) == 0 &&
++	    host->bytes_left > poll_threshold &&
++	    mmc_davinci_start_dma_transfer(host, data) == 0) {
+		/* zero this to ensure we take no PIO paths */
+		host->bytes_left = 0;
+	} else {
+@@ -898,6 +915,7 @@ mmc_davinci_xfer_done(struct mmc_davinci_host *host, struct mmc_data *data)
+	if (!data->stop || (host->cmd && host->cmd->error)) {
+		mmc_request_done(host->mmc, data->mrq);
+		writel(0, host->base + DAVINCI_MMCIM);
++		host->active_request = false;
+	} else
+		mmc_davinci_start_command(host, data->stop);
+ }
+@@ -925,6 +943,7 @@ static void mmc_davinci_cmd_done(struct mmc_davinci_host *host,
+			cmd->mrq->cmd->retries = 0;
+		mmc_request_done(host->mmc, cmd->mrq);
+		writel(0, host->base + DAVINCI_MMCIM);
++		host->active_request = false;
+	}
+ }
+
+--
+1.7.7.4

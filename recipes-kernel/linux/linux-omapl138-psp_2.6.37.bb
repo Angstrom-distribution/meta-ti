@@ -28,4 +28,9 @@ PATCHES_OVER_PSP = " \
     file://0005-Davinci-da850-Add-Mistral-WL12XX-config-support-to.patch \
     file://0006-Add-wlan-and-BT-config-switches.patch \
     file://uio_pruss.patch \
-"
+    file://0007-mmc-davinci-Eliminate-spurious-interrupts.patch \
+    file://0008-mmc-davinci-Poll-for-small-size-transfers.patch \
+    "
+
+# Updated PIO mode for MUSB help description
+PATCHES_OVER_PSP += "file://0001-musb-update-PIO-mode-help-information-in-Kconfig.patch"
