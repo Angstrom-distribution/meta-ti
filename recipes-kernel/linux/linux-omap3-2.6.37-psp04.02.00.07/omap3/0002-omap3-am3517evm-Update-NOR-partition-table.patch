@@ -1,0 +1,58 @@
+From 3cf420f85f2ccaf01e8b76a7bbdc0b7119269032 Mon Sep 17 00:00:00 2001
+From: Tom Rini <trini@ti.com>
+Date: Tue, 15 Nov 2011 17:44:24 -0700
+Subject: [PATCH 2/3] omap3:am3517evm: Update NOR partition table
+
+With newer U-Boot we use a different partition table on NOR
+
+Signed-off-by: Tom Rini <trini@ti.com>
+---
+ .../arch/arm/mach-omap2/board-am3517evm.c          |   19 ++++++-------------
+ 1 files changed, 6 insertions(+), 13 deletions(-)
+
+diff --git a/arch/arm/mach-omap2/board-am3517evm.c b/arch/arm/mach-omap2/board-am3517evm.c
+index 1d17415..e559f33 100644
+--- a/arch/arm/mach-omap2/board-am3517evm.c
++++ b/arch/arm/mach-omap2/board-am3517evm.c
+@@ -758,32 +758,25 @@ static const struct ehci_hcd_omap_platform_data ehci_pdata __initconst = {
+ 
+ /* NOR flash information */
+ static struct mtd_partition am3517_evm_norflash_partitions[] = {
+-	/* primiary bootloader (X-loader) in first 4 sectors(32K) */
+-	{
+-		.name           = "X-Loader-NOR",
+-		.offset         = 0,
+-		.size           = 4 * SZ_32K,
+-		.mask_flags     = MTD_WRITEABLE, /* force read-only */
+-	},
+-	/* secondary bootloader (U-Boot, etc) in first 5 sectors(128K) */
++	/* Bootloader (U-Boot) in first 512K */
+ 	{
+ 		.name           = "U-Boot-NOR",
+-		.offset         = MTDPART_OFS_APPEND,
+-		.size           = 5 * SZ_128K,
++		.offset         = 0,
++		.size           = 4 * SZ_128K,
+ 		.mask_flags     = MTD_WRITEABLE, /* force read-only */
+ 	},
+-	/* bootloader params in the next 2 sectors */
++	/* bootloader params in the next sector */
+ 	{
+ 		.name           = "Boot Env-NOR",
+ 		.offset         = MTDPART_OFS_APPEND,
+-		.size           = 2 * SZ_128K,
++		.size           = SZ_128K,
+ 		.mask_flags     = 0,
+ 	},
+ 	/* kernel */
+ 	{
+ 		.name           = "Kernel-NOR",
+ 		.offset         = MTDPART_OFS_APPEND,
+-		.size           = 32 * SZ_128K,
++		.size           = 27 * SZ_128K,
+ 		.mask_flags     = 0
+ 	},
+ 	/* file system */
+-- 
+1.7.0.4
+

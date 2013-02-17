@@ -1,0 +1,69 @@
+From 92093bb141b85f6f7396a0efd79d9f93c264baa3 Mon Sep 17 00:00:00 2001
+From: Eyal Reizer <eyalr@ti.com>
+Date: Wed, 3 Aug 2011 15:03:46 +0300
+Subject: [PATCH 3/6] mmc_card_keep_power cleanups
+
+mmc_card_is_powered_resumed is a mouthful; instead, simply use
+mmc_card_keep_power, which also better explains the purpose of
+the macro.
+
+Employ mmc_card_keep_power() where possible.
+
+Upstream status: accepted
+
+Based on Ohad Ben-Cohen <ohad@wizery.com> original patch.
+
+Signed-off-by: Eyal Reizer <eyalr@ti.com>
+---
+ drivers/mmc/core/sdio.c  |   14 +++++++-------
+ include/linux/mmc/host.h |    2 +-
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/mmc/core/sdio.c b/drivers/mmc/core/sdio.c
+index 4a198b2..e43ff56 100644
+--- a/drivers/mmc/core/sdio.c
++++ b/drivers/mmc/core/sdio.c
+@@ -635,12 +635,12 @@ static int mmc_sdio_resume(struct mmc_host *host)
+ 	/* Basic card reinitialization. */
+ 	mmc_claim_host(host);
+ 
+-	/* No need to reinitialize powered-resumed nonremovable cards */
+-	if (mmc_card_is_removable(host) || !mmc_card_is_powered_resumed(host))
+-		err = mmc_sdio_init_card(host, host->ocr, host->card,
+-				 (host->pm_flags & MMC_PM_KEEP_POWER));
+-	else if (mmc_card_is_powered_resumed(host)) {
+-		/* We may have switched to 1-bit mode during suspend */
++ 	/* No need to reinitialize powered-resumed nonremovable cards */
++	if (mmc_card_is_removable(host) || !mmc_card_keep_power(host))
++ 		err = mmc_sdio_init_card(host, host->ocr, host->card,
++					mmc_card_keep_power(host));
++	else if (mmc_card_keep_power(host)) {
++ 		/* We may have switched to 1-bit mode during suspend */
+ 		err = sdio_enable_4bit_bus(host->card);
+ 		if (err > 0) {
+ 			mmc_set_bus_width(host, MMC_BUS_WIDTH_4);
+@@ -682,7 +682,7 @@ static int mmc_sdio_power_restore(struct mmc_host *host)
+ 
+ 	mmc_claim_host(host);
+ 	ret = mmc_sdio_init_card(host, host->ocr, host->card,
+-			(host->pm_flags & MMC_PM_KEEP_POWER));
++				mmc_card_keep_power(host));
+ 	if (!ret && host->sdio_irqs)
+ 		mmc_signal_sdio_irq(host);
+ 	mmc_release_host(host);
+diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
+index 74694c4..db2548f 100644
+--- a/include/linux/mmc/host.h
++++ b/include/linux/mmc/host.h
+@@ -307,7 +307,7 @@ static inline int mmc_card_is_removable(struct mmc_host *host)
+ 	return !(host->caps & MMC_CAP_NONREMOVABLE) && mmc_assume_removable;
+ }
+ 
+-static inline int mmc_card_is_powered_resumed(struct mmc_host *host)
++static inline int mmc_card_keep_power(struct mmc_host *host)
+ {
+ 	return host->pm_flags & MMC_PM_KEEP_POWER;
+ }
+-- 
+1.7.0.4
+
