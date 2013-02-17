@@ -1,0 +1,184 @@
+From 457318d7eff18258b4ef11fb4e4b924d2b5b5bb0 Mon Sep 17 00:00:00 2001
+From: Russ Dill <Russ.Dill@ti.com>
+Date: Tue, 8 May 2012 19:49:06 -0700
+Subject: [PATCH] ARM: OMAP: Cleanup Beagleboard DVI reset gpio
+
+This removes several boot warnings from board-omap3beagle.c:
+
+ - gpio_request: gpio--22 (DVI reset) status -22
+ - Unable to get DVI reset GPIO
+
+There is a combination of leftover code and revision confusion.
+Additionally, xM support is currently a hack.
+
+For original Beagleboard this removes the double initialization of GPIO
+170, properly configures it as an output, and wraps the initialization
+in an if block so that xM does not attempt to request it.
+
+For Beagleboard xM it removes reference to GPIO 129 which was part
+of rev A1 and A2 designs, but never functioned. It then properly assigns
+beagle_dvi_device.reset_gpio in beagle_twl_gpio_setup and removes the
+hack of initializing it high. Additionally, it uses
+gpio_set_value_cansleep since this GPIO is connected through i2c.
+
+Unfortunately, there is no way to tell the difference between xM A2 and
+A3. However, GPIO 129 does not function on rev A1 and A2, and the TWL
+GPIO used on A3 and beyond is not used on rev A1 and A2, there are no
+problems created by this fix.
+
+v3
+ - Change patch title to include 'ARM: OMAP:'
+ - Actually rename reset_gpio to dvi_reset_gpio
+
+v2
+ - Rename reset_gpio to dvi_reset_gpio to self document
+ - Use gpio_set_value_cansleep since TWL gpio can sleep
+ - Use gpio_is_valid instead of -EINVAL check
+
+Tested on Beagleboard-xM Rev C1 and Beagleboard Rev B4.
+
+Upstream-Status: Submitted
+    * This patch has been submitted for the 3.5 kernel and is
+      being reworked for upstream acceptance.
+
+Signed-off-by: Russ Dill <Russ.Dill@ti.com>
+---
+ arch/arm/mach-omap2/board-omap3beagle.c |   49 ++++++++++++++++--------------
+ 1 files changed, 26 insertions(+), 23 deletions(-)
+
+diff --git a/arch/arm/mach-omap2/board-omap3beagle.c b/arch/arm/mach-omap2/board-omap3beagle.c
+index 7ffcd28..c9322ac 100644
+--- a/arch/arm/mach-omap2/board-omap3beagle.c
++++ b/arch/arm/mach-omap2/board-omap3beagle.c
+@@ -81,12 +81,12 @@ static u8 omap3_beagle_version;
+ static struct {
+ 	int mmc1_gpio_wp;
+ 	int usb_pwr_level;
+-	int reset_gpio;
++	int dvi_reset_gpio;
+ 	int usr_button_gpio;
+ } beagle_config = {
+ 	.mmc1_gpio_wp = -EINVAL,
+ 	.usb_pwr_level = GPIOF_OUT_INIT_LOW,
+-	.reset_gpio = 129,
++	.dvi_reset_gpio = -EINVAL,
+ 	.usr_button_gpio = 4,
+ };
+ 
+@@ -124,21 +124,21 @@ static void __init omap3_beagle_init_rev(void)
+ 		printk(KERN_INFO "OMAP3 Beagle Rev: Ax/Bx\n");
+ 		omap3_beagle_version = OMAP3BEAGLE_BOARD_AXBX;
+ 		beagle_config.mmc1_gpio_wp = 29;
+-		beagle_config.reset_gpio = 170;
++		beagle_config.dvi_reset_gpio = 170;
+ 		beagle_config.usr_button_gpio = 7;
+ 		break;
+ 	case 6:
+ 		printk(KERN_INFO "OMAP3 Beagle Rev: C1/C2/C3\n");
+ 		omap3_beagle_version = OMAP3BEAGLE_BOARD_C1_3;
+ 		beagle_config.mmc1_gpio_wp = 23;
+-		beagle_config.reset_gpio = 170;
++		beagle_config.dvi_reset_gpio = 170;
+ 		beagle_config.usr_button_gpio = 7;
+ 		break;
+ 	case 5:
+ 		printk(KERN_INFO "OMAP3 Beagle Rev: C4\n");
+ 		omap3_beagle_version = OMAP3BEAGLE_BOARD_C4;
+ 		beagle_config.mmc1_gpio_wp = 23;
+-		beagle_config.reset_gpio = 170;
++		beagle_config.dvi_reset_gpio = 170;
+ 		beagle_config.usr_button_gpio = 7;
+ 		break;
+ 	case 0:
+@@ -192,7 +192,7 @@ static struct mtd_partition omap3beagle_nand_partitions[] = {
+ static int beagle_enable_dvi(struct omap_dss_device *dssdev)
+ {
+ 	if (gpio_is_valid(dssdev->reset_gpio))
+-		gpio_set_value(dssdev->reset_gpio, 1);
++		gpio_set_value_cansleep(dssdev->reset_gpio, 1);
+ 
+ 	return 0;
+ }
+@@ -200,7 +200,7 @@ static int beagle_enable_dvi(struct omap_dss_device *dssdev)
+ static void beagle_disable_dvi(struct omap_dss_device *dssdev)
+ {
+ 	if (gpio_is_valid(dssdev->reset_gpio))
+-		gpio_set_value(dssdev->reset_gpio, 0);
++		gpio_set_value_cansleep(dssdev->reset_gpio, 0);
+ }
+ 
+ static struct panel_dvi_platform_data dvi_panel = {
+@@ -238,12 +238,17 @@ static struct omap_dss_board_info beagle_dss_data = {
+ 
+ static void __init beagle_display_init(void)
+ {
+-	int r;
+-
+-	r = gpio_request_one(beagle_dvi_device.reset_gpio, GPIOF_OUT_INIT_LOW,
+-			     "DVI reset");
+-	if (r < 0)
+-		printk(KERN_ERR "Unable to get DVI reset GPIO\n");
++	if (gpio_is_valid(beagle_config.dvi_reset_gpio)) {
++		int r;
++
++		omap_mux_init_gpio(beagle_config.dvi_reset_gpio, OMAP_PIN_OUTPUT);
++		r = gpio_request_one(beagle_config.dvi_reset_gpio,
++				     GPIOF_OUT_INIT_LOW, "DVI reset");
++		if (r < 0)
++			printk(KERN_ERR "Unable to get DVI reset GPIO\n");
++		else
++			beagle_dvi_device.reset_gpio = beagle_config.dvi_reset_gpio;
++	}
+ }
+ 
+ #include "sdram-micron-mt46h32m32lf-6.h"
+@@ -272,7 +277,7 @@ static int beagle_twl_gpio_setup(struct device *dev,
+ {
+ 	int r;
+ 
+-	if (beagle_config.mmc1_gpio_wp != -EINVAL)
++	if (gpio_is_valid(beagle_config.mmc1_gpio_wp))
+ 		omap_mux_init_gpio(beagle_config.mmc1_gpio_wp, OMAP_PIN_INPUT);
+ 	mmc[0].gpio_wp = beagle_config.mmc1_gpio_wp;
+ 	/* gpio + 0 is "mmc0_cd" (input/IRQ) */
+@@ -297,11 +302,14 @@ static int beagle_twl_gpio_setup(struct device *dev,
+ 		if (r)
+ 			pr_err("%s: unable to configure nDVI_PWR_EN\n",
+ 				__func__);
+-		r = gpio_request_one(gpio + 2, GPIOF_OUT_INIT_HIGH,
+-				     "DVI_LDO_EN");
++
++		r = gpio_request_one(gpio + 2, GPIOF_OUT_INIT_LOW,
++				     "DVI_PU");
+ 		if (r)
+-			pr_err("%s: unable to configure DVI_LDO_EN\n",
+-				__func__);
++			pr_err("%s: unable to get DVI_PU GPIO\n", __func__);
++		else
++			beagle_dvi_device.reset_gpio = gpio + 2;
++
+ 	} else {
+ 		/*
+ 		 * REVISIT: need ehci-omap hooks for external VBUS
+@@ -310,7 +318,6 @@ static int beagle_twl_gpio_setup(struct device *dev,
+ 		if (gpio_request_one(gpio + 1, GPIOF_IN, "EHCI_nOC"))
+ 			pr_err("%s: unable to configure EHCI_nOC\n", __func__);
+ 	}
+-	beagle_dvi_device.reset_gpio = beagle_config.reset_gpio;
+ 
+ 	gpio_request_one(gpio + TWL4030_GPIO_MAX, beagle_config.usb_pwr_level,
+ 			"nEN_USB_PWR");
+@@ -532,10 +539,6 @@ static void __init omap3_beagle_init(void)
+ 	omap_sdrc_init(mt46h32m32lf6_sdrc_params,
+ 				  mt46h32m32lf6_sdrc_params);
+ 
+-	omap_mux_init_gpio(170, OMAP_PIN_INPUT);
+-	/* REVISIT leave DVI powered down until it's needed ... */
+-	gpio_request_one(170, GPIOF_OUT_INIT_HIGH, "DVI_nPD");
+-
+ 	usb_musb_init(NULL);
+ 	usbhs_init(&usbhs_bdata);
+ 	omap_nand_flash_init(NAND_BUSWIDTH_16, omap3beagle_nand_partitions,
+-- 
+1.7.0.4
+
