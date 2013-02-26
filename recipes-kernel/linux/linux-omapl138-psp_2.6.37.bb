@@ -6,7 +6,7 @@ KERNEL_IMAGETYPE = "uImage"
 require multi-kernel.inc
 require tipspkernel.inc
 
-MACHINE_KERNEL_PR_append = "a"
+MACHINE_KERNEL_PR_append = "b"
 
 S = "${WORKDIR}/git"
 
@@ -34,3 +34,8 @@ PATCHES_OVER_PSP = " \
 
 # Updated PIO mode for MUSB help description
 PATCHES_OVER_PSP += "file://0001-musb-update-PIO-mode-help-information-in-Kconfig.patch"
+
+# Fix alignment issue with gcc-4.7
+PATCHES_OVER_PSP += " \
+    file://0001-arm-fix-builds-with-gcc-4.7.patch \
+"
