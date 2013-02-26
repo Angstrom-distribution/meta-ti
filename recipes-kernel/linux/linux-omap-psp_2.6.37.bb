@@ -6,6 +6,10 @@ COMPATIBLE_MACHINE = "omap3"
 
 SRCREV= "20c003f2f024d9f50f59edf9f1b8f5f035fb15b8"
 
+# The main PR is now using MACHINE_KERNEL_PR, for omap3 devices
+# see conf/machine/include/omap3.inc
+MACHINE_KERNEL_PR_append = "a"
+
 SRC_URI = "git://arago-project.org/git/projects/linux-omap3.git;protocol=git \
            file://defconfig"
 
@@ -81,6 +85,11 @@ SRC_URI += " \
 SRC_URI += " \
     file://0001-usb-musb-am35x-set-default-VBUS-timeout-value.patch \
     file://0002-usb-musb-am35x-fix-role-switching-issue.patch \
+"
+
+# Fix alignment issue with gcc-4.7
+SRC_URI += " \
+    file://0001-arm-fix-builds-with-gcc-4.7.patch \
 "
 
 # Updated PIO mode for MUSB help description
