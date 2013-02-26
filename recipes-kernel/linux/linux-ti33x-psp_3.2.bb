@@ -15,7 +15,7 @@ PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.34", d)}"
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
-MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -2631,6 +2631,8 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0098-beaglebone-Remove-optimization-from-square-resolutio.patch \
 	file://beaglebone/0099-beaglebone-fix-DOWN-button-on-LCD4.patch \
 	file://beaglebone/0100-beaglebone-add-support-for-LCD4-LED.patch \
+	file://beaglebone/0101-beaglebone-add-support-for-wifi-cape.patch \
+	file://beaglebone/0102-beaglebone-add-support-for-wl1273-capes.patch \
 	\
 	file://beaglebone/0001-arm-boot-compressed-default-asm-arch-to-armv7-a.patch \
 	"
