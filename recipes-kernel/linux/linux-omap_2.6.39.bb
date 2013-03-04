@@ -9,7 +9,7 @@ COMPATIBLE_MACHINE = "(beagleboard)"
 SRCREV_pn-${PN} = "v2.6.39"
 MACHINE_KERNEL_PR_append = "o"
 
-FILESPATHPKG_prepend = "linux-omap-2.6.39:"
+FILESEXTRAPATHS_prepend := "{THISDIR}/${PN}-${PV}:"
 
 SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/tmlind/linux-omap.git;protocol=git \
             file://defconfig"

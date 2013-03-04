@@ -10,7 +10,7 @@ PV = "2.6.37"
 MACHINE_KERNEL_PR_append = "c+gitr${SRCREV}"
 SRCREV = "fa3b4e23ec20cfc944db7cc2b30b0d82c20e4472"
 
-FILESPATHPKG_prepend = "linux-omap-2.6.37:"
+FILESEXTRAPATHS_prepend := "{THISDIR}/${PN}-${PV}:"
 
 SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/tmlind/linux-omap.git;protocol=git \
 	   file://defconfig"
