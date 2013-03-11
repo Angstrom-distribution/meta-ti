@@ -5,6 +5,22 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 KERNEL_IMAGETYPE = "uImage"
 
 inherit kernel
+
+# This function must be here BEFORE the require of linux-dtb.inc below.
+# There is a "bug" in the base kernel.bbclass that after it's do_deploy
+# step it does not return back to the ${S} directory but stays in the
+# DEPLOY_DIR.  However, the do_deploy_append defined in linux-dtb.inc
+# assumes that it is being run in the ${S} directory.  A patch is
+# being submitted to fix this issue by either changing the do_deploy
+# in the kernel.bbclass to do "cd -" as the last step or to add
+# "cd ${S}" as the first line of do_deploy in linux-dtb.inc and this
+# function can be removed once that change is available.
+# If the function is not placed BEFORE the require then the change
+# directory is not appended before the linux-dtb.inc changes.
+do_deploy_append() {
+    cd ${S}
+}
+
 require recipes-kernel/linux/linux-dtb.inc
 require recipes-kernel/linux/setup-defconfig.inc
 
@@ -27,7 +43,7 @@ SRCREV = "d26595a42220789b81a9d243e2fc0837c7776360"
 PV = "3.8.2"
 
 # Append to the MACHINE_KERNEL_PR so that a new SRCREV will cause a rebuild
-MACHINE_KERNEL_PR_append = "c+gitr${SRCPV}"
+MACHINE_KERNEL_PR_append = "d+gitr${SRCPV}"
 
 SRC_URI = "git://gitorious.ti.com/ti-linux-kernel/ti-linux-kernel.git;protocol=git;branch=${BRANCH} \
            file://defconfig \
