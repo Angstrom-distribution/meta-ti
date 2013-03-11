@@ -9,7 +9,8 @@ require recipes-kernel/linux/linux-dtb.inc
 require recipes-kernel/linux/setup-defconfig.inc
 
 # Stage the power management firmware before building the kernel
-DEPENDS += "am33x-cm3"
+# for ti33x SOC_FAMILY devices
+DEPENDS_ti33x += "am33x-cm3"
 
 KERNEL_DEVICETREE_am335x-evm = "arch/arm/boot/dts/am335x-evm.dts"
 KERNEL_DEVICETREE_beaglebone = "arch/arm/boot/dts/am335x-bone.dts"
@@ -30,8 +31,8 @@ SRC_URI = "git://gitorious.ti.com/ti-linux-kernel/ti-linux-kernel.git;protocol=g
            file://defconfig \
           "
 
-# Copy the am33x-cm3 firmware if it is available
-do_compile_prepend() {
+# Copy the am33x-cm3 firmware if it is available for ti33x SOC_FAMILY devices
+do_compile_prepend_ti33x() {
     if [ -e "${STAGING_DIR_HOST}/${base_libdir}/firmware/am335x-pm-firmware.bin" ]
     then
         cp "${STAGING_DIR_HOST}/${base_libdir}/firmware/am335x-pm-firmware.bin" "${S}/firmware"
