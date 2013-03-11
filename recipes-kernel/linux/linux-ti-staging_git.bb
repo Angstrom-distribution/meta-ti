@@ -6,6 +6,7 @@ KERNEL_IMAGETYPE = "uImage"
 
 inherit kernel
 require recipes-kernel/linux/linux-dtb.inc
+require recipes-kernel/linux/setup-defconfig.inc
 
 # Stage the power management firmware before building the kernel
 DEPENDS += "am33x-cm3"
@@ -23,17 +24,11 @@ SRCREV = "d26595a42220789b81a9d243e2fc0837c7776360"
 PV = "3.8.2"
 
 # Append to the MACHINE_KERNEL_PR so that a new SRCREV will cause a rebuild
-MACHINE_KERNEL_PR_append = "a+gitr${SRCPV}"
+MACHINE_KERNEL_PR_append = "b+gitr${SRCPV}"
 
-SRC_URI = "git://gitorious.ti.com/ti-linux-kernel/ti-linux-kernel.git;protocol=git;branch=${BRANCH}"
-
-do_setup_defconfig() {
-        :
-}
-
-do_configure() {
-    oe_runmake omap2plus_defconfig
-}
+SRC_URI = "git://gitorious.ti.com/ti-linux-kernel/ti-linux-kernel.git;protocol=git;branch=${BRANCH} \
+           file://defconfig \
+          "
 
 # Copy the am33x-cm3 firmware if it is available
 do_compile_prepend() {
