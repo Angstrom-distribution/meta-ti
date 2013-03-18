@@ -1,11 +1,8 @@
-require u-boot.inc
+require u-boot-ti.inc
 
 PR = "r7"
 
-# SPL build
-UBOOT_BINARY = "u-boot.img"
-UBOOT_IMAGE = "u-boot-${MACHINE}-${PV}-${PR}.img"
-UBOOT_SYMLINK = "u-boot-${MACHINE}.img"
+SPL_BINARY = "MLO"
 
 # No patches for other machines yet
 COMPATIBLE_MACHINE = "(beagleboard)"
@@ -37,7 +34,3 @@ SRC_URI = "git://git.denx.de/u-boot.git;protocol=git \
           "
 
 SRCREV = "fdbe8b9a2d1858ba35dd6214315563ad44d4a0e3"
-
-LIC_FILES_CHKSUM = "file://COPYING;md5=1707d6db1d42237583f50183a5651ecb"
-
-S = "${WORKDIR}/git"
