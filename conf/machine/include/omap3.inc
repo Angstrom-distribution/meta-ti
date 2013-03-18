@@ -16,7 +16,7 @@ XSERVER = "xserver-xorg \
 GUI_MACHINE_CLASS = "bigscreen"
 
 # Increase this everytime you change something in the kernel
-MACHINE_KERNEL_PR = "r123"
+MACHINE_KERNEL_PR = "r124"
 
 KERNEL_IMAGETYPE = "uImage"
 
