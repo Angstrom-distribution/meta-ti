@@ -1,15 +1,10 @@
-require u-boot.inc
+require u-boot-ti.inc
 
-# SPL build
-UBOOT_BINARY = "u-boot.img"
-UBOOT_IMAGE = "u-boot-${MACHINE}-${PV}-${PR}.img"
-UBOOT_SYMLINK = "u-boot-${MACHINE}.img"
+SPL_BINARY = "MLO"
 
-PV = "2011.12"
 PR = "r8"
 
-# No patches for other machines yet
-COMPATIBLE_MACHINE = "(beagleboard|pandaboard|hawkboard|am3517-evm|am37x-evm|omap3evm)"
+COMPATIBLE_MACHINE = "(beagleboard|pandaboard|am3517-evm|am37x-evm|omap3evm)"
 
 # Non-omap4 platforms need outer cache turned on
 CACHEFIX = "file://2011.12/0008-Revert-armv7-disable-L2-cache-in-cleanup_before_linu.patch"
@@ -36,12 +31,7 @@ SRC_URI = "git://git.denx.de/u-boot.git;protocol=git \
            ${FWENV} \
           "
 
-
 # v2011.12 tag
 SRCREV = "cba9a894fdb1cb49b60fcd1d1d6919cbd7995dd5"
-
-LIC_FILES_CHKSUM = "file://COPYING;md5=1707d6db1d42237583f50183a5651ecb"
-
-S = "${WORKDIR}/git"
 
 RRECOMMENDS_${PN}_beagleboard = "u-boot-fw-utils"
