@@ -19,7 +19,7 @@ GUI_MACHINE_CLASS = "bigscreen"
 MACHINE_KERNEL_PR = "r18"
 
 # Default providers, may need to override for specific machines
-PREFERRED_PROVIDER_virtual/kernel = "linux-ti33x-psp"
+PREFERRED_PROVIDER_virtual/kernel = "linux-ti-staging"
 PREFERRED_PROVIDER_virtual/bootloader = "u-boot"
 
 KERNEL_IMAGETYPE = "uImage"
