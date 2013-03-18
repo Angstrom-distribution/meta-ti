@@ -1,22 +1,13 @@
-# Use the version of u-boot.inc in oe-core not the meta-ti version
-require ${COREBASE}/meta/recipes-bsp/u-boot/u-boot.inc
+require u-boot-ti.inc
 
 DESCRIPTION = "u-boot bootloader for ARM MPU devices"
 
-LICENSE = "GPLv2+"
-LIC_FILES_CHKSUM = "file://COPYING;md5=1707d6db1d42237583f50183a5651ecb"
-
-DEFAULT_PREFERENCE = "-1"
-
 COMPATIBLE_MACHINE = "am37x-evm|beagleboard"
-
-PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 BRANCH ?= "master"
 
-SRCREV = "v2012.04.01"
-
-S = "${WORKDIR}/git"
+# v2012.04.01
+SRCREV = "415d386877df49eb051b85ef74fa59a16dc17c7d"
 
 SRC_URI = "git://git.denx.de/u-boot.git;protocol=git;branch=${BRANCH}"
 
@@ -44,7 +35,4 @@ SRC_URI += "file://0001-omap3_beagle-add-usbethaddr-setting-to-enable-networ.pat
             file://0001-ARM-omap3-Set-SPL-stack-size-to-8KB-image-to-54KB.patch \
             "
 
-UBOOT_SUFFIX = "img"
-
-# Set the name of the SPL that will built so that it is also packaged with u-boot.
 SPL_BINARY = "MLO"
