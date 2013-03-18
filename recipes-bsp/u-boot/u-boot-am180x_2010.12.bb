@@ -1,14 +1,9 @@
-# Use the version of u-boot.inc in oe-core not the meta-ti version
-require ${COREBASE}/meta/recipes-bsp/u-boot/u-boot.inc
+require u-boot-ti.inc
 
-DESCRIPTION = "u-boot bootloader for DaVinci devices"
-
-LICENSE = "GPLv2+"
+DESCRIPTION = "u-boot bootloader for AM180x devices"
 LIC_FILES_CHKSUM = "file://COPYING;md5=4c6cde5df68eff615d36789dc18edd3b"
 
 COMPATIBLE_MACHINE = "am180x-evm"
-
-PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 PR = "r0"
 
@@ -21,9 +16,7 @@ SRC_URI_append_am180x-evm = " file://0001-da850evm-change-default-memory-to-not-
 
 BRANCH = "03.21.00.03"
 
-# Use literal tags in SRCREV, when available, instead of commit IDs
-SRCREV = "v2010.12_DAVINCIPSP_03.21.00.04"
-
-S = "${WORKDIR}/git"
+# v2010.12_DAVINCIPSP_03.21.00.04
+SRCREV = "1254a0b58d900b7035cfb36bf4e1b05dfbf09997"
 
 UBOOT_SUFFIX = "bin"
