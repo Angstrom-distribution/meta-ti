@@ -32,6 +32,9 @@ IMAGE_INSTALL += " \
 	connman-tests \
 	rsync \
 	e2fsprogs-mke2fs \
+	cpufreq-tweaks \
+	dosfstools \
+	parted \
 "
 
 export IMAGE_BASENAME = "Cloud9-IDE"
