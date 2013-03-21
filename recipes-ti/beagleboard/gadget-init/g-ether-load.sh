@@ -46,3 +46,8 @@ DEV_ADDR=$(hex_to_mac_addr "${DEVMEM_ADDR_HI}${DEVMEM_ADDR_LO}")
 SERIAL_NUMBER=$(hexdump -e '8/1 "%c"' /sys/bus/i2c/devices/0-0050/eeprom -s 14 -n 2)-$(hexdump -e '8/1 "%c"' /sys/bus/i2c/devices/0-0050/eeprom -s 24 -n 4)
 
 modprobe g_multi file=/dev/mmcblk0p1 cdrom=0 stall=0 removable=1 nofua=1 iSerialNumber=${SERIAL_NUMBER} iManufacturer=Circuitco  iProduct=BeagleBone host_addr=${DEV_ADDR}
+
+sleep 1
+
+/sbin/ifconfig usb0 192.168.7.2 netmask 255.255.255.252
+/usr/sbin/udhcpd -f -S /etc/udhcpd.conf

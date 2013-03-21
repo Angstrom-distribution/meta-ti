@@ -1,6 +1,8 @@
 DESCRIPTION = "Units to initialize usb gadgets"
 
-PR = "r20"
+inherit systemd
+
+PR = "r21"
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58"
@@ -18,13 +20,8 @@ SRC_URI = "file://storage-gadget-init.service \
           "
 
 do_install() {
-	install -d ${D}${base_libdir}/systemd/system/basic.target.wants
+	install -d ${D}${base_libdir}/systemd/system
 	install -m 0644 ${WORKDIR}/*.service ${D}${base_libdir}/systemd/system
-
-	for i in ${WORKDIR}/storage-gadget-init.service ; do
-		install -m 0644 $i ${D}${base_libdir}/systemd/system
-		ln -sf ../$(basename $i) ${D}${base_libdir}/systemd/system/basic.target.wants/
-	done
 
 	install -d ${D}${sysconfdir}/udev/rules.d
 	install -m 0644 ${WORKDIR}/*.rules ${D}${sysconfdir}/udev/rules.d
@@ -34,23 +31,26 @@ do_install() {
 	install -m 0755 ${WORKDIR}/*.sh ${D}${bindir}
 }
 
-PACKAGES =+ "${PN}-storage ${PN}-network ${PN}-udhcpd"
+PACKAGES =+ "${PN}-network ${PN}-udhcpd"
 
 ALLOW_EMPTY_${PN} = "1"
 
-FILES_${PN}-storage = "${base_libdir}/systemd/system/storage-gadget-init.service \
-                       ${base_libdir}/systemd/system/basic.target.wants/storage-gadget-init.service \
-                       ${bindir}/g-storage-reinsert.sh \
-                      "
+FILES_${PN} = "${base_libdir}/systemd/system/storage-gadget-init.service \
+               ${bindir}/g-storage-reinsert.sh \
+              "
 
 FILES_${PN}-network = "${base_libdir}/systemd/system/network-gadget-init.service \
-                       ${base_libdir}/systemd/system/basic.target.wants/network-gadget-init.service \
                        ${bindir}/g-ether-load.sh \
                        ${bindir}/g-ether-start-service.sh \
                        ${sysconfdir}/udev/rules.d/udhcpd.rules"
 
 FILES_${PN}-udhcpd = "${base_libdir}/systemd/system/udhcpd.service \
-                      ${base_libdir}/systemd/system/basic.target.wants/udhcpd.service \
                       ${sysconfdir}/udhcpd.conf"
 
-RRECOMMENDS_${PN} = "${PN}-storage ${PN}-network ${PN}-udhcpd"
+RRECOMMENDS_${PN} = "${PN}-network ${PN}-udhcpd"
+RREPLACES_${PN} = "${PN}-storage"
+
+
+NATIVE_SYSTEMD_SUPPORT = "1"
+SYSTEMD_PACKAGES = "${PN}"
+SYSTEMD_SERVICE_${PN} = "storage-gadget-init.service"
