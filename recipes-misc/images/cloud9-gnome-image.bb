@@ -17,6 +17,7 @@ IMAGE_INSTALL += " \
                   xterm \
                   cheese \
                   florence \
+                  evince \
                   man \
                  "
 
