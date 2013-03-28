@@ -15,7 +15,7 @@ PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.42", d)}"
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
-MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 
@@ -3332,6 +3332,7 @@ PATCHES_OVER_PSP = " \
 	file://3.2.42/0090-signal-Define-__ARCH_HAS_SA_RESTORER-so-we-know-whet.patch \
 	file://3.2.42/0091-kernel-signal.c-use-__ARCH_HAS_SA_RESTORER-instead-o.patch \
 	file://3.2.42/0092-Linux-3.2.42.patch \
+	file://net/0001-wireless-add-proper-db.txt.patch \
 	file://led/0001-leds-heartbeat-stop-on-shutdown-reboot-or-panic.patch \
 	file://led/0002-led-triggers-rename-trigger-to-trig-for-unified-nami.patch \
 	file://led/0003-led-triggers-create-a-trigger-for-CPU-activity.patch \
