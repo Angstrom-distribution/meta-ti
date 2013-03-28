@@ -1,4 +1,4 @@
-From 84e58f4e3a7fd6a1445e5fe4c734c077f4fd414e Mon Sep 17 00:00:00 2001
+From f14cd282428ade255750b20b0293dd0b78ade67d Mon Sep 17 00:00:00 2001
 From: Simon Horman <horms@verge.net.au>
 Date: Fri, 27 Jan 2012 10:45:27 +0900
 Subject: [PATCH 60/72] ipvs: fix matching of fwmark templates during
@@ -19,7 +19,7 @@ Signed-off-by: Simon Horman <horms@verge.net.au>
 Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- net/netfilter/ipvs/ip_vs_core.c |    2 +-
+ net/netfilter/ipvs/ip_vs_core.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/net/netfilter/ipvs/ip_vs_core.c b/net/netfilter/ipvs/ip_vs_core.c
@@ -43,5 +43,5 @@ index 093cc32..6dc7d7d 100644
  
  		if (dst_port == svc->port) {
 -- 
-1.7.9.4
+1.8.1.4
 

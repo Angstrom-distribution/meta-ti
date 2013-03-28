@@ -1,4 +1,4 @@
-From 2938d817a741a800001a3de1796090697b4d12e8 Mon Sep 17 00:00:00 2001
+From 27d1da3d13e7d8280f205c929fbaf45f200bf83c Mon Sep 17 00:00:00 2001
 From: Linus Torvalds <torvalds@linux-foundation.org>
 Date: Sun, 26 Feb 2012 09:44:55 -0800
 Subject: [PATCH 02/95] Fix autofs compile without CONFIG_COMPAT
@@ -20,7 +20,7 @@ Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
 Cc: Jonathan Nieder <jrnieder@gmail.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- include/linux/compat.h |    4 ++++
+ include/linux/compat.h | 4 ++++
  1 file changed, 4 insertions(+)
 
 diff --git a/include/linux/compat.h b/include/linux/compat.h
@@ -38,5 +38,5 @@ index 66ed067..d42bd48 100644
  #endif /* CONFIG_COMPAT */
  #endif /* _LINUX_COMPAT_H */
 -- 
-1.7.9.4
+1.8.1.4
 

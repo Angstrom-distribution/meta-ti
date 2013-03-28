@@ -1,4 +1,4 @@
-From fd0fcfd8f28824587f180ccde95c03fca533ab05 Mon Sep 17 00:00:00 2001
+From 86dd4f860b53ffcc5fae631126f257c533049c8c Mon Sep 17 00:00:00 2001
 From: Tao Guo <glorioustao@gmail.com>
 Date: Wed, 13 Jun 2012 21:17:21 +0200
 Subject: [PATCH 02/49] umem: fix up unplugging
@@ -20,7 +20,7 @@ Acked-by: NeilBrown <neilb@suse.de>
 Signed-off-by: Jens Axboe <axboe@kernel.dk>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/block/umem.c |   40 ++++++++++++++++++++++++++++++++++++++++
+ drivers/block/umem.c | 40 ++++++++++++++++++++++++++++++++++++++++
  1 file changed, 40 insertions(+)
 
 diff --git a/drivers/block/umem.c b/drivers/block/umem.c
@@ -82,5 +82,5 @@ index aa27120..9a72277 100644
  
  	return;
 -- 
-1.7.10
+1.8.1.4
 

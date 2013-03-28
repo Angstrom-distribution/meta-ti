@@ -1,4 +1,4 @@
-From 9580bb498c70f765e4cd20e5dd9d9bd156baeef0 Mon Sep 17 00:00:00 2001
+From 3ea21f9fc73cb9fb1c0477ae48a2a763ca8f68ec Mon Sep 17 00:00:00 2001
 From: Dmitry Monakhov <dmonakhov@openvz.org>
 Date: Wed, 26 Sep 2012 12:32:19 -0400
 Subject: [PATCH 061/146] ext4: move_extent code cleanup
@@ -16,8 +16,8 @@ Signed-off-by: Dmitry Monakhov <dmonakhov@openvz.org>
 Signed-off-by: "Theodore Ts'o" <tytso@mit.edu>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- fs/ext4/move_extent.c |  167 ++++++++++++++-----------------------------------
- 1 files changed, 47 insertions(+), 120 deletions(-)
+ fs/ext4/move_extent.c | 167 ++++++++++++++------------------------------------
+ 1 file changed, 47 insertions(+), 120 deletions(-)
 
 diff --git a/fs/ext4/move_extent.c b/fs/ext4/move_extent.c
 index c5826c6..df5cde5 100644
@@ -340,5 +340,5 @@ index c5826c6..df5cde5 100644
 +	return ret;
  }
 -- 
-1.7.7.6
+1.8.1.4
 

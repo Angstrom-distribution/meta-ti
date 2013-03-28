@@ -1,10 +1,10 @@
-From f7e832912de7d193a1185b9f1440111cbd1dbc46 Mon Sep 17 00:00:00 2001
+From 854797a259f5fcd163bf7797a4f7e6a9a726e40d Mon Sep 17 00:00:00 2001
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Date: Fri, 13 Apr 2012 09:11:03 -0700
 Subject: [PATCH 60/60] Linux 3.2.15
 
 ---
- Makefile |    2 +-
+ Makefile | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
@@ -20,5 +20,5 @@ index afe4c7d..6195122 100644
  NAME = Saber-toothed Squirrel
  
 -- 
-1.7.9.5
+1.8.1.4
 

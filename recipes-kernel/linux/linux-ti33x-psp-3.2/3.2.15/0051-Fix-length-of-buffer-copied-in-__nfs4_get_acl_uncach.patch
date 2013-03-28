@@ -1,4 +1,4 @@
-From 9f35dc6cc9f96e7a45b42dd5e4c8e2eee1e84e05 Mon Sep 17 00:00:00 2001
+From 97c5b498e3249f29490092bcaed0949b8789ffa2 Mon Sep 17 00:00:00 2001
 From: Sachin Prabhu <sprabhu@redhat.com>
 Date: Thu, 22 Mar 2012 16:46:28 +0000
 Subject: [PATCH 51/60] Fix length of buffer copied in __nfs4_get_acl_uncached
@@ -15,7 +15,7 @@ Signed-off-by: Trond Myklebust <Trond.Myklebust@netapp.com>
 Cc: Josh Boyer <jwboyer@redhat.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- fs/nfs/nfs4proc.c |    2 +-
+ fs/nfs/nfs4proc.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/fs/nfs/nfs4proc.c b/fs/nfs/nfs4proc.c
@@ -32,5 +32,5 @@ index d945700..757293b 100644
  	ret = acl_len;
  out_free:
 -- 
-1.7.9.5
+1.8.1.4
 

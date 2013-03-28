@@ -1,4 +1,4 @@
-From 704b9fbf0b168ebaa888a6a990f6d07ee281f4a0 Mon Sep 17 00:00:00 2001
+From da250cd9e61584cd2700866219f4c6cae085765e Mon Sep 17 00:00:00 2001
 From: Davidlohr Bueso <dave@gnu.org>
 Date: Thu, 4 Oct 2012 17:13:18 -0700
 Subject: [PATCH 104/146] lib/gcd.c: prevent possible div by 0
@@ -18,8 +18,8 @@ Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
 Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- lib/gcd.c |    3 +++
- 1 files changed, 3 insertions(+), 0 deletions(-)
+ lib/gcd.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/lib/gcd.c b/lib/gcd.c
 index f879033..433d89b 100644
@@ -36,5 +36,5 @@ index f879033..433d89b 100644
  		a = b;
  		b = r;
 -- 
-1.7.7.6
+1.8.1.4
 

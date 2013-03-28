@@ -1,4 +1,4 @@
-From 58b94bb19e46af91f7df90f879e8b6221b3970a0 Mon Sep 17 00:00:00 2001
+From 0a031fa90b09490ec2afa082dd8e32bc5b1311e1 Mon Sep 17 00:00:00 2001
 From: Guenter Roeck <linux@roeck-us.net>
 Date: Tue, 11 Sep 2012 13:43:17 -0700
 Subject: [PATCH 028/109] hwmon: (ad7314) Add 'name' sysfs attribute
@@ -14,8 +14,8 @@ Acked-by: Jean Delvare <khali@linux-fr.org>
 Acked-by: Jonathan Cameron <jic23@cam.ac.uk>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/hwmon/ad7314.c |    8 ++++++++
- 1 files changed, 8 insertions(+), 0 deletions(-)
+ drivers/hwmon/ad7314.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/drivers/hwmon/ad7314.c b/drivers/hwmon/ad7314.c
 index 5d760f3..08e2947 100644
@@ -41,5 +41,5 @@ index 5d760f3..08e2947 100644
  	NULL,
  };
 -- 
-1.7.7.6
+1.8.1.4
 

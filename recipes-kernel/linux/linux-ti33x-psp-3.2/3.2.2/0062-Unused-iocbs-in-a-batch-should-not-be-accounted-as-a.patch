@@ -1,4 +1,4 @@
-From 0eeb9347d25c283bdbdd1a9e4d7d4881852887d1 Mon Sep 17 00:00:00 2001
+From c00c6b13cbc39c8b0179b5a46815731d7f2f802a Mon Sep 17 00:00:00 2001
 From: Gleb Natapov <gleb@redhat.com>
 Date: Sun, 8 Jan 2012 17:07:28 +0200
 Subject: [PATCH 062/129] Unused iocbs in a batch should not be accounted as
@@ -27,7 +27,7 @@ Reviewed-by: Jeff Moyer <jmoyer@redhat.com>
 Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
- fs/aio.c |   11 +++++++++--
+ fs/aio.c | 11 +++++++++--
  1 file changed, 9 insertions(+), 2 deletions(-)
 
 diff --git a/fs/aio.c b/fs/aio.c
@@ -67,5 +67,5 @@ index 78c514c..969beb0 100644
  	return i ? i : ret;
  }
 -- 
-1.7.9.5
+1.8.1.4
 

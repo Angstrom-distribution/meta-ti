@@ -1,4 +1,4 @@
-From a6f3badb8bb91c6f6f732855a0bb79138fc52301 Mon Sep 17 00:00:00 2001
+From c5c69dea6d8f39ee5caa3a02f0ccda42e8a9dde2 Mon Sep 17 00:00:00 2001
 From: Nicholas Bellinger <nab@linux-iscsi.org>
 Date: Mon, 16 Jan 2012 16:04:15 -0800
 Subject: [PATCH 53/87] iscsi-target: Fix reject release handling in
@@ -49,7 +49,7 @@ Reported-by: <jrepac@yahoo.com>
 Signed-off-by: Nicholas Bellinger <nab@linux-iscsi.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/target/iscsi/iscsi_target_util.c |   11 +++++++++++
+ drivers/target/iscsi/iscsi_target_util.c | 11 +++++++++++
  1 file changed, 11 insertions(+)
 
 diff --git a/drivers/target/iscsi/iscsi_target_util.c b/drivers/target/iscsi/iscsi_target_util.c
@@ -75,5 +75,5 @@ index 02348f7..99f2af3 100644
  		iscsit_release_cmd(cmd);
  		break;
 -- 
-1.7.9.4
+1.8.1.4
 

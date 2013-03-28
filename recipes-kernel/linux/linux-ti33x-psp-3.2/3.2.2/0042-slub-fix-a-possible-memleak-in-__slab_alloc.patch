@@ -1,4 +1,4 @@
-From 71490e8f6f58ec56533554888983ce09d6ee5cb1 Mon Sep 17 00:00:00 2001
+From b03eb4e171d997d5cd19ba8bb6e2eeef3e4a8d6d Mon Sep 17 00:00:00 2001
 From: Eric Dumazet <eric.dumazet@gmail.com>
 Date: Tue, 13 Dec 2011 04:57:06 +0100
 Subject: [PATCH 042/129] slub: fix a possible memleak in __slab_alloc()
@@ -23,7 +23,7 @@ Acked-by: Christoph Lameter <cl@linux.com>
 Signed-off-by: Pekka Enberg <penberg@kernel.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
- mm/slub.c |    5 +++++
+ mm/slub.c | 5 +++++
  1 file changed, 5 insertions(+)
 
 diff --git a/mm/slub.c b/mm/slub.c
@@ -43,5 +43,5 @@ index ed3334d..1a919f0 100644
  
  	do {
 -- 
-1.7.9.5
+1.8.1.4
 

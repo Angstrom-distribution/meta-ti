@@ -1,4 +1,4 @@
-From 3b34ea4f4c863a4243f0e84a31d9829a770c65cf Mon Sep 17 00:00:00 2001
+From 082f0a1fbc4a3697fb4b9326f30c78175b92e082 Mon Sep 17 00:00:00 2001
 From: Elric Fu <elricfu1@gmail.com>
 Date: Wed, 27 Jun 2012 16:55:43 +0800
 Subject: [PATCH 142/146] xHCI: handle command after aborting the command ring
@@ -35,8 +35,8 @@ Tested-by: Miroslav Sabljic <miroslav.sabljic@avl.com>
  Jonathan Nieder worked out that this should be false]
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/usb/host/xhci-ring.c |  171 ++++++++++++++++++++++++++++++++++++++++--
- 1 files changed, 165 insertions(+), 6 deletions(-)
+ drivers/usb/host/xhci-ring.c | 171 +++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 165 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/usb/host/xhci-ring.c b/drivers/usb/host/xhci-ring.c
 index dff89ae..950aef8 100644
@@ -238,5 +238,5 @@ index dff89ae..950aef8 100644
  		& TRB_TYPE_BITMASK) {
  	case TRB_TYPE(TRB_ENABLE_SLOT):
 -- 
-1.7.7.6
+1.8.1.4
 

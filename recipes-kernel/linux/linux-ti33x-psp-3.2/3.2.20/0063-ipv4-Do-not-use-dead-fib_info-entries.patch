@@ -1,4 +1,4 @@
-From 1fc7ceff08329209e4c28263a5b545343d4cce19 Mon Sep 17 00:00:00 2001
+From dfef27760d66ad2a5a1a5e3136aef8cd0948c26e Mon Sep 17 00:00:00 2001
 From: "David S. Miller" <davem@davemloft.net>
 Date: Thu, 10 May 2012 22:16:32 -0400
 Subject: [PATCH 63/86] ipv4: Do not use dead fib_info entries.
@@ -15,7 +15,7 @@ Reported-by: Yevgen Pronenko <yevgen.pronenko@sonymobile.com>
 Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- net/ipv4/fib_trie.c |    2 ++
+ net/ipv4/fib_trie.c | 2 ++
  1 file changed, 2 insertions(+)
 
 diff --git a/net/ipv4/fib_trie.c b/net/ipv4/fib_trie.c
@@ -32,5 +32,5 @@ index 3ce23f9..cd2d639 100644
  				continue;
  			fib_alias_accessed(fa);
 -- 
-1.7.9.5
+1.8.1.4
 

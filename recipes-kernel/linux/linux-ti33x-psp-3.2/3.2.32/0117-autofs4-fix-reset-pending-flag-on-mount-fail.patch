@@ -1,4 +1,4 @@
-From d952448df37832e1d5d81a79ac3ffcd10a628e2c Mon Sep 17 00:00:00 2001
+From 7fe9a8da4010ff81fa364f2b7060e3507b3f8727 Mon Sep 17 00:00:00 2001
 From: Ian Kent <raven@themaw.net>
 Date: Thu, 11 Oct 2012 08:00:33 +0800
 Subject: [PATCH 117/146] autofs4 - fix reset pending flag on mount fail
@@ -16,8 +16,8 @@ Signed-off-by: Ian Kent <ikent@redhat.com>
 Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- fs/autofs4/root.c |    6 ++++--
- 1 files changed, 4 insertions(+), 2 deletions(-)
+ fs/autofs4/root.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/fs/autofs4/root.c b/fs/autofs4/root.c
 index f55ae23..790fa63 100644
@@ -39,5 +39,5 @@ index f55ae23..790fa63 100644
  done:
  	if (!(ino->flags & AUTOFS_INF_EXPIRING)) {
 -- 
-1.7.7.6
+1.8.1.4
 

@@ -1,4 +1,4 @@
-From d31df13c699dad5e500737b6e298614a760286ad Mon Sep 17 00:00:00 2001
+From 9e96fe82703711e734159848015f97775b484a1a Mon Sep 17 00:00:00 2001
 From: Martin Schwidefsky <schwidefsky@de.ibm.com>
 Date: Fri, 17 Feb 2012 10:29:23 +0100
 Subject: [PATCH 10/72] S390: correct ktime to tod clock comparator conversion
@@ -15,7 +15,7 @@ This is applicable to 3.2+ kernels.
 Signed-off-by: Martin Schwidefsky <schwidefsky@de.ibm.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- arch/s390/kernel/time.c |    7 +++++--
+ arch/s390/kernel/time.c | 7 +++++--
  1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/arch/s390/kernel/time.c b/arch/s390/kernel/time.c
@@ -40,5 +40,5 @@ index ebbfab3..e03c555 100644
  	return 0;
  }
 -- 
-1.7.9.4
+1.8.1.4
 

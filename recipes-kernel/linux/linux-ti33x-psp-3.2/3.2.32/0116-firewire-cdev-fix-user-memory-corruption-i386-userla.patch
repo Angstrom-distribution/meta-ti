@@ -1,4 +1,4 @@
-From 7f691c0acf963b82c2d4c35629937d7bf1c2376c Mon Sep 17 00:00:00 2001
+From fb2c1e38238a82cb1e61a18f902ab10b8b259dad Mon Sep 17 00:00:00 2001
 From: Stefan Richter <stefanr@s5r6.in-berlin.de>
 Date: Sat, 6 Oct 2012 14:12:56 +0200
 Subject: [PATCH 116/146] firewire: cdev: fix user memory corruption (i386
@@ -30,8 +30,8 @@ Reported-by: Simon Kirby <sim@hostway.ca>
 Signed-off-by: Stefan Richter <stefanr@s5r6.in-berlin.de>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/firewire/core-cdev.c |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/firewire/core-cdev.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
 index 4799393..b97d4f0 100644
@@ -49,5 +49,5 @@ index 4799393..b97d4f0 100644
  	if (ret == 0 && list_empty(&client->link))
  		list_add_tail(&client->link, &client->device->client_list);
 -- 
-1.7.7.6
+1.8.1.4
 

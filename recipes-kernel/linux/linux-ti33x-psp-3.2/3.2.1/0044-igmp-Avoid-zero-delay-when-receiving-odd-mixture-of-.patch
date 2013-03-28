@@ -1,4 +1,4 @@
-From f93baced861192a7ee0ec93708f2611c685abfad Mon Sep 17 00:00:00 2001
+From 53e5b19f21b9177111ac394f63cd08ae920d58ca Mon Sep 17 00:00:00 2001
 From: Ben Hutchings <ben@decadent.org.uk>
 Date: Mon, 9 Jan 2012 14:06:46 -0800
 Subject: [PATCH 44/49] igmp: Avoid zero delay when receiving odd mixture of
@@ -16,7 +16,7 @@ References: http://bugs.debian.org/654876
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 Signed-off-by: David S. Miller <davem@davemloft.net>
 ---
- net/ipv4/igmp.c |    2 ++
+ net/ipv4/igmp.c | 2 ++
  1 file changed, 2 insertions(+)
 
 diff --git a/net/ipv4/igmp.c b/net/ipv4/igmp.c
@@ -33,5 +33,5 @@ index b2ca095..c3cc64c 100644
  		if (!pskb_may_pull(skb, sizeof(struct igmpv3_query)))
  			return;
 -- 
-1.7.9.4
+1.8.1.4
 

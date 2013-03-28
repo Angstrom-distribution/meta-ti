@@ -1,7 +1,7 @@
-From 334c051e4d0b3214136dbee1b0a52e2d29747c0a Mon Sep 17 00:00:00 2001
+From 893df312bfb5728d10a87ecfbe08447f34469f4a Mon Sep 17 00:00:00 2001
 From: Vaibhav Bedia <vaibhav.bedia@ti.com>
 Date: Tue, 22 May 2012 12:24:55 +0530
-Subject: [PATCH 04/18] ARM: OMAP: AM33XX: PM: Save and restore EMIF registers
+Subject: [PATCH 04/19] ARM: OMAP: AM33XX: PM: Save and restore EMIF registers
 
 The EMIF configuration parameters were earlier harcoded
 under the assumption that the person updating the DDR PHY
@@ -16,8 +16,8 @@ to improve readability.
 
 Signed-off-by: Vaibhav Bedia <vaibhav.bedia@ti.com>
 ---
- arch/arm/mach-omap2/pm33xx.h    |   11 ---
- arch/arm/mach-omap2/sleep33xx.S |  141 +++++++++++++++++++++------------------
+ arch/arm/mach-omap2/pm33xx.h    |  11 ----
+ arch/arm/mach-omap2/sleep33xx.S | 141 +++++++++++++++++++++-------------------
  2 files changed, 75 insertions(+), 77 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/pm33xx.h b/arch/arm/mach-omap2/pm33xx.h
@@ -237,5 +237,5 @@ index 4c601b11..b7a1612 100644
  
  ENTRY(am33xx_do_wfi_sz)
 -- 
-1.7.7.6
+1.8.1.4
 

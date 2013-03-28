@@ -1,4 +1,4 @@
-From b24246fe1c6fff065bc919dd9aa0c42c6b96cc82 Mon Sep 17 00:00:00 2001
+From da27a8f25f6ace957672fea49737654c6fbcded5 Mon Sep 17 00:00:00 2001
 From: Al Cooper <acooper@gmail.com>
 Date: Fri, 16 Mar 2012 15:54:17 -0400
 Subject: [PATCH 057/109] mmc: Prevent 1.8V switch for SD hosts that don't
@@ -22,8 +22,8 @@ Acked-by: Girish K S <girish.shivananjappa@linaro.org>
 Signed-off-by: Chris Ball <cjb@laptop.org>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/mmc/host/sdhci.c |    5 +++--
- 1 files changed, 3 insertions(+), 2 deletions(-)
+ drivers/mmc/host/sdhci.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
 index 6ce32a7..aaeaff2 100644
@@ -42,5 +42,5 @@ index 6ce32a7..aaeaff2 100644
  
  	/* SDR104 supports also implies SDR50 support */
 -- 
-1.7.7.6
+1.8.1.4
 

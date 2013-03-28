@@ -1,4 +1,4 @@
-From fdc0431bfce635348e459fb3d3a27972a348cacc Mon Sep 17 00:00:00 2001
+From 7adc4b4b2cf91b3986a496ccd2b857ff089b982c Mon Sep 17 00:00:00 2001
 From: Vivien Didelot <vivien.didelot@savoirfairelinux.com>
 Date: Thu, 26 Jan 2012 15:59:00 -0500
 Subject: [PATCH 65/90] hwmon: (sht15) fix bad error code
@@ -11,7 +11,7 @@ Signed-off-by: Vivien Didelot <vivien.didelot@savoirfairelinux.com>
 Signed-off-by: Guenter Roeck <guenter.roeck@ericsson.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/hwmon/sht15.c |    3 ++-
+ drivers/hwmon/sht15.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/hwmon/sht15.c b/drivers/hwmon/sht15.c
@@ -36,5 +36,5 @@ index fe4104c..5357925 100644
  		goto err_free_data;
  	}
 -- 
-1.7.9.4
+1.8.1.4
 

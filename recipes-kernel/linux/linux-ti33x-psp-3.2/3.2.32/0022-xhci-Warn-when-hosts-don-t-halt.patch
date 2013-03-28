@@ -1,4 +1,4 @@
-From cb5a9af5f51aedf5130fbae48e967c7154472ece Mon Sep 17 00:00:00 2001
+From b1a85806f3a1a718dc80a28b465c68c3b48e31f7 Mon Sep 17 00:00:00 2001
 From: Sarah Sharp <sarah.a.sharp@linux.intel.com>
 Date: Fri, 16 Mar 2012 12:58:20 -0700
 Subject: [PATCH 022/146] xhci: Warn when hosts don't halt.
@@ -18,8 +18,8 @@ need this warning for other host controllers.)
 Signed-off-by: Sarah Sharp <sarah.a.sharp@linux.intel.com>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/usb/host/xhci.c |    3 +++
- 1 files changed, 3 insertions(+), 0 deletions(-)
+ drivers/usb/host/xhci.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
 index 09872ee..48b048f 100644
@@ -36,5 +36,5 @@ index 09872ee..48b048f 100644
  }
  
 -- 
-1.7.7.6
+1.8.1.4
 

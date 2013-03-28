@@ -1,4 +1,4 @@
-From b1adda345d00f98330549ac76578b09c405fb4ca Mon Sep 17 00:00:00 2001
+From cbfa914aeec8828e7d9c8d81a42ab975c6cbdc1b Mon Sep 17 00:00:00 2001
 From: Yinghai Lu <yinghai@kernel.org>
 Date: Mon, 10 Sep 2012 17:19:33 -0700
 Subject: [PATCH 033/146] PCI: Check P2P bridge for invalid
@@ -30,8 +30,8 @@ Signed-off-by: Yinghai Lu <yinghai@kernel.org>
 Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/pci/probe.c |    6 ++++--
- 1 files changed, 4 insertions(+), 2 deletions(-)
+ drivers/pci/probe.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
 index dfee1b3..9005380 100644
@@ -51,5 +51,5 @@ index dfee1b3..9005380 100644
  	}
  
 -- 
-1.7.7.6
+1.8.1.4
 

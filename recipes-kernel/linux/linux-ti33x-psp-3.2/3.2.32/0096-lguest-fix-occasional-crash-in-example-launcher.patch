@@ -1,4 +1,4 @@
-From 84e5f57070c9d1a864d7f23acc2d5146b86c1b20 Mon Sep 17 00:00:00 2001
+From 151dcc205d4cbba258eba707f7c288726b028e11 Mon Sep 17 00:00:00 2001
 From: Rusty Russell <rusty@rustcorp.com.au>
 Date: Thu, 4 Oct 2012 12:03:25 +0930
 Subject: [PATCH 096/146] lguest: fix occasional crash in example launcher.
@@ -12,8 +12,8 @@ Signed-off-by: Rusty Russell <rusty@rustcorp.com.au>
 [bwh: Backported to 3.2: adjust filename]
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- Documentation/virtual/lguest/lguest.c |    1 +
- 1 files changed, 1 insertions(+), 0 deletions(-)
+ Documentation/virtual/lguest/lguest.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/Documentation/virtual/lguest/lguest.c b/Documentation/virtual/lguest/lguest.c
 index c095d79..288dba6 100644
@@ -28,5 +28,5 @@ index c095d79..288dba6 100644
  	/*
  	 * Append to device list.  Prepending to a single-linked list is
 -- 
-1.7.7.6
+1.8.1.4
 

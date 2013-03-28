@@ -1,4 +1,4 @@
-From 66d791bcaed9fa50738794abf5b46abcf2b28656 Mon Sep 17 00:00:00 2001
+From 48e2336d3e04b341f44194238ec5ea62094eea49 Mon Sep 17 00:00:00 2001
 From: Li Wang <liwang@nudt.edu.cn>
 Date: Thu, 19 Jan 2012 09:44:36 +0800
 Subject: [PATCH 47/87] eCryptfs: Infinite loop due to overflow in
@@ -21,7 +21,7 @@ Reviewed-by: Cong Wang <xiyou.wangcong@gmail.com>
 Signed-off-by: Tyler Hicks <tyhicks@canonical.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- fs/ecryptfs/read_write.c |    4 ++--
+ fs/ecryptfs/read_write.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/fs/ecryptfs/read_write.c b/fs/ecryptfs/read_write.c
@@ -47,5 +47,5 @@ index 54eb14c..608c1c3 100644
  			if (num_bytes > total_remaining_zeros)
  				num_bytes = total_remaining_zeros;
 -- 
-1.7.9.4
+1.8.1.4
 

@@ -1,4 +1,4 @@
-From a0ef4bd55a5a7d190eeceb4d1626988af68a2f0e Mon Sep 17 00:00:00 2001
+From ced775be06f6eac49fc5ab9745ebb8a93490b50e Mon Sep 17 00:00:00 2001
 From: NeilBrown <neilb@suse.de>
 Date: Tue, 7 Feb 2012 15:35:42 +1100
 Subject: [PATCH 139/147] lockd: fix arg parsing for grace_period and timeout.
@@ -19,7 +19,7 @@ Signed-off-by: NeilBrown <neilb@suse.de>
 Signed-off-by: J. Bruce Fields <bfields@redhat.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- fs/lockd/svc.c |    2 +-
+ fs/lockd/svc.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/fs/lockd/svc.c b/fs/lockd/svc.c
@@ -36,5 +36,5 @@ index c061b9a..2444780 100644
  }
  
 -- 
-1.7.9.4
+1.8.1.4
 

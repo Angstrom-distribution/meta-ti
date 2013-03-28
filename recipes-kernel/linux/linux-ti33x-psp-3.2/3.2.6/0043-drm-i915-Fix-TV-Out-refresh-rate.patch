@@ -1,4 +1,4 @@
-From e3c15719dc2c5af905549e56dc33cf13850cc206 Mon Sep 17 00:00:00 2001
+From dc91237145ab4bbd487f35e22978a45981961119 Mon Sep 17 00:00:00 2001
 From: Rodrigo Vivi <rodrigo.vivi@gmail.com>
 Date: Wed, 14 Dec 2011 21:10:06 -0200
 Subject: [PATCH 43/87] drm/i915: Fix TV Out refresh rate.
@@ -14,7 +14,7 @@ Signed-off-by: Keith Packard <keithp@keithp.com>
 Signed-off-by: Eugeni Dodonov <eugeni.dodonov@intel.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/gpu/drm/i915/intel_tv.c |   16 ++++++++--------
+ drivers/gpu/drm/i915/intel_tv.c | 16 ++++++++--------
  1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/gpu/drm/i915/intel_tv.c b/drivers/gpu/drm/i915/intel_tv.c
@@ -94,5 +94,5 @@ index f3c6a9a..2b1fcad 100644
  		.component_only = 1,
  
 -- 
-1.7.9.4
+1.8.1.4
 

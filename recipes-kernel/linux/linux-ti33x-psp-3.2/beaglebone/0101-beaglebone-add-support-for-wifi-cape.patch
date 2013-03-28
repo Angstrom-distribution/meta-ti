@@ -1,4 +1,4 @@
-From d026e43cddc8ebc038a5800259a7f75873f15ab8 Mon Sep 17 00:00:00 2001
+From d11a3b80386719a62344f470f166dc9e92ef2919 Mon Sep 17 00:00:00 2001
 From: Koen Kooi <koen@dominion.thruhere.net>
 Date: Tue, 12 Feb 2013 18:56:31 +0100
 Subject: [PATCH 101/102] beaglebone: add support for wifi cape

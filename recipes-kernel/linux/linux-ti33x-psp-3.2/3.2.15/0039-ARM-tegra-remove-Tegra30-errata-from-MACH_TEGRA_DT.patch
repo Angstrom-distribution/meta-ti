@@ -1,4 +1,4 @@
-From 7255ae998bddcdfad51d059ae1c6acfe07221551 Mon Sep 17 00:00:00 2001
+From 7a5ac56763b483af6d2b571faf357d846b3deee5 Mon Sep 17 00:00:00 2001
 From: Stephen Warren <swarren@nvidia.com>
 Date: Thu, 5 Apr 2012 16:50:05 -0600
 Subject: [PATCH 39/60] ARM: tegra: remove Tegra30 errata from MACH_TEGRA_DT
@@ -16,7 +16,7 @@ so.
 Signed-off-by: Stephen Warren <swarren@nvidia.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- arch/arm/mach-tegra/Kconfig |    5 -----
+ arch/arm/mach-tegra/Kconfig | 5 -----
  1 file changed, 5 deletions(-)
 
 diff --git a/arch/arm/mach-tegra/Kconfig b/arch/arm/mach-tegra/Kconfig
@@ -36,5 +36,5 @@ index dbc59fa..379cdc7 100644
  	  Support for generic nVidia Tegra boards using Flattened Device Tree
  
 -- 
-1.7.9.5
+1.8.1.4
 

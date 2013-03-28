@@ -1,8 +1,7 @@
-From 24ac9d40092ac989e425100ff65c7781cb786077 Mon Sep 17 00:00:00 2001
+From 9de0904f3691ca437ca3fd266dcf3ef1519c48e1 Mon Sep 17 00:00:00 2001
 From: Ryan Mallon <rmallon@gmail.com>
 Date: Sat, 28 Jan 2012 08:51:40 +1100
-Subject: [PATCH 54/90] vmwgfx: Fix assignment in
- vmw_framebuffer_create_handle
+Subject: [PATCH 54/90] vmwgfx: Fix assignment in vmw_framebuffer_create_handle
 
 commit bf9c05d5b6d19b3e4c9fe21047694e94f48db89b upstream.
 
@@ -13,7 +12,7 @@ Reviewed-by: Jakob Bornecrantz<jakob@vmware.com>
 Signed-off-by: Dave Airlie <airlied@redhat.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/gpu/drm/vmwgfx/vmwgfx_kms.c |    2 +-
+ drivers/gpu/drm/vmwgfx/vmwgfx_kms.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/vmwgfx/vmwgfx_kms.c b/drivers/gpu/drm/vmwgfx/vmwgfx_kms.c
@@ -30,5 +29,5 @@ index f94b33a..7c88f1f 100644
  	return 0;
  }
 -- 
-1.7.9.4
+1.8.1.4
 

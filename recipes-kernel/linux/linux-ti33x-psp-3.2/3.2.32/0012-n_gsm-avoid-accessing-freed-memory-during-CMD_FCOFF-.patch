@@ -1,4 +1,4 @@
-From c7651ca38840f46d415d155f8708d4e7ee142f5d Mon Sep 17 00:00:00 2001
+From 3049856e4a8dc9d218d4d2c1e7b558e25e9d4b15 Mon Sep 17 00:00:00 2001
 From: Russ Gorby <russ.gorby@intel.com>
 Date: Mon, 13 Aug 2012 13:44:59 +0100
 Subject: [PATCH 012/146] n_gsm: avoid accessing freed memory during CMD_FCOFF
@@ -21,8 +21,8 @@ Signed-off-by: Alan Cox <alan@linux.intel.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/tty/n_gsm.c |   40 +++++++++++++---------------------------
- 1 files changed, 13 insertions(+), 27 deletions(-)
+ drivers/tty/n_gsm.c | 40 +++++++++++++---------------------------
+ 1 file changed, 13 insertions(+), 27 deletions(-)
 
 diff --git a/drivers/tty/n_gsm.c b/drivers/tty/n_gsm.c
 index 016f366..604a2f9 100644
@@ -138,5 +138,5 @@ index 016f366..604a2f9 100644
  	gsm->t1 = T1;
  	gsm->t2 = T2;
 -- 
-1.7.7.6
+1.8.1.4
 

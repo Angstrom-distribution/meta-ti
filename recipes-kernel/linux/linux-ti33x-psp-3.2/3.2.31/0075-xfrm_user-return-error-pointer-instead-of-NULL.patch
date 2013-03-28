@@ -1,4 +1,4 @@
-From 4ac1d1b7c83d5abf92c3e3d307a8bf87c2417ddd Mon Sep 17 00:00:00 2001
+From b76d8e904dc46a608274df312a866d08b29a1cfa Mon Sep 17 00:00:00 2001
 From: Mathias Krause <minipli@googlemail.com>
 Date: Thu, 13 Sep 2012 11:41:26 +0000
 Subject: [PATCH 075/109] xfrm_user: return error pointer instead of NULL
@@ -19,8 +19,8 @@ Acked-by: Steffen Klassert <steffen.klassert@secunet.com>
 Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- net/xfrm/xfrm_user.c |    6 ++++--
- 1 files changed, 4 insertions(+), 2 deletions(-)
+ net/xfrm/xfrm_user.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/net/xfrm/xfrm_user.c b/net/xfrm/xfrm_user.c
 index 7cae73e..a092828 100644
@@ -48,5 +48,5 @@ index 7cae73e..a092828 100644
  
  	return skb;
 -- 
-1.7.7.6
+1.8.1.4
 

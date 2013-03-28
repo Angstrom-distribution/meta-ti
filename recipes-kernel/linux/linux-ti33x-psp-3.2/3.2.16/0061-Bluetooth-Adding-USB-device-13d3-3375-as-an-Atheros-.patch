@@ -1,4 +1,4 @@
-From 3100f55ea5eeb7e5c2c03ccf26fffdbcaa29dae7 Mon Sep 17 00:00:00 2001
+From 77637ce122587772f90e46affc33c56fab4fe78f Mon Sep 17 00:00:00 2001
 From: Eran <eran@over-here.org>
 Date: Mon, 5 Dec 2011 22:15:29 +0000
 Subject: [PATCH 61/68] Bluetooth: Adding USB device 13d3:3375 as an Atheros
@@ -26,8 +26,8 @@ Signed-off-by: Gustavo F. Padovan <padovan@profusion.mobi>
 Cc: Jonathan Nieder <jrnieder@gmail.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/bluetooth/ath3k.c |    2 ++
- drivers/bluetooth/btusb.c |    1 +
+ drivers/bluetooth/ath3k.c | 2 ++
+ drivers/bluetooth/btusb.c | 1 +
  2 files changed, 3 insertions(+)
 
 diff --git a/drivers/bluetooth/ath3k.c b/drivers/bluetooth/ath3k.c
@@ -63,5 +63,5 @@ index c16c750..df0331a 100644
  	/* Atheros AR5BBU12 with sflash firmware */
  	{ USB_DEVICE(0x0489, 0xe02c), .driver_info = BTUSB_IGNORE },
 -- 
-1.7.10
+1.8.1.4
 

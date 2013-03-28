@@ -1,4 +1,4 @@
-From b277e4c19f3668e1a58e03d8933a3c6cd612c5e2 Mon Sep 17 00:00:00 2001
+From c2dd1208951e3988f3e51d035e5b6895aae3fb8e Mon Sep 17 00:00:00 2001
 From: Sasha Levin <levinsasha928@gmail.com>
 Date: Sat, 5 May 2012 17:06:35 +0200
 Subject: [PATCH 075/117] init: don't try mounting device as nfs root unless
@@ -33,7 +33,7 @@ Signed-off-by: Sasha Levin <levinsasha928@gmail.com>
 Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- init/do_mounts.c |    2 +-
+ init/do_mounts.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/init/do_mounts.c b/init/do_mounts.c
@@ -50,5 +50,5 @@ index db6e5ee..d6c229f 100644
  			return;
  
 -- 
-1.7.9.5
+1.8.1.4
 

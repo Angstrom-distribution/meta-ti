@@ -1,4 +1,4 @@
-From 25adfdfbdcff449585389e1306d0f239ebc2a8d6 Mon Sep 17 00:00:00 2001
+From a0b47ac2da76d6fe052ed1f78eca60194443bde0 Mon Sep 17 00:00:00 2001
 From: Li RongQing <roy.qing.li@gmail.com>
 Date: Mon, 17 Sep 2012 22:40:10 +0000
 Subject: [PATCH 077/109] xfrm: fix a read lock imbalance in make_blackhole
@@ -12,8 +12,8 @@ Signed-off-by: Li RongQing <roy.qing.li@gmail.com>
 Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- net/xfrm/xfrm_policy.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ net/xfrm/xfrm_policy.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/net/xfrm/xfrm_policy.c b/net/xfrm/xfrm_policy.c
 index 0174034..113d20e 100644
@@ -29,5 +29,5 @@ index 0174034..113d20e 100644
  		ret = afinfo->blackhole_route(net, dst_orig);
  	}
 -- 
-1.7.7.6
+1.8.1.4
 

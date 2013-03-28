@@ -1,4 +1,4 @@
-From 57a7686869f3ca7dfb8694583c88b5dfd510e4f6 Mon Sep 17 00:00:00 2001
+From 046bfbdcce4ef26e8d5a7db00a9c3eb3581d25e7 Mon Sep 17 00:00:00 2001
 From: Sasha Levin <levinsasha928@gmail.com>
 Date: Fri, 18 Nov 2011 12:14:49 +0200
 Subject: [PATCH 070/129] nfsd: Fix oops when parsing a 0 length export
@@ -61,7 +61,7 @@ Signed-off-by: Sasha Levin <levinsasha928@gmail.com>
 Signed-off-by: J. Bruce Fields <bfields@redhat.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
- fs/nfsd/export.c |    2 +-
+ fs/nfsd/export.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/fs/nfsd/export.c b/fs/nfsd/export.c
@@ -78,5 +78,5 @@ index 62f3b90..5f312ab 100644
  	mesg[mlen-1] = 0;
  
 -- 
-1.7.9.5
+1.8.1.4
 

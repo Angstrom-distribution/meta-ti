@@ -1,4 +1,4 @@
-From 384298df213387fc31905729a5e23e79bc6b8222 Mon Sep 17 00:00:00 2001
+From e37bf1849d935d67b614af59711c1cac17395481 Mon Sep 17 00:00:00 2001
 From: Ulrich Weber <ulrich.weber@sophos.com>
 Date: Mon, 5 Mar 2012 04:52:44 +0000
 Subject: [PATCH 24/42] bridge: check return value of ipv6_dev_get_saddr()
@@ -13,7 +13,7 @@ Signed-off-by: Ulrich Weber <ulrich.weber@sophos.com>
 Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- net/bridge/br_multicast.c |    7 +++++--
+ net/bridge/br_multicast.c | 7 +++++--
  1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/net/bridge/br_multicast.c b/net/bridge/br_multicast.c
@@ -35,5 +35,5 @@ index a5f4e57..8eb6b15 100644
  
  	hopopt = (u8 *)(ip6h + 1);
 -- 
-1.7.9.4
+1.8.1.4
 

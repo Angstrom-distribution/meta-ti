@@ -1,4 +1,4 @@
-From 48128d2a875a34aeef5b89ed93e2887179534b33 Mon Sep 17 00:00:00 2001
+From 7c1e8ca0ba3e189cbbb348dfcb2e406a9f3cdf60 Mon Sep 17 00:00:00 2001
 From: Fabio Estevam <festevam@gmail.com>
 Date: Thu, 5 Jan 2012 12:49:54 -0200
 Subject: [PATCH 050/147] ima: fix Kconfig dependencies
@@ -15,8 +15,8 @@ Signed-off-by: Rajiv Andrade <srajiv@linux.vnet.ibm.com>
 Signed-off-by: Mimi Zohar <zohar@us.ibm.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/char/tpm/Kconfig       |    1 -
- security/integrity/ima/Kconfig |    2 +-
+ drivers/char/tpm/Kconfig       | 1 -
+ security/integrity/ima/Kconfig | 2 +-
  2 files changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/char/tpm/Kconfig b/drivers/char/tpm/Kconfig
@@ -45,5 +45,5 @@ index 4f554f2..063298a 100644
  	help
  	  The Trusted Computing Group(TCG) runtime Integrity
 -- 
-1.7.9.4
+1.8.1.4
 

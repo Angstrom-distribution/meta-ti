@@ -1,4 +1,4 @@
-From b8c4c0ffa982752ee73d7eb5afaf39635e86ee43 Mon Sep 17 00:00:00 2001
+From 21f49de71bbce1925ece296e6decfb2c03a036bc Mon Sep 17 00:00:00 2001
 From: Jonathan Nieder <jrnieder@gmail.com>
 Date: Tue, 28 Feb 2012 11:51:10 -0700
 Subject: [PATCH 46/60] x86/PCI: use host bridge _CRS info on MSI MS-7253
@@ -32,7 +32,7 @@ Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
 Signed-off-by: Jesse Barnes <jbarnes@virtuousgeek.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- arch/x86/pci/acpi.c |   11 +++++++++++
+ arch/x86/pci/acpi.c | 11 +++++++++++
  1 file changed, 11 insertions(+)
 
 diff --git a/arch/x86/pci/acpi.c b/arch/x86/pci/acpi.c
@@ -58,5 +58,5 @@ index f8348ab..dc00ad5 100644
  };
  
 -- 
-1.7.9.5
+1.8.1.4
 

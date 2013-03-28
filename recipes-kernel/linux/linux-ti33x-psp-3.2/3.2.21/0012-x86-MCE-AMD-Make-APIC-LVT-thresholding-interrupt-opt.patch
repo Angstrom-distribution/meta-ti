@@ -1,4 +1,4 @@
-From 558e69f643c0c8492df4bb6898cbf3caf3e1e160 Mon Sep 17 00:00:00 2001
+From bd646ceaf4be47a5b12eada8a2f7fcd79bf9d306 Mon Sep 17 00:00:00 2001
 From: Borislav Petkov <borislav.petkov@amd.com>
 Date: Sun, 10 Jun 2012 00:50:15 +0900
 Subject: [PATCH 12/67] x86, MCE, AMD: Make APIC LVT thresholding interrupt
@@ -21,7 +21,7 @@ Signed-off-by: Borislav Petkov <borislav.petkov@amd.com>
 Signed-off-by: Robert Richter <robert.richter@amd.com>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- arch/x86/kernel/cpu/mcheck/mce_amd.c |   55 +++++++++++++++++++++++++++-------
+ arch/x86/kernel/cpu/mcheck/mce_amd.c | 55 ++++++++++++++++++++++++++++--------
  1 file changed, 44 insertions(+), 11 deletions(-)
 
 diff --git a/arch/x86/kernel/cpu/mcheck/mce_amd.c b/arch/x86/kernel/cpu/mcheck/mce_amd.c
@@ -142,5 +142,5 @@ index f547421..445a61c 100644
  
  	INIT_LIST_HEAD(&b->miscj);
 -- 
-1.7.9.5
+1.8.1.4
 

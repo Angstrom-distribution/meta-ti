@@ -1,4 +1,4 @@
-From d3f8f68e0ff8065d2769fc80ebab6cd4a99df65d Mon Sep 17 00:00:00 2001
+From 82b1b952f2d8542df07378ae7db8011625358463 Mon Sep 17 00:00:00 2001
 From: Alan Cox <alan@linux.intel.com>
 Date: Mon, 14 May 2012 14:51:22 +0100
 Subject: [PATCH 058/117] tty: Allow uart_register/unregister/register
@@ -13,7 +13,7 @@ Signed-off-by: Alan Cox <alan@linux.intel.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/tty/serial/serial_core.c |    1 +
+ drivers/tty/serial/serial_core.c | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/tty/serial/serial_core.c b/drivers/tty/serial/serial_core.c
@@ -29,5 +29,5 @@ index 0406d7f..af5ffb9 100644
  }
  
 -- 
-1.7.9.5
+1.8.1.4
 

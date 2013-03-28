@@ -1,4 +1,4 @@
-From be6768ee3f1d5ade04946ae2d9b9642e795b4dc3 Mon Sep 17 00:00:00 2001
+From 1ee27d8517dcdd4e7e399a66ed67a1b006f65b29 Mon Sep 17 00:00:00 2001
 From: Mark Brown <broonie@opensource.wolfsonmicro.com>
 Date: Wed, 21 Mar 2012 13:22:40 +0000
 Subject: [PATCH 07/60] ASoC: wm8994: Update WM8994 DCS calibration
@@ -10,7 +10,7 @@ Based on latest production information.
 Signed-off-by: Mark Brown <broonie@opensource.wolfsonmicro.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- sound/soc/codecs/wm8994.c |    2 +-
+ sound/soc/codecs/wm8994.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/sound/soc/codecs/wm8994.c b/sound/soc/codecs/wm8994.c
@@ -27,5 +27,5 @@ index 6e502af..2f1f5f8 100644
  		default:
  			break;
 -- 
-1.7.9.5
+1.8.1.4
 

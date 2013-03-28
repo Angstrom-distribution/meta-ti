@@ -1,4 +1,4 @@
-From 24c3a899ae28cd532b890dcbc58136ed08867447 Mon Sep 17 00:00:00 2001
+From 4694fb91eb35b01d4c0ca5ebc4f4744fa996d5d2 Mon Sep 17 00:00:00 2001
 From: Joe Thornber <ejt@redhat.com>
 Date: Wed, 7 Mar 2012 19:09:44 +0000
 Subject: [PATCH 89/95] dm thin metadata: decrement counter after removing
@@ -15,7 +15,7 @@ Acked-by: Mike Snitzer <snitzer@redhat.com>
 Signed-off-by: Alasdair G Kergon <agk@redhat.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/md/dm-thin-metadata.c |    2 ++
+ drivers/md/dm-thin-metadata.c | 2 ++
  1 file changed, 2 insertions(+)
 
 diff --git a/drivers/md/dm-thin-metadata.c b/drivers/md/dm-thin-metadata.c
@@ -32,5 +32,5 @@ index 05b7ffc..237571a 100644
  
  	return 0;
 -- 
-1.7.9.4
+1.8.1.4
 

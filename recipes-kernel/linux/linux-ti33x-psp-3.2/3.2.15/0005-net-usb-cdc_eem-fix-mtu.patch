@@ -1,4 +1,4 @@
-From 1a9aa23e139f1305c1b8e1609e8275ed7456c9ba Mon Sep 17 00:00:00 2001
+From d9dafea2508c36741326ccede1e45024b6497eed Mon Sep 17 00:00:00 2001
 From: Rabin Vincent <rabin@rab.in>
 Date: Thu, 29 Mar 2012 07:15:15 +0000
 Subject: [PATCH 05/60] net: usb: cdc_eem: fix mtu
@@ -18,7 +18,7 @@ Signed-off-by: Rabin Vincent <rabin@rab.in>
 Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/net/usb/cdc_eem.c |    1 +
+ drivers/net/usb/cdc_eem.c | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/net/usb/cdc_eem.c b/drivers/net/usb/cdc_eem.c
@@ -34,5 +34,5 @@ index 882f53f..82d43b2 100644
  	return 0;
  }
 -- 
-1.7.9.5
+1.8.1.4
 

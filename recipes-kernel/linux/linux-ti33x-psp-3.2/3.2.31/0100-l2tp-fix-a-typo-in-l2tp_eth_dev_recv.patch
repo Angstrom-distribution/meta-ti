@@ -1,4 +1,4 @@
-From 1871c11e5c821a8004a643f8c30ec7c161a2da9c Mon Sep 17 00:00:00 2001
+From 3e35335bc47743aa95aa5dcd0ff2fa03f60ce817 Mon Sep 17 00:00:00 2001
 From: Eric Dumazet <edumazet@google.com>
 Date: Tue, 4 Sep 2012 15:54:55 -0400
 Subject: [PATCH 100/109] l2tp: fix a typo in l2tp_eth_dev_recv()
@@ -12,8 +12,8 @@ Signed-off-by: Eric Dumazet <edumazet@google.com>
 Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- net/l2tp/l2tp_eth.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ net/l2tp/l2tp_eth.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/net/l2tp/l2tp_eth.c b/net/l2tp/l2tp_eth.c
 index 3c55f63..2cef50b 100644
@@ -29,5 +29,5 @@ index 3c55f63..2cef50b 100644
  
  	secpath_reset(skb);
 -- 
-1.7.7.6
+1.8.1.4
 

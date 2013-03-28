@@ -1,4 +1,4 @@
-From ae32c3d60a3445bc8a3f5c65bdeed880d732ff4c Mon Sep 17 00:00:00 2001
+From fc1d042e21eb606bc261bc700f0a2c7c744e9d43 Mon Sep 17 00:00:00 2001
 From: Bernhard Walle <bernhard@bwalle.de>
 Date: Sun, 26 Feb 2012 18:35:18 +0100
 Subject: [PATCH 091/146] scripts/Kbuild.include: Fix portability problem of
@@ -25,8 +25,8 @@ Andreas Bießmann <andreas@biessmann.de>
 Signed-off-by: Michal Marek <mmarek@suse.cz>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- scripts/Kbuild.include |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ scripts/Kbuild.include | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/scripts/Kbuild.include b/scripts/Kbuild.include
 index d897278..6a3ee98 100644
@@ -42,5 +42,5 @@ index d897278..6a3ee98 100644
  # cc-option
  # Usage: cflags-y += $(call cc-option,-march=winchip-c6,-march=i586)
 -- 
-1.7.7.6
+1.8.1.4
 

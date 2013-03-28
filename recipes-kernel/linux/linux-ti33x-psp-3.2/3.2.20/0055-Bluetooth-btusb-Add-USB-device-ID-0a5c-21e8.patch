@@ -1,4 +1,4 @@
-From 67248cba79392f35493056ea7262d27fc1fe06f3 Mon Sep 17 00:00:00 2001
+From a1778e1e3391d8961d06e95a58aa87f002008357 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jo=C3=A3o=20Paulo=20Rechi=20Vita?= <jprvita@openbossa.org>
 Date: Wed, 14 Mar 2012 21:45:16 +0200
 Subject: [PATCH 55/86] Bluetooth: btusb: Add USB device ID "0a5c 21e8"
@@ -27,7 +27,7 @@ Acked-by: Gustavo F. Padovan <padovan@profusion.mobi>
 Signed-off-by: Johan Hedberg <johan.hedberg@intel.com>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/bluetooth/btusb.c |    1 +
+ drivers/bluetooth/btusb.c | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
@@ -43,5 +43,5 @@ index fde7512..d4859bf 100644
  	{ USB_DEVICE(0x413c, 0x8197) },
  
 -- 
-1.7.9.5
+1.8.1.4
 

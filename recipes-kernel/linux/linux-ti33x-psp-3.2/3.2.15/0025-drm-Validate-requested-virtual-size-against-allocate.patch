@@ -1,4 +1,4 @@
-From 604965714e342993a12bd7aff566b9d4dd531fe9 Mon Sep 17 00:00:00 2001
+From e9f61e83cb520f8a04a33ce51703f5ae14854252 Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Mon, 26 Mar 2012 21:15:53 +0100
 Subject: [PATCH 25/60] drm: Validate requested virtual size against allocated
@@ -20,7 +20,7 @@ Reviewed-by: Daniel Vetter <daniel.vetter@ffwll.ch>
 Signed-off-by: Dave Airlie <airlied@redhat.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/gpu/drm/drm_fb_helper.c |    8 ++++++--
+ drivers/gpu/drm/drm_fb_helper.c | 8 ++++++--
  1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/drm_fb_helper.c b/drivers/gpu/drm/drm_fb_helper.c
@@ -44,5 +44,5 @@ index 80fe39d..dd58373 100644
  		return -EINVAL;
  	}
 -- 
-1.7.9.5
+1.8.1.4
 

@@ -1,4 +1,4 @@
-From 23cc657edadf5b126485d90d9a6178478ccc7a9d Mon Sep 17 00:00:00 2001
+From 78959223f788efd56977548b6c9a4153532d1137 Mon Sep 17 00:00:00 2001
 From: Steven Rostedt <srostedt@redhat.com>
 Date: Tue, 27 Mar 2012 10:43:28 -0400
 Subject: [PATCH 21/60] tracing: Fix ent_size in trace output
@@ -25,7 +25,7 @@ Tested-by: Thomas Gleixner <tglx@linutronix.de>
 Signed-off-by: Steven Rostedt <rostedt@goodmis.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- kernel/trace/trace.c |    4 ++++
+ kernel/trace/trace.c | 4 ++++
  1 file changed, 4 insertions(+)
 
 diff --git a/kernel/trace/trace.c b/kernel/trace/trace.c
@@ -54,5 +54,5 @@ index f2bd275..697e49d 100644
  		*ent_cpu = next_cpu;
  
 -- 
-1.7.9.5
+1.8.1.4
 

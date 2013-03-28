@@ -1,4 +1,4 @@
-From 869b0a6318bd7d8986754e82d8ea37780a070466 Mon Sep 17 00:00:00 2001
+From 907fb62a45699e4c9da9d580f37f07b058b551b1 Mon Sep 17 00:00:00 2001
 From: Konrad Rzeszutek Wilk <konrad.wilk@oracle.com>
 Date: Fri, 17 Aug 2012 10:22:37 -0400
 Subject: [PATCH 042/109] xen/boot: Disable NUMA for PV guests.
@@ -65,8 +65,8 @@ Acked-by: Andre Przywara <andre.przywara@amd.com>
 Signed-off-by: Konrad Rzeszutek Wilk <konrad.wilk@oracle.com>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- arch/x86/xen/setup.c |    4 ++++
- 1 files changed, 4 insertions(+), 0 deletions(-)
+ arch/x86/xen/setup.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/arch/x86/xen/setup.c b/arch/x86/xen/setup.c
 index bb104b4..6e5a7f1 100644
@@ -89,5 +89,5 @@ index bb104b4..6e5a7f1 100644
 +#endif
  }
 -- 
-1.7.7.6
+1.8.1.4
 

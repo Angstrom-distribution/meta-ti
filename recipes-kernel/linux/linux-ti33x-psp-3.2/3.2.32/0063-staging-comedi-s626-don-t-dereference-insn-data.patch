@@ -1,4 +1,4 @@
-From 74664b0f6d8a3becc44b8c78683909269e4b5e53 Mon Sep 17 00:00:00 2001
+From d2e21107443a567db7b27ecd895fcfce640f878d Mon Sep 17 00:00:00 2001
 From: Ian Abbott <abbotti@mev.co.uk>
 Date: Mon, 24 Sep 2012 17:20:52 +0100
 Subject: [PATCH 063/146] staging: comedi: s626: don't dereference insn->data
@@ -14,8 +14,8 @@ Reviewed-by: H Hartley Sweeten <hsweeten@visionengravers.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/staging/comedi/drivers/s626.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ drivers/staging/comedi/drivers/s626.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/comedi/drivers/s626.c b/drivers/staging/comedi/drivers/s626.c
 index 23fc64b..c72128f 100644
@@ -31,5 +31,5 @@ index 23fc64b..c72128f 100644
  	SetLatchSource(dev, k, valueSrclatch);
  	k->SetEnable(dev, k, (uint16_t) (enab != 0));
 -- 
-1.7.7.6
+1.8.1.4
 

@@ -1,4 +1,4 @@
-From a1d00544e4e8009160a7ef392a26db61dc0ea520 Mon Sep 17 00:00:00 2001
+From c28555a764d40b7eccc4ac750f5cdcbb58b1277a Mon Sep 17 00:00:00 2001
 From: Sascha Hauer <s.hauer@pengutronix.de>
 Date: Thu, 4 Oct 2012 17:11:17 -0700
 Subject: [PATCH 101/146] kbuild: make: fix if_changed when command contains
@@ -25,8 +25,8 @@ Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
 Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- scripts/Kbuild.include |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ scripts/Kbuild.include | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/scripts/Kbuild.include b/scripts/Kbuild.include
 index 8bb8d3a..978416d 100644
@@ -42,5 +42,5 @@ index 8bb8d3a..978416d 100644
  # Find any prerequisites that is newer than target or that does not exist.
  # PHONY targets skipped in both cases.
 -- 
-1.7.7.6
+1.8.1.4
 

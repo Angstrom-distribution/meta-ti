@@ -1,4 +1,4 @@
-From 6eefadee5b779a49206118f5290ba333b8f140fc Mon Sep 17 00:00:00 2001
+From 6fb85639522d97ad11572a754ac42d6b5dc5506f Mon Sep 17 00:00:00 2001
 From: NeilBrown <neilb@suse.de>
 Date: Thu, 27 Sep 2012 12:35:21 +1000
 Subject: [PATCH 047/109] md/raid10: fix "enough" function for detecting if
@@ -26,8 +26,8 @@ Signed-off-by: NeilBrown <neilb@suse.de>
 [bwh: Backported to 3.2: s/geo->/conf->/]
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/md/raid10.c |    8 +++++---
- 1 files changed, 5 insertions(+), 3 deletions(-)
+ drivers/md/raid10.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/md/raid10.c b/drivers/md/raid10.c
 index 7a9eef6..0634ee5 100644
@@ -54,5 +54,5 @@ index 7a9eef6..0634ee5 100644
  	return 1;
  }
 -- 
-1.7.7.6
+1.8.1.4
 

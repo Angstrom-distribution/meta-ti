@@ -1,8 +1,8 @@
-From a8385f8f3089aba9d0d9b0faf580e89510648367 Mon Sep 17 00:00:00 2001
+From f134b842bfd7fef95d417a57e6fcf051e62ca89c Mon Sep 17 00:00:00 2001
 From: Larry Finger <Larry.Finger@lwfinger.net>
 Date: Sun, 26 Feb 2012 22:08:36 -0600
-Subject: [PATCH 015/147] staging: r8712u: Fix regression in signal level
- after commit c6dc001
+Subject: [PATCH 015/147] staging: r8712u: Fix regression in signal level after
+ commit c6dc001
 
 commit da3e6ec2f443ac00aa623c5921e3521f5f38efe4 upstream.
 
@@ -20,7 +20,7 @@ Reported-and-tested-by: Robert Crawford <wrc1944@gmail.com>
 Signed-off-by: Larry Finger <Larry.Finger@lwfinger.net>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/staging/rtl8712/rtl871x_ioctl_linux.c |    8 +-------
+ drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 8 +-------
  1 file changed, 1 insertion(+), 7 deletions(-)
 
 diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
@@ -43,5 +43,5 @@ index 507584b8..ef35bc2 100644
  	}
  	piwstats->qual.updated = IW_QUAL_ALL_UPDATED;
 -- 
-1.7.9.4
+1.8.1.4
 

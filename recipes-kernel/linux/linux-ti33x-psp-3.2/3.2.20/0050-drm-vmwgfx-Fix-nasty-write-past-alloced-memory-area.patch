@@ -1,4 +1,4 @@
-From 345d5c3e9925e3a22b7974adfdb8bbb257432aee Mon Sep 17 00:00:00 2001
+From 0e2eba8409953faa17582f39757746505fad25be Mon Sep 17 00:00:00 2001
 From: Thomas Hellstrom <thellstrom@vmware.com>
 Date: Fri, 1 Jun 2012 15:48:04 +0200
 Subject: [PATCH 50/86] drm/vmwgfx: Fix nasty write past alloced memory area
@@ -10,7 +10,7 @@ Reviewed-by: Jakob Bornecrantz <jakob@vmware.com>
 Signed-off-by: Dave Airlie <airlied@redhat.com>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/gpu/drm/vmwgfx/vmwgfx_gmr.c |    2 +-
+ drivers/gpu/drm/vmwgfx/vmwgfx_gmr.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/vmwgfx/vmwgfx_gmr.c b/drivers/gpu/drm/vmwgfx/vmwgfx_gmr.c
@@ -27,5 +27,5 @@ index f4e7763..c41226a 100644
  		else
  			*((uint64_t *)cmd) = page_to_pfn(*pages++);
 -- 
-1.7.9.5
+1.8.1.4
 

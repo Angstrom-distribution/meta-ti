@@ -1,4 +1,4 @@
-From 2b0262efb8720c3199a4fc4c119de05df5957bbc Mon Sep 17 00:00:00 2001
+From 94f2ca294bfb0cd06881ee36ec3088a9df8e8b16 Mon Sep 17 00:00:00 2001
 From: Trond Myklebust <Trond.Myklebust@netapp.com>
 Date: Fri, 8 Jun 2012 10:58:09 -0400
 Subject: [PATCH 37/67] NFSv4: Fix unnecessary delegation returns in
@@ -19,7 +19,7 @@ Reported-by: Fred Isaman <iisaman@netapp.com>
 Signed-off-by: Trond Myklebust <Trond.Myklebust@netapp.com>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- fs/nfs/nfs4proc.c |    1 +
+ fs/nfs/nfs4proc.c | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/fs/nfs/nfs4proc.c b/fs/nfs/nfs4proc.c
@@ -35,5 +35,5 @@ index a3cae5d..8000459 100644
  		status = _nfs4_do_open(dir, dentry, fmode, flags, sattr, cred, &res);
  		if (status == 0)
 -- 
-1.7.9.5
+1.8.1.4
 

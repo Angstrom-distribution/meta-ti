@@ -1,4 +1,4 @@
-From aea45bb9000246ac32f3fe0bec821f913350acce Mon Sep 17 00:00:00 2001
+From f45fb37df687e2a50f43479cf9437809ef00f73e Mon Sep 17 00:00:00 2001
 From: Marc Dionne <marc.c.dionne@gmail.com>
 Date: Fri, 1 Jun 2012 18:12:14 -0400
 Subject: [PATCH 038/109] HID: logitech: don't use stack based dj_report
@@ -20,8 +20,8 @@ Signed-off-by: Marc Dionne <marc.c.dionne@gmail.com>
 Signed-off-by: Jiri Kosina <jkosina@suse.cz>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/hid/hid-logitech-dj.c |   38 ++++++++++++++++++++++++--------------
- 1 files changed, 24 insertions(+), 14 deletions(-)
+ drivers/hid/hid-logitech-dj.c | 38 ++++++++++++++++++++++++--------------
+ 1 file changed, 24 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/hid/hid-logitech-dj.c b/drivers/hid/hid-logitech-dj.c
 index d44ea58..f7b1238 100644
@@ -80,5 +80,5 @@ index d44ea58..f7b1238 100644
  
  
 -- 
-1.7.7.6
+1.8.1.4
 

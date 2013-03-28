@@ -1,4 +1,4 @@
-From b3e6650585e25b0068c552ff790a9f2a7652c08f Mon Sep 17 00:00:00 2001
+From bc56dca4501ed01e8447d2d2aaeeca21c88b9037 Mon Sep 17 00:00:00 2001
 From: Andreas Herrmann <andreas.herrmann3@amd.com>
 Date: Sun, 23 Sep 2012 20:27:32 +0200
 Subject: [PATCH 041/109] hwmon: (fam15h_power) Tweak runavg_range on resume
@@ -17,8 +17,8 @@ Tested-by: Andreas Hartmann <andihartmann@01019freenet.de>
 Signed-off-by: Jean Delvare <khali@linux-fr.org>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/hwmon/fam15h_power.c |   15 +++++++++++++--
- 1 files changed, 13 insertions(+), 2 deletions(-)
+ drivers/hwmon/fam15h_power.c | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/hwmon/fam15h_power.c b/drivers/hwmon/fam15h_power.c
 index e8e18ca..ac2d6cb 100644
@@ -65,5 +65,5 @@ index e8e18ca..ac2d6cb 100644
  
  static int __init fam15h_power_init(void)
 -- 
-1.7.7.6
+1.8.1.4
 

@@ -1,4 +1,4 @@
-From 4abb846e9c2c7bb5951f7b90700b20d063005bec Mon Sep 17 00:00:00 2001
+From 4bbbcc2e90cd7937e08372fbfe75766b6846bc47 Mon Sep 17 00:00:00 2001
 From: Roland Dreier <roland@purestorage.com>
 Date: Tue, 17 Jan 2012 18:00:57 -0800
 Subject: [PATCH 72/87] target: Fail INQUIRY commands with EVPD==0 but PAGE
@@ -17,7 +17,7 @@ Signed-off-by: Roland Dreier <roland@purestorage.com>
 Signed-off-by: Nicholas Bellinger <nab@linux-iscsi.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/target/target_core_cdb.c |    7 +++++++
+ drivers/target/target_core_cdb.c | 7 +++++++
  1 file changed, 7 insertions(+)
 
 diff --git a/drivers/target/target_core_cdb.c b/drivers/target/target_core_cdb.c
@@ -39,5 +39,5 @@ index 24991f3..251e48f 100644
  		goto out;
  	}
 -- 
-1.7.9.4
+1.8.1.4
 

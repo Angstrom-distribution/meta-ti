@@ -1,4 +1,4 @@
-From 078dda1f3c0c180fc5d408f9f087752a0afbed3f Mon Sep 17 00:00:00 2001
+From 0bba4999ded7d202a394fff72667d49e5f161dee Mon Sep 17 00:00:00 2001
 From: Linus Torvalds <torvalds@linux-foundation.org>
 Date: Mon, 21 May 2012 16:06:20 -0700
 Subject: [PATCH 033/117] vfs: make AIO use the proper rw_verify_area() area
@@ -22,7 +22,7 @@ Reported-by: Manish Honap <manish_honap_vit@yahoo.co.in>
 Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- fs/aio.c |   30 ++++++++++++++----------------
+ fs/aio.c | 30 ++++++++++++++----------------
  1 file changed, 14 insertions(+), 16 deletions(-)
 
 diff --git a/fs/aio.c b/fs/aio.c
@@ -105,5 +105,5 @@ index b9d64d8..3b65ee7 100644
  		if (ret)
  			break;
 -- 
-1.7.9.5
+1.8.1.4
 
