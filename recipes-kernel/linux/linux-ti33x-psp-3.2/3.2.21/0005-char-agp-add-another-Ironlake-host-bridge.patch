@@ -1,4 +1,4 @@
-From afd5d9b3973b65b15dd6c48f3f403c4809f71b66 Mon Sep 17 00:00:00 2001
+From ae1c3d36749aedc60e38dc27e4633784080d2db2 Mon Sep 17 00:00:00 2001
 From: Eugeni Dodonov <eugeni.dodonov@intel.com>
 Date: Wed, 6 Jun 2012 11:59:06 -0300
 Subject: [PATCH 05/67] char/agp: add another Ironlake host bridge
@@ -13,8 +13,8 @@ Signed-off-by: Eugeni Dodonov <eugeni.dodonov@intel.com>
 Signed-off-by: Daniel Vetter <daniel.vetter@ffwll.ch>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/char/agp/intel-agp.c |    1 +
- drivers/char/agp/intel-agp.h |    1 +
+ drivers/char/agp/intel-agp.c | 1 +
+ drivers/char/agp/intel-agp.h | 1 +
  2 files changed, 2 insertions(+)
 
 diff --git a/drivers/char/agp/intel-agp.c b/drivers/char/agp/intel-agp.c
@@ -42,5 +42,5 @@ index 5da67f1..6f24604 100644
  #define PCI_DEVICE_ID_INTEL_IRONLAKE_M_HB	    0x0044
  #define PCI_DEVICE_ID_INTEL_IRONLAKE_MA_HB	    0x0062
 -- 
-1.7.9.5
+1.8.1.4
 

@@ -1,4 +1,4 @@
-From 51aa88e66716df0c5b5df5b8815cbf0b7b50ac35 Mon Sep 17 00:00:00 2001
+From 5f5f12899a8b144ce8d17e13e66a9aa11a41c24d Mon Sep 17 00:00:00 2001
 From: Dan Carpenter <dan.carpenter@oracle.com>
 Date: Thu, 5 Jan 2012 02:27:57 -0300
 Subject: [PATCH 061/129] V4L/DVB: v4l2-ioctl: integer overflow in
@@ -18,8 +18,8 @@ Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab@redhat.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
- drivers/media/video/v4l2-ioctl.c |    4 ++++
- include/linux/videodev2.h        |    1 +
+ drivers/media/video/v4l2-ioctl.c | 4 ++++
+ include/linux/videodev2.h        | 1 +
  2 files changed, 5 insertions(+)
 
 diff --git a/drivers/media/video/v4l2-ioctl.c b/drivers/media/video/v4l2-ioctl.c
@@ -50,5 +50,5 @@ index 4b752d5..45a7698 100644
  #define V4L2_CID_USER_BASE 		V4L2_CID_BASE
  /*  IDs reserved for driver specific controls */
 -- 
-1.7.9.5
+1.8.1.4
 

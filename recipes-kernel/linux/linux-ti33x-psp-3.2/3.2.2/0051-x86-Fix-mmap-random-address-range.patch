@@ -1,4 +1,4 @@
-From 65ce587697fd360eea3dc06a3a1422d63a159fd1 Mon Sep 17 00:00:00 2001
+From 63514271c97983ee5c038bb3c394edf4c15a6855 Mon Sep 17 00:00:00 2001
 From: Ludwig Nussel <ludwig.nussel@suse.de>
 Date: Tue, 15 Nov 2011 14:46:46 -0800
 Subject: [PATCH 051/129] x86: Fix mmap random address range
@@ -23,7 +23,7 @@ Link: http://lkml.kernel.org/r/201111152246.pAFMklOB028527@wpaz5.hot.corp.google
 Signed-off-by: Ingo Molnar <mingo@elte.hu>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
- arch/x86/mm/mmap.c |    4 ++--
+ arch/x86/mm/mmap.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/x86/mm/mmap.c b/arch/x86/mm/mmap.c
@@ -43,5 +43,5 @@ index 4b5ba85..845df68 100644
  	return rnd << PAGE_SHIFT;
  }
 -- 
-1.7.9.5
+1.8.1.4
 

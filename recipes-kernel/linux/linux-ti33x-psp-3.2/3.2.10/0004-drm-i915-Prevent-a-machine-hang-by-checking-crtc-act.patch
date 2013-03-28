@@ -1,4 +1,4 @@
-From 4bc061de33266e3ac5cecbc44b99201d8a16e533 Mon Sep 17 00:00:00 2001
+From 2e105407bcec4e888535f1050aa331603d93b147 Mon Sep 17 00:00:00 2001
 From: Alban Browaeys <prahal@yahoo.com>
 Date: Fri, 24 Feb 2012 17:12:45 +0000
 Subject: [PATCH 04/95] drm/i915: Prevent a machine hang by checking
@@ -21,7 +21,7 @@ Reviewed-by: Jesse Barnes <jbarnes@virtuousgeek.org>
 Signed-off-by: Jesse Barnes <jbarnes@virtuousgeek.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/gpu/drm/i915/intel_display.c |    2 +-
+ drivers/gpu/drm/i915/intel_display.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/i915/intel_display.c b/drivers/gpu/drm/i915/intel_display.c
@@ -38,5 +38,5 @@ index daa5743..573f485 100644
  
  	/* use legacy palette for Ironlake */
 -- 
-1.7.9.4
+1.8.1.4
 

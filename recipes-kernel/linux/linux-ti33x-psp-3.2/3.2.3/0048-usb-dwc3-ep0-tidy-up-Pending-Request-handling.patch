@@ -1,4 +1,4 @@
-From c58c127a99dd9114926d3a9bd55f172b948f6ac0 Mon Sep 17 00:00:00 2001
+From f6d9ff7e8253acb997973599f758be4756c02541 Mon Sep 17 00:00:00 2001
 From: Felipe Balbi <balbi@ti.com>
 Date: Thu, 29 Dec 2011 06:32:29 +0200
 Subject: [PATCH 48/90] usb: dwc3: ep0: tidy up Pending Request handling
@@ -17,7 +17,7 @@ gone.
 Signed-off-by: Felipe Balbi <balbi@ti.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/usb/dwc3/ep0.c |   14 ++++----------
+ drivers/usb/dwc3/ep0.c | 14 ++++----------
  1 file changed, 4 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/usb/dwc3/ep0.c b/drivers/usb/dwc3/ep0.c
@@ -50,5 +50,5 @@ index 69a4e43..27bd50a 100644
  				DWC3_EP0_DIR_IN);
  	}
 -- 
-1.7.9.4
+1.8.1.4
 

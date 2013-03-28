@@ -1,4 +1,4 @@
-From 4567e036cdbcff4a7859ca92fcc3a86fe84c73d1 Mon Sep 17 00:00:00 2001
+From 111273b53af2c1ee9beeafcd0a0fab2033225a40 Mon Sep 17 00:00:00 2001
 From: Alan Stern <stern@rowland.harvard.edu>
 Date: Wed, 4 Jan 2012 16:36:35 -0500
 Subject: [PATCH 28/49] USB: update documentation for usbmon
@@ -14,7 +14,7 @@ Signed-off-by: Alan Stern <stern@rowland.harvard.edu>
 CC: Pete Zaitcev <zaitcev@redhat.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
- Documentation/usb/usbmon.txt |   14 +++++++++-----
+ Documentation/usb/usbmon.txt | 14 +++++++++-----
  1 file changed, 9 insertions(+), 5 deletions(-)
 
 diff --git a/Documentation/usb/usbmon.txt b/Documentation/usb/usbmon.txt
@@ -50,5 +50,5 @@ index a4efa04..5335fa8 100644
  3. Start 'cat'
  
 -- 
-1.7.9.4
+1.8.1.4
 

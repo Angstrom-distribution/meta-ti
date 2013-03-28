@@ -1,4 +1,4 @@
-From b3f045e43695ea8ac7c43715d0c98d58d488683d Mon Sep 17 00:00:00 2001
+From 28024cc442e4dc9ab36b1b1bf25c466b05ad1ece Mon Sep 17 00:00:00 2001
 From: Marek Lindner <lindner_marek@yahoo.de>
 Date: Wed, 20 Jun 2012 17:16:05 +0200
 Subject: [PATCH 45/46] batman-adv: only drop packets of known wifi clients
@@ -17,7 +17,7 @@ Signed-off-by: Marek Lindner <lindner_marek@yahoo.de>
 Acked-by: Antonio Quartulli <ordex@autistici.org>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- net/batman-adv/translation-table.c |    8 ++++----
+ net/batman-adv/translation-table.c | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/net/batman-adv/translation-table.c b/net/batman-adv/translation-table.c
@@ -51,5 +51,5 @@ index 5f09a57..088af45 100644
  out:
  	if (tt_global_entry)
 -- 
-1.7.10
+1.8.1.4
 

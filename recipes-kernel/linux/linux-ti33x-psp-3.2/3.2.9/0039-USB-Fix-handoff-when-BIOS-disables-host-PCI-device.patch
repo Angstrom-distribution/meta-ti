@@ -1,4 +1,4 @@
-From 786db31181c37b0d6935fe6ac775413071cac13a Mon Sep 17 00:00:00 2001
+From 3015977d0a71f8a5e218715aa116c39fc2b93202 Mon Sep 17 00:00:00 2001
 From: Sarah Sharp <sarah.a.sharp@linux.intel.com>
 Date: Tue, 7 Feb 2012 15:11:46 -0800
 Subject: [PATCH 39/72] USB: Fix handoff when BIOS disables host PCI device.
@@ -32,7 +32,7 @@ Acked-by: Oliver Neukum <oneukum@suse.de>
 Cc: Jesse Barnes <jbarnes@virtuousgeek.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/usb/host/pci-quirks.c |   11 +++++++++++
+ drivers/usb/host/pci-quirks.c | 11 +++++++++++
  1 file changed, 11 insertions(+)
 
 diff --git a/drivers/usb/host/pci-quirks.c b/drivers/usb/host/pci-quirks.c
@@ -65,5 +65,5 @@ index ac53a66..7732d69 100644
  }
  DECLARE_PCI_FIXUP_FINAL(PCI_ANY_ID, PCI_ANY_ID, quirk_usb_early_handoff);
 -- 
-1.7.9.4
+1.8.1.4
 

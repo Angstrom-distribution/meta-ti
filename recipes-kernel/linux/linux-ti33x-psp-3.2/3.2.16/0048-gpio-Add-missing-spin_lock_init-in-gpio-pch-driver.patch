@@ -1,4 +1,4 @@
-From d318ceeea315d2005b914345b86e62c43a6f37b8 Mon Sep 17 00:00:00 2001
+From 364c651922febdb97354f40c5696ec9fbfa94621 Mon Sep 17 00:00:00 2001
 From: Axel Lin <axel.lin@gmail.com>
 Date: Wed, 1 Feb 2012 10:51:53 +0800
 Subject: [PATCH 48/68] gpio: Add missing spin_lock_init in gpio-pch driver
@@ -15,7 +15,7 @@ Acked-by: Linus Walleij <linus.walleij@linaro.org>
 Signed-off-by: Grant Likely <grant.likely@secretlab.ca>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/gpio/gpio-pch.c |    1 +
+ drivers/gpio/gpio-pch.c | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/gpio/gpio-pch.c b/drivers/gpio/gpio-pch.c
@@ -31,5 +31,5 @@ index eb574f2..779ff70 100644
  	ret = gpiochip_add(&chip->gpio);
  	if (ret) {
 -- 
-1.7.10
+1.8.1.4
 

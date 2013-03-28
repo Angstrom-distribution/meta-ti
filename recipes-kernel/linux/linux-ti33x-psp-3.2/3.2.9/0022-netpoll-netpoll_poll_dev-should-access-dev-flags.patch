@@ -1,4 +1,4 @@
-From 005c48bb39dcfbaf47ce8f433af59c8b47976fd7 Mon Sep 17 00:00:00 2001
+From e8d07ba9f4561e26ed8b4bc592b951d14ec918f9 Mon Sep 17 00:00:00 2001
 From: Eric Dumazet <eric.dumazet@gmail.com>
 Date: Tue, 14 Feb 2012 10:11:59 +0000
 Subject: [PATCH 22/72] netpoll: netpoll_poll_dev() should access dev->flags
@@ -14,7 +14,7 @@ Acked-by: Neil Horman <nhorman@tuxdriver.com>
 Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- net/core/netpoll.c |    2 +-
+ net/core/netpoll.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/net/core/netpoll.c b/net/core/netpoll.c
@@ -31,5 +31,5 @@ index 5d4d896..ab0633f 100644
  			struct net_device *bond_dev = dev->master;
  			struct sk_buff *skb;
 -- 
-1.7.9.4
+1.8.1.4
 

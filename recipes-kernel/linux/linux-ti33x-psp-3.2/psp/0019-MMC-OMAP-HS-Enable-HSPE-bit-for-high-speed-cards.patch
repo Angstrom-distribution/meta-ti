@@ -1,4 +1,4 @@
-From 97ffca5e70b312b81bdf095d1d2a104fdaa98aba Mon Sep 17 00:00:00 2001
+From be44fcaaf46fc20adbab0fc19c82042f51ee08b0 Mon Sep 17 00:00:00 2001
 From: "Philip, Avinash" <avinashphilip@ti.com>
 Date: Mon, 4 Jun 2012 18:45:45 +0530
 Subject: [PATCH 19/19] MMC: OMAP-HS: Enable HSPE bit for high speed cards.
@@ -19,7 +19,7 @@ normal speed cards like SDHC class 4.
 
 Signed-off-by: Philip, Avinash <avinashphilip@ti.com>
 ---
- drivers/mmc/host/omap_hsmmc.c |   14 +++++++++++++-
+ drivers/mmc/host/omap_hsmmc.c | 14 +++++++++++++-
  1 file changed, 13 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/mmc/host/omap_hsmmc.c b/drivers/mmc/host/omap_hsmmc.c
@@ -62,5 +62,5 @@ index 1f938d9..22da8f2 100644
  	OMAP_HSMMC_WRITE(host->base, SYSCTL,
  		OMAP_HSMMC_READ(host->base, SYSCTL) | ICE);
 -- 
-1.7.9.5
+1.8.1.4
 

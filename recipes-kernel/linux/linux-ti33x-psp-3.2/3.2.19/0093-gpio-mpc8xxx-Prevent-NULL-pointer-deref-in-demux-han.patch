@@ -1,4 +1,4 @@
-From 3a36f1d3f5cc6f221848df7c4cdc1269fc2085e9 Mon Sep 17 00:00:00 2001
+From 348f621926f337bb5410743f6b1c1cba9cd4f946 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 3 May 2012 12:22:06 +0200
 Subject: [PATCH 093/117] gpio: mpc8xxx: Prevent NULL pointer deref in demux
@@ -23,7 +23,7 @@ Cc: Grant Likely <grant.likely@secretlab.ca>
 Signed-off-by: Grant Likely <grant.likely@secretlab.ca>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/gpio/gpio-mpc8xxx.c |    3 ++-
+ drivers/gpio/gpio-mpc8xxx.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpio/gpio-mpc8xxx.c b/drivers/gpio/gpio-mpc8xxx.c
@@ -41,5 +41,5 @@ index 5cd04b6..edcffd6 100644
  
  static void mpc8xxx_irq_unmask(struct irq_data *d)
 -- 
-1.7.9.5
+1.8.1.4
 

@@ -1,4 +1,4 @@
-From 3dc8e6e70444a964715bc72938d2a1f5330a0aff Mon Sep 17 00:00:00 2001
+From 324ef7e5d5ad9c6c8d0d7b65e0feec5c2068c6ed Mon Sep 17 00:00:00 2001
 From: Julian Anastasov <ja@ssi.bg>
 Date: Thu, 23 Feb 2012 22:40:43 +0200
 Subject: [PATCH 17/60] ACPICA: Fix regression in FADT revision checks
@@ -35,7 +35,7 @@ Cc: Jonathan Nieder <jrnieder@gmail.com>
 Cc: Josh Boyer <jwboyer@gmail.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/acpi/acpica/tbfadt.c |    8 ++++----
+ drivers/acpi/acpica/tbfadt.c | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/acpi/acpica/tbfadt.c b/drivers/acpi/acpica/tbfadt.c
@@ -65,5 +65,5 @@ index 6f5588e..4c531b4 100644
  	 * Expand the ACPI 1.0 32-bit addresses to the ACPI 2.0 64-bit "X"
  	 * generic address structures as necessary. Later code will always use
 -- 
-1.7.9.5
+1.8.1.4
 

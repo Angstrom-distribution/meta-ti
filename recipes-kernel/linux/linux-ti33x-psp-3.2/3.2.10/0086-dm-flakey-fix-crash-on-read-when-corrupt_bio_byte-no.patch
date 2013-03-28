@@ -1,4 +1,4 @@
-From 91d95657633fa1d1bd641323977bc4639d39599d Mon Sep 17 00:00:00 2001
+From 1f8882cd8db545cd9085f21462fe5be6bb1f76fb Mon Sep 17 00:00:00 2001
 From: Mike Snitzer <snitzer@redhat.com>
 Date: Wed, 7 Mar 2012 19:09:39 +0000
 Subject: [PATCH 86/95] dm flakey: fix crash on read when corrupt_bio_byte not
@@ -50,7 +50,7 @@ Signed-off-by: Mike Snitzer <snitzer@redhat.com>
 Signed-off-by: Alasdair G Kergon <agk@redhat.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/md/dm-flakey.c |    2 +-
+ drivers/md/dm-flakey.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/md/dm-flakey.c b/drivers/md/dm-flakey.c
@@ -67,5 +67,5 @@ index 9fb18c1..b280c43 100644
  	    all_corrupt_bio_flags_match(bio, fc))
  		corrupt_bio_data(bio, fc);
 -- 
-1.7.9.4
+1.8.1.4
 

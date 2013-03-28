@@ -1,4 +1,4 @@
-From 8931ca8a3317ab71c85168b05664efa171563f59 Mon Sep 17 00:00:00 2001
+From 5e63b09bd64824534b8ece8bb2fbfbabfaa9359d Mon Sep 17 00:00:00 2001
 From: Jesse Sung <jesse.sung@canonical.com>
 Date: Thu, 22 Dec 2011 10:48:47 +0800
 Subject: [PATCH 63/68] Bluetooth: Add support for BCM20702A0 [0a5c:21e3]
@@ -25,7 +25,7 @@ Acked-by: Marcel Holtmann <marcel@holtmann.org>
 Signed-off-by: Gustavo F. Padovan <padovan@profusion.mobi>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/bluetooth/btusb.c |    1 +
+ drivers/bluetooth/btusb.c | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
@@ -41,5 +41,5 @@ index 5a87b2e..db44ad5 100644
  
  	{ }	/* Terminating entry */
 -- 
-1.7.10
+1.8.1.4
 

@@ -1,4 +1,4 @@
-From 4b493a169e4e0955d63015a30910a15d4d2cefed Mon Sep 17 00:00:00 2001
+From 2673fa867435f78f09e0229a33f5328e1a895a73 Mon Sep 17 00:00:00 2001
 From: David Daney <david.daney@cavium.com>
 Date: Mon, 19 Dec 2011 17:42:42 -0800
 Subject: [PATCH 073/129] recordmcount: Fix handling of elf64 big-endian
@@ -25,7 +25,7 @@ Signed-off-by: David Daney <david.daney@cavium.com>
 Signed-off-by: Steven Rostedt <rostedt@goodmis.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
- scripts/recordmcount.h |    2 +-
+ scripts/recordmcount.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/scripts/recordmcount.h b/scripts/recordmcount.h
@@ -42,5 +42,5 @@ index f40a6af6..54e35c1 100644
  	return txtname;
  }
 -- 
-1.7.9.5
+1.8.1.4
 

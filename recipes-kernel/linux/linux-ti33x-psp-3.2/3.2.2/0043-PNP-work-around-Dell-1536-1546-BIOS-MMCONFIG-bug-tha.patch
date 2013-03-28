@@ -1,4 +1,4 @@
-From ac901f18d34bc2bf1be5e6b56cf6eeb045c0bbee Mon Sep 17 00:00:00 2001
+From bf42d8ea962dee21eb7871f88523e7714fdd16ca Mon Sep 17 00:00:00 2001
 From: Bjorn Helgaas <bhelgaas@google.com>
 Date: Thu, 5 Jan 2012 14:27:24 -0700
 Subject: [PATCH 043/129] PNP: work around Dell 1536/1546 BIOS MMCONFIG bug
@@ -33,7 +33,7 @@ Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
 Signed-off-by: Jesse Barnes <jbarnes@virtuousgeek.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
- drivers/pnp/quirks.c |   42 ++++++++++++++++++++++++++++++++++++++++++
+ drivers/pnp/quirks.c | 42 ++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 42 insertions(+)
 
 diff --git a/drivers/pnp/quirks.c b/drivers/pnp/quirks.c
@@ -97,5 +97,5 @@ index dfbd5a6..258fef2 100644
  };
  
 -- 
-1.7.9.5
+1.8.1.4
 

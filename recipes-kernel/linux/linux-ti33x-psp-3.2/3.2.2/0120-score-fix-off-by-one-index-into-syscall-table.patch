@@ -1,4 +1,4 @@
-From 9391ba8a34c0947af9b6c756387fc8bf70959648 Mon Sep 17 00:00:00 2001
+From 59544f6ac0f7c4519e7aea7799bbfb61e7769edc Mon Sep 17 00:00:00 2001
 From: Dan Rosenberg <drosenberg@vsecurity.com>
 Date: Fri, 20 Jan 2012 14:34:27 -0800
 Subject: [PATCH 120/129] score: fix off-by-one index into syscall table
@@ -25,7 +25,7 @@ Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
 Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
- arch/score/kernel/entry.S |    2 +-
+ arch/score/kernel/entry.S | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/score/kernel/entry.S b/arch/score/kernel/entry.S
@@ -42,5 +42,5 @@ index 577abba..83bb960 100644
  	slli	r8, r27, 2		# get syscall routine
  	la	r11, sys_call_table
 -- 
-1.7.9.5
+1.8.1.4
 

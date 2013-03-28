@@ -1,4 +1,4 @@
-From f01aa357417f413fff9af7ef10496ece02d2c8d7 Mon Sep 17 00:00:00 2001
+From e63e635c0407c115f125fb5cec86a44a0460d7ef Mon Sep 17 00:00:00 2001
 From: Andy Whitcroft <apw@canonical.com>
 Date: Thu, 3 May 2012 14:48:26 +0100
 Subject: [PATCH 75/86] ACPI battery: only refresh the sysfs files when
@@ -18,7 +18,7 @@ Tested-by: Ralf Jung <post@ralfj.de>
 Signed-off-by: Len Brown <len.brown@intel.com>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/acpi/battery.c |   10 +++++++++-
+ drivers/acpi/battery.c | 10 +++++++++-
  1 file changed, 9 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/acpi/battery.c b/drivers/acpi/battery.c
@@ -47,5 +47,5 @@ index 7711d94..5535477 100644
  	sysfs_add_battery(battery);
  }
 -- 
-1.7.9.5
+1.8.1.4
 

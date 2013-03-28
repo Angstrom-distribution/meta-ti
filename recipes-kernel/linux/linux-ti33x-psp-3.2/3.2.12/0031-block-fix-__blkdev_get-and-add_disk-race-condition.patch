@@ -1,4 +1,4 @@
-From 365dff776f2730d8aa79bb2d4cec1abcca4d30fd Mon Sep 17 00:00:00 2001
+From 185348b6894f371b3f8d9b680e9fb5bba044db59 Mon Sep 17 00:00:00 2001
 From: Stanislaw Gruszka <sgruszka@redhat.com>
 Date: Fri, 2 Mar 2012 10:43:28 +0100
 Subject: [PATCH 31/42] block: fix __blkdev_get and add_disk race condition
@@ -82,7 +82,7 @@ Acked-by: Tejun Heo <tj@kernel.org>
 Signed-off-by: Jens Axboe <axboe@kernel.dk>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- block/genhd.c |   32 +++++++++++++++++++-------------
+ block/genhd.c | 32 +++++++++++++++++++-------------
  1 file changed, 19 insertions(+), 13 deletions(-)
 
 diff --git a/block/genhd.c b/block/genhd.c
@@ -159,5 +159,5 @@ index 02e9fca..9db720d 100644
  
  	/*
 -- 
-1.7.9.4
+1.8.1.4
 

@@ -1,4 +1,4 @@
-From f9bd794600e41085bf9d479ad084c333ecf067b3 Mon Sep 17 00:00:00 2001
+From c7b9fdb81b53cc296c26d2bd29b6de6d54bda94e Mon Sep 17 00:00:00 2001
 From: Greg Rose <gregory.v.rose@intel.com>
 Date: Fri, 3 Feb 2012 00:54:13 +0000
 Subject: [PATCH 01/30] ixgbe: fix vf lookup
@@ -20,7 +20,7 @@ Tested-by: Robert E Garrett <robertX.e.garrett@intel.com>
 Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c |    3 ++-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
@@ -38,5 +38,5 @@ index 00fcd39..e571356 100644
  		vf_devfn += 2;
  		pvfdev = pci_get_device(IXGBE_INTEL_VENDOR_ID,
 -- 
-1.7.9.4
+1.8.1.4
 

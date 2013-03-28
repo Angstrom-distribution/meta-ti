@@ -1,4 +1,4 @@
-From ad7129ee930fa9b9efd04490a4ddcd5d5a9039a9 Mon Sep 17 00:00:00 2001
+From 588ef0cca03477cb90333b0000d7203e6a0e196e Mon Sep 17 00:00:00 2001
 From: Danny Kukawka <danny.kukawka@bisect.de>
 Date: Tue, 24 Jan 2012 16:44:42 +0100
 Subject: [PATCH 085/117] OMAPDSS: VENC: fix NULL pointer dereference in DSS2
@@ -17,7 +17,7 @@ Signed-off-by: Danny Kukawka <danny.kukawka@bisect.de>
 Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ti.com>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/video/omap2/dss/venc.c |    5 +++++
+ drivers/video/omap2/dss/venc.c | 5 +++++
  1 file changed, 5 insertions(+)
 
 diff --git a/drivers/video/omap2/dss/venc.c b/drivers/video/omap2/dss/venc.c
@@ -37,5 +37,5 @@ index 7533458..7152b53 100644
  		return;
  
 -- 
-1.7.9.5
+1.8.1.4
 

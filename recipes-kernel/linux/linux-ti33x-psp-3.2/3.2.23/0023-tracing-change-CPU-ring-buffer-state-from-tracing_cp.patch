@@ -1,4 +1,4 @@
-From 04098d77869c04c5bf703846783cb89b4297b2bb Mon Sep 17 00:00:00 2001
+From 81a3b6f4a58d1b8e172f58877d4ab2ccdb03d10b Mon Sep 17 00:00:00 2001
 From: Vaibhav Nagarnaik <vnagarnaik@google.com>
 Date: Thu, 3 May 2012 18:59:52 -0700
 Subject: [PATCH 23/49] tracing: change CPU ring buffer state from
@@ -31,7 +31,7 @@ Signed-off-by: Vaibhav Nagarnaik <vnagarnaik@google.com>
 Signed-off-by: Steven Rostedt <rostedt@goodmis.org>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- kernel/trace/trace.c |    2 ++
+ kernel/trace/trace.c | 2 ++
  1 file changed, 2 insertions(+)
 
 diff --git a/kernel/trace/trace.c b/kernel/trace/trace.c
@@ -52,5 +52,5 @@ index 7e4edd3..5638104 100644
  	}
  	arch_spin_unlock(&ftrace_max_lock);
 -- 
-1.7.10
+1.8.1.4
 

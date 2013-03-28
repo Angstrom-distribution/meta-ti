@@ -1,4 +1,4 @@
-From a509baa477542eca7e6f6d8d23dc1ba04248a62f Mon Sep 17 00:00:00 2001
+From 7e53515ba7127dcb3e4dc7faff73dfb0459d2d01 Mon Sep 17 00:00:00 2001
 From: Fabio Estevam <festevam@gmail.com>
 Date: Thu, 12 Jan 2012 17:20:20 -0800
 Subject: [PATCH 046/129] include/linux/crash_dump.h needs elf.h
@@ -34,7 +34,7 @@ Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
 Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
- include/linux/crash_dump.h |    1 +
+ include/linux/crash_dump.h | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/include/linux/crash_dump.h b/include/linux/crash_dump.h
@@ -50,5 +50,5 @@ index 5c4abce..b936763 100644
  #define ELFCORE_ADDR_MAX	(-1ULL)
  #define ELFCORE_ADDR_ERR	(-2ULL)
 -- 
-1.7.9.5
+1.8.1.4
 

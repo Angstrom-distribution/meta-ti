@@ -1,4 +1,4 @@
-From 0cf88be2891cd60ef2f132c0eb55cb5334b6439d Mon Sep 17 00:00:00 2001
+From 42a450fc5bc338eaa8c3c08564f07af031761855 Mon Sep 17 00:00:00 2001
 From: Guenter Roeck <linux@roeck-us.net>
 Date: Mon, 12 Mar 2012 08:21:16 -0700
 Subject: [PATCH 34/42] hwmon: (w83627ehf) Fix writing into fan_stop_time for
@@ -14,7 +14,7 @@ Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 Acked-by: Jean Delvare <khali@linux-fr.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/hwmon/w83627ehf.c |    2 +-
+ drivers/hwmon/w83627ehf.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/hwmon/w83627ehf.c b/drivers/hwmon/w83627ehf.c
@@ -31,5 +31,5 @@ index c25387d..7a44a56 100644
  	return count; \
  } \
 -- 
-1.7.9.4
+1.8.1.4
 

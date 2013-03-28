@@ -1,4 +1,4 @@
-From a06c6152d3db3bab83eefcbff5a1e41c91c8295d Mon Sep 17 00:00:00 2001
+From fee0cff3107827689b3c662206053871499969a4 Mon Sep 17 00:00:00 2001
 From: Dan Carpenter <dan.carpenter@oracle.com>
 Date: Fri, 15 Jun 2012 00:20:44 +0000
 Subject: [PATCH 24/46] can: c_can: precedence error in c_can_chip_config()
@@ -15,7 +15,7 @@ Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
 Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/net/can/c_can/c_can.c |    4 ++--
+ drivers/net/can/c_can/c_can.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/net/can/c_can/c_can.c b/drivers/net/can/c_can/c_can.c
@@ -34,5 +34,5 @@ index 8dc84d6..86cd532 100644
  		priv->write_reg(priv, &priv->regs->control, CONTROL_EIE |
  				CONTROL_SIE | CONTROL_IE | CONTROL_TEST);
 -- 
-1.7.10
+1.8.1.4
 

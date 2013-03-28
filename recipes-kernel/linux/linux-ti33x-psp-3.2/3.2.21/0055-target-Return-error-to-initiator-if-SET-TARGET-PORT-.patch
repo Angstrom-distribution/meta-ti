@@ -1,4 +1,4 @@
-From c9d1a254f6f1c91f6d43d9ec46d7d1d76f2f82ee Mon Sep 17 00:00:00 2001
+From c2bb7e681cc5347d86110ec7f9fe12b72467741e Mon Sep 17 00:00:00 2001
 From: Roland Dreier <roland@purestorage.com>
 Date: Mon, 4 Jun 2012 23:24:51 -0700
 Subject: [PATCH 55/67] target: Return error to initiator if SET TARGET PORT
@@ -28,7 +28,7 @@ Signed-off-by: Nicholas Bellinger <nab@linux-iscsi.org>
  and not target_complete_cmd()]
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/target/target_core_alua.c |    8 +++++---
+ drivers/target/target_core_alua.c | 8 +++++---
  1 file changed, 5 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/target/target_core_alua.c b/drivers/target/target_core_alua.c
@@ -51,5 +51,5 @@ index 5b05744..0364ca2 100644
  
  static inline int core_alua_state_nonoptimized(
 -- 
-1.7.9.5
+1.8.1.4
 

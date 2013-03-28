@@ -1,4 +1,4 @@
-From 8f4c9c4038bbc8e334790983712c1492e292d7f2 Mon Sep 17 00:00:00 2001
+From 7732a5653150e0ab17b48bdfecd01e43ad221404 Mon Sep 17 00:00:00 2001
 From: Elric Fu <elricfu1@gmail.com>
 Date: Thu, 29 Mar 2012 15:47:50 +0800
 Subject: [PATCH 38/68] xHCI: add XHCI_RESET_ON_RESUME quirk for VIA xHCI host
@@ -22,7 +22,7 @@ Signed-off-by: Elric Fu <elricfu1@gmail.com>
 Signed-off-by: Sarah Sharp <sarah.a.sharp@linux.intel.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/usb/host/xhci-pci.c |    2 ++
+ drivers/usb/host/xhci-pci.c | 2 ++
  1 file changed, 2 insertions(+)
 
 diff --git a/drivers/usb/host/xhci-pci.c b/drivers/usb/host/xhci-pci.c
@@ -39,5 +39,5 @@ index ef98b38..211296a 100644
  
  /* called during probe() after chip reset completes */
 -- 
-1.7.10
+1.8.1.4
 

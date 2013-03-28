@@ -1,4 +1,4 @@
-From 9e88f1e8bf3f7dbc0cb410a09c003180052bd7d4 Mon Sep 17 00:00:00 2001
+From d2837cf66ae5a684c878e4dd5b98759d6741a41e Mon Sep 17 00:00:00 2001
 From: Jason Wang <jasowang@redhat.com>
 Date: Wed, 30 May 2012 21:18:10 +0000
 Subject: [PATCH 29/49] net: sock: validate data_len before allocating skb in
@@ -14,7 +14,7 @@ Signed-off-by: Jason Wang <jasowang@redhat.com>
 Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- net/core/sock.c |    7 +++++--
+ net/core/sock.c | 7 +++++--
  1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/net/core/sock.c b/net/core/sock.c
@@ -49,5 +49,5 @@ index b23f174..8d095b9 100644
  				skb_shinfo(skb)->nr_frags = npages;
  				for (i = 0; i < npages; i++) {
 -- 
-1.7.10
+1.8.1.4
 

@@ -1,4 +1,4 @@
-From 527712d71f75c7e14ac825073f8b8b21bb6f7ca6 Mon Sep 17 00:00:00 2001
+From abb50100b83a5089886f33649c8cdea16eccb98f Mon Sep 17 00:00:00 2001
 From: "Rafael J. Wysocki" <rjw@sisk.pl>
 Date: Sun, 29 Jan 2012 20:35:52 +0100
 Subject: [PATCH 29/87] PM / Hibernate: Fix s2disk regression related to
@@ -33,9 +33,9 @@ Signed-off-by: Rafael J. Wysocki <rjw@sisk.pl>
 Acked-by: Srivatsa S. Bhat <srivatsa.bhat@linux.vnet.ibm.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- include/linux/freezer.h |    2 ++
- kernel/power/process.c  |    9 +++++++++
- kernel/power/user.c     |    9 +++++++++
+ include/linux/freezer.h | 2 ++
+ kernel/power/process.c  | 9 +++++++++
+ kernel/power/user.c     | 9 +++++++++
  3 files changed, 20 insertions(+)
 
 diff --git a/include/linux/freezer.h b/include/linux/freezer.h
@@ -96,5 +96,5 @@ index 6d8f535..3565b15 100644
  
  	case SNAPSHOT_SET_IMAGE_SIZE:
 -- 
-1.7.9.4
+1.8.1.4
 

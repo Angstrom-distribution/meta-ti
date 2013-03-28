@@ -1,4 +1,4 @@
-From 4666c2d05388b33883bef7aa13d2e355b3d0a049 Mon Sep 17 00:00:00 2001
+From 610a34274a160f277dd7855cd797a0341626ff95 Mon Sep 17 00:00:00 2001
 From: David Howells <dhowells@redhat.com>
 Date: Thu, 23 Feb 2012 13:51:00 +0000
 Subject: [PATCH 30/95] NOMMU: Don't need to clear vm_mm when deleting a VMA
@@ -14,7 +14,7 @@ Acked-by: Al Viro <viro@zeniv.linux.org.uk>
 Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- mm/nommu.c |    2 --
+ mm/nommu.c | 2 --
  1 file changed, 2 deletions(-)
 
 diff --git a/mm/nommu.c b/mm/nommu.c
@@ -31,5 +31,5 @@ index ee7e57e..f59e170 100644
  
  /*
 -- 
-1.7.9.4
+1.8.1.4
 

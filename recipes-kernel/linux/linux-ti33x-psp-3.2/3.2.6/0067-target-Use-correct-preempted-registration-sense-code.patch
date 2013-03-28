@@ -1,4 +1,4 @@
-From e984745acea6568eb41ce680ed321d04f17b3f70 Mon Sep 17 00:00:00 2001
+From 0bfa1edfa41fda489fd7e3e934fb61dd0728e6c0 Mon Sep 17 00:00:00 2001
 From: Marco Sanvido <marco@purestorage.com>
 Date: Tue, 3 Jan 2012 17:12:57 -0800
 Subject: [PATCH 67/87] target: Use correct preempted registration sense code
@@ -29,7 +29,7 @@ Signed-off-by: Roland Dreier <roland@purestorage.com>
 Signed-off-by: Nicholas Bellinger <nab@linux-iscsi.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/target/target_core_pr.c |    4 ++--
+ drivers/target/target_core_pr.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/target/target_core_pr.c b/drivers/target/target_core_pr.c
@@ -55,5 +55,5 @@ index 95dee70..4911fe9 100644
  	spin_unlock(&pr_tmpl->registration_lock);
  	/*
 -- 
-1.7.9.4
+1.8.1.4
 

@@ -1,4 +1,4 @@
-From 401f9918c9daf754c70eb65a895c8ef3bde5b441 Mon Sep 17 00:00:00 2001
+From 42fdee7a9dc57433f24e116e150b293dce565ed6 Mon Sep 17 00:00:00 2001
 From: Wolfram Sang <w.sang@pengutronix.de>
 Date: Tue, 29 Nov 2011 15:34:08 +0100
 Subject: [PATCH 004/129] mtd: tests: stresstest: bail out if device has not
@@ -27,7 +27,7 @@ Signed-off-by: Artem Bityutskiy <artem.bityutskiy@linux.intel.com>
 Signed-off-by: David Woodhouse <David.Woodhouse@intel.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
- drivers/mtd/tests/mtd_stresstest.c |    7 +++++++
+ drivers/mtd/tests/mtd_stresstest.c | 7 +++++++
  1 file changed, 7 insertions(+)
 
 diff --git a/drivers/mtd/tests/mtd_stresstest.c b/drivers/mtd/tests/mtd_stresstest.c
@@ -56,5 +56,5 @@ index 52ffd91..811642f 100644
  	if (err)
  		printk(PRINT_PREF "error %d occurred\n", err);
 -- 
-1.7.9.5
+1.8.1.4
 

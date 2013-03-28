@@ -1,4 +1,4 @@
-From 5cc5bed22b5a987cd388292e64b2b4d473ddef10 Mon Sep 17 00:00:00 2001
+From 307084618dd26d4e6a1c1ee5bc1e91a46b7a5e0c Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?fran=C3=A7ois=20romieu?= <romieu@fr.zoreil.com>
 Date: Tue, 6 Mar 2012 01:14:12 +0000
 Subject: [PATCH 31/60] r8169: runtime resume before shutdown.
@@ -26,7 +26,7 @@ Acked-by: Rafael J. Wysocki <rjw@sisk.pl>
 Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/net/ethernet/realtek/r8169.c |    5 +++++
+ drivers/net/ethernet/realtek/r8169.c | 5 +++++
  1 file changed, 5 insertions(+)
 
 diff --git a/drivers/net/ethernet/realtek/r8169.c b/drivers/net/ethernet/realtek/r8169.c
@@ -53,5 +53,5 @@ index 0cf2351..697cae3 100644
  
  static struct pci_driver rtl8169_pci_driver = {
 -- 
-1.7.9.5
+1.8.1.4
 

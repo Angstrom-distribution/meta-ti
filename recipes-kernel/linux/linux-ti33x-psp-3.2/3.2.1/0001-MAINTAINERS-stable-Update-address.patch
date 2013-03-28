@@ -1,4 +1,4 @@
-From b794efe1ee39a3987a8957553c9b195f2efb701f Mon Sep 17 00:00:00 2001
+From ca52b60ae460f7b8c99ae46d9241218323286a7e Mon Sep 17 00:00:00 2001
 From: Joe Perches <joe@perches.com>
 Date: Fri, 9 Dec 2011 13:54:34 -0800
 Subject: [PATCH 01/49] MAINTAINERS: stable: Update address
@@ -10,7 +10,7 @@ The old address hasn't worked since the great intrusion of August 2011.
 Signed-off-by: Joe Perches <joe@perches.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
- MAINTAINERS |    2 +-
+ MAINTAINERS | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
@@ -27,5 +27,5 @@ index 62f1cd3..f986e7d 100644
  
  STAGING SUBSYSTEM
 -- 
-1.7.9.4
+1.8.1.4
 

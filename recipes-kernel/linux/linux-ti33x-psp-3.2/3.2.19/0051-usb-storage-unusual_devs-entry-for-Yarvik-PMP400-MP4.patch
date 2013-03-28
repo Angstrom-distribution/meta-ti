@@ -1,8 +1,8 @@
-From a595c200511d66729bc55aadbb93adb96988c590 Mon Sep 17 00:00:00 2001
+From 3cd3dbb6e4ec76610f814748a153f7adcd645172 Mon Sep 17 00:00:00 2001
 From: Alan Stern <stern@rowland.harvard.edu>
 Date: Tue, 8 May 2012 15:15:25 -0400
-Subject: [PATCH 051/117] usb-storage: unusual_devs entry for Yarvik PMP400
- MP4 player
+Subject: [PATCH 051/117] usb-storage: unusual_devs entry for Yarvik PMP400 MP4
+ player
 
 commit df767b71e5816692134d59c0c17e0f77cd73333d upstream.
 
@@ -15,7 +15,7 @@ Tested-by: Jesse Feddema <jdfeddema@gmail.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
- drivers/usb/storage/unusual_devs.h |    7 +++++++
+ drivers/usb/storage/unusual_devs.h | 7 +++++++
  1 file changed, 7 insertions(+)
 
 diff --git a/drivers/usb/storage/unusual_devs.h b/drivers/usb/storage/unusual_devs.h
@@ -37,5 +37,5 @@ index 24caba7..591f57f 100644
   * These Appotech controllers are found in Picture Frames, they provide a
   * (buggy) emulation of a cdrom drive which contains the windows software
 -- 
-1.7.9.5
+1.8.1.4
 

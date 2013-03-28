@@ -1,4 +1,4 @@
-From 400fba6cfdfd168d550113f665c3b168cf9214cf Mon Sep 17 00:00:00 2001
+From f0173aec1493667c1a70cec36331e0d6ce61d74e Mon Sep 17 00:00:00 2001
 From: Artem Bityutskiy <artem.bityutskiy@linux.intel.com>
 Date: Wed, 11 Jan 2012 15:13:27 +0200
 Subject: [PATCH 056/129] UBIFS: make debugging messages light again
@@ -20,7 +20,7 @@ critical at all and will be fixed later.
 Signed-off-by: Artem Bityutskiy <artem.bityutskiy@linux.intel.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>
 ---
- fs/ubifs/debug.h |   12 +++++-------
+ fs/ubifs/debug.h | 12 +++++-------
  1 file changed, 5 insertions(+), 7 deletions(-)
 
 diff --git a/fs/ubifs/debug.h b/fs/ubifs/debug.h
@@ -53,5 +53,5 @@ index 3f65829..c9d2941 100644
  /* Just a debugging messages not related to any specific UBIFS subsystem */
  #define dbg_msg(fmt, ...)                                                     \
 -- 
-1.7.9.5
+1.8.1.4
 

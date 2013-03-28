@@ -1,4 +1,4 @@
-From e9ade583fc6f98a39805d5cb7eba7048eaf17575 Mon Sep 17 00:00:00 2001
+From 19a131b11cb7a859ea798dc97e58662418720911 Mon Sep 17 00:00:00 2001
 From: Artem Bityutskiy <artem.bityutskiy@linux.intel.com>
 Date: Fri, 3 Feb 2012 09:32:44 +0200
 Subject: [PATCH 12/60] mtd: block2mtd: initialize writebufsize
@@ -19,7 +19,7 @@ Acked-by: Joern Engel <joern@lazybastard.org>
 Signed-off-by: David Woodhouse <David.Woodhouse@intel.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/mtd/devices/block2mtd.c |    1 +
+ drivers/mtd/devices/block2mtd.c | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/mtd/devices/block2mtd.c b/drivers/mtd/devices/block2mtd.c
@@ -35,5 +35,5 @@ index b78f231..8cd983c 100644
  	dev->mtd.flags = MTD_CAP_RAM;
  	dev->mtd.erase = block2mtd_erase;
 -- 
-1.7.9.5
+1.8.1.4
 

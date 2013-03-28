@@ -1,4 +1,4 @@
-From 7d00c6261eadb39ffffd02141aa566deda4d7cb3 Mon Sep 17 00:00:00 2001
+From e606598880419b8e28649b263bbe2d050d95365f Mon Sep 17 00:00:00 2001
 From: Liz Clark <liz.clark@hp.com>
 Date: Thu, 15 Mar 2012 10:33:29 -0700
 Subject: [PATCH 023/147] TTY: Wrong unicode value copied in con_set_unimap()
@@ -18,7 +18,7 @@ is entered in the new font map.
 Signed-off-by: Liz Clark <liz.clark@hp.com>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/tty/vt/consolemap.c |   51 ++++++++++++++++++++++++++++++++++++-------
+ drivers/tty/vt/consolemap.c | 51 ++++++++++++++++++++++++++++++++++++++-------
  1 file changed, 43 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/tty/vt/consolemap.c b/drivers/tty/vt/consolemap.c
@@ -115,5 +115,5 @@ index 45d3e80..f343808 100644
    
  	return err;
 -- 
-1.7.9.4
+1.8.1.4
 
