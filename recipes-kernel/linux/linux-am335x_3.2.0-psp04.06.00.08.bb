@@ -7,6 +7,7 @@ COMPATIBLE_MACHINE = "ti33x"
 DEFAULT_PREFERENCE = "-1"
 
 inherit kernel
+require setup-defconfig.inc
 
 # Stage the power management firmware before building the kernel
 DEPENDS += "am33x-cm3"
@@ -14,7 +15,7 @@ DEPENDS += "am33x-cm3"
 KERNEL_IMAGETYPE = "uImage"
 
 # The main PR is now using MACHINE_KERNEL_PR, for ti33x see conf/machine/include/ti33x.inc
-MACHINE_KERNEL_PR_append = "a+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
 
 BRANCH = "v3.2-staging"
 

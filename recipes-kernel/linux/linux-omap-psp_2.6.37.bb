@@ -1,4 +1,5 @@
 require linux.inc
+require setup-defconfig.inc
 
 DESCRIPTION = "Linux kernel for OMAP3 EVM from PSP, based on linux-omap3 kernel"
 
@@ -8,7 +9,7 @@ SRCREV= "20c003f2f024d9f50f59edf9f1b8f5f035fb15b8"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 devices
 # see conf/machine/include/omap3.inc
-MACHINE_KERNEL_PR_append = "a"
+MACHINE_KERNEL_PR_append = "b"
 
 SRC_URI = "git://arago-project.org/git/projects/linux-omap3.git;protocol=git \
            file://defconfig"

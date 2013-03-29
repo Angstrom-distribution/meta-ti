@@ -5,8 +5,9 @@ KERNEL_IMAGETYPE = "uImage"
 
 require multi-kernel.inc
 require tipspkernel.inc
+require setup-defconfig.inc
 
-MACHINE_KERNEL_PR_append = "b"
+MACHINE_KERNEL_PR_append = "c"
 
 S = "${WORKDIR}/git"
 
