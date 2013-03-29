@@ -3458,7 +3458,6 @@ PATCHES_OVER_PSP = " \
 	file://beaglebone/0097-beaglebone-improve-performance-of-mt9t112-driver-for.patch \
 	file://beaglebone/0098-beaglebone-Remove-optimization-from-square-resolutio.patch \
 	file://beaglebone/0099-beaglebone-fix-DOWN-button-on-LCD4.patch \
-	file://beaglebone/0100-beaglebone-add-support-for-LCD4-LED.patch \
 	file://beaglebone/0101-beaglebone-add-support-for-wifi-cape.patch \
 	file://beaglebone/0102-beaglebone-add-support-for-wl1273-capes.patch \
 	\
