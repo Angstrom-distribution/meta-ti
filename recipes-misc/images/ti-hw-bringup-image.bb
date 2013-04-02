@@ -24,6 +24,7 @@ IMAGE_INSTALL += " \
 	bc \
 	packagegroup-ti-test \
 	kernel-modules \
+	fb-test \
 	${EXTRA_MACHINE_IMAGE_INSTALL} \
 "
 
