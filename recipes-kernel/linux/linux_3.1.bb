@@ -22,10 +22,6 @@ SRC_URI += "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git;pro
             file://fixes/vout.patch \
             file://defconfig"
 
-# Needs refresh:
-#            file://beagle/0003-OMAP3-beagle-HACK-add-in-1GHz-OPP.patch \
-
-
 SRC_URI_append_beagleboard = " file://logo_linux_clut224.ppm \
 "
 
