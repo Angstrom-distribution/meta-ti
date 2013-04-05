@@ -5,9 +5,9 @@ PR = "r23"
 inherit allarch
 
 LICENSE = "GPLv2+ & MIT & PD & others"
-LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=603591dea023c3c75b48e07cb47ce639"
+LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=4040d560ed8da9b0873348b25b3f45b4"
 
-SRCREV = "6fa78b7deedbf0650fc1c750e025475f81a70d5d"
+SRCREV = "1e5d54c25581fbf9819763af7f40c88950e64e1b"
 SRC_URI = "git://github.com/jadonk/beaglebone-getting-started.git"
 
 S = "${WORKDIR}/git"
