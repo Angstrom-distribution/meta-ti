@@ -25,6 +25,7 @@ IMAGE_INSTALL += " \
 	packagegroup-ti-test \
 	kernel-modules \
 	fb-test \
+	tcpdump \
 	${EXTRA_MACHINE_IMAGE_INSTALL} \
 "
 
