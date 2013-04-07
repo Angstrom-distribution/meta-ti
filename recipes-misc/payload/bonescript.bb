@@ -1,13 +1,13 @@
 DESCRIPTION = "Scripting tools for the BeagleBoard and BeagleBone"
 
-PR = "r18"
+PR = "r19"
 
 inherit systemd
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=659ee0c98db2664403c769d6b9ab50eb"
 
-SRCREV = "dcc2cc5703ad52eaed3b13b4593c4ef90ff0f79b"
+SRCREV = "5e2a23aeb7a4d64c538647f625a3fd13ef015ac7"
 
 SRC_URI = "git://github.com/jadonk/bonescript.git;protocol=git"
 
@@ -30,6 +30,6 @@ SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE_${PN} = "bonescript.service bonescript.socket"
 
 FILES_${PN} += "${libdir}/node_modules/bonescript ${base_libdir}/systemd/system ${sysconfdir}/profile.d"
-RDEPENDS_${PN} = "nodejs beaglebone-getting-started"
+RDEPENDS_${PN} = "nodejs bone101"
 
 FILES_${PN}-dbg += "${libdir}/node_modules/bonescript/build/Release/.debug"
