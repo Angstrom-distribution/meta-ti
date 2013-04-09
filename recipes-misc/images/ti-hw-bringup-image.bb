@@ -23,7 +23,7 @@ IMAGE_INSTALL += " \
 	evtest \
 	bc \
 	packagegroup-ti-test \
-	kernel-modules \
+	kernel-modules dtc \
 	fb-test \
 	tcpdump \
 	${EXTRA_MACHINE_IMAGE_INSTALL} \
