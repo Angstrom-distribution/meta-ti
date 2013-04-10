@@ -1,13 +1,13 @@
 DESCRIPTION = "Scripting tools for the BeagleBoard and BeagleBone"
 
-PR = "r20"
+PR = "r21"
 
 inherit systemd
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=659ee0c98db2664403c769d6b9ab50eb"
 
-SRCREV = "1fc14ba643800036e37f67cad86fbf5290bd1ed3"
+SRCREV = "97a5585869ac15709fcbba64d985b5facbbaea6a"
 
 SRC_URI = "git://github.com/jadonk/bonescript.git;protocol=git"
 
@@ -17,13 +17,18 @@ do_install() {
 	install -d ${D}${libdir}/node_modules/bonescript
 	cp -a ${S}/node_modules/bonescript/* ${D}${libdir}/node_modules/bonescript
 
+	install -d ${D}${localstatedir}/lib/cloud9
+	cp -a ${S}/*.js ${D}${localstatedir}/lib/cloud9
+	cp -a ${S}/LICENSE ${D}${localstatedir}/lib/cloud9
+	cp -a ${S}/README.md ${D}${localstatedir}/lib/cloud9
+
 	install -d ${D}${base_libdir}/systemd/system
 	install -m 0644 ${S}/systemd/bonescript-autorun.service ${D}${base_libdir}/systemd/system
 	install -m 0644 ${S}/systemd/bonescript.service ${D}${base_libdir}/systemd/system
 	install -m 0644 ${S}/systemd/bonescript.socket ${D}${base_libdir}/systemd/system
 
 	install -d ${D}${sysconfdir}/default
-	install -m 0755 ${S}/etc/conf.d/node ${D}${sysconfdir}/default
+	install -m 0755 ${S}/etc/default/node ${D}${sysconfdir}/default
 
 	install -d ${D}${sysconfdir}/profile.d
 	install -m 0755 ${S}/etc/profile.d/node.sh ${D}${sysconfdir}/profile.d
