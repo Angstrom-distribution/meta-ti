@@ -1,3 +1,7 @@
+# KERNEL_LOCALVERSION can be set to add a tag to the end of the
+# kernel version string.  such as the commit id
+KERNEL_LOCALVERSION ?= ""
+
 # Check the defconfig file and see if it points to an in kernel
 # defconfig that should be used, or if it is a complete config file
 
@@ -16,6 +20,8 @@ do_setup_defconfig() {
 #   3. else run yes '' | oe_runmake oldconfig like the default do_configure
 #      does
 do_configure() {
+    echo ${KERNEL_LOCALVERSION} > ${B}/.scmversion
+    echo ${KERNEL_LOCALVERSION} > ${S}/.scmversion
     config=`cat ${S}/.config | grep use-kernel-config | cut -d= -f2`
     if [ "x${config}" != "x" ]
     then
