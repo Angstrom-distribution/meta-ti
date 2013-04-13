@@ -1,13 +1,13 @@
 DESCRIPTION = "Scripting tools for the BeagleBoard and BeagleBone"
 
-PR = "r21"
+PR = "r22"
 
 inherit systemd
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=659ee0c98db2664403c769d6b9ab50eb"
 
-SRCREV = "3e8ae216cc345f0d88fcdd3bc6cc10c15f9dc41c"
+SRCREV = "4262ce063c10e71fff75f2cac136bab62de94951"
 
 SRC_URI = "git://github.com/beagleboard/bonescript.git;protocol=git"
 
