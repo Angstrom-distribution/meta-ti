@@ -7,7 +7,7 @@ inherit systemd
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=659ee0c98db2664403c769d6b9ab50eb"
 
-SRCREV = "3e8ae216cc345f0d88fcdd3bc6cc10c15f9dc41c"
+SRCREV = "1abcca23fe572ba77fb74c24a410503c74d0024e"
 
 SRC_URI = "git://github.com/beagleboard/bonescript.git;protocol=git"
 
