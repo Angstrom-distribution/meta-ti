@@ -7,7 +7,7 @@ PV = "1.0"
 PR = "r2"
 
 SRCREV = "a0ede99c3099b05363405e2fc9e523bd79af1878"
-SRC_URI = "git://github.com/jadonk/bone101.git"
+SRC_URI = "git://github.com/beagleboard/bone101.git"
 
 S = "${WORKDIR}/git"
 
