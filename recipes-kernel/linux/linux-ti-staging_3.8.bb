@@ -24,9 +24,9 @@ do_deploy_append() {
 require recipes-kernel/linux/linux-dtb.inc
 require recipes-kernel/linux/setup-defconfig.inc
 
-# Stage the power management firmware before building the kernel
-# for ti33x SOC_FAMILY devices
-DEPENDS_ti33x += "am33x-cm3"
+# Add a run-time dependency for the PM firmware to be installed
+# on the target file system.
+RDEPENDS_ti33x += "am33x-cm3"
 
 # Default is to package all dts files for ti33x devices unless building
 # for the specific beaglebone machine.
@@ -44,16 +44,8 @@ SRCREV = "881dfafeae47da3a8f5ff8c791753e4b4df8065b"
 PV = "3.8.5"
 
 # Append to the MACHINE_KERNEL_PR so that a new SRCREV will cause a rebuild
-MACHINE_KERNEL_PR_append = "d+gitr${SRCPV}"
+MACHINE_KERNEL_PR_append = "e+gitr${SRCPV}"
 
 SRC_URI = "git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git;protocol=git;branch=${BRANCH} \
            file://defconfig \
           "
-
-# Copy the am33x-cm3 firmware if it is available for ti33x SOC_FAMILY devices
-do_compile_prepend_ti33x() {
-    if [ -e "${STAGING_DIR_HOST}/${base_libdir}/firmware/am335x-pm-firmware.bin" ]
-    then
-        cp "${STAGING_DIR_HOST}/${base_libdir}/firmware/am335x-pm-firmware.bin" "${S}/firmware"
-    fi
-}
