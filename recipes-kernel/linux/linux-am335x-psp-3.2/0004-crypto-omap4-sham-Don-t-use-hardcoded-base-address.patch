@@ -1,0 +1,45 @@
+From 08ea4b77652956c07b91b4de670ebc44f1395840 Mon Sep 17 00:00:00 2001
+From: "Mark A. Greer" <mgreer@animalcreek.com>
+Date: Tue, 11 Dec 2012 20:33:15 -0700
+Subject: [PATCH 04/10] crypto: omap4-sham: Don't use hardcoded base address
+
+The omap4-sham driver currently uses a hardcoded base
+address for its register set instead of the address
+passed in by the system.  Instead, use the address
+passed in by the system.
+
+Signed-off-by: Mark A. Greer <mgreer@animalcreek.com>
+---
+ drivers/crypto/omap4-sham.c | 16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/crypto/omap4-sham.c b/drivers/crypto/omap4-sham.c
+index 963d0e1..b2fc03a 100644
+--- a/drivers/crypto/omap4-sham.c
++++ b/drivers/crypto/omap4-sham.c
+@@ -1271,15 +1271,13 @@ static int __devinit omap4_sham_probe(struct platform_device *pdev)
+ 	dd->irq = -1;
+ 
+ 	/* Get the base address */
+-	//res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	//if (!res) {
+-	//	dev_err(dev, "no MEM resource info\n");
+-	//	err = -ENODEV;
+-	//	goto res_err;
+-	//}
+-
+-	//dd->phys_base = res->start;
+-	dd->phys_base = AM33XX_SHA1MD5_P_BASE;
++	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	if (!res) {
++		dev_err(dev, "no MEM resource info\n");
++		err = -ENODEV;
++		goto res_err;
++	}
++	dd->phys_base = res->start;
+ 
+ 	/* Get the DMA */
+ 	res = platform_get_resource(pdev, IORESOURCE_DMA, 0);
+-- 
+1.7.12
+

@@ -1,0 +1,56 @@
+From b0a47b49a61db95fdb2340548b967bdfe085df2d Mon Sep 17 00:00:00 2001
+From: "Mark A. Greer" <mgreer@animalcreek.com>
+Date: Wed, 12 Dec 2012 00:43:45 -0700
+Subject: [PATCH 03/10] crypto: omap4-sham: Add suspend/resume PM support
+
+Add suspend/resume PM support to the omap4-sham driver
+
+Signed-off-by: Mark A. Greer <mgreer@animalcreek.com>
+---
+ drivers/crypto/omap4-sham.c | 13 ++++---------
+ 1 file changed, 4 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/crypto/omap4-sham.c b/drivers/crypto/omap4-sham.c
+index 6985c87..963d0e1 100644
+--- a/drivers/crypto/omap4-sham.c
++++ b/drivers/crypto/omap4-sham.c
+@@ -1386,24 +1386,19 @@ static int __devexit omap4_sham_remove(struct platform_device *pdev)
+ 
+ static int omap4_sham_suspend(struct device *dev)
+ {
+-	pr_debug("#### Crypto: Suspend call ####\n");
+-
++	pm_runtime_put_sync(dev);
+ 	return 0;
+ }
+ 
+ 
+ static int omap4_sham_resume(struct device *dev)
+ {
+-	pr_debug("#### Crypto: resume call ####\n");
+-
++	pm_runtime_get_sync(dev);
+ 	return 0;
+ }
+ 
+ static struct dev_pm_ops omap4_sham_dev_pm_ops = {
+-	.suspend	= omap4_sham_suspend,
+-	.resume		= omap4_sham_resume,
+-	.runtime_suspend = omap4_sham_suspend,
+-	.runtime_resume = omap4_sham_resume,
++	SET_SYSTEM_SLEEP_PM_OPS(omap4_sham_suspend, omap4_sham_resume)
+ };
+ 
+ static struct platform_driver omap4_sham_driver = {
+@@ -1412,7 +1407,7 @@ static struct platform_driver omap4_sham_driver = {
+ 	.driver	= {
+ 		.name	= "omap4-sham",
+ 		.owner	= THIS_MODULE,
+-		.pm		= &omap4_sham_dev_pm_ops
++		.pm	= &omap4_sham_dev_pm_ops
+ 	},
+ };
+ 
+-- 
+1.7.12
+

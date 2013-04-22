@@ -1,0 +1,176 @@
+From 45cc04d9de2820cba138d5782e7c568edf0078a0 Mon Sep 17 00:00:00 2001
+From: "Mark A. Greer" <mgreer@animalcreek.com>
+Date: Wed, 12 Dec 2012 16:17:12 -0700
+Subject: [PATCH 09/10] ARM: AM33xx: hwmod: Convert RNG device data to hwmod
+
+Convert the device data for the AM33xx RNG module
+from explicit platform_data to hwmod.
+
+Signed-off-by: Mark A. Greer <mgreer@animalcreek.com>
+---
+ arch/arm/mach-omap2/devices.c              | 18 +++++++++
+ arch/arm/mach-omap2/omap_hwmod_33xx_data.c | 64 ++++++++++++++++++++++++++++++
+ arch/arm/plat-omap/devices.c               | 22 ----------
+ 3 files changed, 82 insertions(+), 22 deletions(-)
+
+diff --git a/arch/arm/mach-omap2/devices.c b/arch/arm/mach-omap2/devices.c
+index e4caa06..8e2f4a0 100644
+--- a/arch/arm/mach-omap2/devices.c
++++ b/arch/arm/mach-omap2/devices.c
+@@ -825,6 +825,23 @@ static void __init omap_init_aes(void)
+ static inline void omap_init_aes(void) { }
+ #endif
+ 
++#if IS_ENABLED(CONFIG_HW_RANDOM_OMAP4)
++static void __init omap_init_rng(void)
++{
++	struct omap_hwmod *oh;
++	struct platform_device *pdev;
++
++	oh = omap_hwmod_lookup("rng");
++	if (!oh)
++		return;
++
++	pdev = omap_device_build("omap4_rng", -1, oh, NULL, 0, NULL, 0, 0);
++	WARN(IS_ERR(pdev), "Can't build omap_device for omap-rng\n");
++}
++#else
++static inline void omap_init_rng(void) {}
++#endif
++
+ /*-------------------------------------------------------------------------*/
+ 
+ #if defined(CONFIG_MMC_OMAP) || defined(CONFIG_MMC_OMAP_MODULE)
+@@ -1475,6 +1492,7 @@ static int __init omap2_init_devices(void)
+ 	omap_init_sti();
+ 	omap_init_sham();
+ 	omap_init_aes();
++	omap_init_rng();
+ 	omap_init_vout();
+ 	am33xx_register_edma();
+ 	am33xx_init_pcm();
+diff --git a/arch/arm/mach-omap2/omap_hwmod_33xx_data.c b/arch/arm/mach-omap2/omap_hwmod_33xx_data.c
+index 90e25d7..6c5ebc7 100644
+--- a/arch/arm/mach-omap2/omap_hwmod_33xx_data.c
++++ b/arch/arm/mach-omap2/omap_hwmod_33xx_data.c
+@@ -94,6 +94,7 @@ static struct omap_hwmod am33xx_lcdc_hwmod;
+ static struct omap_hwmod am33xx_mailbox_hwmod;
+ static struct omap_hwmod am33xx_cpgmac0_hwmod;
+ static struct omap_hwmod am33xx_mdio_hwmod;
++static struct omap_hwmod am33xx_rng_hwmod;
+ 
+ /*
+  * ERRATA: (Yet to conform from IP team)
+@@ -3541,6 +3542,67 @@ static struct omap_hwmod am33xx_pruss_hwmod = {
+ 	.rst_lines_cnt	= ARRAY_SIZE(am33xx_pruss_resets),
+ };
+ 
++/* rng */
++static struct omap_hwmod_sysc_fields omap3_rng_sysc_fields = {
++	.sidle_shift	= 3,
++	.autoidle_shift	= 0,
++};
++
++static struct omap_hwmod_class_sysconfig am33xx_rng_sysc = {
++	.rev_offs	= 0x1fe0,
++	.sysc_offs	= 0x1fe4,
++	.rst_offs	= 0x1ff0,
++	.sysc_flags	= SYSC_HAS_AUTOIDLE,
++	.sysc_fields	= &omap3_rng_sysc_fields,
++};
++
++static struct omap_hwmod_class am33xx_rng_hwmod_class = {
++	.name		= "rng",
++	.sysc		= &am33xx_rng_sysc,
++};
++
++static struct omap_hwmod_irq_info am33xx_rng_irqs[] = {
++	{ .irq = 111 },
++	{ .irq = -1 }
++};
++
++struct omap_hwmod_addr_space am33xx_rng_addr_space[] = {
++	{
++		.pa_start	= 0x48310000,
++		.pa_end		= 0x48310000 + SZ_8K - 1,
++		.flags		= ADDR_TYPE_RT,
++	},
++	{ }
++};
++
++struct omap_hwmod_ocp_if am33xx_l4per__rng = {
++	.master		= &am33xx_l4per_hwmod,
++	.slave		= &am33xx_rng_hwmod,
++	.clk		= "rng_fck",
++	.addr		= am33xx_rng_addr_space,
++	.user		= OCP_USER_MPU,
++};
++
++static struct omap_hwmod_ocp_if *am33xx_rng_slaves[] = {
++	&am33xx_l4per__rng,
++};
++
++static struct omap_hwmod am33xx_rng_hwmod = {
++	.name		= "rng",
++	.class		= &am33xx_rng_hwmod_class,
++	.clkdm_name	= "l4ls_clkdm",
++	.mpu_irqs	= am33xx_rng_irqs,
++	.main_clk	= "rng_fck",
++	.prcm		= {
++		.omap4	= {
++			.clkctrl_offs	= AM33XX_CM_PER_RNG_CLKCTRL_OFFSET,
++			.modulemode	= MODULEMODE_SWCTRL,
++		},
++	},
++	.slaves		= am33xx_rng_slaves,
++	.slaves_cnt	= ARRAY_SIZE(am33xx_rng_slaves),
++};
++
+ static __initdata struct omap_hwmod *am33xx_hwmods[] = {
+ 	/* l3 class */
+ 	&am33xx_l3_instr_hwmod,
+@@ -3661,6 +3723,8 @@ static __initdata struct omap_hwmod *am33xx_hwmods[] = {
+ 	&am33xx_gfx_hwmod,
+ 	/* pruss */
+ 	&am33xx_pruss_hwmod,
++	/* rng */
++	&am33xx_rng_hwmod,
+ 	NULL,
+ };
+ 
+diff --git a/arch/arm/plat-omap/devices.c b/arch/arm/plat-omap/devices.c
+index 52720b4..52d7ad4 100644
+--- a/arch/arm/plat-omap/devices.c
++++ b/arch/arm/plat-omap/devices.c
+@@ -105,28 +105,6 @@ static void omap_init_rng(void)
+ {
+ 	(void) platform_device_register(&omap_rng_device);
+ }
+-#elif defined(CONFIG_HW_RANDOM_OMAP4) || defined(CONFIG_HW_RANDOM_OMAP4_MODULE)
+-
+-static struct resource rng_resources[] = {
+-	{
+-		.start		= AM33XX_RNG_BASE,
+-		.end		= AM33XX_RNG_BASE + 0x1FFC,
+-		.flags		= IORESOURCE_MEM,
+-	},
+-};
+-
+-static struct platform_device omap4_rng_device = {
+-	.name		= "omap4_rng",
+-	.id		= -1,
+-	.num_resources	= ARRAY_SIZE(rng_resources),
+-	.resource	= rng_resources,
+-};
+-
+-static void omap_init_rng(void)
+-{
+-	(void) platform_device_register(&omap4_rng_device);
+-}
+-
+ #else
+ static inline void omap_init_rng(void) {}
+ #endif
+-- 
+1.7.12
+

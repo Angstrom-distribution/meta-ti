@@ -1,0 +1,56 @@
+From 90b8eaec8de51fab15872f8737a5148b99f80282 Mon Sep 17 00:00:00 2001
+From: "Mark A. Greer" <mgreer@animalcreek.com>
+Date: Wed, 12 Dec 2012 00:46:52 -0700
+Subject: [PATCH 07/10] crypto: omap4-aes: Add suspend/resume PM support
+
+Add suspend/resume PM support to the omap4-aes driver
+
+Signed-off-by: Mark A. Greer <mgreer@animalcreek.com>
+---
+ drivers/crypto/omap4-aes.c | 13 ++++---------
+ 1 file changed, 4 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/crypto/omap4-aes.c b/drivers/crypto/omap4-aes.c
+index a957709..941b8a1 100644
+--- a/drivers/crypto/omap4-aes.c
++++ b/drivers/crypto/omap4-aes.c
+@@ -911,24 +911,19 @@ static int omap4_aes_remove(struct platform_device *pdev)
+ 
+ static int omap4_aes_suspend(struct device *dev)
+ {
+-	pr_debug("#### Crypto: Suspend call ####\n");
+-
++	pm_runtime_put_sync(dev);
+ 	return 0;
+ }
+ 
+ 
+ static int omap4_aes_resume(struct device *dev)
+ {
+-	pr_debug("#### Crypto: resume call ####\n");
+-
++	pm_runtime_get_sync(dev);
+ 	return 0;
+ }
+ 
+ static struct dev_pm_ops omap4_aes_dev_pm_ops = {
+-	.suspend	= omap4_aes_suspend,
+-	.resume		= omap4_aes_resume,
+-	.runtime_suspend = omap4_aes_suspend,
+-	.runtime_resume = omap4_aes_resume,
++	SET_SYSTEM_SLEEP_PM_OPS(omap4_aes_suspend, omap4_aes_resume)
+ };
+ 
+ static struct platform_driver omap4_aes_driver = {
+@@ -937,7 +932,7 @@ static struct platform_driver omap4_aes_driver = {
+ 	.driver	= {
+ 		.name	= "omap4-aes",
+ 		.owner	= THIS_MODULE,
+-		.pm		= &omap4_aes_dev_pm_ops
++		.pm	= &omap4_aes_dev_pm_ops
+ 	},
+ };
+ 
+-- 
+1.7.12
+

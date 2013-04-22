@@ -1,0 +1,29 @@
+From 13d5d52eda239b752b249b0f1b3b01b93a890b55 Mon Sep 17 00:00:00 2001
+From: Joel A Fernandes <joelagnel@ti.com>
+Date: Wed, 13 Feb 2013 15:37:15 -0600
+Subject: [PATCH] omap4-rng: Remove check for GP-only device type in RNG driver
+
+HS devices can support RNG due to recent changes in firewall settings on L4.
+The patch enables RNG support on HS device.
+
+Signed-off-by: Joel A Fernandes <joelagnel@ti.com>
+---
+ drivers/char/hw_random/omap4-rng.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/drivers/char/hw_random/omap4-rng.c b/drivers/char/hw_random/omap4-rng.c
+index 523ec63..9c3b87a 100644
+--- a/drivers/char/hw_random/omap4-rng.c
++++ b/drivers/char/hw_random/omap4-rng.c
+@@ -285,7 +285,7 @@ static struct platform_driver omap4_rng_driver = {
+ 
+ static int __init omap4_rng_init(void)
+ {
+-	if (!cpu_is_am33xx()  || omap_type() != OMAP2_DEVICE_TYPE_GP)
++	if (!cpu_is_am33xx())
+ 		return -ENODEV;
+ 
+ 	return platform_driver_register(&omap4_rng_driver);
+-- 
+1.7.4.1
+

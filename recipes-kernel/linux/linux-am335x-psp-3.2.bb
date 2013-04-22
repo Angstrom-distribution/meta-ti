@@ -15,12 +15,12 @@ DEPENDS += "am33x-cm3"
 KERNEL_IMAGETYPE = "uImage"
 
 # The main PR is now using MACHINE_KERNEL_PR, for ti33x see conf/machine/include/ti33x.inc
-MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
+MACHINE_KERNEL_PR_append = "c+gitr${SRCPV}"
 
 BRANCH = "v3.2-staging"
 
-# This SRCREV corresponds to tag v3.2_AM335xPSP_04.06.00.08
-SRCREV = "d7e124e8074cccf9958290e773c88a4b2b36412b"
+# SRCREV corresponds to the commit id of tag v3.2_AM335xPSP_04.06.00.10-rc3
+SRCREV = "18ce4a630452348b8308b922491130e8ce1e9134"
 
 SRC_URI = "git://arago-project.org/git/projects/linux-am33x.git;protocol=git;branch=${BRANCH} \
            file://defconfig \
@@ -29,8 +29,8 @@ SRC_URI = "git://arago-project.org/git/projects/linux-am33x.git;protocol=git;bra
 
 S = "${WORKDIR}/git"
 
-# Allow a layer to easily add to the list of patches or completely override them.
-KERNEL_PATCHES ?= "${PATCHES}"
+# Allow a layer to easily add to the list of patches or completely override them
+KERNEL_PATCHES = "${PATCHES}"
 
 # Add a set of patches that enabled features, fixed bugs or disabled buggy features
 # that weren't part of the official PSP release
@@ -52,13 +52,25 @@ PATCHES += "file://0001-am33x-Add-memory-addresses-for-crypto-modules.patch \
                 file://0001-am335x-Add-crypto-driver-settings-to-defconfig.patch \
                 file://0001-am335x-Add-pm_runtime-API-to-crypto-driver.patch \
                 file://0002-am335x-Add-suspend-resume-routines-to-crypto-driver.patch \
+                file://0001-ARM-AM33xx-hwmod-Convert-SHA0-crypto-device-data-to-.patch \
+                file://0002-crypto-omap4-sham-Use-finer-grained-PM-management.patch \
+                file://0003-crypto-omap4-sham-Add-suspend-resume-PM-support.patch \
+                file://0004-crypto-omap4-sham-Don-t-use-hardcoded-base-address.patch \
+                file://0005-ARM-AM33xx-hwmod-Convert-AES0-crypto-device-data-to-.patch \
+                file://0006-crypto-omap4-aes-User-finer-grained-PM-management.patch \
+                file://0007-crypto-omap4-aes-Add-suspend-resume-PM-support.patch \
+                file://0008-crypto-omap4-aes-Don-t-use-hardcoded-base-address.patch \
+                file://0009-ARM-AM33xx-hwmod-Convert-RNG-device-data-to-hwmod.patch \
+                file://0010-hwrng-omap4-rng-Convert-to-use-pm_runtime-API.patch \
+                file://0001-omap4-rng-Remove-check-for-GP-only-device-type-in-RN.patch \
                "
 
 # Add SmartReflex support early driver patches while working to get the driver
 # upstream.
 PATCHES += "file://0001-am33xx-Add-SmartReflex-support.patch \
-                file://0002-am33xx-Enable-CONFIG_AM33XX_SMARTREFLEX.patch \
-               "
+            file://0002-am33xx-Enable-CONFIG_AM33XX_SMARTREFLEX.patch \
+            file://0002-Smartreflex-limited-to-ES-1.0.patch \
+           "
 
 # Add a patch to the omap-serial driver to allow suspend/resume during
 # Bluetooth traffic
@@ -73,8 +85,11 @@ PATCHES += "file://0001-am335xevm-using-edge-triggered-interrupts-for-WLAN.patch
 # Add patch to enable pullup on WLAN enable
 PATCHES += "file://0001-am335x-enable-pullup-on-the-WLAN-enable-pin-fo.patch"
 
+# Update SPI flash layout. Increase space allocated for u-boot
+PATCHES += "file://0001-ARM-OMAP2-AM335x-Update-SPI-flash-layout.patch"
+
 # Copy the am33x-cm3 firmware if it is available
-do_compile_prepend() {
+do_configure_append() {
     if [ -e "${STAGING_DIR_HOST}/${base_libdir}/firmware/am335x-pm-firmware.bin" ]
     then
         cp "${STAGING_DIR_HOST}/${base_libdir}/firmware/am335x-pm-firmware.bin" "${S}/firmware"

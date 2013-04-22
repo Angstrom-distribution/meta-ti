@@ -1,0 +1,35 @@
+From 24051291ecae9c42697bd3217240205e17e95de3 Mon Sep 17 00:00:00 2001
+From: Greg Guyotte <gguyotte@ti.com>
+Date: Tue, 11 Dec 2012 21:53:24 -0600
+Subject: [PATCH 2/2] Smartreflex limited to ES 1.0
+
+Pending complete characterization of Smartreflex on ES 2.0 silicon,
+the smartreflex function is disabled.  SR continues to operate
+normally on ES 1.0 silicon.  If running on AM335x ES 2.0 silicon,
+the SR driver will cleanly abort, causing no side effects.
+
+Signed-off-by: Greg Guyotte <gguyotte@ti.com>
+---
+ arch/arm/mach-omap2/am33xx-smartreflex-class2.c |    6 ++++++
+ 1 files changed, 6 insertions(+), 0 deletions(-)
+
+diff --git a/arch/arm/mach-omap2/am33xx-smartreflex-class2.c b/arch/arm/mach-omap2/am33xx-smartreflex-class2.c
+index 3ed74b3..6a66e68 100644
+--- a/arch/arm/mach-omap2/am33xx-smartreflex-class2.c
++++ b/arch/arm/mach-omap2/am33xx-smartreflex-class2.c
+@@ -763,6 +763,12 @@ static int __init am33xx_sr_probe(struct platform_device *pdev)
+ 	int ret;
+ 	int i,j;
+ 
++	if (omap_rev() != AM335X_REV_ES1_0) {
++		dev_err(&pdev->dev, "%s: Smartreflex requires ES 1.0\n",
++		       	__func__);
++		return -EINVAL;
++	}
++
+ 	sr_info = kzalloc(sizeof(struct am33xx_sr), GFP_KERNEL);
+ 	if (!sr_info) {
+ 		dev_err(&pdev->dev, "%s: unable to allocate sr_info\n",
+-- 
+1.7.0.4
+

@@ -1,31 +1,32 @@
-From 1edc97015f69fac420c32df514e1d1d546041d42 Mon Sep 17 00:00:00 2001
+From cf67829e0c0cccb06a9f33d40fe43a122e8a5178 Mon Sep 17 00:00:00 2001
 From: Greg Turner <gregturner@ti.com>
 Date: Fri, 8 Jun 2012 13:54:13 -0500
-Subject: [PATCH] [am335x]: Add crypto driver settings to defconfig
+Subject: [PATCH] Add crypto driver settings to defconfig
 
 * Add Crypto Driver and configuration to defconfig
 ---
- arch/arm/configs/am335x_evm_defconfig |   39 +++++++++++++++++++++++---------
- 1 files changed, 28 insertions(+), 11 deletions(-)
+ arch/arm/configs/am335x_evm_defconfig |   40 +++++++++++++++++++++++----------
+ 1 files changed, 28 insertions(+), 12 deletions(-)
  mode change 100644 => 100755 arch/arm/configs/am335x_evm_defconfig
 
 diff --git a/arch/arm/configs/am335x_evm_defconfig b/arch/arm/configs/am335x_evm_defconfig
 old mode 100644
 new mode 100755
-index de1eaad..0bf7efd
+index 9f45503..46528c4
 --- a/arch/arm/configs/am335x_evm_defconfig
 +++ b/arch/arm/configs/am335x_evm_defconfig
-@@ -1277,6 +1277,9 @@ CONFIG_SERIAL_OMAP_CONSOLE=y
+@@ -1278,7 +1278,9 @@ CONFIG_SERIAL_OMAP_CONSOLE=y
  # CONFIG_SERIAL_XILINX_PS_UART is not set
  # CONFIG_HVC_DCC is not set
  # CONFIG_IPMI_HANDLER is not set
+-# CONFIG_HW_RANDOM is not set
 +CONFIG_HW_RANDOM=y
 +# CONFIG_HW_RANDOM_TIMERIOMEM is not set
 +CONFIG_HW_RANDOM_OMAP4=y
- # CONFIG_HW_RANDOM is not set
  # CONFIG_R3964 is not set
  # CONFIG_RAW_DRIVER is not set
-@@ -2472,36 +2475,38 @@ CONFIG_CRYPTO=y
+ # CONFIG_TCG_TPM is not set
+@@ -2473,36 +2475,38 @@ CONFIG_CRYPTO=y
  #
  CONFIG_CRYPTO_ALGAPI=y
  CONFIG_CRYPTO_ALGAPI2=y
@@ -50,7 +51,7 @@ index de1eaad..0bf7efd
  # CONFIG_CRYPTO_AUTHENC is not set
 -# CONFIG_CRYPTO_TEST is not set
 +CONFIG_CRYPTO_TEST=m
-
+ 
  #
  # Authenticated Encryption with Associated Data
  #
@@ -58,7 +59,7 @@ index de1eaad..0bf7efd
  # CONFIG_CRYPTO_GCM is not set
 -# CONFIG_CRYPTO_SEQIV is not set
 +CONFIG_CRYPTO_SEQIV=y
-
+ 
  #
  # Block modes
  #
@@ -69,7 +70,7 @@ index de1eaad..0bf7efd
  # CONFIG_CRYPTO_CTS is not set
  CONFIG_CRYPTO_ECB=y
  # CONFIG_CRYPTO_LRW is not set
-@@ -2511,7 +2516,7 @@ CONFIG_CRYPTO_ECB=y
+@@ -2512,7 +2516,7 @@ CONFIG_CRYPTO_ECB=y
  #
  # Hash modes
  #
@@ -77,8 +78,8 @@ index de1eaad..0bf7efd
 +CONFIG_CRYPTO_HMAC=y
  # CONFIG_CRYPTO_XCBC is not set
  # CONFIG_CRYPTO_VMAC is not set
-
-@@ -2521,14 +2526,14 @@ CONFIG_CRYPTO_ECB=y
+ 
+@@ -2522,14 +2526,14 @@ CONFIG_CRYPTO_ECB=y
  CONFIG_CRYPTO_CRC32C=y
  # CONFIG_CRYPTO_GHASH is not set
  # CONFIG_CRYPTO_MD4 is not set
@@ -96,7 +97,7 @@ index de1eaad..0bf7efd
  # CONFIG_CRYPTO_SHA512 is not set
  # CONFIG_CRYPTO_TGR192 is not set
  # CONFIG_CRYPTO_WP512 is not set
-@@ -2543,7 +2548,7 @@ CONFIG_CRYPTO_ARC4=y
+@@ -2544,7 +2548,7 @@ CONFIG_CRYPTO_ARC4=y
  # CONFIG_CRYPTO_CAMELLIA is not set
  # CONFIG_CRYPTO_CAST5 is not set
  # CONFIG_CRYPTO_CAST6 is not set
@@ -105,7 +106,7 @@ index de1eaad..0bf7efd
  # CONFIG_CRYPTO_FCRYPT is not set
  # CONFIG_CRYPTO_KHAZAD is not set
  # CONFIG_CRYPTO_SALSA20 is not set
-@@ -2565,7 +2570,19 @@ CONFIG_CRYPTO_LZO=y
+@@ -2566,7 +2570,19 @@ CONFIG_CRYPTO_LZO=y
  # CONFIG_CRYPTO_ANSI_CPRNG is not set
  # CONFIG_CRYPTO_USER_API_HASH is not set
  # CONFIG_CRYPTO_USER_API_SKCIPHER is not set
@@ -124,7 +125,8 @@ index de1eaad..0bf7efd
 +# CONFIG_OCF_OCFNULL is not set
 +# CONFIG_OCF_BENCH is not set
  # CONFIG_BINARY_PRINTF is not set
-
+ 
  #
---
+-- 
 1.7.0.4
+

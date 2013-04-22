@@ -1,0 +1,40 @@
+From 54690cd10741ec54acc2555c3b699de310571a49 Mon Sep 17 00:00:00 2001
+From: Tom Rini <trini@ti.com>
+Date: Fri, 7 Dec 2012 14:01:51 -0700
+Subject: [PATCH] ARM: OMAP2+: AM335x: Update SPI flash layout
+
+Current U-Boot has grown, and our size of the environment was never
+correct, rework the offsets for minimal impact.
+
+Signed-off-by: Tom Rini <trini@ti.com>
+
+diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
+index 50e1d9b..3357d88 100644
+--- a/arch/arm/mach-omap2/board-am335xevm.c
++++ b/arch/arm/mach-omap2/board-am335xevm.c
+@@ -1201,17 +1201,17 @@ static struct mtd_partition am335x_spi_partitions[] = {
+ 	{
+ 		.name       = "U-Boot",
+ 		.offset     = MTDPART_OFS_APPEND,	/* Offset = 0x20000 */
+-		.size       = 2 * SZ_128K,
++		.size       = (3 * SZ_128K) - SZ_4K,
+ 	},
+ 	{
+ 		.name       = "U-Boot Env",
+-		.offset     = MTDPART_OFS_APPEND,	/* Offset = 0x60000 */
+-		.size       = 2 * SZ_4K,
++		.offset     = MTDPART_OFS_APPEND,	/* Offset = 0x7F000 */
++		.size       = SZ_4K,
+ 	},
+ 	{
+ 		.name       = "Kernel",
+-		.offset     = MTDPART_OFS_APPEND,	/* Offset = 0x62000 */
+-		.size       = 28 * SZ_128K,
++		.offset     = MTDPART_OFS_APPEND,	/* Offset = 0x80000 */
++		.size       = 866 * SZ_4K,		/* size = 0x362000 */
+ 	},
+ 	{
+ 		.name       = "File System",
+-- 
+1.7.9.5
+

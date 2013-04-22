@@ -1,0 +1,98 @@
+From 0c910915e0b14538e4a539a26a1c632d29ed7131 Mon Sep 17 00:00:00 2001
+From: "Mark A. Greer" <mgreer@animalcreek.com>
+Date: Tue, 11 Dec 2012 09:40:05 -0700
+Subject: [PATCH 02/10] crypto: omap4-sham: Use finer-grained PM management
+
+Currently, the pm_runtime calls in omap4-sham enable
+things when the driver is probed and leave them enabled
+until the driver is removed.  To fix this, move the
+pm_runtime calls to only enable the sham module when
+its actually in use.
+
+Signed-off-by: Mark A. Greer <mgreer@animalcreek.com>
+---
+ drivers/crypto/omap4-sham.c | 23 ++++++++---------------
+ 1 file changed, 8 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/crypto/omap4-sham.c b/drivers/crypto/omap4-sham.c
+index 2fb71b9..6985c87 100644
+--- a/drivers/crypto/omap4-sham.c
++++ b/drivers/crypto/omap4-sham.c
+@@ -138,7 +138,6 @@ struct omap4_sham_dev {
+ 	struct device		*dev;
+ 	void __iomem		*io_base;
+ 	int			irq;
+-	struct clk		*iclk;
+ 	spinlock_t		lock;
+ 	int			err;
+ 	int			dma;
+@@ -701,6 +700,8 @@ static void omap4_sham_finish_req(struct ahash_request *req, int err)
+ 	dd->dflags &= ~(BIT(FLAGS_BUSY) | BIT(FLAGS_FINAL) | BIT(FLAGS_CPU) |
+ 			BIT(FLAGS_DMA_READY) | BIT(FLAGS_OUTPUT_READY));
+ 
++	pm_runtime_put_sync(dd->dev);
++
+ 	if (req->base.complete)
+ 		req->base.complete(&req->base, err);
+ 
+@@ -742,6 +743,8 @@ static int omap4_sham_handle_queue(struct omap4_sham_dev *dd,
+ 	dev_dbg(dd->dev, "handling new req, op: %lu, nbytes: %d\n",
+ 						ctx->op, req->nbytes);
+ 
++	pm_runtime_get_sync(dd->dev);
++
+ 	if (!test_bit(FLAGS_INIT, &dd->dflags)) {
+ 		set_bit(FLAGS_INIT, &dd->dflags);
+ 		dd->err = 0;
+@@ -1306,11 +1309,6 @@ static int __devinit omap4_sham_probe(struct platform_device *pdev)
+ 	if (err)
+ 		goto dma_err;
+ 
+-	pm_runtime_enable(dev);
+-	udelay(1);
+-	pm_runtime_get_sync(dev);
+-	udelay(1);
+-
+ 	dd->io_base = ioremap(dd->phys_base, SZ_4K);
+ 	if (!dd->io_base) {
+ 		dev_err(dev, "can't ioremap\n");
+@@ -1318,7 +1316,11 @@ static int __devinit omap4_sham_probe(struct platform_device *pdev)
+ 		goto io_err;
+ 	}
+ 
++
++	pm_runtime_enable(dev);
++	pm_runtime_get_sync(dev);
+ 	reg = omap4_sham_read(dd, SHA_REG_REV);
++	pm_runtime_put_sync(&pdev->dev);
+ 
+ 	dev_info(dev, "AM33X SHA/MD5 hw accel rev: %u.%02u\n",
+ 		 (reg & SHA_REG_REV_X_MAJOR_MASK) >> 8, reg & SHA_REG_REV_Y_MINOR_MASK);
+@@ -1342,13 +1344,7 @@ err_algs:
+ 		crypto_unregister_ahash(&algs[j]);
+ 	iounmap(dd->io_base);
+ io_err:
+-	pm_runtime_put_sync(dev);
+-	udelay(1);
+ 	pm_runtime_disable(dev);
+-	udelay(1);
+-
+-//clk_err:
+-//	omap4_sham_dma_cleanup(dd);
+ 
+ dma_err:
+ 	if (dd->irq >= 0)
+@@ -1377,10 +1373,7 @@ static int __devexit omap4_sham_remove(struct platform_device *pdev)
+ 		crypto_unregister_ahash(&algs[i]);
+ 	tasklet_kill(&dd->done_task);
+ 	iounmap(dd->io_base);
+-	pm_runtime_put_sync(&pdev->dev);
+-	udelay(1);
+ 	pm_runtime_disable(&pdev->dev);
+-	udelay(1);
+ 
+ 	omap4_sham_dma_cleanup(dd);
+ 	if (dd->irq >= 0)
+-- 
+1.7.12
+
