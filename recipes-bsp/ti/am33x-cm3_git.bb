@@ -4,7 +4,7 @@ LICENSE = "TI-BSD"
 LIC_FILES_CHKSUM = "file://License.txt;md5=858099c817e47ea63559fc6b67ae8d91"
 
 PV = "04.06.00.10"
-PR = "r2"
+PR = "r3"
 
 # SRCREV corresponds to tag "AM335xPSP_04.06.00.10-rc1"
 SRCREV = "27ca4643e422245a95723de1df0247a00eada45b"
@@ -14,6 +14,10 @@ INITSCRIPT_NAME = "am335x-pm-firmware-load"
 INITSCRIPT_PARAMS = "defaults 96"
 
 inherit update-rc.d
+
+UPDATERCPN = "${PN}-initscript"
+
+RDEPENDS_${PN}-initscript = "am33x-cm3"
 
 SRC_URI = "git://arago-project.org/git/projects/am33x-cm3.git;protocol=git;branch=${BRANCH} \
            file://init-am33x-cm3 \
@@ -34,5 +38,8 @@ do_install() {
 	install -m 0755 ${WORKDIR}/init-am33x-cm3 ${D}${sysconfdir}/init.d/${INITSCRIPT_NAME}
 }
 
+PACKAGES =+ "${PN}-initscript"
+
 FILES_${PN} += "${base_libdir}/firmware"
 
+FILES_${PN}-initscript = "${sysconfdir}/*"
