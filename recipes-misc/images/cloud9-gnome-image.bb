@@ -23,5 +23,6 @@ IMAGE_INSTALL += " \
 
 export IMAGE_BASENAME = "Cloud9-IDE-GNOME"
 
-EXTRA_IMAGE_FEATURES += "package-management doc-pkgs"
+# Add 'doc-pkgs' for man pages
+EXTRA_IMAGE_FEATURES += "package-management"
 
