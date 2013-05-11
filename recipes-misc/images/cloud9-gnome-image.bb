@@ -19,6 +19,7 @@ IMAGE_INSTALL += " \
                   florence \
                   evince \
                   man \
+                  x11vnc \
                  "
 
 export IMAGE_BASENAME = "Cloud9-IDE-GNOME"
