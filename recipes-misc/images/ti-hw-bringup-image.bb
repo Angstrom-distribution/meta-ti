@@ -8,6 +8,7 @@ EXTRA_MACHINE_IMAGE_INSTALL ?= ""
 EXTRA_MACHINE_IMAGE_INSTALL_ti33x = "gadget-init"
 
 IMAGE_INSTALL += " \
+	parse-edid \
 	memtester \
 	usbutils \
 	i2c-tools \
