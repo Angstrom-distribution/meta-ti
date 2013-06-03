@@ -1,6 +1,6 @@
 # Image with cloud9 ide, gfx and hw tools installed
 
-CONMANPKGS ?= "connman connman-plugin-loopback connman-plugin-ethernet connman-plugin-wifi connman-systemd connman-gnome"
+CONMANPKGS ?= "connman connman-angstrom-settings connman-plugin-loopback connman-plugin-ethernet connman-plugin-wifi connman-systemd connman-gnome"
 
 require cloud9-image.bb
 
