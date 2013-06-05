@@ -27,11 +27,11 @@ S = "${WORKDIR}/git"
 BRANCH = "ti-linux-3.8.y"
 
 # This commit corresponds to ti2013.04.00 release tag
-SRCREV = "54d80897fd69e30702f3b6f115d77d37ad78f9ef"
+SRCREV = "e7460f2acdea5c9b766c7eb76bad5ab2ed7e566c"
 PV = "3.8.13"
 
 # Append to the MACHINE_KERNEL_PR so that a new SRCREV will cause a rebuild
-MACHINE_KERNEL_PR_append = "d+gitr${SRCPV}"
+MACHINE_KERNEL_PR_append = "e+gitr${SRCPV}"
 
 SRC_URI = "git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git;protocol=git;branch=${BRANCH} \
            file://defconfig \
