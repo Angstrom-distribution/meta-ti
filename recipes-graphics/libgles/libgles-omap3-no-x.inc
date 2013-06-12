@@ -133,12 +133,9 @@ do_install () {
 	cp -pPR ${S}/GFX_Linux_KM/include4 ${D}${includedir}/
 	cp -pPR ${S}/GFX_Linux_KM/services4 ${D}${includedir}/
 
-	cp -pPR ${S}/GFX_Linux_SDK/OGLES2/SDKPackage/Builds/OGLES2/Include/* ${D}${includedir}/
-	cp -pPR ${S}/GFX_Linux_SDK/OGLES/SDKPackage/Builds/OGLES/Include/* ${D}${includedir}/
-	cp -pPR ${S}/GFX_Linux_SDK/OGLES/SDKPackage/Builds/OGLES/${PLATFORM}/Include/GLES/* ${D}${includedir}/GLES/ 2>/dev/null || true
-	cp -pPr ${S}/GFX_Linux_SDK/OGLES2/SDKPackage/Builds/OGLES2/${PLATFORM}/Include/GLES/* ${D}${includedir}/GLES2/ 2>/dev/null || true
-	cp -pPr ${S}/include/*.h ${D}${includedir} || true
-	cp -pPr ${S}/include/wsegl/*.h ${D}${includedir} || true
+	cp -pPr ${S}/include/pvr2d/*.h ${D}${includedir}
+	cp -pPr ${S}/include/OGLES2/* ${D}${includedir}/
+	cp -pPr ${S}/include/wsegl/*.h ${D}${includedir}/
 	
 	install -d ${D}${sysconfdir}/init.d/
 	cp -pP ${WORKDIR}/rc.pvr ${D}${sysconfdir}/init.d/pvr-init
