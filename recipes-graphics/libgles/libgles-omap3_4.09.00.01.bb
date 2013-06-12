@@ -1,4 +1,4 @@
-require libgles-omap3.inc
+require libgles-omap3-no-x.inc
 
 LICENSE = "TSPA"
 
@@ -23,8 +23,6 @@ TI_BIN_UNPK_WDEXT := "/Graphics_SDK_${SGXPV}"
 SRC_URI = "http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/gfxsdk/${SGXPV}/exports/${BINFILE} \
            file://cputype \
            file://rc.pvr \
-           file://rc_dri.pvr \
-           file://sample.desktop \
            file://99-bufferclass.rules  \
 "
 SRC_URI[md5sum] = "bd35e9d8843aff3a2aca9d41e7db1c7d"
@@ -32,44 +30,4 @@ SRC_URI[sha256sum] = "eb37f75ddde4640b09e760fa86e689beb394330ecdf68786188c34f249
 
 S = "${WORKDIR}/Graphics_SDK_${SGXPV}"
 
-LIBGLESWINDOWSYSTEM ?= "${@base_contains('DISTRO_FEATURES', 'x11',"libpvrPVR2D_DRIWSEGL.so" ,"libpvrPVR2D_FRONTWSEGL.so.1", d)}"
-
-do_configure_append() {
-
-    # Change PVR server's user mode library to point to DRI
-    for drifile in $(find ${S} -name "libsrv_um_dri.so"); do
-    if [ "$drifile" != "" ]
-    then
-        dir=$(dirname ${drifile})
-        if [ "$SUPPORT_XORG" = "1" ]
-        then
-            mv ${dir}/libsrv_um_dri.so ${dir}/libsrv_um.so
-        else
-            rm -rf ${dir}/libsrv_um_dri.so
-        fi
-    fi
-
-    done
-}
-
-do_install_append() {
-
-    # In this version of the graphics SDK the following directories do not exist:
-    #    /GFX_Linux_SDK/OGLES/SDKPackage/Builds/OGLES/Include/pvr2d.h (doesn't exist)
-    #    /GFX_Linux_SDK/OGLES/SDKPackage/Builds/OGLES/Include/GLES/egltypes.h (doesn't exist)
-    # Therefore, need to copy these files manually at the only location that they do exist
-    cp -pPr ${S}/include/pvr2d/*.h ${D}${includedir}
-    cp -pPr ${S}/include/OGLES/GLES ${D}${includedir}/
-
-    rm ${D}${sysconfdir}/init.d/pvr-init
-
-    if [ "$SUPPORT_XORG" = "1" ]; then
-        cp -pP ${WORKDIR}/rc_dri.pvr ${D}${sysconfdir}/init.d/pvr-init
-    else
-        cp -pP ${WORKDIR}/rc.pvr ${D}${sysconfdir}/init.d/pvr-init
-    fi
-
-}
-
-RRECOMMENDS_${PN}-x11demos = "${PN}-driwsegl"
-RRECOMMENDS_${PN}-x11trainingcourses = "${PN}-driwsegl"
+LIBGLESWINDOWSYSTEM ?= "libpvrPVR2D_FRONTWSEGL.so.1"
