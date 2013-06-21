@@ -71,4 +71,3 @@ do_install() {
 
     cp ${S}/services4/3rdparty/linux_drm/drm.ko ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/gpu/pvr
 }
-

@@ -437,4 +437,3 @@ echo "WindowSystem=libpvrPVR2D_X11WSEGL.so.1" >> $D${sysconfdir}/powervr.ini
 pkg_postinst_${PN}-driwsegl() {
 rm -f $D${sysconfdir}/powervr-esrev
 }
-

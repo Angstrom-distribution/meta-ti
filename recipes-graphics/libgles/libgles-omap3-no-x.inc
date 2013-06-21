@@ -245,7 +245,7 @@ FILES_${PN}-dbg = "${libdir}/.debug/* ${bindir}/.debug/* \
                    ${libdir}/ES*/.debug ${bindir}/*/.debug\
                    ${bindir}/SGX/demos/*/.debug/* \
                    ${bindir}/SGX/trainingcourses/*/.debug/* \
-	"
+"
 
 FILES_${PN}-rawdemos = "${bindir}/SGX/demos/Raw/*"
 
@@ -315,4 +315,3 @@ rm -f $D${sysconfdir}/powervr-esrev
 pkg_postinst_${PN}-linuxfbwsegl() {
 rm -f $D${sysconfdir}/powervr-esrev
 }
-

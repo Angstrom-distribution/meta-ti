@@ -7,27 +7,24 @@ PR = "r35"
 
 COMPATIBLE_MACHINE = "(omap3|ti814x|ti816x|ti33x)"
 
-X11DEPENDS = "virtual/libx11 libxau libxdmcp libdrm"
-DEPENDS = "x11"
+DEPENDS = "virtual/libx11 libxau libxdmcp libdrm"
 
 export SUPPORT_XORG ?= "1"
 PVR_INIT ?= "pvrsrvinit"
 
 PROVIDES += "virtual/egl virtual/libgles1 virtual/libgles2"
 
-RREPLACES_${PN} = "libegl libgles1 libgles2 libgles-omap3"
-RREPLACES_${PN}-dev = "libegl-dev libgles1-dev libgles2-dev libgles-omap3-dev"
-RREPLACES_${PN}-dbg = "libegl-dbg libgles-omap3-dbg"
+RREPLACES_${PN} = "libegl libgles1 libgles2"
+RREPLACES_${PN}-dev = "libegl-dev libgles1-dev libgles2-dev"
+RREPLACES_${PN}-dbg = "libegl-dbg"
 
-RPROVIDES_${PN} = "libegl libgles1 libgles2 libgles-omap3"
-RPROVIDES_${PN}-dev = "libegl-dev libgles1-dev libgles2-dev libgles-omap3-dev"
-RPROVIDES_${PN}-dbg = "libegl-dbg libgles-omap3-dbg"
+RPROVIDES_${PN} = "libegl libgles1 libgles2"
+RPROVIDES_${PN}-dev = "libegl-dev libgles1-dev libgles2-dev"
+RPROVIDES_${PN}-dbg = "libegl-dbg"
 
 RCONFLICTS_${PN} = "libegl libgles1 libgles2"
-RCONFLICTS_${PN}-dev = "libegl-dev libgles1-dev libgles2-dev libgles-omap3-dev"
-RCONFLICTS_${PN}-dbg = "libegl-dbg libgles-omap3-dbg"
-
-
+RCONFLICTS_${PN}-dev = "libegl-dev libgles1-dev libgles2-dev"
+RCONFLICTS_${PN}-dbg = "libegl-dbg"
 
 SRC_URI = "http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/gfxsdk/${SGXPV}/exports/${BINFILE} \
 		   file://cputype \
