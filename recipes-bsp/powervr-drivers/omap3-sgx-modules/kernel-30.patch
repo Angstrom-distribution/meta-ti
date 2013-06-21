@@ -3,7 +3,7 @@ Subject: omap3-sgx-modules: Fix build for Linux 3.0
 
 This patch implements the header change from plat/display.h to video/omapdss.h
 
-Signed-off-by: Steve Sakoman <steve@sakoman.com>
+Signed-off-by: Steve Sakoman <steve at sakoman.com>
 
 --- GFX_Linux_KM/services4/3rdparty/dc_omap3430_linux/omaplfb_linux.c-orig	2011-08-01 07:21:45.000000000 -0700
 +++ GFX_Linux_KM/services4/3rdparty/dc_omap3430_linux/omaplfb_linux.c	2011-08-01 07:29:32.000000000 -0700
