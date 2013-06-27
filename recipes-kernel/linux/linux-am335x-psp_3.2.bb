@@ -15,7 +15,7 @@ DEPENDS += "am33x-cm3"
 KERNEL_IMAGETYPE = "uImage"
 
 # The main PR is now using MACHINE_KERNEL_PR, for ti33x see conf/machine/include/ti33x.inc
-MACHINE_KERNEL_PR_append = "d+gitr${SRCPV}"
+MACHINE_KERNEL_PR_append = "e+gitr${SRCPV}"
 
 BRANCH = "v3.2-staging"
 
@@ -34,7 +34,6 @@ KERNEL_PATCHES = "${PATCHES}"
 # Add a set of patches that enabled features, fixed bugs or disabled buggy features
 # that weren't part of the official PSP release
 PATCHES = "file://0001-musb-update-PIO-mode-help-information-in-Kconfig.patch \
-               file://0001-am335x_evm_defconfig-turn-off-MUSB-DMA.patch \
                file://0001-mach-omap2-pm33xx-Disable-VT-switch.patch"
 
 # Add Cryptography support early driver patches while working to get the driver
