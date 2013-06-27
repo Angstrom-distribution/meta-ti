@@ -15,7 +15,7 @@ DEPENDS += "am33x-cm3"
 KERNEL_IMAGETYPE = "uImage"
 
 # The main PR is now using MACHINE_KERNEL_PR, for ti33x see conf/machine/include/ti33x.inc
-MACHINE_KERNEL_PR_append = "g+gitr${SRCPV}"
+MACHINE_KERNEL_PR_append = "h+gitr${SRCPV}"
 
 BRANCH = "v3.2-staging"
 
@@ -88,7 +88,9 @@ PATCHES += "file://0001-am335x-enable-pullup-on-the-WLAN-enable-pin-fo.patch"
 PATCHES += "file://0001-ARM-OMAP2-AM335x-Update-SPI-flash-layout.patch"
 
 # Add support for Beaglebone Black
-PATCHES += "file://0001-am335x-Add-minimal-support-for-Beaglebone-Black.patch"
+PATCHES += "file://0001-am335x-Add-minimal-support-for-Beaglebone-Black.patch \
+            file://0001-am335x-Re-enable-Turbo-and-Nitro-modes-for-Beaglebon.patch \
+"
 
 # Copy the am33x-cm3 firmware if it is available
 do_configure_append() {

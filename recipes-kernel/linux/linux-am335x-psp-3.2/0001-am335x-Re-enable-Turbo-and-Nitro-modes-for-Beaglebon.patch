@@ -1,0 +1,41 @@
+From ec0ec41418ec1193e4352f1983ab29173f10f855 Mon Sep 17 00:00:00 2001
+From: Steve Kipisz <s-kipisz2@ti.com>
+Date: Wed, 5 Jun 2013 10:10:44 -0500
+Subject: [PATCH] am335x:Re-enable Turbo and Nitro modes for Beaglebone Black
+ The Beaglebone Black boards use a speed binned PG2.0 AM335x
+ that operate up to 1GHz so re-enable those modes for
+ Beaglebone Black.
+
+Signed-off-by: Steve Kipisz <s-kipisz2@ti.com>
+---
+ arch/arm/mach-omap2/board-am335xevm.c |   14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/arch/arm/mach-omap2/board-am335xevm.c b/arch/arm/mach-omap2/board-am335xevm.c
+index bac415c..47e5a9d 100644
+--- a/arch/arm/mach-omap2/board-am335xevm.c
++++ b/arch/arm/mach-omap2/board-am335xevm.c
+@@ -2529,6 +2529,20 @@ static void am335x_evm_setup(struct memory_accessor *mem_acc, void *context)
+ 
+ 	am335x_opp_update();
+ 
++	/*
++	 * For now, Beaglebone Black uses PG 2.0 that are speed binned and operate
++	 * up to 1GHz. So re-enable Turbo and Nitro modes,
++	 */
++	if (!strncmp("A335BNLT", config.name, 8)) {
++		struct device *mpu_dev;
++
++		mpu_dev = omap_device_get_by_hwmod_name("mpu");
++		opp_enable(mpu_dev,
++			    AM33XX_ES2_0_OPPTURBO_FREQ);
++		opp_enable(mpu_dev,
++			    AM33XX_ES2_0_OPPNITRO_FREQ);
++	}
++
+ 	/* SmartReflex also requires board information. */
+ 	am33xx_sr_init();
+ 
+-- 
+1.7.9.5
+
