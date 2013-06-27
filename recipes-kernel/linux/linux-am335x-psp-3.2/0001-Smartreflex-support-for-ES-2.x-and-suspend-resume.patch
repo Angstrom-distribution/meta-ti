@@ -1,0 +1,1928 @@
+From 4866616f13b397a07c06a45a34d050c1b4539e10 Mon Sep 17 00:00:00 2001
+From: Greg Guyotte <gguyotte@ti.com>
+Date: Tue, 28 May 2013 20:45:07 -0500
+Subject: [PATCH] Smartreflex support for ES 2.x and suspend resume
+
+This change adds support for ES 2.x to the SmartReflex driver.
+It also adds suspend/resume handlers which resolves an identified
+problem.  The voltage calculation has been improved in order
+to settle more quickly and accurately to the target voltage.
+
+Signed-off-by: Greg Guyotte <gguyotte@ti.com>
+---
+ arch/arm/mach-omap2/am33xx-smartreflex-class2.c |  852 +++++++++++++----------
+ arch/arm/mach-omap2/devices.c                   |  483 +++++++------
+ arch/arm/plat-omap/include/plat/smartreflex.h   |   72 +-
+ 3 files changed, 812 insertions(+), 595 deletions(-)
+
+diff --git a/arch/arm/mach-omap2/am33xx-smartreflex-class2.c b/arch/arm/mach-omap2/am33xx-smartreflex-class2.c
+index 6a66e68..4d750d4 100644
+--- a/arch/arm/mach-omap2/am33xx-smartreflex-class2.c
++++ b/arch/arm/mach-omap2/am33xx-smartreflex-class2.c
+@@ -28,6 +28,7 @@
+ #include <linux/regulator/consumer.h>
+ #include <linux/cpufreq.h>
+ #include <linux/opp.h>
++#include <linux/pm.h>
+ 
+ #include <plat/common.h>
+ #include <plat/smartreflex.h>
+@@ -37,6 +38,9 @@
+ 
+ #define CLK_NAME_LEN		40
+ 
++/* Global reference used for suspend/resume only */
++static struct am33xx_sr *global_sr_info;
++
+ static inline void sr_write_reg(struct am33xx_sr *sr, int offset, u32 value,
+ 					u32 srid)
+ {
+@@ -60,63 +64,68 @@ static inline u32 sr_read_reg(struct am33xx_sr *sr, int offset, u32 srid)
+ 	return readl(sr->sen[srid].base + offset);
+ }
+ 
+-static void cal_reciprocal(u32 sensor, u32 *sengain, u32 *rnsen) {
+-         u32 gn, rn, mul;
+-
+-         for (gn = 0; gn < GAIN_MAXLIMIT; gn++) {
+-                 mul = 1 << (gn + 8);
+-                 rn = mul / sensor;
+-                 if (rn < R_MAXLIMIT) {
+-                         *sengain = gn;
+-                         *rnsen = rn;
+-                 }
+-         }
++static void cal_reciprocal(u32 sensor, u32 *sengain, u32 *rnsen)
++{
++	 u32 gn, rn, mul;
++
++	 for (gn = 0; gn < GAIN_MAXLIMIT; gn++) {
++		mul = 1 << (gn + 8);
++		rn = mul / sensor;
++		if (rn < R_MAXLIMIT) {
++			*sengain = gn;
++			*rnsen = rn;
++		}
++	}
+ }
+ 
+-static u32 cal_test_nvalue(u32 sennval, u32 senpval) {
+-         u32 senpgain=0, senngain=0;
+-         u32 rnsenp=0, rnsenn=0;
++static u32 cal_test_nvalue(u32 sennval, u32 senpval)
++{
++	 u32 senpgain = 0, senngain = 0;
++	 u32 rnsenp = 0, rnsenn = 0;
+ 
+-         /* Calculating the gain and reciprocal of the SenN and SenP values */
+-         cal_reciprocal(senpval, &senpgain, &rnsenp);
+-         cal_reciprocal(sennval, &senngain, &rnsenn);
++	 /* Calculating the gain and reciprocal of the SenN and SenP values */
++	 cal_reciprocal(senpval, &senpgain, &rnsenp);
++	 cal_reciprocal(sennval, &senngain, &rnsenn);
+ 
+-         return (senpgain << NVALUERECIPROCAL_SENPGAIN_SHIFT) |
+-                 (senngain << NVALUERECIPROCAL_SENNGAIN_SHIFT) |
+-                 (rnsenp << NVALUERECIPROCAL_RNSENP_SHIFT) |
+-                 (rnsenn << NVALUERECIPROCAL_RNSENN_SHIFT);
++	 return (senpgain << NVALUERECIPROCAL_SENPGAIN_SHIFT) |
++		 (senngain << NVALUERECIPROCAL_SENNGAIN_SHIFT) |
++		 (rnsenp << NVALUERECIPROCAL_RNSENP_SHIFT) |
++		 (rnsenn << NVALUERECIPROCAL_RNSENN_SHIFT);
+ }
+ 
++/* margin is defined similar to the SenVal register.
++     SenP margin is 31:16 bits
++     SenN margin is 15:00 bits
++*/
+ static unsigned int sr_adjust_efuse_nvalue(unsigned int opp_no,
+-                                                 unsigned int orig_opp_nvalue,
+-                                                 unsigned int mv_delta) {
+-         unsigned int new_opp_nvalue;
+-         unsigned int senp_gain, senn_gain, rnsenp, rnsenn, pnt_delta, nnt_delta;
+-         unsigned int new_senn, new_senp, senn, senp;
++						 unsigned int orig_opp_nvalue,
++						 unsigned int margin) {
++	 unsigned int new_opp_nvalue, senp_gain, senn_gain, rnsenp, rnsenn;
++	 unsigned int pnt_delta, nnt_delta, new_senn, new_senp, senn, senp;
+ 
+-         /* calculate SenN and SenP from the efuse value */
+-         senp_gain = ((orig_opp_nvalue >> 20) & 0xf);
+-         senn_gain = ((orig_opp_nvalue >> 16) & 0xf);
+-         rnsenp = ((orig_opp_nvalue >> 8) & 0xff);
+-         rnsenn = (orig_opp_nvalue & 0xff);
++	 /* calculate SenN and SenP from the efuse value */
++	 senp_gain = ((orig_opp_nvalue >> 20) & 0xf);
++	 senn_gain = ((orig_opp_nvalue >> 16) & 0xf);
++	 rnsenp = ((orig_opp_nvalue >> 8) & 0xff);
++	 rnsenn = (orig_opp_nvalue & 0xff);
+ 
+-         senp = ((1<<(senp_gain+8))/(rnsenp));
+-         senn = ((1<<(senn_gain+8))/(rnsenn));
++	 senp = ((1<<(senp_gain+8))/(rnsenp));
++	 senn = ((1<<(senn_gain+8))/(rnsenn));
+ 
+-         /* calculate the voltage delta */
+-         pnt_delta = (26 * mv_delta)/10;
+-         nnt_delta = (3 * mv_delta);
++	 /* calculate the voltage delta */
++	 pnt_delta = (margin >> 16) & 0xffff;
++	 nnt_delta = margin & 0xffff;
+ 
+-         /* now lets add the voltage delta to the sensor values */
+-         new_senn = senn + nnt_delta;
+-         new_senp = senp + pnt_delta;
++	 /* now lets add the voltage delta to the sensor values */
++	 new_senn = senn + nnt_delta;
++	 new_senp = senp + pnt_delta;
+ 
+-         new_opp_nvalue = cal_test_nvalue(new_senn, new_senp);
++	 new_opp_nvalue = cal_test_nvalue(new_senn, new_senp);
+ 
+-         printk("Compensating OPP%d for %dmV Orig nvalue:0x%x New nvalue:0x%x \n",
+-                         opp_no, mv_delta, orig_opp_nvalue, new_opp_nvalue);
++	 printk(KERN_DEBUG "Compensating OPP%d: Orig nvalue:0x%x New nvalue:0x%x\n",
++			 opp_no, orig_opp_nvalue, new_opp_nvalue);
+ 
+-         return new_opp_nvalue;
++	 return new_opp_nvalue;
+ }
+ 
+ /* irq_sr_reenable - Re-enable SR interrupts (triggered by delayed work queue)
+@@ -128,55 +137,104 @@ static unsigned int sr_adjust_efuse_nvalue(unsigned int opp_no,
+  */
+ static void irq_sr_reenable(struct work_struct *work)
+ {
+-        u32 srid;
++	u32 srid;
+ 	struct am33xx_sr_sensor *sens;
+-        struct am33xx_sr *sr;
++	struct am33xx_sr *sr;
+ 
+-        sens = container_of((void *)work, struct am33xx_sr_sensor,
+-                work_reenable);
++	sens = container_of((void *)work, struct am33xx_sr_sensor,
++		work_reenable);
+ 
+-        srid = sens->sr_id;
++	srid = sens->sr_id;
+ 
+-        sr = container_of((void *)sens, struct am33xx_sr, sen[srid]);
++	sr = container_of((void *)sens, struct am33xx_sr, sen[srid]);
+ 
+-        dev_dbg(&sr->pdev->dev, "%s: SR %d\n", __func__, srid);
++	dev_dbg(&sr->pdev->dev, "%s: SR %d\n", __func__, srid);
+ 
+-        /* Must clear IRQ status */
+-        sens->irq_status = 0;
++	/* Must clear IRQ status */
++	sens->irq_status = 0;
+ 
+-        /* Re-enable the interrupt */
++	/* moved from initial irq handler to solve problem of extra
++	   interrupts (Clear bounds interrupt) */
++	sr_modify_reg(sr, IRQSTATUS, IRQSTATUS_MCBOUNDSINT,
++			IRQSTATUS_MCBOUNDSINT, srid);
++
++	/* Re-enable the interrupt */
+ 	sr_modify_reg(sr, IRQENABLE_SET, IRQENABLE_MCUBOUNDSINT,
+ 		IRQENABLE_MCUBOUNDSINT, srid);
+-
+-	/* Restart the module after voltage set */
+-	sr_modify_reg(sr, SRCONFIG, SRCONFIG_SRENABLE,
+-		SRCONFIG_SRENABLE, srid);
+ }
+ 
+ /* get_errvolt - get error voltage from SR error register
+  * @sr:		contains SR driver data
+  * @srid:	contains the srid, indicates which SR moduel lswe are using
++ * @curr_volt:  current voltage for domain (in microvolts)
++ * @reset:      set to 1 to reset the internal state machine
+  *
+- * Read the error from SENSOR error register and then convert
++ * Reads the error from SENSOR error register and then convert
+  * to voltage delta, return value is the voltage delta in micro
+  * volt.
+  */
+-static int get_errvolt(struct am33xx_sr *sr, s32 srid)
++static int get_errvolt(struct am33xx_sr *sr, int srid, int curr_volt,
++			int reset)
+ {
+-        struct am33xx_sr_sensor *sens;
+-	int senerror_reg;
+-	s32 uvoltage;
+-	s8 terror;
++	struct am33xx_sr_sensor *sens;
++	int senerror_reg, gain;
++	s32 uvoltage = 0;
++	s8 avg_error;
+ 
+-        sens = &sr->sen[srid];
++	sens = &sr->sen[srid];
+ 
++	/* used when OPP changes to reset the state machine */
++	if (reset > 0) {
++		sens->state = 0;
++		return 0;
++	}
++
++	/* Read the AvgError */
+ 	senerror_reg = sr_read_reg(sr, SENERROR_V2, srid);
+ 	senerror_reg = (senerror_reg & 0x0000FF00);
+-	terror = (s8)(senerror_reg >> 8);
++	avg_error = (s8)(senerror_reg >> 8);
++
++	switch (sens->state) {
++	case 0: /* save the current voltage and AvgError for state 1 */
++		sens->saved_volt = curr_volt;
++		sens->avg_error_nom = avg_error;
++
++		/* calculate -5% voltage (spec vmin) */
++		uvoltage = -(curr_volt * 5) / 100;
++
++		sens->state = 1;
++		break;
++	case 1: /* guard against divide by zero (should not happen) */
++		if (sens->avg_error_nom == avg_error) {
++			dev_err(&sr->pdev->dev,
++			"%s: SR %d: Same AvgError for 2 different voltages\n",
++			__func__, srid);
++			sens->state = 0;
++			break;
++		}
+ 
+-        /* math defined in SR functional spec */
+-	uvoltage = ((terror) * sr->uvoltage_step_size) >> 7;
+-	uvoltage = uvoltage * sens->opp_data[sens->curr_opp].e2v_gain;
++		/* calculate what the gain should be based on slope */
++		gain = abs(sens->saved_volt - curr_volt) /
++			abs(sens->avg_error_nom - avg_error);
++		uvoltage = gain * avg_error;
++
++		dev_dbg(&sr->pdev->dev,
++			"SR %d: State 1 calculated %duV gain, vmin = %d\n",
++			srid, gain, curr_volt + uvoltage);
++
++		/* store computed gain for state 2 */
++		sens->opp_data[sens->curr_opp].e2v_gain = (gain / 100);
++		sens->state = 2;
++		break;
++	case 2: /* remain in this state to converge to final voltage */
++		uvoltage = (avg_error * sr->uvoltage_step_size) >> 7;
++		uvoltage = uvoltage * sens->opp_data[sens->curr_opp].e2v_gain;
++		break;
++	default:
++		dev_err(&sr->pdev->dev,
++			"%s: SR %d: Invalid state for get_errvolt\n",
++			__func__, srid);
++	}
+ 
+ 	return uvoltage;
+ }
+@@ -204,48 +262,46 @@ static void set_voltage(struct work_struct *work)
+ 
+ 	sr = container_of((void *)work, struct am33xx_sr, work);
+ 
+-        for (i = 0; i < sr->no_of_sens; i++) {
+-                if (sr->sen[i].irq_status != 1)
+-                        continue;
++	for (i = 0; i < sr->no_of_sens; i++) {
++		if (sr->sen[i].irq_status != 1)
++			continue;
+ 
+-                /* Get the current voltage from PMIC */
+-                prev_volt = regulator_get_voltage(sr->sen[i].reg);
++		/* Get the current voltage from PMIC */
++		prev_volt = regulator_get_voltage(sr->sen[i].reg);
+ 
+-                if (prev_volt < 0) {
+-                        dev_err(&sr->pdev->dev,
+-                                "%s: SR %d: regulator_get_voltage error %d\n",
+-                                __func__, i, prev_volt);
++		if (prev_volt < 0) {
++			dev_err(&sr->pdev->dev,
++				"%s: SR %d: regulator_get_voltage error %d\n",
++				__func__, i, prev_volt);
+ 
+-                        goto reenable;
+-                }
++			goto reenable;
++		}
+ 
+-        	delta_v = get_errvolt(sr, i);
+-                new_volt = prev_volt + delta_v;
++		delta_v = get_errvolt(sr, i, prev_volt, 0);
++		new_volt = prev_volt + delta_v;
+ 
+-                /* this is the primary output for debugging SR activity */
+-                dev_dbg(&sr->pdev->dev,
+-                        "%s: SR %d: prev volt=%d, delta_v=%d, req_volt=%d\n",
+-                         __func__, i, prev_volt, delta_v, new_volt);
++		if (delta_v != 0) {
++			ret = regulator_set_voltage(sr->sen[i].reg, new_volt,
++				new_volt + sr->uvoltage_step_size);
+ 
+-	        /* Clear the counter, SR module disable */
+-	        sr_modify_reg(sr, SRCONFIG, SRCONFIG_SRENABLE,
+-			~SRCONFIG_SRENABLE, i);
++			if (ret < 0)
++				dev_err(&sr->pdev->dev,
++				"%s: regulator_set_voltage failed! (err %d)\n",
++				__func__, ret);
++		}
+ 
+-                if (delta_v != 0) {
+-	                ret = regulator_set_voltage(sr->sen[i].reg, new_volt,
+-                                new_volt + sr->uvoltage_step_size);
++		/* this is the primary output for debugging SR activity */
++		printk(KERN_DEBUG "SR %d: curr=%d, delta_v=%d, calc=%d, act=%d, gain=%02x\n",
++			 i, prev_volt, delta_v, new_volt,
++			regulator_get_voltage(sr->sen[i].reg),
++			sr->sen[i].opp_data[sr->sen[i].curr_opp].e2v_gain);
+ 
+-                        if (ret < 0)
+-                                dev_err(&sr->pdev->dev,
+-                                "%s: regulator_set_voltage failed! (err %d)\n",
+-                                __func__, ret);
+-                }
+ reenable:
+-                /* allow time for voltage to settle before re-enabling SR
+-                   module and interrupt */
+-                schedule_delayed_work(&sr->sen[i].work_reenable,
+-                        msecs_to_jiffies(sr->irq_delay));
+-        }
++		/* allow time for voltage to settle before re-enabling SR
++		   module and interrupt */
++		schedule_delayed_work(&sr->sen[i].work_reenable,
++			msecs_to_jiffies(sr->irq_delay));
++	}
+ }
+ 
+ /* sr_class2_irq - sr irq handling
+@@ -267,32 +323,28 @@ reenable:
+ static irqreturn_t sr_class2_irq(int irq, void *data)
+ {
+ 	u32 srid;
+-        struct am33xx_sr *sr;
+-        struct am33xx_sr_sensor *sr_sensor = (struct am33xx_sr_sensor *)data;
++	struct am33xx_sr *sr;
++	struct am33xx_sr_sensor *sr_sensor = (struct am33xx_sr_sensor *)data;
+ 
+-        srid = sr_sensor->sr_id;
++	srid = sr_sensor->sr_id;
+ 
+-        sr = container_of(data, struct am33xx_sr, sen[srid]);
++	sr = container_of(data, struct am33xx_sr, sen[srid]);
+ 
+ 	sr->sen[srid].irq_status = 1;
+ 
+-	/* Clear MCUBounds Interrupt */
+-	sr_modify_reg(sr, IRQSTATUS, IRQSTATUS_MCBOUNDSINT,
+-			IRQSTATUS_MCBOUNDSINT, srid);
+-
+ 	/* Disable the interrupt and re-enable in set_voltage() */
+ 	sr_modify_reg(sr, IRQENABLE_CLR, IRQENABLE_MCUBOUNDSINT,
+ 			IRQENABLE_MCUBOUNDSINT, srid);
+ 
+-        /* Causes set_voltage() to get called at a later time.  Set_voltage()
+-           will check the irq_status flags to determine which SR needs to
+-           be serviced.  This was previously done with schedule_work, but
+-           I observed a crash in set_voltage() when changing OPPs on weak
+-           silicon, which may have been related to insufficient voltage
+-           settling time for OPP change.  This additional delay avoids the
+-           crash. */
+-        schedule_delayed_work(&sr->work,
+-                        msecs_to_jiffies(250));
++	/* Causes set_voltage() to get called at a later time.  Set_voltage()
++	   will check the irq_status flags to determine which SR needs to
++	   be serviced.  This was previously done with schedule_work, but
++	   I observed a crash in set_voltage() when changing OPPs on weak
++	   silicon, which may have been related to insufficient voltage
++	   settling time for OPP change.  This additional delay avoids the
++	   crash. */
++	schedule_delayed_work(&sr->work,
++			msecs_to_jiffies(250));
+ 
+ 	return IRQ_HANDLED;
+ }
+@@ -317,31 +369,31 @@ static int sr_clk_disable(struct am33xx_sr *sr, u32 srid)
+ 
+ static inline int sr_set_nvalues(struct am33xx_sr *sr, u32 srid)
+ {
+-        int i;
+-        struct am33xx_sr_sensor *sens = &sr->sen[srid];
++	int i;
++	struct am33xx_sr_sensor *sens = &sr->sen[srid];
+ 
+-        for (i = 0; i < sens->no_of_opps; i++) {
+-        	/* Read nTarget value form EFUSE register*/
+-	        sens->opp_data[i].nvalue = readl(AM33XX_CTRL_REGADDR
++	for (i = 0; i < sens->no_of_opps; i++) {
++		/* Read nTarget value form EFUSE register*/
++		sens->opp_data[i].nvalue = readl(AM33XX_CTRL_REGADDR
+ 			(sens->opp_data[i].efuse_offs)) & 0xFFFFFF;
+ 
+-                /* validate nTarget value */
+-                if (sens->opp_data[i].nvalue == 0)
+-                        return -EINVAL;
++		/* validate nTarget value */
++		if (sens->opp_data[i].nvalue == 0)
++			return -EINVAL;
+ 
+-                /* adjust nTarget based on margin in mv */
+-                sens->opp_data[i].adj_nvalue = sr_adjust_efuse_nvalue(i,
+-                        sens->opp_data[i].nvalue,
+-                        sens->opp_data[i].margin);
++		/* adjust nTarget based on margin in mv */
++		sens->opp_data[i].adj_nvalue = sr_adjust_efuse_nvalue(i,
++			sens->opp_data[i].nvalue,
++			sens->opp_data[i].margin);
+ 
+-                dev_dbg(&sr->pdev->dev,
+-                        "NValueReciprocal value (from efuse) = %08x\n",
+-                        sens->opp_data[i].nvalue);
++		dev_dbg(&sr->pdev->dev,
++			"NValueReciprocal value (from efuse) = %08x\n",
++			sens->opp_data[i].nvalue);
+ 
+-                dev_dbg(&sr->pdev->dev,
+-                        "Adjusted NValueReciprocal value = %08x\n",
+-                        sens->opp_data[i].adj_nvalue);
+-        }
++		dev_dbg(&sr->pdev->dev,
++			"Adjusted NValueReciprocal value = %08x\n",
++			sens->opp_data[i].adj_nvalue);
++	}
+ 	return 0;
+ }
+ 
+@@ -354,7 +406,7 @@ static inline int sr_set_nvalues(struct am33xx_sr *sr, u32 srid)
+  */
+ static void sr_configure(struct am33xx_sr *sr, u32 srid)
+ {
+-        struct am33xx_sr_sensor *sens = &sr->sen[srid];
++	struct am33xx_sr_sensor *sens = &sr->sen[srid];
+ 
+ 	/* Configuring the SR module with clock length, enabling the
+ 	 * error generator, enable SR module, enable individual N and P
+@@ -370,11 +422,11 @@ static void sr_configure(struct am33xx_sr *sr, u32 srid)
+ 	sr_modify_reg(sr, ERRCONFIG_V2, (SR_ERRWEIGHT_MASK |
+ 		SR_ERRMAXLIMIT_MASK | SR_ERRMINLIMIT_MASK),
+ 		((sens->opp_data[sens->curr_opp].err_weight <<
+-                        ERRCONFIG_ERRWEIGHT_SHIFT) |
++			ERRCONFIG_ERRWEIGHT_SHIFT) |
+ 		(sens->opp_data[sens->curr_opp].err_maxlimit <<
+-                        ERRCONFIG_ERRMAXLIMIT_SHIFT) |
++			ERRCONFIG_ERRMAXLIMIT_SHIFT) |
+ 		(sens->opp_data[sens->curr_opp].err_minlimit <<
+-                        ERRCONFIG_ERRMINLIMIT_SHIFT)),
++			ERRCONFIG_ERRMINLIMIT_SHIFT)),
+ 		srid);
+ }
+ 
+@@ -387,9 +439,14 @@ static void sr_configure(struct am33xx_sr *sr, u32 srid)
+  */
+ static void sr_enable(struct am33xx_sr *sr, u32 srid)
+ {
+-        struct am33xx_sr_sensor *sens;
++	struct am33xx_sr_sensor *sens;
++
++	if (sr->is_suspended) {
++		dev_dbg(&sr->pdev->dev, "%s: in suspended state\n", __func__);
++		return;
++	}
+ 
+-        sens = &sr->sen[srid];
++	sens = &sr->sen[srid];
+ 
+ 	/* Check if SR is already enabled. If yes do nothing */
+ 	if (sr_read_reg(sr, SRCONFIG, srid) & SRCONFIG_SRENABLE)
+@@ -397,11 +454,11 @@ static void sr_enable(struct am33xx_sr *sr, u32 srid)
+ 
+ 	if (sens->opp_data[sens->curr_opp].nvalue == 0)
+ 		dev_err(&sr->pdev->dev,
+-                        "%s: OPP doesn't support SmartReflex\n", __func__);
++			"%s: OPP doesn't support SmartReflex\n", __func__);
+ 
+ 	/* Writing the nReciprocal value to the register */
+ 	sr_write_reg(sr, NVALUERECIPROCAL,
+-                sens->opp_data[sens->curr_opp].adj_nvalue, srid);
++		sens->opp_data[sens->curr_opp].adj_nvalue, srid);
+ 
+ 	/* Enable the interrupt */
+ 	sr_modify_reg(sr, IRQENABLE_SET, IRQENABLE_MCUBOUNDSINT,
+@@ -420,6 +477,11 @@ static void sr_enable(struct am33xx_sr *sr, u32 srid)
+  */
+ static void sr_disable(struct am33xx_sr *sr, u32 srid)
+ {
++	if (sr->is_suspended) {
++		dev_dbg(&sr->pdev->dev, "%s: in suspended state\n", __func__);
++		return;
++	}
++
+ 	/* Disable the interrupt */
+ 	sr_modify_reg(sr, IRQENABLE_CLR, IRQENABLE_MCUBOUNDSINT,
+ 				IRQENABLE_MCUBOUNDSINT, srid);
+@@ -440,31 +502,31 @@ static void sr_start_vddautocomp(struct am33xx_sr *sr)
+ 	int i;
+ 
+ 	if ((sr->sen[SR_CORE].opp_data[0].nvalue == 0) ||
+-                (sr->sen[SR_MPU].opp_data[0].nvalue == 0)) {
++		(sr->sen[SR_MPU].opp_data[0].nvalue == 0)) {
+ 		dev_err(&sr->pdev->dev, "SR module not enabled, nTarget"
+ 					" values are not found\n");
+ 		return;
+ 	}
+ 
+-	if (sr->autocomp_active == 1) {
++	if (sr->autocomp_active) {
+ 		dev_warn(&sr->pdev->dev, "SR VDD autocomp already active\n");
+ 		return;
+ 	}
+ 
+ 	for (i = 0; i < sr->no_of_sens; i++) {
+-               	/* Read current regulator value and voltage */
+-	        sr->sen[i].init_volt_mv = regulator_get_voltage(sr->sen[i].reg);
++		/* Read current regulator value and voltage */
++		sr->sen[i].init_volt_mv = regulator_get_voltage(sr->sen[i].reg);
+ 
+-                dev_dbg(&sr->pdev->dev, "%s: regulator %d, init_volt = %d\n",
+-                        __func__, i, sr->sen[i].init_volt_mv);
++		dev_dbg(&sr->pdev->dev, "%s: regulator %d, init_volt = %d\n",
++			__func__, i, sr->sen[i].init_volt_mv);
+ 
+ 		if (sr_clk_enable(sr, i))
+-                        return;
++			return;
+ 		sr_configure(sr, i);
+ 		sr_enable(sr, i);
+ 	}
+ 
+-	sr->autocomp_active = 1;
++	sr->autocomp_active = true;
+ }
+ 
+ /* sr_stop_vddautocomp - Stop VDD auto compensation
+@@ -477,22 +539,22 @@ static void sr_stop_vddautocomp(struct am33xx_sr *sr)
+ {
+ 	int i;
+ 
+-	if (sr->autocomp_active == 0) {
++	if (!sr->autocomp_active) {
+ 		dev_warn(&sr->pdev->dev, "SR VDD autocomp is not active\n");
+ 		return;
+ 	}
+ 
+-        /* cancel bottom half interrupt handlers that haven't run yet */
++	/* cancel bottom half interrupt handlers that haven't run yet */
+ 	cancel_delayed_work_sync(&sr->work);
+ 
+ 	for (i = 0; i < sr->no_of_sens; i++) {
+-                /* cancel any outstanding SR IRQ re-enables on work queue */
+-                cancel_delayed_work_sync(&sr->sen[i].work_reenable);
++		/* cancel any outstanding SR IRQ re-enables on work queue */
++		cancel_delayed_work_sync(&sr->sen[i].work_reenable);
+ 		sr_disable(sr, i);
+ 		sr_clk_disable(sr, i);
+ 	}
+ 
+-	sr->autocomp_active = 0;
++	sr->autocomp_active = false;
+ }
+ 
+ /* am33xx_sr_autocomp_show - Store user input value and stop SR
+@@ -513,7 +575,8 @@ static int am33xx_sr_autocomp_show(void *data, u64 *val)
+ 
+ static int am33xx_sr_margin_show(void *data, u64 *val)
+ {
+-        struct am33xx_sr_opp_data *sr_opp_data = (struct am33xx_sr_opp_data *)data;
++	struct am33xx_sr_opp_data *sr_opp_data =
++		(struct am33xx_sr_opp_data *)data;
+ 
+ 	*val = (u64) sr_opp_data->margin;
+ 
+@@ -522,35 +585,35 @@ static int am33xx_sr_margin_show(void *data, u64 *val)
+ 
+ static int am33xx_sr_margin_update(void *data, u64 val)
+ {
+-        struct am33xx_sr_opp_data *sr_opp_data =
+-                (struct am33xx_sr_opp_data *)data;
+-        struct am33xx_sr_sensor *sr_sensor;
+-        struct am33xx_sr *sr_info;
++	struct am33xx_sr_opp_data *sr_opp_data =
++		(struct am33xx_sr_opp_data *)data;
++	struct am33xx_sr_sensor *sr_sensor;
++	struct am33xx_sr *sr_info;
+ 
+-        /* work back to the sr_info pointer */
+-        sr_sensor = container_of((void *)sr_opp_data, struct am33xx_sr_sensor,
+-                opp_data[sr_opp_data->opp_id]);
++	/* work back to the sr_info pointer */
++	sr_sensor = container_of((void *)sr_opp_data, struct am33xx_sr_sensor,
++		opp_data[sr_opp_data->opp_id]);
+ 
+-        sr_info = container_of((void *)sr_sensor, struct am33xx_sr,
+-                sen[sr_sensor->sr_id]);
++	sr_info = container_of((void *)sr_sensor, struct am33xx_sr,
++		sen[sr_sensor->sr_id]);
+ 
+-        /* store the value of margin */
+-        sr_opp_data->margin = (s32)val;
++	/* store the value of margin */
++	sr_opp_data->margin = (s32)val;
+ 
+-        dev_warn(&sr_info->pdev->dev, "%s: new margin=%d, srid=%d, opp=%d\n",
+-                __func__, sr_opp_data->margin, sr_sensor->sr_id,
+-                sr_opp_data->opp_id);
++	dev_warn(&sr_info->pdev->dev, "%s: new margin=%d, srid=%d, opp=%d\n",
++		__func__, sr_opp_data->margin, sr_sensor->sr_id,
++		sr_opp_data->opp_id);
+ 
+-        /* updata ntarget values based upon new margin */
+-        if (sr_set_nvalues(sr_info, sr_sensor->sr_id) == -EINVAL)
+-                dev_err(&sr_info->pdev->dev,
+-                        "%s: Zero NValue read from EFUSE\n", __func__);
++	/* updata ntarget values based upon new margin */
++	if (sr_set_nvalues(sr_info, sr_sensor->sr_id) == -EINVAL)
++		dev_err(&sr_info->pdev->dev,
++			"%s: Zero NValue read from EFUSE\n", __func__);
+ 
+-        /* restart SmartReflex to adapt to new values */
+-        sr_stop_vddautocomp(sr_info);
+-        sr_start_vddautocomp(sr_info);
++	/* restart SmartReflex to adapt to new values */
++	sr_stop_vddautocomp(sr_info);
++	sr_start_vddautocomp(sr_info);
+ 
+-        return 0;
++	return 0;
+ }
+ 
+ /* am33xx_sr_autocomp_store - Store user input and start SR
+@@ -564,21 +627,25 @@ static int am33xx_sr_autocomp_store(void *data, u64 val)
+ {
+ 	struct am33xx_sr *sr_info = (struct am33xx_sr *) data;
+ 
++	if (sr_info->is_suspended) {
++		pr_warning("%s: in suspended state\n", __func__);
++		return -EBUSY;
++	}
++
+ 	/* Sanity check */
+ 	if (val && (val != 1)) {
+ 		dev_warn(&sr_info->pdev->dev, "%s: Invalid argument %llu\n",
+-		        __func__, val);
++			__func__, val);
+ 		return -EINVAL;
+ 	}
+ 
+ 	if (!val) {
+-                sr_info->disabled_by_user = 1;
++		sr_info->disabled_by_user = true;
+ 		sr_stop_vddautocomp(sr_info);
+-        }
+-	else {
+-                sr_info->disabled_by_user = 0;
++	} else {
++		sr_info->disabled_by_user = false;
+ 		sr_start_vddautocomp(sr_info);
+-        }
++	}
+ 
+ 	return 0;
+ }
+@@ -618,7 +685,7 @@ DEFINE_SIMPLE_ATTRIBUTE(margin_fops, am33xx_sr_margin_show,
+  */
+ static int sr_debugfs_entries(struct am33xx_sr *sr_info)
+ {
+-        struct am33xx_sr_sensor *sens;
++	struct am33xx_sr_sensor *sens;
+ 	struct dentry *dbg_dir, *sen_dir, *opp_dir;
+ 	int i, j;
+ 
+@@ -629,13 +696,13 @@ static int sr_debugfs_entries(struct am33xx_sr *sr_info)
+ 		return PTR_ERR(dbg_dir);
+ 	}
+ 
+-	(void) debugfs_create_file("autocomp", S_IRUGO | S_IWUGO, dbg_dir,
++	(void) debugfs_create_file("autocomp", S_IRUGO | S_IWUSR, dbg_dir,
+ 				(void *)sr_info, &sr_fops);
+-        (void) debugfs_create_u32("interrupt_delay", S_IRUGO | S_IWUGO,
++	(void) debugfs_create_u32("interrupt_delay", S_IRUGO | S_IWUSR,
+ 				dbg_dir, &sr_info->irq_delay);
+ 
+ 	for (i = 0; i < sr_info->no_of_sens; i++) {
+-                sens = &sr_info->sen[i];
++		sens = &sr_info->sen[i];
+ 		sen_dir = debugfs_create_dir(sens->name, dbg_dir);
+ 		if (IS_ERR(sen_dir)) {
+ 			dev_err(&sr_info->pdev->dev, "%s: Unable to create"
+@@ -643,37 +710,37 @@ static int sr_debugfs_entries(struct am33xx_sr *sr_info)
+ 			return PTR_ERR(sen_dir);
+ 		}
+ 
+-                (void)debugfs_create_u32("initial_voltage", S_IRUGO, sen_dir,
++		(void)debugfs_create_u32("initial_voltage", S_IRUGO, sen_dir,
+ 				&sens->init_volt_mv);
+-	        (void)debugfs_create_file("current_voltage", S_IRUGO, sen_dir,
++		(void)debugfs_create_file("current_voltage", S_IRUGO, sen_dir,
+ 				(void *)sens, &curr_volt_fops);
+ 
+-                for (j = 0; j < sr_info->sen[i].no_of_opps; j++) {
+-                        char tmp[20];
+-
+-                        sprintf(&tmp[0], "opp%d", j);
+-                        opp_dir = debugfs_create_dir(tmp, sen_dir);
+-                        if (IS_ERR(opp_dir)) {
+-        			dev_err(&sr_info->pdev->dev,
+-                                        "%s: Unable to create debugfs directory\n",
+-                                        __func__);
+-        			return PTR_ERR(opp_dir);
+-        		}
+-
+-                        (void)debugfs_create_file("margin", S_IRUGO | S_IWUGO,
+-	        	       opp_dir, (void *)&sens->opp_data[j],
+-                               &margin_fops);
+-                        (void)debugfs_create_x32("err2voltgain",
+-                               S_IRUGO | S_IWUGO,
+-        		       opp_dir,
+-                               &sens->opp_data[j].e2v_gain);
+-        		(void)debugfs_create_x32("nvalue", S_IRUGO,
+-        		       opp_dir,
+-                               &sens->opp_data[j].nvalue);
+-                        (void)debugfs_create_x32("adj_nvalue", S_IRUGO,
+-        		       opp_dir,
+-                               &sens->opp_data[j].adj_nvalue);
+-                }
++		for (j = 0; j < sr_info->sen[i].no_of_opps; j++) {
++			char tmp[20];
++
++			sprintf(&tmp[0], "opp%d", j);
++			opp_dir = debugfs_create_dir(tmp, sen_dir);
++			if (IS_ERR(opp_dir)) {
++				dev_err(&sr_info->pdev->dev,
++					"%s: Unable to create debugfs directory\n",
++					__func__);
++				return PTR_ERR(opp_dir);
++			}
++
++			(void)debugfs_create_file("margin", S_IRUGO | S_IWUSR,
++			       opp_dir, (void *)&sens->opp_data[j],
++			       &margin_fops);
++			(void)debugfs_create_x32("err2voltgain",
++			       S_IRUGO | S_IWUSR,
++			       opp_dir,
++			       &sens->opp_data[j].e2v_gain);
++			(void)debugfs_create_x32("nvalue", S_IRUGO,
++			       opp_dir,
++			       &sens->opp_data[j].nvalue);
++			(void)debugfs_create_x32("adj_nvalue", S_IRUGO,
++			       opp_dir,
++			       &sens->opp_data[j].adj_nvalue);
++		}
+ 	}
+ 	return 0;
+ }
+@@ -688,51 +755,64 @@ static int sr_debugfs_entries(struct am33xx_sr *sr_info)
+ 
+ /* Find and return current OPP.  This should change to use system APIs,
+    but voltdm is not currently populated, and opp APIs are also not working. */
+-static int get_current_opp(struct am33xx_sr *sr, u32 srid, u32 freq)  {
+-        int i;
++static int get_current_opp(struct am33xx_sr *sr, u32 srid, u32 freq)
++{
++	int i;
+ 
+-        for (i = 0; i < sr->sen[srid].no_of_opps; i++) {
+-                if (sr->sen[srid].opp_data[i].frequency == freq)
+-                        return i;
+-        }
++	for (i = 0; i < sr->sen[srid].no_of_opps; i++) {
++		if (sr->sen[srid].opp_data[i].frequency == freq)
++			return i;
++	}
+ 
+-        return -EINVAL;
++	return -EINVAL;
+ }
+ 
+ static int am33xx_sr_cpufreq_transition(struct notifier_block *nb,
+ 					  unsigned long val, void *data)
+ {
+-        struct am33xx_sr *sr;
+-        struct cpufreq_freqs *cpu;
++	struct am33xx_sr *sr;
++	struct cpufreq_freqs *cpu;
+ 
+ 	sr = container_of(nb, struct am33xx_sr, freq_transition);
+ 
+-        /* We are required to disable SR while OPP change is occurring */
++	/* We are required to disable SR while OPP change is occurring */
+ 	if (val == CPUFREQ_PRECHANGE) {
+-                dev_dbg(&sr->pdev->dev, "%s: prechange\n", __func__);
+-                sr_stop_vddautocomp(sr);
++		dev_dbg(&sr->pdev->dev, "%s: prechange\n", __func__);
++
++		printk(KERN_DEBUG "%s: prechange\n", __func__);
++
++		sr_stop_vddautocomp(sr);
++
+ 	} else if (val == CPUFREQ_POSTCHANGE) {
+-                cpu = (struct cpufreq_freqs *)data;
+-                dev_dbg(&sr->pdev->dev,
+-                        "%s: postchange, cpu=%d, old=%d, new=%d\n",
+-                        __func__, cpu->cpu, cpu->old, cpu->new);
+-
+-                /* update current OPP */
+-                sr->sen[SR_MPU].curr_opp = get_current_opp(sr, SR_MPU,
+-                        cpu->new*1000);
+-                if (sr->sen[SR_MPU].curr_opp == -EINVAL) {
+-                        dev_err(&sr->pdev->dev, "%s: cannot determine opp\n",
+-                                __func__);
+-                        return -EINVAL;
+-                }
+-
+-                dev_dbg(&sr->pdev->dev, "%s: postchange, new opp=%d\n",
+-                        __func__, sr->sen[SR_MPU].curr_opp);
+-
+-                /* this handles the case when the user has disabled SR via
+-                   debugfs, therefore we do not want to enable SR */
+-                if (sr->disabled_by_user == 0)
+-                        sr_start_vddautocomp(sr);
++		cpu = (struct cpufreq_freqs *)data;
++		dev_dbg(&sr->pdev->dev,
++			"%s: postchange, cpu=%d, old=%d, new=%d\n",
++			__func__, cpu->cpu, cpu->old, cpu->new);
++
++		printk(KERN_DEBUG "%s: postchange\n", __func__);
++
++		/* update current OPP */
++		sr->sen[SR_MPU].curr_opp = get_current_opp(sr, SR_MPU,
++			cpu->new*1000);
++		if (sr->sen[SR_MPU].curr_opp == -EINVAL) {
++			dev_err(&sr->pdev->dev, "%s: cannot determine opp\n",
++				__func__);
++			return -EINVAL;
++		}
++
++		dev_dbg(&sr->pdev->dev, "%s: postchange, new opp=%d\n",
++			__func__, sr->sen[SR_MPU].curr_opp);
++
++		/* reset the voltage calculation algorithm for MPU */
++		get_errvolt(sr, SR_MPU, 0, 1);
++
++		/* this handles the case when the user has disabled SR via
++		   debugfs, therefore we do not want to enable SR */
++		if (sr->disabled_by_user == false) {
++			printk(KERN_DEBUG "%s: postchange, new opp=%d\n",
++			__func__, sr->sen[SR_MPU].curr_opp);
++			sr_start_vddautocomp(sr);
++		}
+ 	}
+ 
+ 	return 0;
+@@ -740,7 +820,7 @@ static int am33xx_sr_cpufreq_transition(struct notifier_block *nb,
+ 
+ static inline int am33xx_sr_cpufreq_register(struct am33xx_sr *sr)
+ {
+-        sr->freq_transition.notifier_call = am33xx_sr_cpufreq_transition;
++	sr->freq_transition.notifier_call = am33xx_sr_cpufreq_transition;
+ 
+ 	return cpufreq_register_notifier(&sr->freq_transition,
+ 					 CPUFREQ_TRANSITION_NOTIFIER);
+@@ -754,6 +834,67 @@ static inline void am33xx_sr_cpufreq_deregister(struct am33xx_sr *sr)
+ 
+ #endif
+ 
++static void print_die_id(void)
++{
++	writel(0xF47765F2, AM33XX_CTRL_REGADDR(0x1828));
++	writel(0x703E6C3D, AM33XX_CTRL_REGADDR(0x1844));
++	writel(0x3724C7D6, AM33XX_CTRL_REGADDR(0x182C));
++	writel(0x7A733E49, AM33XX_CTRL_REGADDR(0x184C));
++
++	printk(KERN_DEBUG "DIEID: %08x %08x %08x %08x\n",
++		readl(AM33XX_CTRL_REGADDR(0x183C)),
++		readl(AM33XX_CTRL_REGADDR(0x1848)),
++		readl(AM33XX_CTRL_REGADDR(0x1824)),
++		readl(AM33XX_CTRL_REGADDR(0x1850)));
++
++	printk(KERN_DEBUG "EFUSE SMA register val = %08x\n",
++		readl(AM33XX_CTRL_REGADDR(0x7fc)));
++}
++
++static int am33xx_sr_suspend(struct device *dev)
++{
++	if (global_sr_info == NULL)
++		return -EINVAL;
++
++	/* if we are already disabled or suspended, do nothing */
++	if (global_sr_info->disabled_by_user)
++		return 0;
++
++	if (global_sr_info->is_suspended)
++		return 0;
++
++#ifdef CONFIG_CPU_FREQ
++	am33xx_sr_cpufreq_deregister(global_sr_info);
++#endif
++	sr_stop_vddautocomp(global_sr_info);
++	global_sr_info->is_suspended = true;
++
++	return 0;
++}
++
++static int am33xx_sr_resume(struct device *dev)
++{
++	if (global_sr_info == NULL)
++		return -EINVAL;
++
++	/* ensure we don't enable SR if it was disabled before suspend */
++	if (global_sr_info->disabled_by_user)
++		return 0;
++
++	if (!global_sr_info->is_suspended)
++		return 0;
++
++	global_sr_info->is_suspended = false;
++	sr_start_vddautocomp(global_sr_info);
++
++#ifdef CONFIG_CPU_FREQ
++	if (am33xx_sr_cpufreq_register(global_sr_info)) {
++		printk(KERN_ERR "failed to register cpufreq\n");
++	}
++#endif
++	return 0;
++}
++
+ static int __init am33xx_sr_probe(struct platform_device *pdev)
+ {
+ 	struct am33xx_sr *sr_info;
+@@ -761,13 +902,9 @@ static int __init am33xx_sr_probe(struct platform_device *pdev)
+ 	struct resource *res[MAX_SENSORS];
+ 	int irq;
+ 	int ret;
+-	int i,j;
++	int i, j;
+ 
+-	if (omap_rev() != AM335X_REV_ES1_0) {
+-		dev_err(&pdev->dev, "%s: Smartreflex requires ES 1.0\n",
+-		       	__func__);
+-		return -EINVAL;
+-	}
++	print_die_id();
+ 
+ 	sr_info = kzalloc(sizeof(struct am33xx_sr), GFP_KERNEL);
+ 	if (!sr_info) {
+@@ -776,6 +913,8 @@ static int __init am33xx_sr_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 	}
+ 
++	global_sr_info = sr_info;
++
+ 	pdata = pdev->dev.platform_data;
+ 	if (!pdata) {
+ 		dev_err(&pdev->dev, "%s: platform data missing\n", __func__);
+@@ -787,77 +926,77 @@ static int __init am33xx_sr_probe(struct platform_device *pdev)
+ 	sr_info->sen[SR_CORE].name = "smartreflex0";
+ 	sr_info->sen[SR_MPU].name = "smartreflex1";
+ 	sr_info->ip_type = pdata->ip_type;
+-        sr_info->irq_delay = pdata->irq_delay;
+-        sr_info->no_of_sens = pdata->no_of_sens;
+-        sr_info->no_of_vds = pdata->no_of_vds;
++	sr_info->irq_delay = pdata->irq_delay;
++	sr_info->no_of_sens = pdata->no_of_sens;
++	sr_info->no_of_vds = pdata->no_of_vds;
+ 	sr_info->uvoltage_step_size = pdata->vstep_size_uv;
+ 	sr_info->autocomp_active = false;
+-        sr_info->disabled_by_user = false;
++	sr_info->disabled_by_user = false;
+ 
+ 	for (i = 0; i < sr_info->no_of_sens; i++) {
+-                u32 curr_freq=0;
+-
+-                sr_info->sen[i].reg_name = pdata->vd_name[i];
+-
+-                /* this should be determined from voltdm or opp layer, but
+-                   those approaches are not working */
+-                sr_info->sen[i].no_of_opps = pdata->sr_sdata[i].no_of_opps;
+-                sr_info->sen[i].sr_id = i;
+-
+-                /* Reading per OPP Values */
+-                for (j = 0; j < sr_info->sen[i].no_of_opps; j++) {
+-        		sr_info->sen[i].opp_data[j].efuse_offs =
+-                                pdata->sr_sdata[i].sr_opp_data[j].efuse_offs;
+-                        sr_info->sen[i].opp_data[j].e2v_gain =
+-                                pdata->sr_sdata[i].sr_opp_data[j].e2v_gain;
+-        		sr_info->sen[i].opp_data[j].err_weight =
+-                                pdata->sr_sdata[i].sr_opp_data[j].err_weight;
+-        		sr_info->sen[i].opp_data[j].err_minlimit =
+-                                pdata->sr_sdata[i].sr_opp_data[j].err_minlimit;
+-        		sr_info->sen[i].opp_data[j].err_maxlimit =
+-                                pdata->sr_sdata[i].sr_opp_data[j].err_maxlimit;
+-                        sr_info->sen[i].opp_data[j].margin =
+-                                pdata->sr_sdata[i].sr_opp_data[j].margin;
+-                        sr_info->sen[i].opp_data[j].nominal_volt =
+-                                pdata->sr_sdata[i].sr_opp_data[j].nominal_volt;
+-                        sr_info->sen[i].opp_data[j].frequency =
+-                                pdata->sr_sdata[i].sr_opp_data[j].frequency;
+-                        sr_info->sen[i].opp_data[j].opp_id = j;
+-                }
+-
+-                if (i == SR_MPU) {
+-                        /* hardcoded CPU NR */
+-                        curr_freq = cpufreq_get(0);
+-
+-                        /* update current OPP */
+-                        sr_info->sen[i].curr_opp = get_current_opp(sr_info, i,
+-                                        curr_freq*1000);
+-                        if (sr_info->sen[i].curr_opp == -EINVAL) {
+-                                dev_err(&sr_info->pdev->dev,
+-                                        "%s: cannot determine opp\n",__func__);
+-                                ret = -EINVAL;
+-                                goto err_free_sr_info;
+-                        }
+-                } else {
+-                        sr_info->sen[i].curr_opp =
+-                                pdata->sr_sdata[i].default_opp;
+-                }
+-
+-                dev_dbg(&pdev->dev,
+-                        "%s: SR%d, curr_opp=%d, no_of_opps=%d, step_size=%d\n",
+-                        __func__, i, sr_info->sen[i].curr_opp,
+-                        sr_info->sen[i].no_of_opps,
+-                        sr_info->uvoltage_step_size);
+-
+-                ret = sr_set_nvalues(sr_info, i);
+-                if (ret == -EINVAL) {
+-                        dev_err(&sr_info->pdev->dev,
+-                                "%s: Zero NValue read from EFUSE\n", __func__);
+-                        goto err_free_sr_info;
+-                }
+-
+-                INIT_DELAYED_WORK(&sr_info->sen[i].work_reenable,
+-                        irq_sr_reenable);
++		u32 curr_freq = 0;
++
++		sr_info->sen[i].reg_name = pdata->vd_name[i];
++
++		/* this should be determined from voltdm or opp layer, but
++		   those approaches are not working */
++		sr_info->sen[i].no_of_opps = pdata->sr_sdata[i].no_of_opps;
++		sr_info->sen[i].sr_id = i;
++
++		/* Reading per OPP Values */
++		for (j = 0; j < sr_info->sen[i].no_of_opps; j++) {
++			sr_info->sen[i].opp_data[j].efuse_offs =
++				pdata->sr_sdata[i].sr_opp_data[j].efuse_offs;
++			sr_info->sen[i].opp_data[j].e2v_gain =
++				pdata->sr_sdata[i].sr_opp_data[j].e2v_gain;
++			sr_info->sen[i].opp_data[j].err_weight =
++				pdata->sr_sdata[i].sr_opp_data[j].err_weight;
++			sr_info->sen[i].opp_data[j].err_minlimit =
++				pdata->sr_sdata[i].sr_opp_data[j].err_minlimit;
++			sr_info->sen[i].opp_data[j].err_maxlimit =
++				pdata->sr_sdata[i].sr_opp_data[j].err_maxlimit;
++			sr_info->sen[i].opp_data[j].margin =
++				pdata->sr_sdata[i].sr_opp_data[j].margin;
++			sr_info->sen[i].opp_data[j].nominal_volt =
++				pdata->sr_sdata[i].sr_opp_data[j].nominal_volt;
++			sr_info->sen[i].opp_data[j].frequency =
++				pdata->sr_sdata[i].sr_opp_data[j].frequency;
++			sr_info->sen[i].opp_data[j].opp_id = j;
++		}
++
++		if (i == SR_MPU) {
++			/* hardcoded CPU NR */
++			curr_freq = cpufreq_get(0);
++
++			/* update current OPP */
++			sr_info->sen[i].curr_opp = get_current_opp(sr_info, i,
++					curr_freq*1000);
++			if (sr_info->sen[i].curr_opp == -EINVAL) {
++				dev_err(&sr_info->pdev->dev,
++					"%s: cannot determine opp\n", __func__);
++				ret = -EINVAL;
++				goto err_free_sr_info;
++			}
++		} else {
++			sr_info->sen[i].curr_opp =
++				pdata->sr_sdata[i].default_opp;
++		}
++
++		dev_dbg(&pdev->dev,
++			"%s: SR%d, curr_opp=%d, no_of_opps=%d, step_size=%d\n",
++			__func__, i, sr_info->sen[i].curr_opp,
++			sr_info->sen[i].no_of_opps,
++			sr_info->uvoltage_step_size);
++
++		ret = sr_set_nvalues(sr_info, i);
++		if (ret == -EINVAL) {
++			dev_err(&sr_info->pdev->dev,
++				"%s: Zero NValue read from EFUSE\n", __func__);
++			goto err_free_sr_info;
++		}
++
++		INIT_DELAYED_WORK(&sr_info->sen[i].work_reenable,
++			irq_sr_reenable);
+ 
+ 		sr_info->res_name[i] = kzalloc(CLK_NAME_LEN + 1, GFP_KERNEL);
+ 
+@@ -907,7 +1046,7 @@ static int __init am33xx_sr_probe(struct platform_device *pdev)
+ 
+ 		ret = request_irq(sr_info->sen[i].irq, sr_class2_irq,
+ 			IRQF_DISABLED, sr_info->sen[i].name,
+-                        (void *)&sr_info->sen[i]);
++			(void *)&sr_info->sen[i]);
+ 		if (ret) {
+ 			dev_err(&pdev->dev, "%s: Could not install SR ISR\n",
+ 						__func__);
+@@ -917,22 +1056,22 @@ static int __init am33xx_sr_probe(struct platform_device *pdev)
+ 		sr_info->sen[i].senn_en = pdata->sr_sdata[i].senn_mod;
+ 		sr_info->sen[i].senp_en = pdata->sr_sdata[i].senp_mod;
+ 
+-                sr_info->sen[i].reg =
+-                        regulator_get(NULL, sr_info->sen[i].reg_name);
+-               	if (IS_ERR(sr_info->sen[i].reg)) {
+-                        ret = -EINVAL;
+-	                goto err_free_irq;
+-                }
++		sr_info->sen[i].reg =
++			regulator_get(NULL, sr_info->sen[i].reg_name);
++		if (IS_ERR(sr_info->sen[i].reg)) {
++			ret = -EINVAL;
++			goto err_free_irq;
++		}
+ 
+-               	/* Read current regulator value and voltage */
+-	        sr_info->sen[i].init_volt_mv =
+-                        regulator_get_voltage(sr_info->sen[i].reg);
++		/* Read current regulator value and voltage */
++		sr_info->sen[i].init_volt_mv =
++			regulator_get_voltage(sr_info->sen[i].reg);
+ 
+-                dev_dbg(&pdev->dev, "%s: regulator %d, init_volt = %d\n",
+-                        __func__, i, sr_info->sen[i].init_volt_mv);
++		dev_dbg(&pdev->dev, "%s: regulator %d, init_volt = %d\n",
++			__func__, i, sr_info->sen[i].init_volt_mv);
+ 	} /* for() */
+ 
+-        /* set_voltage() will be used as the bottom half IRQ handler */
++	/* set_voltage() will be used as the bottom half IRQ handler */
+ 	INIT_DELAYED_WORK(&sr_info->work, set_voltage);
+ 
+ #ifdef CONFIG_CPU_FREQ
+@@ -943,22 +1082,24 @@ static int __init am33xx_sr_probe(struct platform_device *pdev)
+ 	}
+ #endif
+ 
++#ifdef CONFIG_DEBUG_FS
+ 	/* debugfs entries */
+ 	ret = sr_debugfs_entries(sr_info);
+ 	if (ret)
+ 		dev_warn(&pdev->dev, "%s: Debugfs entries are not created\n",
+ 						__func__);
++#endif
+ 
+ 	platform_set_drvdata(pdev, sr_info);
+ 
+ 	dev_info(&pdev->dev, "%s: Driver initialized\n", __func__);
+ 
+-        /* disabled_by_user used to ensure SR doesn't come on via CPUFREQ
+-           scaling if user has disabled SR via debugfs on enable_on_init */
++	/* disabled_by_user used to ensure SR doesn't come on via CPUFREQ
++	scaling if user has disabled SR via debugfs on enable_on_init */
+ 	if (pdata->enable_on_init)
+ 		sr_start_vddautocomp(sr_info);
+-        else
+-                sr_info->disabled_by_user = 1;
++	else
++		sr_info->disabled_by_user = true;
+ 
+ 	return ret;
+ 
+@@ -967,8 +1108,8 @@ static int __init am33xx_sr_probe(struct platform_device *pdev)
+ #endif
+ 
+ err_reg_put:
+-        i--; /* back up i by one to walk back through the for loop */
+-        regulator_put(sr_info->sen[i].reg);
++	i--; /* back up i by one to walk back through the for loop */
++	regulator_put(sr_info->sen[i].reg);
+ err_free_irq:
+ 	free_irq(sr_info->sen[i].irq, (void *)sr_info);
+ err_put_clock:
+@@ -978,11 +1119,10 @@ err_unmap:
+ err_release_mem:
+ 	release_mem_region(res[i]->start, resource_size(res[i]));
+ err_free_mem:
+-        kfree(sr_info->res_name[i]);
+-        /* unwind back through the for loop */
+-        if (i != 0) {
+-                goto err_reg_put;
+-        }
++	kfree(sr_info->res_name[i]);
++	/* unwind back through the for loop */
++	if (i != 0)
++		goto err_reg_put;
+ 
+ err_free_sr_info:
+ 	kfree(sr_info);
+@@ -1010,27 +1150,31 @@ static int __devexit am33xx_sr_remove(struct platform_device *pdev)
+ #endif
+ 
+ 	for (i = 0; i < sr_info->no_of_sens; i++) {
+-                regulator_put(sr_info->sen[i].reg);
+-                irq = platform_get_irq_byname(pdev, sr_info->sen[i].name);
++		regulator_put(sr_info->sen[i].reg);
++		irq = platform_get_irq_byname(pdev, sr_info->sen[i].name);
+ 		free_irq(irq, (void *)sr_info);
+ 		clk_put(sr_info->sen[i].fck);
+ 		iounmap(sr_info->sen[i].base);
+ 		res[i] = platform_get_resource_byname(pdev,
+ 				IORESOURCE_MEM, sr_info->sen[i].name);
+ 		release_mem_region(res[i]->start, resource_size(res[i]));
+-                kfree(sr_info->res_name[i]);
++		kfree(sr_info->res_name[i]);
+ 	}
+ 
+ 	kfree(sr_info);
+ 
+-        dev_info(&pdev->dev, "%s: SR has been removed\n", __func__);
++	dev_info(&pdev->dev, "%s: SR has been removed\n", __func__);
+ 	return 0;
+ }
+ 
++static SIMPLE_DEV_PM_OPS(am33xx_sr_dev_pm_ops, am33xx_sr_suspend,
++	am33xx_sr_resume);
++
+ static struct platform_driver smartreflex_driver = {
+ 	.driver		= {
+ 		.name	= "smartreflex",
+ 		.owner	= THIS_MODULE,
++		.pm	= &am33xx_sr_dev_pm_ops,
+ 	},
+ 	.remove		= am33xx_sr_remove,
+ };
+diff --git a/arch/arm/mach-omap2/devices.c b/arch/arm/mach-omap2/devices.c
+index b524b47..8081818 100644
+--- a/arch/arm/mach-omap2/devices.c
++++ b/arch/arm/mach-omap2/devices.c
+@@ -1231,244 +1231,313 @@ static struct platform_device am335x_sgx = {
+ /* The values below are based upon silicon characterization data.
+  * Each OPP and sensor combination potentially has different values.
+  * The values of ERR2VOLT_GAIN and ERR_MIN_LIMIT also change based on
+- * the PMIC step size.  Values have been given to cover the AM335 EVM
++ * the PMIC step size.	Values have been given to cover the AM335 EVM
+  * (12.5mV step) and the Beaglebone (25mV step).  If the step
+  * size changes, you should update these values, and don't forget to
+  * change the step size in the platform data structure, am33xx_sr_pdata.
+  */
+ 
+-#define AM33XX_SR0_OPP50_CNTRL_OFFSET          0x07B8
+-#define AM33XX_SR0_OPP50_EVM_ERR2VOLT_GAIN     0xC
+-#define AM33XX_SR0_OPP50_EVM_ERR_MIN_LIMIT     0xF5
+-#define AM33XX_SR0_OPP50_BB_ERR2VOLT_GAIN      0x6
+-#define AM33XX_SR0_OPP50_BB_ERR_MIN_LIMIT      0xEA
+-#define AM33XX_SR0_OPP50_ERR_MAX_LIMIT         0x2
+-#define AM33XX_SR0_OPP50_ERR_WEIGHT             0x4
+-#define AM33XX_SR0_OPP50_MARGIN                 0
+-
+-#define AM33XX_SR0_OPP100_CNTRL_OFFSET         0x07BC
+-#define AM33XX_SR0_OPP100_EVM_ERR2VOLT_GAIN     0x12
+-#define AM33XX_SR0_OPP100_EVM_ERR_MIN_LIMIT    0xF8
+-#define AM33XX_SR0_OPP100_BB_ERR2VOLT_GAIN      0x9
+-#define AM33XX_SR0_OPP100_BB_ERR_MIN_LIMIT     0xF1
+-#define AM33XX_SR0_OPP100_ERR_MAX_LIMIT                0x2
+-#define AM33XX_SR0_OPP100_ERR_WEIGHT            0x4
+-#define AM33XX_SR0_OPP100_MARGIN                0
+-
+-#define AM33XX_SR1_OPP50_CNTRL_OFFSET          0x0770
+-#define AM33XX_SR1_OPP50_EVM_ERR2VOLT_GAIN     0x5
+-#define AM33XX_SR1_OPP50_EVM_ERR_MIN_LIMIT     0xE6
+-#define AM33XX_SR1_OPP50_BB_ERR2VOLT_GAIN      0x2
+-#define AM33XX_SR1_OPP50_BB_ERR_MIN_LIMIT      0xC0
+-#define AM33XX_SR1_OPP50_ERR_MAX_LIMIT         0x2
+-#define AM33XX_SR1_OPP50_ERR_WEIGHT             0x4
+-#define AM33XX_SR1_OPP50_MARGIN                 0
+-
+-#define AM33XX_SR1_OPP100_CNTRL_OFFSET         0x0774
+-#define AM33XX_SR1_OPP100_EVM_ERR2VOLT_GAIN    0x8
+-#define AM33XX_SR1_OPP100_EVM_ERR_MIN_LIMIT    0xF0
+-#define AM33XX_SR1_OPP100_BB_ERR2VOLT_GAIN     0x4
+-#define AM33XX_SR1_OPP100_BB_ERR_MIN_LIMIT     0xDF
+-#define AM33XX_SR1_OPP100_ERR_MAX_LIMIT                0x2
+-#define AM33XX_SR1_OPP100_ERR_WEIGHT            0x4
+-#define AM33XX_SR1_OPP100_MARGIN                0
+-
+-#define AM33XX_SR1_OPP120_CNTRL_OFFSET         0x0778
+-#define AM33XX_SR1_OPP120_EVM_ERR2VOLT_GAIN    0xB
+-#define AM33XX_SR1_OPP120_EVM_ERR_MIN_LIMIT    0xF4
+-#define AM33XX_SR1_OPP120_BB_ERR2VOLT_GAIN     0x5
+-#define AM33XX_SR1_OPP120_BB_ERR_MIN_LIMIT     0xE6
+-#define AM33XX_SR1_OPP120_ERR_MAX_LIMIT                0x2
+-#define AM33XX_SR1_OPP120_ERR_WEIGHT            0x4
+-#define AM33XX_SR1_OPP120_MARGIN                0
+-
+-#define AM33XX_SR1_OPPTURBO_CNTRL_OFFSET        0x077C
+-#define AM33XX_SR1_OPPTURBO_EVM_ERR2VOLT_GAIN  0xC
+-#define AM33XX_SR1_OPPTURBO_EVM_ERR_MIN_LIMIT  0xF5
+-#define AM33XX_SR1_OPPTURBO_BB_ERR2VOLT_GAIN   0x6
+-#define AM33XX_SR1_OPPTURBO_BB_ERR_MIN_LIMIT   0xEA
+-#define AM33XX_SR1_OPPTURBO_ERR_MAX_LIMIT      0x2
+-#define AM33XX_SR1_OPPTURBO_ERR_WEIGHT          0x4
+-#define AM33XX_SR1_OPPTURBO_MARGIN              0
++#define AM33XX_SR0_OPP50_CNTRL_OFFSET		0x07B8
++#define AM33XX_SR0_OPP50_EVM_ERR_MIN_LIMIT	0xF0
++#define AM33XX_SR0_OPP50_BB_ERR_MIN_LIMIT	0xEA
++#define AM33XX_SR0_OPP50_ERR_MAX_LIMIT		0x2
++#define AM33XX_SR0_OPP50_ERR_WEIGHT		0x4
++#define AM33XX_SR0_OPP50_MARGIN			0
++
++#define AM33XX_SR0_OPP100_CNTRL_OFFSET		0x07BC
++#define AM33XX_SR0_OPP100_EVM_ERR_MIN_LIMIT	0xF0
++#define AM33XX_SR0_OPP100_BB_ERR_MIN_LIMIT	0xF1
++#define AM33XX_SR0_OPP100_ERR_MAX_LIMIT		0x2
++#define AM33XX_SR0_OPP100_ERR_WEIGHT		0x4
++#define AM33XX_SR0_OPP100_MARGIN		0
++
++#define AM33XX_SR1_OPP50_CNTRL_OFFSET		0x0770
++#define AM33XX_SR1_OPP50_EVM_ERR_MIN_LIMIT	0xFA
++#define AM33XX_SR1_OPP50_BB_ERR_MIN_LIMIT	0xC0
++#define AM33XX_SR1_OPP50_ERR_MAX_LIMIT		0x2
++#define AM33XX_SR1_OPP50_ERR_WEIGHT		0x4
++#define AM33XX_SR1_OPP50_MARGIN			0
++
++#define AM33XX_SR1_OPP100_CNTRL_OFFSET		0x0774
++#define AM33XX_SR1_OPP100_EVM_ERR_MIN_LIMIT	0xFB
++#define AM33XX_SR1_OPP100_BB_ERR_MIN_LIMIT	0xDF
++#define AM33XX_SR1_OPP100_ERR_MAX_LIMIT		0x2
++#define AM33XX_SR1_OPP100_ERR_WEIGHT		0x4
++#define AM33XX_SR1_OPP100_MARGIN		0
++
++#define AM33XX_SR1_OPP120_CNTRL_OFFSET		0x0778
++#define AM33XX_SR1_OPP120_EVM_ERR_MIN_LIMIT	0xFC
++#define AM33XX_SR1_OPP120_BB_ERR_MIN_LIMIT	0xE6
++#define AM33XX_SR1_OPP120_ERR_MAX_LIMIT		0x2
++#define AM33XX_SR1_OPP120_ERR_WEIGHT		0x7
++#define AM33XX_SR1_OPP120_MARGIN		0
++
++#define AM33XX_SR1_OPPTURBO_CNTRL_OFFSET	0x077C
++#define AM33XX_SR1_OPPTURBO_EVM_ERR_MIN_LIMIT	0xFD
++#define AM33XX_SR1_OPPTURBO_BB_ERR_MIN_LIMIT	0xEA
++#define AM33XX_SR1_OPPTURBO_ERR_MAX_LIMIT	0x2
++#define AM33XX_SR1_OPPTURBO_ERR_WEIGHT		0x7
++#define AM33XX_SR1_OPPTURBO_MARGIN		0
++
++/* bits 31:16 = SenP margin; bit 15:0 = SenN margin */
++
++#define AM33XX_SR1_OPPNITRO_MARGIN		0x018B019A
+ 
+ /* the voltages and frequencies should probably be defined in opp3xxx_data.c.
+    Once SR is integrated to the mainline driver, and voltdm is working
+    correctly in AM335x, these can be removed.  */
+-#define AM33XX_VDD_MPU_OPP50_UV                950000
+-#define AM33XX_VDD_MPU_OPP100_UV       1100000
+-#define AM33XX_VDD_MPU_OPP120_UV       1200000
+-#define AM33XX_VDD_MPU_OPPTURBO_UV     1260000
+-#define AM33XX_VDD_CORE_OPP50_UV        950000
+-#define AM33XX_VDD_CORE_OPP100_UV       1100000
+-
+-#define AM33XX_VDD_MPU_OPP50_FREQ      275000000
+-#define AM33XX_VDD_MPU_OPP100_FREQ     500000000
+-#define AM33XX_VDD_MPU_OPP120_FREQ     600000000
+-#define AM33XX_VDD_MPU_OPPTURBO_FREQ   720000000
++#define AM33XX_VDD_MPU_OPP50_UV			950000
++#define AM33XX_VDD_MPU_OPP100_UV		1100000
++#define AM33XX_VDD_MPU_OPP120_UV		1200000
++#define AM33XX_VDD_MPU_OPPTURBO_UV		1260000
++#define AM33XX_VDD_CORE_OPP50_UV		950000
++#define AM33XX_VDD_CORE_OPP100_UV		1100000
++
++#define AM33XX_VDD_MPU_OPP50_FREQ		275000000
++#define AM33XX_VDD_MPU_OPP100_FREQ		500000000
++#define AM33XX_VDD_MPU_OPP120_FREQ		600000000
++#define AM33XX_VDD_MPU_OPPTURBO_FREQ		720000000
++
++#define AM33XX_ES2_0_VDD_MPU_OPP50_UV		950000
++#define AM33XX_ES2_0_VDD_MPU_OPP100_UV		1100000
++#define AM33XX_ES2_0_VDD_MPU_OPP120_UV		1200000
++#define AM33XX_ES2_0_VDD_MPU_OPPTURBO_UV	1260000
++#define AM33XX_ES2_0_VDD_MPU_OPPNITRO_UV	1320000
++
++#define AM33XX_ES2_0_VDD_MPU_OPP50_FREQ		300000000
++#define AM33XX_ES2_0_VDD_MPU_OPP100_FREQ	600000000
++#define AM33XX_ES2_0_VDD_MPU_OPP120_FREQ	720000000
++#define AM33XX_ES2_0_VDD_MPU_OPPTURBO_FREQ	800000000
++#define AM33XX_ES2_0_VDD_MPU_OPPNITRO_FREQ	1000000000
++
++static struct am33xx_sr_opp_data sr1_opp_data_2_0[] = {
++	{
++		.efuse_offs	= AM33XX_SR1_OPP50_CNTRL_OFFSET,
++		.e2v_gain	= 0,
++		.err_minlimit	= AM33XX_SR1_OPP50_EVM_ERR_MIN_LIMIT,
++		.err_maxlimit	= AM33XX_SR1_OPP50_ERR_MAX_LIMIT,
++		.err_weight	= AM33XX_SR1_OPP50_ERR_WEIGHT,
++		.margin		= AM33XX_SR1_OPP50_MARGIN,
++		.nominal_volt	= AM33XX_ES2_0_VDD_MPU_OPP50_UV,
++		.frequency	= AM33XX_ES2_0_VDD_MPU_OPP50_FREQ,
++	},
++	{
++		.efuse_offs	= AM33XX_SR1_OPP100_CNTRL_OFFSET,
++		.e2v_gain	= 0,
++		.err_minlimit	= AM33XX_SR1_OPP100_EVM_ERR_MIN_LIMIT,
++		.err_maxlimit	= AM33XX_SR1_OPP100_ERR_MAX_LIMIT,
++		.err_weight	= AM33XX_SR1_OPP100_ERR_WEIGHT,
++		.margin		= AM33XX_SR1_OPP100_MARGIN,
++		.nominal_volt	= AM33XX_ES2_0_VDD_MPU_OPP100_UV,
++		.frequency	= AM33XX_ES2_0_VDD_MPU_OPP100_FREQ,
++	},
++	{
++		.efuse_offs	= AM33XX_SR1_OPP120_CNTRL_OFFSET,
++		.e2v_gain	= 0,
++		.err_minlimit	= AM33XX_SR1_OPP120_EVM_ERR_MIN_LIMIT,
++		.err_maxlimit	= AM33XX_SR1_OPP120_ERR_MAX_LIMIT,
++		.err_weight	= AM33XX_SR1_OPP120_ERR_WEIGHT,
++		.margin		= AM33XX_SR1_OPP120_MARGIN,
++		.nominal_volt	= AM33XX_ES2_0_VDD_MPU_OPP120_UV,
++		.frequency	= AM33XX_ES2_0_VDD_MPU_OPP120_FREQ,
++	},
++	{
++		.efuse_offs     = AM33XX_SR1_OPPTURBO_CNTRL_OFFSET,
++		.e2v_gain       = 0,
++		.err_minlimit   = AM33XX_SR1_OPPTURBO_EVM_ERR_MIN_LIMIT,
++		.err_maxlimit   = AM33XX_SR1_OPPTURBO_ERR_MAX_LIMIT,
++		.err_weight     = AM33XX_SR1_OPPTURBO_ERR_WEIGHT,
++		.margin		= AM33XX_SR1_OPPTURBO_MARGIN,
++		.nominal_volt	= AM33XX_ES2_0_VDD_MPU_OPPTURBO_UV,
++		.frequency	= AM33XX_ES2_0_VDD_MPU_OPPTURBO_FREQ,
++	},
++	{
++		/* NITRO can use the TURBO data, except for margin */
++		.efuse_offs     = AM33XX_SR1_OPPTURBO_CNTRL_OFFSET,
++		.e2v_gain       = 0,
++		.err_minlimit   = AM33XX_SR1_OPPTURBO_EVM_ERR_MIN_LIMIT,
++		.err_maxlimit   = AM33XX_SR1_OPPTURBO_ERR_MAX_LIMIT,
++		.err_weight     = AM33XX_SR1_OPPTURBO_ERR_WEIGHT,
++		.margin		= AM33XX_SR1_OPPNITRO_MARGIN,
++		.nominal_volt	= AM33XX_ES2_0_VDD_MPU_OPPNITRO_UV,
++		.frequency	= AM33XX_ES2_0_VDD_MPU_OPPNITRO_FREQ,
++	},
++};
+ 
+ static struct am33xx_sr_opp_data sr1_opp_data[] = {
+-        {
+-                .efuse_offs    = AM33XX_SR1_OPP50_CNTRL_OFFSET,
+-               .e2v_gain       = AM33XX_SR1_OPP50_EVM_ERR2VOLT_GAIN,
+-               .err_minlimit   = AM33XX_SR1_OPP50_EVM_ERR_MIN_LIMIT,
+-               .err_maxlimit   = AM33XX_SR1_OPP50_ERR_MAX_LIMIT,
+-               .err_weight     = AM33XX_SR1_OPP50_ERR_WEIGHT,
+-                .margin         = AM33XX_SR1_OPP50_MARGIN,
+-                .nominal_volt   = AM33XX_VDD_MPU_OPP50_UV,
+-                .frequency      = AM33XX_VDD_MPU_OPP50_FREQ,
+-        },
+-        {
+-                .efuse_offs    = AM33XX_SR1_OPP100_CNTRL_OFFSET,
+-               .e2v_gain       = AM33XX_SR1_OPP100_EVM_ERR2VOLT_GAIN,
+-               .err_minlimit   = AM33XX_SR1_OPP100_EVM_ERR_MIN_LIMIT,
+-               .err_maxlimit   = AM33XX_SR1_OPP100_ERR_MAX_LIMIT,
+-               .err_weight     = AM33XX_SR1_OPP100_ERR_WEIGHT,
+-                .margin         = AM33XX_SR1_OPP100_MARGIN,
+-                .nominal_volt   = AM33XX_VDD_MPU_OPP100_UV,
+-                .frequency      = AM33XX_VDD_MPU_OPP100_FREQ,
+-        },
+-        {
+-                .efuse_offs    = AM33XX_SR1_OPP120_CNTRL_OFFSET,
+-               .e2v_gain       = AM33XX_SR1_OPP120_EVM_ERR2VOLT_GAIN,
+-               .err_minlimit   = AM33XX_SR1_OPP120_EVM_ERR_MIN_LIMIT,
+-               .err_maxlimit   = AM33XX_SR1_OPP120_ERR_MAX_LIMIT,
+-               .err_weight     = AM33XX_SR1_OPP120_ERR_WEIGHT,
+-                .margin         = AM33XX_SR1_OPP120_MARGIN,
+-                .nominal_volt   = AM33XX_VDD_MPU_OPP120_UV,
+-                .frequency      = AM33XX_VDD_MPU_OPP120_FREQ,
+-        },
+-        {
+-                .efuse_offs    = AM33XX_SR1_OPPTURBO_CNTRL_OFFSET,
+-               .e2v_gain       = AM33XX_SR1_OPPTURBO_EVM_ERR2VOLT_GAIN,
+-               .err_minlimit   = AM33XX_SR1_OPPTURBO_EVM_ERR_MIN_LIMIT,
+-               .err_maxlimit   = AM33XX_SR1_OPPTURBO_ERR_MAX_LIMIT,
+-               .err_weight     = AM33XX_SR1_OPPTURBO_ERR_WEIGHT,
+-                .margin         = AM33XX_SR1_OPPTURBO_MARGIN,
+-                .nominal_volt   = AM33XX_VDD_MPU_OPPTURBO_UV,
+-                .frequency      = AM33XX_VDD_MPU_OPPTURBO_FREQ,
+-        },
++	{
++		.efuse_offs     = AM33XX_SR1_OPP50_CNTRL_OFFSET,
++		.e2v_gain       = 0,
++		.err_minlimit   = AM33XX_SR1_OPP50_EVM_ERR_MIN_LIMIT,
++		.err_maxlimit   = AM33XX_SR1_OPP50_ERR_MAX_LIMIT,
++		.err_weight     = AM33XX_SR1_OPP50_ERR_WEIGHT,
++		.margin		= AM33XX_SR1_OPP50_MARGIN,
++		.nominal_volt	= AM33XX_VDD_MPU_OPP50_UV,
++		.frequency	= AM33XX_VDD_MPU_OPP50_FREQ,
++	},
++	{
++		.efuse_offs     = AM33XX_SR1_OPP100_CNTRL_OFFSET,
++		.e2v_gain       = 0,
++		.err_minlimit   = AM33XX_SR1_OPP100_EVM_ERR_MIN_LIMIT,
++		.err_maxlimit   = AM33XX_SR1_OPP100_ERR_MAX_LIMIT,
++		.err_weight     = AM33XX_SR1_OPP100_ERR_WEIGHT,
++		.margin		= AM33XX_SR1_OPP100_MARGIN,
++		.nominal_volt	= AM33XX_VDD_MPU_OPP100_UV,
++		.frequency	= AM33XX_VDD_MPU_OPP100_FREQ,
++	},
++	{
++		.efuse_offs	= AM33XX_SR1_OPP120_CNTRL_OFFSET,
++		.e2v_gain       = 0,
++		.err_minlimit   = AM33XX_SR1_OPP120_EVM_ERR_MIN_LIMIT,
++		.err_maxlimit   = AM33XX_SR1_OPP120_ERR_MAX_LIMIT,
++		.err_weight     = AM33XX_SR1_OPP120_ERR_WEIGHT,
++		.margin		= AM33XX_SR1_OPP120_MARGIN,
++		.nominal_volt	= AM33XX_VDD_MPU_OPP120_UV,
++		.frequency	= AM33XX_VDD_MPU_OPP120_FREQ,
++	},
++	{
++		.efuse_offs	= AM33XX_SR1_OPPTURBO_CNTRL_OFFSET,
++		.e2v_gain       = 0,
++		.err_minlimit   = AM33XX_SR1_OPPTURBO_EVM_ERR_MIN_LIMIT,
++		.err_maxlimit   = AM33XX_SR1_OPPTURBO_ERR_MAX_LIMIT,
++		.err_weight     = AM33XX_SR1_OPPTURBO_ERR_WEIGHT,
++		.margin		= AM33XX_SR1_OPPTURBO_MARGIN,
++		.nominal_volt	= AM33XX_VDD_MPU_OPPTURBO_UV,
++		.frequency	= AM33XX_VDD_MPU_OPPTURBO_FREQ,
++	},
+ };
+ 
+ static struct am33xx_sr_opp_data sr0_opp_data[] = {
+-        {
+-                .efuse_offs    = AM33XX_SR0_OPP50_CNTRL_OFFSET,
+-               .e2v_gain       = AM33XX_SR0_OPP50_EVM_ERR2VOLT_GAIN,
+-               .err_minlimit   = AM33XX_SR0_OPP50_EVM_ERR_MIN_LIMIT,
+-               .err_maxlimit   = AM33XX_SR0_OPP50_ERR_MAX_LIMIT,
+-               .err_weight     = AM33XX_SR0_OPP50_ERR_WEIGHT,
+-                .margin         = AM33XX_SR0_OPP50_MARGIN,
+-                .nominal_volt   = AM33XX_VDD_CORE_OPP50_UV,
+-        },
+-        {
+-                .efuse_offs    = AM33XX_SR0_OPP100_CNTRL_OFFSET,
+-               .e2v_gain       = AM33XX_SR0_OPP100_EVM_ERR2VOLT_GAIN,
+-               .err_minlimit   = AM33XX_SR0_OPP100_EVM_ERR_MIN_LIMIT,
+-               .err_maxlimit   = AM33XX_SR0_OPP100_ERR_MAX_LIMIT,
+-               .err_weight     = AM33XX_SR0_OPP100_ERR_WEIGHT,
+-                .margin         = AM33XX_SR0_OPP100_MARGIN,
+-                .nominal_volt   = AM33XX_VDD_CORE_OPP100_UV,
+-        },
++	{
++		.efuse_offs     = AM33XX_SR0_OPP50_CNTRL_OFFSET,
++		.e2v_gain       = 0,
++		.err_minlimit   = AM33XX_SR0_OPP50_EVM_ERR_MIN_LIMIT,
++		.err_maxlimit   = AM33XX_SR0_OPP50_ERR_MAX_LIMIT,
++		.err_weight     = AM33XX_SR0_OPP50_ERR_WEIGHT,
++		.margin		= AM33XX_SR0_OPP50_MARGIN,
++		.nominal_volt	= AM33XX_VDD_CORE_OPP50_UV,
++	},
++	{
++		.efuse_offs     = AM33XX_SR0_OPP100_CNTRL_OFFSET,
++		.e2v_gain       = 0,
++		.err_minlimit   = AM33XX_SR0_OPP100_EVM_ERR_MIN_LIMIT,
++		.err_maxlimit   = AM33XX_SR0_OPP100_ERR_MAX_LIMIT,
++		.err_weight     = AM33XX_SR0_OPP100_ERR_WEIGHT,
++		.margin		= AM33XX_SR0_OPP100_MARGIN,
++		.nominal_volt	= AM33XX_VDD_CORE_OPP100_UV,
++	},
++};
++
++static struct am33xx_sr_sdata sr_sensor_data_2_0[] = {
++	{
++		.sr_opp_data	= sr0_opp_data,
++		/* note that OPP50 is NOT used in Linux kernel for AM335x */
++		.no_of_opps	= 0x2,
++		.default_opp	= 0x1,
++		.senn_mod       = 0x1,
++		.senp_mod       = 0x1,
++	},
++	{
++		.sr_opp_data    = sr1_opp_data_2_0,
++		/* the opp data below should be determined
++		   dynamically during SR probe */
++		.no_of_opps	= 0x5,
++		.default_opp	= 0x3,
++		.senn_mod       = 0x1,
++		.senp_mod       = 0x1,
++	},
+ };
+ 
+ static struct am33xx_sr_sdata sr_sensor_data[] = {
+-       {
+-                .sr_opp_data    = sr0_opp_data,
+-                /* note that OPP50 is NOT used in Linux kernel for AM335x */
+-                .no_of_opps     = 0x2,
+-                .default_opp    = 0x1,
+-               .senn_mod       = 0x1,
+-               .senp_mod       = 0x1,
+-       },
+-       {
+-               .sr_opp_data    = sr1_opp_data,
+-                /* the opp data below should be determined
+-                   dynamically during SR probe */
+-                .no_of_opps     = 0x4,
+-                .default_opp    = 0x3,
+-               .senn_mod       = 0x1,
+-               .senp_mod       = 0x1,
+-       },
++	{
++		.sr_opp_data	= sr0_opp_data,
++		/* note that OPP50 is NOT used in Linux kernel for AM335x */
++		.no_of_opps	= 0x2,
++		.default_opp	= 0x1,
++		.senn_mod       = 0x1,
++		.senp_mod       = 0x1,
++	},
++	{
++		.sr_opp_data    = sr1_opp_data,
++		/* the opp data below should be determined
++		   dynamically during SR probe */
++		.no_of_opps	= 0x4,
++		.default_opp	= 0x3,
++		.senn_mod       = 0x1,
++		.senp_mod       = 0x1,
++	},
+ };
+ 
+ static struct am33xx_sr_platform_data am33xx_sr_pdata = {
+-       .vd_name[0]             = "vdd_core",
+-        .vd_name[1]             = "vdd_mpu",
+-       .ip_type                = 2,
+-        .irq_delay              = 1000,
+-       .no_of_vds              = 2,
+-       .no_of_sens             = ARRAY_SIZE(sr_sensor_data),
+-       .vstep_size_uv          = 12500,
+-       .enable_on_init         = true,
+-       .sr_sdata               = sr_sensor_data,
++	.vd_name[0]		= "vdd_core",
++	.vd_name[1]		= "vdd_mpu",
++	.ip_type		= 2,
++	.irq_delay		= 1000,
++	.no_of_vds		= 2,
++	.no_of_sens		= ARRAY_SIZE(sr_sensor_data),
++	.vstep_size_uv		= 12500,
++	.enable_on_init		= true,
++	.sr_sdata		= sr_sensor_data,
+ };
+ 
+ static struct resource am33xx_sr_resources[] = {
+-       {
+-               .name   =       "smartreflex0",
+-               .start  =       AM33XX_SR0_BASE,
+-               .end    =       AM33XX_SR0_BASE + SZ_4K - 1,
+-               .flags  =       IORESOURCE_MEM,
+-       },
+-       {
+-               .name   =       "smartreflex0",
+-               .start  =       AM33XX_IRQ_SMARTREFLEX0,
+-               .end    =       AM33XX_IRQ_SMARTREFLEX0,
+-               .flags  =       IORESOURCE_IRQ,
+-       },
+-       {
+-               .name   =       "smartreflex1",
+-               .start  =       AM33XX_SR1_BASE,
+-               .end    =       AM33XX_SR1_BASE + SZ_4K - 1,
+-               .flags  =       IORESOURCE_MEM,
+-       },
+-       {
+-               .name   =       "smartreflex1",
+-               .start  =       AM33XX_IRQ_SMARTREFLEX1,
+-               .end    =       AM33XX_IRQ_SMARTREFLEX1,
+-               .flags  =       IORESOURCE_IRQ,
+-       },
++	{
++		.name   =       "smartreflex0",
++		.start  =       AM33XX_SR0_BASE,
++		.end    =       AM33XX_SR0_BASE + SZ_4K - 1,
++		.flags  =       IORESOURCE_MEM,
++	},
++	{
++		.name   =       "smartreflex0",
++		.start  =       AM33XX_IRQ_SMARTREFLEX0,
++		.end    =       AM33XX_IRQ_SMARTREFLEX0,
++		.flags  =       IORESOURCE_IRQ,
++	},
++	{
++		.name   =       "smartreflex1",
++		.start  =       AM33XX_SR1_BASE,
++		.end    =       AM33XX_SR1_BASE + SZ_4K - 1,
++		.flags  =       IORESOURCE_MEM,
++	},
++	{
++		.name   =       "smartreflex1",
++		.start  =       AM33XX_IRQ_SMARTREFLEX1,
++		.end    =       AM33XX_IRQ_SMARTREFLEX1,
++		.flags  =       IORESOURCE_IRQ,
++	},
+ };
+ 
+ /* VCORE for SR regulator init */
+ static struct platform_device am33xx_sr_device = {
+-       .name           = "smartreflex",
+-       .id             = -1,
+-       .num_resources  = ARRAY_SIZE(am33xx_sr_resources),
+-       .resource       = am33xx_sr_resources,
+-       .dev = {
+-               .platform_data = &am33xx_sr_pdata,
+-       },
++	.name	       = "smartreflex",
++	.id	       = -1,
++	.num_resources  = ARRAY_SIZE(am33xx_sr_resources),
++	.resource       = am33xx_sr_resources,
++	.dev = {
++	       .platform_data = &am33xx_sr_pdata,
++	},
+ };
+ 
+ void __init am33xx_sr_init(void)
+ {
+-        /* For beaglebone, update voltage step size and related parameters
+-           appropriately.  All other AM33XX platforms are good with the
+-           structure defaults as initialized above. */
+-        if ((am33xx_evmid == BEAGLE_BONE_OLD) ||
+-                        (am33xx_evmid == BEAGLE_BONE_A3)) {
+-                printk(KERN_ERR "address of pdata = %08x\n", (u32)&am33xx_sr_pdata);
+-                am33xx_sr_pdata.vstep_size_uv = 25000;
+-                /* CORE */
+-                sr0_opp_data[0].e2v_gain     = AM33XX_SR0_OPP50_BB_ERR2VOLT_GAIN;
+-                sr0_opp_data[0].err_minlimit = AM33XX_SR0_OPP50_BB_ERR_MIN_LIMIT;
+-                sr0_opp_data[1].e2v_gain     = AM33XX_SR0_OPP100_BB_ERR2VOLT_GAIN;
+-                sr0_opp_data[1].err_minlimit = AM33XX_SR0_OPP100_BB_ERR_MIN_LIMIT;
+-                /* MPU */
+-                sr1_opp_data[0].e2v_gain     = AM33XX_SR1_OPP50_BB_ERR2VOLT_GAIN;
+-                sr1_opp_data[0].err_minlimit = AM33XX_SR1_OPP50_BB_ERR_MIN_LIMIT;
+-                sr1_opp_data[1].e2v_gain     = AM33XX_SR1_OPP100_BB_ERR2VOLT_GAIN;
+-                sr1_opp_data[1].err_minlimit = AM33XX_SR1_OPP100_BB_ERR_MIN_LIMIT;
+-                sr1_opp_data[2].e2v_gain     = AM33XX_SR1_OPP120_BB_ERR2VOLT_GAIN;
+-                sr1_opp_data[2].err_minlimit = AM33XX_SR1_OPP120_BB_ERR_MIN_LIMIT;
+-                sr1_opp_data[3].e2v_gain     = AM33XX_SR1_OPPTURBO_BB_ERR2VOLT_GAIN;
+-                sr1_opp_data[3].err_minlimit = AM33XX_SR1_OPPTURBO_BB_ERR_MIN_LIMIT;
+-        }
+-
+-       if (platform_device_register(&am33xx_sr_device))
+-               printk(KERN_ERR "failed to register am33xx_sr device\n");
+-       else
+-               printk(KERN_INFO "registered am33xx_sr device\n");
++	if (omap_rev() != AM335X_REV_ES1_0)
++		am33xx_sr_pdata.sr_sdata = sr_sensor_data_2_0;
++
++	/* For beaglebone, update voltage step size and related parameters
++	   appropriately.  All other AM33XX platforms are good with the
++	   structure defaults as initialized above. */
++	if ((am33xx_evmid == BEAGLE_BONE_OLD) ||
++			(am33xx_evmid == BEAGLE_BONE_A3)) {
++		printk(KERN_ERR "address of pdata = %08x\n",
++			(u32)&am33xx_sr_pdata);
++
++		am33xx_sr_pdata.vstep_size_uv = 25000;
++	}
++
++	if (platform_device_register(&am33xx_sr_device))
++		printk(KERN_ERR "failed to register am33xx_sr device\n");
++	else
++		printk(KERN_INFO "registered am33xx_sr device\n");
+ }
+ #else
+ inline void am33xx_sr_init(void) {}
+diff --git a/arch/arm/plat-omap/include/plat/smartreflex.h b/arch/arm/plat-omap/include/plat/smartreflex.h
+index 76c1ff7..d837755 100644
+--- a/arch/arm/plat-omap/include/plat/smartreflex.h
++++ b/arch/arm/plat-omap/include/plat/smartreflex.h
+@@ -238,14 +238,14 @@ int sr_register_class(struct omap_sr_class_data *class_data);
+ 
+ #ifdef CONFIG_AM33XX_SMARTREFLEX
+ 
+-#define SR_CORE                         (0)
+-#define SR_MPU                          (1)
++#define SR_CORE				(0)
++#define SR_MPU				(1)
+ #define SRCLKLENGTH_125MHZ_SYSCLK	(0x78 << 12)
+-#define GAIN_MAXLIMIT                   (16)
+-#define R_MAXLIMIT                      (256)
+-#define MAX_SENSORS                     2
++#define GAIN_MAXLIMIT			(16)
++#define R_MAXLIMIT			(256)
++#define MAX_SENSORS			(2)
+ /* GG: eventually this should be determined at runtime */
+-#define AM33XX_OPP_COUNT                4
++#define AM33XX_OPP_COUNT		(5)
+ 
+ /**
+  * struct am33xx_sr_opp_data	- Smartreflex data per OPP
+@@ -264,17 +264,17 @@ int sr_register_class(struct omap_sr_class_data *class_data);
+  */
+ struct am33xx_sr_opp_data {
+ 	u32	efuse_offs;
+-        u32     nvalue;
+-        u32     adj_nvalue;
++	u32     nvalue;
++	u32     adj_nvalue;
+ 	s32	e2v_gain;
+ 	u32	err_weight;
+ 	u32	err_minlimit;
+ 	u32	err_maxlimit;
+-        s32     margin;
+-        u32     nominal_volt; /* nominal_volt and frequency may be removed
+-                                 once am33xx voltdm layer works */
+-        u32     frequency;
+-        u32     opp_id;
++	s32     margin;
++	u32     nominal_volt; /* nominal_volt and frequency may be removed
++				once am33xx voltdm layer works */
++	u32     frequency;
++	u32     opp_id;
+ };
+ 
+ /**
+@@ -290,50 +290,54 @@ struct am33xx_sr_opp_data {
+  */
+ struct am33xx_sr_sdata {
+ 	struct am33xx_sr_opp_data *sr_opp_data;
+-        u32     no_of_opps;
+-        u32     default_opp;
++	u32     no_of_opps;
++	u32     default_opp;
+ 	u32	senn_mod;
+ 	u32	senp_mod;
+ };
+ 
+ struct am33xx_sr_sensor {
+-        u32                             sr_id;
++	u32                             sr_id;
+ 	u32			        irq;
+ 	u32			        irq_status;
+ 	u32			        senn_en;
+ 	u32			        senp_en;
+ 	char			        *name;
+-        char                            *reg_name;
++	char                            *reg_name;
+ 	void __iomem		        *base;
+-        int				init_volt_mv;
+-        int                             curr_opp;
+-        u32                             no_of_opps;
+-        struct delayed_work             work_reenable;
+-        struct regulator		*reg;
+-        struct am33xx_sr_opp_data       opp_data[AM33XX_OPP_COUNT];
++	int				init_volt_mv;
++	int                             curr_opp;
++	u32                             no_of_opps;
++	int                             state;
++	s8                              avg_error_nom;
++	int                             saved_volt;
++	struct delayed_work             work_reenable;
++	struct regulator		*reg;
++	struct am33xx_sr_opp_data       opp_data[AM33XX_OPP_COUNT];
+ 	struct clk		        *fck;
+-        struct voltagedomain		*voltdm;
+-        struct omap_volt_data           *volt_data;
++	struct voltagedomain		*voltdm;
++	struct omap_volt_data           *volt_data;
+ };
+ 
+ struct am33xx_sr {
+-	u32				autocomp_active;
++	bool				autocomp_active;
++	bool                            is_suspended;
+ 	u32				sens_per_vd;
+-        u32                             no_of_sens;
+-        u32                             no_of_vds;
++	u32                             no_of_sens;
++	u32                             no_of_vds;
+ 	u32				ip_type;
+-        u32				irq_delay;
+-        u32                             disabled_by_user;
++	u32				irq_delay;
++	bool                            disabled_by_user;
+ 	int				uvoltage_step_size;
+-        char                            *res_name[MAX_SENSORS];
++	char                            *res_name[MAX_SENSORS];
+ #ifdef CONFIG_CPU_FREQ
+ 	struct notifier_block	        freq_transition;
+ #endif
+-	/*struct work_struct		work;*/
+-        struct delayed_work             work;
++	struct delayed_work             work;
+ 	struct sr_platform_data		*sr_data;
+ 	struct am33xx_sr_sensor		sen[MAX_SENSORS];
+ 	struct platform_device		*pdev;
++	struct list_head                node;
+ };
+ 
+ /**
+@@ -354,7 +358,7 @@ struct am33xx_sr_platform_data {
+ 	struct am33xx_sr_sdata	*sr_sdata;
+ 	char			*vd_name[2];
+ 	u32			ip_type;
+-        u32                     irq_delay;
++	u32                     irq_delay;
+ 	u32			no_of_vds;
+ 	u32			no_of_sens;
+ 	u32			vstep_size_uv;
+-- 
+1.7.9.5
+

@@ -15,7 +15,7 @@ DEPENDS += "am33x-cm3"
 KERNEL_IMAGETYPE = "uImage"
 
 # The main PR is now using MACHINE_KERNEL_PR, for ti33x see conf/machine/include/ti33x.inc
-MACHINE_KERNEL_PR_append = "e+gitr${SRCPV}"
+MACHINE_KERNEL_PR_append = "f+gitr${SRCPV}"
 
 BRANCH = "v3.2-staging"
 
@@ -68,6 +68,7 @@ PATCHES += "file://0001-am33x-Add-memory-addresses-for-crypto-modules.patch \
 PATCHES += "file://0001-am33xx-Add-SmartReflex-support.patch \
             file://0002-am33xx-Enable-CONFIG_AM33XX_SMARTREFLEX.patch \
             file://0002-Smartreflex-limited-to-ES-1.0.patch \
+            file://0001-Smartreflex-support-for-ES-2.x-and-suspend-resume.patch \
            "
 
 # Add a patch to the omap-serial driver to allow suspend/resume during
