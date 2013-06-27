@@ -15,12 +15,11 @@ DEPENDS += "am33x-cm3"
 KERNEL_IMAGETYPE = "uImage"
 
 # The main PR is now using MACHINE_KERNEL_PR, for ti33x see conf/machine/include/ti33x.inc
-MACHINE_KERNEL_PR_append = "c+gitr${SRCPV}"
+MACHINE_KERNEL_PR_append = "d+gitr${SRCPV}"
 
 BRANCH = "v3.2-staging"
 
-# SRCREV corresponds to the commit id of tag v3.2_AM335xPSP_04.06.00.10-rc3
-SRCREV = "18ce4a630452348b8308b922491130e8ce1e9134"
+SRCREV = "d5720d33bc7c434f9a023dbb62c795538f976b7a"
 
 SRC_URI = "git://arago-project.org/git/projects/linux-am33x.git;protocol=git;branch=${BRANCH} \
            file://defconfig \
