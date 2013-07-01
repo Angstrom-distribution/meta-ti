@@ -20,11 +20,11 @@ S = "${WORKDIR}/git"
 
 BRANCH = "master"
 
-SRCREV = "4e8193eb3b7465d7f67cd8c7e6c2ed99dad1a483"
+SRCREV = "6076e6882d1d6a64b104e42e56a3eada36605cb3"
 PV = "3.8.13"
 
 # Append to the MACHINE_KERNEL_PR so that a new SRCREV will cause a rebuild
-MACHINE_KERNEL_PR_append = "a+gitr${SRCPV}"
+MACHINE_KERNEL_PR_append = "b+gitr${SRCPV}"
 
 SRC_URI = "git://git.ti.com/ti-linux-kernel/ti-linux-3-8-y-kernel.git;protocol=git;branch=${BRANCH} \
            file://defconfig \
