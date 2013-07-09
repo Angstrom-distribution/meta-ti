@@ -6,9 +6,11 @@ COMPATIBLE_MACHINE = "omap3"
 
 DEFAULT_PREFERENCE = "-1"
 
-PR = "r0+gitr${SRCPV}"
+PR = "r1+gitr${SRCPV}"
 
-SRC_URI = "git://arago-project.org/git/projects/u-boot-am33x.git;protocol=git;branch=${BRANCH}"
+SRC_URI = "git://arago-project.org/git/projects/u-boot-am33x.git;protocol=git;branch=${BRANCH} \
+           file://0001-armv7-Unaligned-access-fix.patch \
+"
 
 BRANCH = "AM335XPSP_04.06.00.08"
 

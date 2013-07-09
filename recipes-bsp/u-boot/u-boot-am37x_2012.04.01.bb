@@ -6,6 +6,8 @@ COMPATIBLE_MACHINE = "am37x-evm|beagleboard"
 
 BRANCH ?= "master"
 
+PR = "r1+gitr${SRCPV}"
+
 # v2012.04.01
 SRCREV = "415d386877df49eb051b85ef74fa59a16dc17c7d"
 
@@ -33,6 +35,7 @@ SRC_URI += "file://0001-omap3_beagle-add-usbethaddr-setting-to-enable-networ.pat
             file://0002-omap3evm-Make-the-board-start-at-800MHz.patch \
             file://0003-beagleboard-Make-xM-rev-C-go-to-800MHz.patch \
             file://0001-ARM-omap3-Set-SPL-stack-size-to-8KB-image-to-54KB.patch \
+            file://0001-armv7-Unaligned-access-fix.patch \
             "
 
 SPL_BINARY = "MLO"
