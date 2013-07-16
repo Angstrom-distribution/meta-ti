@@ -36,6 +36,22 @@ IMAGE_INSTALL += " \
 	cpufreq-tweaks \
 	dosfstools \
 	parted \
+	linux-firmware-ar3k \
+	linux-firmware-ar9170 \
+	linux-firmware-ath6k \
+	linux-firmware-ath9k \
+	linux-firmware-bcm4329 \
+	linux-firmware-bcm4330 \
+	linux-firmware-bcm4334 \
+	linux-firmware-iwlwifi-6000g2a-5 \
+	linux-firmware-iwlwifi-6000g2b-6 \
+	linux-firmware-ralink \
+	linux-firmware-rtl8192ce \
+	linux-firmware-rtl8192cu \
+	linux-firmware-rtl8192su \
+	linux-firmware-sd8686 \
+	linux-firmware-vt6656 \
+	linux-firmware-wl12xx \
 "
 
 export IMAGE_BASENAME = "Cloud9-IDE"
