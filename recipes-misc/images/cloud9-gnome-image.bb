@@ -7,10 +7,10 @@ require cloud9-image.bb
 # SoC specific packages, mostly 3D or multimedia related
 SOCSUPPORT = ""
 SOCSUPPORT_omap3 = "xbmc libgles-omap3-x11demos gstreamer-ti omapfbplay"
-SOCSUPPORT_ti33x = "gst-ffmpeg mplayer2"
+SOCSUPPORT_ti33x = ""
 
 IMAGE_INSTALL += " \
-                  angstrom-packagegroup-gnome gimp abiword gedit epiphany chromium xfce-terminal \
+                  angstrom-packagegroup-gnome gimp abiword gedit epiphany chromium xfce4-terminal \
                   ${SOCSUPPORT} \
                   ttf-dejavu-sans ttf-dejavu-sans-mono ttf-dejavu-common \
                   xinput-calibrator \
