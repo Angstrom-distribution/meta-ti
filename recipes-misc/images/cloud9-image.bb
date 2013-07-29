@@ -23,7 +23,6 @@ IMAGE_INSTALL += " \
 	nano \
 	minicom \
 	hicolor-icon-theme \
-	gateone \
 	tar \
 	gdb gdbserver \
 	nodejs-dev \
