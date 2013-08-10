@@ -1,0 +1,46 @@
+tests: also install tests app (adjusted for TI version)
+
+Upstream-Status: Inappropriate [configuration]
+
+Signed-off-by: Denys Dmytriyenko <denys@ti.com>
+
+diff -uNr git-orig/tests/Makefile.am git/tests/Makefile.am
+--- git-orig/tests/Makefile.am	2013-08-10 16:26:30.000000000 -0400
++++ git/tests/Makefile.am	2013-08-10 16:28:53.753855225 -0400
+@@ -6,10 +6,11 @@
+ 
+ LDADD = $(top_builddir)/libdrm.la
+ 
+-check_PROGRAMS = \
++bin_PROGRAMS = \
+ 	dristat \
+ 	drmstat
+ 
++check_PROGRAMS =
+ dristat_LDADD = $(CLOCK_LIB)
+ 
+ SUBDIRS = modeprint
+diff -uNr git-orig/tests/modeprint/Makefile.am git/tests/modeprint/Makefile.am
+--- git-orig/tests/modeprint/Makefile.am	2013-08-10 16:26:30.000000000 -0400
++++ git/tests/modeprint/Makefile.am	2013-08-10 16:28:53.753855225 -0400
+@@ -2,7 +2,7 @@
+ 	-I$(top_srcdir)/include/drm \
+ 	-I$(top_srcdir)
+ 
+-noinst_PROGRAMS = \
++bin_PROGRAMS = \
+ 	modeprint
+ 
+ modeprint_SOURCES = \
+diff -uNr git-orig/tests/modetest/Makefile.am git/tests/modetest/Makefile.am
+--- git-orig/tests/modetest/Makefile.am	2013-08-10 16:26:30.000000000 -0400
++++ git/tests/modetest/Makefile.am	2013-08-10 16:28:53.753855225 -0400
+@@ -3,7 +3,7 @@
+ 	-I$(top_srcdir)/libkms/ \
+ 	-I$(top_srcdir)
+ 
+-noinst_PROGRAMS = \
++bin_PROGRAMS = \
+ 	modetest
+ 
+ modetest_SOURCES = \
