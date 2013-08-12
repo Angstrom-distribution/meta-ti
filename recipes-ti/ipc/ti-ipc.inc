@@ -33,4 +33,4 @@ do_install() {
     install ${S}/ipc.pc ${D}/${libdir}/pkgconfig/
 }
 
-FILES_ti-ipc-dev = "${libdir}/*"
+FILES_${PN}-dev = "${libdir}/*"
