@@ -14,13 +14,13 @@ COMPATIBLE_MACHINE = "keystone-evm"
 SRC_URI = "git://arago-project.org/git/projects/boot-monitor.git;protocol=git;branch=${BRANCH}"
 
 PV = "1.0"
-PR = "r1+gitr${SRCPV}"
+PR = "r2+gitr${SRCREV}"
 
 BRANCH = "master"
 
 S = "${WORKDIR}/git"
 
-SRCREV = "DEV.MCSDK-03.00.00.07"
+SRCREV = "94cab20c4a4725a014d6f815704557d28fec9610"
 
 do_compile () {
 	unset LDFLAGS
