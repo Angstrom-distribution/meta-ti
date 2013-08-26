@@ -35,6 +35,7 @@ IMAGE_INSTALL += " \
 	cpufreq-tweaks \
 	dosfstools \
 	parted \
+        mt7601 \
 	linux-firmware-ar3k \
 	linux-firmware-ar9170 \
 	linux-firmware-ath6k \
