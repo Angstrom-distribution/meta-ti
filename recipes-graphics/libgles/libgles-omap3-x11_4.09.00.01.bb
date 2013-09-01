@@ -61,7 +61,7 @@ do_install_append() {
     cp -pPr ${S}/include/pvr2d/*.h ${D}${includedir}
     cp -pPr ${S}/include/OGLES/GLES ${D}${includedir}/
 
-    rm ${D}${sysconfdir}/init.d/pvr-init
+    rm -f ${D}${sysconfdir}/init.d/pvr-init
 
     if [ "$SUPPORT_XORG" = "1" ]; then
         cp -pP ${WORKDIR}/rc_dri.pvr ${D}${sysconfdir}/init.d/pvr-init
