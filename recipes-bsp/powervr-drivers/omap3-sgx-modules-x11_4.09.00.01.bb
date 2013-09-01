@@ -11,7 +11,7 @@ BINFILE = "Graphics_SDK_setuplinux_${SGXPV}_minimal_demos.bin"
 
 inherit module
 
-MACHINE_KERNEL_PR_append = "a"
+MACHINE_KERNEL_PR_append = "b"
 PR = "${MACHINE_KERNEL_PR}"
 
 DEFAULT_PREFERENCE = "-1"
@@ -48,16 +48,16 @@ do_compile() {
 	export PLAT_CC="${CC}"
 	export PLAT_CPP="${CXX}"
 	export PLAR_AR="${AR}"
-	for kernelver in ${WORKDIR}/../../linux-ti-staging/* ; do
+	for kernelver in ${WORKDIR}/../../${PREFERRED_PROVIDER_virtual/kernel}/* ; do
 		cp -f $kernelver/git/drivers/gpu/drm/*.c ${S}/services4/3rdparty/linux_drm/
 	done
 	if [ $(echo -e "${KERNEL_VERSION}\n3.3" | sort --version-sort | head -1) = "3.3" ] ; then
 		cp -f ${S}/services4/3rdparty/linux_drm/Kbuild_3.3 \
-			${S}/services4/3rdparty/linux_drm/Kbuild
+			${S}/services4/3rdparty/linux_drm/Kbuild || true
 	else 
 		if [ $(echo -e "${KERNEL_VERSION}\n3.2" | sort --version-sort | head -1) = "3.2" ] ; then
 			cp -f ${S}/services4/3rdparty/linux_drm/Kbuild_3.2 \
-				${S}/services4/3rdparty/linux_drm/Kbuild
+				${S}/services4/3rdparty/linux_drm/Kbuild || true
 		fi
 	fi
 	oe_runmake BUILD=${PVRBUILD} TI_PLATFORM=${TI_PLATFORM} SUPPORT_XORG=${SUPPORT_XORG}
