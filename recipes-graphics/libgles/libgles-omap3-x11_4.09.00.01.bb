@@ -2,6 +2,8 @@ require libgles-omap3-x11.inc
 
 LICENSE = "TSPA"
 
+PR = "${INC_PR}.0"
+
 DEFAULT_PREFERENCE = "-1"
 
 BINLOCATION_omap3  = "${S}/gfx_rel_es3.x"
