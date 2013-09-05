@@ -10,7 +10,7 @@ SOCSUPPORT_omap3 = "xbmc libgles-omap3-x11demos gstreamer-ti omapfbplay"
 SOCSUPPORT_ti33x = ""
 
 IMAGE_INSTALL += " \
-                  angstrom-packagegroup-gnome gimp abiword gedit epiphany chromium xfce4-terminal \
+                  angstrom-packagegroup-gnome packagegroup-gnome-apps epiphany chromium gnome-terminal \
                   ${SOCSUPPORT} \
                   ttf-dejavu-sans ttf-dejavu-sans-mono ttf-dejavu-common \
                   xinput-calibrator \
