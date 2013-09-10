@@ -19,7 +19,7 @@ S = "${WORKDIR}/trunk"
 
 inherit module
 
-MACHINE_KERNEL_PR_append = "a+svnr${SRCPV}"
+MACHINE_KERNEL_PR_append = "b+svnr${SRCPV}"
 PR = "${MACHINE_KERNEL_PR}"
 
 EXTRA_OEMAKE += "KERNEL_DIR=${STAGING_KERNEL_DIR}"
@@ -32,5 +32,3 @@ do_install () {
         install -d ${D}/lib/modules/${KERNEL_VERSION}/crypto/ocf/
         install -m 0755 ${S}/ocf_omap3_cryptok.ko ${D}/lib/modules/${KERNEL_VERSION}/crypto/ocf/
 }
-
-FILES_${PN} = "/lib/modules/${KERNEL_VERSION}/crypto/ocf/ocf_omap3_cryptok.ko"
