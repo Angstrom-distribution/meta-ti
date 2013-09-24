@@ -3,7 +3,6 @@ require multi-kernel.inc
 MULTI_CONFIG_BASE_SUFFIX = ""
 
 DESCRIPTION = "Linux kernel for OMAP processors"
-KERNEL_IMAGETYPE = "uImage"
 
 COMPATIBLE_MACHINE = "am3517-crane|beagleboard|omap3evm|am3517-evm|dm37x-evm|am37x-evm|omap3-touchbook|overo"
 

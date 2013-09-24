@@ -11,8 +11,6 @@ COMPATIBLE_MACHINE = "beagleboard"
 inherit kernel
 require setup-defconfig.inc
 
-KERNEL_IMAGETYPE = "uImage"
-
 # The main PR is now using MACHINE_KERNEL_PR, for beagleboard see
 # conf/machine/include/omap3.inc
 MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"

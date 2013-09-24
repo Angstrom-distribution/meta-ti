@@ -1,7 +1,6 @@
 require linux.inc
 
 DESCRIPTION = "Linux kernel for TI processors"
-KERNEL_IMAGETYPE = "uImage"
 
 COMPATIBLE_MACHINE = "(beagleboard)"
 

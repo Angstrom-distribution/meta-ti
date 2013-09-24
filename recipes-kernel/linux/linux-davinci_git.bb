@@ -1,7 +1,6 @@
 require multi-kernel.inc
 
 DESCRIPTION = "Linux kernel for DaVinci processors"
-KERNEL_IMAGETYPE = "uImage"
 
 COMPATIBLE_MACHINE = "hawkboard"
 

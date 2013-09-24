@@ -1,7 +1,6 @@
 require multi-kernel.inc
 
 DESCRIPTION = "Linux kernel for OMAP processors"
-KERNEL_IMAGETYPE = "uImage"
 
 COMPATIBLE_MACHINE = "(beagleboard|overo|omap3evm|omap3-touchbook)"
 

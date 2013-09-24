@@ -1,7 +1,6 @@
 SECTION = "kernel"
 DESCRIPTION = "Linux kernel for OMAPL1 machines from PSP, based on linux-davinci kernel"
 LICENSE = "GPLv2"
-KERNEL_IMAGETYPE = "uImage"
 
 require multi-kernel.inc
 require tipspkernel.inc
