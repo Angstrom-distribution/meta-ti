@@ -6,7 +6,7 @@ COMPATIBLE_MACHINE = "ti33x"
 
 DEFAULT_PREFERENCE = "-1"
 
-inherit kernel machine_kernel_pr
+inherit kernel
 require setup-defconfig.inc
 
 # Stage the power management firmware before building the kernel
