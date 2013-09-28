@@ -16,6 +16,7 @@ KERNEL_IMAGETYPE = "uImage"
 
 # The main PR is now using MACHINE_KERNEL_PR, for ti33x see conf/machine/include/ti33x.inc
 MACHINE_KERNEL_PR_append = "h+gitr${SRCPV}"
+PR = "${MACHINE_KERNEL_PR}"
 
 BRANCH = "v3.2-staging"
 

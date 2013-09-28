@@ -14,6 +14,7 @@ require setup-defconfig.inc
 # The main PR is now using MACHINE_KERNEL_PR, for beagleboard see
 # conf/machine/include/omap3.inc
 MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
+PR = "${MACHINE_KERNEL_PR}"
 
 BRANCH = "linux-3.3.y"
 SRCREV = "v3.3.7"

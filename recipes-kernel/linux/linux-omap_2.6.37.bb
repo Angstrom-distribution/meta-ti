@@ -6,7 +6,10 @@ COMPATIBLE_MACHINE = "(beagleboard|overo|omap3evm|omap3-touchbook)"
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 see conf/machine/include/omap3.inc
 PV = "2.6.37"
+
 MACHINE_KERNEL_PR_append = "c+gitr${SRCREV}"
+PR = "${MACHINE_KERNEL_PR}"
+
 SRCREV = "fa3b4e23ec20cfc944db7cc2b30b0d82c20e4472"
 
 FILESEXTRAPATHS_prepend := "{THISDIR}/${PN}-${PV}:"

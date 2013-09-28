@@ -15,7 +15,9 @@ PV = "${@base_contains('DISTRO_FEATURES', 'tipspkernel', "3.2", "3.2.28", d)}"
 
 BRANCH = "v3.2-staging"
 SRCREV = "720e07b4c1f687b61b147b31c698cb6816d72f01"
+
 MACHINE_KERNEL_PR_append = "b+gitr${SRCREV}"
+PR = "${MACHINE_KERNEL_PR}"
 
 COMPATIBLE_MACHINE = "(ti33x)"
 

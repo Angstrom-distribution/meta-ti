@@ -11,6 +11,7 @@ SRCREV= "adcd067326836777c049e3cb32a5b7d9d401fc31"
 # The main PR is now using MACHINE_KERNEL_PR, for omap3 devices
 # see conf/machine/include/omap3.inc
 MACHINE_KERNEL_PR_append = "b"
+PR = "${MACHINE_KERNEL_PR}"
 
 SRC_URI = "git://arago-project.org/git/projects/linux-omap3.git;protocol=git \
            file://defconfig"

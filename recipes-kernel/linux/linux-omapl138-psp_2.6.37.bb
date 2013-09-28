@@ -7,6 +7,7 @@ require tipspkernel.inc
 require setup-defconfig.inc
 
 MACHINE_KERNEL_PR_append = "c"
+PR = "${MACHINE_KERNEL_PR}"
 
 S = "${WORKDIR}/git"
 

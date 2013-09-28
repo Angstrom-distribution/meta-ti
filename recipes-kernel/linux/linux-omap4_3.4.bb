@@ -4,6 +4,7 @@ require linux.inc
 
 # The main PR is now using MACHINE_KERNEL_PR, for omap4 see conf/machine/include/omap4.inc
 MACHINE_KERNEL_PR_append = "a"
+PR = "${MACHINE_KERNEL_PR}"
 
 CORTEXA8FIXUP = "no"
 
