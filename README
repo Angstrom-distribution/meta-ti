@@ -11,12 +11,6 @@ layers: meta
 branch: master
 
 
-When not depending on meta-openembedded and not using systemd, you may need to
-mask few miscellaneous recipes requiring systemd, by adding this to local.conf:
-
-BBMASK = "meta-ti/recipes-misc"
-
-
 The base BSP part of meta-ti should work with different OpenEmbedded/Yocto
 distributions and layer stacks, such as:
 distro-less (only with OE-Core), with Yocto/Poky, with Angstrom or Arago.
@@ -27,4 +21,3 @@ Please follow the recommended setup procedures of your OE distribution.
 Send pull requests, patches, comments or questions to meta-ti@yoctoproject.org
 
 Maintainers: Denys Dmytriyenko <denys@ti.com>
-             Koen Kooi <koen@dominion.thruhere.net>

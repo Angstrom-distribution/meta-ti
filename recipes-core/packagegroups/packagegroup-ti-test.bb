@@ -1,8 +1,8 @@
 DESCRIPTION = "Extended task to get System Test specific apps"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58"
+PR = "r1"
 
-inherit allarch packagegroup
+inherit packagegroup
 
 TEST = "\
     bonnie++ \
@@ -11,6 +11,9 @@ TEST = "\
     iperf \
     lmbench \
     rt-tests \
+    evtest \
+    bc \
+    memtester \
     "
 
 TI_TEST = "\
@@ -21,4 +24,3 @@ RDEPENDS_${PN} = "\
     ${TEST} \
     ${TI_TEST} \
     "
-
