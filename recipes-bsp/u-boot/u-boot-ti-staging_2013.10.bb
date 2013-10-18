@@ -2,16 +2,17 @@ require u-boot-ti.inc
 
 DESCRIPTION = "u-boot bootloader for TI devices"
 
-LIC_FILES_CHKSUM = "file://Licenses/README;md5=bc069111b5e5b1ed8bed98ae73b596ec"
+LIC_FILES_CHKSUM = "file://Licenses/README;md5=025bf9f768cbcb1a165dbe1a110babfb"
 
-PV = "2013.07+2013.10-rc4"
+PV = "2013.10"
 PR = "r0+gitr${SRCPV}"
 
 SRC_URI = "git://git.ti.com/ti-u-boot/ti-u-boot.git;protocol=git;branch=${BRANCH}"
 
-BRANCH ?= "master"
+BRANCH ?= "ti-u-boot-2013.10"
 
-SRCREV = "0c5274e6f3231a3a28dafc1204b3f71a3534c520"
+# Corresponds to 2013.10
+SRCREV = "183acb700378a8cfc5d50a01a65de93fb2c24586"
 
 SPL_BINARY = "MLO"
 SPL_UART_BINARY = "u-boot-spl.bin"
