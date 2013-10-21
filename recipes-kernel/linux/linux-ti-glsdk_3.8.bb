@@ -18,15 +18,15 @@ DEFAULT_PREFERENCE = "-1"
 
 S = "${WORKDIR}/git"
 
-BRANCH = "master"
+BRANCH ?= "p-ti-glsdk-3.8.y"
 
-SRCREV = "6076e6882d1d6a64b104e42e56a3eada36605cb3"
+SRCREV ?= "cc16f99176bf083829c028f9af5b8eb560debcc1"
 PV = "3.8.13"
 
 # Append to the MACHINE_KERNEL_PR so that a new SRCREV will cause a rebuild
-MACHINE_KERNEL_PR_append = "c+gitr${SRCPV}"
+MACHINE_KERNEL_PR_append = "d+gitr${SRCPV}"
 PR = "${MACHINE_KERNEL_PR}"
 
-SRC_URI = "git://git.ti.com/ti-linux-kernel/ti-linux-3-8-y-kernel.git;protocol=git;branch=${BRANCH} \
+SRC_URI = "git://git.omapzoom.org/kernel/omap.git;protocol=git;branch=${BRANCH} \
            file://defconfig \
           "
