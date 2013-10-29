@@ -3,12 +3,12 @@ DESCRIPTION = "Cortex-M3 binary blob for suspend-resume"
 LICENSE = "TI-BSD"
 LIC_FILES_CHKSUM = "file://License.txt;md5=858099c817e47ea63559fc6b67ae8d91"
 
-PV = "04.06.00.11"
-PR = "r4"
+PV = "05.00.00.00"
+PR = "r0"
 
-# SRCREV corresponds to tag "AM335xPSP_04.06.00.11"
-SRCREV = "750362868d914702086187096ec2c67b68eac101"
-BRANCH ?= "master"
+# SRCREV corresponds to the tip of next3 branch
+SRCREV = "1628306779c05ee45f09d1d3131e722ddd3a5e2e"
+BRANCH ?= "next3"
 
 INITSCRIPT_NAME = "am335x-pm-firmware-load"
 INITSCRIPT_PARAMS = "defaults 96"
