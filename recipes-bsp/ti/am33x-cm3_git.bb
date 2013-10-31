@@ -4,11 +4,11 @@ LICENSE = "TI-BSD"
 LIC_FILES_CHKSUM = "file://License.txt;md5=858099c817e47ea63559fc6b67ae8d91"
 
 PV = "05.00.00.00"
-PR = "r0"
+PR = "r1"
 
-# SRCREV corresponds to the tip of next3 branch
+# SRCREV corresponds to tag v05.00.00.00
 SRCREV = "1628306779c05ee45f09d1d3131e722ddd3a5e2e"
-BRANCH ?= "next3"
+BRANCH ?= "master"
 
 INITSCRIPT_NAME = "am335x-pm-firmware-load"
 INITSCRIPT_PARAMS = "defaults 96"
