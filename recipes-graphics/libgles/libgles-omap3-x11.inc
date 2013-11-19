@@ -3,11 +3,11 @@ LICENSE = "proprietary-binary"
 # 'TSPA.txt' might not be the best file to md5sum
 LIC_FILES_CHKSUM = "file://TSPA.txt;md5=c0d5d9c1e38b41677144c4e24d6ddee1"
 
-INC_PR = "r37"
+INC_PR = "r38"
 
 EXCLUDE_FROM_WORLD = "1"
 
-COMPATIBLE_MACHINE = "(omap3|ti814x|ti816x|ti33x)"
+COMPATIBLE_MACHINE = "(omap3|ti814x|ti816x|ti33x|ti43x)"
 
 DEPENDS = "virtual/libx11 libxau libxdmcp libdrm"
 
@@ -46,6 +46,7 @@ export ES3LOCATION ?= "${S}/gfx_rel_es3.x"
 export ES5LOCATION ?= "${S}/gfx_rel_es5.x"
 export ES6LOCATION ?= "${S}/gfx_rel_es6.x"
 export ES8LOCATION ?= "${S}/gfx_rel_es8.x"
+export ES9LOCATION ?= "${S}/gfx_rel_es9.x"
 
 LIBGLESWINDOWSYSTEM ?= "libpvrPVR2D_DRIWSEGL.so"
 
@@ -174,11 +175,13 @@ do_install () {
 
 	# The ES3.x, ES5.x and ES6.x CPUs have different SGX hardware, so we need to install multiple sets of userspace
 
+	install -d ${D}${libdir}/ES9.0
 	install -d ${D}${libdir}/ES8.0
 	install -d ${D}${libdir}/ES6.0
 	install -d ${D}${libdir}/ES5.0
 	install -d ${D}${libdir}/ES3.0
 
+	install -d ${D}${bindir}/ES9.0
 	install -d ${D}${bindir}/ES8.0
 	install -d ${D}${bindir}/ES6.0
 	install -d ${D}${bindir}/ES5.0
@@ -186,7 +189,7 @@ do_install () {
 
 	x11_prog="eglinfo_x xgles1test1 xgles2test1 xmultiegltest"
 
-	for esrev in 3 5 6 8 ; do
+	for esrev in 3 5 6 8 9; do
 		ESLOCATION=$(eval echo $(echo \$\{ES${esrev}LOCATION\}))
 		if [ -e ${ESLOCATION} ] ; then
 			cp -pPR ${ESLOCATION}/lib*${IMGPV} ${ESLOCATION}/pvr_drv.so ${ESLOCATION}/*.a ${D}${libdir}/ES${esrev}.0/
@@ -219,38 +222,42 @@ do_install () {
 PACKAGES =+ "${PN}-x11demos ${PN}-x11trainingcourses xserver-kdrive-powervrsgx"
 
 # Package the base libraries per silicon revision
-PACKAGES =+ "${PN}-es3 ${PN}-es5 ${PN}-es6 ${PN}-es8"
-RRECOMMENDS_${PN} += "${PN}-es3 ${PN}-es5 ${PN}-es6 ${PN}-es8"
+PACKAGES =+ "${PN}-es3 ${PN}-es5 ${PN}-es6 ${PN}-es8 ${PN}-es9"
+RRECOMMENDS_${PN} += "${PN}-es3 ${PN}-es5 ${PN}-es6 ${PN}-es8 ${PN}-es9"
 FILES_${PN}-es3 = "${libdir}/ES3*/* ${bindir}/ES3*/*"
 FILES_${PN}-es5 = "${libdir}/ES5*/* ${bindir}/ES5*/*"
 FILES_${PN}-es6 = "${libdir}/ES6*/* ${bindir}/ES6*/*"
 FILES_${PN}-es8 = "${libdir}/ES8*/* ${bindir}/ES8*/*"
+FILES_${PN}-es9 = "${libdir}/ES9*/* ${bindir}/ES9*/*"
 
 # Stop shlib code from picking a subpackage
 PRIVATE_LIBS_${PN}-es3 = "libGLESv2.so libIMGegl.so libsrv_um.so libOpenVG.so libpvr2d.so libsrv_init.so libEGL.so libsrv_um_dri.so libOpenVGU.so libglslcompiler.so libGLES_CM.so"
 PRIVATE_LIBS_${PN}-es5 = "libGLESv2.so libIMGegl.so libsrv_um.so libOpenVG.so libpvr2d.so libsrv_init.so libEGL.so libsrv_um_dri.so libOpenVGU.so libglslcompiler.so libGLES_CM.so"
 PRIVATE_LIBS_${PN}-es6 = "libGLESv2.so libIMGegl.so libsrv_um.so libOpenVG.so libpvr2d.so libsrv_init.so libEGL.so libsrv_um_dri.so libOpenVGU.so libglslcompiler.so libGLES_CM.so"
 PRIVATE_LIBS_${PN}-es8 = "libGLESv2.so libIMGegl.so libsrv_um.so libOpenVG.so libpvr2d.so libsrv_init.so libEGL.so libsrv_um_dri.so libOpenVGU.so libglslcompiler.so libGLES_CM.so"
+PRIVATE_LIBS_${PN}-es9 = "libGLESv2.so libIMGegl.so libsrv_um.so libOpenVG.so libpvr2d.so libsrv_init.so libEGL.so libsrv_um_dri.so libOpenVGU.so libglslcompiler.so libGLES_CM.so"
 
 PACKAGES =+ "${PN}-x11wsegl ${PN}-driwsegl"
 FILES_${PN}-x11wsegl = "${libdir}/libpvrPVR2D_X11WSEGL.so* ${bindir}/x* ${bindir}/*x"
 FILES_${PN}-driwsegl = "${libdir}/libpvrPVR2D_DRIWSEGL.so* ${libdir}/libsrv_um_dri*"
 
-X11_SEGL = " ${PN}-x11wsegl-es2 ${PN}-x11wsegl-es3 ${PN}-x11wsegl-es5 ${PN}-x11wsegl-es6 ${PN}-x11wsegl-es8 ${PN}-driwsegl-es2 ${PN}-driwsegl-es3 ${PN}-driwsegl-es5 ${PN}-driwsegl-es6 ${PN}-driwsegl-es8 "
+X11_SEGL = " ${PN}-x11wsegl-es2 ${PN}-x11wsegl-es3 ${PN}-x11wsegl-es5 ${PN}-x11wsegl-es6 ${PN}-x11wsegl-es8 ${PN}-x11wsegl-es9 ${PN}-driwsegl-es2 ${PN}-driwsegl-es3 ${PN}-driwsegl-es5 ${PN}-driwsegl-es6 ${PN}-driwsegl-es8 ${PN}-driwsegl-es9"
 PACKAGES =+ "${X11_SEGL}"
 FILES_${PN}-x11wsegl-es2 = "${libdir}/ES2*/libpvrPVR2D_X11WSEGL.so.* ${bindir}/ES2*/x* ${bindir}/ES2*/*x"
 FILES_${PN}-x11wsegl-es3 = "${libdir}/ES3*/libpvrPVR2D_X11WSEGL.so.* ${bindir}/ES3*/x* ${bindir}/ES3*/*x"
 FILES_${PN}-x11wsegl-es5 = "${libdir}/ES5*/libpvrPVR2D_X11WSEGL.so.* ${bindir}/ES5*/x* ${bindir}/ES5*/*x"
 FILES_${PN}-x11wsegl-es6 = "${libdir}/ES6*/libpvrPVR2D_X11WSEGL.so.* ${bindir}/ES6*/x* ${bindir}/ES6*/*x"
 FILES_${PN}-x11wsegl-es8 = "${libdir}/ES8*/libpvrPVR2D_X11WSEGL.so.* ${bindir}/ES8*/x* ${bindir}/ES8*/*x"
-RRECOMMENDS_${PN}-x11wsegl = " ${PN}-x11wsegl-es2 ${PN}-x11wsegl-es3 ${PN}-x11wsegl-es5 ${PN}-x11wsegl-es6 ${PN}-x11wsegl-es8"
+FILES_${PN}-x11wsegl-es9 = "${libdir}/ES9*/libpvrPVR2D_X11WSEGL.so.* ${bindir}/ES9*/x* ${bindir}/ES9*/*x"
+RRECOMMENDS_${PN}-x11wsegl = " ${PN}-x11wsegl-es2 ${PN}-x11wsegl-es3 ${PN}-x11wsegl-es5 ${PN}-x11wsegl-es6 ${PN}-x11wsegl-es8 ${PN}-x11wsegl-es9"
 
 FILES_${PN}-driwsegl-es2 = "${libdir}/ES2*/libpvrPVR2D_DRIWSEGL.so.* ${libdir}/ES2*/libsrv_um_dri*"
 FILES_${PN}-driwsegl-es3 = "${libdir}/ES3*/libpvrPVR2D_DRIWSEGL.so.* ${libdir}/ES3*/libsrv_um_dri*"
 FILES_${PN}-driwsegl-es5 = "${libdir}/ES5*/libpvrPVR2D_DRIWSEGL.so.* ${libdir}/ES5*/libsrv_um_dri*"
 FILES_${PN}-driwsegl-es6 = "${libdir}/ES6*/libpvrPVR2D_DRIWSEGL.so.* ${libdir}/ES6*/libsrv_um_dri*"
 FILES_${PN}-driwsegl-es8 = "${libdir}/ES8*/libpvrPVR2D_DRIWSEGL.so.* ${libdir}/ES8*/libsrv_um_dri*"
-RRECOMMENDS_${PN}-driwsegl = " ${PN}-driwsegl-es2 ${PN}-driwsegl-es3 ${PN}-driwsegl-es5 ${PN}-driwsegl-es6 ${PN}-driwsegl-es8"
+FILES_${PN}-driwsegl-es9 = "${libdir}/ES9*/libpvrPVR2D_DRIWSEGL.so.* ${libdir}/ES9*/libsrv_um_dri*"
+RRECOMMENDS_${PN}-driwsegl = " ${PN}-driwsegl-es2 ${PN}-driwsegl-es3 ${PN}-driwsegl-es5 ${PN}-driwsegl-es6 ${PN}-driwsegl-es8 ${PN}-driwsegl-es9"
 
 CONFFILES_${PN} = "${sysconfdir}/powervr.ini"
 
@@ -282,17 +289,20 @@ INSANE_SKIP_${PN}-es3 = "ldflags dev-so staticdev"
 INSANE_SKIP_${PN}-es5 = "ldflags dev-so staticdev"
 INSANE_SKIP_${PN}-es6 = "ldflags dev-so staticdev"
 INSANE_SKIP_${PN}-es8 = "ldflags dev-so staticdev"
+INSANE_SKIP_${PN}-es9 = "ldflags dev-so staticdev"
 INSANE_SKIP_${PN}-x11demos = "ldflags dev-so useless-rpaths"
 INSANE_SKIP_${PN}-x11wsegl = "ldflags dev-so"
 INSANE_SKIP_${PN}-x11wsegl-es3 = "ldflags dev-so"
 INSANE_SKIP_${PN}-x11wsegl-es5 = "ldflags dev-so"
 INSANE_SKIP_${PN}-x11wsegl-es6 = "ldflags dev-so"
 INSANE_SKIP_${PN}-x11wsegl-es8 = "ldflags dev-so"
+INSANE_SKIP_${PN}-x11wsegl-es9 = "ldflags dev-so"
 INSANE_SKIP_${PN}-driwsegl = "ldflags dev-so"
 INSANE_SKIP_${PN}-driwsegl-es3 = "ldflags dev-so"
 INSANE_SKIP_${PN}-driwsegl-es5 = "ldflags dev-so"
 INSANE_SKIP_${PN}-driwsegl-es6 = "ldflags dev-so"
 INSANE_SKIP_${PN}-driwsegl-es8 = "ldflags dev-so"
+INSANE_SKIP_${PN}-driwsegl-es9 = "ldflags dev-so"
 INSANE_SKIP_${PN}-tests = "ldflags"
 INSANE_SKIP_xserver-kdrive-powervrsgx = "ldflags"
 INSANE_SKIP_${PN}-dev = "ldflags dev-so"
