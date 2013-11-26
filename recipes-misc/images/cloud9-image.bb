@@ -9,6 +9,7 @@ ROOTFSTYPE_beaglebone = "ext4"
 IMAGE_INSTALL += " \
 	systemd-analyze \
 	cloud9 \
+	gateone \
 	mpd \
 	packagegroup-sdk-target \
 	vim vim-vimrc \
