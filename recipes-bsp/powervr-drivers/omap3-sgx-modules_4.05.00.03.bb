@@ -13,6 +13,8 @@ inherit module
 MACHINE_KERNEL_PR_append = "b"
 PR = "${MACHINE_KERNEL_PR}"
 
+DEFAULT_PREFERENCE_omap3 = "99"
+
 SRC_URI = "http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/gfxsdk/${SGXPV}/exports/Graphics_SDK_setuplinux_${SGXPV}.bin \
           "
 SRC_URI[md5sum] = "0e651eaa92bb91760f0b40a17697a7dc"

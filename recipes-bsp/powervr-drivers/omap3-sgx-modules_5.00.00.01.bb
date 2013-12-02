@@ -13,8 +13,6 @@ inherit module
 MACHINE_KERNEL_PR_append = "a"
 PR = "${MACHINE_KERNEL_PR}"
 
-DEFAULT_PREFERENCE = "-1"
-
 BINFILE_HARDFP = "Graphics_SDK_setuplinux_${SGXPV}_alpha_hardfp_minimal_demos.bin"
 MD5SUM_HARDFP = "ae6125d7f8a313ea5c02afded893052d"
 SHA256SUM_HARDFP = "c2782a2f85024741722b936ec9dca66b858ae8561aa71b693f11e12d8c0385e0"

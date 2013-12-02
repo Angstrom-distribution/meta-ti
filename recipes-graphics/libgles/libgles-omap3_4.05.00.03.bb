@@ -5,6 +5,8 @@ BINLOCATION_ti33x = "${S}/gfx_rel_es8.x"
 
 require libgles-omap3.inc
 
+DEFAULT_PREFERENCE_omap3 = "99"
+
 # download required binary distribution from:
 # http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/gfxsdk/latest/index_FDS.html
 # see libgles-omap3.inc for detailed installation instructions
