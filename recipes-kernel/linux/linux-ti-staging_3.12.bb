@@ -14,6 +14,7 @@ RDEPENDS_kernel-base += "kernel-devicetree"
 # Add a run-time dependency for the PM firmware to be installed
 # on the target file system.
 RDEPENDS_kernel-base_append_ti33x = " am33x-cm3 am33x-cm3-initscript"
+RDEPENDS_kernel-base_append_ti43x = " am33x-cm3 am33x-cm3-initscript"
 
 # Default is to package all dtb files for ti33x devices unless building
 # for the specific beaglebone machine.
@@ -31,8 +32,9 @@ S = "${WORKDIR}/git"
 
 BRANCH = "ti-linux-3.12.y"
 
-SRCREV = "c077af8403a538e129164081cbe7527f22bb56b6"
-PV = "3.12.2"
+# Corresponds to ti2013.12.00 release
+SRCREV = "3b9c905e7ddbdf94ddaee40c5b8e9745a72afc6b"
+PV = "3.12.4"
 
 # Append to the MACHINE_KERNEL_PR so that a new SRCREV will cause a rebuild
 MACHINE_KERNEL_PR_append = "a+gitr${SRCPV}"
