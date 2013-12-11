@@ -3,11 +3,11 @@ DESCRIPTION = "Cortex-M3 binary blob for suspend-resume"
 LICENSE = "TI-BSD"
 LIC_FILES_CHKSUM = "file://License.txt;md5=858099c817e47ea63559fc6b67ae8d91"
 
-PV = "05.00.00.00"
-PR = "r1"
+PV = "05.00.00.01"
+PR = "r0"
 
-# SRCREV corresponds to tag v05.00.00.00
-SRCREV = "1628306779c05ee45f09d1d3131e722ddd3a5e2e"
+# SRCREV corresponds to tag v05.00.00.01
+SRCREV = "40cb75b9dd9ba15c6de1c15cbb7cce8f1a6588b8"
 BRANCH ?= "master"
 
 INITSCRIPT_NAME = "am335x-pm-firmware-load"
