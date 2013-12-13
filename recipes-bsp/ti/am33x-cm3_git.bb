@@ -4,7 +4,10 @@ LICENSE = "TI-BSD"
 LIC_FILES_CHKSUM = "file://License.txt;md5=858099c817e47ea63559fc6b67ae8d91"
 
 PV = "05.00.00.01"
-PR = "r0"
+PR = "r1"
+
+# Make package machine specific due to different init scripts
+PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 # SRCREV corresponds to tag v05.00.00.01
 SRCREV = "40cb75b9dd9ba15c6de1c15cbb7cce8f1a6588b8"
@@ -21,7 +24,11 @@ RDEPENDS_${PN}-initscript = "am33x-cm3"
 
 SRC_URI = "git://arago-project.org/git/projects/am33x-cm3.git;protocol=git;branch=${BRANCH} \
            file://init-am33x-cm3 \
+           file://init-am43x-cm3 \
           "
+
+SCRIPT_ti33x = "init-am33x-cm3"
+SCRIPT_ti43x = "init-am43x-cm3"
 
 S = "${WORKDIR}/git"
 
@@ -35,7 +42,7 @@ do_install() {
 
 	# Install the init script to load the PM firmware at boot
 	install -d ${D}${sysconfdir}/init.d
-	install -m 0755 ${WORKDIR}/init-am33x-cm3 ${D}${sysconfdir}/init.d/${INITSCRIPT_NAME}
+	install -m 0755 ${WORKDIR}/${SCRIPT} ${D}${sysconfdir}/init.d/${INITSCRIPT_NAME}
 }
 
 PACKAGES =+ "${PN}-initscript"
