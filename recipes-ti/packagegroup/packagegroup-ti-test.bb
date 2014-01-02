@@ -14,7 +14,6 @@ TEST = "\
     "
 
 TI_TEST = "\
-    ltp-ddt \
     "
 
 RDEPENDS_${PN} = "\
