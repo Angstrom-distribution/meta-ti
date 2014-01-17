@@ -13,6 +13,9 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 SRCREV = "40cb75b9dd9ba15c6de1c15cbb7cce8f1a6588b8"
 BRANCH ?= "master"
 
+# This init script is only used for older kernels that do not support
+# hotplug of the firmware.  Newer kernels do not require the initscript
+# package.
 INITSCRIPT_NAME = "am335x-pm-firmware-load"
 INITSCRIPT_PARAMS = "defaults 96"
 
