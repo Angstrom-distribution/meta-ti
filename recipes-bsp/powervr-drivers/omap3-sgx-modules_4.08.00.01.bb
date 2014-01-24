@@ -14,8 +14,6 @@ inherit module
 MACHINE_KERNEL_PR_append = "a"
 PR = "${MACHINE_KERNEL_PR}"
 
-DEFAULT_PREFERENCE = "-1"
-
 SRC_URI = "http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/gfxsdk/${SGXPV}/exports/${BINFILE}"
 
 SRC_URI[md5sum] = "dd0d994a48ecc4293f272a1fddddf159"

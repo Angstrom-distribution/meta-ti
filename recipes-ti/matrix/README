@@ -1,5 +1,0 @@
-Matrix app has been moved to meta-arago-extras layer of the meta-arago repo:
-git://arago-project.org/git/meta-arago.git
-
-This meta-arago-extras layer is distro-agnostic and not Arago-specific, so
-it can be used with any OE-Core based distribution.

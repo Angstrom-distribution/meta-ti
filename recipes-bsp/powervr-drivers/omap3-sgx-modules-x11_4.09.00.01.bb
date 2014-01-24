@@ -13,8 +13,6 @@ inherit module
 MACHINE_KERNEL_PR_append = "d"
 PR = "${MACHINE_KERNEL_PR}"
 
-DEFAULT_PREFERENCE = "-1"
-
 # Select the corresponding hardfp/softfp filename and checksums based on tune flags
 BINFILE_SOFTFP = "Graphics_SDK_setuplinux_${SGXPV}_minimal_demos.bin"
 MD5SUM_SOFTFP = "bd35e9d8843aff3a2aca9d41e7db1c7d"
